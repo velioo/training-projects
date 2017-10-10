@@ -35,3 +35,6 @@ PHP Framework CodeIgniter
 MySQL база данни
 Javascript, JQuery
 Bootstrap
+
+
+Линк към още подробнисти: https://docs.google.com/document/d/1m9QYVFrIRl4dMhD82nFTYEjhEBF1V3h3w6Yp-iYFtYQ/edit
