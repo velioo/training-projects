@@ -1,0 +1,3 @@
+Objects in Oblasti: 28
+Objects in Obshtini: 265
+Objects in Selishta: 5256
