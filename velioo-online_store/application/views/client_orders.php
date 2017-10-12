@@ -15,8 +15,8 @@
 
 <div class="vertical-menu employee">
 	  <a href="<?php echo site_url("employees/orders"); ?>" class="active">Поръчки</a>
-	  <a href="<?php echo site_url("employees/dashboard"); ?>" >Всички продукти</a>
-	  <a href="<?php echo site_url("employees/add_product"); ?>" >Добави продукт</a>
+	  <a href="<?php echo site_url("employees/dashboard"); ?>" >Продукти</a>
+	  <a href="<?php echo site_url("employees/tags"); ?>">Тагове</a>
 	  <div id="message"></div>
 </div>
 
@@ -46,7 +46,7 @@
 		  </tr>
 		</thead>
 		<tbody>
-		<?php foreach($orders as $order) { ?>
+		<?php if($orders) foreach($orders as $order) { ?>
 		  <tr data-id="<?php echo htmlentities($order['order_id'], ENT_QUOTES); ?>">
 			<td class="order_id"><?php echo htmlspecialchars($order['order_id'], ENT_QUOTES); ?></td>
 			<td><?php echo htmlspecialchars($order['order_created_at'], ENT_QUOTES); ?></td>
@@ -68,6 +68,8 @@
 		</tbody>
 	  </table>
 	</div>
+	
+	<div style="text-align:center;"><?php echo ($pagination) ? $pagination : ''; ?></div>
 	
 </div>
 

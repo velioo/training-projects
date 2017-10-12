@@ -27,8 +27,8 @@
 
 <div class="vertical-menu employee">
 	  <a href="<?php echo site_url("employees/orders"); ?>">Поръчки</a>
-	  <a href="<?php echo site_url("employees/dashboard"); ?>">Виж всички продукти</a>
-	  <a href="<?php echo site_url("employees/add_product"); ?>" class="active">Добави продукт</a>
+	  <a href="<?php echo site_url("employees/dashboard"); ?>" class="active">Продукти</a>
+	  <a href="<?php echo site_url("employees/tags"); ?>">Тагове</a>
 </div>
 
 <div class="account-info employee">
@@ -91,7 +91,7 @@
 			</div>
 			<div id="tags_div">	
 				<?php if(isset($tags)) { foreach($tags as $t) { ?>
-					<input value="<?php echo $t; ?>" class="tag" name="tags[]" readonly="" style="width: 55px;" type="text"> <span class="glyphicon glyphicon-remove remove_tag"></span>
+					<div class="tag_div"><input value="<?php echo $t; ?>" class="tag" name="tags[]" readonly="" style="width: 55px;" type="text"> <span class="glyphicon glyphicon-remove remove_tag"></span></div>
 				<?php }} ?>
 			</div>
 		</div>

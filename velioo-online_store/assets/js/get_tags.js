@@ -1,14 +1,13 @@
 $(document).ready(function() {
 	
 	var tagsUrl = getTagsUrl();
-	var checkTagUrl = getCheckTagUrl();
-	var tagsReturned = [];
+	var checkTagUrl = getCheckTagUrl();	
 
 	var options = {
 		url: function(phrase) {
 			return tagsUrl + "/" + phrase;
 		},
-		
+		dataType: "json",
 		getValue: "name",
 		
 		list: {
@@ -60,8 +59,7 @@ $(document).ready(function() {
 		});
 		
 		if(!flag) {
-			$('#tags_div').prepend('<input type="text" value="' + $('#tag_input').val() + '" class="tag" name="tags[]" readonly> <span class="glyphicon glyphicon-remove remove_tag"></span>');
-			$('.tag:first').css("width", (($('input.tag:first').val().length + 7) * 5) + 'px');		
+			$('#tags_div').prepend('<div class="tag_div"><input type="text" value="' + $('#tag_input').val() + '" class="tag" name="tags[]" readonly> <span class="glyphicon glyphicon-remove remove_tag"></span></div>');		
 			$('#tag_input').val('');
 		}
 	}	

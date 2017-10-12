@@ -18,7 +18,7 @@ class Products extends CI_Controller {
 		$this->load->library('pagination');
 		$config = $this->configure_pagination();
 		$config['base_url'] = site_url("products/search");
-		$config['per_page'] = 28;
+		$config['per_page'] = 40;
 		
 		if($this->input->get('page') != NULL and is_numeric($this->input->get('page')) and $this->input->get('page') > 0) {
 			$start = $this->input->get('page') * $config['per_page'] - $config['per_page'];
@@ -30,27 +30,44 @@ class Products extends CI_Controller {
 			
 			$searchWord = $this->input->get('search_input');
 			$data['products'] = $this->product_model->getRows( array('select' => array('products.*', 'categories.name as category', 'categories.id as category_id'),
-																 'joins' => array('categories' => 'categories.id=products.category_id'),
-																 'like' => array('products.name' => $searchWord),
-																 'or_like' => array('products.description' => $searchWord),
-																 'order_by' => array('created_at' => 'DESC'),
-																 'start' => $start,
-																 'limit' => $config['per_page']) );	
+																     'joins' => array('categories' => 'categories.id=products.category_id'),
+																	 'like' => array('products.name' => $searchWord),
+																	 'or_like' => array('products.description' => $searchWord),
+																	 'order_by' => array('created_at' => 'DESC'),
+																	 'start' => $start,
+																	 'limit' => $config['per_page']) );	
 																																											
 			$config['total_rows'] = $this->product_model->getRows(array('returnType' => 'count'));						
 			
 			
 		} else {
-			
-			$data['products'] = $this->product_model->getRows( array('select' => array('products.*', 'categories.name as category', 'categories.id as category_id'),
-																 'joins' => array('categories' => 'categories.id=products.category_id'),
-																 'conditions' => array('categories.id' => $searchCategoryId),
-																 'order_by' => array('created_at' => 'DESC'),
-																 'start' => $start,
-																 'limit' => $config['per_page']) );	
-																																											
+					
+			$data['products'] = $this->product_model->getRows( array('select' => array('products.*', 'categories.name as category', 'categories.id as category_id', 'group_concat(tags.name) as tags'),
+																	 'joins' => array('categories' => 'categories.id=products.category_id', 
+																					  'product_tags' => array('product_tags.product_id=products.id', 'left'), 
+																					  'tags' => array('tags.id=product_tags.tag_id', 'left')),
+																	 'conditions' => array('categories.id' => $searchCategoryId),
+																	 'order_by' => array('created_at' => 'DESC'),
+																	 'start' => $start,
+																	 'limit' => $config['per_page'],
+																	 'group_by' => 'products.id' ));	
+																	 
 			$config['total_rows'] = $this->product_model->getRows( array('joins' => array('categories' => 'categories.id=products.category_id'),
 																     'conditions' => array('categories.name' => $searchCategoryId)) );		
+																 
+			$data['tags'] = $this->product_model->getRows( array('select' => array('tags.key_name, tags.name, tags.value, COUNT(tags.name) as tag_count'),
+																 'joins' => array('categories' => 'categories.id=products.category_id', 
+																				  'product_tags' => 'product_tags.product_id=products.id', 
+																				  'tags' => 'tags.id=product_tags.tag_id'),
+																 'conditions' => array('categories.id' => $searchCategoryId),
+																 'group_by' => 'tags.key_name, tags.name, tags.value' ));									 
+			
+			$tags = array();
+			foreach ($data['tags'] as $key => $row)
+			{
+				$tags[$key] = $row['name'];
+			}
+			array_multisort($tags, SORT_ASC, $data['tags']);																																									
 			
 			$data['category_id'] = $searchCategoryId;				
 		}
@@ -132,7 +149,7 @@ class Products extends CI_Controller {
 					$this->session->set_userdata('error_msg', 'Възникна проблем, моля свържете се с вашия администратор');
 				} else {
 					$this->db->trans_commit();
-					 $this->session->set_userdata('success_msg', 'Продуктът е успешно добавен. ');
+					$this->session->set_userdata('success_msg', 'Продуктът е успешно добавен. ');
                     redirect('/employees/dashboard/');   
 				}                         
             }  
@@ -225,7 +242,7 @@ class Products extends CI_Controller {
 						$this->session->set_userdata('error_msg', 'Възникна проблем, моля свържете се с вашия администратор');
 					} else {
 						$this->db->trans_commit();
-						$this->session->set_userdata('success_msg', 'Продуктът е успешно добавен. ');
+						$this->session->set_userdata('success_msg', 'Продуктът е успешно променен. ');
 						redirect('/employees/dashboard/');   
 					}    
 				}  

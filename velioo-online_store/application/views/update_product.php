@@ -3,7 +3,7 @@
 <script src="<?php echo asset_url() . "easy_autocomplete/jquery.easy-autocomplete.min.js"; ?>"></script> 
 <link rel="stylesheet" href="<?php echo asset_url() . "easy_autocomplete/easy-autocomplete.min.css"; ?>">
 <script src="<?php echo asset_url() . "js/get_tags.js"; ?>"></script>
-<script src="<?php echo asset_url() . "js/delete_tag.js"; ?>"></script>
+<script src="<?php echo asset_url() . "js/delete_product_tag.js"; ?>"></script>
 
 <script>
 	
@@ -17,8 +17,8 @@
 		return url;
 	}
 	
-	function getDeleteTagUrl() {
-		var url = "<?php echo site_url("tags/delete_tag"); ?>";
+	function getDeleteProductTagUrl() {
+		var url = "<?php echo site_url("tags/delete_product_tag"); ?>";
 		return url;
 	}
 
@@ -28,8 +28,8 @@
 
 <div class="vertical-menu employee">
 	  <a href="<?php echo site_url("employees/orders"); ?>">Поръчки</a>
-	  <a href="<?php echo site_url("employees/dashboard"); ?>">Виж всички продукти</a>
-	  <a href="<?php echo site_url("employees/add_product"); ?>">Добави продукт</a>
+	  <a href="<?php echo site_url("employees/dashboard"); ?>" class="active">Продукти</a>
+	   <a href="<?php echo site_url("employees/tags"); ?>">Тагове</a>
 </div>
 
 <div class="account-info employee">
@@ -89,13 +89,13 @@
 				<input type="text" id="tag_input" placeholder="Enter tag name...">
 			</div>
 			<div id="tags_div">	
-				<?php if(isset($tags)) { foreach($tags as $t) { ?>
-					<input value="<?php echo $t['name']; ?>" class="tag" name="tags[]" readonly="" style="width: 55px;" type="text"> <span data-product-id="<?php echo $product['id']; ?>" class="glyphicon glyphicon-remove remove_tag"></span>
+				<?php if($tags) { foreach($tags as $t) { ?>
+					<div class="tag_div"><input value="<?php echo $t['name']; ?>" class="tag" name="tags[]" readonly="" type="text"> <span data-product-id="<?php echo $product['id']; ?>" class="glyphicon glyphicon-remove remove_tag"></span></div>
 				<?php }} ?>		
 			</div>
 		</div>
         <div class="form-group">
-            <input type="submit" name="productSubmit" class="btn-primary" value="Добави"/>
+            <input type="submit" name="productSubmit" class="btn-primary" value="Промени"/>
         </div>
     </form>
 	

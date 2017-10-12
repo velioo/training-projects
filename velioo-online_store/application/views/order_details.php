@@ -5,8 +5,8 @@
 
 <div class="vertical-menu employee">
 	  <a href="<?php echo site_url("employees/orders"); ?>" class="active">Поръчки</a>
-	  <a href="<?php echo site_url("employees/dashboard"); ?>" >Всички продукти</a>
-	  <a href="<?php echo site_url("employees/add_product"); ?>" >Добави продукт</a>
+	  <a href="<?php echo site_url("employees/dashboard"); ?>" >Продукти</a>
+	  <a href="<?php echo site_url("employees/tags"); ?>">Тагове</a>
 </div>
 
 <div class="account-info employee">

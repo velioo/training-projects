@@ -53,10 +53,31 @@ class Employees extends CI_Controller {
 	
 	public function dashboard() {
 		$data = array();
-		$data['title'] = 'Dashboard';
+		
+		$this->load->library('pagination');
+		$config = $this->configure_pagination();
+		$config['base_url'] = site_url("employees/dashboard");
+		$config['per_page'] = 10;
+			
+		if($this->input->get('page') != NULL and is_numeric($this->input->get('page')) and $this->input->get('page') > 0) {
+			$start = $this->input->get('page') * $config['per_page'] - $config['per_page'];
+		} else {
+			$start = 0;
+		}
+		
+
 		$data['products'] = $this->product_model->getRows(array('select' => array('products.*' , 'categories.name as category'), 
 																'joins' => array('categories' => 'categories.id = products.category_id'),
-																'order_by' => array('created_at' => 'DESC')));
+																'order_by' => array('created_at' => 'DESC'),
+																'start' => $start,
+																'limit' => $config['per_page']));
+																
+		$config['total_rows'] = $this->product_model->getRows(array('returnType' => 'count'));		
+															
+		$this->pagination->initialize($config);							
+		$data['pagination'] = $this->pagination->create_links();														
+																
+		$data['title'] = 'Dashboard';														
 		$this->load->view('dashboard', $data);
 	}
 	
@@ -72,13 +93,14 @@ class Employees extends CI_Controller {
 		$this->load->view('add_product', $data);
 	}
 	
-	public function update_product($product_id=null) {
-		if($product_id !== null && is_numeric($product_id)) {
+	public function update_product($productId=null) {
+		if($productId !== null && is_numeric($productId)) {
 			$data = array();
-			$data['product'] = $this->product_model->getRows(array('id' => $product_id));
+			$data['product'] = $this->product_model->getRows(array('id' => $productId));
 			$data['tags'] = $this->tag_model->getRows(array('select' => array('tags.name'),
 															'joins' => array('product_tags' => 'product_tags.tag_id = tags.id',
-																			 'products' => 'products.id = product_tags.product_id')));	
+																			 'products' => 'products.id = product_tags.product_id'),
+															'conditions' => array('products.id' => $productId)));	
 			$data['categories'] = $this->product_model->getRows(array('table' => 'categories'));	
 			$data['title'] = 'Редактирай продукт';
 			$this->load->view('update_product', $data);
@@ -87,18 +109,72 @@ class Employees extends CI_Controller {
 		}
 	}
 	
+	public function tags() {
+		$data = array();		
+		
+		$this->load->library('pagination');
+		$config = $this->configure_pagination();
+		$config['base_url'] = site_url("employees/tags");
+		$config['per_page'] = 100;
+			
+		if($this->input->get('page') != NULL and is_numeric($this->input->get('page')) and $this->input->get('page') > 0) {
+			$start = $this->input->get('page') * $config['per_page'] - $config['per_page'];
+		} else {
+			$start = 0;
+		}		
+		
+		$data['tags'] = $this->tag_model->getRows(array('start' => $start,
+														'limit' => $config['per_page']));
+														
+		
+		$config['total_rows'] = $this->tag_model->getRows(array('returnType' => 'count'));		
+															
+		$this->pagination->initialize($config);							
+		$data['pagination'] = $this->pagination->create_links();
+													
+		$data['title'] = 'Тагове';
+		$this->load->view('tags', $data);
+	}
+	
+	public function add_tag() {
+		$data = array();
+		$data['title'] = 'Нов таг';
+		$this->load->view('add_tag', $data);
+	}
+	
 	public function orders() {
 		$data = array();
-		$data['title'] = 'Orders';
+		
+		$this->load->library('pagination');
+		$config = $this->configure_pagination();
+		$config['base_url'] = site_url("employees/orders");
+		$config['per_page'] = 50;
+			
+		if($this->input->get('page') != NULL and is_numeric($this->input->get('page')) and $this->input->get('page') > 0) {
+			$start = $this->input->get('page') * $config['per_page'] - $config['per_page'];
+		} else {
+			$start = 0;
+		}			
+		
 		$data['orders'] = $this->order_model->getRows(array('select' => array('orders.id as order_id',
 																			  'orders.created_at as order_created_at',
 																		      'orders.amount_leva',
 																			  'statuses.name as status_name',
 																			  'statuses.id as status_id'), 
-															  'joins' => array('statuses' => 'statuses.id = orders.status_id', 
-																			   'payment_methods' => 'payment_methods.id = orders.payment_method_id'),
-															  'order_by' => array('created_at' => 'DESC')));
-		$data['statuses'] = $this->order_model->getRows(array('table' => 'statuses', 'where_in' => array('id' => array('4', '5', '6', '7'))));
+															  'joins' => array('statuses' => 'statuses.id = orders.status_id'),
+															  'order_by' => array('created_at' => 'DESC'),
+															  'start' => $start,
+															  'limit' => $config['per_page']));													  
+															  
+		$config['total_rows'] = $this->order_model->getRows(array('returnType' => 'count'));	
+															  
+		$data['statuses'] = $this->order_model->getRows(array('table' => 'statuses', 
+															  'where_in' => array('name' => array('Awaiting Payment', 'Payment being verified', 'Awaiting Shipment', 'Awaiting Delivery'))));
+															  
+		$this->pagination->initialize($config);							
+		$data['pagination'] = $this->pagination->create_links();
+															  
+		$data['title'] = 'Orders';
 		$this->load->view('client_orders', $data);
 	}
 	
@@ -159,6 +235,32 @@ class Employees extends CI_Controller {
 			if($update) echo true; else echo false;			
 			
 		}
+	}
+	
+	public function configure_pagination() {
+		$config['num_links'] = 5;
+		$config['use_page_numbers'] = TRUE;
+		$config['page_query_string'] = TRUE;
+		$config['reuse_query_string'] = TRUE;
+		$config['query_string_segment'] = 'page';
+		$config['full_tag_open'] = "<ul class='pagination'>";
+		$config['full_tag_close'] ="</ul>";
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
+		$config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
+		$config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
+		$config['next_tag_open'] = "<li>";
+		$config['next_tagl_close'] = "</li>";
+		$config['prev_tag_open'] = "<li>";
+		$config['prev_tagl_close'] = "</li>";
+		$config['first_tag_open'] = "<li>";
+		$config['first_tagl_close'] = "</li>";
+		$config['last_tag_open'] = "<li>";
+		$config['last_tagl_close'] = "</li>";
+		$config["next_link"] = "Next";
+		$config["prev_link"] = "Prev";
+	
+		return $config;
 	}
 	
 }	

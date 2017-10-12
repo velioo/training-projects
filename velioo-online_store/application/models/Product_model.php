@@ -32,7 +32,12 @@ class Product_model extends CI_Model {
 			
 			if(array_key_exists("joins", $params)) {
 				foreach ($params['joins'] as $key => $value) {
-					$this->db->join($key, $value);
+					if(is_array($value)) {
+						$this->db->join($key, $value[0], $value[1]);
+					} else {
+						$this->db->join($key, $value);
+					}
+					
 				}
 			}
 			

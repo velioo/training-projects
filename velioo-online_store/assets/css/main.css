@@ -124,8 +124,8 @@ html,body{
 	border-radius: 3px;
 	display: inline-block;
 	margin: 10px 0px;
-	max-height:220px;
-	max-width: 220px;
+	max-height:180px;
+	max-width: 180px;
 	cursor: pointer;
 }
 
@@ -343,8 +343,13 @@ font-size: 12px;
 	margin-right: 10px;
 }
 
+.tag_div {
+	display: block;
+}
+
 .tag {
 	width: auto;
+	display:inline-block;
 }
 
 #tag_error {
@@ -359,4 +364,22 @@ font-size: 12px;
 	font-weight: normal;
 	margin-left: 10px;
 	display: none;	
+}
+
+.filtering_menu {
+	width:15%;
+	display:inline-block;
+	vertical-align:top;
+	margin-top:40px;
+	margin-right:20px;
+}
+
+.products_div {
+	width:75%;
+	display:inline-block;
+}
+
+.filter_name {
+	margin: 10px 10px 10px 0px;
+	font-size: 16px;
 }
