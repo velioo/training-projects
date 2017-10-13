@@ -55,20 +55,22 @@ class Products extends CI_Controller {
 			$config['total_rows'] = $this->product_model->getRows( array('joins' => array('categories' => 'categories.id=products.category_id'),
 																     'conditions' => array('categories.name' => $searchCategoryId)) );		
 																 
-			$data['tags'] = $this->product_model->getRows( array('select' => array('tags.key_name, tags.name, tags.value, COUNT(tags.name) as tag_count'),
+			$tags = $this->product_model->getRows( array('select' => array('tags.name, COUNT(tags.name) as tag_count'),
 																 'joins' => array('categories' => 'categories.id=products.category_id', 
 																				  'product_tags' => 'product_tags.product_id=products.id', 
 																				  'tags' => 'tags.id=product_tags.tag_id'),
 																 'conditions' => array('categories.id' => $searchCategoryId),
-																 'group_by' => 'tags.key_name, tags.name, tags.value' ));									 
+																 'group_by' => 'tags.name' ));				
 			
-			$tags = array();
-			foreach ($data['tags'] as $key => $row)
-			{
-				$tags[$key] = $row['name'];
-			}
-			array_multisort($tags, SORT_ASC, $data['tags']);																																									
-			
+			$new_tags = array();
+			if($tags)
+				foreach($tags as $tag) {
+					$exploded = explode(':', $tag['name']);
+					$temp_array = array(trim($exploded[1]), $tag['tag_count']);							
+					$new_tags[$exploded[0]][] = $temp_array;				
+				}		
+																																									
+			$data['tags'] = $new_tags;
 			$data['category_id'] = $searchCategoryId;				
 		}
 		
@@ -104,14 +106,17 @@ class Products extends CI_Controller {
             $imageSuccess = TRUE;
             
             if (!empty($_FILES['image']['name'])) {
-				
-				if(!file_exists("./assets/imgs/{$_FILES['image']['name']}")) {
+							
+				$fileName = str_replace(' ', '_', $_FILES['image']['name']);
+
+				if(!file_exists("./assets/imgs/{$fileName}")) {
 				
 					$config['upload_path']          = './assets/imgs/';
 					$config['allowed_types']        = 'gif|jpg|png|jpeg';
 					$config['max_size']             = 5000;
 					$config['max_width']            = 2048;
 					$config['max_height']           = 2048;
+					$config['file_name']           = $fileName;
 
 					$this->load->library('upload', $config);
 
@@ -121,7 +126,7 @@ class Products extends CI_Controller {
 					} 										
 				}	
 					
-				$productData['image'] = $_FILES['image']['name'];
+				$productData['image'] = $fileName;
 
 			}                      
 
@@ -195,6 +200,8 @@ class Products extends CI_Controller {
 				
 				if (!empty($_FILES['image']['name'])) {
 					
+					$fileName = str_replace(' ', '_', $_FILES['image']['name']);
+					
 					if(!file_exists("./assets/imgs/{$_FILES['image']['name']}")) {
 					
 						$config['upload_path']          = './assets/imgs/';
@@ -202,6 +209,7 @@ class Products extends CI_Controller {
 						$config['max_size']             = 5000;
 						$config['max_width']            = 2048;
 						$config['max_height']           = 2048;
+						$config['file_name']           = $fileName;
 
 						$this->load->library('upload', $config);
 
@@ -211,7 +219,7 @@ class Products extends CI_Controller {
 						} 
 					} 		
 					
-					$productData['image'] = $_FILES['image']['name'];
+					$productData['image'] = $fileName;
 
 				}                      
 
