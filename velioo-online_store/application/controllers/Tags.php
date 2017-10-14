@@ -22,8 +22,10 @@ class Tags extends CI_Controller {
 	
 		$tags = $this->tag_model->getRows(array('select' => array('name'), 
 												'like' => array('name' => $input)));
-		
-		echo json_encode($tags);
+		if($tags)										
+			echo json_encode($tags);
+		else
+			echo false;
 	}
 	
 	public function insert_tag() {
@@ -33,23 +35,19 @@ class Tags extends CI_Controller {
 		
 		if($this->input->post('tagSubmit')) {
 			
-			$this->form_validation->set_rules('name', 'Name', 'required|callback_tag_check');		
+			$this->form_validation->set_rules('name', 'Name', 'required|trim|callback_tag_validate|callback_tag_check');				
+			
+			$tag = trim($this->input->post('name'));
+			$tag = explode(':', $tag, 2);
+			$tag = array_map('trim', $tag);
+			$tag = implode(':', $tag);
 					
 			$tagData = array(
-                'name' => $this->input->post('name')
+                'name' => $tag
             );              
-
             
-            if($this->form_validation->run() == true) {
-				
-				$splitTag = explode(':', $this->input->post('name'));
-            
-				if(count($splitTag) > 1) {
-					$tagData['value'] = $splitTag[1];			
-				}
-				
-				$tagData['key_name'] = $splitTag[0];
-				
+            if($this->form_validation->run() == true) {				
+							
 				$insert = $this->tag_model->insert($tagData);
 				
 				if($insert) {
@@ -67,19 +65,7 @@ class Tags extends CI_Controller {
 		
 		$this->load->view('add_tag', $data);
 	}
-	
-	public function check_tag() {
-		if($this->input->post('tagName')) {
-			
-			$exists = $this->tag_model->getRows(array('conditions' => array('name' => $this->input->post('tagName'))));
-			
-			echo ($exists) ? true : false;										
-			
-		} else {
-			redirect('/welcome/');
-		}
-	}
-	
+
 	public function delete_product_tag() {
 		if($this->input->post('tagName') && $this->input->post('productId')) {
 			
@@ -109,7 +95,13 @@ class Tags extends CI_Controller {
 	}
 	
 	public function tag_check($str) {
-	
+		
+		$str = trim($str);
+		$str = explode(':', $str, 2);
+		$str = array_map('trim', $str);
+		$str = implode(': ', $str);
+		$str = preg_replace("/\s+/u", " ", $str);
+
 		$params['returnType'] = 'count';
 		$params['conditions'] = array('name' => $str);
 		
@@ -121,6 +113,17 @@ class Tags extends CI_Controller {
 		} else {
 			return TRUE;
 		}		
+	}
+	
+	public function tag_validate($str) {
+	
+		if(preg_match('/:/', $str)) {
+			return TRUE;
+		} else {
+			$this->form_validation->set_message('tag_validate', 'Тагът трябва да е във валиден формат (име:стойност)');
+			return FALSE;
+		}
+		
 	}
 
 	

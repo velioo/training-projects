@@ -57,7 +57,7 @@ class Employees extends CI_Controller {
 		$this->load->library('pagination');
 		$config = $this->configure_pagination();
 		$config['base_url'] = site_url("employees/dashboard");
-		$config['per_page'] = 10;
+		$config['per_page'] = 50;
 			
 		if($this->input->get('page') != NULL and is_numeric($this->input->get('page')) and $this->input->get('page') > 0) {
 			$start = $this->input->get('page') * $config['per_page'] - $config['per_page'];
@@ -115,7 +115,7 @@ class Employees extends CI_Controller {
 		$this->load->library('pagination');
 		$config = $this->configure_pagination();
 		$config['base_url'] = site_url("employees/tags");
-		$config['per_page'] = 100;
+		$config['per_page'] = 50;
 			
 		if($this->input->get('page') != NULL and is_numeric($this->input->get('page')) and $this->input->get('page') > 0) {
 			$start = $this->input->get('page') * $config['per_page'] - $config['per_page'];

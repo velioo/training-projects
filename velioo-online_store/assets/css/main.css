@@ -78,6 +78,7 @@ html,body{
 }
 
 .statusMsgLong {
+	margin-top: 30px;
 	color: blue;
 	font-size:16px;
 }
@@ -127,6 +128,11 @@ html,body{
 	max-height:180px;
 	max-width: 180px;
 	cursor: pointer;
+}
+
+.product_image.details {
+	max-height: 350px;
+	max-width: 350px;
 }
 
 .cart_product_image_div {
@@ -199,6 +205,12 @@ html,body{
 	position:absolute;
 	margin-bottom: -30px;
 	margin-left:-15px;
+}
+
+.buy_button.details {
+	width: 70%;
+	position:relative;
+	margin-left: 0px;
 }
 
 .cart_product_name {
@@ -332,9 +344,17 @@ font-size: 12px;
 	vertical-align: top;
 }
 
+.product_right.details {
+	margin-top: 40px;
+}
+
 .product_left {
 	width:50%; 
 	display:inline-block;
+}
+
+.product_price_details {
+	font-size: 25px;
 }
 
 .remove_tag {
@@ -382,4 +402,18 @@ font-size: 12px;
 .filter_name {
 	margin: 10px 10px 10px 0px;
 	font-size: 16px;
+}
+
+tr:nth-child(even)  {
+	background-color:rgb(244,243,242);
+}
+
+
+.product_details_table tr td:first-child{
+    width:40%;
+    white-space:nowrap;
+}
+
+#main_menu {
+	display: none;
 }

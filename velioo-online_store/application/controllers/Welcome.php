@@ -30,7 +30,7 @@ class Welcome extends CI_Controller {
 		$config['total_rows'] = $this->product_model->getRows(array('returnType' => 'count'));								
 		$this->pagination->initialize($config);							
 		$data['pagination'] = $this->pagination->create_links();
-		$data['category_name'] = 0;
+		$data['category_id'] = 0;
 			 
 		$data['title'] = "Home";
 		$this->load->view('home', $data);

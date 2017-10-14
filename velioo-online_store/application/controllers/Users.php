@@ -93,13 +93,17 @@ class Users extends CI_Controller {
         
         if($this->input->post('loginSubmit')) {
 				
-			$checkLogin = $this->user_model->getRows(array('select' => array('password', 'salt', 'id'), 'conditions' => array('email' => $this->input->post('email')), 'returnType' => 'single'));
+			$checkLogin = $this->user_model->getRows(array('select' => array('password', 'salt', 'id', 'confirmed'), 'conditions' => array('email' => $this->input->post('email')), 'returnType' => 'single'));
 
 			if($checkLogin && ((hash("sha256", $this->input->post('password') . $checkLogin['salt'])) === $checkLogin['password'])) {								
 				
-				$this->session->set_userdata('isUserLoggedIn',TRUE);
-				$this->session->set_userdata('userId', $checkLogin['id']);
-				redirect('/welcome/');
+				if($checkLogin['confirmed'] == 1) {
+					$this->session->set_userdata('isUserLoggedIn',TRUE);
+					$this->session->set_userdata('userId', $checkLogin['id']);
+					redirect('/welcome/');
+				} else {
+					$this->session->set_userdata('error_msg_timeless', 'You need to confirm your email before logging in! <a href="' . site_url("users/resend_page") . '">Click Here</a> to resend confirmation mail.');
+				}
 				
 			} else{
 				$this->session->set_userdata('error_msg_timeless', 'Wrong email or password.');
@@ -154,10 +158,50 @@ class Users extends CI_Controller {
 				
 				$userData['phone'] = preg_replace("/[^0-9]/","", $userData['phone']);
 				
-                $insert = $this->user_model->insert($userData);      
+                $insertId = $this->user_model->insert($userData);      
 
-                if($insert) {					
-                    $this->session->set_userdata('success_msg', 'Ти успешно се регистрира. Може да се логнете.');
+                if($insertId) {					
+					
+					$temp_pass = bin2hex(random_bytes(64));
+						
+					$this->load->library('email');
+					
+					$config['protocol']    = 'smtp';
+					$config['smtp_host']    = 'ssl://smtp.gmail.com';
+					$config['smtp_port']    = '465';
+					$config['smtp_timeout'] = '7';
+					$config['smtp_user']    = 'vanime.staff@gmail.com';
+					$config['smtp_pass']    = '!@#$%QWERT';
+					$config['charset']    = 'utf-8';
+					$config['newline']    = "\r\n";
+					$config['mailtype'] = 'html';     
+
+					$this->email->initialize($config);
+					
+					$this->email->from('vanime.staff@gmail.com', "CompMax Confirm Email");
+					$this->email->to(htmlentities($this->input->post('email'), ENT_QUOTES));
+					$this->email->subject("Confirm Account");
+						
+					$message = "<p>Click on the link below to confirm your account on CompMax</p>";
+					$message .= "<p><a href='".site_url("users/confirm_email/$temp_pass")."'> \nClick here </a></p>";
+						
+					$this->email->message($message);
+						
+					if($this->email->send()) {							
+										
+						$delete = $this->user_model->delete(array('conditions' => array('user_id' => $insertId, 'type' => 'email')), 'temp_codes');			
+						$insert = $this->user_model->insert(array('user_id' => $insertId, 'hash' => $temp_pass, 'type' => 'email'), 'temp_codes');
+				
+						if($insert) {
+							$this->session->set_userdata('long_msg', "Следвайте инструкциите, изпратени на посоченият от вас имейл, за да активирате своя акаунт.");
+						} else {
+							$this->session->set_userdata('long_msg', "Възникна проблем, моля опитайте по-късно.");
+						}								
+							
+					} else {
+						$this->session->set_userdata('long_msg', "Failed to send confirmation email...");
+					}  							
+
                     redirect('/users/login/');                    
                 } else {
                     $this->session->set_userdata('error_msg', 'Възникна проблем, моля опитайте по-късно.');
@@ -323,8 +367,8 @@ class Users extends CI_Controller {
 					$user_id = $this->user_model->getRows(array('select' => array('users.id'), 'conditions' => array('email' => $this->input->post('email')), 'returnType' => 'single'))['id'];								
 						
 					if($user_id) {				
-						$delete = $this->user_model->delete(array('conditions' => array('user_id' => $user_id)), 'temp_codes');			
-						$insert = $this->user_model->insert(array('user_id' => $user_id, 'hash' => $temp_pass), 'temp_codes');
+						$delete = $this->user_model->delete(array('conditions' => array('user_id' => $user_id, 'type' => 'password')), 'temp_codes');			
+						$insert = $this->user_model->insert(array('user_id' => $user_id, 'hash' => $temp_pass, 'type' => 'password'), 'temp_codes');
 				
 						if($insert) {
 							$this->session->set_userdata('long_msg', "Email was sent to {$this->input->post('email')}. <br/>Follow the instructions in it to reset your password.");
@@ -417,6 +461,107 @@ class Users extends CI_Controller {
 		
 		$this->reset_password_form($this->session->userdata('reset_hash'));	
 		
+	}
+	
+	public function confirm_email($hash=null) {
+		if($hash != null) {
+			
+			$data = array();
+			
+			$exists = $this->user_model->getRows(array('select' => array('temp_codes.user_id'),
+													   'table' => 'temp_codes', 
+													   'conditions' => array('hash' => $hash),
+													   'returnType' => 'single'));			
+			
+			if($exists) {
+				
+				$update = $this->user_model->update(array('set' => array('confirmed' => '1'),
+														  'conditions' => array('id' => $exists['user_id'])));
+				if($update) {
+					$this->session->set_userdata('long_msg', 'Ти успешно потвърди акаунта си. Можеш да се логнеш.');  
+					$delete = $this->user_model->delete(array('conditions' => array('hash' => $hash)), 'temp_codes');	
+				} else {
+					$this->session->set_userdata('long_msg', 'Неуспешно потвърждение на акаунт. Линкът е изтекъл или е невалиден.'); 
+				}										  
+
+				$this->login();
+				
+			} else {
+				$this->session->set_userdata('long_msg', 'Неуспешно потвърждение на акаунт. Линкът е изтекъл или е невалиден.');
+				redirect('/users/login/');
+			}
+			
+		} else {
+			redirect('users/login/');
+		}
+	}
+	
+	public function resend_page() {
+		$data = array();      
+        $data['title'] = "Resend Email";
+        
+        if($this->input->post('resetSubmit')) {
+	
+			$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|callback_email_check_reverse');
+			
+			if ($this->form_validation->run() === TRUE) {
+
+				$temp_pass = bin2hex(random_bytes(64));
+					
+				$this->load->library('email');
+				
+				$config['protocol']    = 'smtp';
+				$config['smtp_host']    = 'ssl://smtp.gmail.com';
+				$config['smtp_port']    = '465';
+				$config['smtp_timeout'] = '7';
+				$config['smtp_user']    = 'vanime.staff@gmail.com';
+				$config['smtp_pass']    = '!@#$%QWERT';
+				$config['charset']    = 'utf-8';
+				$config['newline']    = "\r\n";
+				$config['mailtype'] = 'html';     
+
+				$this->email->initialize($config);			
+				
+				$this->email->from('vanime.staff@gmail.com', "CompMax Confirm Email");
+				$this->email->to(htmlentities($this->input->post('email'), ENT_QUOTES));
+				$this->email->subject("Confirm Account");
+						
+				$message = "<p>Click on the link below to confirm your account on CompMax</p>";
+				$message .= "<p><a href='".site_url("users/confirm_email/$temp_pass")."'> \nClick here </a></p>";							
+					
+				$this->email->message($message);
+					
+				if($this->email->send()) {
+		
+					$user_id = $this->user_model->getRows(array('select' => array('users.id'), 'conditions' => array('email' => $this->input->post('email')), 'returnType' => 'single'))['id'];								
+						
+					if($user_id) {				
+						$delete = $this->user_model->delete(array('conditions' => array('user_id' => $user_id, 'type' => 'email')), 'temp_codes');			
+						$insert = $this->user_model->insert(array('user_id' => $user_id, 'hash' => $temp_pass, 'type' => 'email'), 'temp_codes');
+				
+						if($insert) {
+							$this->session->set_userdata('long_msg', "Следвайте инструкциите, изпратени на {$this->input->post('email')}, за да активирате своя акаунт.");
+						} else {
+							$this->session->set_userdata('long_msg', "Възникна проблем, моля опитайте по-късно.");
+						}	
+					} else {
+						$this->session->set_userdata('long_msg', "Възникна грешка, моля оптайте по-късно.");
+					}									
+						
+				} else {
+					$this->session->set_userdata('long_msg', "Failed to send email...");
+				}  
+
+				redirect('/users/login/');
+			}						    
+				
+			$this->load->view('resend_page', $data);
+            
+        } elseif ($this->session->userdata('isUserLoggedIn')) {
+			redirect('/users/account/');
+		} else {
+			$this->load->view('resend_page', $data);
+		}
 	}
     
     public function logout() {

@@ -107,7 +107,7 @@ class Product_model extends CI_Model {
 					$result = ($query->num_rows() > 0) ? $query->result_array() : FALSE;
 				}
 			}
-			
+			//echo $this->db->last_query();die();
 			return $result;
 		}
 

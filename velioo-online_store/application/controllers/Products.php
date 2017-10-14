@@ -17,7 +17,7 @@ class Products extends CI_Controller {
 	public function search($searchCategoryId=null) {
 		$this->load->library('pagination');
 		$config = $this->configure_pagination();
-		$config['base_url'] = site_url("products/search");
+		$config['base_url'] = site_url("products/search/{$searchCategoryId}");
 		$config['per_page'] = 40;
 		
 		if($this->input->get('page') != NULL and is_numeric($this->input->get('page')) and $this->input->get('page') > 0) {
@@ -26,60 +26,129 @@ class Products extends CI_Controller {
 			$start = 0;
 		}
 		
+		$rowsArray = array(
+			'select' => array('products.*', 'categories.name as category', 'categories.id as category_id'),
+			'joins' => array('categories' => 'categories.id=products.category_id', 
+							'product_tags' => array('product_tags.product_id = products.id', 'left'), 
+							'tags' => array('tags.id = product_tags.tag_id', 'left')),
+			'order_by' => array('created_at' => 'DESC'),
+			'start' => $start,
+			'limit' => $config['per_page'],
+			'group_by' => 'products.id'
+		);
+		
+		$tagsArray = array(
+			'select' => array('tags.name, COUNT(tags.name) as tag_count'),
+			'joins' => array('categories' => 'categories.id=products.category_id', 
+							 'product_tags' => 'product_tags.product_id=products.id', 
+							 'tags' => 'tags.id=product_tags.tag_id'),
+			'group_by' => 'tags.name'
+		);
+		
+		$filterTags = $this->input->get('tags');
+		if($filterTags){
+			$rowsArray['where_in'] = array('tags.name' => $filterTags);
+		} 
+		
 		if($searchCategoryId === null) {
 			
-			$searchWord = $this->input->get('search_input');
-			$data['products'] = $this->product_model->getRows( array('select' => array('products.*', 'categories.name as category', 'categories.id as category_id'),
-																     'joins' => array('categories' => 'categories.id=products.category_id'),
-																	 'like' => array('products.name' => $searchWord),
-																	 'or_like' => array('products.description' => $searchWord),
-																	 'order_by' => array('created_at' => 'DESC'),
-																	 'start' => $start,
-																	 'limit' => $config['per_page']) );	
-																																											
-			$config['total_rows'] = $this->product_model->getRows(array('returnType' => 'count'));						
+			$data['search_input'] = $this->input->get('search_input');		
+			$data['search_title'] = 'Резултати';
+			$rowsArray['like'] = array('products.name' => $this->input->get('search_input'));
+			$rowsArray['or_like'] = array('products.description' => $this->input->get('search_input'));	
 			
+			$totalRows = $rowsArray;
+			unset($totalRows['start']);		
+			unset($totalRows['limit']);		
+			$totalRows['returnType'] = 'count';	
+																																						
+			$config['total_rows'] = $this->product_model->getRows($totalRows);		
+			$tagsArray['like'] = 	array('products.name' => $this->input->get('search_input'));										
 			
 		} else {
-					
-			$data['products'] = $this->product_model->getRows( array('select' => array('products.*', 'categories.name as category', 'categories.id as category_id', 'group_concat(tags.name) as tags'),
-																	 'joins' => array('categories' => 'categories.id=products.category_id', 
-																					  'product_tags' => array('product_tags.product_id=products.id', 'left'), 
-																					  'tags' => array('tags.id=product_tags.tag_id', 'left')),
-																	 'conditions' => array('categories.id' => $searchCategoryId),
-																	 'order_by' => array('created_at' => 'DESC'),
-																	 'start' => $start,
-																	 'limit' => $config['per_page'],
-																	 'group_by' => 'products.id' ));	
-																	 
-			$config['total_rows'] = $this->product_model->getRows( array('joins' => array('categories' => 'categories.id=products.category_id'),
-																     'conditions' => array('categories.name' => $searchCategoryId)) );		
-																 
-			$tags = $this->product_model->getRows( array('select' => array('tags.name, COUNT(tags.name) as tag_count'),
-																 'joins' => array('categories' => 'categories.id=products.category_id', 
-																				  'product_tags' => 'product_tags.product_id=products.id', 
-																				  'tags' => 'tags.id=product_tags.tag_id'),
-																 'conditions' => array('categories.id' => $searchCategoryId),
-																 'group_by' => 'tags.name' ));				
 			
-			$new_tags = array();
-			if($tags)
-				foreach($tags as $tag) {
-					$exploded = explode(':', $tag['name']);
-					$temp_array = array(trim($exploded[1]), $tag['tag_count']);							
-					$new_tags[$exploded[0]][] = $temp_array;				
-				}		
-																																									
-			$data['tags'] = $new_tags;
+			$rowsArray['conditions'] = array('categories.id' => $searchCategoryId);
+			$data['search_title'] = $this->product_model->getRows(array('table' => 'categories',
+																		'select' => array('name'),
+																		'conditions' => array('id' => $searchCategoryId),
+																		'returnType' => 'single'))['name'];																		
+																		
+			$rowsArray['group_by'] = 'products.id';	
+			
+			$totalRows = $rowsArray;
+			unset($totalRows['start']);		
+			unset($totalRows['limit']);		
+			$totalRows['returnType'] = 'count';	
+																		
+			$config['total_rows'] = $this->product_model->getRows($totalRows);	
+																       			
+			$tagsArray['conditions'] = 	array('categories.id' => $searchCategoryId);												 						
 			$data['category_id'] = $searchCategoryId;				
 		}
 		
+		$data['products'] = $this->product_model->getRows($rowsArray);	
+		$tags = $this->product_model->getRows($tagsArray);	
+		
+		$new_tags = array();
+		if($tags) {
+			foreach($tags as $tag) {
+				$temp_array = array();
+				if($filterTags) {
+					if(in_array($tag['name'], $filterTags))
+						$temp_array['checked'] = 1;
+				}
+				$splited_tag = explode(':', $tag['name'], 2);
+				if(count($splited_tag) > 1) {
+					$temp_array['value'] = trim($splited_tag[1]);
+					$temp_array['count'] = $tag['tag_count'];
+					$new_tags[$splited_tag[0]][] = $temp_array;	
+				}			
+			}	
+		}	
+																																		
+		$data['tags'] = $new_tags;	
 				
 		$this->pagination->initialize($config);							
 		$data['pagination'] = $this->pagination->create_links();
 			 
 		$data['title'] = "Search Results";
 		$this->load->view('home', $data);
+	}
+	
+	public function product($productId=null) {
+		if(is_numeric($productId)) {
+			
+			$data = array();
+			
+			$data['product'] = $this->product_model->getRows(array('select' => array('products.*', 'categories.name as category', 'categories.id as category_id'),
+																   'joins' => array('categories' => 'categories.id = products.category_id'),
+																   'conditions' => array('products.id' => $productId),
+																   'returnType' => 'single'));
+			if($data['product']) {
+				
+				$specLines = explode(PHP_EOL, $data['product']['description']);
+				$specs = array();
+				if(count($specLines) !== 0) {
+					foreach($specLines as $line) {
+						$temp = explode('|', $line);					
+						if(count($temp) > 1)
+							$specs[] = array('name' => $temp[0], 'value' => $temp[1]);
+					}
+					
+					$data['product']['specs'] = $specs;
+				}
+				
+				$data['title'] = $data['product']['name'];
+				$this->load->view('product', $data);
+				
+			} else {
+				echo 'Product doesn\'t exist...';
+			}															   			
+			
+			
+		} else {
+			echo 'Product doesn\'t exist...';
+		}
 	}
 	
 	public function insert_product() {
@@ -287,6 +356,14 @@ class Products extends CI_Controller {
 		} else {
 			echo 0;
 		}
+		
+	}
+	
+	public function get_menu_items() {
+		
+		header('Content-Type:application/json');
+		$items = $this->product_model->getRows(array('table' => 'categories'));
+		echo json_encode($items);
 		
 	}
 		
