@@ -39,7 +39,7 @@ CREATE TABLE `orders` (
   `amount_leva` decimal(10,2) NOT NULL, 
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `status_id` int(11) NOT NULL,
+  `status_id` int(11) NOT NULL DEFAULT '4',
   `payment_method_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
