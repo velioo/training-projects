@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `payment_methods` (
  `image` text NOT NULL,
  `details` text NOT NULL,
  PRIMARY KEY (`id`)
-)
+);
 
 CREATE TABLE `sessions` (
   `id` varchar(128) NOT NULL,
@@ -96,7 +96,7 @@ CREATE TABLE `users` (
   `email` text NOT NULL,
   `street_address` text,
   `phone` varchar(32) DEFAULT NULL,
-  'phone_unformatted' text NOT NULL,
+  `phone_unformatted` text NOT NULL,
   `country` text,
   `name` text,
   `last_name` text NOT NULL,
@@ -115,16 +115,8 @@ CREATE TABLE IF NOT EXISTS `tags` (
     `name` varchar(255),
     `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
     `updated_at` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY(id),
-    UNIQUE KEY 'name'('name')
-);
-
-CREATE TABLE IF NOT EXISTS `product_tags` (
-    `product_id` INT(11) NOT NULL,
-    `tag_id` INT(11) NOT NULL,
-    PRIMARY KEY (`product_id`, `tag_id`),
-    FOREIGN KEY (`product_id`) REFERENCES `products`(`id`) ON UPDATE CASCADE ON DELETE CASCADE,
-    FOREIGN KEY (`tag_id`) REFERENCES `tags`(`id`) ON UPDATE CASCADE ON DELETE CASCADE
+    PRIMARY KEY(`id`),
+    UNIQUE KEY `name`(`name`)
 );
 
 /*
@@ -211,7 +203,7 @@ ALTER TABLE `cart`
 
 ALTER TABLE `orders`
   ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`status_id`) REFERENCES `statuses` (`id`) ON UPDATE CASCADE
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`status_id`) REFERENCES `statuses` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `orders_ibfk_3` FOREIGN KEY (`payment_method_id`) REFERENCES `payment_methods` (`id`) ON UPDATE CASCADE;
 
 ALTER TABLE `products`
@@ -224,6 +216,14 @@ ALTER TABLE `order_products`
 ALTER TABLE `temp_codes`
   ADD CONSTRAINT `temp_codes_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
+ CREATE TABLE IF NOT EXISTS `product_tags` (
+    `product_id` INT(11) NOT NULL,
+    `tag_id` INT(11) NOT NULL,
+    PRIMARY KEY (`product_id`, `tag_id`),
+    FOREIGN KEY (`product_id`) REFERENCES `products`(`id`) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (`tag_id`) REFERENCES `tags`(`id`) ON UPDATE CASCADE ON DELETE CASCADE
+); 
+  
 INSERT INTO `categories` (`id`, `name`) VALUES
 (1, 'Видео Карти'),
 (2, 'Захранване'),
