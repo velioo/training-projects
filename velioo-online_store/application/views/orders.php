@@ -43,14 +43,14 @@
 		  </tr>
 		</thead>
 		<tbody>
-		<?php foreach($orders as $order) { ?>
+		<?php if(isset($orders) && $orders) foreach($orders as $order) { ?>
 		  <tr data-id="<?php echo htmlspecialchars($order['order_id'], ENT_QUOTES); ?>">
 			<td><?php echo htmlspecialchars($order['order_id'], ENT_QUOTES); ?></td>
 			<td><?php echo htmlspecialchars($order['order_created_at'], ENT_QUOTES); ?></td>
-			<td><?php echo htmlspecialchars($order['amount_leva'], ENT_QUOTES); ?></td>
+			<td class="cart_product_price_td"><?php echo htmlspecialchars(number_format($order['amount_leva'], 2), ENT_QUOTES); ?></td>
 			<td class="order_status"><?php echo htmlspecialchars($order['status_name'], ENT_QUOTES); ?></td>
 			<td><a href="<?php echo site_url("orders/show_order/" . htmlentities($order['order_id'], ENT_QUOTES)); ?>" class="order_details">Детайли</a></td>
-			<td><?php if((htmlspecialchars($order['status_id'], ENT_QUOTES) != 1) && (htmlspecialchars($order['status_id'], ENT_QUOTES)) != 2 && (htmlspecialchars($order['status_id'], ENT_QUOTES) != 3)) { ?>
+			<td><?php if(htmlspecialchars($order['status_id'], ENT_QUOTES) == 4) { ?>
 				<a href="#" class="cancel_order">Откажи</a>
 				<?php } ?>
 			</td>	

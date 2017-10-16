@@ -51,7 +51,7 @@
 		  </tr>
 		</thead>
 		<tbody>
-		<?php if($products) foreach($products as $product) { ?>
+		<?php if(isset($products) && $products) foreach($products as $product) { ?>
 		  <tr>
 			<td><?php echo htmlspecialchars($product['name'], ENT_QUOTES); ?></td>
 			<td><?php echo htmlspecialchars($product['category'], ENT_QUOTES); ?></td>

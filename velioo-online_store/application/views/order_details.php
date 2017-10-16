@@ -25,7 +25,7 @@
 	
 	<div class="form-horizontal login_register_form">
 			<div class="cart_products order">								
-				<?php if($order) echo "Плащане чрез:</br> "; ?> <img src="<?php echo asset_url() . "imgs/" . htmlentities($order['payment_method_image'], ENT_QUOTES); ?>" class="cart_product_image confirm"><?php echo htmlentities($order['payment_method_name'], ENT_QUOTES); ?>
+				<?php if(isset($order) && $order) echo "Плащане чрез:</br> "; ?> <img src="<?php echo asset_url() . "imgs/" . htmlentities($order['payment_method_image'], ENT_QUOTES); ?>" class="cart_product_image confirm"><?php echo htmlentities($order['payment_method_name'], ENT_QUOTES); ?>
 				<p><?php echo "<b>" . $order['payment_method_details'] . "</b>"; ?></p>
 				<div style="display:inline-block;">
 					<h4>Данни за доставката:</h4>
@@ -37,13 +37,13 @@
 			</div>	
 			<div class="cart_products items order"</div>
 			<h3 style="text-align:right;">Продукти: </h3>
-				<?php if($products) { foreach($products as $p) { ?>
+				<?php if(isset($products) && $products) { foreach($products as $p) { ?>
 					<div class="cart_product order">
 						<div class="cart_product_image_div order"><a href="#"><img src="<?php echo ($p['image'] != '') ? asset_url() . "imgs/" . htmlspecialchars($p['image'], ENT_QUOTES) : ""; ?>" onerror="this.src='<?php echo asset_url() . "imgs/no_image.png" ?>';" class="cart_product_image order"></a></div>
 						<div class="cart_product_name_div order"><p class="cart_product_name order"><?php echo htmlspecialchars($p['name'], ENT_QUOTES); ?></p></div>
-						<div class="cart_product_price order"><p>Цена: <?php echo htmlspecialchars($p['quantity'] . " x " . $p['price_leva'], ENT_QUOTES) . " лв."; ?></p></div>						
+						<div class="cart_product_price order"><p>Цена: <?php echo htmlspecialchars($p['quantity'] . " x " . number_format($p['price_leva'], 2), ENT_QUOTES) . " лв.  =  " . htmlspecialchars(number_format($p['price_leva'] * $p['quantity'], 2), ENT_QUOTES) . " лв.";; ?></p></div>						
 					</div>
-				<?php } echo '<div class="cart_purchase_div"><h3 class="cart_sum_const">Обща сума: ' . $order['amount_leva'] . '</h3></br></div>'; } ?>
+				<?php } echo '<div class="cart_purchase_div"><h3 class="cart_sum_const">Обща сума: ' . htmlentities(number_format($order['amount_leva'], 2), ENT_QUOTES) . '</h3></br></div>'; } ?>
 			</div>
 		</div>
 

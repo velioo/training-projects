@@ -112,7 +112,7 @@ class Orders extends CI_Controller {
 			$data = array();
 			
 			$this->load->model('cart_model');
-			$cartData = $this->cart_model->getRows(array('select' => array('products.*', 'cart.quantity as cart_quantity'), 
+			$cartData = $this->cart_model->getRows(array('select' => array('products.id', 'products.name', 'products.price_leva', 'products.image', 'cart.quantity'), 
 														   'joins' => array('products' => 'products.id = cart.product_id'), 
 														   'conditions' => array('cart.user_id' => $this->session->userdata('userId'))));		
 			if($cartData) {

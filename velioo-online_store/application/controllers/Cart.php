@@ -42,53 +42,59 @@ class Cart extends CI_Controller {
 	}
 	
 	public function change_quantity() {
-		if($this->session->userdata('isUserLoggedIn') && $this->input->post('product_id') && $this->input->post('quantity')) {
+		if($this->session->userdata('isUserLoggedIn')) {
+			if($this->input->post('product_id') && $this->input->post('quantity')) {
 				
-			$product = array();
-			$product['product_id'] = $this->input->post('product_id');
-			$product['user_id'] = $this->session->userdata('userId');
-			
-			$exists = $this->cart_model->getRows(array('conditions' => array('user_id' => $product['user_id'],
-														                     'product_id' => $product['product_id']),
-													   'returnType' => 'single'));
-																		
-			if($exists) {	
-				if(is_numeric($this->input->post('quantity')) && ($this->input->post('quantity') > 0)) {
-					$update =  $this->cart_model->update(array('conditions' => array('user_id' => $product['user_id'], 'product_id' => $product['product_id']), 
-													   'set' => array('quantity' => $this->input->post('quantity'))));														   
-					
-					if($update) {
+				$product = array();
+				$product['product_id'] = $this->input->post('product_id');
+				$product['user_id'] = $this->session->userdata('userId');
+				
+				$exists = $this->cart_model->getRows(array('conditions' => array('user_id' => $product['user_id'],
+																				 'product_id' => $product['product_id']),
+														   'returnType' => 'single'));
+																			
+				if($exists) {	
+					if(is_numeric($this->input->post('quantity')) && ($this->input->post('quantity') > 0)) {
+						$update =  $this->cart_model->update(array('conditions' => array('user_id' => $product['user_id'], 'product_id' => $product['product_id']), 
+														   'set' => array('quantity' => $this->input->post('quantity'))));														   
 						
-						$product = $this->cart_model->getRows(array('select' => array('cart.quantity', 'products.price_leva'), 
-																	'joins' => array('products' => 'products.id = cart.product_id'),
-																	'conditions' => array('user_id' => $product['user_id'],
-																						 'product_id' => $product['product_id']),
-																	'returnType' => 'single'));
-																	
-						header('Content-Type:application/json');
-						echo json_encode($product);
-					} else { 
-						echo false;								
-					}			
-				} else echo false;				 
-									   			
+						if($update) {
+							
+							$product = $this->cart_model->getRows(array('select' => array('cart.quantity', 'products.price_leva'), 
+																		'joins' => array('products' => 'products.id = cart.product_id'),
+																		'conditions' => array('user_id' => $product['user_id'],
+																							 'product_id' => $product['product_id']),
+																		'returnType' => 'single'));
+																		
+							header('Content-Type:application/json');
+							echo json_encode($product);
+						} else { 
+							echo false;								
+						}			
+					} else echo false;				 
+													
+				} else {
+					echo false;
+				}
 			} else {
 				echo false;
-			}
-								
+			}				
 		} else {
-			echo false;
-			//redirect('/users/login/');
+			echo 'login';
 		}
 	}
 	
 		
 	public function remove() {
-		if($this->session->userdata('isUserLoggedIn') && $this->input->post('product_id')) {
-			$delete = $this->cart_model->delete(array('conditions' => array('product_id' => $this->input->post('product_id'), 'user_id' => $this->session->userdata('userId'))));			
-			if($delete) echo true; else echo false;	
+		if($this->session->userdata('isUserLoggedIn')) {
+			if($this->input->post('product_id')) {
+				$delete = $this->cart_model->delete(array('conditions' => array('product_id' => $this->input->post('product_id'), 'user_id' => $this->session->userdata('userId'))));			
+				if($delete) echo true; else echo false;	
+			} else {
+				echo false;
+			} 
 		} else {
-			redirect('/users/login/');
+			echo 'login';
 		}
 	}
 	

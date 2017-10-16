@@ -14,23 +14,23 @@ $(document).ready(function() {
 	
 	$('.remove_product').on('click', function() {
 		
-		var product_id = $(this).parent().data('id');
-		var self = $(this).parent();
-		$.post(removeFromCartUrl, {product_id: product_id}, function(data, status) {
-			if(data) {
-				if(data != 'login') {
-					update_cart();
-					self.next().remove();
-					self.remove();
-					window.alert("Продуктът е премахнат успешно от количката.");
+		if (confirm('Сигурни ли сте, че искате да премахнете продукта.')) {
+			var product_id = $(this).parent().parent().data('id');
+			var product = $(this).parent().parent();
+			$.post(removeFromCartUrl, {product_id: product_id}, function(data, status) {
+				if(data) {
+					if(data != 'login') {
+						update_cart();
+						product.remove();
+					} else {
+						window.location.href = redirectUrl;
+					}			
+					
 				} else {
-					window.location.href = redirectUrl;
-				}			
-				
-			} else {
-				window.alert("Имаше проблем в обработването на заявката ви.");
-			}
-		});
+					window.alert("Имаше проблем в обработването на заявката ви.");
+				}
+			});
+		}
 	});
 	
 	$('.input_change_count').on('change', function() {
@@ -40,9 +40,9 @@ $(document).ready(function() {
 	function update_cart() {
 		$.post(cartCountPriceUrl, function(data, status) {
 			if(data) {
-				$('#cart_count_price').text(data[0].count + " артикул(а) - " + data[0].price_leva + " лв.");	
+				$('#cart_count_price').text(data[0].count + " артикул(а) - " + formatter.format(data[0].price_leva) + " лв.");	
 				if($('.cart_sum').length > 0) {
-					$('.cart_sum').text("Обща сума: " + data[0].price_leva + " лв.");
+					$('.cart_sum').text(formatter.format(data[0].price_leva));
 				}	
 			} 
 		});
@@ -72,7 +72,7 @@ $(document).ready(function() {
 				if(data) {
 					if(data != 'login') {
 						update_cart();
-						e.parent().parent().find('.product_price_p').text('Цена: ' + (data.quantity * data.price_leva) + ' лв.');
+						e.parent().parent().find('.cart_product_sum_td').text(formatter.format(data.quantity * data.price_leva));
 						//window.alert("Продуктът е добавен успешно в количката.");
 					} else {
 						window.location.href = redirectUrl;
@@ -86,5 +86,11 @@ $(document).ready(function() {
 			e.val(1);
 		}
 	}
+	
+	var formatter = new Intl.NumberFormat('en-US', {
+		style: 'decimal', 
+		maximumFractionDigits : 2, 
+		minimumFractionDigits : 2 
+	});
 	
 });

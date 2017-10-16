@@ -154,22 +154,73 @@ class Employees extends CI_Controller {
 			$start = $this->input->get('page') * $config['per_page'] - $config['per_page'];
 		} else {
 			$start = 0;
-		}			
+		}
 		
-		$data['orders'] = $this->order_model->getRows(array('select' => array('orders.id as order_id',
-																			  'orders.created_at as order_created_at',
-																		      'orders.amount_leva',
-																			  'statuses.name as status_name',
-																			  'statuses.id as status_id'), 
-															  'joins' => array('statuses' => 'statuses.id = orders.status_id'),
-															  'order_by' => array('created_at' => 'DESC'),
-															  'start' => $start,
-															  'limit' => $config['per_page']));													  
-															  
-		$config['total_rows'] = $this->order_model->getRows(array('returnType' => 'count'));	
-															  
+		$getRows = array('select' => array('orders.id as order_id',
+										   'orders.created_at as order_created_at',
+										   'orders.amount_leva',
+										   'statuses.name as status_name',
+										   'statuses.id as status_id',
+										   'users.email as user_email'), 
+						 'joins' => array('statuses' => 'statuses.id = orders.status_id',
+										  'users' => 'users.id = orders.user_id'),
+						 'order_by' => array('orders.created_at' => 'DESC', 'users.email' => 'ASC'),
+						 'start' => $start,
+						 'limit' => $config['per_page']);
+						 
+		if($this->input->get('date_from')) {
+			$getRows['conditions'] = array('DATE(orders.created_at) >= ' => $this->input->get('date_from'));
+			$data['date_from'] = $this->input->get('date_from');
+		}		
+		
+		if($this->input->get('date_to')) {
+			$getRows['conditions']['DATE(orders.created_at) <='] = $this->input->get('date_to');
+			$data['date_to'] = $this->input->get('date_to');
+		}		
+		
+		if($this->input->get('user_filter')) {
+			$getRows['conditions']['users.email'] = $this->input->get('user_filter');
+			$data['user_filter'] = $this->input->get('user_filter');
+		}		 
+		
+		$data['orders'] = $this->order_model->getRows($getRows);													  
+															 
+		unset($getRows['start']);		
+		unset($getRows['limit']);		
+		$allRows = $this->order_model->getRows($getRows);
+		
+		if($allRows) {
+			$config['total_rows'] = count($allRows);		
+			$totalSum['Всички'] = 0;
+			$totalSum['Настоящи'] = 0;
+			$totalSum['Очаквани'] = 0;
+			$totalSum['Загубени'] = 0;
+			foreach($allRows as $row) {
+				$totalSum['Всички'] += $row['amount_leva'];
+				if($row['status_name'] === 'Delivered') {
+					$totalSum['Настоящи'] += $row['amount_leva'];
+				}
+				if($row['status_name'] === 'Awaiting Payment' || $row['status_name'] === 'Payment being verified' || $row['status_name'] === 'Awaiting Shipment' || $row['status_name'] === 'Awaiting Delivery') {
+					$totalSum['Очаквани'] += $row['amount_leva'];
+				}
+				if($row['status_name'] === 'Canceled' || $row['status_name'] === 'Expired') {
+					$totalSum['Загубени'] += $row['amount_leva'];
+				}
+			}
+			
+			
+			
+			$totalSum['Всички'] = number_format($totalSum['Всички'], 2);
+			$totalSum['Настоящи'] = number_format($totalSum['Настоящи'], 2);
+			$totalSum['Очаквани'] = number_format($totalSum['Очаквани'], 2);
+			$totalSum['Загубени'] = number_format($totalSum['Загубени'], 2);
+						
+			$data['totalSum'] = $totalSum;			
+		}
+														  
 		$data['statuses'] = $this->order_model->getRows(array('table' => 'statuses', 
-															  'where_in' => array('name' => array('Awaiting Payment', 'Payment being verified', 'Awaiting Shipment', 'Awaiting Delivery'))));
+															  'where_in' => array('name' => array('Awaiting Payment', 'Payment being verified', 'Awaiting Shipment', 'Awaiting Delivery', 'Canceled', 'Delivered')),
+															  'order_by' => array('statuses.name' => 'ASC')));
 															  
 		$this->pagination->initialize($config);							
 		$data['pagination'] = $this->pagination->create_links();
@@ -234,6 +285,25 @@ class Employees extends CI_Controller {
 													   'conditions' => array('id' => $this->input->post('orderId'))));
 			if($update) echo true; else echo false;			
 			
+		}
+	}
+	
+	public function get_user_emails($input=null) {
+		if($input !== null) {
+			
+			$this->load->model('user_model');
+		
+			$input = urldecode($input);	
+
+			header('Content-Type:application/json');	
+		
+			$emails = $this->user_model->getRows(array('select' => array('users.email'), 
+													   'like' => array('users.email' => $input)));
+													
+			if($emails) echo json_encode($emails); else echo false;					
+			
+		} else {
+			echo false;
 		}
 	}
 	

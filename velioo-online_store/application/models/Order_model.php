@@ -103,7 +103,7 @@ class Order_model extends CI_Model {
 					$result = ($query->num_rows() > 0) ? $query->result_array() : FALSE;
 				}
 			}
-
+			
 			return $result;
 		}
 	}

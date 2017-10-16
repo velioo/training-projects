@@ -14,18 +14,21 @@ class Tags extends CI_Controller {
 		redirect('/employees/dashboard/');
 	}
 	
-	public function get_tags($input=null) {
+	public function get_tags($input=null) {		
+		if($input !== null) {
+			$input = urldecode($input);
+			
+			header('Content-Type:application/json');	
 		
-		$input = urldecode($input);
-		
-		header('Content-Type:application/json');	
-	
-		$tags = $this->tag_model->getRows(array('select' => array('name'), 
-												'like' => array('name' => $input)));
-		if($tags)										
-			echo json_encode($tags);
-		else
+			$tags = $this->tag_model->getRows(array('select' => array('name'), 
+													'like' => array('name' => $input)));
+			if($tags)										
+				echo json_encode($tags);
+			else
+				echo false;
+		} else {
 			echo false;
+		}
 	}
 	
 	public function insert_tag() {

@@ -51,7 +51,7 @@
 	}
 	
 	function getActiveTab() {
-		var tab = "<?php echo $category_id; ?>";
+		var tab = "<?php if(isset($category_id)) echo $category_id; else echo "0"; ?>";
 		return tab;
 	}
 	

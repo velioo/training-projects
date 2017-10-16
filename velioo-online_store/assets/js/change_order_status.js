@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	
 	var changeStatusUrl = getChangeStatusUrl();
-
+	var emailsUrl = getEmailsUrl();
 	
 	$('.select_status').on('change', function() {
 		var statusId = $(this).val();
@@ -24,4 +24,31 @@ $(document).ready(function() {
 		});
 	  }, 2000);
 	}
+	
+	$(function() {
+		$( ".data_picker" ).datepicker({
+			dateFormat : 'yy-mm-dd',
+			changeMonth : true,
+			changeYear : true
+		});
+	});
+	
+	var options = {
+		url: function(phrase) {
+			return emailsUrl + "/" + phrase;
+		},
+		dataType: "json",
+		getValue: "email"
+	};
+
+	$("#email_search_input").easyAutocomplete(options);
+	
+	if($('.filter').val() || $('#email_search_input').val()) {
+		$('#filter_form').prepend('<a href="#" style="color:red;" id="clear_filters">Изчисти филтрите</a></br></br>');
+		$('#clear_filters').on('click', function() {
+			$('.filter').val('');
+			$('#filter_form').submit();
+		});
+	}
+	
 });

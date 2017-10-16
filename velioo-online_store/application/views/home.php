@@ -11,7 +11,7 @@
 <div class="filtering_menu">
 <h4 class="filter_header">Избери:</h4>
 	<form action="<?php echo(isset($category_id)) ? site_url("products/search/{$category_id}") : site_url("products/search/"); ?>" method="get" id="filter_form">	
-		<?php if($tags) foreach($tags as $key => $value) { ?>
+		<?php if(isset($tags) && $tags) foreach($tags as $key => $value) { ?>
 			<p class="filter_name"><?php echo htmlentities($key, ENT_QUOTES); ?></p>
 			<?php foreach($value as $tag) { ?>
 				<div class="checkbox"><label><input type="checkbox" class="checkbox_tag" name="tags[]" <?php if(array_key_exists('checked', $tag)) echo "checked='checked'"; ?> value="<?php echo htmlentities($key, ENT_QUOTES) . ':' . $tag['value']; ?>"><?php echo htmlentities($tag['value'], ENT_QUOTES) . ' (' . htmlentities($tag['count'], ENT_QUOTES) . ')'; ?></label></div>				
@@ -26,7 +26,7 @@
 	 
 	<div class="row row-eq-height">
 		  
-	  <?php $row = 0; if($products) foreach($products as $p) { ?>	  
+	  <?php $row = 0; if(isset($products) && $products) foreach($products as $p) { ?>	  
 		 <?php if($row % 4 == 0 && $row != 0) { ?>
 			</div>
 			<div class="row row-eq-height">
@@ -35,7 +35,7 @@
 			<a href="<?php echo site_url("products/product") . "/" . htmlentities($p['id'], ENT_QUOTES); ?>"><img src="<?php echo ($p['image'] != '') ? asset_url() . "imgs/" . htmlspecialchars($p['image'], ENT_QUOTES) : ""; ?>" onerror="this.src='<?php echo asset_url() . "imgs/no_image.png" ?>';" class="product_image" <?php if(!isset($tags)) echo 'style="max-width:220px;max-height:220px;"' ?>></a></br></br>
 			<a href="<?php echo site_url("products/product") . "/" . htmlentities($p['id'], ENT_QUOTES); ?>" class="product_name no_underline">Име: <?php echo htmlspecialchars($p['name'], ENT_QUOTES); ?></a></br>
 			<a href="<?php echo site_url("products/search") . "/" . htmlentities($p['category_id'], ENT_QUOTES); ?>" class="product_category no_underline">Категория: <?php echo htmlspecialchars($p['category'], ENT_QUOTES); ?></a></br>		
-			<div class="product_price"><p style="font-size: 18px;">Цена: <?php echo htmlspecialchars($p['price_leva'], ENT_QUOTES) . " лв."; ?></p></div>	
+			<div class="product_price"><p style="font-size: 18px;">Цена: <?php echo number_format(htmlspecialchars($p['price_leva'], ENT_QUOTES), 2) . " лв."; ?></p></div>	
 			<?php if($p['quantity'] >= 1) echo "<p style='color:blue;'>В наличност</p>"; else echo "<p style='color:red;'>Няма наличност</p>"; ?>	
 			<?php if($p['quantity'] != 0) { ?><button type="button" class="btn btn-default buy_button"><span class="glyphicon glyphicon-shopping-cart"></span> Купи</button> <?php } ?>
 		</div>

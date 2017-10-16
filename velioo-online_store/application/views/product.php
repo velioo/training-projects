@@ -13,10 +13,10 @@
 
 			<div class="product_right details" data-id="<?php echo htmlspecialchars($product['id'], ENT_QUOTES); ?>">	
 				<div class="product_price">
-					<p class="product_price_details">Цена: <?php echo htmlspecialchars($product['price_leva'], ENT_QUOTES) . " лв."; ?></p>
+					<p class="product_price_details">Цена: <?php if($product['price_leva']) echo number_format(htmlspecialchars($product['price_leva'], ENT_QUOTES), 2) . " лв."; ?></p>
 				</div>	
-				<?php if($product['quantity'] >= 1) echo "<p style='color:blue;'>В наличност</p>"; else echo "<p style='color:red;'>Няма наличност</p>"; ?>	
-				<?php if($product['quantity'] != 0) { ?><button type="button" class="btn btn-default buy_button details"><span class="glyphicon glyphicon-shopping-cart"></span> Добави в количката</button> <?php } ?>
+				<?php if($product['quantity']) if($product['quantity'] >= 1) echo "<p style='color:blue;'>В наличност</p>"; else echo "<p style='color:red;'>Няма наличност</p>"; ?>	
+				<?php if($product['quantity']) if($product['quantity'] != 0) { ?><button type="button" class="btn btn-default buy_button details"><span class="glyphicon glyphicon-shopping-cart"></span> Добави в количката</button> <?php } ?>
 			</div>
 			
 			<div class="table-responsive">   
@@ -28,7 +28,7 @@
 				  </tr>
 				</thead>
 				<tbody>
-				<?php if(isset($product['specs'])) foreach($product['specs'] as $spec) { ?>
+				<?php if(isset($product['specs']) && $product['specs']) foreach($product['specs'] as $spec) { ?>
 				  <tr>
 					<td class="spec_name"><?php echo htmlspecialchars($spec['name'], ENT_QUOTES); ?></td>
 					<td><?php echo htmlspecialchars($spec['value'], ENT_QUOTES); ?></td>
