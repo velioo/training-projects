@@ -33,14 +33,15 @@ CREATE TABLE `employees` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `orders` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `report` text NOT NULL,
   `amount_leva` decimal(10,2) NOT NULL, 
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `status_id` int(11) NOT NULL DEFAULT '4',
-  `payment_method_id` int(11) DEFAULT NULL
+  `payment_method_id` int(11) DEFAULT NULL,
+   PRIMARY KEY(`id`),
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `products` (
@@ -151,7 +152,6 @@ ALTER TABLE `employees`
   ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `orders`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`),
   ADD KEY `status_id` (`status_id`),
   ADD KEY `payment_method_id` (`payment_method_id`);
