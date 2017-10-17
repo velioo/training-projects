@@ -242,11 +242,11 @@ class Employees extends CI_Controller {
 		}
 		
 		if($this->input->get('date_from') != '') {
-			$getRows['conditions']['orders.created_at >= '] = $this->input->get('date_from');
+			$getRows['conditions']['DATE(orders.created_at) >= '] = $this->input->get('date_from');
 		}	
 		
 		if($this->input->get('date_to') != '') {
-			$getRows['conditions']['orders.created_at <= '] = $this->input->get('date_to');
+			$getRows['conditions']['DATE(orders.created_at) <= '] = $this->input->get('date_to');
 		}																		 
 		
 		$orders = $this->order_model->getRows($getRows);													  
