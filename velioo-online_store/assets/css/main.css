@@ -289,6 +289,14 @@ font-size: 12px;
 	
 }
 
+.right_aligned_td {
+	text-align: right;
+}
+
+.left_aligned_td {
+	text-align: left;
+}
+
 .purchase_button {
 	
 }
@@ -471,4 +479,8 @@ tr:nth-child(even)  {
 .form-group.form_submit.orders_filter_submit {
 	margin-left:5px;
 	margin-top:30px;
+}
+
+#orders_table td:nth-last-child(3) {
+    text-align: right;
 }

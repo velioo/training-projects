@@ -1,10 +1,21 @@
 <?php include 'dashboard_header.php'; ?>
 
 <script src="<?php echo asset_url() . "js/change_order_status.js"; ?>"></script>
+
 <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <script src="<?php echo asset_url() . "easy_autocomplete/jquery.easy-autocomplete.min.js"; ?>"></script> 
 <link rel="stylesheet" href="<?php echo asset_url() . "easy_autocomplete/easy-autocomplete.min.css"; ?>">
+
+<link rel="stylesheet" href="<?php echo asset_url() . "tablesorter/css/theme.blue.css"; ?>">
+<script src="<?php echo asset_url() . "tablesorter/jquery.tablesorter.js"; ?>"></script>
+
+<link rel="stylesheet" href="<?php echo asset_url() . "tablesorter/addons/pager/jquery.tablesorter.pager.css"; ?>">
+<script src="<?php echo asset_url() . "tablesorter/addons/pager/jquery.tablesorter.pager.js"; ?>"></script>
+
+<script src="<?php echo asset_url() . "tablesorter/jquery.tablesorter.widgets.js"; ?>"></script>
+
 
 <script>
 	
@@ -15,6 +26,11 @@
 
 	function getEmailsUrl() {
 		var url = "<?php echo site_url("employees/get_user_emails"); ?>";
+		return url;
+	}
+	
+	function getOrdersUrl() {
+		var url = "<?php echo site_url("employees/get_orders"); ?>";
 		return url;
 	}
 
@@ -42,21 +58,31 @@
 			$this->session->unset_userdata('error_msg');
 		}	
 	?>
-	
-	<form action="<?php echo site_url("employees/orders"); ?>" method="get" class="form-horizontal" id="filter_form">
-		
+	<p id="clean_filters" style="height:30px;"></p>	
 		Дата:
-		От: <input type="text" class="data_picker filter" value="<?php if(isset($date_from) && $date_from) echo htmlentities($date_from, ENT_QUOTES); else echo ""; ?>" name="date_from">
-		До: <input type="text" class="data_picker filter" value="<?php if(isset($date_to) && $date_from) echo htmlentities($date_to, ENT_QUOTES); else echo ""; ?>" name="date_to"></br></br>
-		Имейл: <input type="text" class="user_filter filter" value="<?php if(isset($user_filter)) echo htmlentities($user_filter, ENT_QUOTES); else echo ""; ?>" name="user_filter" id="email_search_input">
-		<div class="form-group form_submit orders_filter_submit">
-			<button type="submit" class="btn btn-default purchase_button">Филтрирай</button>
-        </div>  
-	</form>
+		От: <input type="text" class="data_picker filter" value="" id="date_from">
+		До: <input type="text" class="data_picker filter" value="" id="date_to"></br>
 	
-	<div class="table-responsive">          
-	  <table class="table">
+</div>
+
+	  <table class="tablesorter" id="orders_table">
 		<thead>
+		  <tr class="tablesorter-ignoreRow">
+			<td class="pager" colspan="6" style="text-align:left;">
+				<img src="<?php echo asset_url() . "tablesorter/addons/pager/icons/first.png"; ?>" class="first"/>
+				<img src="<?php echo asset_url() . "tablesorter/addons/pager/icons/prev.png"; ?>" class="prev"/>
+				<span class="pagedisplay"></span>
+				<img src="<?php echo asset_url() . "tablesorter/addons/pager/icons/next.png"; ?>" class="next"/>
+				<img src="<?php echo asset_url() . "tablesorter/addons/pager/icons/last.png"; ?>" class="last"/>
+				<select class="pagesize">
+				  <option value="10">10</option>
+				  <option value="50">50</option>
+				  <option value="100">100</option>
+				  <option value="200">200</option>
+				  <option value="500">500</option>
+				</select>
+		    </td>	  
+		  </tr>
 		  <tr>
 			<th>Създадена на</th>
 			<th>Поръчка#</th>		
@@ -66,52 +92,60 @@
 			<th>Детайли</th>
 		  </tr>
 		</thead>
-		<tbody>
-		<?php if(isset($orders) && $orders) foreach($orders as $order) { ?>
-		  <tr data-id="<?php echo htmlentities($order['order_id'], ENT_QUOTES); ?>">
-		    <td><?php echo htmlspecialchars($order['order_created_at'], ENT_QUOTES); ?></td>
-			<td class="order_id"><?php echo htmlspecialchars($order['order_id'], ENT_QUOTES); ?></td>	
-			<td><?php echo htmlspecialchars($order['user_email'], ENT_QUOTES); ?></td>	
-			<td class="cart_product_price_td"><?php echo number_format(htmlspecialchars($order['amount_leva'], ENT_QUOTES), 2); ?></td>
-			<td class="order_status">
-				<?php if(($order['status_id'] != 1) && ($order['status_id'] != 2) && ($order['status_id'] != 3) && ($order['status_id'] != 8)) { ?>
-				<select class="select_status">
-					<?php if(isset($statuses)) foreach($statuses as $status) { ?>
-						<option value="<?php echo htmlentities($status['id'], ENT_QUOTES); ?>" <?php if(htmlspecialchars($order['status_id'], ENT_QUOTES) == htmlentities($status['id'], ENT_QUOTES)) echo "selected='selected'"; ?>><?php echo htmlentities($status['name'], ENT_QUOTES); ?></option>
-					<?php } ?>
-				</select>
-				<?php } else { ?>
-					<?php echo htmlentities($order['status_name']); ?>
-				<?php } ?>
-			</td>
-			<td><a href="<?php echo site_url("employees/order_details/" . htmlentities($order['order_id'], ENT_QUOTES)); ?>" class="order_details">Детайли</a></td>
-		  </tr>	
-		  <?php } ?>
+		 <tfoot>
+		<tr>
+		  	<th>Създадена на</th>
+			<th>Поръчка#</th>		
+			<th>Потребител</th>		
+			<th>Обща сума в лв.</th>
+			<th>Състояние</th>
+			<th>Детайли</th>
+		</tr>
 		  <tr>
-				<td></td>
-				<td></td>
-				<td><b style="font-size:18px;</b>">Статистики:</b></td>
-				<td></td>
-				<td></td>
-				<td></td>
+			  <td class="pager" colspan="6" style="text-align:left;">
+				<img src="<?php echo asset_url() . "tablesorter/addons/pager/icons/first.png"; ?>" class="first"/>
+				<img src="<?php echo asset_url() . "tablesorter/addons/pager/icons/prev.png"; ?>" class="prev"/>
+				<span class="pagedisplay"></span> <!-- this can be any element, including an input -->
+				<img src="<?php echo asset_url() . "tablesorter/addons/pager/icons/next.png"; ?>" class="next"/>
+				<img src="<?php echo asset_url() . "tablesorter/addons/pager/icons/last.png"; ?>" class="last"/>
+				<select class="pagesize">
+				  <option value="10">10</option>
+				  <option value="50">50</option>
+				  <option value="100">100</option>
+				  <option value="200">200</option>
+				  <option value="500">500</option>
+				</select>
+			  </td>
+		</tr>
+		  </tfoot>
+		<tbody>
+		</tbody>
+	  </table>
+	  
+	 <div class="table-responsive">          
+	  <table class="table">
+		<thead>
+		  <tr>
+			<th></th>
+			<th style="width:26%;"></th>		
+			<th></th>		
+			<th></th>
+			<th style="width:34%;"></th>
+			<th></th>
 		  </tr>
-		  <?php if(isset($totalSum) && $totalSum) foreach($totalSum as $key => $value) { ?>
-			  <tr>
-				<td></td>
-				<td></td>
-				<td><?php echo htmlentities($key, ENT_QUOTES); ?></td>
-				<td class="cart_product_price_td"><?php echo htmlentities($value, ENT_QUOTES); ?></td>
-				<td></td>
-				<td></td>
-			  </tr>		  
-		  <?php } ?>
+		</thead>
+		<tbody id="profits_tbody">
+		  <tr id="profits">
+			<td></td>
+			<td></td>
+			<td class="left_aligned_td"><b style="font-size:18px;</b>">Печалби:</b></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		  </tr>
 		</tbody>
 	  </table>
 	</div>
-	
-	<div style="text-align:center;"><?php echo ($pagination) ? $pagination : ''; ?></div>
-	
-</div>
 
 </div>
 

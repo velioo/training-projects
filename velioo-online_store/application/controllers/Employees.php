@@ -143,19 +143,14 @@ class Employees extends CI_Controller {
 	}
 	
 	public function orders() {
-		$data = array();
-		
-		$this->load->library('pagination');
-		$config = $this->configure_pagination();
-		$config['base_url'] = site_url("employees/orders");
-		$config['per_page'] = 50;
-			
-		if($this->input->get('page') != NULL and is_numeric($this->input->get('page')) and $this->input->get('page') > 0) {
-			$start = $this->input->get('page') * $config['per_page'] - $config['per_page'];
-		} else {
-			$start = 0;
-		}
-		
+		$data = array();														  
+		$data['title'] = 'Orders';
+		$this->load->view('client_orders', $data);
+	}
+	
+	
+	public function get_orders() {
+	
 		$getRows = array('select' => array('orders.id as order_id',
 										   'orders.created_at as order_created_at',
 										   'orders.amount_leva',
@@ -163,70 +158,159 @@ class Employees extends CI_Controller {
 										   'statuses.id as status_id',
 										   'users.email as user_email'), 
 						 'joins' => array('statuses' => 'statuses.id = orders.status_id',
-										  'users' => 'users.id = orders.user_id'),
-						 'order_by' => array('orders.created_at' => 'DESC', 'users.email' => 'ASC'),
-						 'start' => $start,
-						 'limit' => $config['per_page']);
-						 
-		if($this->input->get('date_from')) {
-			$getRows['conditions'] = array('DATE(orders.created_at) >= ' => $this->input->get('date_from'));
-			$data['date_from'] = $this->input->get('date_from');
-		}		
+										  'users' => 'users.id = orders.user_id'));
 		
-		if($this->input->get('date_to')) {
-			$getRows['conditions']['DATE(orders.created_at) <='] = $this->input->get('date_to');
-			$data['date_to'] = $this->input->get('date_to');
-		}		
+		if($this->input->get('size') && is_numeric($this->input->get('size'))) {		
+			$getRows['limit'] = $this->input->get('size');
+		} 
 		
-		if($this->input->get('user_filter')) {
-			$getRows['conditions']['users.email'] = $this->input->get('user_filter');
-			$data['user_filter'] = $this->input->get('user_filter');
-		}		 
+		if($this->input->get('page') && is_numeric($this->input->get('page'))) {
+			if(isset($getRows['limit'])) {
+				$start = $this->input->get('page') * $getRows['limit'];
+			} else {
+				$start = 0;
+			}
+			
+			$getRows['start'] = $start;
+		}
 		
-		$data['orders'] = $this->order_model->getRows($getRows);													  
+		if($this->input->get('col')) {
+			$sort = $this->input->get('col');				
+			foreach($sort as $key => $value) {
+				switch($key) {
+					case 0: 
+						if($value)
+							$getRows['order_by']['orders.created_at'] = 'DESC';
+						else
+							$getRows['order_by']['orders.created_at'] = 'ASC';				
+						break;
+					case 1: 
+						if($value)
+							$getRows['order_by']['orders.id'] = 'DESC';
+						else
+							$getRows['order_by']['orders.id'] = 'ASC';	
+						break;
+					case 2: 
+						if($value)
+							$getRows['order_by']['users.email'] = 'DESC';
+						else
+							$getRows['order_by']['users.email'] = 'ASC';	
+						break;
+					case 3: 
+						if($value)
+							$getRows['order_by']['orders.amount_leva'] = 'DESC';
+						else
+							$getRows['order_by']['orders.amount_leva'] = 'ASC';	
+						break;
+					case 4: 
+						if($value)
+							$getRows['order_by']['statuses.name'] = 'DESC';
+						else
+							$getRows['order_by']['statuses.name'] = 'ASC';	
+						break;
+					default: 
+						
+						break;
+				}
+			}
+		}
+		
+		if($this->input->get('fcol')) {
+			$filter = $this->input->get('fcol');						
+			foreach($filter as $key => $value) {
+				switch($key) {
+					case 0: 
+						$getRows['conditions']['created_at'] = $value;			
+						break;
+					case 1: 
+						$getRows['conditions']['orders.id'] = $value;
+						break;
+					case 2: 
+						$getRows['like']['users.email'] = $value;	
+						break;
+					case 3: 
+						$getRows['conditions']['orders.amount_leva'] = $value;
+						break;
+					case 4: 
+						$getRows['like']['statuses.name'] = $value;
+						break;
+					default: 		
+										
+						break;
+				}
+			}
+		}
+		
+		if($this->input->get('date_from') != '') {
+			$getRows['conditions']['orders.created_at >= '] = $this->input->get('date_from');
+		}	
+		
+		if($this->input->get('date_to') != '') {
+			$getRows['conditions']['orders.created_at <= '] = $this->input->get('date_to');
+		}																		 
+		
+		$orders = $this->order_model->getRows($getRows);													  
 															 
 		unset($getRows['start']);		
 		unset($getRows['limit']);		
 		$allRows = $this->order_model->getRows($getRows);
+		$resultArray['total_rows'] = count($allRows);
 		
-		if($allRows) {
-			$config['total_rows'] = count($allRows);		
+		$statuses = $this->order_model->getRows(array('table' => 'statuses', 
+													  'where_in' => array('name' => array('Awaiting Payment', 
+																								  'Payment being verified', 
+																								  'Awaiting Shipment', 
+																								  'Awaiting Delivery', 
+																								  'Canceled', 
+																								  'Delivered')),
+													  'order_by' => array('statuses.name' => 'ASC')));
+		$tempArray = array();													  
+		foreach($orders as $order) {
+			$tempArray[] = $order['order_created_at'];
+			$tempArray[] = $order['order_id'];
+			$tempArray[] = $order['user_email'];
+			$tempArray[] = $order['amount_leva'];
+			$selectStatus = '<select class="select_status">';
+			foreach($statuses as $status) {
+				$selectStatus .= '<option value="' . htmlentities($status['id'], ENT_QUOTES) . '"';
+				if(htmlspecialchars($order['status_id'], ENT_QUOTES) == htmlentities($status['id'], ENT_QUOTES)) {
+					$selectStatus .= 'selected="selected">';
+				} else {
+					$selectStatus .= '>';
+				} 			
+				$selectStatus .= htmlentities($status['name'], ENT_QUOTES) . '</option>';
+			}
+			$selectStatus .= '</select>';
+			$tempArray[] = $selectStatus;
+			$tempArray[] = '<a href="' . site_url("employees/order_details/" . htmlentities($order['order_id'], ENT_QUOTES)) . '" class="order_details">Детайли</a>';
+			$tempArray2[] = $tempArray;
+			$tempArray = array();
+		}
+		
+		$resultArray['rows'] = $tempArray2;
+		
+		if($allRows) {		
 			$totalSum['Всички'] = 0;
 			$totalSum['Настоящи'] = 0;
 			$totalSum['Очаквани'] = 0;
-			$totalSum['Загубени'] = 0;
-			foreach($allRows as $row) {
-				$totalSum['Всички'] += $row['amount_leva'];
-				if($row['status_name'] === 'Delivered') {
-					$totalSum['Настоящи'] += $row['amount_leva'];
+			foreach($allRows as $row) {			
+				if($row['status_name'] === 'Delivered' || $row['status_name'] === 'Awaiting Shipment' || $row['status_name'] === 'Awaiting Delivery') {
+					$totalSum['Настоящи'] += $row['amount_leva'];				
 				}
-				if($row['status_name'] === 'Awaiting Payment' || $row['status_name'] === 'Payment being verified' || $row['status_name'] === 'Awaiting Shipment' || $row['status_name'] === 'Awaiting Delivery') {
+				if($row['status_name'] === 'Awaiting Payment' || $row['status_name'] === 'Payment being verified') {
 					$totalSum['Очаквани'] += $row['amount_leva'];
 				}
-				if($row['status_name'] === 'Canceled' || $row['status_name'] === 'Expired') {
-					$totalSum['Загубени'] += $row['amount_leva'];
-				}
 			}
-			
-			
-			
-			$totalSum['Всички'] = number_format($totalSum['Всички'], 2);
+									
+			$totalSum['Всички'] = number_format($totalSum['Настоящи'] + $totalSum['Очаквани'], 2);
 			$totalSum['Настоящи'] = number_format($totalSum['Настоящи'], 2);
 			$totalSum['Очаквани'] = number_format($totalSum['Очаквани'], 2);
-			$totalSum['Загубени'] = number_format($totalSum['Загубени'], 2);
 						
-			$data['totalSum'] = $totalSum;			
+			$resultArray['sums'] = $totalSum;		
 		}
-														  
-		$data['statuses'] = $this->order_model->getRows(array('table' => 'statuses', 
-															  'where_in' => array('name' => array('Awaiting Payment', 'Payment being verified', 'Awaiting Shipment', 'Awaiting Delivery', 'Canceled', 'Delivered')),
-															  'order_by' => array('statuses.name' => 'ASC')));
-															  
-		$this->pagination->initialize($config);							
-		$data['pagination'] = $this->pagination->create_links();
-															  
-		$data['title'] = 'Orders';
-		$this->load->view('client_orders', $data);
+		
+		header('Content-Type:application/json');													  		
+		echo json_encode($resultArray);												  												  
 	}
 	
 	public function order_details($orderId=null) {

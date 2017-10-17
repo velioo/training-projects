@@ -52,7 +52,7 @@
 		  </table>
 		</div>
 		<div class="cart_products order">								
-			<?php if(isset($payment_methods) && $payment_methods) { foreach($payment_methods as $p) { if($p['id'] != 3 && $p['id'] != 4) {?>
+			<?php if(isset($payment_methods) && $payment_methods) { foreach($payment_methods as $p) { if($p['details'] != '') {?>
 				<div class="radio">
 				<img src="<?php echo asset_url() . "imgs/" . $p['image']; ?>" class="payment_image">
 				  <label><input type="radio" value="<?php echo $p['id']; ?>" name="payment_method" required><?php echo htmlentities($p['name'], ENT_QUOTES); ?></label>
