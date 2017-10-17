@@ -220,7 +220,7 @@ class Employees extends CI_Controller {
 			foreach($filter as $key => $value) {
 				switch($key) {
 					case 0: 
-						$getRows['conditions']['created_at'] = $value;			
+						$getRows['like']['orders.created_at'] = $value;			
 						break;
 					case 1: 
 						$getRows['conditions']['orders.id'] = $value;
