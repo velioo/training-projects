@@ -1,69 +1,76 @@
-CREATE TABLE `cart` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL DEFAULT '1',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `cart` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `user_id` int(11) NOT NULL,
+ `product_id` int(11) NOT NULL,
+ `quantity` int(11) NOT NULL DEFAULT '1',
+ `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+ PRIMARY KEY (`id`),
+ KEY `product_id` (`product_id`),
+ KEY `user_id` (`user_id`),
+ CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+ CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+);
 
-CREATE TABLE `categories` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `type` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `categories` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `name` varchar(255) NOT NULL,
+ `type` tinyint(4) NOT NULL DEFAULT '1',
+ PRIMARY KEY (`id`)
+);
+ 
+CREATE TABLE IF NOT EXISTS `countries` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `iso` char(2) NOT NULL,
+ `name` varchar(80) NOT NULL,
+ `nicename` varchar(80) NOT NULL,
+ `iso3` char(3) DEFAULT NULL,
+ `numcode` smallint(6) DEFAULT NULL,
+ `phonecode` int(5) NOT NULL,
+ PRIMARY KEY (`id`)
+);
 
-CREATE TABLE `countries` (
-  `id` int(11) NOT NULL,
-  `iso` char(2) NOT NULL,
-  `name` varchar(80) NOT NULL,
-  `nicename` varchar(80) NOT NULL,
-  `iso3` char(3) DEFAULT NULL,
-  `numcode` smallint(6) DEFAULT NULL,
-  `phonecode` int(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `employees` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `username` varchar(255) NOT NULL,
+ `password` text NOT NULL,
+ `salt` varchar(255) NOT NULL,
+ `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+ PRIMARY KEY (`id`)
+);
 
-CREATE TABLE `employees` (
-  `id` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `password` text NOT NULL,
-  `salt` varchar(255) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `orders` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `user_id` int(11) NOT NULL,
+ `report` text NOT NULL,
+ `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+ `status_id` int(11) NOT NULL DEFAULT '4',
+ `amount_leva` decimal(10,2) NOT NULL,
+ `payment_method_id` int(11) DEFAULT NULL,
+ PRIMARY KEY (`id`),
+ KEY `user_id` (`user_id`),
+ KEY `status_id` (`status_id`),
+ KEY `payment_method_id` (`payment_method_id`),
+ CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+ CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`status_id`) REFERENCES `statuses` (`id`) ON UPDATE CASCADE,
+ CONSTRAINT `orders_ibfk_3` FOREIGN KEY (`payment_method_id`) REFERENCES `payment_methods` (`id`) ON UPDATE CASCADE
+);
 
-CREATE TABLE `orders` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `report` text NOT NULL,
-  `amount_leva` decimal(10,2) NOT NULL, 
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `status_id` int(11) NOT NULL DEFAULT '4',
-  `payment_method_id` int(11) DEFAULT NULL,
-   PRIMARY KEY(`id`),
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-CREATE TABLE `products` (
-  `id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL,
-  `name` text NOT NULL,
-  `description` text NOT NULL,
-  `price_leva` decimal(10,2) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `image` text NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-CREATE TABLE `order_products` (
-  `id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `order_id` int(11) NOT NULL,
-  `price_leva` decimal(10,2) NOT NULl,
-  `quantity` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `order_products` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `product_id` int(11) NOT NULL,
+ `order_id` int(11) NOT NULL,
+ `price_leva` decimal(10,2) NOT NULL,
+ `quantity` int(11) NOT NULL,
+ `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ PRIMARY KEY (`id`),
+ KEY `product_id` (`product_id`),
+ KEY `order_id` (`order_id`),
+ CONSTRAINT `order_products_ibfk_3` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+ CONSTRAINT `order_products_ibfk_4` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+);
 
 CREATE TABLE IF NOT EXISTS `payment_methods` (
  `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -71,177 +78,104 @@ CREATE TABLE IF NOT EXISTS `payment_methods` (
  `image` text NOT NULL,
  `details` text NOT NULL,
  PRIMARY KEY (`id`)
+); 
+
+CREATE TABLE IF NOT EXISTS `products` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `category_id` int(11) NOT NULL,
+ `name` text NOT NULL,
+ `description` text NOT NULL,
+ `price_leva` decimal(10,2) NOT NULL,
+ `quantity` int(11) NOT NULL,
+ `image` text NOT NULL,
+ `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+ PRIMARY KEY (`id`),
+ KEY `category_id` (`category_id`),
+ FULLTEXT KEY `name` (`name`,`description`),
+ CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
 );
 
-CREATE TABLE `sessions` (
-  `id` varchar(128) NOT NULL,
-  `ip_address` varchar(45) NOT NULL,
-  `timestamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `data` blob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `product_tags` (
+ `product_id` int(11) NOT NULL,
+ `tag_id` int(11) NOT NULL,
+ PRIMARY KEY (`product_id`,`tag_id`),
+ KEY `tag_id` (`tag_id`),
+ CONSTRAINT `product_tags_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+ CONSTRAINT `product_tags_ibfk_2` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+);
 
-CREATE TABLE `statuses` (
-  `id` int(11) NOT NULL,
-  `name` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `sessions` (
+ `id` varchar(128) NOT NULL,
+ `ip_address` varchar(45) NOT NULL,
+ `timestamp` int(10) unsigned NOT NULL DEFAULT '0',
+ `data` blob NOT NULL,
+ PRIMARY KEY (`id`),
+ KEY `ci_sessions_timestamp` (`timestamp`)
+)
 
-CREATE TABLE `temp_codes` (
-  `user_id` int(11) NOT NULL,
-  `hash` varchar(255) NOT NULL,
-  `type` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `password` text NOT NULL,
-  `email` text NOT NULL,
-  `street_address` text,
-  `phone` varchar(32) DEFAULT NULL,
-  `phone_unformatted` text NOT NULL,
-  `country` text,
-  `name` text,
-  `last_name` text NOT NULL,
-  `region` text,
-  `post_code` text,
-  `salt` varchar(255) NOT NULL,
-  `gender` enum('Male','Female','Another') NOT NULL DEFAULT 'Another',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `confirmed` tinyint(4) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+CREATE TABLE IF NOT EXISTS `statuses` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `name` text NOT NULL,
+ PRIMARY KEY (`id`)
+);
 
 CREATE TABLE IF NOT EXISTS `tags` (
-    `id` int(11) NOT NULL AUTO_INCREMENT,
-    `name` varchar(255),
-    `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
-    `updated_at` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY(`id`),
-    UNIQUE KEY `name`(`name`)
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `name` varchar(255) NOT NULL,
+ `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+ PRIMARY KEY (`id`),
+ UNIQUE KEY `name` (`name`)
 );
 
-/*
-CREATE TABLE IF NOT EXISTS `category_specifications` (
-    `category_id` INT(11) NOT NULL,
-    `specification_id` INT(11) NOT NULL,
-    FOREIGN KEY (`category_id`) REFERENCES categories(`id`) ON UPDATE CASCADE ON DELETE CASCADE,
-    FOREIGN KEY (`specification_id`) REFERENCES specifications(`id`) ON UPDATE CASCADE ON DELETE CASCADE
+CREATE TABLE IF NOT EXISTS `temp_codes` (
+ `user_id` int(11) NOT NULL,
+ `hash` varchar(255) NOT NULL,
+ `type` varchar(255) NOT NULL,
+ PRIMARY KEY (`hash`),
+ KEY `user_id` (`user_id`),
+ CONSTRAINT `temp_codes_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-ALTER TABLE `product_specifications` ADD `value` TEXT NOT NULL AFTER `specification_id`;
-
-INSERT INTO `category_specifications` (`category_id`, `specification_id`)
-SELECT (SELECT `id` FROM `categories` WHERE name = 'Компютри'), `specifications.id`
-FROM `specifications`
-
-ALTER TABLE `category_specifications` ADD PRIMARY KEY(`category_id`,`specification_id`);
-*/
-
-ALTER TABLE `cart`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `product_id` (`product_id`),
-  ADD KEY `user_id` (`user_id`);
-
-ALTER TABLE `categories`
-  ADD PRIMARY KEY (`id`);
-
-ALTER TABLE `countries`
-  ADD PRIMARY KEY (`id`);
-
-ALTER TABLE `employees`
-  ADD PRIMARY KEY (`id`);
-
-ALTER TABLE `orders`
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `status_id` (`status_id`),
-  ADD KEY `payment_method_id` (`payment_method_id`);
-
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `category_id` (`category_id`);
-ALTER TABLE `products` ADD FULLTEXT KEY `name` (`name`,`description`);
-
-ALTER TABLE `order_products`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `product_id` (`product_id`),
-  ADD KEY `order_id` (`order_id`);
-
-ALTER TABLE `sessions`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `ci_sessions_timestamp` (`timestamp`);
-
-ALTER TABLE `statuses`
-  ADD PRIMARY KEY (`id`);
-
-ALTER TABLE `temp_codes`
-  ADD PRIMARY KEY (`hash`),
-  ADD KEY `user_id` (`user_id`);
-
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
-ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-ALTER TABLE `countries`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-ALTER TABLE `employees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-ALTER TABLE `order_products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-ALTER TABLE `statuses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
-ALTER TABLE `cart`
-  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`status_id`) REFERENCES `statuses` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `orders_ibfk_3` FOREIGN KEY (`payment_method_id`) REFERENCES `payment_methods` (`id`) ON UPDATE CASCADE;
-
-ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
-
-ALTER TABLE `order_products`
-  ADD CONSTRAINT `order_products_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `order_products_ibfk_3` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
-
-ALTER TABLE `temp_codes`
-  ADD CONSTRAINT `temp_codes_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
- CREATE TABLE IF NOT EXISTS `product_tags` (
-    `product_id` INT(11) NOT NULL,
-    `tag_id` INT(11) NOT NULL,
-    PRIMARY KEY (`product_id`, `tag_id`),
-    FOREIGN KEY (`product_id`) REFERENCES `products`(`id`) ON UPDATE CASCADE ON DELETE CASCADE,
-    FOREIGN KEY (`tag_id`) REFERENCES `tags`(`id`) ON UPDATE CASCADE ON DELETE CASCADE
-); 
+CREATE TABLE IF NOT EXISTS `users` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `password` text NOT NULL,
+ `email` text NOT NULL,
+ `street_address` text,
+ `phone` varchar(32) DEFAULT NULL,
+ `phone_unformatted` text NOT NULL,
+ `country` text,
+ `name` text,
+ `last_name` text NOT NULL,
+ `region` text,
+ `post_code` text,
+ `salt` varchar(255) NOT NULL,
+ `gender` enum('Male','Female','Unknown') NOT NULL DEFAULT 'Unknown',
+ `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+ `confirmed` tinyint(4) NOT NULL DEFAULT '0',
+ PRIMARY KEY (`id`)
+);
   
-INSERT INTO `categories` (`id`, `name`) VALUES
-(1, 'Видео Карти'),
-(2, 'Захранване'),
-(3, 'Дънни платки'),
-(4, 'SSD'),
-(5, 'RAM Памет'),
-(6, 'Твърд диск настолен'),
-(7, 'Кутии'),
-(8, 'Охладители за процесор'),
-(9, 'Компютри'),
-(10, 'Лаптопи'),
-(11, 'Подложки за мишки'),
-(12, 'Кабели'),
-(13, 'Монитори'),
-(14, 'Мишки'),
-(15, 'Клавиатури'),
-(16, 'Външен твърд диск'),
-(17, 'Процесори');
+INSERT INTO `categories` (`id`, `name`, `type`) VALUES
+(1, 'Видео Карти', 2),
+(2, 'Захранване', 2),
+(3, 'Дънни платки', 2),
+(4, 'SSD', 2),
+(5, 'RAM Памет', 2),
+(6, 'Твърд диск настолен', 2),
+(7, 'Кутии', 2),
+(8, 'Охладители за процесор', 2),
+(9, 'Компютри', 1),
+(10, 'Лаптопи', 1),
+(11, 'Подложки за мишки', 3),
+(12, 'Кабели', 3),
+(13, 'Монитори', 1),
+(14, 'Мишки', 3),
+(15, 'Клавиатури', 3),
+(16, 'Външен твърд диск', 2),
+(17, 'Процесори', 2);
 
 INSERT INTO `statuses` (`id`, `name`) VALUES
 (1, 'Delivered'),
