@@ -472,9 +472,11 @@ tr:nth-child(even)  {
     white-space:nowrap;
 }
 
+/*
 #main_menu {
 	display: none;
 }
+*/
 
 .form-group.form_submit.orders_filter_submit {
 	margin-left:5px;
@@ -483,4 +485,17 @@ tr:nth-child(even)  {
 
 #orders_table td:nth-last-child(3) {
     text-align: right;
+}
+
+#products_table td:nth-last-child(3) {
+    text-align: right;
+}
+
+.filter_label {
+	margin-right:25px;
+	text-align: left;
+}
+
+.filter_price {
+	width:187px;
 }

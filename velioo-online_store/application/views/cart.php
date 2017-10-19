@@ -36,7 +36,7 @@
 			<tbody>
 			<?php if(isset($products) && $products) foreach($products as $product) { ?>
 			  <tr data-id="<?php echo htmlentities($product['id'], ENT_QUOTES); ?>">
-				<td><a href="#"><img src="<?php echo ($product['image'] != '') ? asset_url() . "imgs/" . htmlspecialchars($product['image'], ENT_QUOTES) : ""; ?>" onerror="this.src='<?php echo asset_url() . "imgs/no_image.png" ?>';" class="cart_product_image"></a></td>
+				<td><a href="<?php echo site_url('products/product') . '/' . htmlentities($product['id'], ENT_QUOTES); ?>"><img src="<?php echo ($product['image'] != '') ? asset_url() . "imgs/" . htmlspecialchars($product['image'], ENT_QUOTES) : ""; ?>" onerror="this.src='<?php echo asset_url() . "imgs/no_image.png" ?>';" class="cart_product_image"></a></td>
 				<td class="cart_product_name_td"><?php echo htmlspecialchars($product['name'], ENT_QUOTES); ?></td>
 				<td class="cart_product_price_td"><?php echo htmlspecialchars(number_format($product['price_leva'], 2), ENT_QUOTES); ?></td>
 				<td>					

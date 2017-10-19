@@ -51,32 +51,8 @@ class Employees extends CI_Controller {
         redirect('/employees/login/');
     }
 	
-	public function dashboard() {
-		$data = array();
-		
-		$this->load->library('pagination');
-		$config = $this->configure_pagination();
-		$config['base_url'] = site_url("employees/dashboard");
-		$config['per_page'] = 50;
-			
-		if($this->input->get('page') != NULL and is_numeric($this->input->get('page')) and $this->input->get('page') > 0) {
-			$start = $this->input->get('page') * $config['per_page'] - $config['per_page'];
-		} else {
-			$start = 0;
-		}
-		
-
-		$data['products'] = $this->product_model->getRows(array('select' => array('products.*' , 'categories.name as category'), 
-																'joins' => array('categories' => 'categories.id = products.category_id'),
-																'order_by' => array('created_at' => 'DESC'),
-																'start' => $start,
-																'limit' => $config['per_page']));
-																
-		$config['total_rows'] = $this->product_model->getRows(array('returnType' => 'count'));		
-															
-		$this->pagination->initialize($config);							
-		$data['pagination'] = $this->pagination->create_links();														
-																
+	public function dashboard() {														
+		$data = array();													
 		$data['title'] = 'Dashboard';														
 		$this->load->view('dashboard', $data);
 	}
@@ -153,6 +129,7 @@ class Employees extends CI_Controller {
 	
 		$getRows = array('select' => array('orders.id as order_id',
 										   'orders.created_at as order_created_at',
+										   'orders.updated_at as order_updated_at',
 										   'orders.amount_leva',
 										   'statuses.name as status_name',
 										   'statuses.id as status_id',
@@ -169,8 +146,7 @@ class Employees extends CI_Controller {
 				$start = $this->input->get('page') * $getRows['limit'];
 			} else {
 				$start = 0;
-			}
-			
+			}			
 			$getRows['start'] = $start;
 		}
 		
@@ -186,23 +162,29 @@ class Employees extends CI_Controller {
 						break;
 					case 1: 
 						if($value)
+							$getRows['order_by']['orders.updated_at'] = 'DESC';
+						else
+							$getRows['order_by']['orders.updated_at'] = 'ASC';				
+						break;
+					case 2: 
+						if($value)
 							$getRows['order_by']['orders.id'] = 'DESC';
 						else
 							$getRows['order_by']['orders.id'] = 'ASC';	
 						break;
-					case 2: 
+					case 3: 
 						if($value)
 							$getRows['order_by']['users.email'] = 'DESC';
 						else
 							$getRows['order_by']['users.email'] = 'ASC';	
 						break;
-					case 3: 
+					case 4: 
 						if($value)
 							$getRows['order_by']['orders.amount_leva'] = 'DESC';
 						else
 							$getRows['order_by']['orders.amount_leva'] = 'ASC';	
 						break;
-					case 4: 
+					case 5: 
 						if($value)
 							$getRows['order_by']['statuses.name'] = 'DESC';
 						else
@@ -223,15 +205,18 @@ class Employees extends CI_Controller {
 						$getRows['like']['orders.created_at'] = $value;			
 						break;
 					case 1: 
-						$getRows['conditions']['orders.id'] = $value;
+						$getRows['like']['orders.updated_at'] = $value;
 						break;
 					case 2: 
-						$getRows['like']['users.email'] = $value;	
+						$getRows['conditions']['orders.id'] = $value;
 						break;
 					case 3: 
-						$getRows['conditions']['orders.amount_leva'] = $value;
+						$getRows['like']['users.email'] = $value;	
 						break;
 					case 4: 
+						$getRows['conditions']['orders.amount_leva'] = $value;
+						break;
+					case 5: 
 						$getRows['like']['statuses.name'] = $value;
 						break;
 					default: 		
@@ -241,12 +226,28 @@ class Employees extends CI_Controller {
 			}
 		}
 		
-		if($this->input->get('date_from') != '') {
-			$getRows['conditions']['DATE(orders.created_at) >= '] = $this->input->get('date_from');
+		if($this->input->get('date_c_from') != '') {
+			$getRows['conditions']['DATE(orders.created_at) >= '] = $this->input->get('date_c_from');
 		}	
 		
-		if($this->input->get('date_to') != '') {
-			$getRows['conditions']['DATE(orders.created_at) <= '] = $this->input->get('date_to');
+		if($this->input->get('date_c_to') != '') {
+			$getRows['conditions']['DATE(orders.created_at) <= '] = $this->input->get('date_c_to');
+		}	
+																			 
+		if($this->input->get('date_m_from') != '') {
+			$getRows['conditions']['DATE(orders.updated_at) >= '] = $this->input->get('date_m_from');
+		}	
+		
+		if($this->input->get('date_m_to') != '') {
+			$getRows['conditions']['DATE(orders.updated_at) <= '] = $this->input->get('date_m_to');
+		}	
+																			 
+		if($this->input->get('price_from') != '') {
+			$getRows['conditions']['orders.amount_leva >= '] = floatval($this->input->get('price_from'));
+		}	
+		
+		if($this->input->get('price_to') != '') {
+			$getRows['conditions']['orders.amount_leva <= '] = floatval($this->input->get('price_to'));
 		}																		 
 		
 		$orders = $this->order_model->getRows($getRows);													  
@@ -254,41 +255,47 @@ class Employees extends CI_Controller {
 		unset($getRows['start']);		
 		unset($getRows['limit']);		
 		$allRows = $this->order_model->getRows($getRows);
-		$resultArray['total_rows'] = count($allRows);
+		if($allRows)
+			$resultArray['total_rows'] = count($allRows);
+		else
+			$resultArray['total_rows'] = 0;
 		
-		$statuses = $this->order_model->getRows(array('table' => 'statuses', 
-													  'where_in' => array('name' => array('Awaiting Payment', 
-																								  'Payment being verified', 
-																								  'Awaiting Shipment', 
-																								  'Awaiting Delivery', 
-																								  'Canceled', 
-																								  'Delivered')),
+		$statuses = $this->order_model->getRows(array('table' => 'statuses',
 													  'order_by' => array('statuses.name' => 'ASC')));
+													  
 		$tempArray = array();													  
-		foreach($orders as $order) {
-			$tempArray[] = $order['order_created_at'];
-			$tempArray[] = $order['order_id'];
-			$tempArray[] = $order['user_email'];
-			$tempArray[] = $order['amount_leva'];
-			$selectStatus = '<select class="select_status">';
-			foreach($statuses as $status) {
-				$selectStatus .= '<option value="' . htmlentities($status['id'], ENT_QUOTES) . '"';
-				if(htmlspecialchars($order['status_id'], ENT_QUOTES) == htmlentities($status['id'], ENT_QUOTES)) {
-					$selectStatus .= 'selected="selected">';
-				} else {
-					$selectStatus .= '>';
-				} 			
-				$selectStatus .= htmlentities($status['name'], ENT_QUOTES) . '</option>';
+		$tempArray2 = array();
+		if($orders) {													  
+			foreach($orders as $order) {
+				$tempArray[] = htmlentities($order['order_created_at'], ENT_QUOTES);
+				$tempArray[] = htmlentities($order['order_updated_at'], ENT_QUOTES);
+				$tempArray[] = htmlentities($order['order_id'], ENT_QUOTES);
+				$tempArray[] = htmlentities($order['user_email'], ENT_QUOTES);
+				$tempArray[] = htmlentities($order['amount_leva'], ENT_QUOTES);
+				$selectStatus = '<select class="select_status">';
+				foreach($statuses as $status) {
+					$selectStatus .= '<option value="' . htmlentities($status['id'], ENT_QUOTES) . '"';
+					if(htmlspecialchars($order['status_id'], ENT_QUOTES) == htmlentities($status['id'], ENT_QUOTES)) {
+						$selectStatus .= 'selected="selected">';
+					} else {
+						$selectStatus .= '>';
+					} 			
+					$selectStatus .= htmlentities($status['name'], ENT_QUOTES) . '</option>';
+				}
+				$selectStatus .= '</select>';
+				$tempArray[] = $selectStatus;
+				$tempArray[] = '<a href="' . site_url("employees/order_details/" . htmlentities($order['order_id'], ENT_QUOTES)) . '" class="order_details">Детайли</a>';
+				$tempArray2[] = $tempArray;
+				$tempArray = array();
 			}
-			$selectStatus .= '</select>';
-			$tempArray[] = $selectStatus;
-			$tempArray[] = '<a href="' . site_url("employees/order_details/" . htmlentities($order['order_id'], ENT_QUOTES)) . '" class="order_details">Детайли</a>';
-			$tempArray2[] = $tempArray;
-			$tempArray = array();
 		}
 		
 		$resultArray['rows'] = $tempArray2;
 		
+		$totalSum['Всички'] = 0.00;
+		$totalSum['Настоящи'] = 0.00;
+		$totalSum['Очаквани'] = 0.00;
+		$resultArray['sums'] = $totalSum;
 		if($allRows) {		
 			$totalSum['Всички'] = 0;
 			$totalSum['Настоящи'] = 0;
@@ -311,6 +318,158 @@ class Employees extends CI_Controller {
 		
 		header('Content-Type:application/json');													  		
 		echo json_encode($resultArray);												  												  
+	}
+	
+	
+	public function get_products() {
+		
+		$getRows = array('select' => array('products.*' , 'categories.name as category'), 
+										   'joins' => array('categories' => 'categories.id = products.category_id'));
+		
+		if($this->input->get('size') && is_numeric($this->input->get('size'))) {		
+			$getRows['limit'] = $this->input->get('size');
+		} 
+		
+		if($this->input->get('page') && is_numeric($this->input->get('page'))) {
+			if(isset($getRows['limit'])) {
+				$start = $this->input->get('page') * $getRows['limit'];
+			} else {
+				$start = 0;
+			}			
+			$getRows['start'] = $start;
+		}
+		
+		if($this->input->get('col')) {
+			$sort = $this->input->get('col');				
+			foreach($sort as $key => $value) {
+				switch($key) {
+					case 0: 
+						if($value)
+							$getRows['order_by']['products.created_at'] = 'DESC';
+						else
+							$getRows['order_by']['products.created_at'] = 'ASC';				
+						break;
+					case 1: 
+						if($value)
+							$getRows['order_by']['products.updated_at'] = 'DESC';
+						else
+							$getRows['order_by']['products.updated_at'] = 'ASC';				
+						break;
+					case 2: 
+						if($value)
+							$getRows['order_by']['products.name'] = 'DESC';
+						else
+							$getRows['order_by']['products.name'] = 'ASC';	
+						break;
+					case 3: 
+						if($value)
+							$getRows['order_by']['categories.name'] = 'DESC';
+						else
+							$getRows['order_by']['categories.name'] = 'ASC';	
+						break;
+					case 4: 
+						if($value)
+							$getRows['order_by']['products.price_leva'] = 'DESC';
+						else
+							$getRows['order_by']['products.price_leva'] = 'ASC';	
+						break;
+					case 5: 
+						if($value)
+							$getRows['order_by']['products.quantity'] = 'DESC';
+						else
+							$getRows['order_by']['products.quantity'] = 'ASC';	
+						break;
+					default: 						
+						break;
+				}
+			}
+		}
+		
+		if($this->input->get('fcol')) {
+			$filter = $this->input->get('fcol');						
+			foreach($filter as $key => $value) {
+				switch($key) {
+					case 0: 
+						$getRows['like']['products.created_at'] = $value;			
+						break;
+					case 1: 
+						$getRows['like']['products.updated_at'] = $value;
+						break;
+					case 2: 
+						$getRows['like']['products.name'] = $value;
+						break;
+					case 3: 
+						$getRows['like']['categories.name'] = $value;	
+						break;
+					case 4: 
+						$getRows['like']['products.price_leva'] = $value;
+						break;
+					case 5: 
+						$getRows['conditions']['products.quantity'] = $value;
+						break;
+					default: 											
+						break;
+				}
+			}
+		}
+		
+		if($this->input->get('date_c_from') != '') {
+			$getRows['conditions']['DATE(products.created_at) >= '] = $this->input->get('date_c_from');
+		}	
+		
+		if($this->input->get('date_c_to') != '') {
+			$getRows['conditions']['DATE(products.created_at) <= '] = $this->input->get('date_c_to');
+		}	
+																			 
+		if($this->input->get('date_m_from') != '') {
+			$getRows['conditions']['DATE(products.updated_at) >= '] = $this->input->get('date_m_from');
+		}	
+		
+		if($this->input->get('date_m_to') != '') {
+			$getRows['conditions']['DATE(products.updated_at) <= '] = $this->input->get('date_m_to');
+		}	
+																			 
+		if($this->input->get('price_from') != '') {
+			$getRows['conditions']['products.price_leva >= '] = floatval($this->input->get('price_from'));
+		}	
+		
+		if($this->input->get('price_to') != '') {
+			$getRows['conditions']['products.price_leva <= '] = floatval($this->input->get('price_to'));
+		}																		 
+		
+		$products = $this->product_model->getRows($getRows);													  
+															 
+		unset($getRows['start']);		
+		unset($getRows['limit']);		
+		$allRows = $this->product_model->getRows($getRows);
+		if($allRows)
+			$resultArray['total_rows'] = count($allRows);
+		else
+			$resultArray['total_rows'] = 0;
+
+													  
+		$tempArray = array();													  
+		$tempArray2 = array();
+		if($products) {													  
+			foreach($products as $product) {
+				$tempArray[] = htmlentities($product['created_at'], ENT_QUOTES);
+				$tempArray[] = htmlentities($product['updated_at'], ENT_QUOTES);
+				$tempArray[] = htmlentities($product['name'], ENT_QUOTES);
+				$tempArray[] = htmlentities($product['category'], ENT_QUOTES);
+				$tempArray[] = htmlentities($product['price_leva'], ENT_QUOTES);
+				$tempArray[] = htmlentities($product['quantity'], ENT_QUOTES);
+				$tempArray[] = '<a href="' . site_url("employees/update_product/" . htmlentities($product['id'], ENT_QUOTES)) . '" class="product_details">Редактирай</a>';
+				$tempArray[] = '<a href="#" data-id="' . htmlspecialchars($product['id'], ENT_QUOTES) .'" class="delete_record">Изтрий</a>';
+				$tempArray2[] = $tempArray;
+				$tempArray = array();
+			}
+		}
+		
+		$resultArray['rows'] = $tempArray2;
+		
+		header('Content-Type:application/json');													  		
+		echo json_encode($resultArray);	
+	
 	}
 	
 	public function order_details($orderId=null) {

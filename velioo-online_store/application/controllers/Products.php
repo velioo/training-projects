@@ -50,12 +50,22 @@ class Products extends CI_Controller {
 			$rowsArray['where_in'] = array('tags.name' => $filterTags);
 		} 
 		
+		if($this->input->get('price_from')) {
+			$rowsArray['conditions']['products.price_leva >= '] = floatval($this->input->get('price_from'));
+			$data['price_from'] = $this->input->get('price_from');
+		}
+		
+		if($this->input->get('price_to')) {
+			$rowsArray['conditions']['products.price_leva <= '] = floatval($this->input->get('price_to'));
+			$data['price_to'] = $this->input->get('price_to');
+		}
+		
 		if($searchCategoryId === null) {
 			
 			$data['search_input'] = $this->input->get('search_input');		
-			$data['search_title'] = 'Резултати';
-			$rowsArray['like'] = array('products.name' => $this->input->get('search_input'));
-			$rowsArray['or_like'] = array('products.description' => $this->input->get('search_input'));	
+			$data['search_title'] = 'Резултати за "' . htmlentities($this->input->get('search_input'), ENT_QUOTES) . '"';
+			$whereClause = "( products.name LIKE '%" . addcslashes(addslashes($this->input->get('search_input')), '%_') . "%' OR products.description LIKE '%" . addcslashes(addslashes($this->input->get('search_input')), '%_') . "%' ESCAPE '!')";
+			$rowsArray['where'] = $whereClause;
 			
 			$totalRows = $rowsArray;
 			unset($totalRows['start']);		
@@ -67,7 +77,7 @@ class Products extends CI_Controller {
 			
 		} else {
 			
-			$rowsArray['conditions'] = array('categories.id' => $searchCategoryId);
+			$rowsArray['conditions']['categories.id'] = $searchCategoryId;
 			$data['search_title'] = $this->product_model->getRows(array('table' => 'categories',
 																		'select' => array('name'),
 																		'conditions' => array('id' => $searchCategoryId),
@@ -343,20 +353,17 @@ class Products extends CI_Controller {
 		}
 	}
 	
-	public function delete_product($product_id) {
+	public function delete_product($product_id=null) {
+		
 		if($product_id !== null && is_numeric($product_id)) {
 			
 			$delete = $this->product_model->delete(array('id' => $product_id));
-			if($delete) {					
-				echo 1;				                    
-			} else {
-				echo 0;
-			}
 			
+			echo ($delete) ? true : false;
+
 		} else {
 			echo 0;
 		}
-		
 	}
 	
 	public function get_menu_items() {

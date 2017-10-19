@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
 
 CREATE TABLE IF NOT EXISTS `order_products` (
  `id` int(11) NOT NULL AUTO_INCREMENT,
- `product_id` int(11) NOT NULL,
+ `product_id` int(11) DEFAULT NULL,
  `order_id` int(11) NOT NULL,
  `price_leva` decimal(10,2) NOT NULL,
  `quantity` int(11) NOT NULL,
@@ -68,8 +68,8 @@ CREATE TABLE IF NOT EXISTS `order_products` (
  PRIMARY KEY (`id`),
  KEY `product_id` (`product_id`),
  KEY `order_id` (`order_id`),
- CONSTRAINT `order_products_ibfk_3` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
- CONSTRAINT `order_products_ibfk_4` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+ CONSTRAINT `order_products_ibfk_4` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+ CONSTRAINT `order_products_ibfk_5` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS `payment_methods` (

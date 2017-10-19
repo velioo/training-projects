@@ -9,8 +9,12 @@
 	
 <?php if(isset($tags)) { ?>
 <div class="filtering_menu">
-<h4 class="filter_header">Избери:</h4>
 	<form action="<?php echo(isset($category_id)) ? site_url("products/search/{$category_id}") : site_url("products/search/"); ?>" method="get" id="filter_form">	
+	    <h4 class="filter_header">Цена:</h4>
+		От: <input type="number" min="0" step="1" name="price_from" value="<?php if(isset($price_from)) echo htmlentities($price_from, ENT_QUOTES); else echo ""; ?>">
+		До: <input type="number" min="0" step="1" name="price_to" value="<?php if(isset($price_to)) echo htmlentities($price_to, ENT_QUOTES); else echo ""; ?>"></br></br>
+		<input type="submit" value="Търси">
+		<h4 class="filter_header">Избери:</h4>
 		<?php if(isset($tags) && $tags) foreach($tags as $key => $value) { ?>
 			<p class="filter_name"><?php echo htmlentities($key, ENT_QUOTES); ?></p>
 			<?php foreach($value as $tag) { ?>

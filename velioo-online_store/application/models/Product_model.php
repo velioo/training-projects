@@ -53,6 +53,10 @@ class Product_model extends CI_Model {
 					}
 				}
 				
+				if(array_key_exists("where", $params)) {
+					$this->db->where($params['where']);
+				}
+				
 				if(array_key_exists("where_in", $params)) {
 					foreach ($params['where_in'] as $key => $value) {
 						$this->db->where_in($key, $value);
@@ -107,7 +111,7 @@ class Product_model extends CI_Model {
 					$result = ($query->num_rows() > 0) ? $query->result_array() : FALSE;
 				}
 			}
-			//echo $this->db->last_query();die();
+			//echo $this->db->last_query() . "</br>";
 			return $result;
 		}
 

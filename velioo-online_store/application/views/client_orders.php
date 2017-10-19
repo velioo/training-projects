@@ -1,12 +1,10 @@
 <?php include 'dashboard_header.php'; ?>
 
 <script src="<?php echo asset_url() . "js/change_order_status.js"; ?>"></script>
+<script src="<?php echo asset_url() . "js/get_orders.js"; ?>"></script>
 
 <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-<script src="<?php echo asset_url() . "easy_autocomplete/jquery.easy-autocomplete.min.js"; ?>"></script> 
-<link rel="stylesheet" href="<?php echo asset_url() . "easy_autocomplete/easy-autocomplete.min.css"; ?>">
 
 <link rel="stylesheet" href="<?php echo asset_url() . "tablesorter/css/theme.blue.css"; ?>">
 <script src="<?php echo asset_url() . "tablesorter/jquery.tablesorter.js"; ?>"></script>
@@ -21,11 +19,6 @@
 	
 	function getChangeStatusUrl() {
 		var url = "<?php echo site_url("employees/change_status"); ?>";
-		return url;
-	}
-
-	function getEmailsUrl() {
-		var url = "<?php echo site_url("employees/get_user_emails"); ?>";
 		return url;
 	}
 	
@@ -59,23 +52,42 @@
 		}	
 	?>
 	<p id="clean_filters" style="height:30px;"></p>	
-		Дата:
-		От: <input type="text" class="data_picker filter" value="" id="date_from">
-		До: <input type="text" class="data_picker filter" value="" id="date_to"></br>
-	
+		<div class="form-horizontal">
+			<div class="form-group">
+			  <label class="col-sm-1 control-label filter_label" for="date_c_from">Създадени:</label>
+			  <div class="col-sm-8">
+					От: <input type="text" class="data_picker filter" id="date_c_from">
+					До: <input type="text" class="data_picker filter" id="date_c_to">
+			  </div>
+			</div>
+			<div class="form-group">
+			  <label class="col-sm-1 control-label filter_label" for="date_m_from">Модифицирани:</label>
+			  <div class="col-sm-8">
+					От: <input type="text" class="data_picker filter" name="date_m_from" id="date_m_from">
+					До: <input type="text" class="data_picker filter" id="date_m_to"></br>
+			  </div>
+			</div>
+			<div class="form-group">
+			  <label class="col-sm-1 control-label filter_label" for="price_from">Цена:</label>
+			  <div class="col-sm-8">
+					От: <input type="number" class="filter filter_price" min="0" step="1" id="price_from">
+					До: <input type="number" class="filter filter_price" min="0" step="1" id="price_to"></br>
+			  </div>
+			</div>
+		</div>
 </div>
 
 	  <table class="tablesorter" id="orders_table">
 		<thead>
 		  <tr class="tablesorter-ignoreRow">
-			<td class="pager" colspan="6" style="text-align:left;">
+			<td class="pager" colspan="7" style="text-align:left;">
 				<img src="<?php echo asset_url() . "tablesorter/addons/pager/icons/first.png"; ?>" class="first"/>
 				<img src="<?php echo asset_url() . "tablesorter/addons/pager/icons/prev.png"; ?>" class="prev"/>
 				<span class="pagedisplay"></span>
 				<img src="<?php echo asset_url() . "tablesorter/addons/pager/icons/next.png"; ?>" class="next"/>
 				<img src="<?php echo asset_url() . "tablesorter/addons/pager/icons/last.png"; ?>" class="last"/>
 				<select class="pagesize">
-				  <option value="10">10</option>
+				  <option value="30">30</option>
 				  <option value="50">50</option>
 				  <option value="100">100</option>
 				  <option value="200">200</option>
@@ -85,6 +97,7 @@
 		  </tr>
 		  <tr>
 			<th>Създадена на</th>
+			<th>Последно променена</th>
 			<th>Поръчка#</th>		
 			<th>Потребител</th>		
 			<th>Обща сума в лв.</th>
@@ -95,6 +108,7 @@
 		 <tfoot>
 		<tr>
 		  	<th>Създадена на</th>
+		  	<th>Последно променена</th>
 			<th>Поръчка#</th>		
 			<th>Потребител</th>		
 			<th>Обща сума в лв.</th>
@@ -102,14 +116,14 @@
 			<th>Детайли</th>
 		</tr>
 		  <tr>
-			  <td class="pager" colspan="6" style="text-align:left;">
+			  <td class="pager" colspan="7" style="text-align:left;">
 				<img src="<?php echo asset_url() . "tablesorter/addons/pager/icons/first.png"; ?>" class="first"/>
 				<img src="<?php echo asset_url() . "tablesorter/addons/pager/icons/prev.png"; ?>" class="prev"/>
-				<span class="pagedisplay"></span> <!-- this can be any element, including an input -->
+				<span class="pagedisplay"></span>
 				<img src="<?php echo asset_url() . "tablesorter/addons/pager/icons/next.png"; ?>" class="next"/>
 				<img src="<?php echo asset_url() . "tablesorter/addons/pager/icons/last.png"; ?>" class="last"/>
 				<select class="pagesize">
-				  <option value="10">10</option>
+				  <option value="30">30</option>
 				  <option value="50">50</option>
 				  <option value="100">100</option>
 				  <option value="200">200</option>
@@ -130,7 +144,7 @@
 			<th style="width:26%;"></th>		
 			<th></th>		
 			<th></th>
-			<th style="width:34%;"></th>
+			<th style="width:26%;"></th>
 			<th></th>
 		  </tr>
 		</thead>
