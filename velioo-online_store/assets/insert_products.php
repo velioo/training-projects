@@ -46,7 +46,7 @@ if ($result = $conn->query($sql)) {
 $re_tags = $tag_ids;
 
 $product_id;
-for($i = 0; $i < 100000; $i++) {
+for($i = 0; $i < 90000; $i++) {
 	$stmt = $conn->prepare("INSERT INTO products (category_id, name, description, price_leva, quantity, image) VALUES (?, ?, ?, ?, ?, ?)"); 
 	$paramTypes = "issdis"; 
 	

@@ -328,7 +328,9 @@ class Employees extends CI_Controller {
 		
 		if($this->input->get('size') && is_numeric($this->input->get('size'))) {		
 			$getRows['limit'] = $this->input->get('size');
-		} 
+		} else {
+			$getRows['limit'] = 50;
+		}
 		
 		if($this->input->get('page') && is_numeric($this->input->get('page'))) {
 			if(isset($getRows['limit'])) {
@@ -435,7 +437,7 @@ class Employees extends CI_Controller {
 		
 		if($this->input->get('price_to') != '') {
 			$getRows['conditions']['products.price_leva <= '] = floatval($this->input->get('price_to'));
-		}																		 
+		}																	 
 		
 		$products = $this->product_model->getRows($getRows);													  
 															 
@@ -454,7 +456,7 @@ class Employees extends CI_Controller {
 			foreach($products as $product) {
 				$tempArray[] = htmlentities($product['created_at'], ENT_QUOTES);
 				$tempArray[] = htmlentities($product['updated_at'], ENT_QUOTES);
-				$tempArray[] = htmlentities($product['name'], ENT_QUOTES);
+				$tempArray[] = "<a href=\"" . site_url("products/product/") . htmlentities($product['id'], ENT_QUOTES) . "\">" . htmlentities($product['name'], ENT_QUOTES) . "</a>";
 				$tempArray[] = htmlentities($product['category'], ENT_QUOTES);
 				$tempArray[] = htmlentities($product['price_leva'], ENT_QUOTES);
 				$tempArray[] = htmlentities($product['quantity'], ENT_QUOTES);

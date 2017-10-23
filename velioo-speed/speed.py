@@ -1,9 +1,8 @@
-
-MAX_N = 1004
-MAX_M = 10004
-MAX_P = 30000
-edges = []
-parent = []
+import sys
+#~ MAX_N = 1004
+#~ MAX_M = 10004
+#~ MAX_P = 30000
+#~ parent = []
 
 
 class Edge:
@@ -24,11 +23,11 @@ class Edge:
         return str(self)
 
 
-def get_comp(node):
-    if parent[node] == node:
-        return node
-    parent[node] = get_comp(parent[node])
-    return parent[node]
+#~ def get_comp(node):
+    #~ if parent[node] == node:
+        #~ return node
+    #~ parent[node] = get_comp(parent[node])
+    #~ return parent[node]
 
 
 # def evaluate(n, m):
@@ -53,6 +52,7 @@ def get_comp(node):
 #             break
 #     print(lower, upper)
 
+edges = []
 conns = []
 global_key = 0
 nodes = dict()
@@ -118,7 +118,8 @@ def main():
 
     global m, n
     count = 0
-    with (open('speed.in', 'r')) as f:
+    file = sys.argv[1]
+    with (open(file, 'r')) as f:
         for line in f:
             if count is not 0:
                 edges.append(Edge(*line.strip('\n').split(' ')))
@@ -144,6 +145,7 @@ def main():
         #print('________________')
 
     print(minimum, maximum)
+
     # evaluate(int(n), int(m))
 
 

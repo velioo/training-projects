@@ -1,7 +1,7 @@
 <?php require 'header.php'; ?>
 
 <script src="<?php echo asset_url() . "js/filter_tags.js"; ?>"></script>
-
+<?php echo phpinfo(); ?>
 <div id="body">
 <div id="wrap"></br>
 <h2><?php if(isset($search_title)) echo htmlentities($search_title, ENT_QUOTES); else echo "Нови Продукти"; ?></h2>
@@ -48,7 +48,7 @@
 	</div>
 
 </div>
-
+</br></br>
 <div style="text-align:center;">
 	<?php if(isset($pagination)) echo $pagination; ?>
 </div>
