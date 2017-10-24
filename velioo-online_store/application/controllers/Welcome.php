@@ -20,6 +20,8 @@ class Welcome extends CI_Controller {
 		} else {
 			$start = 0;
 		}
+
+		assert_v(is_numeric($start));
 		
 		$data['products'] = $this->product_model->getRows( array('select' => array('products.*', 'categories.name as category') ,
 																 'joins' => array('categories' => 'categories.id=products.category_id') ,
@@ -27,7 +29,8 @@ class Welcome extends CI_Controller {
 																 'start' => $start,
 																 'limit' => $config['per_page']) );	
 																																											
-		$config['total_rows'] = $this->product_model->getRows(array('returnType' => 'count'));								
+		$config['total_rows'] = $this->product_model->getRows(array('returnType' => 'count'));
+		assert_v(is_numeric($config['total_rows']));
 		$this->pagination->initialize($config);							
 		$data['pagination'] = $this->pagination->create_links();
 		$data['category_id'] = 0;

@@ -1,5 +1,4 @@
 <?php require 'header.php'; ?>
-
 <div id="body">
 <div id="wrap">
 <h2 style="text-align:center; margin-right: 15%;">Влез в профил</h2>

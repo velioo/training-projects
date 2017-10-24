@@ -71,6 +71,7 @@ class Employees extends CI_Controller {
 	
 	public function update_product($productId=null) {
 		if($productId !== null && is_numeric($productId)) {
+
 			$data = array();
 			$data['product'] = $this->product_model->getRows(array('id' => $productId));
 			$data['tags'] = $this->tag_model->getRows(array('select' => array('tags.name'),
@@ -99,11 +100,14 @@ class Employees extends CI_Controller {
 			$start = 0;
 		}		
 		
+		assert_v(is_numeric($start));
+		
 		$data['tags'] = $this->tag_model->getRows(array('start' => $start,
 														'limit' => $config['per_page']));
 														
 		
 		$config['total_rows'] = $this->tag_model->getRows(array('returnType' => 'count'));		
+		assert_v(is_numeric($config['total_rows']));
 															
 		$this->pagination->initialize($config);							
 		$data['pagination'] = $this->pagination->create_links();
@@ -124,7 +128,6 @@ class Employees extends CI_Controller {
 		$this->load->view('client_orders', $data);
 	}
 	
-	
 	public function get_orders() {
 	
 		$getRows = array('select' => array('orders.id as order_id',
@@ -139,7 +142,8 @@ class Employees extends CI_Controller {
 		
 		if($this->input->get('size') && is_numeric($this->input->get('size'))) {		
 			$getRows['limit'] = $this->input->get('size');
-		} 
+			assert_v(is_numeric($getRows['limit']));
+		}
 		
 		if($this->input->get('page') && is_numeric($this->input->get('page'))) {
 			if(isset($getRows['limit'])) {
@@ -148,6 +152,7 @@ class Employees extends CI_Controller {
 				$start = 0;
 			}			
 			$getRows['start'] = $start;
+			assert_v(is_numeric($getRows['start']));
 		}
 		
 		if($this->input->get('col')) {
@@ -191,7 +196,7 @@ class Employees extends CI_Controller {
 							$getRows['order_by']['statuses.name'] = 'ASC';	
 						break;
 					default: 
-						
+						assert_v(false);
 						break;
 				}
 			}
@@ -220,7 +225,7 @@ class Employees extends CI_Controller {
 						$getRows['like']['statuses.name'] = $value;
 						break;
 					default: 		
-										
+						assert_v(false);			
 						break;
 				}
 			}
@@ -442,13 +447,11 @@ class Employees extends CI_Controller {
 		$products = $this->product_model->getRows($getRows);													  
 															 
 		unset($getRows['start']);		
-		unset($getRows['limit']);		
-		$allRows = $this->product_model->getRows($getRows);
-		if($allRows)
-			$resultArray['total_rows'] = count($allRows);
-		else
-			$resultArray['total_rows'] = 0;
+		unset($getRows['limit']);
+		$getRows['returnType'] = 'count';		
+		$resultArray['total_rows'] = $this->product_model->getRows($getRows);
 
+		assert_v(is_numeric($resultArray['total_rows']));		
 													  
 		$tempArray = array();													  
 		$tempArray2 = array();

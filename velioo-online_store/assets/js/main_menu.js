@@ -1,10 +1,10 @@
-$(document).ready(function() {
-	
-	var menuItemsUrl = getMenuItemsUrl();
+var logger = getLogger();
+$(document).ready(function() {	
+	var menuItemUrl = getMenuItemsUrl();
 	var activeTab = getActiveTab();
 	var searchUrl = getCategorySearchUrl();
 	
-	$.get(menuItemsUrl, function(data, status) {
+	$.get(menuItemUrl, function(data, status) {
 		$.each(data, function(index, e) {
 			if(e.type == 1) {
 				$('#main_menu').prepend('<li class="main_tab" data-id="' +  e.id +'"><a href="' + searchUrl + '/' + e.id +'">' + e.name + '</a></li>');
@@ -35,8 +35,6 @@ $(document).ready(function() {
 		});
 		
 		//$('#main_menu').show();
-		
+			
 	});
-	
-	
 });

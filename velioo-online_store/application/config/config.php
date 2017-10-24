@@ -212,7 +212,7 @@ $config['allow_get_array'] = TRUE;
 |	0 = Disables logging, Error logging TURNED OFF
 |	1 = Error Messages (including PHP errors)
 |	2 = Debug Messages
-|	3 = Informational Messages
+|	3 = Informational Messagesadd custom log error
 |	4 = All Messages
 |
 | You can also pass an array with threshold levels to show individual error types

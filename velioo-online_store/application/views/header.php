@@ -11,17 +11,39 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
-<script src="<?php echo asset_url() . "js/remove_notification.js"; ?>"></script>  
-<script src="<?php echo asset_url() . "js/cart.js"; ?>"></script>
-<script src="<?php echo asset_url() . "js/main_menu.js"; ?>"></script>
+<script src="<?php echo asset_url() . "log4javascript/log4javascript.js"; ?>"></script>  
 <link rel="stylesheet" href="<?php echo asset_url() . "css/main.css"; ?>"> 
- 
 <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
 	
 <script>
+	var logger = log4javascript.getLogger();
+	var ajaxAppender = new log4javascript.AjaxAppender("<?php echo site_url("logger/js_logger"); ?>");
+	ajaxAppender.setSendAllOnUnload();
+	logger.addAppender(ajaxAppender);
+	function getLogger() {
+		return logger;
+	}
+</script>
 
+<script>
+  window.onerror = function (msg, url, lineNo, columnNo, error) {
+	console.log(error.stack);
+	if(error.stack != "") {
+		logger.error(error.name + ": ", error.message + "\n" + error.stack);
+	} else {
+		logger.error(error.name + ": ", error.message + "\n" + url + ":" + lineNo + ":" + columnNo + "\n");
+	}
+	return true;
+  };
+</script>
+
+<script src="<?php echo asset_url() . "js/remove_notification.js"; ?>"></script>  
+<script src="<?php echo asset_url() . "js/cart.js"; ?>"></script>
+<script src="<?php echo asset_url() . "js/main_menu.js"; ?>"></script>
+	
+<script>
 	function getAddToCartUrl() {
 		var url = "<?php echo site_url("cart/add"); ?>";
 		return url;
@@ -61,9 +83,8 @@
 		var url = "<?php echo site_url("products/search"); ?>";
 		return url;
 	}
-
 </script>	
-	
+
 <div id="holder">	
 	
 <nav class="navbar" id="navigation_top">
