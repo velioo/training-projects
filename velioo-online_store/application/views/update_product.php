@@ -62,7 +62,7 @@
 			<div class="form-group">
 				 <label for="category_id">*Категория:</label>
 				 <select name="category_id" id="category" class="form-control">
-					<?php foreach($categories as $category) { ?>
+					<?php if(isset($categories) && $categories) foreach($categories as $category) { ?>
 						<option value="<?php echo htmlentities($category['id']); ?>" <?php if(isset($product['category_id'])) { echo ($category['id'] == $product['category_id']) ? 'selected' : ''; }?> ><?php echo htmlentities($category['name']); ?></option>
 					<?php } ?>
 				 </select> 
@@ -89,7 +89,7 @@
 				<input type="text" id="tag_input" placeholder="Enter tag name...">
 			</div>
 			<div id="tags_div">	
-				<?php if($tags) { foreach($tags as $t) { ?>
+				<?php if(isset($tags) && $tags) { foreach($tags as $t) { ?>
 					<div class="tag_div"><input value="<?php echo $t['name']; ?>" class="tag" name="tags[]" readonly="" type="text"> <span data-product-id="<?php echo $product['id']; ?>" class="glyphicon glyphicon-remove remove_tag"></span></div>
 				<?php }} ?>		
 			</div>

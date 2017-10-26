@@ -90,8 +90,10 @@ CREATE TABLE IF NOT EXISTS `products` (
  `image` text NOT NULL,
  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
- PRIMARY KEY (`id`),
  KEY `category_id` (`category_id`),
+ KEY `price_leva` (`price_leva`),
+ KEY `created_at` (`created_at`),
+ KEY `updated_at` (`updated_at`),
  FULLTEXT KEY `name` (`name`,`description`),
  CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
 );

@@ -1,5 +1,6 @@
-var logger = getLogger();
 $(document).ready(function() {	
+	
+	var logger = getLogger();
 	var menuItemUrl = getMenuItemsUrl();
 	var activeTab = getActiveTab();
 	var searchUrl = getCategorySearchUrl();
@@ -10,8 +11,10 @@ $(document).ready(function() {
 				$('#main_menu').prepend('<li class="main_tab" data-id="' +  e.id +'"><a href="' + searchUrl + '/' + e.id +'">' + e.name + '</a></li>');
 			} else if(e.type == 2) {
 				$('#components_dropdown').prepend('<li class="component" data-id="' +  e.id +'"><a href="' + searchUrl + '/' + e.id +'">' + e.name + '</a></li>');
-			} else {
+			} else if(e.type == 3){
 				$('#peripheral_dropdown').prepend('<li class="peripheral" data-id="' +  e.id +'"><a href="' + searchUrl + '/' + e.id +'">' + e.name + '</a></li>');
+			} else {
+				assert(false, 'Assert Error: Category type must <=3 and >=1');
 			}
 		});
 		$('.main_tab').each(function() {

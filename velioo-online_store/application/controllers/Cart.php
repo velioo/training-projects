@@ -43,7 +43,8 @@ class Cart extends CI_Controller {
 	
 	public function change_quantity() {
 		if($this->session->userdata('isUserLoggedIn')) {
-			if($this->input->post('product_id') && $this->input->post('quantity')) {
+			if($this->input->post('product_id') && $this->input->post('quantity') && 
+				is_numeric($this->input->post('product_id')) && is_numeric($this->input->post('quantity'))) {
 				
 				$product = array();
 				$product['product_id'] = $this->input->post('product_id');
@@ -87,8 +88,8 @@ class Cart extends CI_Controller {
 		
 	public function remove() {
 		if($this->session->userdata('isUserLoggedIn')) {
-			if($this->input->post('product_id')) {
-				$delete = $this->cart_model->delete(array('conditions' => array('product_id' => $this->input->post('product_id'), 'user_id' => $this->session->userdata('userId'))));			
+			if($this->input->post('productId')) {
+				$delete = $this->cart_model->delete(array('conditions' => array('product_id' => $this->input->post('productId'), 'user_id' => $this->session->userdata('userId'))));			
 				if($delete) echo true; else echo false;	
 			} else {
 				echo false;

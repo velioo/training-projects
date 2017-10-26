@@ -104,6 +104,10 @@ class Order_model extends CI_Model {
 				}
 			}
 			
+			//~ if(array_key_exists("bufferType", $params) && $params['bufferType'] == 'unbuffered') {
+				//~ return $query;
+			//~ }
+			
 			return $result;
 		}
 	}

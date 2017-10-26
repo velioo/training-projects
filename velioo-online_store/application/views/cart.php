@@ -59,12 +59,14 @@
 			</tbody>
 		  </table>
 		</div>	
+		<?php if(isset($products) && $products) { ?>
 		<div class="cart_purchase_div">
 			<a href="<?php echo site_url("orders/payment_method"); ?>"> 
 				<button type="button" class="btn btn-default purchase_button">
 				<span class="glyphicon glyphicon-shopping-cart"></span> Продължи към плащане</button>
 			</a>
 		</div>		
+		<?php } ?>
 	</div>
 </div>
 

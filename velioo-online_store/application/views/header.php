@@ -28,15 +28,27 @@
 </script>
 
 <script>
-  window.onerror = function (msg, url, lineNo, columnNo, error) {
-	console.log(error.stack);
-	if(error.stack != "") {
-		logger.error(error.name + ": ", error.message + "\n" + error.stack);
-	} else {
-		logger.error(error.name + ": ", error.message + "\n" + url + ":" + lineNo + ":" + columnNo + "\n");
+	window.onerror = function (msg, url, lineNo, columnNo, error) {
+		//console.log(error.stack);
+		if(error.stack != "") {
+			logger.error(error.name + ": ", error.message + "\n" + error.stack);
+		} else {
+			logger.error(error.name + ": ", error.message + "\n" + url + ":" + lineNo + ":" + columnNo + "\n");
+		}
+		return true;
+	};
+</script>
+
+<script>
+	function assert(condition, message) {
+		if (!condition) {
+			message = message || "Assertion failed";
+			if (typeof Error !== "undefined") {
+				throw new Error(message);
+			}
+			throw message;
+		}
 	}
-	return true;
-  };
 </script>
 
 <script src="<?php echo asset_url() . "js/remove_notification.js"; ?>"></script>  

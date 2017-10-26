@@ -120,7 +120,7 @@ class Tags extends CI_Controller {
 	
 	public function tag_validate($str) {
 	
-		if(preg_match('/:/', $str)) {
+		if(preg_match('/.+:.+/', $str)) {
 			return TRUE;
 		} else {
 			$this->form_validation->set_message('tag_validate', 'Тагът трябва да е във валиден формат (име:стойност)');

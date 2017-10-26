@@ -3,7 +3,7 @@
 <script src="<?php echo asset_url() . "js/change_order_status.js"; ?>"></script>
 <script src="<?php echo asset_url() . "js/get_orders.js"; ?>"></script>
 
-<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <link rel="stylesheet" href="<?php echo asset_url() . "tablesorter/css/theme.blue.css"; ?>">

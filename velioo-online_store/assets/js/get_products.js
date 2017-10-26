@@ -11,16 +11,16 @@ $(document).ready(function() {
 	});
 	
 	$("#products_table").tablesorter({
-            theme: 'blue',
-            widthFixed: true,
-            sortLocaleCompare: true,
-            sortList: [ [0,1] ],
-            widgets: ['zebra', 'filter', 'uitheme']
-        })
-        .tablesorterPager({
-            container: $(".pager"),
-            ajaxUrl: productsUrl + '?page={page}&size={size}&{sortList:col}&{filterList:fcol}',
-            customAjaxUrl: function(table, url) {
+			theme: 'blue',
+			widthFixed: true,
+			sortLocaleCompare: true,
+			sortList: [ [0,1] ],
+			widgets: ['zebra', 'filter', 'uitheme']
+		})
+		.tablesorterPager({
+			container: $(".pager"),
+			ajaxUrl: productsUrl + '?page={page}&size={size}&{sortList:col}&{filterList:fcol}',
+			customAjaxUrl: function(table, url) {
 				return url += '&date_c_from=' + $('#date_c_from').val() + 
 							  '&date_c_to=' + $('#date_c_to').val() + 
 							  '&date_m_from=' + $('#date_m_from').val() + 
@@ -28,35 +28,35 @@ $(document).ready(function() {
 							  '&price_from=' + $('#price_from').val() + 
 							  '&price_to=' + $('#price_to').val();
 			},
-            ajaxError: null,
-            ajaxObject: {
-                dataType: 'json'
-            },
-            ajaxProcessing: function(data){
+			ajaxError: null,
+			ajaxObject: {
+				dataType: 'json'
+			},
+			ajaxProcessing: function(data){
 				//console.log(data);
 				var total, rows, headers;			
 				total   = data.total_rows;
 				//headers = data.headers;
 				rows    = data.rows;
 				return [ total, rows];
-            },
-            processAjaxOnInit: true,
-            output: '{startRow} to {endRow} ({totalRows})',
-            updateArrows: true,
-            page: 0,
-            size: 30,
-            savePages: true,
-            pageReset: 0,
-            cssNext        : '.next',
-            cssPrev        : '.prev',
-            cssFirst       : '.first',
-            cssLast        : '.last',
-            cssGoto        : '.gotoPage',
-            cssPageDisplay : '.pagedisplay',
-            cssPageSize    : '.pagesize',
-            cssDisabled    : 'disabled',
-            cssErrorRow    : 'tablesorter-errorRow'
-        });
+			},
+			processAjaxOnInit: true,
+			output: '{startRow} to {endRow} ({totalRows})',
+			updateArrows: true,
+			page: 0,
+			size: 30,
+			savePages: true,
+			pageReset: 0,
+			cssNext        : '.next',
+			cssPrev        : '.prev',
+			cssFirst       : '.first',
+			cssLast        : '.last',
+			cssGoto        : '.gotoPage',
+			cssPageDisplay : '.pagedisplay',
+			cssPageSize    : '.pagesize',
+			cssDisabled    : 'disabled',
+			cssErrorRow    : 'tablesorter-errorRow'
+		});
 	
 	$('.filter').on('change', function() {
 		$("#products_table").trigger('pagerUpdate');
@@ -79,5 +79,4 @@ $(document).ready(function() {
 		$('#clear_filters').remove();
 		$("#products_table").trigger('pagerUpdate');
 	});
-	
 });
