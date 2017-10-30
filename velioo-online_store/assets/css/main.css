@@ -501,8 +501,11 @@ tr:nth-child(even)  {
 }
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1150px) {
 	#footer {
 		width: 1150px;
+	}
+	#holder {
+		min-height:112%;
 	}
 }

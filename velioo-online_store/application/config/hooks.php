@@ -19,3 +19,12 @@ $hook['post_controller_constructor'] = array(
     'filepath' => 'hooks',
     'params' => array()
 );
+
+//~ $hook['post_controller_constructor'] = array(
+    //~ 'class' => 'Cart_user',
+    //~ 'function' => 'index',
+    //~ 'filename' => 'Cart_user.php',
+    //~ 'filepath' => 'hooks',
+    //~ 'params' => array()
+//~ );
+

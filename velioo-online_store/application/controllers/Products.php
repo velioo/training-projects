@@ -496,7 +496,7 @@ class Products extends CI_Controller {
 				$categories[$key] = $row['name'];
 			}		
 			array_multisort($categories, SORT_ASC, $data['categories']);	
-			log_message('user_info', 'Loading aupdate_product page');
+			log_message('user_info', 'Loading update_product page');
 			$this->load->view('update_product', $data);
 		} else {
 			log_message('user_info', 'Product id is not numeric: ' . $productId . '. Redirecting to employees/dashboard');
@@ -504,19 +504,19 @@ class Products extends CI_Controller {
 		}
 	}
 	
-	public function delete_product($productId=null) {
-		
+	public function delete_product() {
+
 		log_message('user_info', "\n\n" . site_url('products/delete_product') . ' loaded.');
 		
-		if($productId !== null && is_numeric($productId)) {
+		if($this->input->post('productId') && is_numeric($this->input->post('productId'))) {
 			
-			log_message('user_info', 'Deleting product with id = ' . $productId);
-			assert_v(is_numeric($productId));
+			log_message('user_info', 'Deleting product with id = ' . $this->input->post('productId'));
+			assert_v(is_numeric($this->input->post('productId')));
 			
-			$delete = $this->product_model->delete(array('id' => $productId));
+			$delete = $this->product_model->delete(array('id' => $this->input->post('productId')));
 			
 			if($delete) {
-				log_message('user_info', 'Successfully deleteed product');
+				log_message('user_info', 'Successfully deleted product');
 				echo true;
 			} else {
 				log_message('user_info', 'Failed to delete product');
@@ -524,8 +524,8 @@ class Products extends CI_Controller {
 			}
 
 		} else {
-			log_message('user_info', 'Product id is not numeric: ' . $productId);
-			echo 0;
+			log_message('user_info', 'Product id is not numeric: ' . $this->input->post('productId'));
+			echo false;
 		}
 	}
 	

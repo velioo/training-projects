@@ -740,7 +740,7 @@ class Employees extends CI_Controller {
 		if($this->input->post('statusId') && $this->input->post('orderId') && 
 			is_numeric($this->input->post('statusId')) && is_numeric($this->input->post('orderId'))) {
 			
-			log_message('user_info', 'Status id: ' . $statusId . ' Order id: ' . $orderId);
+			log_message('user_info', 'Status id: ' . $this->input->post('statusId') . ' Order id: ' . $this->input->post('orderId'));
 			
 			assert_v(is_numeric($this->input->post('statusId')) && is_numeric($this->input->post('orderId')));
 			

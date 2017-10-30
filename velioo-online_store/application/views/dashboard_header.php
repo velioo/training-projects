@@ -24,11 +24,13 @@
 	function getLogger() {
 		return logger;
 	}
+	var infoLog = "";
 </script>
 
 <script>
   window.onerror = function (msg, url, lineNo, columnNo, error) {
 	//console.log(error.stack);
+	logger.info(infoLog);
 	if(error.stack != "") {
 		logger.error(error.name + ": ", error.message + "\n" + error.stack);
 	} else {
@@ -37,6 +39,18 @@
 	return true;
   };
 </script>	
+
+<script>
+	function assert(condition, message) {
+		if (!condition) {
+			message = message || "Assertion failed";
+			if (typeof Error !== "undefined") {
+				throw new Error(message);
+			}
+			throw message;
+		}
+	}
+</script>
 	
 <div id="holder">	
 	
