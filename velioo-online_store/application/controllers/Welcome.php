@@ -11,32 +11,50 @@ class Welcome extends CI_Controller {
 
 	public function index() {
 		
+		log_message('user_info', "\n\n" . site_url('welcome/index') . ' loaded.');
+		
+		log_message('user_info', 'Configuring pagination');
 		$config = $this->configure_pagination();
 		$config['base_url'] = site_url();
 		$config['per_page'] = 28;
+		log_message('user_info', 'Limit set to ' . $config['per_page']);
 		
 		if($this->input->get('page') != NULL and is_numeric($this->input->get('page')) and $this->input->get('page') > 0) {
+			log_message('user_info', 'Got page number: ' . $this->input->get('page'));
 			$start = $this->input->get('page') * $config['per_page'] - $config['per_page'];
+			log_message('user_info', 'Records offset set to: ' . $start);
 		} else {
 			$start = 0;
+			log_message('user_info', 'No page number specified. Using default offset: ' . $start);
 		}
 
 		assert_v(is_numeric($start));
 		
-		$data['products'] = $this->product_model->getRows( array('select' => array('products.*', 'categories.name as category') ,
+		log_message('user_info', 'Getting products...');
+		$result = $this->product_model->getRows( array('select' => array('products.*', 'categories.name as category') ,
 																 'joins' => array('categories' => 'categories.id=products.category_id') ,
 																 'order_by' => array('created_at' => 'DESC'),
 																 'start' => $start,
 																 'limit' => $config['per_page']) );	
-																																											
-		$config['total_rows'] = $this->product_model->getRows(array('returnType' => 'count'));
-		assert_v(is_numeric($config['total_rows']));
-		$this->pagination->initialize($config);							
-		$data['pagination'] = $this->pagination->create_links();
-		$data['category_id'] = 0;
-			 
-		$data['title'] = "Home";
-		$this->load->view('home', $data);
+		if($result) {
+			log_message('user_info', 'Products returned successfully');
+			$data['products'] = $result;
+			log_message('user_info', 'Get count of total records');
+			$config['total_rows'] = $this->product_model->getRows(array('returnType' => 'count'));
+			log_message('user_info', 'Total count: ' . $config['total_rows']);
+			assert_v(is_numeric($config['total_rows']));
+			log_message('user_info', 'Initializing pagination...');
+			$this->pagination->initialize($config);							
+			$data['pagination'] = $this->pagination->create_links();
+			$data['category_id'] = 0;
+			$data['title'] = "Home";
+			log_message('user_info', 'Loading home page');
+			$this->load->view('home', $data);
+			
+		} else {
+			log_message('user_info', 'Failed to return any products.');
+		}																																												
+
 	}
 	
 	public function configure_pagination() {

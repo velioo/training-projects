@@ -50,6 +50,7 @@ class Tags extends CI_Controller {
 		
 		if($this->input->post('tagSubmit')) {
 			
+			log_message('user_info', 'Setting form validation rules...');
 			$this->form_validation->set_rules('name', 'Name', 'required|trim|callback_tag_validate|callback_tag_check');				
 			
 			log_message('user_info', 'Processing tag name:' . $this->input->post('name'));			
@@ -154,7 +155,7 @@ class Tags extends CI_Controller {
 		$str = trim($str);
 		$str = explode(':', $str, 2);
 		$str = array_map('trim', $str);
-		$str = implode(': ', $str);
+		$str = implode(':', $str);
 		$str = preg_replace("/\s+/u", " ", $str);
 
 		$params['returnType'] = 'count';

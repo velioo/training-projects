@@ -59,10 +59,11 @@ class Employees extends CI_Controller {
 	
 	public function logout() {
 		log_message('user_info', "\n\n" . site_url('employees/logout') . ' loaded.');
+		log_message('user_info', 'Unseting employee data from session');
         $this->session->unset_userdata('isEmployeeLoggedIn');
         $this->session->unset_userdata('employeeId');
-        log_message('user_info', 'Unseted user data from session');
         //$this->session->sess_destroy();
+        log_message('user_info', 'Redirecting to ' . site_url('employees/login'));
         redirect('/employees/login/');
     }
 	
@@ -143,7 +144,7 @@ class Employees extends CI_Controller {
 		$config['base_url'] = site_url("employees/tags");
 		$config['per_page'] = 50;
 		
-		log_message('user_info', 'Limit se to: ' . $config['per_page']);
+		log_message('user_info', 'Limit set to: ' . $config['per_page']);
 			
 		if($this->input->get('page') != NULL && is_numeric($this->input->get('page')) && $this->input->get('page') > 0) {
 			log_message('user_info', 'Got page number: ' . $this->input->get('page'));

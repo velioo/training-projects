@@ -16,7 +16,8 @@
 		return url;
 	}
 	
-	$(document).on('click','.remove_tag',function(){
+	$(document).on('click','.remove_tag',function() {
+		infoLog += '\nadd_product.php/.remove_tag: Executing...\n';
 		$(this).prev().remove();
 		$(this).remove();
 	});

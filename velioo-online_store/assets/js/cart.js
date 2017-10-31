@@ -75,7 +75,7 @@ $(document).ready(function() {
 	
 	function update_cart() {
 
-		infoLog += '\ncart.js/update_cart(): Executing: ' + arguments.callee.name + '()\n';
+		infoLog += '\ncart.js/update_cart(): Executing...\n';
 		infoLog += 'cart.js/update_cart(): Sending request to ' + cartCountPriceUrl + '\n';
 		$.post(cartCountPriceUrl, function(data, status) {
 			if(data) {				
@@ -98,7 +98,7 @@ $(document).ready(function() {
 	
 	function add_to_cart(e) {
 		
-		infoLog += '\ncart.js/add_to_cart(): Executing: ' + arguments.callee.name + '()\n';		
+		infoLog += '\ncart.js/add_to_cart(): Executing...\n';		
 		var productId = e.parent().data('id');
 		
 		if (productId === parseInt(productId, 10)) {
@@ -130,7 +130,7 @@ $(document).ready(function() {
 		
 	function change_cart(e, quantity) {
 		
-		infoLog += '\ncart.js/change_cart(): Executing: ' + arguments.callee.name + '()\n';		
+		infoLog += '\ncart.js/change_cart(): Executing...\n';		
 		var productId = e.parent().parent().data('id');
 		infoLog += 'cart.js/change_cart(): Product id =  ' + productId + ' quantity = ' + quantity + '\n';
 		

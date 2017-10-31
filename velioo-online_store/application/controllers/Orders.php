@@ -284,10 +284,10 @@ class Orders extends CI_Controller {
 			$update = $this->order_model->update(array('set' => array('orders.status_id' => 2), 'conditions' => array('orders.id' => $this->input->post('orderId'))));
 			
 			if($update) {
-				log_message('user_info', 'Update successfull');
+				log_message('user_info', 'Order successfully canceled');
 				echo 1;
 			} else {
-				log_message('user_info', 'Update failed');
+				log_message('user_info', 'Failed to cancel order');
 				echo 0;
 			}
 			
@@ -309,10 +309,10 @@ class Orders extends CI_Controller {
 			$update = $this->order_model->update(array('set' => array('orders.status_id' => 1), 'conditions' => array('orders.id' => $this->input->post('orderId'))));
 			
 			if($update) {
-				log_message('user_info', 'Update successfull');
+				log_message('user_info', 'Order status successfull changed to delivered');
 				echo 1;
 			} else {
-				log_message('user_info', 'Update failed');
+				log_message('user_info', 'Failed to change order status');
 				echo 0;
 			}
 			
