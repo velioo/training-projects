@@ -106,9 +106,9 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="<?php echo site_url(); ?>">Computer Store</a>
     </div>
-    <form action="<?php echo site_url("products/search"); ?>" method="get" class="navbar-form navbar-left"> 
+    <form action="<?php echo site_url("products/search"); ?>" method="get" class="navbar-form navbar-left" id="search_form"> 
       <div class="input-group">
-        <input type="text" class="form-control" name="search_input" placeholder="Search">
+        <input type="text" class="form-control" name="search_input" placeholder="Search" id="search_input">
         <div class="input-group-btn">
           <button class="btn btn-default" name="search_button" type="submit">
             <i class="glyphicon glyphicon-search"></i>

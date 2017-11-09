@@ -67,7 +67,7 @@ $(document).ready(function() {
 	});
 	
 	$('.input_change_count').on('change', function() {
-		infoLog += '\ncart.js/.input_change_count: Executing: ' + arguments.callee.name + '()\n';
+		infoLog += '\ncart.js/.input_change_count: Executing...\n';
 		var val = parseInt($(this).val(), 10);
 		infoLog += 'cart.js/.input_change_count: Invoking function change_cart($(this)' + ',, ' + val + ')\n';
 		change_cart($(this), val);

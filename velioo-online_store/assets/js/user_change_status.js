@@ -14,7 +14,7 @@ $(document).ready(function() {
 			infoLog += 'user_change_status.js/.cancel_order: Order id = ' + orderId + '\n';
 			assert(orderId === parseInt(orderId, 10), 'user_change_status.js/.cancel_order:\nAssert Error: orderId must be integer');
 			infoLog += 'user_change_status.js/.cancel_order: Sending request to ' + declineOrderUrl + ' with params: orderId = ' + orderId + '\n';
-			$.post(declineOrderUrl , {orderId: orderId}, function(data){
+			$.post(declineOrderUrl , {orderId: orderId}, function(data) {
 				if(data) {
 					infoLog += 'user_change_status.js/.cancel_order: Request successfull\n';
 					self.parent().parent().find('.order_status').text("Canceled");

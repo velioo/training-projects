@@ -133,6 +133,7 @@ html,body{
 .product_image.details {
 	max-height: 350px;
 	max-width: 350px;
+	cursor: default;
 }
 
 .cart_product_image_div {
@@ -178,6 +179,7 @@ html,body{
 	display: inline-block;
 	max-height:120px;
 	max-width:120px;
+	cursor: default;
 }
 
 .cart_product_image.order {
@@ -334,7 +336,7 @@ font-size: 12px;
 	margin: 10px 0px;
 	height: 100px;
 	width: 150px;
-	cursor: pointer;
+	cursor: default;
 }
 
 .plus {
@@ -500,6 +502,10 @@ tr:nth-child(even)  {
 	width:187px;
 }
 
+.navbar-nav>li {
+   display: inline-block;
+}
+
 
 @media screen and (max-width: 1150px) {
 	#footer {
@@ -508,4 +514,8 @@ tr:nth-child(even)  {
 	#holder {
 		min-height:112%;
 	}
+	#search_form {
+		width: 300px;
+	}
+	
 }

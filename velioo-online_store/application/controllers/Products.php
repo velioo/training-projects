@@ -39,14 +39,14 @@ class Products extends CI_Controller {
 		assert_v(is_numeric($start));
 		
 		$rowsArray = array(
-			'select' => array('products.*', 'categories.name as category', 'categories.id as category_id'),
-			'joins' => array('categories' => 'categories.id=products.category_id', 
-							'product_tags' => array('product_tags.product_id = products.id', 'left'), 
+			'select' => array('p.*', 'categories.name as category', 'categories.id as category_id'),
+			'joins' => array('categories' => 'categories.id=p.category_id', 
+							'product_tags' => array('product_tags.product_id = p.id', 'left'), 
 							'tags' => array('tags.id = product_tags.tag_id', 'left')),
-			'order_by' => array('created_at' => 'DESC'),
 			'start' => $start,
 			'limit' => $config['per_page'],
-			'group_by' => 'products.id'
+			'group_by' => 'p.id',
+			'alias' => 'p'
 		);
 		
 		$tagsArray = array(
@@ -60,24 +60,51 @@ class Products extends CI_Controller {
 		
 		$filterTags = $this->input->get('tags');
 		if($filterTags) {
-			$msg = "";
-			foreach($filterTags as $tag) {
-				$msg .= $tag . ', ';
-			}
-			log_message('user_info', 'Filtering by tags: ' . $msg);
+			log_message('user_info', 'Filtering by tags: ' . implode(", ",$filterTags));
 			$rowsArray['where_in'] = array('tags.name' => $filterTags);
 		} 
 		
 		if($this->input->get('price_from')) {
 			log_message('user_info', 'Filtering by price >= ' . floatval($this->input->get('price_from')));
-			$rowsArray['conditions']['products.price_leva >= '] = floatval($this->input->get('price_from'));
+			$rowsArray['conditions']['p.price_leva >= '] = floatval($this->input->get('price_from'));
+			$tagsArray['conditions']['p.price_leva >= '] = floatval($this->input->get('price_from'));
 			$data['price_from'] = $this->input->get('price_from');
 		}
 		
 		if($this->input->get('price_to')) {
 			log_message('user_info', 'Filtering by price <= ' . floatval($this->input->get('price_to')));
-			$rowsArray['conditions']['products.price_leva <= '] = floatval($this->input->get('price_to'));
+			$rowsArray['conditions']['p.price_leva <= '] = floatval($this->input->get('price_to'));
+			$tagsArray['conditions']['p.price_leva <= '] = floatval($this->input->get('price_to'));
 			$data['price_to'] = $this->input->get('price_to');
+		}
+		
+		if($this->input->get('sort_products')) {
+			log_message('user_info', 'Sorting by tags: ' . $this->input->get('sort_products'));
+			switch($this->input->get('sort_products')) {
+				case 'most_buyed':
+					$rowsArray['select'][] = '(SELECT SUM(quantity) FROM order_products WHERE order_products.product_id = p.id) as most_buyed';
+					$rowsArray['order_by']['most_buyed'] = 'DESC';
+					log_message('user_info', 'Sorting by most buyed DESC');
+					break;
+				case 'price_asc':
+					$rowsArray['order_by']['p.price_leva'] = 'ASC';
+					log_message('user_info', 'Sorting price ASC');
+					break;
+				case 'price_desc':
+					$rowsArray['order_by']['p.price_leva'] = 'DESC';
+					log_message('user_info', 'Sorting price DESC');
+					break;
+				case 'newest':
+					$rowsArray['order_by']['p.created_at'] = 'DESC';
+					log_message('user_info', 'Sorting created_at DESC');
+					break;
+				default:
+					assert_v(false);
+			}
+			$data['sort_products'] = $this->input->get('sort_products');
+		} else {
+			log_message('user_info', 'No sorting method specified, using default: by most buyed');
+			$data['sort_products'] = 'most_buyed';
 		}
 		
 		if($searchCategoryId === null) {
@@ -89,7 +116,7 @@ class Products extends CI_Controller {
 			
 			$data['search_input'] = $this->input->get('search_input');		
 			$data['search_title'] = 'Резултати за "' . htmlentities($this->input->get('search_input'), ENT_QUOTES) . '"';
-			$whereClause = "( products.name LIKE '%" . addcslashes(addslashes($this->input->get('search_input')), '%_') . "%' OR products.description LIKE '%" . addcslashes(addslashes($this->input->get('search_input')), '%_') . "%'  ESCAPE '!')"; //
+			$whereClause = "( p.name LIKE '%" . addcslashes(addslashes($this->input->get('search_input')), '%_') . "%' OR p.description LIKE '%" . addcslashes(addslashes($this->input->get('search_input')), '%_') . "%'  ESCAPE '!')"; //
 			//$whereClause = "(MATCH (products.name, products.description) AGAINST ('" . $this->input->get('search_input') . "'" . "))";
 			$rowsArray['where'] = $whereClause;
 			
@@ -116,68 +143,63 @@ class Products extends CI_Controller {
 			$data['search_title'] = $this->product_model->getRows(array('table' => 'categories',
 																		'select' => array('name'),
 																		'conditions' => array('id' => $searchCategoryId),
-																		'returnType' => 'single'))['name'];				
+																		'returnType' => 'single'))['name'];
 																																
-			log_message('user_info', 'Name of category: ' . $data['search_title']);															
-			$rowsArray['group_by'] = 'products.id';	
+			log_message('user_info', 'Name of category: ' . $data['search_title']);
+			$rowsArray['group_by'] = 'p.id';
 			
 			$totalRows = $rowsArray;
-			unset($totalRows['start']);		
-			unset($totalRows['limit']);		
-			$totalRows['returnType'] = 'count';	
+			unset($totalRows['start']);
+			unset($totalRows['limit']);
+			$totalRows['returnType'] = 'count';
 			
-			log_message('user_info', 'Get count of total eligible records');															
+			log_message('user_info', 'Get count of total eligible records');
 			$config['total_rows'] = $this->product_model->getRows($totalRows);
 			assert_v(is_numeric($config['total_rows']));
 			log_message('user_info', 'Total count: ' . $config['total_rows']);
 																       			
-			$tagsArray['conditions'] = 	array('categories.id' => $searchCategoryId);												 						
+			$tagsArray['conditions']['categories.id'] = $searchCategoryId;
 			$data['category_id'] = $searchCategoryId;				
 		}
 		
 		log_message('user_info', 'Executing search query...');
 		$data['products'] = $this->product_model->getRows($rowsArray);	
-		if($data['products']) {
-			log_message('user_info', 'Query successfully finished');
-			log_message('user_info', 'Getting the tags(and their count) associated with the records found');
-			$tags = $this->product_model->getRows($tagsArray);	
-			
-			$new_tags = array();
-			$checked_tags = "";
-			if($tags) {
-				log_message('user_info', 'Tags found. Processing tags...');
-				foreach($tags as $tag) {
-					$temp_array = array();
-					if($filterTags) {
-						if(in_array($tag['name'], $filterTags)) {
-							$checked_tags += $tag['name'] . ', ';
-							$temp_array['checked'] = 1;
-						}
+		log_message('user_info', 'Query finished');
+		log_message('user_info', 'Getting the tags(and their count) associated with the records found');
+		$tags = $this->product_model->getRows($tagsArray);	
+		
+		$new_tags = array();
+		$checked_tags = "";
+		if($tags) {
+			log_message('user_info', 'Tags found. Processing tags...');
+			foreach($tags as $tag) {
+				$temp_array = array();
+				if($filterTags) {
+					if(in_array($tag['name'], $filterTags)) {
+						$checked_tags .= $tag['name'] . ', ';
+						$temp_array['checked'] = 1;
 					}
-					$splited_tag = explode(':', $tag['name'], 2);
-					if(count($splited_tag) > 1) {
-						$temp_array['value'] = trim($splited_tag[1]);
-						$temp_array['count'] = $tag['tag_count'];
-						$new_tags[$splited_tag[0]][] = $temp_array;	
-					}			
 				}
-				log_message('user_info', 'Checked tags: ' . $checked_tags);	
-				log_message('user_info', 'Tags processed');
-			}	
-																																			
-			$data['tags'] = $new_tags;	
-					
-			log_message('user_info', 'Initializing pagination');
-			$this->pagination->initialize($config);							
-			$data['pagination'] = $this->pagination->create_links();
-				 
-			$data['title'] = "Search Results";
-			log_message('user_info', 'Loading home');
-			$this->load->view('home', $data);
-		} else {
-			log_message('user_info', 'Query failed. Redirecting to ' . site_url('welcome'));
-			redirect('/welcome/');
-		}
+				$splited_tag = explode(':', $tag['name'], 2);
+				if(count($splited_tag) > 1) {
+					$temp_array['value'] = trim($splited_tag[1]);
+					$temp_array['count'] = $tag['tag_count'];
+					$new_tags[$splited_tag[0]][] = $temp_array;	
+				}			
+			}
+			log_message('user_info', 'Checked tags: ' . $checked_tags);	
+			log_message('user_info', 'Tags processed');
+		}	
+																																		
+		$data['tags'] = $new_tags;	
+				
+		log_message('user_info', 'Initializing pagination');
+		$this->pagination->initialize($config);							
+		$data['pagination'] = $this->pagination->create_links();
+			 
+		$data['title'] = "Search Results";
+		log_message('user_info', 'Loading home');
+		$this->load->view('home', $data);
 	}
 	
 	public function product($productId=null) {

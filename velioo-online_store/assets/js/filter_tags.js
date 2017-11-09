@@ -22,5 +22,14 @@ $(document).ready(function() {
 		});
 	}
 	
+	$('#sort_products').on('change', function() {
+		infoLog += '\nfilter_tag.js/#sort_products: Executing... \n';
+		infoLog += 'Submitting search form\n';
+		logger.info(infoLog);
+		infoLog = "";	
+		$('#filter_form').submit();
+	});
+	
+	
 });
 

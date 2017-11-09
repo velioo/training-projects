@@ -21,12 +21,19 @@
 			<?php } ?>
 		<?php } ?>
 		<input type="hidden" name="search_input" value="<?php if(isset($search_input)) echo htmlentities($search_input, ENT_QUOTES); ?>">
-	</form>
 </div>	 
 <?php } ?>
 
-<div class="products_div" <?php if(!isset($tags)) echo 'style="width:100%;"'; ?>>	 
-	 
+<div class="products_div" <?php if(!isset($tags)) echo 'style="width:100%;"'; ?> >	
+    <?php if(isset($tags)) { ?> 
+		Подреди по <select name="sort_products" id="sort_products">
+			<option value="most_buyed" <?php if(isset($sort_products) && $sort_products == 'most_buyed' || isset($sort_products) && $sort_products == null || !isset($sort_products)) echo 'selected="selected"'; ?>>Най-продавани</option>
+			<option value="price_asc" <?php if(isset($sort_products) && $sort_products == 'price_asc') echo 'selected="selected"'; ?>>Цена възх.</option>
+			<option value="price_desc" <?php if(isset($sort_products) && $sort_products == 'price_desc') echo 'selected="selected"'; ?>>Цена низх.</option>
+			<option value="newest" <?php if(isset($sort_products) && $sort_products == 'newest') echo 'selected="selected"'; ?>>Най-нови</option>
+		</select>
+		</form>
+	<?php } ?>
 	<div class="row row-eq-height">
 		  
 	  <?php $row = 0; if(isset($products) && $products) foreach($products as $p) { ?>	  
@@ -45,11 +52,10 @@
 	  <?php $row++; } else echo "Няма налични продукти в момента."?>
 	  
 	</div>
-
-</div>
-</br></br>
-<div style="text-align:center;">
-	<?php if(isset($pagination)) echo $pagination; ?>
+	</br></br>
+	<div style="text-align:center;">
+		<?php if(isset($pagination)) echo $pagination; ?>
+	</div>
 </div>
 </div> 
 

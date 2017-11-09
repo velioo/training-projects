@@ -19,7 +19,8 @@ class Cart extends CI_Controller {
 		
 		if($this->session->userdata('isUserLoggedIn')) {
 			if($this->input->post('productId') && is_numeric($this->input->post('productId'))) {
-					
+				
+				log_message('user_info', 'Product id: ' . $this->input->post('productId'));
 				assert_v(is_numeric($this->input->post('productId')));
 					
 				$product = array();
@@ -73,6 +74,8 @@ class Cart extends CI_Controller {
 			if($this->input->post('productId') && $this->input->post('quantity') && 
 				is_numeric($this->input->post('productId')) && is_numeric($this->input->post('quantity'))) {
 				
+				log_message('user_info', 'Product id: ' . $this->input->post('productId'));
+				log_message('user_info', 'Quantity: ' . $this->input->post('quantity'));
 				assert_v(is_numeric($this->input->post('productId')) && is_numeric($this->input->post('quantity')));
 				
 				$product = array();
@@ -131,6 +134,8 @@ class Cart extends CI_Controller {
 		if($this->session->userdata('isUserLoggedIn')) {
 			if($this->input->post('productId') && is_numeric($this->input->post('productId'))) {
 				
+				log_message('user_info', 'Product id: ' . $this->input->post('productId'));
+				log_message('user_info', 'User id: ' . $this->session->userdata('userId'));
 				assert_v(is_numeric($this->input->post('productId')));
 				assert_v(is_numeric($this->session->userdata('userId')));
 				

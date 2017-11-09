@@ -24,38 +24,45 @@ class Orders extends CI_Controller {
 		
 		if($this->input->post('paymentSubmit')) {
 			$data = array();		
+			log_message('user_info', 'Loading cart_model and user_model...');
 			$this->load->model('cart_model');
-			$this->load->model('user_model');
-			log_message('user_info', 'cart_model and user_model loaded');
+			$this->load->model('user_model');			
+			log_message('user_info', 'Getting cart data for current user...');
+			assert_v(is_numeric($this->session->userdata('userId')));	
 			$cartData = $this->cart_model->getRows(array('select' => array('products.*', 'cart.quantity as cart_quantity'), 
 														   'joins' => array('products' => 'products.id = cart.product_id'), 
 														   'conditions' => array('cart.user_id' => $this->session->userdata('userId'))));													   
-			if($cartData) {				
+			if($cartData) {
 				log_message('user_info', 'Cart products returned');
-				log_message('user_info', 'Getting payment method details...Payment method id = ' . $this->input->post('payment_method'));							   
-				$payment_method = $this->order_model->getRows(array('table' => 'payment_methods', 'id' => $this->input->post('payment_method')));
-				if($payment_method) {	
-					log_message('user_info', 'Payment method details returned');
-					log_message('user_info', 'Getting user data...');	
-					assert_v(is_numeric($this->session->userdata('userId')));		
-					$data['userData'] = $this->user_model->getRows(array('id' => $this->session->userdata('userId')));
-					assert_v($data['userData']);	
-					log_message('user_info', 'User data returned');
-					log_message('user_info', 'Saving payment method id in session. Id = ' . $payment_method['id']);
-					$this->session->set_userdata('payment_method', $payment_method['id']);
-					$data['products'] = $cartData;
-					$data['payment_method'] = $payment_method;
-					$data['title'] = 'Confirm Order';
-					log_message('user_info', 'Loading confirm_order page');
-					$this->load->view('confirm_order.php', $data);	
+				if(is_numeric($this->input->post('payment_method'))) {
+					log_message('user_info', 'Getting payment method details...Payment method id = ' . $this->input->post('payment_method'));
+					$payment_method = $this->order_model->getRows(array('table' => 'payment_methods', 'id' => $this->input->post('payment_method')));
+					if($payment_method) {
+						log_message('user_info', 'Payment method details returned');
+						log_message('user_info', 'Getting user data...');		
+						$data['userData'] = $this->user_model->getRows(array('id' => $this->session->userdata('userId')));
+						assert_v($data['userData']);	
+						log_message('user_info', 'User data returned');
+						log_message('user_info', 'Saving payment method id in session. Id = ' . $payment_method['id']);
+						$this->session->set_userdata('payment_method', $payment_method['id']);
+						$data['products'] = $cartData;
+						$data['payment_method'] = $payment_method;
+						$data['title'] = 'Confirm Order';
+						log_message('user_info', 'Loading confirm_order page');
+						$this->load->view('confirm_order.php', $data);	
+					} else {
+						log_message('user_info', 'No payment method found with the specified id, payment method id = ' . $this->input->post('payment_method'));
+						$this->session->set_userdata('error_msg', 'Моля изберете начин на плащане.');
+						redirect('/orders/payment_method/');
+					}
 				} else {
-					log_message('user_info', 'No payment method found with the specified id, payment_method_id = ' . $this->input->post('payment_method'));
+					log_message('user_info', 'Payment method id is not numeric, payment method id = ' . $this->input->post('payment_method'));
 					$this->session->set_userdata('error_msg', 'Моля изберете начин на плащане.');
 					redirect('/orders/payment_method/');
 				}
 			} else {
-				log_message('user_info', 'Failed to get cart products data');
-				redirect('/welcome/');
+				log_message('user_info', 'Failed to get cart products data. Redirecting to ' . site_url('users/cart'));
+				redirect('/users/cart/');
 			}	
 		} else {
 			log_message('user_info', 'paymentSubmit is NULL. No form submitted. Redirecting to ' . site_url('/welcome/'));
@@ -72,8 +79,8 @@ class Orders extends CI_Controller {
 			
 			$this->load->model('cart_model');
 			log_message('user_info', 'cart model loaded');
-			assert_v(is_numeric($this->session->userdata('userId')));
 			log_message('user_info', 'Getting cart products...');
+			assert_v(is_numeric($this->session->userdata('userId')));
 			$cartData = $this->cart_model->getRows(array('select' => array('products.id', 'products.price_leva', 'cart.quantity as cart_quantity'), 
 														   'joins' => array('products' => 'products.id = cart.product_id'), 
 														   'conditions' => array('cart.user_id' => $this->session->userdata('userId'))));		
@@ -101,17 +108,17 @@ class Orders extends CI_Controller {
 				$this->db->trans_begin();
 
 				log_message('user_info', 'Creating new order...');
-				$orderId = $this->order_model->insert($orderData);	
+				$orderId = $this->order_model->insert($orderData);
 				if($orderId) {
 					log_message('user_info', 'New order created. Order id = ' . $orderId);
 					log_message('user_info', 'Creating relations between order and products...');
-					foreach($cartData as $c) {		
+					foreach($cartData as $c) {
 						$purchaseData = array(
 							'product_id' => $c['id'],
 							'order_id' => $orderId,
 							'price_leva' => $c['price_leva'],
 							'quantity' => $c['cart_quantity']
-						);			
+						);
 						$insert = $this->order_model->insert($purchaseData, 'order_products');
 					}
 					log_message('user_info', 'All relations created');
@@ -193,21 +200,22 @@ class Orders extends CI_Controller {
 			log_message('user_info', 'orderId = ' . $orderId);
 			assert_v(is_numeric($orderId));
 
-			$data = array();		
-			$this->load->model('user_model');					
-			$this->load->model('product_model');	
+			$data = array();
+			$this->load->model('user_model');
+			$this->load->model('product_model');
 			log_message('user_info', 'user_model and product_model loaded');
 							
-			assert_v(is_numeric($this->session->userdata('userId')));	
-			log_message('user_info', 'Getting user data...');			
+			assert_v(is_numeric($this->session->userdata('userId')));
+			log_message('user_info', 'Getting user data...');
 			$data['userData'] = $this->user_model->getRows(array('id' => $this->session->userdata('userId')));
-			assert_v($data['userData']);	
+			assert_v($data['userData']);
 			log_message('user_info', 'User data returned');
 
 			log_message('user_info', 'Getting order user id...');
 			$orderUserId = $this->order_model->getRows(array('select' => array('orders.user_id'), 'conditions' => array('orders.id' => $orderId), 'returnType' => 'single'))['user_id'];
 			if($orderUserId) {
 				log_message('user_info', 'Order user id returned');
+				assert_v(is_numeric($orderUserId));
 				if($orderUserId === $this->session->userdata('userId')) {
 					
 						
@@ -263,7 +271,8 @@ class Orders extends CI_Controller {
 					redirect('/welcome/');
 				}
 			} else {
-				log_message('user_info', 'No order found with the specified id');
+				log_message('user_info', 'No order found with the specified id. Redirecting to ' . site_url('/welcome/'));
+				redirect('/welcome/');
 			}
 			
 		} else {
@@ -278,7 +287,7 @@ class Orders extends CI_Controller {
 		
 		if($this->input->post('orderId') && is_numeric($this->input->post('orderId'))) {
 			
-			log_message('user_info', 'orderId = ' . $this->input->post('orderId'));
+			log_message('user_info', 'Order id = ' . $this->input->post('orderId'));
 			assert_v(is_numeric($this->input->post('orderId')));
 						
 			$update = $this->order_model->update(array('set' => array('orders.status_id' => 2), 'conditions' => array('orders.id' => $this->input->post('orderId'))));
@@ -303,7 +312,7 @@ class Orders extends CI_Controller {
 		
 		if($this->input->post('orderId') && is_numeric($this->input->post('orderId'))) {
 			
-			log_message('user_info', 'orderId = ' . $this->input->post('orderId'));
+			log_message('user_info', 'Order id = ' . $this->input->post('orderId'));
 			assert_v(is_numeric($this->input->post('orderId')));
 						
 			$update = $this->order_model->update(array('set' => array('orders.status_id' => 1), 'conditions' => array('orders.id' => $this->input->post('orderId'))));
@@ -317,7 +326,7 @@ class Orders extends CI_Controller {
 			}
 			
 		} else {
-			log_message('user_info', 'orderId is NULL or not numeric, orderId = ' . $this->input->post('orderId'));
+			log_message('user_info', 'Order id is NULL or not numeric, orderId = ' . $this->input->post('orderId'));
 			redirect('/welcome/');
 		}
 	}
