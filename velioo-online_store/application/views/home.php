@@ -47,7 +47,7 @@
 			<a href="<?php echo site_url("products/search") . "/" . htmlentities($p['category_id'], ENT_QUOTES); ?>" class="product_category no_underline">Категория: <?php echo htmlspecialchars($p['category'], ENT_QUOTES); ?></a></br>		
 			<div class="product_price"><p style="font-size: 18px;">Цена: <?php echo number_format(htmlspecialchars($p['price_leva'], ENT_QUOTES), 2) . " лв."; ?></p></div>	
 			<?php if($p['quantity'] >= 1) echo "<p style='color:blue;'>В наличност</p>"; else echo "<p style='color:red;'>Няма наличност</p>"; ?>	
-			<?php if($p['quantity'] != 0) { ?><button type="button" class="btn btn-default buy_button"><span class="glyphicon glyphicon-shopping-cart"></span> Купи</button> <?php } ?>
+			<?php if($p['quantity'] != 0) { ?><button type="button" class="btn btn-default buy_button"><span class="glyphicon glyphicon-shopping-cart"></span> Купи</button> <img class="spinner buy" src="<?php echo asset_url() . 'imgs/spinner.gif'; ?>"> <?php } ?>
 		</div>
 	  <?php $row++; } else echo "Няма налични продукти в момента."?>
 	  

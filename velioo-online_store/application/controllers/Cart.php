@@ -165,13 +165,24 @@ class Cart extends CI_Controller {
 		if($this->session->userdata('isUserLoggedIn')) {
 			
 			assert_v(is_numeric($this->session->userdata('userId')));
-			
+			log_message('user_info', 'Getting cart products quantity and price...');
 			$result = $this->cart_model->getRows(array('select' => array('IFNULL(SUM(cart.quantity), 0) as count', 'IFNULL(SUM(products.price_leva * cart.quantity), 0) as price_leva'), 
 													   'joins' => array('products' => 'products.id = cart.product_id'), 
-													   'conditions' => array('cart.user_id' => $this->session->userdata('userId'))));
+													   'conditions' => array('cart.user_id' => $this->session->userdata('userId')),
+													   'returnType' => 'single'));
+													   
+			assert_v(array_key_exists('count', $result));
+			log_message('user_info', 'Count is: ' . $result['count']);										   					
+			assert_v(is_int($result['count'] = intval($result['count'])));
+			
+			assert_v(array_key_exists('price_leva', $result));
+			log_message('user_info', 'Price_leva is: ' . $result['price_leva']);				
+			assert_v(is_float($result['price_leva'] = floatval($result['price_leva'])));
+			
 			header('Content-Type:application/json');	
 			log_message('user_info', 'Returning user cart data');									   
 			echo json_encode($result);
+			//echo "[{\"smaller\": 5,\"larger\": 7}]";
 		} else {
 			log_message('user_info', 'User is not logged');
 			echo false;

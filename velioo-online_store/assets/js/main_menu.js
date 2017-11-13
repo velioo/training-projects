@@ -7,6 +7,7 @@ $(document).ready(function() {
 	var searchUrl = getCategorySearchUrl();
 	
 	infoLog += '\nmain_menu.js: Executing get request. Sending request to ' + menuItemUrl + '\n';
+	$('.spinner.menu').show();
 	$.get(menuItemUrl, function(data, status) {
 		if(data) {
 			infoLog += 'main_menu.js: Request returned data';
@@ -42,6 +43,7 @@ $(document).ready(function() {
 			});
 			logger.info(infoLog);
 			infoLog = "";
+			$('.spinner.menu').hide();
 		} else {
 			infoLog += 'main_menu.js: Request didn\'t return anything';
 			logger.info(infoLog);

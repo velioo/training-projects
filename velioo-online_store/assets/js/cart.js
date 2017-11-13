@@ -1,5 +1,16 @@
 $(document).ready(function() {
 	
+	var cartSchema = {
+	  "type": "object",
+	  "properties": {
+		"count": { "type": "integer" },
+		"price_leva": { "type": "number" },
+	  }, 
+	  "required": [ "count", "price_leva"]
+	};
+	
+	var ajv = new Ajv({allErrors: true});
+	
 	infoLog += '\ncart.js loaded\n';
 	
 	var addToCartUrl = getAddToCartUrl();
@@ -15,6 +26,13 @@ $(document).ready(function() {
 	});
 	
 	$('.remove_product').on('click', function() {
+		
+		if($('.purchase_button').length > 0) {
+			$('.purchase_button').prop('disabled', true);
+		}
+		if($('#paymentSubmit').length > 0) {
+			$('#paymentSubmit').prop('disabled', true);
+		}
 
 		infoLog += '\ncart.js/.remove_product: Executing... \n';
 		
@@ -67,6 +85,12 @@ $(document).ready(function() {
 	});
 	
 	$('.input_change_count').on('change', function() {
+		if($('.purchase_button').length > 0) {
+			$('.purchase_button').prop('disabled', true);
+		}
+		if($('#paymentSubmit').length > 0) {
+			$('#paymentSubmit').prop('disabled', true);
+		}
 		infoLog += '\ncart.js/.input_change_count: Executing...\n';
 		var val = parseInt($(this).val(), 10);
 		infoLog += 'cart.js/.input_change_count: Invoking function change_cart($(this)' + ',, ' + val + ')\n';
@@ -77,23 +101,48 @@ $(document).ready(function() {
 
 		infoLog += '\ncart.js/update_cart(): Executing...\n';
 		infoLog += 'cart.js/update_cart(): Sending request to ' + cartCountPriceUrl + '\n';
-		$.post(cartCountPriceUrl, function(data, status) {
-			if(data) {				
-				infoLog += 'cart.js/update_cart(): Request returned data\n';
-				assert(data[0].count == parseInt(data[0].count, 10), 'cart.js/update_cart():\nAssert Error: data[0].count must be integer');
-				assert(!isNaN(data[0].price_leva) && data[0].price_leva.toString().indexOf('.') != -1, 'cart.js/update_cart():\nAssert Error: data[0].price_leva must be float');
-				$('#cart_count_price').text(data[0].count + " артикул(а) - " + formatter.format(data[0].price_leva) + " лв.");	
-				if($('.cart_sum').length > 0) {
-					$('.cart_sum').text(formatter.format(data[0].price_leva));
-				}	
-				infoLog += 'cart.js/update_cart(): Cart update successfull\n';
-			} else {
-				infoLog += 'cart.js/update_cart(): Request didn\'t return anything\n';
+		$('.spinner.cart').show();
+		if($('.cart_sum').length > 0) {
+			$('.spinner.order_sum').show();
+		}
+		$.ajax({
+			type: "POST",
+			async: true,
+			url: cartCountPriceUrl,
+			dataType: "json",
+			contentType: "application/json",
+			success: function(data, status) {
+				//console.log(ajv.validate(cartSchema, data));				
+				if(typeof data == 'object' && ajv.validate(cartSchema, data)) {
+					infoLog += 'cart.js/update_cart(): Request returned data\n';
+					$('#cart_count_price').text(data.count + " артикул(а) - " + formatter.format(data.price_leva) + " лв.");	
+					if($('.cart_sum').length > 0) {
+						$('.cart_sum').text(formatter.format(data.price_leva));
+						$('.spinner.order_sum').hide();
+					}	
+					infoLog += 'cart.js/update_cart(): Cart update successfull\n';
+					$('.spinner.cart').hide();
+					if($('.purchase_button').length > 0)
+						$('.purchase_button').prop('disabled', false);
+					if($('#paymentSubmit').length > 0)
+						$('#paymentSubmit').prop('disabled', false);
+					$('.spinner.cart').css('margin-top', '-42px');
+					$('.spinner.cart').css('margin-left', '40px');				
+				} else {
+					infoLog += 'cart.js/update_cart(): Request didn\'t return a valid JSON object\n';
+					infoLog += JSON.stringify(ajv.errors, null, 2);
+					//console.log(ajv.errors[0]);
+				}
+				logger.info(infoLog);
+				infoLog = ""
+			},
+			error: function(msg, status, errorThrown) {
+				infoLog += 'cart.js/update_cart(): Error parsing JSON data\n';
+				infoLog += 'cart.js/update_cart(): ' + errorThrown + '\n';
+				logger.info(infoLog);
+			    infoLog = "";
 			}
-			logger.info(infoLog);
-			infoLog = "";
 		});
-
 	}	
 	
 	function add_to_cart(e) {
@@ -106,12 +155,14 @@ $(document).ready(function() {
 			assert(productId === parseInt(productId, 10), 'cart.js/add_to_cart:\nAssert Error: productId must be integer');	
 			
 			infoLog += 'cart.js/add_to_cart(): Sending request to ' + addToCartUrl + ' with params: productId = ' + productId + '\n';	
+			$(e).parent().find('.spinner.buy').show();
 			$.post(addToCartUrl, {productId: productId}, function(data, status) {
 				if(data) {
 					if(data != 'login') {
 						infoLog += 'cart.js/add_to_cart(): Reqest successfull\n';
 						update_cart();
-						window.alert("Продуктът е добавен успешно в количката.");
+						$(e).parent().find('.spinner.buy').hide();
+						window.alert("Продуктът е добавен успешно в количката.");						
 					} else {
 						infoLog += 'cart.js/add_to_cart(): User trying to add to items to cart while not logged in. Redirecting to ' + redirectUrl + '\n';
 						window.location.href = redirectUrl;

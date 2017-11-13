@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ajv/5.3.0/ajv.min.js"></script>  
 <script src="<?php echo asset_url() . "log4javascript/log4javascript.js"; ?>"></script>  
 <link rel="stylesheet" href="<?php echo asset_url() . "css/main.css"; ?>"> 
 <script src='https://www.google.com/recaptcha/api.js'></script>
@@ -121,7 +122,7 @@
 		  <li><a href="<?php echo site_url("users/registration"); ?>"><span class="glyphicon glyphicon-user"></span> Регистрация</a></li>
 		  <li><a href="<?php echo site_url("users/login"); ?>"><span class="glyphicon glyphicon-log-in"></span> Вход</a></li>
       <?php } else { ?>
-		  <li><a href="<?php echo site_url("users/cart"); ?>"><span class="glyphicon glyphicon-shopping-cart" style="float:right;"> Количка</span></br><span id="cart_count_price"></span></a></li>
+		  <li><a href="<?php echo site_url("users/cart"); ?>"><img class="spinner cart" src="<?php echo asset_url() . 'imgs/spinner.gif'; ?>"><span class="glyphicon glyphicon-shopping-cart" style="float:right;"> Количка</span></br><span id="cart_count_price"></span></a></li>
 		  <li><a href="<?php echo site_url("users/account"); ?>"><span class="glyphicon glyphicon-user"></span> Моят профил</a></li>
 		  <li><a href="<?php echo site_url("users/logout"); ?>"><span class="glyphicon glyphicon-log-in"></span> Изход</a></li>
 	  <?php } ?>
@@ -133,7 +134,6 @@
   <div class="container-fluid" style="width: 1150px;">
     <ul class="nav navbar-nav" id="main_menu">		
 
-	  
       <li class="dropdown" id="components_tab">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="components_dropdown_tab">Компоненти
         <span class="caret"></span></a>
@@ -147,7 +147,8 @@
         <ul class="dropdown-menu" id="peripheral_dropdown">
          
         </ul>
-      </li>     	    
+      </li>     
+      <img class="spinner menu" src="<?php echo asset_url() . 'imgs/spinner.gif'; ?>">    
     </ul>
   </div>
 </nav>
