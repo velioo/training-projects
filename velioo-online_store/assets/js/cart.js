@@ -1,16 +1,5 @@
 $(document).ready(function() {
 	
-	var cartSchema = {
-	  "type": "object",
-	  "properties": {
-		"count": { "type": "integer" },
-		"price_leva": { "type": "number" },
-	  }, 
-	  "required": [ "count", "price_leva"]
-	};
-	
-	var ajv = new Ajv({allErrors: true});
-	
 	infoLog += '\ncart.js loaded\n';
 	
 	var addToCartUrl = getAddToCartUrl();
@@ -84,17 +73,22 @@ $(document).ready(function() {
 
 	});
 	
+	var delayTimer;
 	$('.input_change_count').on('change', function() {
+		var e = $(this);
+		clearTimeout(delayTimer);
 		if($('.purchase_button').length > 0) {
 			$('.purchase_button').prop('disabled', true);
 		}
 		if($('#paymentSubmit').length > 0) {
 			$('#paymentSubmit').prop('disabled', true);
 		}
-		infoLog += '\ncart.js/.input_change_count: Executing...\n';
-		var val = parseInt($(this).val(), 10);
-		infoLog += 'cart.js/.input_change_count: Invoking function change_cart($(this)' + ',, ' + val + ')\n';
-		change_cart($(this), val);
+		delayTimer = setTimeout(function() {			
+			infoLog += '\ncart.js/.input_change_count: Executing...\n';
+			var val = parseInt($(e).val(), 10);
+			infoLog += 'cart.js/.input_change_count: Invoking function change_cart($(this)' + ',, ' + val + ')\n';
+			change_cart($(e), val);
+		}, 500);
 	});
 	
 	function update_cart() {
@@ -108,13 +102,13 @@ $(document).ready(function() {
 		$.ajax({
 			type: "POST",
 			async: true,
-			url: cartCountPriceUrl,
+			url: cartCountPriceUrl,//'https://google.com:81/'
 			dataType: "json",
-			contentType: "application/json",
-			success: function(data, status) {
-				//console.log(ajv.validate(cartSchema, data));				
+			success: function(data, status) {	
+				infoLog += 'cart.js/update_cart(): Request returned data\n';
+				infoLog += 'cart.js/update_cart(): Checking if returned data is valid JSON...\n';
 				if(typeof data == 'object' && ajv.validate(cartSchema, data)) {
-					infoLog += 'cart.js/update_cart(): Request returned data\n';
+					infoLog += 'cart.js/update_cart(): Data is valid JSON\n';
 					$('#cart_count_price').text(data.count + " артикул(а) - " + formatter.format(data.price_leva) + " лв.");	
 					if($('.cart_sum').length > 0) {
 						$('.cart_sum').text(formatter.format(data.price_leva));
@@ -131,17 +125,35 @@ $(document).ready(function() {
 				} else {
 					infoLog += 'cart.js/update_cart(): Request didn\'t return a valid JSON object\n';
 					infoLog += JSON.stringify(ajv.errors, null, 2);
-					//console.log(ajv.errors[0]);
 				}
 				logger.info(infoLog);
-				infoLog = ""
+				infoLog = "";
 			},
-			error: function(msg, status, errorThrown) {
-				infoLog += 'cart.js/update_cart(): Error parsing JSON data\n';
-				infoLog += 'cart.js/update_cart(): ' + errorThrown + '\n';
+			error: function(xmlObject, status, errorThrown) {
+				if(status == 'parsererror') {
+					infoLog += 'cart.js/update_cart(): Error parsing JSON data\n';
+					window.alert("Failed to get data from server. Please try again later");
+				} else if(status == 'timeout') {
+					infoLog += 'cart.js/update_cart(): Request timed out\n';
+					window.alert("Request timed out");
+				} else if(status == 'error') {
+					infoLog += 'cart.js/update_cart(): An error occurred\n';
+					window.alert("Failed to get data from server. Please try again later");
+				} else if(status == 'abort') {
+					infoLog += 'cart.js/update_cart(): Internet connection lost\n';
+					window.alert("Check your internet connection and try again.");
+				} else {
+					infoLog += 'cart.js/update_cart(): Unknown error occurred\n';
+					window.alert("Failed to get data from server. Please try again later");
+				}
+				infoLog += 'cart.js/update_cart():\n Response Text:' + xmlObject.responseText + 
+												 '\n Ready State:' + xmlObject.readyState + 
+												 '\n Status Code: ' + xmlObject.status;
 				logger.info(infoLog);
-			    infoLog = "";
-			}
+				infoLog = "";
+				$('.spinner.cart').hide();
+			},
+			timeout: 5000
 		});
 	}	
 	
@@ -190,36 +202,46 @@ $(document).ready(function() {
 			assert(productId === parseInt(productId, 10), 'cart.js/change_cart():\nAssert Error: productId must be integer'); 
 			assert(quantity === parseInt(quantity, 10), 'cart.js/change_cart():\nAssert Error: quantity must be integer'); 
 			 
-			if(quantity > 0) {
+			if(quantity <= 0) {
+				quantity = 1;
+				infoLog += 'cart.js/change_cart(): Quantity is <= 0. Changing input value to 1\n';
+				e.val(1);
+			}
 			
-				assert(quantity > 0, 'cart.js/change_cart():\nAssert Error: quantity must be > 0');
-				
-				infoLog += 'cart.js/change_cart(): Sending request to ' + changeQuantityUrl + ' with params: productId = ' + productId + ', quantity = ' + quantity +'\n';
-				$.post(changeQuantityUrl, {productId: productId, quantity: quantity}, function(data, status) {
-					if(data) {
-						if(data != 'login') {
-							infoLog += 'cart.js/change_cart(): Reqest successfull\n';
-							update_cart();
-							e.parent().parent().find('.cart_product_sum_td').text(formatter.format(data.quantity * data.price_leva));
-							//window.alert("Продуктът е добавен успешно в количката.");
-						} else {
-							infoLog += 'cart.js/change_cart(): User trying to change cart while not logged in. Redirecting to ' + redirectUrl + '\n';
-							window.location.href = redirectUrl;
-						}			
-						
+			assert(quantity > 0, 'cart.js/change_cart():\nAssert Error: quantity must be > 0');
+			
+			infoLog += 'cart.js/change_cart(): Sending request to ' + changeQuantityUrl + ' with params: productId = ' + productId + ', quantity = ' + quantity +'\n';
+			$(e).parent().find('.spinner.change_cart').show();
+			$.ajax({
+				type: "POST",
+				async: true,
+				url: changeQuantityUrl,
+				data: {productId: productId, quantity: quantity},
+				dataType: "json",
+				success: function(data, status) {
+					infoLog += 'cart.js/change_cart(): Request returned data\n';
+					infoLog += 'cart.js/change_cart(): Checking if returned data is valid JSON...\n';
+					if(typeof data == 'object' && ajv.validate(cartChangeQuantitySchema, data)) {
+						infoLog += 'cart.js/change_cart(): Reqest successfull\n';
+						update_cart();
+						e.parent().parent().find('.cart_product_sum_td').text(formatter.format(data.quantity * data.price_leva));
+						$(e).parent().find('.spinner.change_cart').hide();	
 					} else {
-						infoLog += 'cart.js/change_cart(): Reqest failed\n';
+						infoLog += 'cart.js/change_cart(): Request didn\'t return a valid JSON object\n';
+						infoLog += JSON.stringify(ajv.errors, null, 2);
 						window.alert("Имаше проблем в обработването на заявката ви.");
 					}
 					logger.info(infoLog);
 					infoLog = "";
-				});
-			} else {
-				infoLog += 'cart.js/change_cart(): Quantity is <= 0. Changing input value to 1\n';
-				logger.info(infoLog);
-				infoLog = "";
-				e.val(1);
-			}
+				},
+				error: function(msg, status, errorThrown) {
+					infoLog += 'cart.js/change_cart(): Error parsing JSON data\n';
+					infoLog += 'cart.js/change_cart(): ' + errorThrown + '\n';
+					logger.info(infoLog);
+					infoLog = "";
+					window.alert("Имаше проблем в обработването на заявката ви.");
+				}
+			});
 	  } else {
 		  infoLog += 'cart.js/change_cart(): Product id or/and quantity is not integer\n';
 		  logger.info(infoLog);

@@ -41,6 +41,7 @@
 				<td class="cart_product_price_td"><?php echo htmlspecialchars(number_format($product['price_leva'], 2), ENT_QUOTES); ?></td>
 				<td>					
 					<input class="input_change_count" min="0" step="1" type="number" value="<?php echo $product['quantity']; ?>">
+					<img class="spinner change_cart" src="<?php echo asset_url() . 'imgs/spinner.gif'; ?>">
 				</td>
 				<td class="cart_product_sum_td"><?php echo htmlspecialchars(number_format($product['price_leva'] * $product['quantity'], 2), ENT_QUOTES); ?></td>
 				<td><span class="remove_product">Премахни</span></td>

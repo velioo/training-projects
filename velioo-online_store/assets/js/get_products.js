@@ -24,6 +24,7 @@ $(document).ready(function() {
 		container: $(".pager"),
 		ajaxUrl: productsUrl + '?page={page}&size={size}&{sortList:col}&{filterList:fcol}',
 		customAjaxUrl: function(table, url) {
+			$('.spinner.dashboard').show();
 			return url += '&date_c_from=' + $('#date_c_from').val() + 
 						  '&date_c_to=' + $('#date_c_to').val() + 
 						  '&date_m_from=' + $('#date_m_from').val() + 
@@ -41,6 +42,7 @@ $(document).ready(function() {
 			total   = data.total_rows;
 			//headers = data.headers;
 			rows    = data.rows;
+			$('.spinner.dashboard').hide();
 			return [ total, rows];
 		},
 		processAjaxOnInit: true,

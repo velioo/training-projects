@@ -6,12 +6,14 @@
 <!--
   <meta name="viewport" content="width=device-width, initial-scale=1">
 -->
-  <link rel="icon" href="http://downloadicons.net/sites/default/files/computer-icon-65917.png">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="<?php echo asset_url() . "css/main.css"; ?>">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-  <script src="<?php echo asset_url() . "log4javascript/log4javascript.js"; ?>"></script>  
+<link rel="icon" href="http://downloadicons.net/sites/default/files/computer-icon-65917.png">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="<?php echo asset_url() . "css/main.css"; ?>">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<script src="<?php echo asset_url() . "log4javascript/log4javascript.js"; ?>"></script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ajv/5.3.0/ajv.min.js"></script>  
+<script src="<?php echo asset_url() . "js/schemas.js"; ?>"></script>  
   <script src="<?php echo asset_url() . "js/remove_notification.js"; ?>"></script>  
 </head>
 <body>
@@ -25,6 +27,7 @@
 		return logger;
 	}
 	var infoLog = "";
+	var ajv = new Ajv({allErrors: true});
 </script>
 
 <script>

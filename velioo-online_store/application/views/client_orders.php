@@ -35,6 +35,7 @@
 	  <a href="<?php echo site_url("employees/orders"); ?>" class="active">Поръчки</a>
 	  <a href="<?php echo site_url("employees/dashboard"); ?>" >Продукти</a>
 	  <a href="<?php echo site_url("employees/tags"); ?>">Тагове</a>
+	  <img class="spinner client_orders" src="<?php echo asset_url() . 'imgs/spinner.gif'; ?>">
 	  <div id="message"></div>
 </div>
 

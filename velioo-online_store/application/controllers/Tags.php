@@ -27,7 +27,7 @@ class Tags extends CI_Controller {
 		
 			log_message('user_info', 'Executing tags search query');
 			$tags = $this->tag_model->getRows(array('select' => array('name'), 
-													'like' => array('name' => $input)));
+													'like' => array('name' => $input)));												
 			if($tags) {				
 				log_message('user_info', 'Tags found. Returning them to browser.');					
 				echo json_encode($tags);

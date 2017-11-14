@@ -12,6 +12,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ajv/5.3.0/ajv.min.js"></script>  
 <script src="<?php echo asset_url() . "log4javascript/log4javascript.js"; ?>"></script>  
+<script src="<?php echo asset_url() . "js/schemas.js"; ?>"></script>  
 <link rel="stylesheet" href="<?php echo asset_url() . "css/main.css"; ?>"> 
 <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
@@ -26,17 +27,23 @@
 		return logger;
 	}
 	var infoLog = "";
+	var ajv = new Ajv({allErrors: true});
 </script>
 
 <script>
 	window.onerror = function (msg, url, lineNo, columnNo, error) {
-		//console.log(error.stack);
 		logger.info(infoLog);
 		infoLog = "";
-		if(error.stack != "") {
-			logger.error(error.name + ": ", error.message + "\n" + error.stack);
+		if(error !== null) {
+			if(error.stack != "") {
+				logger.error(error.name + ": ", error.message + "\n" + error.stack);
+			} else {
+				logger.error(error.name + ": ", error.message + "\n" + url + ":" + lineNo + ":" + columnNo + "\n");
+			}
+		} else if(ajv.errors) {
+			logger.error("Request didn\'t return a valid JSON object\n" + JSON.stringify(ajv.errors, null, 2));
 		} else {
-			logger.error(error.name + ": ", error.message + "\n" + url + ":" + lineNo + ":" + columnNo + "\n");
+			logger.error(msg + ": " + url + ": " + lineNo + ": " + columnNo + "\n");
 		}
 		return true;
 	};
@@ -148,7 +155,7 @@
          
         </ul>
       </li>     
-      <img class="spinner menu" src="<?php echo asset_url() . 'imgs/spinner.gif'; ?>">    
+      <img class="spinner menu" src="<?php echo asset_url() . 'imgs/spinner.gif'; ?>">
     </ul>
   </div>
 </nav>

@@ -891,8 +891,13 @@ class Users extends CI_Controller {
 					$update = $this->user_model->update(array('set' => array('confirmed' => '1'),
 														  'conditions' => array('id' => $exists['user_id'])));														  													  
 				} elseif($exists['type'] == 're_email') {
+					log_message('user_info', 'Getting users\' new email...');
+					$unconfirmed_email = $this->user_model->getRows(array('select' => array('unconfirmed_email'),
+																		  'conditions' => array('id' => $exists['user_id']),
+																		  'returnType' => 'single'))['unconfirmed_email'];
+					log_message('user_info', 'New email: ' . $unconfirmed_email);
 					log_message('user_info', 'Changing users\' email field with the unconfirmed_field');
-					$update = $this->user_model->update(array('set' => array('email' => "(SELECT unconfirmed_email FROM users WHERE id = {$exists['user_id']})"),
+					$update = $this->user_model->update(array('set' => array('email' => $unconfirmed_email),
 														  'conditions' => array('id' => $exists['user_id'])));														
 				} else {
 					log_message('user_info', 'Temp code type is unknown, redirecting to ' . site_url('users/login'));
@@ -904,7 +909,11 @@ class Users extends CI_Controller {
 					log_message('user_info', 'Deleting user email record in temp_codes...');
 					$delete = $this->user_model->delete(array('conditions' => array('hash' => $hash)), 'temp_codes');	
 					if($delete) {
-						$this->session->set_userdata('long_msg', 'Ти успешно потвърди акаунта си. Можеш да се логнеш.');  
+						if($exists['type'] == 'email') {
+							$this->session->set_userdata('long_msg', 'Ти успешно потвърди акаунта си. Можеш да се логнеш.');
+						} else {
+							$this->session->set_userdata('long_msg', 'Ти успешно потвърди промени имейла си.');
+						}
 					} else {
 						log_message('user_info', 'Failed to delete records in temp_codes');
 						$this->session->set_userdata('long_msg', 'Възникна проблем, моля опитайте по-късно.');

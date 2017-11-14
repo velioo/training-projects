@@ -589,10 +589,20 @@ class Products extends CI_Controller {
 		
 		header('Content-Type:application/json');
 		log_message('user_info', 'Getting menu items...');
-		$items = $this->product_model->getRows(array('table' => 'categories'));
-		log_message('user_info', 'Returning items to browser');
-		echo json_encode($items);
+		$items = $this->product_model->getRows(array('table' => 'categories', 
+													 'select' => array('id', 'name', 'type as c_type')));
 		
+		for ($i = 0; $i < count($items); $i++) {
+			assert_v(ctype_digit($items[$i]['id']));
+			$items[$i]['id'] = intval($items[$i]['id']);
+			assert_v(ctype_digit($items[$i]['c_type']));
+			$items[$i]['c_type'] = intval($items[$i]['c_type']);
+		}
+													 		
+		header('Content-Type:application/json');											 
+		log_message('user_info', 'Returning items to browser...');
+		echo json_encode($items);
+		log_message('user_info', 'Items returned');
 	}
 		
     public function price_check($val) {

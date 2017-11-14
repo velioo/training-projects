@@ -226,7 +226,7 @@ class Employees extends CI_Controller {
 			$getRows['start'] = $start;
 		} else {
 			$getRows['start'] = 0;
-			log_message('user_info', 'No page number specified, using default offset: ' . $start);
+			log_message('user_info', 'No page number specified, using default offset: ' . $getRows['start']);
 		}
 		
 		assert_v(is_numeric($getRows['start']));

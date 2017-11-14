@@ -100,6 +100,16 @@ class Cart extends CI_Controller {
 																		'conditions' => array('user_id' => $product['user_id'],
 																							 'product_id' => $product['product_id']),
 																		'returnType' => 'single'));
+							
+							assert_v(array_key_exists('quantity', $product));
+							log_message('user_info', 'Quantity is: ' . $product['quantity']);
+							assert_v(ctype_digit($product['quantity']));
+							$product['quantity'] = intval($product['quantity']);
+							
+							assert_v(array_key_exists('price_leva', $product));
+							log_message('user_info', 'Price_leva is: ' . $product['price_leva']);
+							assert_v(is_numeric($product['price_leva']));
+							$product['price_leva'] = floatval($product['price_leva']);
 																		
 							header('Content-Type:application/json');
 							log_message('user_info',  'Returning new values for product');
@@ -122,7 +132,7 @@ class Cart extends CI_Controller {
 			}				
 		} else {
 			log_message('user_info', 'User is not logged '. 'Returning "login"');
-			echo 'login';
+			redirect('welcome');
 		}
 	}
 	
@@ -146,7 +156,7 @@ class Cart extends CI_Controller {
 					echo true;
 				} else {
 					log_message('user_info', 'Delete failed');
-					 echo false;	
+					echo false;	
 				}
 			} else {
 				log_message('user_info', 'productId is NULL or not numeric: productId = ' . $this->input->post('productId'));
@@ -172,17 +182,19 @@ class Cart extends CI_Controller {
 													   'returnType' => 'single'));
 													   
 			assert_v(array_key_exists('count', $result));
-			log_message('user_info', 'Count is: ' . $result['count']);										   					
-			assert_v(is_int($result['count'] = intval($result['count'])));
+			log_message('user_info', 'Count is: ' . $result['count']);
+			assert_v(ctype_digit($result['count']));
+			$result['count'] = intval($result['count']);
 			
 			assert_v(array_key_exists('price_leva', $result));
-			log_message('user_info', 'Price_leva is: ' . $result['price_leva']);				
-			assert_v(is_float($result['price_leva'] = floatval($result['price_leva'])));
+			log_message('user_info', 'Price_leva is: ' . $result['price_leva']);
+			assert_v(is_numeric($result['price_leva']));
+			$result['price_leva'] = floatval($result['price_leva']);
 			
 			header('Content-Type:application/json');	
 			log_message('user_info', 'Returning user cart data');									   
 			echo json_encode($result);
-			//echo "[{\"smaller\": 5,\"larger\": 7}]";
+			//echo "{\"count\": ,\"price_leva\": 7}";
 		} else {
 			log_message('user_info', 'User is not logged');
 			echo false;

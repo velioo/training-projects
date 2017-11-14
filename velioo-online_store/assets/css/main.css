@@ -543,6 +543,19 @@ tr:nth-child(even)  {
 	position: relative;
 }
 
+.spinner.change_cart {
+	margin-top: -35px;
+	margin-left: -25px;
+}
+
+.spinner.dashboard {
+	margin-top: 0px;
+}
+
+.spinner.client_orders {
+	margin-top: -10px;
+}
+
 @media screen and (max-width: 1150px) {
 	#footer {
 		width: 1150px;
