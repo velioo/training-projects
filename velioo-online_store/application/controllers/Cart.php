@@ -194,10 +194,9 @@ class Cart extends CI_Controller {
 			header('Content-Type:application/json');	
 			log_message('user_info', 'Returning user cart data');									   
 			echo json_encode($result);
-			//echo "{\"count\": ,\"price_leva\": 7}";
 		} else {
 			log_message('user_info', 'User is not logged');
-			echo false;
+			echo "{\"count\": 0,\"price_leva\": 0, \"not_logged\": 1}";
 		}
 	}
 	

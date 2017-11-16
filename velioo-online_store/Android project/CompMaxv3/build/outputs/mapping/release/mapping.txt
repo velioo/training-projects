@@ -1,0 +1,10 @@
+compmax.app.MainActivity -> compmax.app.MainActivity:
+    android.webkit.WebView myWebView -> a
+    java.lang.String webURL -> b
+    void onCreate(android.os.Bundle) -> onCreate
+    void onBackPressed() -> onBackPressed
+    void onSaveInstanceState(android.os.Bundle) -> onSaveInstanceState
+    void onRestoreInstanceState(android.os.Bundle) -> onRestoreInstanceState
+compmax.app.MainActivity$1 -> compmax.app.a:
+    compmax.app.MainActivity this$0 -> a
+    void onReceivedSslError(android.webkit.WebView,android.webkit.SslErrorHandler,android.net.http.SslError) -> onReceivedSslError

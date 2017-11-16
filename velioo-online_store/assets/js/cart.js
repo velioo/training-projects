@@ -74,6 +74,7 @@ $(document).ready(function() {
 	});
 	
 	var delayTimer;
+	var requests = 0;
 	$('.input_change_count').on('change', function() {
 		var e = $(this);
 		clearTimeout(delayTimer);
@@ -83,7 +84,9 @@ $(document).ready(function() {
 		if($('#paymentSubmit').length > 0) {
 			$('#paymentSubmit').prop('disabled', true);
 		}
-		delayTimer = setTimeout(function() {			
+		delayTimer = setTimeout(function() {	
+			requests++;		
+			console.log("In: " + requests);
 			infoLog += '\ncart.js/.input_change_count: Executing...\n';
 			var val = parseInt($(e).val(), 10);
 			infoLog += 'cart.js/.input_change_count: Invoking function change_cart($(this)' + ',, ' + val + ')\n';
@@ -107,7 +110,7 @@ $(document).ready(function() {
 			success: function(data, status) {	
 				infoLog += 'cart.js/update_cart(): Request returned data\n';
 				infoLog += 'cart.js/update_cart(): Checking if returned data is valid JSON...\n';
-				if(typeof data == 'object' && ajv.validate(cartSchema, data)) {
+				if(typeof data == 'object' && ajv.validate(cartSchema, data) && !data.hasOwnProperty('not_logged')) {
 					infoLog += 'cart.js/update_cart(): Data is valid JSON\n';
 					$('#cart_count_price').text(data.count + " артикул(а) - " + formatter.format(data.price_leva) + " лв.");	
 					if($('.cart_sum').length > 0) {
@@ -116,44 +119,64 @@ $(document).ready(function() {
 					}	
 					infoLog += 'cart.js/update_cart(): Cart update successfull\n';
 					$('.spinner.cart').hide();
-					if($('.purchase_button').length > 0)
-						$('.purchase_button').prop('disabled', false);
-					if($('#paymentSubmit').length > 0)
-						$('#paymentSubmit').prop('disabled', false);
+					console.log("Out: " + requests);
+					if(requests <= 1) {
+						if($('.purchase_button').length > 0) {
+							$('.purchase_button').prop('disabled', false);
+						}
+						if($('#paymentSubmit').length > 0) {
+							$('#paymentSubmit').prop('disabled', false);
+						}
+					}
+					if(requests > 0) {
+						requests--;
+					}
 					$('.spinner.cart').css('margin-top', '-42px');
 					$('.spinner.cart').css('margin-left', '40px');				
 				} else {
-					infoLog += 'cart.js/update_cart(): Request didn\'t return a valid JSON object\n';
-					infoLog += JSON.stringify(ajv.errors, null, 2);
+					if(data.hasOwnProperty('not_logged')) {
+						infoLog += 'cart.js/update_cart(): User is not logged. No cart data returned\n';
+					} else {
+						infoLog += 'cart.js/update_cart(): Request didn\'t return a valid JSON object\n';
+						infoLog += JSON.stringify(ajv.errors, null, 2);
+					}
 				}
 				logger.info(infoLog);
 				infoLog = "";
 			},
-			error: function(xmlObject, status, errorThrown) {
-				if(status == 'parsererror') {
-					infoLog += 'cart.js/update_cart(): Error parsing JSON data\n';
-					window.alert("Failed to get data from server. Please try again later");
-				} else if(status == 'timeout') {
-					infoLog += 'cart.js/update_cart(): Request timed out\n';
+			error: function(xhr, status, errorThrown) {
+				if(status == 'timeout') {
+					infoLog += 'main_menu.js: Request timed out\n';
 					window.alert("Request timed out");
-				} else if(status == 'error') {
-					infoLog += 'cart.js/update_cart(): An error occurred\n';
-					window.alert("Failed to get data from server. Please try again later");
-				} else if(status == 'abort') {
-					infoLog += 'cart.js/update_cart(): Internet connection lost\n';
-					window.alert("Check your internet connection and try again.");
 				} else {
-					infoLog += 'cart.js/update_cart(): Unknown error occurred\n';
+					if(xhr.readyState == 0) {
+						infoLog += 'main_menu.js: Internet connection is off or server is not responding\n';
+						window.alert("Internet connection is off or server is not responding");
+					} else if(xhr.readyState == 1) {						
+					} else if (xhr.readyState == 2) {						
+					} else if (xhr.readyState == 3) {					
+					} else {
+						if(xhr.status == 200) {
+							infoLog += 'main_menu.js: Error parsing JSON data\n';					
+						} else if(xhr.status == 404) {
+							infoLog += 'main_menu.js: The resource at the requested location could not be found\n';
+						} else if (xhr.status == 403) {
+							infoLog += 'main_menu.js: You don\'t have permission to access this data\n';
+						} else if(xhr.status == 500) {
+							infoLog += 'main_menu.js: Internal sever error\n';
+						}			
+					}
 					window.alert("Failed to get data from server. Please try again later");
 				}
-				infoLog += 'cart.js/update_cart():\n Response Text:' + xmlObject.responseText + 
-												 '\n Ready State:' + xmlObject.readyState + 
-												 '\n Status Code: ' + xmlObject.status;
+				
+				infoLog += 'main_menu.js:\n Response Text:' + xhr.responseText + 
+												 '\n Ready State:' + xhr.readyState + 
+												 '\n Status Code: ' + xhr.status;
 				logger.info(infoLog);
 				infoLog = "";
 				$('.spinner.cart').hide();
 			},
-			timeout: 5000
+			timeout: 10000
 		});
 	}	
 	

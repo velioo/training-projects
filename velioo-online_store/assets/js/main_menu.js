@@ -57,31 +57,39 @@ $(document).ready(function() {
 			logger.info(infoLog);
 			infoLog = "";
 		},
-		error: function(xmlObject, status, errorThrown) {
-			if(status == 'parsererror') {
-				infoLog += 'main_menu.js: Error parsing JSON data\n';
-				window.alert("Failed to get data from server. Please try again later");
-			} else if(status == 'timeout') {
+		error: function(xhr, status, errorThrown) {				
+			if(status == 'timeout') {
 				infoLog += 'main_menu.js: Request timed out\n';
 				window.alert("Request timed out");
-			} else if(status == 'error') {
-				infoLog += 'main_menu.js: An error occurred\n';
-				window.alert("Failed to get data from server. Please try again later");
-			} else if(status == 'abort') {
-				infoLog += 'main_menu.js: Internet connection lost\n';
-				window.alert("Check your internet connection and try again.");
 			} else {
-				infoLog += 'main_menu.js: Unknown error occurred\n';
+				if(xhr.readyState == 0) {
+					infoLog += 'main_menu.js: Internet connection is off or server is not responding\n';
+					window.alert("Internet connection is off or server is not responding");
+				} else if(xhr.readyState == 1) {					
+				} else if (xhr.readyState == 2) {					
+				} else if (xhr.readyState == 3) {					
+				} else {
+					if(xhr.status == 200) {
+						infoLog += 'main_menu.js: Error parsing JSON data\n';					
+					} else if(xhr.status == 404) {
+						infoLog += 'main_menu.js: The resource at the requested location could not be found\n';
+					} else if (xhr.status == 403) {
+						infoLog += 'main_menu.js: You don\'t have permission to access this data\n';
+					} else if(xhr.status == 500) {
+						infoLog += 'main_menu.js: Internal sever error\n';
+					}			
+				}
 				window.alert("Failed to get data from server. Please try again later");
 			}
-			infoLog += 'main_menu.js:\n Response Text:' + xmlObject.responseText + 
-											 '\n Ready State:' + xmlObject.readyState + 
-											 '\n Status Code: ' + xmlObject.status;
+			
+			infoLog += 'main_menu.js:\n Response Text:' + xhr.responseText + 
+											 '\n Ready State:' + xhr.readyState + 
+											 '\n Status Code: ' + xhr.status;
 			logger.info(infoLog);
 			infoLog = "";
 			$('.spinner.menu').hide();
 		}, 
-		timeout: 5000
+		timeout: 10000
 	});
 	
 	//~ $.get(menuItemUrl, function(data, status) {

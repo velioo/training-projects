@@ -1,0 +1,6 @@
+compmax.app.MainActivity
+compmax.app.MainActivity: MainActivity()
+compmax.app.R$drawable: int ic_launcher
+compmax.app.R$id: int webview
+compmax.app.R$layout: int activity_main
+compmax.app.R$string: int app_name
