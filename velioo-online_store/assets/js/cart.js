@@ -146,30 +146,30 @@ $(document).ready(function() {
 			},
 			error: function(xhr, status, errorThrown) {
 				if(status == 'timeout') {
-					infoLog += 'main_menu.js: Request timed out\n';
+					infoLog += 'cart.js/update_cart(): Request timed out\n';
 					window.alert("Request timed out");
 				} else {
 					if(xhr.readyState == 0) {
-						infoLog += 'main_menu.js: Internet connection is off or server is not responding\n';
+						infoLog += 'cart.js/update_cart(): Internet connection is off or server is not responding\n';
 						window.alert("Internet connection is off or server is not responding");
 					} else if(xhr.readyState == 1) {						
 					} else if (xhr.readyState == 2) {						
 					} else if (xhr.readyState == 3) {					
 					} else {
 						if(xhr.status == 200) {
-							infoLog += 'main_menu.js: Error parsing JSON data\n';					
+							infoLog += 'cart.js/update_cart(): Error parsing JSON data\n';					
 						} else if(xhr.status == 404) {
-							infoLog += 'main_menu.js: The resource at the requested location could not be found\n';
+							infoLog += 'cart.js/update_cart(): The resource at the requested location could not be found\n';
 						} else if (xhr.status == 403) {
-							infoLog += 'main_menu.js: You don\'t have permission to access this data\n';
+							infoLog += 'cart.js/update_cart(): You don\'t have permission to access this data\n';
 						} else if(xhr.status == 500) {
-							infoLog += 'main_menu.js: Internal sever error\n';
+							infoLog += 'cart.js/update_cart(): Internal sever error\n';
 						}			
 					}
 					window.alert("Failed to get data from server. Please try again later");
 				}
 				
-				infoLog += 'main_menu.js:\n Response Text:' + xhr.responseText + 
+				infoLog += 'cart.js/update_cart():\n Response Text:' + xhr.responseText + 
 												 '\n Ready State:' + xhr.readyState + 
 												 '\n Status Code: ' + xhr.status;
 				logger.info(infoLog);
