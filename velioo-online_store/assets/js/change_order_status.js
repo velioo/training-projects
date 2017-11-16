@@ -25,25 +25,33 @@ $(document).ready(function() {
 				infoLog = "";
 			}).
 			fail(function(xmlObject, status, errorThrown) {
-				if(status == 'parsererror') {
-					infoLog += 'main_menu.js: Error parsing JSON data\n' + errorThrown;
-					window.alert("Failed to get data from server. Please try again later");
-				} else if(status == 'timeout') {
-					infoLog += 'main_menu.js: Request timed out\n';
+				if(status == 'timeout') {
+					infoLog += 'change_order_status.js/#orders_table: Request timed out\n';
 					window.alert("Request timed out");
-				} else if(status == 'error') {
-					infoLog += 'main_menu.js: An error occurred\n';
-					window.alert("Failed to get data from server. Please try again later");
-				} else if(status == 'abort') {
-					infoLog += 'main_menu.js: Internet connection lost\n';
-					window.alert("Check your internet connection and try again.");
 				} else {
-					infoLog += 'main_menu.js: Unknown error occurred\n';
+					if(xhr.readyState == 0) {
+						infoLog += 'change_order_status.js/#orders_table: Internet connection is off or server is not responding\n';
+						window.alert("Internet connection is off or server is not responding");
+					} else if(xhr.readyState == 1) {						
+					} else if (xhr.readyState == 2) {						
+					} else if (xhr.readyState == 3) {					
+					} else {
+						if(xhr.status == 200) {
+							infoLog += 'change_order_status.js/#orders_table: Error parsing JSON data\n';					
+						} else if(xhr.status == 404) {
+							infoLog += 'change_order_status.js/#orders_table: The resource at the requested location could not be found\n';
+						} else if (xhr.status == 403) {
+							infoLog += 'change_order_status.js/#orders_table: You don\'t have permission to access this data\n';
+						} else if(xhr.status == 500) {
+							infoLog += 'change_order_status.js/#orders_table: Internal sever error\n';
+						}			
+					}
 					window.alert("Failed to get data from server. Please try again later");
 				}
-				infoLog += 'main_menu.js:\n Response Text:' + xmlObject.responseText + 
-												 '\n Ready State:' + xmlObject.readyState + 
-												 '\n Status Code: ' + xmlObject.status;
+				
+				infoLog += 'change_order_status.js/#orders_table:\n Response Text:' + xhr.responseText + 
+												 '\n Ready State:' + xhr.readyState + 
+												 '\n Status Code: ' + xhr.status;
 				logger.info(infoLog);
 				infoLog = "";
 				$('.spinner.menu').hide();
