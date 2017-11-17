@@ -49,13 +49,14 @@ $(document).ready(function() {
 				});
 				logger.info(infoLog);
 				infoLog = "";
-				$('.spinner.menu').hide();
 			} else {
 				infoLog += 'main_menu.js: Request didn\'t return a valid JSON object\n';
 				infoLog += JSON.stringify(ajv.errors, null, 2);
+				window.alert("Failed to get data from server. Please try again later");
 			}
 			logger.info(infoLog);
 			infoLog = "";
+			$('.spinner.menu').hide();
 		},
 		error: function(xhr, status, errorThrown) {				
 			if(status == 'timeout') {

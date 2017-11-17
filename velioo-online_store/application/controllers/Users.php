@@ -392,51 +392,6 @@ class Users extends CI_Controller {
 
 	}
 	
-	//~ public function update_name_email() {
-		
-		//~ log_message('user_info', "\n\n" . site_url('users/update_name_email') . ' loaded.');
-		
-		//~ $data = array();
-		
-		//~ if($this->input->post('nameEmailSubmit')) {
-
-			//~ log_message('user_info', 'Setting form validation rules...');
-            //~ $this->form_validation->set_rules('name', 'Name', 'required|max_length[64]');
-            //~ $this->form_validation->set_rules('last_name', 'Last Name', 'max_length[128]');
-            //~ $this->form_validation->set_rules('email', 'Email', 'required|valid_email|max_length[64]|callback_email_check_without_current');
-            
-            //~ if($this->form_validation->run() === TRUE) {
-				
-				//~ log_message('user_info', 'Form validation successfull');
-				//~ assert_v(is_numeric($this->session->userdata('userId')));
-				
-				//~ $params = array(
-					//~ 'set' => array('name' => $this->input->post('name'), 'last_name' => $this->input->post('last_name'), 'email' => $this->input->post('email')), 
-					//~ 'conditions' => array('id' => $this->session->userdata('userId'))
-				//~ );
-					
-                //~ $update = $this->user_model->update($params); 
-                          
-                //~ if($update) {		
-					//~ log_message('user_info', 'Update successfull');
-                    //~ $this->session->set_userdata('success_msg', 'Успешна промяна на данни.');                 
-                //~ } else {
-					//~ log_message('user_info', 'Update failed');
-					//~ $this->session->set_userdata('error_msg', 'Възникна проблем, моля опитайте по-късно.');
-                //~ }         
-                
-                //~ log_message('user_info', 'Redirecting to ' . site_url('/users/account/'));
-                //~ redirect('/users/account/');
-                    
-            //~ } 
-		//~ } else {
-			//~ log_message('user_info', 'nameEmailSubmit is NULL. No form submitted');
-		//~ }
-		
-		//~ log_message('user_info', 'Invoking account() function');
-		//~ $this->account();
-	//~ }
-	
 	public function update_name_email() {
 		
 		log_message('user_info', "\n\n" . site_url('users/update_name_email') . ' loaded.');
@@ -892,9 +847,10 @@ class Users extends CI_Controller {
 														  'conditions' => array('id' => $exists['user_id'])));														  													  
 				} elseif($exists['type'] == 're_email') {
 					log_message('user_info', 'Getting users\' new email...');
-					$unconfirmed_email = $this->user_model->getRows(array('select' => array('unconfirmed_email'),
+					$userData = $this->user_model->getRows(array('select' => array('unconfirmed_email', 'id'),
 																		  'conditions' => array('id' => $exists['user_id']),
-																		  'returnType' => 'single'))['unconfirmed_email'];
+																		  'returnType' => 'single'));
+					$unconfirmed_email = $userData['unconfirmed_email'];
 					log_message('user_info', 'New email: ' . $unconfirmed_email);
 					log_message('user_info', 'Changing users\' email field with the unconfirmed_field');
 					$update = $this->user_model->update(array('set' => array('email' => $unconfirmed_email),
@@ -907,7 +863,11 @@ class Users extends CI_Controller {
 				if($update) {
 					log_message('user_info', 'Account confirmed successfully');
 					log_message('user_info', 'Deleting user email record in temp_codes...');
-					$delete = $this->user_model->delete(array('conditions' => array('hash' => $hash)), 'temp_codes');	
+					if($exists['type'] == 're_email') {
+						$delete = $this->user_model->delete(array('conditions' => array('user_id' => $userData['id'], 'type' => 're_email')), 'temp_codes');
+					} else {
+						$delete = $this->user_model->delete(array('conditions' => array('hash' => $hash)), 'temp_codes');
+					}				
 					if($delete) {
 						if($exists['type'] == 'email') {
 							$this->session->set_userdata('long_msg', 'Ти успешно потвърди акаунта си. Можеш да се логнеш.');

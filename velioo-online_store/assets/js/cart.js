@@ -105,7 +105,7 @@ $(document).ready(function() {
 		$.ajax({
 			type: "POST",
 			async: true,
-			url: cartCountPriceUrl,//'https://google.com:81/'
+			url: cartCountPriceUrl,
 			dataType: "json",
 			success: function(data, status) {	
 				infoLog += 'cart.js/update_cart(): Request returned data\n';
@@ -118,7 +118,6 @@ $(document).ready(function() {
 						$('.spinner.order_sum').hide();
 					}	
 					infoLog += 'cart.js/update_cart(): Cart update successfull\n';
-					$('.spinner.cart').hide();
 					console.log("Out: " + requests);
 					if(requests <= 1) {
 						if($('.purchase_button').length > 0) {
@@ -139,10 +138,12 @@ $(document).ready(function() {
 					} else {
 						infoLog += 'cart.js/update_cart(): Request didn\'t return a valid JSON object\n';
 						infoLog += JSON.stringify(ajv.errors, null, 2);
+						window.alert("Failed to get data from server. Please try again later");
 					}
 				}
 				logger.info(infoLog);
 				infoLog = "";
+				$('.spinner.cart').hide();
 			},
 			error: function(xhr, status, errorThrown) {
 				if(status == 'timeout') {

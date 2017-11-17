@@ -44,7 +44,7 @@ $(document).ready(function() {
 							infoLog += 'change_order_status.js/#orders_table: You don\'t have permission to access this data\n';
 						} else if(xhr.status == 500) {
 							infoLog += 'change_order_status.js/#orders_table: Internal sever error\n';
-						}			
+						}
 					}
 					window.alert("Failed to get data from server. Please try again later");
 				}
