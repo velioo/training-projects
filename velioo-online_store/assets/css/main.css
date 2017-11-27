@@ -133,6 +133,7 @@ html,body{
 .product_image.details {
 	max-height: 350px;
 	max-width: 350px;
+	cursor: default;
 }
 
 .cart_product_image_div {
@@ -178,6 +179,7 @@ html,body{
 	display: inline-block;
 	max-height:120px;
 	max-width:120px;
+	cursor: default;
 }
 
 .cart_product_image.order {
@@ -334,7 +336,7 @@ font-size: 12px;
 	margin: 10px 0px;
 	height: 100px;
 	width: 150px;
-	cursor: pointer;
+	cursor: default;
 }
 
 .plus {
@@ -500,9 +502,69 @@ tr:nth-child(even)  {
 	width:187px;
 }
 
+.navbar-nav>li {
+   display: inline-block;
+}
 
-@media screen and (max-width: 768px) {
+.spinner {
+	display: none;
+	max-width: 100px;
+	max-height: 100px;
+	margin-top: -20px;
+	position: absolute;
+}
+
+.spinner:focus, .spinner:active, .spinner:hover {
+	border: 0;
+	outline: none;
+}
+
+/*
+.spinner.cart {
+	margin-top: -42px;
+	margin-left: 65px;
+}
+*/
+
+.spinner.cart {
+	margin-top: -42px;
+	margin-left: -75px;
+}
+
+.spinner.buy {
+	max-width: 50px;
+	max-height: 50px;
+	margin-top: -12px;
+	position: absolute;
+	margin-left: 130px;
+}
+
+.spinner.order_sum {
+	position: relative;
+}
+
+.spinner.change_cart {
+	margin-top: -35px;
+	margin-left: -25px;
+}
+
+.spinner.dashboard {
+	margin-top: 0px;
+}
+
+.spinner.client_orders {
+	margin-top: -10px;
+}
+
+@media screen and (max-width: 1150px) {
 	#footer {
 		width: 1150px;
 	}
+	#holder {
+		min-height:112%;
+	}
+	#search_form {
+		width: 300px;
+	}
+	
 }

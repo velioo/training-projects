@@ -16,6 +16,10 @@ class Product_model extends CI_Model {
 			return $query->result_array();
 			
 		} else {
+			
+			if(array_key_exists("alias", $params)) {
+				$this->tableName = "products as {$params['alias']}";
+			}
 		
 			if(array_key_exists("select", $params)) {
 				 $this->db->select($params['select']);          
@@ -107,13 +111,17 @@ class Product_model extends CI_Model {
 					$result = $query->num_rows();
 				} elseif(array_key_exists("returnType", $params) && $params['returnType'] == 'single') {
 					$result = ($query->num_rows() > 0) ? $query->row_array() : FALSE;
-				} else{
+				} else {
 					$result = ($query->num_rows() > 0) ? $query->result_array() : FALSE;
 				}
 			}
 			//~ header('Content-Type:application/json');													  		
 			//~ echo json_encode($this->db->last_query());	
-			//echo $this->db->last_query() . "</br>";
+			//log_message('user_info', $this->db->last_query());
+			if(array_key_exists("alias", $params)) {
+				$this->tableName = 'products';
+			}
+			$this->tableName = 'products';
 			return $result;
 		}
 

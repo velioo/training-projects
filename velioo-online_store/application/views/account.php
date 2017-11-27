@@ -21,15 +21,18 @@
 			} elseif(!empty($this->session->userdata('error_msg'))) {
 				echo '<p class="statusMsg">' . $this->session->userdata('error_msg') . '</p>';
 				$this->session->unset_userdata('error_msg');
+			} elseif($this->session->userdata('long_msg')) {
+				echo '<p class="statusMsgLong">' . $this->session->userdata('long_msg') . '</p>';
+				$this->session->unset_userdata('long_msg');
 			}
 		?>
 		
-		<form action="<?php echo site_url("users/update_password"); ?>" method="post" class="form-horizontal login_register_form" style="width: 100%;">
+		<form action="<?php echo site_url("users/update_password"); ?>" method="post" autocomplete="off" class="form-horizontal login_register_form" style="width: 100%;">
 		
 			<div class="form-group <?php if(form_error('old_password') == true) { echo "has-error has-feedback"; } ?>">
 			  <label class="col-sm-1 control-label" for="password">Стара парола*:</label>
 			  <div class="col-sm-8">
-				<input type="password" class="form-control" id="old_password" name="old_password">
+				<input type="password" class="form-control" id="old_password" name="old_password" autocomplete="off">
 				<span class="glyphicon glyphicon-remove form-control-feedback" <?php if(form_error('old_password') == true) { echo "style='display:inline-block;'"; } ?>></span>
 				<?php echo form_error('old_password','<span class="help-block">','</span>'); ?>
 			  </div>

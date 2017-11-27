@@ -6,7 +6,7 @@
 		<hr>
 		<div class="container-fluid">
 			
-			<div class="product_left">	
+			<div class="product_left">
 				<img src="<?php echo ($product['image'] != '') ? asset_url() . "imgs/" . htmlspecialchars($product['image'], ENT_QUOTES) : ""; ?>" 
 					onerror="this.src='<?php echo asset_url() . "imgs/no_image.png" ?>';" class="product_image details">
 			</div>

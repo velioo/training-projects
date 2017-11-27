@@ -33,7 +33,7 @@
 					<div class="cart_product_price order"><p>Цена: <?php echo htmlspecialchars($p['cart_quantity'] . " x " . number_format($p['price_leva'], 2), ENT_QUOTES) . " лв.  =  " . htmlspecialchars(number_format($p['price_leva'] * $p['cart_quantity'], 2), ENT_QUOTES) . " лв."; ?></p></div>						
 				</div>
 			<?php }} ?>
-			 <div class="cart_purchase_div"><b><h3 class="inline_h3">Общo: &nbsp;</h3><h3 class="cart_sum inline_h3"></h3><h3 class="inline_h3"> лв.</h3></br></div>
+			 <div class="cart_purchase_div"><b><h3 class="inline_h3">Общo: &nbsp;</h3><img class="spinner order_sum" src="<?php echo asset_url() . 'imgs/spinner.gif'; ?>"><h3 class="cart_sum inline_h3"></h3><h3 class="inline_h3"> лв.</h3></br></div>
 		</div>
 		<div class="form-group form_submit" style="margin-top:50px;">
 			<button type="submit" value="Избери" id="confirmSubmit" name="confirmSubmit" class="btn btn-primary form_submit_button register">Потвърди</button>

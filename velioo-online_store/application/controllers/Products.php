@@ -39,14 +39,14 @@ class Products extends CI_Controller {
 		assert_v(is_numeric($start));
 		
 		$rowsArray = array(
-			'select' => array('products.*', 'categories.name as category', 'categories.id as category_id'),
-			'joins' => array('categories' => 'categories.id=products.category_id', 
-							'product_tags' => array('product_tags.product_id = products.id', 'left'), 
+			'select' => array('p.*', 'categories.name as category', 'categories.id as category_id'),
+			'joins' => array('categories' => 'categories.id=p.category_id', 
+							'product_tags' => array('product_tags.product_id = p.id', 'left'), 
 							'tags' => array('tags.id = product_tags.tag_id', 'left')),
-			'order_by' => array('created_at' => 'DESC'),
 			'start' => $start,
 			'limit' => $config['per_page'],
-			'group_by' => 'products.id'
+			'group_by' => 'p.id',
+			'alias' => 'p'
 		);
 		
 		$tagsArray = array(
@@ -60,24 +60,51 @@ class Products extends CI_Controller {
 		
 		$filterTags = $this->input->get('tags');
 		if($filterTags) {
-			$msg = "";
-			foreach($filterTags as $tag) {
-				$msg .= $tag . ', ';
-			}
-			log_message('user_info', 'Filtering by tags: ' . $msg);
+			log_message('user_info', 'Filtering by tags: ' . implode(", ",$filterTags));
 			$rowsArray['where_in'] = array('tags.name' => $filterTags);
 		} 
 		
 		if($this->input->get('price_from')) {
 			log_message('user_info', 'Filtering by price >= ' . floatval($this->input->get('price_from')));
-			$rowsArray['conditions']['products.price_leva >= '] = floatval($this->input->get('price_from'));
+			$rowsArray['conditions']['p.price_leva >= '] = floatval($this->input->get('price_from'));
+			$tagsArray['conditions']['p.price_leva >= '] = floatval($this->input->get('price_from'));
 			$data['price_from'] = $this->input->get('price_from');
 		}
 		
 		if($this->input->get('price_to')) {
 			log_message('user_info', 'Filtering by price <= ' . floatval($this->input->get('price_to')));
-			$rowsArray['conditions']['products.price_leva <= '] = floatval($this->input->get('price_to'));
+			$rowsArray['conditions']['p.price_leva <= '] = floatval($this->input->get('price_to'));
+			$tagsArray['conditions']['p.price_leva <= '] = floatval($this->input->get('price_to'));
 			$data['price_to'] = $this->input->get('price_to');
+		}
+		
+		if($this->input->get('sort_products')) {
+			log_message('user_info', 'Sorting by tags: ' . $this->input->get('sort_products'));
+			switch($this->input->get('sort_products')) {
+				case 'most_buyed':
+					$rowsArray['select'][] = '(SELECT SUM(quantity) FROM order_products WHERE order_products.product_id = p.id) as most_buyed';
+					$rowsArray['order_by']['most_buyed'] = 'DESC';
+					log_message('user_info', 'Sorting by most buyed DESC');
+					break;
+				case 'price_asc':
+					$rowsArray['order_by']['p.price_leva'] = 'ASC';
+					log_message('user_info', 'Sorting price ASC');
+					break;
+				case 'price_desc':
+					$rowsArray['order_by']['p.price_leva'] = 'DESC';
+					log_message('user_info', 'Sorting price DESC');
+					break;
+				case 'newest':
+					$rowsArray['order_by']['p.created_at'] = 'DESC';
+					log_message('user_info', 'Sorting created_at DESC');
+					break;
+				default:
+					assert_v(false);
+			}
+			$data['sort_products'] = $this->input->get('sort_products');
+		} else {
+			log_message('user_info', 'No sorting method specified, using default: by most buyed');
+			$data['sort_products'] = 'most_buyed';
 		}
 		
 		if($searchCategoryId === null) {
@@ -89,7 +116,7 @@ class Products extends CI_Controller {
 			
 			$data['search_input'] = $this->input->get('search_input');		
 			$data['search_title'] = 'Резултати за "' . htmlentities($this->input->get('search_input'), ENT_QUOTES) . '"';
-			$whereClause = "( products.name LIKE '%" . addcslashes(addslashes($this->input->get('search_input')), '%_') . "%' OR products.description LIKE '%" . addcslashes(addslashes($this->input->get('search_input')), '%_') . "%'  ESCAPE '!')"; //
+			$whereClause = "( p.name LIKE '%" . addcslashes(addslashes($this->input->get('search_input')), '%_') . "%' OR p.description LIKE '%" . addcslashes(addslashes($this->input->get('search_input')), '%_') . "%'  ESCAPE '!')"; //
 			//$whereClause = "(MATCH (products.name, products.description) AGAINST ('" . $this->input->get('search_input') . "'" . "))";
 			$rowsArray['where'] = $whereClause;
 			
@@ -99,7 +126,8 @@ class Products extends CI_Controller {
 			$totalRows['returnType'] = 'count';	
 											
 			log_message('user_info', 'Getting total count of eligible records');																																					
-			$config['total_rows'] = $this->product_model->getRows($totalRows);		
+			$config['total_rows'] = $this->product_model->getRows($totalRows);
+			assert_v(is_numeric($config['total_rows']));	
 			log_message('user_info', 'Total count: ' . $config['total_rows']);
 				
 			$tagsArray['like'] = array('products.name' => $this->input->get('search_input'));										
@@ -115,21 +143,22 @@ class Products extends CI_Controller {
 			$data['search_title'] = $this->product_model->getRows(array('table' => 'categories',
 																		'select' => array('name'),
 																		'conditions' => array('id' => $searchCategoryId),
-																		'returnType' => 'single'))['name'];				
+																		'returnType' => 'single'))['name'];
 																																
-			log_message('user_info', 'Name of category: ' . $data['search_title']);															
-			$rowsArray['group_by'] = 'products.id';	
+			log_message('user_info', 'Name of category: ' . $data['search_title']);
+			$rowsArray['group_by'] = 'p.id';
 			
 			$totalRows = $rowsArray;
-			unset($totalRows['start']);		
-			unset($totalRows['limit']);		
-			$totalRows['returnType'] = 'count';	
+			unset($totalRows['start']);
+			unset($totalRows['limit']);
+			$totalRows['returnType'] = 'count';
 			
-			log_message('user_info', 'Get count of total eligible records');															
-			$config['total_rows'] = $this->product_model->getRows($totalRows);	
+			log_message('user_info', 'Get count of total eligible records');
+			$config['total_rows'] = $this->product_model->getRows($totalRows);
+			assert_v(is_numeric($config['total_rows']));
 			log_message('user_info', 'Total count: ' . $config['total_rows']);
 																       			
-			$tagsArray['conditions'] = 	array('categories.id' => $searchCategoryId);												 						
+			$tagsArray['conditions']['categories.id'] = $searchCategoryId;
 			$data['category_id'] = $searchCategoryId;				
 		}
 		
@@ -140,13 +169,16 @@ class Products extends CI_Controller {
 		$tags = $this->product_model->getRows($tagsArray);	
 		
 		$new_tags = array();
+		$checked_tags = "";
 		if($tags) {
 			log_message('user_info', 'Tags found. Processing tags...');
 			foreach($tags as $tag) {
 				$temp_array = array();
 				if($filterTags) {
-					if(in_array($tag['name'], $filterTags))
+					if(in_array($tag['name'], $filterTags)) {
+						$checked_tags .= $tag['name'] . ', ';
 						$temp_array['checked'] = 1;
+					}
 				}
 				$splited_tag = explode(':', $tag['name'], 2);
 				if(count($splited_tag) > 1) {
@@ -154,7 +186,8 @@ class Products extends CI_Controller {
 					$temp_array['count'] = $tag['tag_count'];
 					$new_tags[$splited_tag[0]][] = $temp_array;	
 				}			
-			}	
+			}
+			log_message('user_info', 'Checked tags: ' . $checked_tags);	
 			log_message('user_info', 'Tags processed');
 		}	
 																																		
@@ -204,13 +237,13 @@ class Products extends CI_Controller {
 				$this->load->view('product', $data);
 				
 			} else {
-				log_message('user_info', 'Product with id = ' .  $productId . ' doesn\'t exist. Redirecting to employee/dashboard');
+				log_message('user_info', 'Product with id = ' .  $productId . ' doesn\'t exist. Redirecting to ' . site_url('employees/dashboard'));
 				redirect('/employee/dashboard/');
 			}															   			
 			
 			
 		} else {
-			log_message('user_info', 'Product id is not numeric: ' . $productId . '. Redirecting to employee/dashboard');
+			log_message('user_info', 'Product id is not numeric: ' . $productId . '. Redirecting to ' . site_url('employees/dashboard'));
 			redirect('/employee/dashboard/');
 		}
 	}
@@ -226,20 +259,29 @@ class Products extends CI_Controller {
 			
 			log_message('user_info', 'Found submitted form');
 			
-			log_message('user_info', 'Setting validation rules for each submitted field');
+			log_message('user_info', 'Setting form validation rules');
 			$this->form_validation->set_rules('name', 'Name', 'required');
             $this->form_validation->set_rules('category_id', 'Category', 'required|integer');
             $this->form_validation->set_rules('price_leva', 'Price', 'required|callback_price_check');
             $this->form_validation->set_rules('quantity', 'Quantity', 'required|integer');
             $this->form_validation->set_rules('tags', 'Tags', 'trim');
 
+			log_message('user_info', 'Saving product data in array');
             $productData = array(
 				'category_id' => $this->input->post('category_id'),
                 'name' => $this->input->post('name'),
                 'description' => $this->input->post('description'),
                 'price_leva' => $this->input->post('price_leva'),
                 'quantity' => $this->input->post('quantity'),
-            );           
+            );        
+            
+            log_message('user_info', 'Product data:' .
+				 PHP_EOL . 'category_id = ' . $productData['category_id'] .
+				 PHP_EOL . 'name = ' . $productData['name'] .
+				 PHP_EOL . 'description = ' . $productData['description'] . 
+				 PHP_EOL . 'price_leva = ' . $productData['price_leva'] . 
+				 PHP_EOL . 'quantity = ' . $productData['quantity'] 
+			);
             
             $imageSuccess = TRUE;
             
@@ -272,10 +314,12 @@ class Products extends CI_Controller {
 				}	
 					
 				$productData['image'] = $fileName;
+				
+				log_message('user_info', 'Adding image column to productData, image = ' . $productData['image']);	
 
 			} else {
 				log_message('user_info', 'No image submited');		
-			}                      
+			}          	
 
             if(($this->form_validation->run() == true) && $imageSuccess) {
 				
@@ -331,7 +375,7 @@ class Products extends CI_Controller {
 				} else {
 					$this->db->trans_commit();
 					$this->session->set_userdata('success_msg', 'Продуктът е успешно добавен. ');
-					log_message('user_info', 'Transaction successfull. Redirecting to employee/dashboard');
+					log_message('user_info', 'Transaction successfull. Redirecting to ' . site_url('employees/dashboard'));
                     redirect('/employees/dashboard/');   
 				}                         
             }  
@@ -370,20 +414,29 @@ class Products extends CI_Controller {
 				
 				log_message('user_info', 'Found submitted form');
 				
-				log_message('user_info', 'Setting validation rules for each submitted field');
+				log_message('user_info', 'Setting validation rules');
 				$this->form_validation->set_rules('name', 'Name', 'required');
 				$this->form_validation->set_rules('category_id', 'Category', 'required|integer');
 				$this->form_validation->set_rules('price_leva', 'Price', 'required|callback_price_check');
 				$this->form_validation->set_rules('quantity', 'Quantity', 'required|integer');
 
+				
 				$productData = array(
 					'category_id' => $this->input->post('category_id'),
 					'name' => $this->input->post('name'),
 					'description' => $this->input->post('description'),
 					'price_leva' => $this->input->post('price_leva'),
 					'quantity' => $this->input->post('quantity'),
+				);  
+					
+			    log_message('user_info', 'Product data:' .
+					PHP_EOL . 'category_id = ' . $productData['category_id'] .
+					PHP_EOL . 'name = ' . $productData['name'] .
+					PHP_EOL . 'description = ' . $productData['description'] . 
+					PHP_EOL . 'price_leva = ' . $productData['price_leva'] . 
+					PHP_EOL . 'quantity = ' . $productData['quantity'] 
 				);
-				
+					
 				$imageSuccess = TRUE;
 						 
 				
@@ -414,7 +467,8 @@ class Products extends CI_Controller {
 						}
 					} 		
 					
-					$productData['image'] = $fileName;
+					$productData['image'] = $fileName;				
+					log_message('user_info', 'Adding image column to productData, image = ' . $productData['image']);	
 
 				} else {
 					log_message('user_info', 'No image submited');		
@@ -477,7 +531,7 @@ class Products extends CI_Controller {
 					} else {
 						$this->db->trans_commit();
 						$this->session->set_userdata('success_msg', 'Продуктът е успешно променен. ');
-						log_message('user_info', 'Transaction successfull. Redirecting to employee/dashboard');
+						log_message('user_info', 'Transaction successfull. Redirecting to ' . site_url('employees/dashboard'));
 						redirect('/employees/dashboard/');   
 					}    
 				}  
@@ -496,27 +550,27 @@ class Products extends CI_Controller {
 				$categories[$key] = $row['name'];
 			}		
 			array_multisort($categories, SORT_ASC, $data['categories']);	
-			log_message('user_info', 'Loading aupdate_product page');
+			log_message('user_info', 'Loading update_product page');
 			$this->load->view('update_product', $data);
 		} else {
-			log_message('user_info', 'Product id is not numeric: ' . $productId . '. Redirecting to employees/dashboard');
+			log_message('user_info', 'Product id is not numeric: ' . $productId . '. Redirecting to ' . site_url('employees/dashboard'));
 			redirect('employees/dashboard');
 		}
 	}
 	
-	public function delete_product($productId=null) {
-		
+	public function delete_product() {
+
 		log_message('user_info', "\n\n" . site_url('products/delete_product') . ' loaded.');
 		
-		if($productId !== null && is_numeric($productId)) {
+		if($this->input->post('productId') && is_numeric($this->input->post('productId'))) {
 			
-			log_message('user_info', 'Deleting product with id = ' . $productId);
-			assert_v(is_numeric($productId));
+			log_message('user_info', 'Deleting product with id = ' . $this->input->post('productId'));
+			assert_v(is_numeric($this->input->post('productId')));
 			
-			$delete = $this->product_model->delete(array('id' => $productId));
+			$delete = $this->product_model->delete(array('id' => $this->input->post('productId')));
 			
 			if($delete) {
-				log_message('user_info', 'Successfully deleteed product');
+				log_message('user_info', 'Successfully deleted product');
 				echo true;
 			} else {
 				log_message('user_info', 'Failed to delete product');
@@ -524,8 +578,8 @@ class Products extends CI_Controller {
 			}
 
 		} else {
-			log_message('user_info', 'Product id is not numeric: ' . $productId);
-			echo 0;
+			log_message('user_info', 'Product id is not numeric: ' . $this->input->post('productId'));
+			echo false;
 		}
 	}
 	
@@ -535,10 +589,20 @@ class Products extends CI_Controller {
 		
 		header('Content-Type:application/json');
 		log_message('user_info', 'Getting menu items...');
-		$items = $this->product_model->getRows(array('table' => 'categories'));
-		log_message('user_info', 'Returning items to browser');
-		echo json_encode($items);
+		$items = $this->product_model->getRows(array('table' => 'categories', 
+													 'select' => array('id', 'name', 'type as c_type')));
 		
+		for ($i = 0; $i < count($items); $i++) {
+			assert_v(ctype_digit($items[$i]['id']));
+			$items[$i]['id'] = intval($items[$i]['id']);
+			assert_v(ctype_digit($items[$i]['c_type']));
+			$items[$i]['c_type'] = intval($items[$i]['c_type']);
+		}
+													 		
+		header('Content-Type:application/json');											 
+		log_message('user_info', 'Returning items to browser...');
+		echo json_encode($items);
+		log_message('user_info', 'Items returned');
 	}
 		
     public function price_check($val) {

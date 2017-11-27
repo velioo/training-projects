@@ -1,0 +1,7 @@
+compmax.app.BuildConfig
+compmax.app.R
+compmax.app.R$attr
+compmax.app.R$drawable
+compmax.app.R$id
+compmax.app.R$layout
+compmax.app.R$string

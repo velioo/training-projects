@@ -47,7 +47,7 @@
 		  <div class="col-sm-8">
 			 <select name="country" id="country" class="form-control">
 				 <option value="" selected="selected">Choose a Country</option>
-				<?php foreach($countries as $country) { ?>
+				<?php if(isset($countries) && $countries) foreach($countries as $country) { ?>
 					<option value="<?php echo htmlentities($country['nicename']); ?>" <?php if(isset($user['country'])) { echo ($country['nicename'] == $user['country']) ? 'selected' : ''; }?> data-id="<?php echo htmlentities($country['phonecode']); ?>"><?php echo htmlentities($country['nicename']); ?></option>
 				<?php } ?>
 			 </select> 

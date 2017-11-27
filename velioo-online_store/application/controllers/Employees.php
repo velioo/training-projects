@@ -32,9 +32,9 @@ class Employees extends CI_Controller {
 															   'conditions' => array('username' => $this->input->post('username')), 
 															   'returnType' => 'single'));
 	
-			assert_v(count($checkLogin) == 3);
 	
-			if($checkLogin && ((hash("sha256", $this->input->post('password') . $checkLogin['salt'])) === $checkLogin['password'])) {								
+			if($checkLogin && ((hash("sha256", $this->input->post('password') . $checkLogin['salt'])) === $checkLogin['password'])) {	
+				assert_v((hash("sha256", $this->input->post('password') . $checkLogin['salt'])) === $checkLogin['password']);							
 				log_message('user_info', 'Record matched');
 				$this->session->set_userdata('isEmployeeLoggedIn',TRUE);
 				$this->session->set_userdata('employeeId', $checkLogin['id']);
@@ -59,10 +59,11 @@ class Employees extends CI_Controller {
 	
 	public function logout() {
 		log_message('user_info', "\n\n" . site_url('employees/logout') . ' loaded.');
+		log_message('user_info', 'Unseting employee data from session');
         $this->session->unset_userdata('isEmployeeLoggedIn');
         $this->session->unset_userdata('employeeId');
-        log_message('user_info', 'Unseted user data from session');
         //$this->session->sess_destroy();
+        log_message('user_info', 'Redirecting to ' . site_url('employees/login'));
         redirect('/employees/login/');
     }
 	
@@ -77,10 +78,10 @@ class Employees extends CI_Controller {
 	public function add_product() {
 		log_message('user_info', "\n\n" . site_url('employees/add_product') . ' loaded.');	
 		$data = array();		
-		log_message('user_info', 'Getting categories');	
+		log_message('user_info', 'Getting categories...');	
 		$data['categories'] = $this->product_model->getRows(array('table' => 'categories'));
 		$categories = array();
-		log_message('user_info', 'Processing categories');	
+		log_message('user_info', 'Processing categories...');	
 		foreach ($data['categories'] as $key => $row) {
 			$categories[$key] = $row['name'];
 		}		
@@ -98,10 +99,10 @@ class Employees extends CI_Controller {
 			assert_v(is_numeric($productId));
 			
 			$data = array();
-			log_message('user_info', 'Getting product details');
+			log_message('user_info', 'Getting product details...');
 			$data['product'] = $this->product_model->getRows(array('id' => $productId));
 			if($data['product']) {
-				log_message('user_info', 'Getting product tags');
+				log_message('user_info', 'Getting product tags...');
 				$data['tags'] = $this->tag_model->getRows(array('select' => array('tags.name'),
 																'joins' => array('product_tags' => 'product_tags.tag_id = tags.id',
 																				 'products' => 'products.id = product_tags.product_id'),
@@ -143,7 +144,7 @@ class Employees extends CI_Controller {
 		$config['base_url'] = site_url("employees/tags");
 		$config['per_page'] = 50;
 		
-		log_message('user_info', 'Limit se to: ' . $config['per_page']);
+		log_message('user_info', 'Limit set to: ' . $config['per_page']);
 			
 		if($this->input->get('page') != NULL && is_numeric($this->input->get('page')) && $this->input->get('page') > 0) {
 			log_message('user_info', 'Got page number: ' . $this->input->get('page'));
@@ -210,24 +211,25 @@ class Employees extends CI_Controller {
 		
 		if($this->input->get('size') && is_numeric($this->input->get('size'))) {		
 			log_message('user_info', 'Got records limit size: ' . $this->input->get('size'));
-			$getRows['limit'] = $this->input->get('size');
-			assert_v(is_numeric($getRows['limit']));
+			$getRows['limit'] = $this->input->get('size');			
+		} else {
+			$getRows['limit'] = 50;
+			log_message('user_info', 'Using default records limit: ' . $getRows['limit']);		
 		}
+		
+		assert_v(is_numeric($getRows['limit']));
 		
 		if($this->input->get('page') && is_numeric($this->input->get('page'))) {
 			log_message('user_info', 'Got page number: ' . $this->input->get('page'));
-			if(isset($getRows['limit'])) {
-				$start = $this->input->get('page') * $getRows['limit'];
-				log_message('user_info', 'Offset set to: ' . $start);
-			} else {
-				$start = 0;
-				log_message('user_info', 'Using default offset: ' . $start);
-			}			
+			$start = $this->input->get('page') * $getRows['limit'];
+			log_message('user_info', 'Offset set to: ' . $start);		
 			$getRows['start'] = $start;
-			assert_v(is_numeric($getRows['start']));
 		} else {
-			log_message('user_info', 'No page number specified');
+			$getRows['start'] = 0;
+			log_message('user_info', 'No page number specified, using default offset: ' . $getRows['start']);
 		}
+		
+		assert_v(is_numeric($getRows['start']));
 		
 		if($this->input->get('col')) {
 			log_message('user_info', 'Got sorting params');
@@ -413,23 +415,23 @@ class Employees extends CI_Controller {
 		
 		unset($getRows['returnType']);
 		$getRows['limit'] = 10000;
-		$getRows['start'] = 0;	
+		$getRows['start'] = 0;
 		$totalSum['Всички'] = 0.00;
 		$totalSum['Настоящи'] = 0.00;
 		$totalSum['Очаквани'] = 0.00;
 		$resultArray['sums'] = $totalSum;
-		log_message('user_info', 'Getting all eligible records');		
+		log_message('user_info', 'Getting all eligible records to sum total orders price');
 		while ($allRows = $this->order_model->getRows($getRows)) {
 				
-			if($allRows) {		
-				foreach($allRows as $row) {			
+			if($allRows) {
+				foreach($allRows as $row) {
 					if($row['status_name'] === 'Delivered' || $row['status_name'] === 'Awaiting Shipment' || $row['status_name'] === 'Awaiting Delivery') {
-						$totalSum['Настоящи'] += $row['amount_leva'];				
+						$totalSum['Настоящи'] += $row['amount_leva'];
 					}
 					if($row['status_name'] === 'Awaiting Payment' || $row['status_name'] === 'Payment being verified') {
 						$totalSum['Очаквани'] += $row['amount_leva'];
 					}
-				}											
+				}
 			}
 			
 			$getRows['start'] += $getRows['limit'];
@@ -441,7 +443,6 @@ class Employees extends CI_Controller {
 		$totalSum['Очаквани'] = number_format($totalSum['Очаквани'], 2);				
 		$resultArray['sums'] = $totalSum;	
 		log_message('user_info', 'Total orders sum added to result array');
-		
 		log_message('user_info', 'Returning result to browser');
 		
 		header('Content-Type:application/json');													  		
@@ -468,17 +469,15 @@ class Employees extends CI_Controller {
 		
 		if($this->input->get('page') && is_numeric($this->input->get('page'))) {
 			log_message('user_info', 'Got page number: ' . $this->input->get('page'));
-			if(isset($getRows['limit'])) {
-				$start = $this->input->get('page') * $getRows['limit'];
-				log_message('user_info', 'Offset set to: ' . $start);
-			} else {
-				$start = 0;
-				log_message('user_info', 'Using default offset: ' . $start);
-			}			
+			$start = $this->input->get('page') * $getRows['limit'];
+			log_message('user_info', 'Offset set to: ' . $start);		
 			$getRows['start'] = $start;
 		} else {
-			log_message('user_info', 'No page number specified');
+			$getRows['start'] = 0;
+			log_message('user_info', 'No page number specified, using default offset: ' . $getRows['start']);
 		}
+		
+		assert_v(is_numeric($getRows['start']));
 		
 		if($this->input->get('col')) {
 			log_message('user_info', 'Got sorting params');
@@ -553,7 +552,7 @@ class Employees extends CI_Controller {
 		if($this->input->get('fcol')) {
 			log_message('user_info', 'Filtering records... ');
 			$filter = $this->input->get('fcol');	
-			log_message('user_info', 'Filters: ' . $filter);					
+			log_message('user_info', 'Filters: ' . implode(", ", $filter));					
 			foreach($filter as $key => $value) {
 				switch($key) {
 					case 0: 
@@ -712,7 +711,7 @@ class Employees extends CI_Controller {
 																						 'orders' => 'orders.id = order_products.order_id'),
 																		'conditions' => array('orders.id' => $orderId)));
 				
-				if(!$data['products']) {
+				if($data['products']) {
 					log_message('user_info', 'Products found');
 				} else {
 					log_message('user_info', 'No products associated with the order found');
@@ -740,7 +739,7 @@ class Employees extends CI_Controller {
 		if($this->input->post('statusId') && $this->input->post('orderId') && 
 			is_numeric($this->input->post('statusId')) && is_numeric($this->input->post('orderId'))) {
 			
-			log_message('user_info', 'Status id: ' . $statusId . ' Order id: ' . $orderId);
+			log_message('user_info', 'Status id: ' . $this->input->post('statusId') . ' Order id: ' . $this->input->post('orderId'));
 			
 			assert_v(is_numeric($this->input->post('statusId')) && is_numeric($this->input->post('orderId')));
 			

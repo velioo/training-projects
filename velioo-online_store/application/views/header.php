@@ -6,12 +6,13 @@
 <!--
   <meta name="viewport" content="width=device-width, initial-scale=1">
 -->
-  
 <link rel="icon" href="http://downloadicons.net/sites/default/files/computer-icon-65917.png">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ajv/5.3.0/ajv.min.js"></script>  
 <script src="<?php echo asset_url() . "log4javascript/log4javascript.js"; ?>"></script>  
+<script src="<?php echo asset_url() . "js/schemas.js"; ?>"></script>  
 <link rel="stylesheet" href="<?php echo asset_url() . "css/main.css"; ?>"> 
 <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
@@ -25,15 +26,24 @@
 	function getLogger() {
 		return logger;
 	}
+	var infoLog = "";
+	var ajv = new Ajv({allErrors: true});
 </script>
 
 <script>
 	window.onerror = function (msg, url, lineNo, columnNo, error) {
-		//console.log(error.stack);
-		if(error.stack != "") {
-			logger.error(error.name + ": ", error.message + "\n" + error.stack);
+		logger.info(infoLog);
+		infoLog = "";
+		if(error !== null) {
+			if(error.stack != "") {
+				logger.error(error.name + ": ", error.message + "\n" + error.stack);
+			} else {
+				logger.error(error.name + ": ", error.message + "\n" + url + ":" + lineNo + ":" + columnNo + "\n");
+			}
+		} else if(ajv.errors) {
+			logger.error("Request didn\'t return a valid JSON object\n" + JSON.stringify(ajv.errors, null, 2));
 		} else {
-			logger.error(error.name + ": ", error.message + "\n" + url + ":" + lineNo + ":" + columnNo + "\n");
+			logger.error(msg + ": " + url + ": " + lineNo + ": " + columnNo + "\n");
 		}
 		return true;
 	};
@@ -104,9 +114,9 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="<?php echo site_url(); ?>">Computer Store</a>
     </div>
-    <form action="<?php echo site_url("products/search"); ?>" method="get" class="navbar-form navbar-left"> 
+    <form action="<?php echo site_url("products/search"); ?>" method="get" class="navbar-form navbar-left" id="search_form"> 
       <div class="input-group">
-        <input type="text" class="form-control" name="search_input" placeholder="Search">
+        <input type="text" class="form-control" name="search_input" placeholder="Search" id="search_input">
         <div class="input-group-btn">
           <button class="btn btn-default" name="search_button" type="submit">
             <i class="glyphicon glyphicon-search"></i>
@@ -119,7 +129,7 @@
 		  <li><a href="<?php echo site_url("users/registration"); ?>"><span class="glyphicon glyphicon-user"></span> Регистрация</a></li>
 		  <li><a href="<?php echo site_url("users/login"); ?>"><span class="glyphicon glyphicon-log-in"></span> Вход</a></li>
       <?php } else { ?>
-		  <li><a href="<?php echo site_url("users/cart"); ?>"><span class="glyphicon glyphicon-shopping-cart" style="float:right;"> Количка</span></br><span id="cart_count_price"></span></a></li>
+		  <li><a href="<?php echo site_url("users/cart"); ?>"><img class="spinner cart" src="<?php echo asset_url() . 'imgs/spinner.gif'; ?>"><span class="glyphicon glyphicon-shopping-cart" style="float:right;"> Количка</span></br><span id="cart_count_price"></span></a></li>
 		  <li><a href="<?php echo site_url("users/account"); ?>"><span class="glyphicon glyphicon-user"></span> Моят профил</a></li>
 		  <li><a href="<?php echo site_url("users/logout"); ?>"><span class="glyphicon glyphicon-log-in"></span> Изход</a></li>
 	  <?php } ?>
@@ -131,7 +141,6 @@
   <div class="container-fluid" style="width: 1150px;">
     <ul class="nav navbar-nav" id="main_menu">		
 
-	  
       <li class="dropdown" id="components_tab">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="components_dropdown_tab">Компоненти
         <span class="caret"></span></a>
@@ -145,7 +154,8 @@
         <ul class="dropdown-menu" id="peripheral_dropdown">
          
         </ul>
-      </li>     	    
+      </li>     
+      <img class="spinner menu" src="<?php echo asset_url() . 'imgs/spinner.gif'; ?>">
     </ul>
   </div>
 </nav>
