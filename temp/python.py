@@ -1,0 +1,33 @@
+import sys
+
+print("2**9999 = ", type(a), a)
+a = -2**9999
+print("-2**9999 = ", type(a), a)
+a = int((0.1 + 0.7) * 10)
+print("int((0.1 + 0.7) * 10) = ", a)
+a = float('inf')
+print("float('inf') = ", type(a), a)
+a = 1 / a
+print("1 / inf = ", a)
+a = 1 + float('inf')
+print("1 + inf = ", a)
+#a = 1 / 0
+a = float('nan') + 1
+print("'nan' + 1 = ", type(a), a)
+a = float('inf') / float('inf')
+print("inf / inf = ", type(a), a)
+a = 1 + 2.0
+print("1 + 2.0 = ", type(a), a)
+#a = '2' + 1
+a = int('2') + 1
+print("int('2') + 1 = ", a)
+a = int('1' + '2')
+print("int('1' + '2') = ", a)
+a = int(float('1.0') + float('1.0'))
+print("int(float('1.0') + float('1.0')) = ", a)
+a = 0b101
+print("Binary 0b101 = ", a)
+a = 0o5
+print("Octal 0o5 = ", a)
+a = 0x5
+print("Hexadecimal 0x5 = ", a)
