@@ -1,4 +1,4 @@
-<script>
+<!-- <script> !-->
 // Numbers Range - Max safe integers
 var a = 2 ** 53 - 1;
 var b = -(2**53) + 1;
@@ -92,22 +92,26 @@ console.log("+'1' + +'2'", a);
 
 
 // Strings
+console.log("----------Strings----------")
 a = "1";
-console.log("Outside function = ", a);
+console.log("a = '1'")
+console.log("Before test(a) a =", a);
 test(a);
 function test(a) {
-	console.log("Before assignment = ", a);
+	console.log("Before assignment a =", a);
 	a = "2";
-	console.log("Affter assignment = ", a);
+	console.log("Affter assignment a =", a);
 }
-console.log("After function = ", a);
+console.log("After test(a) a =", a);
 a = 'hello';
 console.log("a =", a);
 var b = a;
-console.log("a = b = ", b);
+console.log("a = b =", b);
 a = 'bye';
 console.log("a =", a);
 console.log("b =", b);
+a[0] = "m";
+console.log("a[0] = 'm': a =", a);
 var s_prim = 'foo';
 var s_obj = new String(s_prim);
 console.log("Typeof s_prim = ", typeof s_prim);
@@ -115,14 +119,16 @@ console.log("Typeof s_obj = ", typeof s_obj);
 console.log("中文 español deutsch English हिन्दी العربية português বাংলা русский 日本語 ਪੰਜਾਬੀ 한국어 தமிழ் עברית");
 console.log("\u5c07\u63a2\u8a0e HTML5 \u53ca\u5176\u4ed6🐄");
 a = "fee fi fea fo fum";
+console.log("a = 'fee fi fea fo fum'");
 var re = /(f[i|e][^\s]*)/g;
+console.log('Regex = /(f[i|e][^\s]*)/g')
 console.log("a.match = ", a.match(re));
 console.log("re.test = ", re.test(a));
 console.log("a.search = ", a.search(re));
 re = /(f[i|e][^\s]*)/g;
 var match;
 while((match = re.exec(a)) != null) {
-	console.log("Index: ", match.index);
+	console.log("re.exec: Index: ", match.index);
 }
 b = a.replace(re, 'fly');
 console.log("Replaced string with regex g mod:", b);
@@ -131,4 +137,4 @@ b = a.replace(re, 'fly');
 console.log("Replaced string with regex:", b);
 b = a.replace('fe', 'bo');
 console.log("Replaced string without regex:", b);
-</script>
+<!--</script> !-->
