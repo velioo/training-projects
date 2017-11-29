@@ -1,4 +1,4 @@
-import sys
+import re
 
 a = 2**9999
 print("2**9999 = ", type(a), a)
@@ -38,20 +38,33 @@ print("Hexadecimal 0x5 = ", a)
 print("----------Strings----------")
 a = "1";
 print("Before test(a): a = {}".format(a))
+
+
 def test(a):
 	print("Before assignment: a = {}".format(a))
 	a = "2";
 	print("After assignment: a = {}".format(a))
-	
+
+
 test(a)
 print("After test(a): a = {}".format(a))
 b = a;
-print ("a = b = {}".format(b))
+print("a = b = {}".format(b))
 a = "3"
 print("Changed: a = {}".format(a))
 print("b = " + b)
-print ("中文 español deutsch English हिन्दी العربية português বাংলা русский 日本語 ਪੰਜਾਬੀ 한국어 தமிழ் עברית");
-print ("\u5c07\u63a2\u8a0e HTML5 \u53ca\u5176\u4ed6🐄");
-print("{hello}, {there}".format(hello="Hello", there="there"))
-print("{1}, {0}".format("there", "Hello"))
-
+print("中文 español deutsch English हिन्दी العربية português বাংলা русский 日本語 ਪੰਜਾਬੀ 한국어 தமிழ் עברית");
+print("\u5c07\u63a2\u8a0e HTML5 \u53ca\u5176\u4ed6🐄");
+print("Keyword arguments: {hello}, {there}".format(hello="Hello", there="there"))
+print("Positional arguments: {1}, {0}".format("there", "Hello"))
+a = "Hello, there Hi, there"
+print("a = '{}'".format(a))
+match = re.search(r'(Hello), (.*)', a).groups()
+for i, g in enumerate(match):
+    print("With re.search: Matched group {}: ".format(i) + g)
+match = re.match(r'(Hello), (.*)', a)
+print("With re.match: " + match.group(1)) if match else None
+match = re.sub(r't?he', 'Mo', a, 2, flags=re.IGNORECASE)
+print("With re.sub: " + match) if match else None
+sub = a.replace('he', 'Mo')
+print("With replace: " + sub)
