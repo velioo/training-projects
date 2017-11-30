@@ -68,3 +68,39 @@ match = re.sub(r't?he', 'Mo', a, 2, flags=re.IGNORECASE)
 print("With re.sub: " + match) if match else None
 sub = a.replace('he', 'Mo')
 print("With replace: " + sub)
+#Arrays
+print("Lists, tuples, sets, hashes")
+arr = [1, 2, 3, 'hello', ['e1', 'e2', 'e3']]
+print("arr before test2() = ", arr)
+def test2(arr):
+	if isinstance(arr, list):
+		arr.append(100)
+	elif isinstance(arr, tuple):
+		print("Tuples are immutable")
+	elif isinstance(arr, set):
+		arr.add(100)
+	elif isinstance(arr, dict):
+		arr['new_value'] = 100;
+		
+
+test2(arr)
+print("arr after test2() = ", arr)
+arr = (1, 2, 3, 'hello', ['e1', 'e2', 'e3'])
+print("arr before test2() = ", arr)
+test2(arr)
+print("arr after test2() = ", arr)
+arr = set([1, 2, 3, 'hello', ('e1', 'e2', 'e3')])
+print("arr before test2() = ", arr)
+test2(arr)
+print("arr after test2() = ", arr)
+arr = {1: 2, 3: 'hello','list': ['e1', 'e2', 'e3']}
+print("arr before test2() = ", arr)
+test2(arr)
+print("arr after test2() = ", arr)
+arr2 = arr;
+arr['test'] = 'testing'
+print(arr2)
+arr2 = arr.copy()
+arr['test2'] = 'testing2'
+print(arr2)
+

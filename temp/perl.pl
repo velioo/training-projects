@@ -47,6 +47,7 @@ $a = "1";
 print "Before test(a) a = $a\n";
 sub test {
 	my $a = shift;
+	#$_[0] = 5;
 	unless (ref($a)) {
 		print "Before asignment a = $a\n";
 		$a = "2";
@@ -89,7 +90,19 @@ print "\$str2 = $str2\n";
 print "'$str2' =~ s/Hello/There/i = ";
 $str2 =~ s/Hello/There/i;
 print "'$str2'\n";
-
-
-
+my @arr = (1, 2, 3);
+print "Before test(): \@arr = @arr\n";
+sub test2 {
+	my @arr = @_;
+	print "Before \@arr change: \@arr = @arr\n";
+	push @arr, 4; 
+	print "After \@arr change: \@arr = @arr\n";
+}
+test2(@arr);
+print "After test(): \@arr = @arr\n";
+my @arr2 = @arr;
+print "\@arr2 = \@arr = @arr\n";
+@arr = (4, 5, 6);
+print "\@arr = @arr\n";
+print "\@arr2 = @arr2\n";
 

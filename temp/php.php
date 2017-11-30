@@ -25,10 +25,10 @@ $a = INF - INF;
 echo "INF - INF = " . $a . "\n";
 $a = 1 / INF;
 echo "1 / INF = " . $a . "\n";
-$a = INF / 0;
-echo "INF / 0 = " . $a . "\n";
-$a = NaN + 1;
-echo "NaN + 1 = " . $a . "\n";
+//$a = INF / 0;
+//echo "INF / 0 = " . $a . "\n";
+//$a = NaN + 1;
+//echo "NaN + 1 = " . $a . "\n";
 $a = 1 + 5 / 3;
 echo "1 + 5 / 3 = " . $a . "\n";
 $a = 1 + '1';
@@ -37,8 +37,8 @@ $a = '1' - 1 + '5';
 echo "'1' - 1 + '5' = " . $a . " " . gettype($a) . "\n";
 $a = '1' * '5.2';
 echo "'1' * '5.2' = " . $a . " " . gettype($a) . "\n";
-$a = 'a1' - '5';
-echo "'a1' - '5' = " . $a . " " . gettype($a) . "\n";
+//$a = 'a1' - '5';
+//echo "'a1' - '5' = " . $a . " " . gettype($a) . "\n";
 $a = 0b101;
 echo "Binary a = " . $a . "\n";
 $a = 05;
@@ -48,9 +48,9 @@ echo "Hexadecimal a = " . $a . "\n";
 echo "--------Strings----------\n";
 $a = "1";
 echo "Before test(a) a = {$a}\n"; 
-function test($a) { // &a
+function test($a) {  //&$a
 	echo "Before assignment a = {$a}\n";
-	$a = "2";
+	$a[0] = "2";
 	echo "After assignment a = {$a}\n";
 }
 test($a);
@@ -103,13 +103,33 @@ $replacements = array();
 $replacements[2] = 'bear';
 $replacements[1] = 'black';
 $replacements[0] = 'slow';
+echo "Array of replacements: \n";
+print_r($replacements);
 echo "ksort \$patterns and \$repalcements\n";
 ksort($patterns);
 ksort($replacements);
-echo "Array of replacements: \n";
-print_r($replacements);
 echo "preg_replace(\$pattern, \$replacement, \$str): " . preg_replace($patterns, $replacements, $str) . "\n";
 echo "strstr($str, quick): " . strstr($str, 'quick') . "\n";
 echo "strpos($str, quick): " . strpos($str, 'quick') . "\n";
 echo "strpbrk($str, iu): " . strpbrk($str, 'iu') . "\n";
 echo "str_replace('fox', 'bear', $str): " . str_replace('fox', 'bear', $str) . "\n";
+//Arrays
+$arr = array(
+	array(1, 2, 3),
+	array("1", "2", 100),
+	array("key" => "value", 1 => "value2")
+);
+print_r($arr);
+echo $arr[2]['key'] . "\n";
+$arr2 = $arr;
+array_push($arr, "new_element", array('element1', 'element2', 'element3'));
+print_r($arr);
+print_r($arr2);
+echo "Before test2() arr = \n";
+print_r($arr);
+function test2($arr) { //&$arr
+	array_push($arr, 2);
+}
+test2($arr);
+echo "After test2() arr = \n";
+print_r($arr);

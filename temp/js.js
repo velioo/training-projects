@@ -98,9 +98,13 @@ console.log("a = '1'")
 console.log("Before test(a) a =", a);
 test(a);
 function test(a) {
-	console.log("Before assignment a =", a);
-	a = "2";
-	console.log("Affter assignment a =", a);
+	console.log("Before changing a =", a);
+	if (Array.isArray(a)) {
+		a[0] = "Changed"
+	} else {
+		a[0] = "2";
+	}
+	console.log("Affter changing a =", a);
 }
 console.log("After test(a) a =", a);
 a = 'hello';
@@ -119,7 +123,7 @@ console.log("Typeof s_obj = ", typeof s_obj);
 console.log("中文 español deutsch English हिन्दी العربية português বাংলা русский 日本語 ਪੰਜਾਬੀ 한국어 தமிழ் עברית");
 console.log("\u5c07\u63a2\u8a0e HTML5 \u53ca\u5176\u4ed6🐄");
 a = "fee fi fea fo fum";
-console.log("a = 'fee fi fea fo fum'");
+console.log("a =", a);
 var re = /(f[i|e][^\s]*)/g;
 console.log('Regex = /(f[i|e][^\s]*)/g')
 console.log("a.match = ", a.match(re));
@@ -137,4 +141,48 @@ b = a.replace(re, 'fly');
 console.log("Replaced string with regex:", b);
 b = a.replace('fe', 'bo');
 console.log("Replaced string without regex:", b);
+//Arrays
+console.log("Arrays");
+var arr = [1, 2, "hello", {"name": "There"}, 5];
+console.log("arr = ", arr);
+arr.push("pushed element");
+arr.unshift("unshifted element");
+console.log(arr);
+a = arr.pop();
+b = arr.shift();
+console.log("Before test(a): arr =", arr);
+test(arr);
+console.log("After test(a): arr =", arr);
+console.log("arr =", arr);
+var arr_copy = arr;
+console.log("arr_copy = arr =", arr);
+arr.push("new_element");
+console.log("arr.push('new_element')");
+console.log("arr_copy =", arr_copy);
+arr_copy = arr.slice();
+console.log("arr_copy = arr.slice()");
+console.log("arr_copy =", arr_copy);
+arr.push("new_element2");
+console.log("arr_push('new_element2')");
+console.log("arr_copy =", arr_copy);
+//Objects
+var myObj = new Object(),
+    str = 'myString',
+    rand = Math.random(),
+    obj = new Object();
+
+myObj.type              = 'Dot syntax';
+myObj['date created']   = 'String with space';
+myObj[str]              = 'String value';
+myObj[rand]             = 'Random Number';
+myObj[obj]              = 'Object';
+myObj['']               = 'Even an empty string';
+console.log("Before test2(obj): myObj =", myObj);
+function test2(obj) {
+	//obj = {'type': 'new_type'};
+	obj['type'] = 'new type';
+	obj = {'type': 'new_type'};
+}
+test2(myObj);
+console.log("After test2(obj): myObj =", myObj);
 <!--</script> !-->
