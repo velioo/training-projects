@@ -8,10 +8,13 @@ from random import randint
 from html.parser import HTMLParser
 import os
 import shutil
+import requests
 
 html_p = HTMLParser()
 base_url = sys.argv[1] if (len(sys.argv) > 1 and sys.argv[1]) else False
 visited = []
+products_inserted = 0
+
 
 def main():
 	if base_url:
@@ -39,12 +42,15 @@ def main():
 
 
 def visit_url(url):
+		global products_inserted
 		connection = pymysql.connect(host='localhost', user='root', password='12345678', db='online_store', charset='utf8mb4', 
 											cursorclass=pymysql.cursors.DictCursor)
 		print("Visiting: " + url)
 		visited.append(url)
 		response = urlopen(url)
-		lines = response.read().decode('utf-8')
+		if(response.headers.get_content_charset() == None):
+			return
+		lines = response.read().decode(response.headers.get_content_charset())
 		matched = re.findall(r'<input\s*type\s*=\s*"\s*hidden\s*"\s*class\s*=\s*"\s*soaring-cart-data\s*"\s*data-url\s*=\s*"\s*(.+)\s*"\s*data-img_url\s*=\s*"(.+)\s*"\s*data-name\s*=\s*"\s*(.+)\s*"\s*data-price\s*=\s*"\s*(\d+)\s*"', lines)	
 		try:
 			for data in matched:
@@ -53,8 +59,11 @@ def visit_url(url):
 					product_image_url = base_url + data[1] if base_name not in data[1] else data[1]
 					product_image_url = product_image_url.replace("96x96", "200x0")			
 					product_image = product_image_url.rsplit('/', 1)[-1]
-					product_price = data[3]
-					urlretrieve(product_image_url, '/var/www/html/online_store/assets/imgs/' + product_image)
+					product_price = data[3]		
+					f = open('/var/www/html/online_store/assets/imgs/' + product_image, 'wb')
+					f.write(urlopen(product_image_url).read())
+					f.close()
+					#urlretrieve(product_image_url, '/var/www/html/online_store/assets/imgs/' + product_image)
 					product_category = 1
 					for word in product_title.split(" "):
 						matched_categories = [x for x in result if len(word) >= 3 and re.match(r'' + re.escape(word[:-2]) + '', x['name'], re.IGNORECASE) and (len(word) >= (len(x['name'])/2))]
@@ -63,6 +72,8 @@ def visit_url(url):
 						sql = "INSERT INTO `products` (`category_id`, `name`, `description`, `price_leva`, `image`, `quantity`) VALUES (%s, %s, %s, %s, %s, %s)"
 						cursor.execute(sql, (product_category, product_title, ' ', product_price, product_image, randint(1, 10000)))
 					connection.commit()
+					products_inserted+=cursor.rowcount
+					print("Products inserted: ", products_inserted)
 			matched = re.findall(r'<\s*a \s*href="([^"]*)"', lines)
 			links = []
 			for link in matched:

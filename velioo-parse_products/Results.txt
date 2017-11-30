@@ -1,0 +1,3 @@
+Every script runs for 10 mins:
+
+Only with Regex: 1944 products

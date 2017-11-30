@@ -12,6 +12,7 @@ import shutil
 html_p = HTMLParser()
 base_url = sys.argv[1] if (len(sys.argv) > 1 and sys.argv[1]) else False
 visited = []
+products_inserted = 0
 
 def main():
 	if base_url:
@@ -39,6 +40,7 @@ def main():
 
 
 def visit_url(url):
+		global products_inserted
 		connection = pymysql.connect(host='localhost', user='root', password='12345678', db='online_store', charset='utf8mb4', 
 											cursorclass=pymysql.cursors.DictCursor)
 		print("Visiting: " + url)
@@ -65,6 +67,8 @@ def visit_url(url):
 						sql = "INSERT INTO `products` (`category_id`, `name`, `description`, `price_leva`, `image`, `quantity`) VALUES (%s, %s, %s, %s, %s, %s)"
 						cursor.execute(sql, (product_category, product_title, ' ', product_price, product_image, randint(1, 10000)))
 					connection.commit()
+					products_inserted+=cursor.rowcount
+					print("Products inserted: ", products_inserted)
 			prog = re.compile(r'<\s*a \s*href="([^"]*)"')
 			match_iter = prog.finditer(lines)
 			links = []
