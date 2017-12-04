@@ -1,3 +1,10 @@
 Every script runs for 10 mins:
 
-Only with Regex: 1944 products
+Only with Regex: 2314 products
+				 2327 products
+				 
+With HTML Parser: 2065 products
+
+Regex with stream: 2237 products
+
+HTML Parser with stream: 2666 products

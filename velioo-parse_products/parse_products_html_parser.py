@@ -26,29 +26,29 @@ def main():
 				sql = "SELECT `id`, `name` FROM `categories`"
 				cursor.execute(sql)
 				result = cursor.fetchall()
+		
+			if validators.url(base_url):
+				base_name = base_url.split('//')[-1]
+				visit_url(base_url, connection)
+			else:
+				print("URL is not valid")
 		except Exception as e:
 			print(e)
 		finally:
 			connection.close()
 			
-		if validators.url(base_url):
-			base_name = base_url.split('//')[-1]
-			visit_url(base_url)
-		else:
-			print("URL is not valid")
-			
 	else:
 		print ("No URL specified!")
 
 
-def visit_url(url):
+def visit_url(url, connection):
 		global products_inserted
-		connection = pymysql.connect(host='localhost', user='root', password='12345678', db='online_store', charset='utf8mb4', 
-											cursorclass=pymysql.cursors.DictCursor)
 		print("Visiting: " + url)
 		visited.append(url)
 		response = urlopen(url)
-		lines = response.read().decode('utf-8')
+		if(response.headers.get_content_charset() == None):
+			return
+		lines = response.read().decode(response.headers.get_content_charset())
 		soup = BeautifulSoup(lines, "html5lib")
 		try:
 			for data in soup.findAll('input', {'type':'hidden', 'class':'soaring-cart-data', 'data-url':True, 'data-img_url':True, 'data-name':True, 'data-price':True}):			
@@ -79,12 +79,10 @@ def visit_url(url):
 
 			for link in links:
 				if link and link not in visited and validators.url(link):
-					visit_url(link)
+					visit_url(link, connection)
 					
 		except Exception as e:
 			print(e)
-		finally:
-			connection.close()
 
 
 if __name__ == "__main__":

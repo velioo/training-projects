@@ -26,35 +26,37 @@ def main():
 				sql = "SELECT `id`, `name` FROM `categories`"
 				cursor.execute(sql)
 				result = cursor.fetchall()
+			
+			if validators.url(base_url):
+				base_name = base_url.split('//')[-1]
+				visit_url(base_url, connection)
+			else:
+				print("URL is not valid")
 		except Exception as e:
 			print(e)
 		finally:
 			connection.close()
-			
-		if validators.url(base_url):
-			base_name = base_url.split('//')[-1]
-			visit_url(base_url)
-		else:
-			print("URL is not valid")
 	else:
 		print ("No URL specified!")
 
 
-def visit_url(url):
+def visit_url(url, connection):
 		print("Visiting: " + url)
 		try:
 			visited.append(url)
 			response = urlopen(url)
-			lines = response.read().decode('utf-8')
+			if(response.headers.get_content_charset() == None):
+				return
+			lines = response.read().decode(response.headers.get_content_charset())
 			soup = BeautifulSoup(lines, "html5lib")
 			data = soup.find('input', {'type':'hidden', 'class':'soaring-cart-data', 'data-url':True, 'data-img_url':True, 'data-name':True, 'data-price':True})
 		
 			if data != None:
-				insert_record(data)	
+				insert_record(data, connection)	
 				while data != None:
 					data = data.findNext('input', {'type':'hidden', 'class':'soaring-cart-data', 'data-url':True, 'data-img_url':True, 'data-name':True, 'data-price':True})
 					if data == None: break
-					insert_record(data)
+					insert_record(data, connection)
 						
 			data = soup.find('a', {'href':True})			
 			links = []
@@ -76,15 +78,13 @@ def visit_url(url):
 
 				for link in links:
 					if link and link not in visited and validators.url(link):
-						visit_url(link)
+						visit_url(link, connection)
 					
 		except Exception as e:
 			print(e)
 
-def insert_record(data):
+def insert_record(data, connection):
 	global products_inserted
-	connection = pymysql.connect(host='localhost', user='root', password='12345678', db='online_store', charset='utf8mb4', 
-											cursorclass=pymysql.cursors.DictCursor)
 	try:
 		product_title = html_p.unescape(html_p.unescape(data['data-name']))
 		product_image_url = base_url + data['data-img_url'] if base_name not in data['data-img_url'] else data['data-img_url']
@@ -104,8 +104,6 @@ def insert_record(data):
 		print("Products inserted: ", products_inserted)
 	except Exception as e:
 		print(e)
-	finally:
-		connection.close()
 
 if __name__ == "__main__":
 	main()

@@ -25,28 +25,28 @@ def main():
 				sql = "SELECT `id`, `name` FROM `categories`"
 				cursor.execute(sql)
 				result = cursor.fetchall()
+			
+			if validators.url(base_url):
+				base_name = base_url.split('//')[-1]
+				visit_url(base_url, connection)
+			else:
+				print("URL is not valid")
 		except Exception as e:
 			print(e)
 		finally:
 			connection.close()
-			
-		if validators.url(base_url):
-			base_name = base_url.split('//')[-1]
-			visit_url(base_url)
-		else:
-			print("URL is not valid")
 	else:
 		print ("No URL specified!")
 
 
-def visit_url(url):
+def visit_url(url, connection):
 		global products_inserted
-		connection = pymysql.connect(host='localhost', user='root', password='12345678', db='online_store', charset='utf8mb4', 
-											cursorclass=pymysql.cursors.DictCursor)
 		print("Visiting: " + url)
 		visited.append(url)
 		response = urlopen(url)
-		lines = response.read().decode('utf-8')
+		if(response.headers.get_content_charset() == None):
+			return
+		lines = response.read().decode(response.headers.get_content_charset())
 		prog = re.compile(r'<input\s*type\s*=\s*"\s*hidden\s*"\s*class\s*=\s*"\s*soaring-cart-data\s*"\s*data-url\s*=\s*"\s*(.+)\s*"\s*data-img_url\s*=\s*"(.+)\s*"\s*data-name\s*=\s*"\s*(.+)\s*"\s*data-price\s*=\s*"\s*(\d+)\s*"')
 		match_iter = prog.finditer(lines)
 		try:
@@ -79,12 +79,10 @@ def visit_url(url):
 					links.append(base_url + link.group(1))
 			for link in links:
 				if link and link not in visited and validators.url(link):
-					visit_url(link)
+					visit_url(link, connection)
 					
 		except Exception as e:
 			print(e)
-		finally:
-			connection.close()
 
 
 if __name__ == "__main__":
