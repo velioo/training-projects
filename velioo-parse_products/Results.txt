@@ -1,7 +1,7 @@
 Every script runs for 10 mins:
 
-Only with Regex: 2314 products
-				 2327 products
+Only with Regex: 1-st try: 2314 products
+		 2-nd try: 2327 products
 				 
 With HTML Parser: 2065 products
 
