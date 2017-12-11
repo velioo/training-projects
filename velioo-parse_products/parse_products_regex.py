@@ -57,9 +57,9 @@ def visit_url(url, connection):
 				if len(data) == 4:
 					product_title = html_p.unescape(html_p.unescape(data[2]))
 					product_image_url = base_url + data[1] if base_name not in data[1] else data[1]
-					product_image_url = product_image_url.replace("96x96", "200x0")			
-					product_image = product_image_url.rsplit('/', 1)[-1]
-					product_price = data[3]		
+					product_image_url = html_p.unescape(html_p.unescape(product_image_url.replace("96x96", "200x0")))
+					product_image = html_p.unescape(html_p.unescape(product_image_url.rsplit('/', 1)[-1]))
+					product_price = html_p.unescape(html_p.unescape(data[3]))
 					urlretrieve(product_image_url, '/var/www/html/online_store/assets/imgs/' + product_image)
 					product_category = 1
 					for word in product_title.split(" "):
@@ -84,7 +84,7 @@ def visit_url(url, connection):
 					visit_url(link, connection)
 					
 		except Exception as e:
-			print(e)
+			print('ijjiij',e)
 
 
 if __name__ == "__main__":

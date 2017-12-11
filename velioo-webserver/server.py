@@ -4,6 +4,8 @@ import os
 import sys
 import subprocess
 import signal
+import traceback
+from time import time, gmtime, asctime
 from pathlib import Path
 from pathlib import PurePath
 import magic
@@ -31,7 +33,7 @@ def serve_forever():
     logging.info('Serving HTTP on port {port} ...'.format(port=PORT))
     print('Serving HTTP on port {port} ...'.format(port=PORT))
     
-    logging.info('Setting SIGCHLD signals handler...')
+    logging.info('Setting SIGCHLD signals handler "grim_reaper"...')
     signal.signal(signal.SIGCHLD, grim_reaper)
     
     forbidden_dirs_l = []
@@ -49,6 +51,7 @@ def serve_forever():
             logging.info('Parent: Accepting connections...')
             client_connection, client_address = listen_socket.accept()
         except IOError as e:
+            logging.error(traceback.format_exc())
             code, msg = e.args
             # restart 'accept' if it was interrupted
             if code == errno.EINTR:
@@ -73,82 +76,114 @@ def serve_forever():
 
 
 def grim_reaper(signum, frame):
+    logging.info('Parent: grim_reaper invoked')
     while True:
         try:
+            logging.info('Parent: Getting status from child...')
             pid, status = os.waitpid(-1, os.WNOHANG)
+            logging.info('Parent: Child returned pid = {}, status = "{}"'.format(pid, status))
         except IOError:
+            #logging.error(traceback.format_exc())
             return
             
         if pid == 0: # no zombies
+            logging.info('Parent: Child returned pid = 0, returning...')
             return
 
 
 def handle_request(client_connection):
     pid = os.getpid()
+    logging.info('Child {}: handle_request invoked...'.format(pid))
     global forbidden_dirs
     arguments = ""
     try:
+        logging.info('Child {}: Receiving request...'.format(pid))
         request = client_connection.recv(4096)
-        response = request.decode()
-        print(response)
+        logging.info('Child {}: Decoding request...'.format(pid))
+        response = request.decode('utf-8')
+        logging.info('Child {}: Request:\n{}'.format(pid, response))
         lines = response.split("\n")
         method, path, protocol = lines[0].strip().split(" ")
         if method == 'GET':
+            logging.info('Child {}: Request method is GET'.format(pid))
             if '?' in path:
                 path, arguments = path.split("?")
                 arguments = arguments.split("&")
-            print(path, arguments)
-            print("Request is GET")
+            logging.info('Child {}: Path: {}, Arguments: {}'.format(pid, path, arguments))
+            logging.info('Child {}: Converting path: {} to Path object...'.format(pid, path))
             path = convert_path(path)
             if path.is_dir() and str(path) in forbidden_dirs:
-                http_response = b" HTTP/1.1 403 Forbidden\r\n\r\nError 403 \r\nForbidden"
-                client_connection.sendall(http_response)
+                http_response = "HTTP/1.1 403 Forbidden\r\n{}\r\n\r\nError 403 \r\nForbidden".format(asctime(gmtime(time())))
+                logging.info('Child {}: Path access is forbidden, response:\n{}'.format(pid, http_response))
+                client_connection.sendall(bytearray(http_response, 'utf-8'))
                 return
                 
+            logging.info('Child {}: Getting PurePath from Path...'.format(pid))
             pure_path = PurePath(path)
+            logging.info('Child {}: Checking if the Path is forbidden...'.format(pid))
             for p in pure_path.parents:
-                #print(p)
                 if str(p) in forbidden_dirs:
                     http_response = b" HTTP/1.1 403 Forbidden\r\n\r\nError 403 \r\nForbidden"
+                    logging.info('Child {}: Path is forbidden, directory {} is forbidden. Response:\n{}'.format(pid, str(p), http_response.decode()))
                     client_connection.sendall(http_response)
                     return
             
-            path = convert_path(path)
             if path.is_file() or path.is_dir():
                 if path.is_dir():
                     path = convert_path(str(path) + "/index.html")
-                    #print(path)
+                    logging.info('Child {}: Path is a directory. Changing path to {}'.format(pid, path))
                 if path.is_file():
-                    if str(path).endswith('.py'):
+                    logging.info('Child {}: Path is a file'.format(pid))
+                    if str(path).startswith("cgi-bin") and str(path).endswith('.py'):
+                        logging.info('Child {}: Path is a CGI script'.format(pid))
                         try:
                             script_args = [sys.executable, path]
                             #for arg in arguments: script_args.append(arg)
                             script_args.append(";".join(arguments))
-                            print(script_args)
+                            logging.info('Child {}: Script arguments: {}'.format(pid, script_args))
+                            logging.info('Child {}: Executing {}'.format(pid, path))
                             output = subprocess.check_output(script_args)
-                            client_connection.sendall(b"HTTP/1.1 200 OK\r\n" + output)
+                            if output.decode().startswith("***ERROR***"):
+                                http_response = b"HTTP/1.1 500 Internal Server Error\r\n\r\nError 500\r\nInternal Server Error"
+                                logging.info('Child {}: Script finished with errors: {}'.format(pid, output.decode()))
+                                logging.info('Child {}: Response:\n{}'.format(pid, http_response.decode()))
+                            else:
+                                http_response = b"HTTP/1.1 200 OK\r\n" + output
+                                logging.info('Child {}: Script finished. Response:\n{}'.format(pid, http_response.decode()))
+                            
+                            client_connection.sendall(http_response)
                         except subprocess.CalledProcessError as e:
-                            print(e.output().decode())
+                            eprint(e.output().decode())
                     else:
+                        logging.info('Child {}: Path is a resource. Loading MIME detector...'.format(pid))
                         ft_detector = magic.Magic(mime=True)
                         mime = ft_detector.from_file(str(path))
-                        print(mime)
+                        logging.info('Child {}: MIME: {}'.format(pid, mime))
                         http_response = b"HTTP/1.1 200 OK\r\nContent-Type: " + bytearray(mime, 'utf-8') + b"\r\n\r\n"
+                        logging.info('Child {}: Response:\n{}'.format(pid, http_response.decode()))
                         client_connection.sendall(http_response)
                         with open(path, 'rb') as f:
                             for line in f:
                                 client_connection.sendall(line)
                 else:
+                    logging.info('Child {}: Path is neither a file nor dir'.format(pid))
                     http_response = b" HTTP/1.1 403 Forbidden\r\n\r\nError 403 \r\nForbidden"
+                    logging.info('Child {}: Response:\n'.format(pid, http_response.decode()))
                     client_connection.sendall(http_response)
             else:
+                logging.info('Child {}: Path doesn\'t exist'.format(pid))
                 http_response = b" HTTP/1.1 404 Not Found\r\n\r\nError 404 \r\nResource not found"
+                logging.info('Child {}: Response:\n'.format(pid, http_response.decode()))
                 client_connection.sendall(http_response)
+        elif method == 'POST':
+            logging.info('Child {}: Request method is POST'.format(pid))
+            #data = response.split("\n")[-1]
+            print(request)
         else:
-            print("Method is not get")
+            logging.info('Child {}: Request method is unsupported: {}'.format(pid, method))
 
     except Exception as e:
-        print(e)
+        logging.error(traceback.format_exc())
 
 
 def convert_path(path):

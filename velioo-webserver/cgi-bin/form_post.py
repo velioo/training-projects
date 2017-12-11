@@ -11,6 +11,7 @@ try:
 
     first_name = form.getvalue('first_name')
     last_name = form.getvalue('last_name')
+    password = form.getvalue('password')
 
     print ("Content-type:text/html\r\n\r\n")
     print ('<html>')

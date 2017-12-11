@@ -1,0 +1,24 @@
+
+Traceback (most recent call last):
+  File "server.py", line 191, in <module>
+    serve_forever()
+  File "server.py", line 52, in serve_forever
+    client_connection, client_address = listen_socket.accept()
+  File "/usr/lib/python3.6/socket.py", line 205, in accept
+    fd, addr = self._accept()
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "server.py", line 191, in <module>
+    if __name__ == '__main__':
+  File "server.py", line 52, in serve_forever
+    client_connection, client_address = listen_socket.accept()
+  File "/usr/lib/python3.6/socket.py", line 205, in accept
+    fd, addr = self._accept()
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "server.py", line 192, in <module>
+  File "server.py", line 52, in serve_forever
+    except IOError as e:
+  File "/usr/lib/python3.6/socket.py", line 205, in accept
+    fd, addr = self._accept()
+KeyboardInterrupt
