@@ -39,7 +39,7 @@
 			<h3 style="text-align:right;">Продукти: </h3>
 				<?php if(isset($products) && $products) { foreach($products as $p) { ?>
 					<div class="cart_product order">
-						<div class="cart_product_image_div order"><a href="#"><img src="<?php echo ($p['image'] != '') ? asset_url() . "imgs/" . htmlspecialchars($p['image'], ENT_QUOTES) : ""; ?>" onerror="this.src='<?php echo asset_url() . "imgs/no_image.png" ?>';" class="cart_product_image order"></a></div>
+						<div class="cart_product_image_div order"><a href="<?php echo site_url("products/product/" . $p['product_id']); ?>"><img src="<?php echo ($p['image'] != '') ? asset_url() . "imgs/" . htmlspecialchars($p['image'], ENT_QUOTES) : ""; ?>" onerror="this.src='<?php echo asset_url() . "imgs/no_image.png" ?>';" class="cart_product_image order"></a></div>
 						<div class="cart_product_name_div order"><p class="cart_product_name order"><?php echo htmlspecialchars($p['name'], ENT_QUOTES); ?></p></div>
 						<div class="cart_product_price order"><p>Цена: <?php echo htmlspecialchars($p['quantity'] . " x " . number_format($p['price_leva'], 2), ENT_QUOTES) . " лв.  =  " . htmlspecialchars(number_format($p['price_leva'] * $p['quantity'], 2), ENT_QUOTES) . " лв.";; ?></p></div>						
 					</div>

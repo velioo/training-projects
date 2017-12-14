@@ -4,7 +4,7 @@
 	<div id="wrap"></br>
 		<h2><?php if(isset($product['name'])) echo htmlentities($product['name'], ENT_QUOTES); ?></h2>
 		<hr>
-		<div class="container-fluid">
+		<div class="container-fluid" id="product_container">
 			
 			<div class="product_left">
 				<img src="<?php echo ($product['image'] != '') ? asset_url() . "imgs/" . htmlspecialchars($product['image'], ENT_QUOTES) : ""; ?>" 

@@ -24,7 +24,7 @@
 </div>	 
 <?php } ?>
 
-<div class="products_div" <?php if(!isset($tags)) echo 'style="width:100%;"'; ?> >	
+<div class="products_div" <?php if(!isset($tags)) echo 'style="width:90%;"'; ?> >	
     <?php if(isset($tags)) { ?> 
 		Подреди по <select name="sort_products" id="sort_products">
 			<option value="most_buyed" <?php if(isset($sort_products) && $sort_products == 'most_buyed' || isset($sort_products) && $sort_products == null || !isset($sort_products)) echo 'selected="selected"'; ?>>Най-продавани</option>
@@ -41,12 +41,16 @@
 			</div>
 			<div class="row row-eq-height">
 		 <?php } ?>
-		<div class="col-sm-3 product" data-id="<?php echo htmlspecialchars($p['id'], ENT_QUOTES); ?>">
-			<a href="<?php echo site_url("products/product") . "/" . htmlentities($p['id'], ENT_QUOTES); ?>"><img src="<?php echo ($p['image'] != '') ? asset_url() . "imgs/" . htmlspecialchars($p['image'], ENT_QUOTES) : ""; ?>" onerror="this.src='<?php echo asset_url() . "imgs/no_image.png" ?>';" class="product_image" <?php if(!isset($tags)) echo 'style="max-width:220px;max-height:220px;"' ?>></a></br></br>
-			<a href="<?php echo site_url("products/product") . "/" . htmlentities($p['id'], ENT_QUOTES); ?>" class="product_name no_underline">Име: <?php echo htmlspecialchars($p['name'], ENT_QUOTES); ?></a></br>
-			<a href="<?php echo site_url("products/search") . "/" . htmlentities($p['category_id'], ENT_QUOTES); ?>" class="product_category no_underline">Категория: <?php echo htmlspecialchars($p['category'], ENT_QUOTES); ?></a></br>		
-			<div class="product_price"><p style="font-size: 18px;">Цена: <?php echo number_format(htmlspecialchars($p['price_leva'], ENT_QUOTES), 2) . " лв."; ?></p></div>	
-			<?php if($p['quantity'] >= 1) echo "<p style='color:blue;'>В наличност</p>"; else echo "<p style='color:red;'>Няма наличност</p>"; ?>	
+		<div class="col-sm-3 product" data-id="<?php echo htmlspecialchars($p['id'], ENT_QUOTES); ?>">	
+			<div class="image_product_wrapper">
+				<a href="<?php echo site_url("products/product") . "/" . htmlentities($p['id'], ENT_QUOTES); ?>"><img src="<?php echo ($p['image'] != '') ? asset_url() . "imgs/" . htmlspecialchars($p['image'], ENT_QUOTES) : ""; ?>" onerror="this.src='<?php echo asset_url() . "imgs/no_image.png" ?>';" class="product_image" <?php if(!isset($tags)) echo 'style="max-width:220px;max-height:220px;"' ?>></a></br></br>
+			</div>
+			<div class="product_wrapper">
+				<a href="<?php echo site_url("products/product") . "/" . htmlentities($p['id'], ENT_QUOTES); ?>" class="product_name no_underline">Име: <?php echo htmlspecialchars($p['name'], ENT_QUOTES); ?></a></br>
+				<a href="<?php echo site_url("products/search") . "/" . htmlentities($p['category_id'], ENT_QUOTES); ?>" class="product_category no_underline">Категория: <?php echo htmlspecialchars($p['category'], ENT_QUOTES); ?></a></br>		
+				<div class="product_price"><p style="font-size: 18px;">Цена: <?php echo number_format(htmlspecialchars($p['price_leva'], ENT_QUOTES), 2) . " лв."; ?></p></div>	
+				<?php if($p['quantity'] >= 1) echo "<p style='color:blue;'>В наличност</p>"; else echo "<p style='color:red;'>Няма наличност</p>"; ?>	
+			</div>
 			<?php if($p['quantity'] != 0) { ?><button type="button" class="btn btn-default buy_button"><span class="glyphicon glyphicon-shopping-cart"></span> Купи</button> <img class="spinner buy" src="<?php echo asset_url() . 'imgs/spinner.gif'; ?>"> <?php } ?>
 		</div>
 	  <?php $row++; } else echo "Няма налични продукти в момента."?>
