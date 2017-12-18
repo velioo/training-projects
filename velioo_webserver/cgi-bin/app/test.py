@@ -12,6 +12,7 @@ try:
     first_name = form.getvalue('first_name')
     last_name = form.getvalue('last_name')
 
+    print ("HTTP/1.1 200 OK")
     print ("Content-type:text/html\r\n\r\n")
     print ('<html>')
     print ('<head>')

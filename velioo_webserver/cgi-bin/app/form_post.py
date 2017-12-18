@@ -6,13 +6,14 @@ import traceback
 cgitb.enable(display=0, logdir="logs")
 
 try:
-
+    
     form = cgi.FieldStorage()
 
     first_name = form.getvalue('first_name')
     last_name = form.getvalue('last_name')
     password = form.getvalue('password')
 
+    print ("HTTP/1.1 200 OK")
     print ("Content-type:text/html\r\n\r\n")
     print ('<html>')
     print ('<head>')
