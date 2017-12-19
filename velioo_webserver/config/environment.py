@@ -5,7 +5,7 @@ import os
 os.environ['SERVER_SOFTWARE'] = "Velioo's Webserver"
 os.environ['SERVER_NAME'] = ''
 os.environ['PORT'] = '8888'
-REQUEST_QUEUE_SIZE = 1024
+REQUEST_QUEUE_SIZE = 2048
 ADDRESS_FAMILY = socket.AF_INET
 SOCKET_TYPE = socket.SOCK_STREAM
 SOCKET_OPTION_LEVEL = socket.SOL_SOCKET
@@ -21,7 +21,7 @@ allowed_dirs = tuple(
 
 supported_cgi_formats = {
     'py': sys.executable,
-    'php': '/usr/bin/php-cgi7.0'
+    'php': '/usr/bin/php7.1'
 }
 
 

@@ -1,0 +1,46 @@
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient).....done
+
+
+Server Software:        
+Server Hostname:        127.0.0.1
+Server Port:            8888
+
+Document Path:          /cgi-bin/app/form_post.py
+Document Length:        0 bytes
+
+Concurrency Level:      10
+Time taken for tests:   30.877 seconds
+Complete requests:      100
+Failed requests:        0
+Non-2xx responses:      100
+Total transferred:      33900 bytes
+Total body sent:        3743900
+HTML transferred:       0 bytes
+Requests per second:    3.24 [#/sec] (mean)
+Time per request:       3087.738 [ms] (mean)
+Time per request:       308.774 [ms] (mean, across all concurrent requests)
+Transfer rate:          1.07 [Kbytes/sec] received
+                        118.41 kb/s sent
+                        119.48 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.1      0       0
+Processing:  3020 3063  44.4   3044    3204
+Waiting:     3008 3032  21.4   3026    3092
+Total:       3020 3064  44.5   3044    3204
+
+Percentage of the requests served within a certain time (ms)
+  50%   3044
+  66%   3070
+  75%   3089
+  80%   3093
+  90%   3138
+  95%   3165
+  98%   3192
+  99%   3204
+ 100%   3204 (longest request)

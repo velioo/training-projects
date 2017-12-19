@@ -2,8 +2,11 @@
 
 import cgi, cgitb
 import sys
+import os
 import traceback
 cgitb.enable(display=0, logdir="logs")
+
+UPLOAD_DIR = './application/uploads'
 
 try:
     
@@ -23,7 +26,16 @@ try:
     print ('<h2>Hello {} {} </h2>'.format(first_name, last_name))
     print ('</body>')
     print ('</html>')
+    
+    fileitem = form['file']
+    if fileitem.filename:
+        uploaded_file_path = os.path.join(UPLOAD_DIR, os.path.basename(fileitem.filename))
+        with open(uploaded_file_path, 'wb') as fout:
+            while True:
+                chunk = fileitem.file.read()
+                if not chunk:
+                    break
+                fout.write (chunk)
 
 except Exception as e:
-    print("***ERROR***")
     print(traceback.format_exc())

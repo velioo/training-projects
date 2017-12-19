@@ -1,0 +1,10 @@
+Running 5m test @ http://127.0.0.1:8888/application
+  25 threads and 1000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   622.64ms  224.76ms   2.00s    90.24%
+    Req/Sec    17.46     14.00   202.00     78.63%
+  72936 requests in 5.00m, 12.51MB read
+  Socket errors: connect 4, read 1393, write 15, timeout 1646
+  Non-2xx or 3xx responses: 62
+Requests/sec:    243.04
+Transfer/sec:     42.70KB

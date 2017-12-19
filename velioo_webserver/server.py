@@ -6,16 +6,21 @@ import socket
 import subprocess
 import signal
 import traceback
+import datetime
 import select
 import threading
-from time import time, gmtime, asctime
+from time import time, gmtime, asctime, mktime
+from wsgiref.handlers import format_date_time
+#~ stamp = mktime(now.timetuple())
+#~ print format_date_time(stamp)
 from pathlib import Path
 import magic
 from urllib.parse import unquote
 import logging
 import velioo_webserver.config.environment as env
 
-logging.basicConfig(filename='logs/server.log', level=logging.DEBUG, format='%(levelname)s:%(asctime)s --> %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
+now = datetime.datetime.now()
+logging.basicConfig(filename='logs/server_' + now.strftime("%Y-%m-%d") + '.log', level=logging.DEBUG, format='%(levelname)s:%(asctime)s --> %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 
 def serve_forever():
     logging.info('Creating socket with {} and {}'.format(env.ADDRESS_FAMILY, env.SOCKET_TYPE))
@@ -38,7 +43,7 @@ def serve_forever():
             logging.info('Parent: Accepting connections...')
             client_connection, client_address = listen_socket.accept()
         except IOError as e:
-            logging.error(traceback.format_exc())
+            logging.error('Child {} Traceback:{}'.format(pid, traceback.format_exc()))
             code, msg = e.args
             if code == errno.EINTR:  # restart 'accept' if it was interrupted
                 continue
@@ -60,9 +65,6 @@ def serve_forever():
             logging.info('Parent: Closing parent client connection...')
             client_connection.close() # close parent copy and loop over
 
-    logging.info("Server closed")
-    print("Server closed")
-
 
 def grim_reaper(signum, frame):
     while True:
@@ -77,22 +79,38 @@ def grim_reaper(signum, frame):
 
 def handle_request(client_connection, client_address):
     pid = os.getpid()
+    signal.signal(signal.SIGALRM, cgi_timeout)
     logging.info('Child {}: handle_request invoked...'.format(pid))
     arguments = ""
     try:
         logging.info('Child {}: Receiving request...'.format(pid))
         
-        request_headers = b""
-        request_body = ""
-        method, path, protocol = "", "", ""
+        request_headers = b''
+        request_body = ''
+        method, path, protocol = '', '', ''
         
         client_connection.setblocking(0)
         try:
             while True:
-                ready = select.select([client_connection], [], [], 10)
+                logging.info('Child {}: Waiting for select...'.format(pid))
+                ready = select.select([client_connection], [], [], 5.0)
+                logging.info('Child {}: Select Ready'.format(pid))
                 if ready[0]:
+                    logging.info('Child {}: Client connection ready for read'.format(pid))
                     data = client_connection.recv(env.RECV_BUFSIZE)
-                    request_headers+=data
+                    logging.info('Child {}: Data read: {}'.format(pid, data))
+                    if data == b'':
+                        logging.info('Child {}: client_connection.recv ready but sent empty string...suspending receive operation'.format(pid))
+                        break
+                    try:
+                        request_headers+=data
+                    except TypeError as e:
+                        logging('Child {}: Problem reading request. Request not in binary.'.format(pid))
+                        logging.info('Child {}: Error 400 Bad request'.format(pid))
+                        http_response = b"HTTP/1.1 400 Bad Request\r\n\r\nError 400 \r\nBad Request"
+                        logging.info('Child {}: Response:{}\n'.format(pid, http_response.decode()))
+                        client_connection.sendall(http_response)
+                        return
                     try:
                         if b'\r\n' in request_headers and not method:
                             method, path, protocol = request_headers.split(b'\r\n')[0].decode('utf-8').strip().split(" ")
@@ -103,28 +121,35 @@ def handle_request(client_connection, client_address):
                                 try:
                                     request_body = temp.split(b'\r\n\r\n', 1)[1]
                                 except IndexError as e:
-                                    logging.info("Didn\'t parse any parts of the request body while parsing the request headers")
+                                    logging.info("Child {}: Didn\'t parse any parts of the request body while parsing the request headers".format(pid))
                                 if request_body:
-                                    logging.info("Parsed part of (the whole) request body while parsing the request headers")
+                                    logging.info("Child {}: Parsed part of (the whole) request body while parsing the request headers".format(pid))
                             break
                     except ValueError as e:
-                        logging.error('Failed to parse request headers')
-                        logging.error(traceback.format_exc())
+                        logging.error('Child {}: Failed to parse request headers'.format(pid))
+                        logging.error('Child {} Traceback:{}'.format(pid, traceback.format_exc()))
                         logging.info('Child {}: Error 400 Bad request'.format(pid))
                         http_response = b"HTTP/1.1 400 Bad Request\r\n\r\nError 400 \r\nBad Request"
                         logging.info('Child {}: Response:{}\n'.format(pid, http_response.decode()))
                         client_connection.sendall(http_response)
                         return
                 else:
+                    logging.info('Child {}: Request headers successfully received'.format(pid))
                     break
         except UnicodeDecodeError as e:
-            logging.error("Problem decoding request")
-            logging.error(traceback.format_exc())
+            logging.error("Child {}: Problem decoding request".format(pid))
+            logging.error('Child {} Traceback:{}'.format(pid, traceback.format_exc()))
             http_response = b"HTTP/1.1 500 Internal Server Error\r\n\r\nError 500 \r\nInternal Server Error"
             logging.info('Child {}: Response:{}\n'.format(pid, http_response.decode()))
             client_connection.sendall(http_response)
             return
-    
+        except TimeoutError as e:
+            logging.info('Child {}: Request timeout'.format(pid))
+            logging.info('Child {}: Request headers:\n{}'.format(pid, request_headers))
+            http_response = b"HTTP/1.1 408 Request Timeout\r\n\r\nError 408 \r\nRequest Timeout"
+            logging.info('Child {}: Response:{}\n'.format(pid, http_response.decode()))
+            client_connection.sendall(http_response)
+            return
     
         logging.info('Child {}: Request headers:\n{}'.format(pid, request_headers))
         
@@ -144,16 +169,16 @@ def handle_request(client_connection, client_address):
         
         
         headers = {}
-        splitted_headers = request_headers.split('\r\n')
         try:
+            splitted_headers = request_headers.split('\r\n')
             for header in splitted_headers:
                 if ':' in header:
                     splitted_header = header.split(":", 1)
                     if len(splitted_header) > 1:
                         headers[splitted_header[0]] = splitted_header[1].strip().rstrip()
         except Exception as e:
-            logging.error("Problem parsing headers")
-            logging.error(traceback.format_exc())
+            logging.error("Child {}: Problem parsing headers".format(pid))
+            logging.error('Child {} Traceback:{}'.format(pid, traceback.format_exc()))
             http_response = b"HTTP/1.1 500 Internal Server Error\r\n\r\nError 500 \r\nInternal Server Error"
             logging.info('Child {}: Response:{}\n'.format(pid, http_response.decode()))
             client_connection.sendall(http_response)
@@ -163,14 +188,37 @@ def handle_request(client_connection, client_address):
             logging.info('Child {}: Request method is GET'.format(pid))
         elif method == 'POST':
             logging.info('Child {}: Request method is POST'.format(pid))
-            content_length = None
-            if headers['Content-Length']:
-                try:
+            try:
+                if 'Content-Length' in headers:
                     content_length = int(headers['Content-Length'])
-                except ValueError as e:
-                    logging.info('No Content-Length attribute specified in POST request. Setting Content-Length to None')
-                    logging.error(traceback.format_exc())
+                elif 'Content-length' in headers:
+                    content_length = int(headers['Content-length'])
+                elif 'content_length' in headers:
+                    content_length = int(headers['content-length'])
+                else:
                     content_length = None
+            except (ValueError, KeyError) as e:
+                logging.info('Child {}: Failed to parse Content-Length attribute...setting Content-Length to None'.format(pid))
+                logging.error('Child {} Traceback:{}'.format(pid, traceback.format_exc()))
+                content_length = None
+        elif method == 'OPTIONS':
+            if path == '*':
+                http_response = b"HTTP/1.1 200 OK\r\nAllow: OPTIONS, GET, POST\r\n\Content-Length: 0\r\n"
+                logging.info('Child {}: Response:{}\n'.format(pid, http_response.decode()))
+                client_connection.sendall(http_response)
+            else:
+                path = convert_path(path)
+                for p in env.allowed_dirs:
+                    if str(path).startswith(p) and (path.is_file() or path.is_dir()):
+                        http_response = b"HTTP/1.1 200 OK\r\nAllow: OPTIONS, GET, POST\r\nContent-Length: 0\r\n"
+                        logging.info('Child {}: Response:{}\n'.format(pid, http_response.decode()))
+                        client_connection.sendall(http_response)
+                        return
+                http_response = b"HTTP/1.1 200 OK\r\nAllow:\r\nContent-Length: 0\r\n"
+                logging.info('Child {}: Response:{}\n'.format(pid, http_response.decode()))
+                client_connection.sendall(http_response)
+                    
+            return
         else:
             logging.info('Child {}: Request method is unsupported: {}'.format(pid, method))
             http_response = b"HTTP/1.1 400 Bad Request\r\n\r\nError 400 \r\nBad Request"
@@ -179,8 +227,15 @@ def handle_request(client_connection, client_address):
             return
             
         if '?' in path:
-            path, arguments = path.split('?')
-            logging.info('Child {}: Path: {}, Arguments: {}'.format(pid, path, arguments))    
+            try:
+                path, arguments = path.split('?')
+                logging.info('Child {}: Path: {}, Arguments: {}'.format(pid, path, arguments))
+            except ValueError as e:
+                logging.error('Failed to split path from query params...')
+                http_response = b"HTTP/1.1 500 Internal Server Error\r\n\r\nError 500 \r\nInternal Server Error"
+                logging.info('Child {}: Response:{}\n'.format(pid, http_response.decode()))
+                client_connection.sendall(http_response)
+                return
         logging.info('Child {}: Converting path: {} to Path object...'.format(pid, path))
         path = convert_path(path)
         if path.exists():
@@ -190,7 +245,18 @@ def handle_request(client_connection, client_address):
                 if path_str.startswith(p):
                     if path.is_file() or path.is_dir():
                         if path.is_dir():
-                            path = convert_path(path_str + "/index.html")
+                            try:
+                                path = convert_path(path_str + "/index.html")
+                            except TypeError as e:
+                                logging.info('Child {}: Failed to concatenate path_str to index.html...retrying with str(path) + index.html'.format(pid))
+                                if isinstance(path, Path):
+                                    path = convert_path(str(path) + "/index.html")
+                                else:
+                                    logging.info('Variable "path" is not a Path instance, concatenation aborted...')
+                                    http_response = b"HTTP/1.1 500 Internal Server Error\r\n\r\nError 500 \r\nInternal Server Error"
+                                    logging.info('Child {}: Response:{}\n'.format(pid, http_response.decode()))
+                                    client_connection.sendall(http_response)
+                                    return
                             path_str = str(path)
                             logging.info('Child {}: Path is a directory. Changing path to {}'.format(pid, path))
                         if path.is_file():
@@ -198,8 +264,16 @@ def handle_request(client_connection, client_address):
                             if path_str.startswith("cgi-bin") and os.access(path_str, os.X_OK):
                                 logging.info('Child {}: Path is a CGI script'.format(pid))
                                 try:
-                                    ext = path_str.split('.')[-1]
-                                    executable = env.supported_cgi_formats.get(ext, None)
+                                    try:
+                                        ext = path_str.split('.')[-1]
+                                    except ValueError as e:
+                                        logging.error('Child {}: Failed getting CGI script file extension, setting ext to None'.format(pid))
+                                        ext = None
+                                    try:
+                                        executable = env.supported_cgi_formats[ext]
+                                    except KeyError as e:
+                                         logging.error('Child {}: Failed getting CGI script executable. Trying with default executable: {}'.format(pid, sys.executable))
+                                         executable = sys.executable
                                     if executable:
                                         set_environment(headers=headers, 
                                                         arguments=arguments, 
@@ -211,82 +285,96 @@ def handle_request(client_connection, client_address):
                                                         )
                                         script_args = [executable, path_str]
                                         logging.info('Child {}: Executing {}'.format(pid, path))
-                                        signal.signal(signal.SIGALRM, cgi_timeout)
                                         proc = subprocess.Popen(script_args, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                                        signal.alarm(10)
+                                        signal.alarm(15)
                                         try:
                                             if method == 'POST':
                                                 if request_body:
-                                                    proc.stdin.write(request_body)
-                                                logging.info('Getting POST request body...')
-                                                logging.info("Content-Length from request = {}".format(content_length))
-                                                logging.info("Current Content-Length = {}".format(len(request_body)))
+                                                    try:
+                                                        proc.stdin.write(request_body)
+                                                    except BrokenPipeError as e:
+                                                        logging.info('Child {}: PIPE broke while writing...'.format(pid))
+                                                        raise OSError
+                                                logging.info("Child {}: Content-Length from request = {}".format(pid, content_length))
+                                                logging.info("Child {}: Current Content-Length = {}".format(pid, len(request_body)))
                                                 bytes_read = 0
                                                 prev_content_length = len(request_body)
                                                 if(content_length == None or content_length > len(request_body)):
+                                                    logging.info('Child {}: Getting POST request body...'.format(pid))
+                                                    logging.info('Child {}: POST body:'.format(pid))
                                                     while True:
+                                                        logging.info('Child {}: Waiting for select...'.format(pid))
                                                         ready = select.select([client_connection], [], [], 3)
+                                                        logging.info('Child {}: Select Ready'.format(pid))
                                                         if ready[0]:
+                                                            logging.info('Child {}: Client connection ready for read'.format(0))
                                                             post_data = client_connection.recv(env.RECV_BUFSIZE)
+                                                            logging.info('Child {}: Data read: {}'.format(pid, data))
+                                                            if post_data == b'':
+                                                                logging.info('Chikld {}: client_connection.recv ready but sent empty string...suspending receive operation'.format(pid))
+                                                                break
                                                             bytes_read+=len(post_data)
-                                                            proc.stdin.write(post_data)
+                                                            try:
+                                                                proc.stdin.write(post_data)
+                                                            except BrokenPipeError as e:
+                                                                logging.info('Child {}: PIPE broke while writing...'.format(pid))
+                                                                raise OSError
                                                             if content_length != None and content_length <= bytes_read:
+                                                                logging.info('Child {}: Request body successfully received'.format(pid))
                                                                 break
                                                         else:
                                                             break
                                                     
-                                                    if prev_content_length == len(request_body):
+                                                    if prev_content_length == len(request_body) + bytes_read:
                                                         raise TimeoutError
-                                                logging.info('Child {}: Request body received. Bytes read = {}'.format(pid, len(request_body)))
+                                                logging.info('Child {}: Request body received. Total bytes read = {}'.format(pid, len(request_body) + bytes_read))
                                                 proc.stdin.close()
-                                                logging.info('Child {}: Response:\n'.format(pid))
+                                                logging.info('Child {}: Response:\n'.format(pid))                                     
+                                                line = None
                                                 for line in proc.stdout:
                                                     client_connection.sendall(line)
                                                     logging.info('{}'.format(line.decode().replace("\n","", 1)))
-                                                proc.wait(3.0)
+                                                if line == None:
+                                                    logging.info('Child {}: CGI script didn\'t return anything.'.format(pid))
+                                                    http_response = b"HTTP/1.1 501 Not Implemented\r\n\r\nError 501 \r\nNot Implemented"
+                                                    logging.info('Child {}: Response:\n'.format(pid, http_response.decode()))
+                                                    client_connection.sendall(http_response)
+                                                proc.wait(5.0)
                                                 signal.alarm(0)
                                             elif method == 'GET':
                                                 logging.info('Child {}: Response:\n'.format(pid))
+                                                line = None
                                                 for line in proc.stdout:
                                                     client_connection.sendall(line)
                                                     logging.info('{}'.format(line.decode().replace("\n","", 1)))
-                                                proc.wait(3.0)
+                                                if line == None:
+                                                    logging.info('Child {}: CGI script didn\'t return anything.'.format(pid))
+                                                    http_response = b"HTTP/1.1 501 Not Implemented\r\n\r\nError 501 \r\nNot Implemented"
+                                                    logging.info('Child {}: Response:\n'.format(pid, http_response.decode()))
+                                                    client_connection.sendall(http_response)
+                                                proc.wait(5.0)
                                                 signal.alarm(0)
                                             else:
                                                 logging.info('Child {}: Failed to execute CGI script - request method is unsupported'.format(pid))
                                                 http_response = b"HTTP/1.1 501 Not Implemented\r\n\r\nError 501 \r\nNot Implemented"
                                                 logging.info('Child {}: Response:\n'.format(pid, http_response.decode()))
                                                 client_connection.sendall(http_response)
-                                                
                                         except (TimeoutError, subprocess.TimeoutExpired) as e:
-                                            if proc:
-                                                proc.kill()
                                             logging.info('Child {}: Request timeout: {}'.format(pid, method))
                                             http_response = b"HTTP/1.1 408 Request Timeout\r\n\r\nError 408 \r\nRequest Timeout"
                                             logging.info('Child {}: Response:{}\n'.format(pid, http_response.decode()))
                                             client_connection.sendall(http_response)
-                                            return
-                                        except RuntimeError as e:
-                                            if proc:
-                                                proc.kill()
-                                            logging.error('thread.start() called more than once')
-                                            logging.error(traceback.format_exc())
-                                            raise OSError
-                                        return
                                     else:
                                         logging.info('Child {}: Failed to execute CGI script - CGI extension not supported'.format(pid))
                                         http_response = b"HTTP/1.1 501 Not Implemented\r\n\r\nError 501 \r\nNot Implemented"
                                         logging.info('Child {}: Response:\n'.format(pid, http_response.decode()))
                                         client_connection.sendall(http_response)
                                 except OSError as e:
-                                    if proc:
-                                        proc.kill()
-                                    logging.error('Failed to execute script...')
-                                    logging.error(traceback.format_exc())
+                                    logging.error('Child {}: Failed to execute script...'.format(pid))
+                                    logging.error('Child {} Traceback:{}'.format(pid, traceback.format_exc()))
                                     http_response = b"HTTP/1.1 500 Internal Server Error\r\n\r\nError 500 \r\nInternal Server Error"
                                     logging.info('Child {}: Response:{}\n'.format(pid, http_response.decode()))
                                     client_connection.sendall(http_response)
-                                    return
                             else:
                                 logging.info('Child {}: Path is a resource. Loading MIME detector...'.format(pid))
                                 ft_detector = magic.Magic(mime=True)
@@ -301,7 +389,7 @@ def handle_request(client_connection, client_address):
                         else:
                             logging.info('Child {}: Path is neither a file nor dir'.format(pid))
                             http_response = b"HTTP/1.1 403 Forbidden\r\n\r\nError 403 \r\nForbidden"
-                            logging.info('Child {}: Response:\n'.format(pid, http_response.decode()))
+                            logging.info('Child {}: Response:\n{}'.format(pid, http_response.decode()))
                             client_connection.sendall(http_response)
                     else:
                         logging.info('Child {}: Path is neither a file nor dir'.format(pid))
@@ -319,13 +407,21 @@ def handle_request(client_connection, client_address):
             http_response = b"HTTP/1.1 404 Not Found\r\n\r\nError 404 \r\nResource not found"
             logging.info('Child {}: Response:{}\n'.format(pid, http_response.decode()))
             client_connection.sendall(http_response)
+            return
 
+    except BrokenPipeError as e:
+        logging.error('Child {}: Connection between server and client was broken'.format(pid))
+        logging.error('Child {} Traceback:{}'.format(pid, traceback.format_exc()))
     except RuntimeError as e:
-        logging.error(traceback.format_exc())
+        logging.error('Child {} Traceback:{}'.format(pid, traceback.format_exc()))
+        http_response = b"HTTP/1.1 500 Internal Server Error\r\n\r\nError 500 \r\nInternal Server Error"
+        logging.info('Child {}: Response:{}\n'.format(pid, http_response.decode()))
+        client_connection.sendall(http_response)
+        return
     except ConnectionResetError as e:
-        logging.error(traceback.format_exc())
+        logging.error('Child {} Traceback:{}'.format(pid, traceback.format_exc()))
     except Exception as e:
-        logging.error(traceback.format_exc())
+        logging.error('Child {} Traceback:{}'.format(pid, traceback.format_exc()))
 
 
 def convert_path(path):
@@ -347,34 +443,14 @@ def set_environment(*args, **kwargs):
 
 def cgi_timeout(signum, frame):
     raise TimeoutError
-
-
-def get_post_body(client_connection, proc, content_length, request_body, pid):
-    logging.info('Getting POST request body...')
-    logging.info("Content-Length from request = {}".format(content_length))
-    logging.info("Current Content-Length = {}".format(len(request_body)))
-    bytes_read = 0
-    prev_content_length = len(request_body)
-    if(content_length == None or content_length > len(request_body)):
-        while True:
-            ready = select.select([client_connection], [], [], 3)
-            if ready[0]:
-                post_data = client_connection.recv(env.RECV_BUFSIZE)
-                bytes_read+=len(post_data)
-                proc.stdin.write(post_data)
-                if content_length != None and content_length <= bytes_read:
-                    break
-            else:
-                break
-        
-        if prev_content_length == len(request_body):
-            raise TimeoutError
-    logging.info('Child {}: Request body received. Bytes read = {}'.format(pid, len(request_body)))
-    proc.stdin.close()
+    
     
 if __name__ == '__main__':
     try:
         serve_forever()
+    except KeyboardInterrupt as e:
+        logging.info("Server closed")
+        print("Server closed")
     except Exception as e:
         logging.error(e)
         print("Error occured while starting server. Check the log for more details.")

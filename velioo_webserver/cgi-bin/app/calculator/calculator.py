@@ -6,6 +6,7 @@ import cgi, cgitb
 cgitb.enable(display=0, logdir="logs")
 
 def main():
+    print("HTTP/1.1 200 OK")
     print("Content-Type: text/plain\r\n")
     
     form = cgi.FieldStorage()
