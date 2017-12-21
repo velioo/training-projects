@@ -27,15 +27,16 @@ try:
     print ('</body>')
     print ('</html>')
     
-    fileitem = form['file']
-    if fileitem.filename:
-        uploaded_file_path = os.path.join(UPLOAD_DIR, os.path.basename(fileitem.filename))
-        with open(uploaded_file_path, 'wb') as fout:
-            while True:
-                chunk = fileitem.file.read()
-                if not chunk:
-                    break
-                fout.write (chunk)
+    if 'file' in form:
+        fileitem = form['file']
+        if fileitem.filename:
+            uploaded_file_path = os.path.join(UPLOAD_DIR, os.path.basename(fileitem.filename))
+            with open(uploaded_file_path, 'wb') as fout:
+                while True:
+                    chunk = fileitem.file.read()
+                    if not chunk:
+                        break
+                    fout.write (chunk)
 
 except Exception as e:
     print(traceback.format_exc())

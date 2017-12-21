@@ -1,0 +1,125 @@
+<body bgcolor="#f0f0f8">
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#6622aa">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>KeyboardInterrupt</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial">Python 3.6.3: /usr/bin/python3.6<br>Thu Dec 21 13:00:59 2017</font></td></tr></table>
+    
+<p>A problem occurred in a Python script.  Here is the sequence of
+function calls leading up to the error, in the order they occurred.</p>
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr><td bgcolor="#d8bbff"><big>&nbsp;</big><a href="file:///home/velioo/training-projects/velioo_webserver/cgi-bin/app/form_post.py">/home/velioo/training-projects/velioo_webserver/cgi-bin/app/form_post.py</a> in <strong><module></strong>()</td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;&nbsp;38</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break<br>
+</tt></font></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;&nbsp;39</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fout.write&nbsp;(chunk)<br>
+</tt></font></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;&nbsp;40</small>&nbsp;<br>
+</tt></font></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;&nbsp;41</small>&nbsp;except&nbsp;Exception&nbsp;as&nbsp;e:<br>
+</tt></font></td></tr>
+<tr><td bgcolor="#ffccee"><tt>=&gt;<small>&nbsp;&nbsp;&nbsp;42</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(traceback.format_exc())<br>
+</tt></td></tr>
+<tr><td><small><font color="#909090"><em>builtin</em> <strong>print</strong>&nbsp;= &lt;built-in function print&gt;, <strong>traceback</strong>&nbsp;= &lt;module 'traceback' from '/usr/lib/python3.6/traceback.py'&gt;, traceback.<strong>format_exc</strong>&nbsp;= &lt;function format_exc&gt;</font></small></td></tr></table>
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr><td bgcolor="#d8bbff"><big>&nbsp;</big><a href="file:///usr/lib/python3.6/traceback.py">/usr/lib/python3.6/traceback.py</a> in <strong>format_exc</strong>(limit=None, chain=True)</td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;161</small>&nbsp;def&nbsp;format_exc(limit=None,&nbsp;chain=True):<br>
+</tt></font></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;162</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"""Like&nbsp;print_exc()&nbsp;but&nbsp;return&nbsp;a&nbsp;string."""<br>
+</tt></font></td></tr>
+<tr><td bgcolor="#ffccee"><tt>=&gt;<small>&nbsp;&nbsp;163</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;"".join(format_exception(*sys.exc_info(),&nbsp;limit=limit,&nbsp;chain=chain))<br>
+</tt></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;164</small>&nbsp;<br>
+</tt></font></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;165</small>&nbsp;def&nbsp;print_last(limit=None,&nbsp;file=None,&nbsp;chain=True):<br>
+</tt></font></td></tr>
+<tr><td><small><font color="#909090"><em>global</em> <strong>format_exception</strong>&nbsp;= &lt;function format_exception&gt;, <em>global</em> <strong>sys</strong>&nbsp;= &lt;module 'sys' (built-in)&gt;, sys.<strong>exc_info</strong>&nbsp;= &lt;built-in function exc_info&gt;, <strong>limit</strong>&nbsp;= None, <strong>chain</strong>&nbsp;= True</font></small></td></tr></table>
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr><td bgcolor="#d8bbff"><big>&nbsp;</big><a href="file:///usr/lib/python3.6/traceback.py">/usr/lib/python3.6/traceback.py</a> in <strong>format_exception</strong>(etype=&lt;class 'TypeError'&gt;, value=TypeError('not indexable',), tb=&lt;traceback object&gt;, limit=None, chain=True)</td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;115</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;ignore&nbsp;it&nbsp;here&nbsp;(rather&nbsp;than&nbsp;in&nbsp;the&nbsp;new&nbsp;TracebackException&nbsp;API).<br>
+</tt></font></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;116</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;list(TracebackException(<br>
+</tt></font></td></tr>
+<tr><td bgcolor="#ffccee"><tt>=&gt;<small>&nbsp;&nbsp;117</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type(value),&nbsp;value,&nbsp;tb,&nbsp;limit=limit).format(chain=chain))<br>
+</tt></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;118</small>&nbsp;<br>
+</tt></font></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;119</small>&nbsp;<br>
+</tt></font></td></tr>
+<tr><td><small><font color="#909090"><em>builtin</em> <strong>type</strong>&nbsp;= &lt;class 'type'&gt;, <strong>value</strong>&nbsp;= TypeError('not indexable',), <strong>tb</strong>&nbsp;= &lt;traceback object&gt;, <strong>limit</strong>&nbsp;= None, ).format <em>undefined</em>, <strong>chain</strong>&nbsp;= True</font></small></td></tr></table>
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr><td bgcolor="#d8bbff"><big>&nbsp;</big><a href="file:///usr/lib/python3.6/traceback.py">/usr/lib/python3.6/traceback.py</a> in <strong>__init__</strong>(self=&lt;traceback.TracebackException object&gt;, exc_type=&lt;class 'TypeError'&gt;, exc_value=TypeError('not indexable',), exc_traceback=&lt;traceback object&gt;, limit=None, lookup_lines=True, capture_locals=False, _seen={TypeError('not indexable',)})</td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;495</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.stack&nbsp;=&nbsp;StackSummary.extract(<br>
+</tt></font></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;496</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;walk_tb(exc_traceback),&nbsp;limit=limit,&nbsp;lookup_lines=lookup_lines,<br>
+</tt></font></td></tr>
+<tr><td bgcolor="#ffccee"><tt>=&gt;<small>&nbsp;&nbsp;497</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;capture_locals=capture_locals)<br>
+</tt></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;498</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.exc_type&nbsp;=&nbsp;exc_type<br>
+</tt></font></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;499</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Capture&nbsp;now&nbsp;to&nbsp;permit&nbsp;freeing&nbsp;resources:&nbsp;only&nbsp;complication&nbsp;is&nbsp;in&nbsp;the<br>
+</tt></font></td></tr>
+<tr><td><small><font color="#909090"><strong>capture_locals</strong>&nbsp;= False</font></small></td></tr></table>
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr><td bgcolor="#d8bbff"><big>&nbsp;</big><a href="file:///usr/lib/python3.6/traceback.py">/usr/lib/python3.6/traceback.py</a> in <strong>extract</strong>(klass=&lt;class 'traceback.StackSummary'&gt;, frame_gen=&lt;generator object walk_tb&gt;, limit=None, lookup_lines=True, capture_locals=False)</td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;343</small>&nbsp;<br>
+</tt></font></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;344</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fnames.add(filename)<br>
+</tt></font></td></tr>
+<tr><td bgcolor="#ffccee"><tt>=&gt;<small>&nbsp;&nbsp;345</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;linecache.lazycache(filename,&nbsp;f.f_globals)<br>
+</tt></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;346</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Must&nbsp;defer&nbsp;line&nbsp;lookups&nbsp;until&nbsp;we&nbsp;have&nbsp;called&nbsp;checkcache.<br>
+</tt></font></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;347</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;capture_locals:<br>
+</tt></font></td></tr>
+<tr><td><small><font color="#909090"><em>global</em> <strong>linecache</strong>&nbsp;= &lt;module 'linecache' from '/usr/lib/python3.6/linecache.py'&gt;, linecache.<strong>lazycache</strong>&nbsp;= &lt;function lazycache&gt;, <strong>filename</strong>&nbsp;= 'cgi-bin/app/form_post.py', <strong>f</strong>&nbsp;= &lt;frame object&gt;, f.<strong>f_globals</strong>&nbsp;= {'UPLOAD_DIR': './application/uploads', '__annotations__': {}, '__builtins__': &lt;module 'builtins' (built-in)&gt;, '__cached__': None, '__doc__': None, '__file__': 'cgi-bin/app/form_post.py', '__loader__': &lt;_frozen_importlib_external.SourceFileLoader object&gt;, '__name__': '__main__', '__package__': None, '__spec__': None, ...}</font></small></td></tr></table>
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr><td bgcolor="#d8bbff"><big>&nbsp;</big><a href="file:///usr/lib/python3.6/linecache.py">/usr/lib/python3.6/linecache.py</a> in <strong>lazycache</strong>(filename='cgi-bin/app/form_post.py', module_globals={'UPLOAD_DIR': './application/uploads', '__annotations__': {}, '__builtins__': &lt;module 'builtins' (built-in)&gt;, '__cached__': None, '__doc__': None, '__file__': 'cgi-bin/app/form_post.py', '__loader__': &lt;_frozen_importlib_external.SourceFileLoader object&gt;, '__name__': '__main__', '__package__': None, '__spec__': None, ...})</td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;169</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;=&nbsp;module_globals.get('__name__')<br>
+</tt></font></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;170</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;loader&nbsp;=&nbsp;module_globals['__loader__']<br>
+</tt></font></td></tr>
+<tr><td bgcolor="#ffccee"><tt>=&gt;<small>&nbsp;&nbsp;171</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;get_source&nbsp;=&nbsp;getattr(loader,&nbsp;'get_source',&nbsp;None)<br>
+</tt></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;172</small>&nbsp;<br>
+</tt></font></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;173</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;name&nbsp;and&nbsp;get_source:<br>
+</tt></font></td></tr>
+<tr><td><small><font color="#909090">get_source <em>undefined</em>, <em>builtin</em> <strong>getattr</strong>&nbsp;= &lt;built-in function getattr&gt;, <strong>loader</strong>&nbsp;= &lt;_frozen_importlib_external.SourceFileLoader object&gt;</font></small></td></tr></table><p><strong>KeyboardInterrupt</strong>: 
+<br><tt><small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small>&nbsp;</tt>args&nbsp;=
+()
+<br><tt><small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small>&nbsp;</tt>with_traceback&nbsp;=
+&lt;built-in method with_traceback of KeyboardInterrupt object&gt;
+
+
+<!-- The above is a description of an error in a Python program, formatted
+     for a Web browser because the 'cgitb' module was enabled.  In case you
+     are not reading this in a Web browser, here is the original traceback:
+
+Traceback (most recent call last):
+  File "cgi-bin/app/form_post.py", line 15, in &lt;module&gt;
+    first_name = form.getvalue('first_name')
+  File "/usr/lib/python3.6/cgi.py", line 612, in getvalue
+    if key in self:
+  File "/usr/lib/python3.6/cgi.py", line 652, in __contains__
+    raise TypeError("not indexable")
+TypeError: not indexable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "cgi-bin/app/form_post.py", line 42, in &lt;module&gt;
+    print(traceback.format_exc())
+  File "/usr/lib/python3.6/traceback.py", line 163, in format_exc
+    return "".join(format_exception(*sys.exc_info(), limit=limit, chain=chain))
+  File "/usr/lib/python3.6/traceback.py", line 117, in format_exception
+    type(value), value, tb, limit=limit).format(chain=chain))
+  File "/usr/lib/python3.6/traceback.py", line 497, in __init__
+    capture_locals=capture_locals)
+  File "/usr/lib/python3.6/traceback.py", line 345, in extract
+    linecache.lazycache(filename, f.f_globals)
+  File "/usr/lib/python3.6/linecache.py", line 171, in lazycache
+    get_source = getattr(loader, 'get_source', None)
+KeyboardInterrupt
+
+-->

@@ -3,7 +3,7 @@ import sys
 import os
 
 os.environ['SERVER_SOFTWARE'] = "Velioo's Webserver"
-os.environ['SERVER_NAME'] = ''
+os.environ['SERVER_NAME'] = '127.0.0.1'
 os.environ['PORT'] = '8888'
 REQUEST_QUEUE_SIZE = 2048
 ADDRESS_FAMILY = socket.AF_INET
@@ -15,7 +15,8 @@ allowed_dirs = tuple(
 [
     'application',
     'hello',
-    'cgi-bin/app'
+    'cgi-bin/app',
+    'cgi-bin/monitoring'
 ]
 )
 
