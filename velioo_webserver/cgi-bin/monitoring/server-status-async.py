@@ -24,7 +24,7 @@ try:
     stamp = mktime(now.timetuple())
     print('<dt>Current Time: ' + format_date_time(stamp) + '</dt>')
     try:
-        proc = psutil.Process(psutil.Process(os.getppid()).ppid())
+        proc = psutil.Process(psutil.Process(os.getppid()).pid)
         print('<dt>Server uptime: ' + strftime("%Y-%m-%d %H:%M:%S", localtime(proc.create_time())) + '</dt>')
     except (psutil.NoSuchProcess, psutil.ZombieProcess, psutil.AccessDenied) as e:
         print(e)

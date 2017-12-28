@@ -8,28 +8,33 @@ import signal
 import traceback
 import datetime
 import select
-import threading
 from time import time, gmtime, asctime, mktime
 from wsgiref.handlers import format_date_time
 from pathlib import Path
 import magic
-from urllib.parse import unquote
+import resource
 import logging
 import velioo_webserver.config.environment as env
 import asyncio
 
 now = datetime.datetime.now()
-logging.basicConfig(filename='logs/async_server_' + now.strftime("%Y-%m-%d") + '.log', level=logging.DEBUG, format='%(levelname)s:%(asctime)s --> %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
+logging.basicConfig(filename='logs/async_server2_' + now.strftime("%Y-%m-%d") + '.log', level=logging.DEBUG, format='%(levelname)s:%(asctime)s --> %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 
 def serve_forever():
     print('Starting server...')
     loop = asyncio.get_event_loop()
     coroutine = asyncio.start_server(handle_request, host=os.environ.get('SERVER_NAME', 'localhost'), 
-                                   port=os.environ.get('ALT_PORT', 8887), 
+                                   port=os.environ.get('ALT_PORT', 8888),
+                                   backlog=env.REQUEST_QUEUE_SIZE,
                                    family=env.ADDRESS_FAMILY, 
                                    reuse_address=True)
     loop.run_until_complete(coroutine)
     signal.signal(signal.SIGCHLD, grim_reaper)
+    try:
+        resource.setrlimit(resource.RLIMIT_NOFILE, (65536, 65536))
+    except ValueError as e:
+        logging.error(traceback.format_exc())
+        return
     while True:
         try:
             loop.run_forever()
@@ -46,33 +51,32 @@ def grim_reaper(signum, frame):
         except IOError:
             return
             
-        if pid == 0:
+        if pid == 0: # no zombies
             return
 
 
 def handle_request(client_reader, client_writer):
-    pid = os.getpid()
-    logging.info('Child {}: handle_request invoked...'.format(pid))
+    logging.info('handle_request invoked...')
     arguments = ""
     try:
-        logging.info('Child {}: Receiving request...'.format(pid))
+        logging.info('Receiving request...')
         
         request_headers = b''
-        request_body = ''
+        request_body = b''
         method, path, protocol = '', '', ''
         
         try:
             while True:
-                logging.info('Child {}: Reading data...'.format(pid))
+                logging.info('Reading data...')
                 data = yield from asyncio.wait_for(client_reader.read(env.RECV_BUFSIZE), 10.0)
                 if data != b'':
-                    logging.info('Child {}: Data read: {}'.format(pid, data))
+                    logging.info('Data read: {}'.format(data))
                     try:
                         request_headers+=data
                     except TypeError as e:
-                        logging('Child {}: Problem reading request. Request not in binary.'.format(pid))
-                        logging.info('Child {}: Error 400 Bad request'.format(pid))
-                        send_response_400(client_writer, pid)
+                        logging('Problem reading request. Request not in binary.')
+                        logging.info('Error 400 Bad request')
+                        send_response_400(client_writer)
                         return
                     try:
                         if b'\r\n' in request_headers and not method:
@@ -84,42 +88,41 @@ def handle_request(client_reader, client_writer):
                                 try:
                                     request_body = temp.split(b'\r\n\r\n', 1)[1]
                                 except IndexError as e:
-                                    logging.info("Child {}: Didn\'t parse any parts of the request body while parsing the request headers".format(pid))
+                                    logging.info("Didn\'t parse any parts of the request body while parsing the request headers")
                                 if request_body:
-                                    logging.info("Child {}: Parsed part of (the whole) request body while parsing the request headers".format(pid))
+                                    logging.info("Parsed part of (the whole) request body while parsing the request headers")
                             break
                     except ValueError as e:
-                        logging.error('Child {}: Failed to parse request headers'.format(pid))
-                        logging.error('Child {} Traceback:{}'.format(pid, traceback.format_exc()))
-                        logging.info('Child {}: Error 400 Bad request'.format(pid))
-                        send_response_400(client_writer, pid)
+                        logging.error('Failed to parse request headers')
+                        logging.error('Traceback:{}'.format(traceback.format_exc()))
+                        logging.info('Error 400 Bad request')
+                        send_response_400(client_writer)
                         return
                 else:
-                    logging.info('Child {}: Request headers successfully received'.format(pid))
+                    logging.info('Request headers successfully received')
                     break
         except UnicodeDecodeError as e:
-            logging.error("Child {}: Problem decoding request".format(pid))
-            logging.error('Child {} Traceback:{}'.format(pid, traceback.format_exc()))
-            send_response_500(client_writer, pid)
+            logging.error("Problem decoding request")
+            logging.error('Traceback:{}'.format(traceback.format_exc()))
+            send_response_500(client_writer)
             return
-        except TimeoutError as e:
-            logging.info('Child {}: Request timeout'.format(pid))
-            logging.info('Child {}: Request headers:\n{}'.format(pid, request_headers))
-            send_response_408(client_writer, pid)
+        except (TimeoutError, asyncio.TimeoutError) as e:
+            logging.info('Request timeout')
+            logging.info('Request headers:\n{}'.format(request_headers))
+            send_response_408(client_writer)
             return
     
-        logging.info('Child {}: Request headers:\n{}'.format(pid, request_headers))
+        logging.info('Request headers:\n{}'.format(request_headers))
         
         if request_headers == b'':
-            logging.info('Child {}: Request timeout: {}'.format(pid, method))
-            send_response_408(client_writer, pid)
+            logging.info('Request timeout: {}'.format(method))
+            send_response_408(client_writer)
             return
             
         if '\r\n\r\n' not in request_headers:
-            logging.info('Child {}: Error 400 Bad request'.format(pid))
-            send_response_400(client_writer, pid)
+            logging.info('Error 400 Bad request')
+            send_response_400(client_writer)
             return
-        
         
         headers = {}
         try:
@@ -130,15 +133,15 @@ def handle_request(client_reader, client_writer):
                     if len(splitted_header) > 1:
                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
         except Exception as e:
-            logging.error("Child {}: Problem parsing headers".format(pid))
-            logging.error('Child {} Traceback:{}'.format(pid, traceback.format_exc()))
-            send_response_500(client_writer, pid)
+            logging.error("Problem parsing headers")
+            logging.error('Traceback:{}'.format(traceback.format_exc()))
+            send_response_500(client_writer)
             return
         
         if method == 'GET':
-            logging.info('Child {}: Request method is GET'.format(pid))
+            logging.info('Request method is GET')
         elif method == 'POST':
-            logging.info('Child {}: Request method is POST'.format(pid))
+            logging.info('Request method is POST')
             try:
                 if 'Content-Length' in headers:
                     content_length = int(headers['Content-Length'])
@@ -147,52 +150,52 @@ def handle_request(client_reader, client_writer):
                 elif 'content_length' in headers:
                     content_length = int(headers['content-length'])
                 else:
-                    send_response_411(client_writer, pid)
+                    send_response_411(client_writer)
                     return
             except (ValueError, KeyError) as e:
-                logging.info('Child {}: Failed to parse Content-Length attribute...setting Content-Length to None'.format(pid))
-                logging.error('Child {} Traceback:{}'.format(pid, traceback.format_exc()))
-                send_response_411(client_writer, pid)
+                logging.info('Failed to parse Content-Length attribute...setting Content-Length to None')
+                logging.error('Traceback:{}'.format(traceback.format_exc()))
+                send_response_411(client_writer)
                 return
         elif method == 'OPTIONS':
             if path == '*':
                 http_response = b"HTTP/1.1 200 OK\r\nAllow: OPTIONS, GET, POST\r\nDate: " + get_current_gmt_time() + b"\r\nServer: " + get_server_software() + b"\r\nContent-Length: 0\r\n"
-                logging.info('Child {}: Response:{}\n'.format(pid, http_response.decode()))
+                logging.info('Response:{}\n'.format(http_response.decode()))
                 client_writer.write(http_response)
-                client_writer.write_eof()
+                client_writer.close()
             else:
                 path = convert_path(path)
                 for p in env.allowed_dirs:
                     if str(path).startswith(p) and (path.is_file() or path.is_dir()):
                         http_response = b"HTTP/1.1 200 OK\r\nAllow: OPTIONS, GET, POST\r\nDate: " + get_current_gmt_time() + b"\r\nServer: " + get_server_software() + b"\r\nContent-Length: 0\r\n"
-                        logging.info('Child {}: Response:{}\n'.format(pid, http_response.decode()))
+                        logging.info('Response:{}\n'.format(http_response.decode()))
                         client_writer.write(http_response)
-                        client_writer.write_eof()
+                        client_writer.close()
                         return
                 http_response = b"HTTP/1.1 200 OK\r\nAllow:\r\nDate: " + get_current_gmt_time() + b"\r\nServer: " + get_server_software() + b"\r\nContent-Length: 0\r\n"
-                logging.info('Child {}: Response:{}\n'.format(pid, http_response.decode()))
+                logging.info('Response:{}\n'.format(http_response.decode()))
                 client_writer.write(http_response)
-                client_writer.write_eof()
+                client_writer.close()
                     
             return
         else:
-            logging.info('Child {}: Request method is unsupported: {}'.format(pid, method))
-            send_response_501(client_writer, pid)
+            logging.info('Request method is unsupported: {}'.format(method))
+            send_response_501(client_writer)
             return
             
         if '?' in path:
             try:
                 path, arguments = path.split('?')
-                logging.info('Child {}: Path: {}, Arguments: {}'.format(pid, path, arguments))
+                logging.info('Path: {}, Arguments: {}'.format(path, arguments))
             except ValueError as e:
                 logging.error('Failed to split path from query params...')
-                send_response_500(client_writer, pid)
+                send_response_500(client_writer)
                 return
-        logging.info('Child {}: Converting path: {} to Path object...'.format(pid, path))
+        logging.info('Converting path: {} to Path object...'.format(path))
         path = convert_path(path)
         if path.exists():
             path_str = str(path)
-            logging.info('Child {}: Checking if {} is forbidden...'.format(pid, path_str))
+            logging.info('Checking if {} is forbidden...'.format( path_str))
             for p in env.allowed_dirs:
                 if path_str.startswith(p):
                     if path.is_file() or path.is_dir():
@@ -200,29 +203,29 @@ def handle_request(client_reader, client_writer):
                             try:
                                 path = convert_path(path_str + "/index.html")
                             except TypeError as e:
-                                logging.info('Child {}: Failed to concatenate path_str to index.html...retrying with str(path) + index.html'.format(pid))
+                                logging.info('Failed to concatenate path_str to index.html...retrying with str(path) + index.html')
                                 if isinstance(path, Path):
                                     path = convert_path(str(path) + "/index.html")
                                 else:
                                     logging.info('Variable "path" is not a Path instance, concatenation aborted...')
-                                    send_response_500(client_writer, pid)
+                                    send_response_500(client_writer)
                                     return
                             path_str = str(path)
-                            logging.info('Child {}: Path is a directory. Changing path to {}'.format(pid, path))
+                            logging.info('Path is a directory. Changing path to {}'.format(path))
                         if path.is_file():
-                            logging.info('Child {}: Path is a file'.format(pid))
+                            logging.info('Path is a file')
                             if path_str.startswith("cgi-bin") and os.access(path_str, os.X_OK):
-                                logging.info('Child {}: Path is a CGI script'.format(pid))
+                                logging.info('Path is a CGI script')
                                 try:
                                     try:
                                         ext = path_str.split('.')[-1]
                                     except ValueError as e:
-                                        logging.error('Child {}: Failed getting CGI script file extension, setting ext to None'.format(pid))
+                                        logging.error('Failed getting CGI script file extension, setting ext to None')
                                         ext = None
                                     try:
                                         executable = env.supported_cgi_formats[ext]
                                     except KeyError as e:
-                                         logging.error('Child {}: Failed getting CGI script executable. Trying with default executable: {}'.format(pid, sys.executable))
+                                         logging.error('Failed getting CGI script executable. Trying with default executable: {}'.format(sys.executable))
                                          executable = sys.executable
                                     if executable:
                                         set_environment(headers=headers, 
@@ -234,7 +237,7 @@ def handle_request(client_reader, client_writer):
                                                         server_port=os.environ.get('PORT', 8888)
                                                         )
                                         script_args = [executable, path_str]
-                                        logging.info('Child {}: Executing {}'.format(pid, path))
+                                        logging.info('Executing {}'.format(path))
                                         proc = subprocess.Popen(script_args, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
                                         try:
                                             if method == 'POST':
@@ -242,79 +245,79 @@ def handle_request(client_reader, client_writer):
                                                     try:
                                                         proc.stdin.write(request_body)
                                                     except BrokenPipeError as e:
-                                                        logging.info('Child {}: PIPE broke while writing...'.format(pid))
+                                                        logging.info('PIPE broke while writing...')
                                                         raise OSError
-                                                logging.info("Child {}: Content-Length from request = {}".format(pid, content_length))
-                                                logging.info("Child {}: Current Content-Length = {}".format(pid, len(request_body)))
+                                                logging.info("Content-Length from request = {}".format(content_length))
+                                                logging.info("Current Content-Length = {}".format(len(request_body)))
                                                 bytes_read = 0
                                                 prev_content_length = len(request_body)
                                                 if(content_length > len(request_body)):
-                                                    logging.info('Child {}: Getting POST request body...'.format(pid))
-                                                    logging.info('Child {}: POST body:'.format(pid))
+                                                    logging.info('Getting POST request body...')
+                                                    logging.info('POST body:')
                                                     while True:
-                                                        logging.info('Child {}: Sending data to CGI script'.format(pid))
+                                                        logging.info('Sending data to CGI script')
                                                         post_data = yield from asyncio.wait_for(client_reader.read(env.RECV_BUFSIZE), 10.0)
                                                         if post_data != b'':
                                                             bytes_read+=len(post_data)
-                                                            logging.info('Child {}: Total bytes read: {}'.format(pid, bytes_read + len(request_body)))
+                                                            logging.info('Total bytes read: {}'.format(bytes_read + len(request_body)))
                                                             try:
                                                                 proc.stdin.write(post_data)
                                                             except BrokenPipeError as e:
-                                                                logging.info('Child {}: PIPE broke while writing...'.format(pid))
+                                                                logging.info('PIPE broke while writing...')
                                                                 raise OSError
-                                                            if content_length <= bytes_read:# + len(request_body):
-                                                                logging.info('Child {}: Request body successfully received'.format(pid))
+                                                            if content_length <= bytes_read + len(request_body):
+                                                                logging.info('Request body successfully received')
                                                                 break
                                                         else:
                                                             break
                                                     
                                                     if prev_content_length == len(request_body) + bytes_read:
                                                         raise TimeoutError
-                                                logging.info('Child {}: Request body received. Total bytes read = {}'.format(pid, len(request_body) + bytes_read))
+                                                logging.info('Request body received. Total bytes read = {}'.format(len(request_body) + bytes_read))
                                                 proc.stdin.close()
-                                                logging.info('Child {}: Response:\n'.format(pid))                                     
+                                                logging.info('Response:\n')                                     
                                                 line = None
                                                 for line in proc.stdout:
                                                     client_writer.write(line)
                                                     yield from client_writer.drain()
                                                     logging.info('{}'.format(line.decode().replace("\n","", 1)))
-                                                client_writer.write_eof()
+                                                client_writer.close()
                                                 if line == None:
-                                                    logging.info('Child {}: CGI script didn\'t return anything.'.format(pid))
-                                                    send_response_501(client_writer, pid)
+                                                    logging.info('CGI script didn\'t return anything.')
+                                                    send_response_501(client_writer)
                                                     return
                                             elif method == 'GET':
-                                                logging.info('Child {}: Response:\n'.format(pid))
+                                                logging.info('Response:\n')
                                                 line = None
                                                 for line in proc.stdout:
                                                     client_writer.write(line)
                                                     yield from client_writer.drain()
                                                     logging.info('{}'.format(line.decode().replace("\n","", 1)))
-                                                client_writer.write_eof()
+                                                client_writer.close()
                                                 if line == None:
-                                                    logging.info('Child {}: CGI script didn\'t return anything.'.format(pid))
-                                                    send_response_501(client_writer, pid)
+                                                    logging.info('CGI script didn\'t return anything.')
+                                                    send_response_501(client_writer)
                                                     return
                                             else:
-                                                logging.info('Child {}: Failed to execute CGI script - request method is unsupported'.format(pid))
-                                                send_response_501(client_writer, pid)
+                                                logging.info('Failed to execute CGI script - request method is unsupported')
+                                                send_response_501(client_writer)
                                                 return
                                             proc.wait(5.0)
-                                        except (TimeoutError, subprocess.TimeoutExpired) as e:
-                                            logging.info('Child {}: Request timeout: {}'.format(pid, method))
-                                            send_response_408(client_writer, pid)
+                                        except (TimeoutError, asyncio.TimeoutError, subprocess.TimeoutExpired) as e:
+                                            logging.info('Request timeout: {}'.format(method))
+                                            send_response_408(client_writer)
                                     else:
-                                        logging.info('Child {}: Failed to execute CGI script - CGI extension not supported'.format(pid))
-                                        send_response_501(client_writer, pid)
+                                        logging.info('Failed to execute CGI script - CGI extension not supported')
+                                        send_response_501(client_writer)
                                 except OSError as e:
-                                    logging.error('Child {}: Failed to execute script...'.format(pid))
-                                    logging.error('Child {} Traceback:{}'.format(pid, traceback.format_exc()))
-                                    send_response_500(client_writer, pid)
+                                    logging.error('Failed to execute script...')
+                                    logging.error('Traceback:{}'.format(traceback.format_exc()))
+                                    send_response_500(client_writer)
                             else:
-                                logging.info('Child {}: Path is a resource. Loading MIME detector...'.format(pid))
+                                logging.info('Path is a resource. Loading MIME detector...')
                                 ft_detector = magic.Magic(mime=True)
                                 mime = ft_detector.from_file(path_str)
-                                logging.info('Child {}: MIME: {}'.format(pid, mime))
+                                logging.info('MIME: {}'.format(mime))
                                 http_response = (
                                                 b"HTTP/1.1 200 OK\r\nContent-Type: "
                                                 + bytearray(mime, 'utf-8')
@@ -326,46 +329,45 @@ def handle_request(client_reader, client_writer):
                                                 + get_server_software()
                                                 + b"\r\n\r\n"
                                                 )
-                                logging.info('Child {}: Response:\n{}'.format(pid, http_response.decode()))
+                                logging.info('Response:\n{}'.format(http_response.decode()))
                                 client_writer.write(http_response)
                                 with open(path, 'rb') as f:
                                     for line in f:
                                         client_writer.write(line)
                                         yield from client_writer.drain()
-                                        
-                                client_writer.write_eof()
+                                client_writer.close()
                         else:
-                            send_response_403(client_writer, pid)
+                            send_response_403(client_writer)
                     else:
-                        logging.info('Child {}: Path is neither a file nor dir'.format(pid))
-                        send_response_403(client_writer, pid)
+                        logging.info('Path is neither a file nor dir')
+                        send_response_403(client_writer)
                     return
-            logging.info('Child {}: Path {} is forbidden'.format(pid, path_str))               
-            send_response_403(client_writer, pid)
+            logging.info('Path {} is forbidden'.format(path_str))               
+            send_response_403(client_writer)
             return
         else:
-            logging.info('Child {}: Path doesn\'t exist'.format(pid))
-            send_response_404(client_writer, pid)
+            logging.info('Path doesn\'t exist')
+            send_response_404(client_writer)
             return
     
     except OSError as e:
         logging.error('Client disonnected before receiveing response...')
     except BrokenPipeError as e:
-        logging.error('Child {}: Connection between server and client was broken'.format(pid))
-        logging.error('Child {} Traceback:{}'.format(pid, traceback.format_exc()))
-        send_response_500(client_writer, pid)
+        logging.error('Connection between server and client was broken')
+        logging.error('Traceback:{}'.format(traceback.format_exc()))
+        send_response_500(client_writer)
     except RuntimeError as e:
-        logging.error('Child {} Traceback:{}'.format(pid, traceback.format_exc()))
-        send_response_500(client_writer, pid)
+        logging.error('Traceback:{}'.format(traceback.format_exc()))
+        send_response_500(client_writer)
     except ConnectionResetError as e:
-        logging.error('Child {} Traceback:{}'.format(pid, traceback.format_exc()))
-        send_response_500(client_writer, pid)
+        logging.error('Traceback:{}'.format(traceback.format_exc()))
+        send_response_500(client_writer)
     except UnboundLocalError as e:
-        logging.error('Child {} Traceback:{}'.format(pid, traceback.format_exc()))
-        send_response_500(client_writer, pid)
+        logging.error('Traceback:{}'.format(traceback.format_exc()))
+        send_response_500(client_writer)
     except Exception as e:
-        logging.error('Child {} Traceback:{}'.format(pid, traceback.format_exc()))
-        send_response_500(client_writer, pid)
+        logging.error('Traceback:{}'.format(traceback.format_exc()))
+        send_response_500(client_writer)
 
 
 def convert_path(path):
@@ -386,10 +388,6 @@ def set_environment(*args, **kwargs):
     os.environ['REMOTE_ADDR'] = kwargs.get('client_address', '')
 
 
-def cgi_timeout(signum, frame):
-    raise TimeoutError
-
-
 def get_current_gmt_time():
     now = datetime.datetime.now()
     stamp = mktime(now.timetuple())
@@ -404,53 +402,53 @@ def get_server_software():
     return os.environ.get('SERVER_SOFTWARE', "Velioo's Webserve").encode()
 
 
-def send_response_400(client_writer, pid):
+def send_response_400(client_writer):
     http_response = b"HTTP/1.1 400 Bad Request\r\nDate: " + get_current_gmt_time() + b"\r\nServer: " + get_server_software() + b"\r\n\r\nError 400\r\nBad Request"
-    logging.info('Child {}: Response:\n{}'.format(pid, http_response.decode()))
+    logging.info('Response:\n{}'.format(http_response.decode()))
     client_writer.write(http_response)
-    client_writer.write_eof()
+    client_writer.close()
 
 
-def send_response_403(client_writer, pid):
+def send_response_403(client_writer):
     http_response = b"HTTP/1.1 403 Forbidden\r\nDate: " + get_current_gmt_time() + b"\r\nServer: " + get_server_software() + b"\r\n\r\nError 403\r\nForbidden"
-    logging.info('Child {}: Response:\n{}'.format(pid, http_response.decode()))
+    logging.info('Response:\n{}'.format(http_response.decode()))
     client_writer.write(http_response)
-    client_writer.write_eof()  
+    client_writer.close()  
 
 
-def send_response_404(client_writer, pid):
+def send_response_404(client_writer):
     http_response = b"HTTP/1.1 404 Not Found\r\nDate: " + get_current_gmt_time() + b"\r\nServer: " + get_server_software() + b"\r\n\r\nError 404 \r\nResource not found"
-    logging.info('Child {}: Response:{}\n'.format(pid, http_response.decode()))
+    logging.info('Response:{}\n'.format(http_response.decode()))
     client_writer.write(http_response)
-    client_writer.write_eof()
+    client_writer.close()
 
 
-def send_response_408(client_writer, pid):
+def send_response_408(client_writer):
     http_response = b"HTTP/1.1 408 Request Timeout\r\nDate: " + get_current_gmt_time() + b"\r\nServer: " + get_server_software() + b"\r\n\r\nError 408\r\nRequest Timeout"
-    logging.info('Child {}: Response:\n{}'.format(pid, http_response.decode()))
+    logging.info('Response:\n{}'.format(http_response.decode()))
     client_writer.write(http_response)
-    client_writer.write_eof()
+    client_writer.close()
 
 
-def send_response_411(client_writer, pid):
+def send_response_411(client_writer):
     http_response = b"HTTP/1.1 411 Length Required\r\nDate: " + get_current_gmt_time() + b"\r\nServer: " + get_server_software() + b"\r\n\r\nError 411\r\nLength Required"
-    logging.info('Child {}: Response:\n{}'.format(pid, http_response.decode()))
+    logging.info('Response:\n{}'.format(http_response.decode()))
     client_writer.write(http_response)
-    client_writer.write_eof()
+    client_writer.close()
 
 
-def send_response_500(client_writer, pid):
+def send_response_500(client_writer):
     http_response = b"HTTP/1.1 500 Internal Server Error\r\nDate: " + get_current_gmt_time() + b"\r\nServer: " + get_server_software() + b"\r\n\r\nError 500\r\nInternal Server Error"
-    logging.info('Child {}: Response:\n{}'.format(pid, http_response.decode()))
+    logging.info('Response:\n{}'.format(http_response.decode()))
     client_writer.write(http_response)
-    client_writer.write_eof()
+    client_writer.close()
 
 
-def send_response_501(client_writer, pid):
+def send_response_501(client_writer):
     http_response = b"HTTP/1.1 501 Not Implemented\r\nDate: " + get_current_gmt_time() + b"\r\nServer: " + get_server_software() + b"\r\n\r\nError 501\r\nNot Implemented"
-    logging.info('Child {}: Response:\n{}'.format(pid, http_response.decode()))
+    logging.info('Response:\n{}'.format(http_response.decode()))
     client_writer.write(http_response)
-    client_writer.write_eof()
+    client_writer.close()
     
 
 if __name__ == '__main__':

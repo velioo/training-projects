@@ -8,12 +8,10 @@ import signal
 import traceback
 import datetime
 import select
-import threading
 from time import time, gmtime, asctime, mktime
 from wsgiref.handlers import format_date_time
 from pathlib import Path
 import magic
-from urllib.parse import unquote
 import logging
 import velioo_webserver.config.environment as env
 
