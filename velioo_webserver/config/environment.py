@@ -5,6 +5,7 @@ import os
 os.environ['SERVER_SOFTWARE'] = "Velioo's Webserver"
 os.environ['SERVER_NAME'] = '127.0.0.1'
 os.environ['PORT'] = '8888'
+os.environ['ALT_PORT'] = '8887'
 REQUEST_QUEUE_SIZE = 2048
 ADDRESS_FAMILY = socket.AF_INET
 SOCKET_TYPE = socket.SOCK_STREAM

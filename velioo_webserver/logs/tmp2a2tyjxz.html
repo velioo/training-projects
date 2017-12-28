@@ -1,0 +1,129 @@
+<body bgcolor="#f0f0f8">
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#6622aa">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>KeyboardInterrupt</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial">Python 3.6.3: /usr/bin/python3.6<br>Thu Dec 28 13:54:08 2017</font></td></tr></table>
+    
+<p>A problem occurred in a Python script.  Here is the sequence of
+function calls leading up to the error, in the order they occurred.</p>
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr><td bgcolor="#d8bbff"><big>&nbsp;</big><a href="file:///home/velioo/training-projects/velioo_webserver/cgi-bin/app/form_post.py">/home/velioo/training-projects/velioo_webserver/cgi-bin/app/form_post.py</a> in <strong><module></strong>()</td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;&nbsp;11</small>&nbsp;try:<br>
+</tt></font></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;&nbsp;12</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+</tt></font></td></tr>
+<tr><td bgcolor="#ffccee"><tt>=&gt;<small>&nbsp;&nbsp;&nbsp;13</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;form&nbsp;=&nbsp;cgi.FieldStorage()<br>
+</tt></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;&nbsp;14</small>&nbsp;<br>
+</tt></font></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;&nbsp;15</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;first_name&nbsp;=&nbsp;form.getvalue('first_name')<br>
+</tt></font></td></tr>
+<tr><td><small><font color="#909090">form <em>undefined</em>, <strong>cgi</strong>&nbsp;= &lt;module 'cgi' from '/usr/lib/python3.6/cgi.py'&gt;, cgi.<strong>FieldStorage</strong>&nbsp;= &lt;class 'cgi.FieldStorage'&gt;</font></small></td></tr></table>
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr><td bgcolor="#d8bbff"><big>&nbsp;</big><a href="file:///usr/lib/python3.6/cgi.py">/usr/lib/python3.6/cgi.py</a> in <strong>__init__</strong>(self=FieldStorage(None, None, [FieldStorage('first_na...one, 'fas'), FieldStorage('password', None, '')]), fp=None, headers={'content-length': '87213', 'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7pUKx4x9k7iOexE2'}, outerboundary=b'', environ=environ({'XDG_VTNR': '7', 'LC_PAPER': 'bg_BG.UTF...NT_LENGTH': '87213', 'REMOTE_ADDR': '127.0.0.1'}), keep_blank_values=0, strict_parsing=0, limit=None, encoding='utf-8', errors='replace')</td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;557</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.read_urlencoded()<br>
+</tt></font></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;558</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;ctype[:10]&nbsp;==&nbsp;'multipart/':<br>
+</tt></font></td></tr>
+<tr><td bgcolor="#ffccee"><tt>=&gt;<small>&nbsp;&nbsp;559</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.read_multi(environ,&nbsp;keep_blank_values,&nbsp;strict_parsing)<br>
+</tt></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;560</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:<br>
+</tt></font></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;561</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.read_single()<br>
+</tt></font></td></tr>
+<tr><td><small><font color="#909090"><strong>self</strong>&nbsp;= FieldStorage(None, None, [FieldStorage('first_na...one, 'fas'), FieldStorage('password', None, '')]), self.<strong>read_multi</strong>&nbsp;= &lt;bound method FieldStorage.read_multi of FieldSt...ne, 'fas'), FieldStorage('password', None, '')])&gt;, <strong>environ</strong>&nbsp;= environ({'XDG_VTNR': '7', 'LC_PAPER': 'bg_BG.UTF...NT_LENGTH': '87213', 'REMOTE_ADDR': '127.0.0.1'}), <strong>keep_blank_values</strong>&nbsp;= 0, <strong>strict_parsing</strong>&nbsp;= 0</font></small></td></tr></table>
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr><td bgcolor="#d8bbff"><big>&nbsp;</big><a href="file:///usr/lib/python3.6/cgi.py">/usr/lib/python3.6/cgi.py</a> in <strong>read_multi</strong>(self=FieldStorage(None, None, [FieldStorage('first_na...one, 'fas'), FieldStorage('password', None, '')]), environ=environ({'XDG_VTNR': '7', 'LC_PAPER': 'bg_BG.UTF...NT_LENGTH': '87213', 'REMOTE_ADDR': '127.0.0.1'}), keep_blank_values=0, strict_parsing=0)</td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;728</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;part&nbsp;=&nbsp;klass(self.fp,&nbsp;headers,&nbsp;ib,&nbsp;environ,&nbsp;keep_blank_values,<br>
+</tt></font></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;729</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strict_parsing,self.limit-self.bytes_read,<br>
+</tt></font></td></tr>
+<tr><td bgcolor="#ffccee"><tt>=&gt;<small>&nbsp;&nbsp;730</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.encoding,&nbsp;self.errors)<br>
+</tt></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;731</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.bytes_read&nbsp;+=&nbsp;part.bytes_read<br>
+</tt></font></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;732</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.list.append(part)<br>
+</tt></font></td></tr>
+<tr><td><small><font color="#909090"><strong>self</strong>&nbsp;= FieldStorage(None, None, [FieldStorage('first_na...one, 'fas'), FieldStorage('password', None, '')]), self.<strong>encoding</strong>&nbsp;= 'utf-8', self.<strong>errors</strong>&nbsp;= 'replace'</font></small></td></tr></table>
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr><td bgcolor="#d8bbff"><big>&nbsp;</big><a href="file:///usr/lib/python3.6/cgi.py">/usr/lib/python3.6/cgi.py</a> in <strong>__init__</strong>(self=FieldStorage('file', '139954.200x0.png', b'\x89P...12\x19\x13!\req}\xf4\xaa}\xf7[\xc5\xecE\x00\xbc'), fp=&lt;_io.BufferedReader name='&lt;stdin&gt;'&gt;, headers=&lt;email.message.Message object&gt;, outerboundary=b'----WebKitFormBoundary7pUKx4x9k7iOexE2', environ=environ({'XDG_VTNR': '7', 'LC_PAPER': 'bg_BG.UTF...NT_LENGTH': '87213', 'REMOTE_ADDR': '127.0.0.1'}), keep_blank_values=0, strict_parsing=0, limit=86771, encoding='utf-8', errors='replace')</td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;559</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.read_multi(environ,&nbsp;keep_blank_values,&nbsp;strict_parsing)<br>
+</tt></font></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;560</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:<br>
+</tt></font></td></tr>
+<tr><td bgcolor="#ffccee"><tt>=&gt;<small>&nbsp;&nbsp;561</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.read_single()<br>
+</tt></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;562</small>&nbsp;<br>
+</tt></font></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;563</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;__del__(self):<br>
+</tt></font></td></tr>
+<tr><td><small><font color="#909090"><strong>self</strong>&nbsp;= FieldStorage('file', '139954.200x0.png', b'\x89P...12\x19\x13!\req}\xf4\xaa}\xf7[\xc5\xecE\x00\xbc'), self.<strong>read_single</strong>&nbsp;= &lt;bound method FieldStorage.read_single of FieldS...2\x19\x13!\req}\xf4\xaa}\xf7[\xc5\xecE\x00\xbc')&gt;</font></small></td></tr></table>
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr><td bgcolor="#d8bbff"><big>&nbsp;</big><a href="file:///usr/lib/python3.6/cgi.py">/usr/lib/python3.6/cgi.py</a> in <strong>read_single</strong>(self=FieldStorage('file', '139954.200x0.png', b'\x89P...12\x19\x13!\req}\xf4\xaa}\xf7[\xc5\xecE\x00\xbc'))</td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;741</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.skip_lines()<br>
+</tt></font></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;742</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:<br>
+</tt></font></td></tr>
+<tr><td bgcolor="#ffccee"><tt>=&gt;<small>&nbsp;&nbsp;743</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.read_lines()<br>
+</tt></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;744</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.file.seek(0)<br>
+</tt></font></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;745</small>&nbsp;<br>
+</tt></font></td></tr>
+<tr><td><small><font color="#909090"><strong>self</strong>&nbsp;= FieldStorage('file', '139954.200x0.png', b'\x89P...12\x19\x13!\req}\xf4\xaa}\xf7[\xc5\xecE\x00\xbc'), self.<strong>read_lines</strong>&nbsp;= &lt;bound method FieldStorage.read_lines of FieldSt...2\x19\x13!\req}\xf4\xaa}\xf7[\xc5\xecE\x00\xbc')&gt;</font></small></td></tr></table>
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr><td bgcolor="#d8bbff"><big>&nbsp;</big><a href="file:///usr/lib/python3.6/cgi.py">/usr/lib/python3.6/cgi.py</a> in <strong>read_lines</strong>(self=FieldStorage('file', '139954.200x0.png', b'\x89P...12\x19\x13!\req}\xf4\xaa}\xf7[\xc5\xecE\x00\xbc'))</td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;770</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.file&nbsp;=&nbsp;self.__file&nbsp;=&nbsp;StringIO()&nbsp;#&nbsp;as&nbsp;strings&nbsp;for&nbsp;other&nbsp;fields<br>
+</tt></font></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;771</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;self.outerboundary:<br>
+</tt></font></td></tr>
+<tr><td bgcolor="#ffccee"><tt>=&gt;<small>&nbsp;&nbsp;772</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.read_lines_to_outerboundary()<br>
+</tt></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;773</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:<br>
+</tt></font></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;774</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.read_lines_to_eof()<br>
+</tt></font></td></tr>
+<tr><td><small><font color="#909090"><strong>self</strong>&nbsp;= FieldStorage('file', '139954.200x0.png', b'\x89P...12\x19\x13!\req}\xf4\xaa}\xf7[\xc5\xecE\x00\xbc'), self.<strong>read_lines_to_outerboundary</strong>&nbsp;= &lt;bound method FieldStorage.read_lines_to_outerbo...2\x19\x13!\req}\xf4\xaa}\xf7[\xc5\xecE\x00\xbc')&gt;</font></small></td></tr></table>
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr><td bgcolor="#d8bbff"><big>&nbsp;</big><a href="file:///usr/lib/python3.6/cgi.py">/usr/lib/python3.6/cgi.py</a> in <strong>read_lines_to_outerboundary</strong>(self=FieldStorage('file', '139954.200x0.png', b'\x89P...12\x19\x13!\req}\xf4\xaa}\xf7[\xc5\xecE\x00\xbc'))</td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;812</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;_read&nbsp;&gt;=&nbsp;self.limit:<br>
+</tt></font></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;813</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break<br>
+</tt></font></td></tr>
+<tr><td bgcolor="#ffccee"><tt>=&gt;<small>&nbsp;&nbsp;814</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;line&nbsp;=&nbsp;self.fp.readline(1&lt;&lt;16)&nbsp;#&nbsp;bytes<br>
+</tt></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;815</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.bytes_read&nbsp;+=&nbsp;len(line)<br>
+</tt></font></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;816</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_read&nbsp;+=&nbsp;len(line)<br>
+</tt></font></td></tr>
+<tr><td><small><font color="#909090"><strong>line</strong>&nbsp;= b'\xd1\xcf\xa3\xc5\xde\x8f\tzP\x8bQ\xe4\xde\xf6\...x12\x19\x13!\req}\xf4\xaa}\xf7[\xc5\xecE\x00\xbc', <strong>self</strong>&nbsp;= FieldStorage('file', '139954.200x0.png', b'\x89P...12\x19\x13!\req}\xf4\xaa}\xf7[\xc5\xecE\x00\xbc'), self.<strong>fp</strong>&nbsp;= &lt;_io.BufferedReader name='&lt;stdin&gt;'&gt;, self.fp.<strong>readline</strong>&nbsp;= &lt;built-in method readline of _io.BufferedReader object&gt;</font></small></td></tr></table><p><strong>KeyboardInterrupt</strong>: 
+<br><tt><small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small>&nbsp;</tt>args&nbsp;=
+()
+<br><tt><small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small>&nbsp;</tt>with_traceback&nbsp;=
+&lt;built-in method with_traceback of KeyboardInterrupt object&gt;
+
+
+<!-- The above is a description of an error in a Python program, formatted
+     for a Web browser because the 'cgitb' module was enabled.  In case you
+     are not reading this in a Web browser, here is the original traceback:
+
+Traceback (most recent call last):
+  File "cgi-bin/app/form_post.py", line 13, in &lt;module&gt;
+    form = cgi.FieldStorage()
+  File "/usr/lib/python3.6/cgi.py", line 559, in __init__
+    self.read_multi(environ, keep_blank_values, strict_parsing)
+  File "/usr/lib/python3.6/cgi.py", line 730, in read_multi
+    self.encoding, self.errors)
+  File "/usr/lib/python3.6/cgi.py", line 561, in __init__
+    self.read_single()
+  File "/usr/lib/python3.6/cgi.py", line 743, in read_single
+    self.read_lines()
+  File "/usr/lib/python3.6/cgi.py", line 772, in read_lines
+    self.read_lines_to_outerboundary()
+  File "/usr/lib/python3.6/cgi.py", line 814, in read_lines_to_outerboundary
+    line = self.fp.readline(1&lt;&lt;16) # bytes
+KeyboardInterrupt
+
+-->
