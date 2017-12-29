@@ -1,0 +1,10 @@
+Running 1m test @ http://localhost:8888/cgi-bin/app/test.py
+  10 threads and 20 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.55s   482.52ms   2.99s    83.40%
+    Req/Sec     2.43      3.35    10.00     86.13%
+  759 requests in 1.00m, 99.58KB read
+Requests/sec:     12.63
+Transfer/sec:      1.66KB
+
+wrk timeout = 20 seconds

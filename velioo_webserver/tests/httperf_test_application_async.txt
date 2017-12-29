@@ -1,0 +1,23 @@
+httperf --client=0/1 --server=localhost --port=8887 --uri=/application --send-buffer=4096 --recv-buffer=16384 --num-conns=1000 --num-calls=1
+Maximum connect burst length: 1
+
+Total: connections 1000 requests 1000 replies 1000 test-duration 5.122 s
+
+Connection rate: 195.2 conn/s (5.1 ms/conn, <=1 concurrent connections)
+Connection time [ms]: min 0.1 avg 5.1 max 46.6 median 2.5 stddev 4.4
+Connection time [ms]: connect 0.8
+Connection length [replies/conn]: 1.000
+
+Request rate: 195.2 req/s (5.1 ms/req)
+Request size [B]: 73.0
+
+Reply rate [replies/s]: min 192.4 avg 192.4 max 192.4 stddev 0.0 (1 samples)
+Reply time [ms]: response 4.1 transfer 0.2
+Reply size [B]: header 130.0 content 136.0 footer 0.0 (total 266.0)
+Reply status: 1xx=0 2xx=1000 3xx=0 4xx=0 5xx=0
+
+CPU time [s]: user 0.56 system 3.36 (user 10.9% system 65.7% total 76.6%)
+Net I/O: 64.6 KB/s (0.5*10^6 bps)
+
+Errors: total 0 client-timo 0 socket-timo 0 connrefused 0 connreset 0
+Errors: fd-unavail 0 addrunavail 0 ftab-full 0 other 0

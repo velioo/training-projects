@@ -3,7 +3,7 @@ import sys
 import os
 import re
 import datetime
-from time import mktime, strftime, localtime
+from time import mktime, strftime, localtime, sleep
 from wsgiref.handlers import format_date_time
 import traceback
 import cgi, cgitb
@@ -11,7 +11,7 @@ import cgi, cgitb
 cgitb.enable(display=0, logdir="logs")
 
 try:
-    
+    sleep(2)
     print ("HTTP/1.1 200 OK")
     print ("Content-type:text/html\r\n\r\n")
     print ('<html>')

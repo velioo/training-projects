@@ -1,12 +1,11 @@
 #!/usr/bin/python3.6
 
 import cgi, cgitb
-import sys
+import sys, os
 import traceback
 cgitb.enable(display=0, logdir="logs")
 
 try:
-
     #form = cgi.FieldStorage()
 
     #first_name = form.getvalue('first_name')
@@ -20,6 +19,7 @@ try:
     print ('</head>')
     print ('<body>')
     #print ('<h2>Hello {} {} </h2>'.format(first_name, last_name))
+    print ('<h2>Hello There </h2>')
     print ('</body>')
     print ('</html>')
 

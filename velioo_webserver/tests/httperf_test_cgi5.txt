@@ -1,0 +1,23 @@
+httperf --client=0/1 --server=localhost --port=8888 --uri=/cgi-bin/app/test.py --rate=30 --send-buffer=4096 --recv-buffer=16384 --num-conns=1000 --num-calls=1
+Maximum connect burst length: 1
+
+Total: connections 1000 requests 1000 replies 981 test-duration 122.315 s
+
+Connection rate: 8.2 conn/s (122.3 ms/conn, <=774 concurrent connections)
+Connection time [ms]: min 572.4 avg 50048.0 max 109614.4 median 41564.5 stddev 30841.4
+Connection time [ms]: connect 23070.5
+Connection length [replies/conn]: 1.000
+
+Request rate: 8.2 req/s (122.3 ms/req)
+Request size [B]: 81.0
+
+Reply rate [replies/s]: min 1.4 avg 7.8 max 9.6 stddev 1.6 (24 samples)
+Reply time [ms]: response 25555.6 transfer 1126.7
+Reply size [B]: header 42.0 content 91.0 footer 0.0 (total 133.0)
+Reply status: 1xx=0 2xx=968 3xx=0 4xx=13 5xx=0
+
+CPU time [s]: user 1.84 system 112.08 (user 1.5% system 91.6% total 93.1%)
+Net I/O: 1.7 KB/s (0.0*10^6 bps)
+
+Errors: total 19 client-timo 0 socket-timo 0 connrefused 0 connreset 19
+Errors: fd-unavail 0 addrunavail 0 ftab-full 0 other 0

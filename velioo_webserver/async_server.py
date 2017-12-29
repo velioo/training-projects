@@ -8,7 +8,8 @@ import signal
 import traceback
 import datetime
 import select
-from time import time, gmtime, asctime, mktime
+import time
+from time import mktime
 from wsgiref.handlers import format_date_time
 from pathlib import Path
 import magic
@@ -18,7 +19,7 @@ import velioo_webserver.config.environment as env
 import asyncio
 
 now = datetime.datetime.now()
-logging.basicConfig(filename='logs/async_server2_' + now.strftime("%Y-%m-%d") + '.log', level=logging.DEBUG, format='%(levelname)s:%(asctime)s --> %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
+logging.basicConfig(filename='logs/async_server_' + now.strftime("%Y-%m-%d") + '.log', level=logging.DEBUG, format='%(levelname)s:%(asctime)s --> %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 
 def serve_forever():
     print('Starting server...')
@@ -60,15 +61,18 @@ def handle_request(client_reader, client_writer):
     arguments = ""
     try:
         logging.info('Receiving request...')
-        
         request_headers = b''
         request_body = b''
         method, path, protocol = '', '', ''
-        
         try:
             while True:
                 logging.info('Reading data...')
-                data = yield from asyncio.wait_for(client_reader.read(env.RECV_BUFSIZE), 10.0)
+                try:
+                    data = yield from asyncio.wait_for(client_reader.read(env.RECV_BUFSIZE), 10.0)
+                except asyncio.TimeoutError as e:
+                    logging.error(traceback.format_exc())
+                    send_response_408(client_writer)
+                    return
                 if data != b'':
                     logging.info('Data read: {}'.format(data))
                     try:
@@ -111,19 +115,15 @@ def handle_request(client_reader, client_writer):
             logging.info('Request headers:\n{}'.format(request_headers))
             send_response_408(client_writer)
             return
-    
         logging.info('Request headers:\n{}'.format(request_headers))
-        
         if request_headers == b'':
             logging.info('Request timeout: {}'.format(method))
             send_response_408(client_writer)
             return
-            
         if '\r\n\r\n' not in request_headers:
             logging.info('Error 400 Bad request')
             send_response_400(client_writer)
             return
-        
         headers = {}
         try:
             splitted_headers = request_headers.split('\r\n')
@@ -176,7 +176,6 @@ def handle_request(client_reader, client_writer):
                 logging.info('Response:{}\n'.format(http_response.decode()))
                 client_writer.write(http_response)
                 client_writer.close()
-                    
             return
         else:
             logging.info('Request method is unsupported: {}'.format(method))
@@ -195,160 +194,182 @@ def handle_request(client_reader, client_writer):
         path = convert_path(path)
         if path.exists():
             path_str = str(path)
-            logging.info('Checking if {} is forbidden...'.format( path_str))
+            logging.info('Checking if {} is forbidden...'.format(path_str))
+            path_is_allowed = False
             for p in env.allowed_dirs:
                 if path_str.startswith(p):
-                    if path.is_file() or path.is_dir():
-                        if path.is_dir():
+                    path_is_allowed = True
+                    break
+            if not path_is_allowed:      
+                for l in env.limited_dirs:
+                    if path_str.startswith(l) and client_writer.get_extra_info('peername')[0] == '127.0.0.1':
+                        path_is_allowed = True
+                        break
+            if path_is_allowed:        
+                if path.is_file() or path.is_dir():
+                    if path.is_dir():
+                        try:
+                            path = convert_path(path_str + "/index.html")
+                        except TypeError as e:
+                            logging.info('Failed to concatenate path_str to index.html...retrying with str(path) + index.html')
+                            if isinstance(path, Path):
+                                path = convert_path(str(path) + "/index.html")
+                            else:
+                                logging.info('Variable "path" is not a Path instance, concatenation aborted...')
+                                send_response_500(client_writer)
+                                return
+                        path_str = str(path)
+                        logging.info('Path is a directory. Changing path to {}'.format(path))
+                    if path.is_file():
+                        logging.info('Path is a file')
+                        if path_str.startswith("cgi-bin") and os.access(path_str, os.X_OK):
+                            logging.info('Path is a CGI script')
                             try:
-                                path = convert_path(path_str + "/index.html")
-                            except TypeError as e:
-                                logging.info('Failed to concatenate path_str to index.html...retrying with str(path) + index.html')
-                                if isinstance(path, Path):
-                                    path = convert_path(str(path) + "/index.html")
-                                else:
-                                    logging.info('Variable "path" is not a Path instance, concatenation aborted...')
-                                    send_response_500(client_writer)
-                                    return
-                            path_str = str(path)
-                            logging.info('Path is a directory. Changing path to {}'.format(path))
-                        if path.is_file():
-                            logging.info('Path is a file')
-                            if path_str.startswith("cgi-bin") and os.access(path_str, os.X_OK):
-                                logging.info('Path is a CGI script')
                                 try:
+                                    ext = path_str.split('.')[-1]
+                                except ValueError as e:
+                                    logging.error('Failed getting CGI script file extension, setting ext to None')
+                                    ext = None
+                                try:
+                                    executable = env.supported_cgi_formats[ext]
+                                except KeyError as e:
+                                     logging.error('Failed getting CGI script executable. Trying with default executable: {}'.format(sys.executable))
+                                     executable = sys.executable
+                                if executable:
+                                    set_environment(headers=headers, 
+                                                    arguments=arguments, 
+                                                    method=method, 
+                                                    path=path_str, 
+                                                    protocol=protocol, 
+                                                    client_address=client_writer.get_extra_info('peername')[0],
+                                                    server_port=os.environ.get('PORT', 8888)
+                                                    )
+                                    logging.info('Executing {}'.format(path))
+                                    proc = yield from asyncio.create_subprocess_exec(executable, path_str, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
                                     try:
-                                        ext = path_str.split('.')[-1]
-                                    except ValueError as e:
-                                        logging.error('Failed getting CGI script file extension, setting ext to None')
-                                        ext = None
-                                    try:
-                                        executable = env.supported_cgi_formats[ext]
-                                    except KeyError as e:
-                                         logging.error('Failed getting CGI script executable. Trying with default executable: {}'.format(sys.executable))
-                                         executable = sys.executable
-                                    if executable:
-                                        set_environment(headers=headers, 
-                                                        arguments=arguments, 
-                                                        method=method, 
-                                                        path=path_str, 
-                                                        protocol=protocol, 
-                                                        client_address=client_writer.get_extra_info('peername')[0],
-                                                        server_port=os.environ.get('PORT', 8888)
-                                                        )
-                                        script_args = [executable, path_str]
-                                        logging.info('Executing {}'.format(path))
-                                        proc = subprocess.Popen(script_args, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                                        try:
-                                            if method == 'POST':
-                                                if request_body:
+                                        if method == 'POST':
+                                            if request_body:
+                                                try:
+                                                    proc.stdin.write(request_body)
+                                                except BrokenPipeError as e:
+                                                    logging.info('PIPE broke while writing...')
+                                                    raise OSError
+                                            logging.info("Content-Length from request = {}".format(content_length))
+                                            logging.info("Current Content-Length = {}".format(len(request_body)))
+                                            bytes_read = len(request_body)
+                                            prev_content_length = len(request_body)
+                                            if(content_length > len(request_body)):
+                                                logging.info('Getting POST request body...')
+                                                logging.info('POST body:')
+                                                while True:
+                                                    logging.info('Sending data to CGI script')
                                                     try:
-                                                        proc.stdin.write(request_body)
-                                                    except BrokenPipeError as e:
-                                                        logging.info('PIPE broke while writing...')
-                                                        raise OSError
-                                                logging.info("Content-Length from request = {}".format(content_length))
-                                                logging.info("Current Content-Length = {}".format(len(request_body)))
-                                                bytes_read = 0
-                                                prev_content_length = len(request_body)
-                                                if(content_length > len(request_body)):
-                                                    logging.info('Getting POST request body...')
-                                                    logging.info('POST body:')
-                                                    while True:
-                                                        logging.info('Sending data to CGI script')
                                                         post_data = yield from asyncio.wait_for(client_reader.read(env.RECV_BUFSIZE), 10.0)
-                                                        if post_data != b'':
-                                                            bytes_read+=len(post_data)
-                                                            logging.info('Total bytes read: {}'.format(bytes_read + len(request_body)))
-                                                            try:
-                                                                proc.stdin.write(post_data)
-                                                            except BrokenPipeError as e:
-                                                                logging.info('PIPE broke while writing...')
-                                                                raise OSError
-                                                            if content_length <= bytes_read + len(request_body):
-                                                                logging.info('Request body successfully received')
-                                                                break
-                                                        else:
+                                                    except asyncio.TimeoutError as e:
+                                                        logging.error(traceback.format_exc())
+                                                        send_response_408(client_writer)
+                                                        return
+                                                    if post_data != b'':
+                                                        bytes_read+=len(post_data)
+                                                        logging.info('Total bytes read: {}'.format(bytes_read + len(request_body)))
+                                                        try:
+                                                            proc.stdin.write(post_data)
+                                                        except BrokenPipeError as e:
+                                                            logging.info('PIPE broke while writing...')
+                                                            raise OSError
+                                                        if content_length <= bytes_read:
+                                                            logging.info('Request body successfully received')
                                                             break
-                                                    
-                                                    if prev_content_length == len(request_body) + bytes_read:
-                                                        raise TimeoutError
-                                                logging.info('Request body received. Total bytes read = {}'.format(len(request_body) + bytes_read))
-                                                proc.stdin.close()
-                                                logging.info('Response:\n')                                     
-                                                line = None
-                                                for line in proc.stdout:
-                                                    client_writer.write(line)
-                                                    yield from client_writer.drain()
-                                                    logging.info('{}'.format(line.decode().replace("\n","", 1)))
-                                                client_writer.close()
-                                                if line == None:
-                                                    logging.info('CGI script didn\'t return anything.')
-                                                    send_response_501(client_writer)
-                                                    return
-                                            elif method == 'GET':
-                                                logging.info('Response:\n')
-                                                line = None
-                                                for line in proc.stdout:
-                                                    client_writer.write(line)
-                                                    yield from client_writer.drain()
-                                                    logging.info('{}'.format(line.decode().replace("\n","", 1)))
-                                                client_writer.close()
-                                                if line == None:
-                                                    logging.info('CGI script didn\'t return anything.')
-                                                    send_response_501(client_writer)
-                                                    return
-                                            else:
-                                                logging.info('Failed to execute CGI script - request method is unsupported')
+                                                    else:
+                                                        break
+                                                
+                                                if prev_content_length == len(request_body) + bytes_read:
+                                                    raise TimeoutError
+                                            logging.info('Request body received. Total bytes read = {}'.format(len(request_body) + bytes_read))
+                                            proc.stdin.close()
+                                            logging.info('Response:\n')
+                                            timeout = time.time() + 10
+                                            chunk = None
+                                            while True: 
+                                                chunk = yield from asyncio.wait_for(proc.stdout.read(env.RECV_BUFSIZE), 3.0)
+                                                if not chunk:
+                                                    break
+                                                if time.time() > timeout:
+                                                    raise TimeoutError
+                                                client_writer.write(chunk)
+                                                yield from client_writer.drain()
+                                                logging.info('{}'.format(chunk.decode().replace("\n","", 1)))
+                                            client_writer.close()
+                                            if chunk == None:
+                                                logging.info('CGI script didn\'t return anything.')
                                                 send_response_501(client_writer)
                                                 return
-                                            proc.wait(5.0)
-                                        except (TimeoutError, asyncio.TimeoutError, subprocess.TimeoutExpired) as e:
-                                            logging.info('Request timeout: {}'.format(method))
-                                            send_response_408(client_writer)
-                                    else:
-                                        logging.info('Failed to execute CGI script - CGI extension not supported')
-                                        send_response_501(client_writer)
-                                except OSError as e:
-                                    logging.error('Failed to execute script...')
-                                    logging.error('Traceback:{}'.format(traceback.format_exc()))
-                                    send_response_500(client_writer)
-                            else:
-                                logging.info('Path is a resource. Loading MIME detector...')
-                                ft_detector = magic.Magic(mime=True)
-                                mime = ft_detector.from_file(path_str)
-                                logging.info('MIME: {}'.format(mime))
-                                http_response = (
-                                                b"HTTP/1.1 200 OK\r\nContent-Type: "
-                                                + bytearray(mime, 'utf-8')
-                                                + b"\r\nContent-Length: "
-                                                + str(os.path.getsize(path)).encode()
-                                                + b"\r\nDate: "
-                                                + get_current_gmt_time()
-                                                + b"\r\nServer: " 
-                                                + get_server_software()
-                                                + b"\r\n\r\n"
-                                                )
-                                logging.info('Response:\n{}'.format(http_response.decode()))
-                                client_writer.write(http_response)
-                                with open(path, 'rb') as f:
-                                    for line in f:
-                                        client_writer.write(line)
-                                        yield from client_writer.drain()
-                                client_writer.close()
+                                        elif method == 'GET':
+                                            logging.info('Response:\n')
+                                            timeout = time.time() + 10
+                                            chunk = None
+                                            while True: 
+                                                chunk = yield from asyncio.wait_for(proc.stdout.read(env.RECV_BUFSIZE), 3.0)
+                                                if not chunk:
+                                                    break
+                                                if time.time() > timeout:
+                                                    raise TimeoutError
+                                                client_writer.write(chunk)
+                                                yield from client_writer.drain()
+                                                logging.info('{}'.format(chunk.decode().replace("\n","", 1)))
+                                            client_writer.close()
+                                            if chunk == None:
+                                                logging.info('CGI script didn\'t return anything.')
+                                                send_response_501(client_writer)
+                                                return
+                                        else:
+                                            logging.info('Failed to execute CGI script - request method is unsupported')
+                                            send_response_501(client_writer)
+                                            return
+                                    except TimeoutError as e:
+                                        logging.info('Request timeout: {}'.format(method))
+                                        send_response_408(client_writer)
+                                else:
+                                    logging.info('Failed to execute CGI script - CGI extension not supported')
+                                    send_response_501(client_writer)
+                            except OSError as e:
+                                logging.error('Failed to execute script...')
+                                logging.error('Traceback:{}'.format(traceback.format_exc()))
+                                send_response_500(client_writer)
                         else:
-                            send_response_403(client_writer)
+                            logging.info('Path is a resource. Loading MIME detector...')
+                            ft_detector = magic.Magic(mime=True)
+                            mime = ft_detector.from_file(path_str)
+                            logging.info('MIME: {}'.format(mime))
+                            http_response = (
+                                            b"HTTP/1.1 200 OK\r\nContent-Type: "
+                                            + bytearray(mime, 'utf-8')
+                                            #+ b"\r\nContent-Length: "
+                                            #+ str(os.path.getsize(path)).encode()
+                                            + b"\r\nDate: "
+                                            + get_current_gmt_time()
+                                            + b"\r\nServer: " 
+                                            + get_server_software()
+                                            + b"\r\n\r\n"
+                                            )
+                            logging.info('Response:\n{}'.format(http_response.decode()))
+                            client_writer.write(http_response)
+                            with open(path, 'rb') as f:
+                                for line in f:
+                                    client_writer.write(line)
+                                    yield from client_writer.drain()
+                            client_writer.close()
                     else:
-                        logging.info('Path is neither a file nor dir')
                         send_response_403(client_writer)
-                    return
-            logging.info('Path {} is forbidden'.format(path_str))               
-            send_response_403(client_writer)
-            return
+                else:
+                    logging.info('Path is neither a file nor dir')
+                    send_response_403(client_writer)
+            else:
+                logging.info('Path {} is forbidden'.format(path_str))               
+                send_response_403(client_writer)
         else:
             logging.info('Path doesn\'t exist')
             send_response_404(client_writer)
-            return
     
     except OSError as e:
         logging.error('Client disonnected before receiveing response...')
