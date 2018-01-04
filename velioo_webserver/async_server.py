@@ -344,8 +344,8 @@ def handle_request(client_reader, client_writer):
                             http_response = (
                                             b"HTTP/1.1 200 OK\r\nContent-Type: "
                                             + bytearray(mime, 'utf-8')
-                                            #+ b"\r\nContent-Length: "
-                                            #+ str(os.path.getsize(path)).encode()
+                                            + b"\r\nContent-Length: "
+                                            + str(os.path.getsize(path)).encode()
                                             + b"\r\nDate: "
                                             + get_current_gmt_time()
                                             + b"\r\nServer: " 

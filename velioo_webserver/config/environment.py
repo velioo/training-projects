@@ -27,4 +27,4 @@ supported_cgi_formats = {
     'php': '/usr/bin/php7.1'
 }
 
-
+os.environ['NUM_REQUESTS'] = '0'

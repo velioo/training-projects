@@ -11,7 +11,7 @@ import cgi, cgitb
 cgitb.enable(display=0, logdir="logs")
 
 try:
-    sleep(2)
+
     print ("HTTP/1.1 200 OK")
     print ("Content-type:text/html\r\n\r\n")
     print ('<html>')
@@ -19,7 +19,7 @@ try:
     print ('<title>Server Status</title>')
     print ('</head>')
     print ('<body>')
-    print('<h1>' + os.environ.get('SERVER_SOFTWARE', 'Velioo\'s Server') + ' Status for ' + os.environ.get('SERVER_NAME', 'localhost') + ':' + os.environ.get('PORT', '') + '</h1>')
+    print('<h1>' + os.environ.get('SERVER_SOFTWARE', 'Velioo\'s Server') + ' Status for ' + os.environ.get('SERVER_NAME', 'localhost') + ':' + os.environ.get('ALT_PORT', '') + '</h1>')
     now = datetime.datetime.now()
     stamp = mktime(now.timetuple())
     print('<dt>Current Time: ' + format_date_time(stamp) + '</dt>')
