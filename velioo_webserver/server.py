@@ -32,6 +32,7 @@ def serve_forever():
     print('Serving HTTP on port {port} ...'.format(port=os.environ.get('PORT', 8888)))
     logging.info('Setting SIGCHLD signals handler "grim_reaper"...')
     signal.signal(signal.SIGCHLD, grim_reaper)
+    os.environ['SERVER_TYPE'] = 'SYNC'
     logging.info('Starting while loop...')
     while True:
         try:
@@ -227,7 +228,7 @@ def handle_request(client_connection, client_address):
                     break
             if not path_is_allowed:      
                 for l in env.limited_dirs:
-                    if path_str.startswith(l) and client_writer.get_extra_info('peername')[0] == '127.0.0.1':
+                    if path_str.startswith(l) and client_address[0] == '127.0.0.1':
                         path_is_allowed = True
                         break
             if path_is_allowed:
@@ -356,8 +357,8 @@ def handle_request(client_connection, client_address):
                             http_response = (
                                             b"HTTP/1.1 200 OK\r\nContent-Type: "
                                             + bytearray(mime, 'utf-8')
-                                            + b"\r\nContent-Length: "
-                                            + str(os.path.getsize(path)).encode()
+                                            #+ b"\r\nContent-Length: "
+                                            #+ str(os.path.getsize(path)).encode()
                                             + b"\r\nDate: "
                                             + get_current_gmt_time()
                                             + b"\r\nServer: " 

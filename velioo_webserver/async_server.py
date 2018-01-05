@@ -31,6 +31,7 @@ def serve_forever():
                                    reuse_address=True)
     loop.run_until_complete(coroutine)
     signal.signal(signal.SIGCHLD, grim_reaper)
+    os.environ['SERVER_TYPE'] = 'ASYNC'
     try:
         resource.setrlimit(resource.RLIMIT_NOFILE, (65536, 65536))
     except ValueError as e:
@@ -110,11 +111,6 @@ def handle_request(client_reader, client_writer):
             logging.error('Traceback:{}'.format(traceback.format_exc()))
             send_response_500(client_writer)
             return
-        except (TimeoutError, asyncio.TimeoutError) as e:
-            logging.info('Request timeout')
-            logging.info('Request headers:\n{}'.format(request_headers))
-            send_response_408(client_writer)
-            return
         logging.info('Request headers:\n{}'.format(request_headers))
         if request_headers == b'':
             logging.info('Request timeout: {}'.format(method))
@@ -164,9 +160,21 @@ def handle_request(client_reader, client_writer):
                 client_writer.write(http_response)
                 client_writer.close()
             else:
+                logging.info('Clinet peername = {}'.format(client_writer.get_extra_info('peername')[0]))
+                path_is_allowed = False
                 path = convert_path(path)
-                for p in env.allowed_dirs:
-                    if str(path).startswith(p) and (path.is_file() or path.is_dir()):
+                path_str = str(path)
+                if path.exists():
+                    for p in env.allowed_dirs:
+                        if path_str.startswith(p) and (path.is_file() or path.is_dir()):
+                            path_is_allowed = True
+                            break
+                    if not path_is_allowed:      
+                        for l in env.limited_dirs:
+                            if path_str.startswith(l) and client_writer.get_extra_info('peername')[0] == '127.0.0.1':
+                                path_is_allowed = True
+                                break
+                    if path_is_allowed:        
                         http_response = b"HTTP/1.1 200 OK\r\nAllow: OPTIONS, GET, POST\r\nDate: " + get_current_gmt_time() + b"\r\nServer: " + get_server_software() + b"\r\nContent-Length: 0\r\n"
                         logging.info('Response:{}\n'.format(http_response.decode()))
                         client_writer.write(http_response)
@@ -242,7 +250,7 @@ def handle_request(client_reader, client_writer):
                                                     path=path_str, 
                                                     protocol=protocol, 
                                                     client_address=client_writer.get_extra_info('peername')[0],
-                                                    server_port=os.environ.get('PORT', 8888)
+                                                    server_port=os.environ.get('ALT_PORT', 8888)
                                                     )
                                     logging.info('Executing {}'.format(path))
                                     proc = yield from asyncio.create_subprocess_exec(executable, path_str, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -290,7 +298,8 @@ def handle_request(client_reader, client_writer):
                                             logging.info('Response:\n')
                                             timeout = time.time() + 10
                                             chunk = None
-                                            while True: 
+                                            while True:
+                                                logging.info('Getttng chunks from CGI script...\n')
                                                 chunk = yield from asyncio.wait_for(proc.stdout.read(env.RECV_BUFSIZE), 3.0)
                                                 if not chunk:
                                                     break
@@ -299,17 +308,24 @@ def handle_request(client_reader, client_writer):
                                                 client_writer.write(chunk)
                                                 yield from client_writer.drain()
                                                 logging.info('{}'.format(chunk.decode().replace("\n","", 1)))
-                                            client_writer.close()
                                             if chunk == None:
                                                 logging.info('CGI script didn\'t return anything.')
                                                 send_response_501(client_writer)
                                                 return
+                                            else:
+                                                client_writer.close()
                                         elif method == 'GET':
                                             logging.info('Response:\n')
                                             timeout = time.time() + 10
                                             chunk = None
-                                            while True: 
-                                                chunk = yield from asyncio.wait_for(proc.stdout.read(env.RECV_BUFSIZE), 3.0)
+                                            while True:
+                                                try:
+                                                    logging.info('Getttng chunks from CGI script...')
+                                                    chunk = yield from asyncio.wait_for(proc.stdout.read(env.RECV_BUFSIZE), 3.0)
+                                                except asyncio.TimeoutError as e:
+                                                    logging.error('CGI script timed out')
+                                                    logging.error(traceback.format_exc())
+                                                    send_response_408(client_writer)
                                                 if not chunk:
                                                     break
                                                 if time.time() > timeout:
@@ -317,11 +333,12 @@ def handle_request(client_reader, client_writer):
                                                 client_writer.write(chunk)
                                                 yield from client_writer.drain()
                                                 logging.info('{}'.format(chunk.decode().replace("\n","", 1)))
-                                            client_writer.close()
                                             if chunk == None:
                                                 logging.info('CGI script didn\'t return anything.')
                                                 send_response_501(client_writer)
                                                 return
+                                            else:
+                                                client_writer.close()
                                         else:
                                             logging.info('Failed to execute CGI script - request method is unsupported')
                                             send_response_501(client_writer)
