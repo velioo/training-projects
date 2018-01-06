@@ -8,6 +8,7 @@ import signal
 import traceback
 import datetime
 import select
+import aiofiles
 import time
 from time import mktime
 from wsgiref.handlers import format_date_time
@@ -19,7 +20,7 @@ import velioo_webserver.config.environment as env
 import asyncio
 
 now = datetime.datetime.now()
-logging.basicConfig(filename='logs/async_server_' + now.strftime("%Y-%m-%d") + '.log', level=logging.DEBUG, format='%(levelname)s:%(asctime)s --> %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
+logging.basicConfig(filename='logs/async_server_' + now.strftime("%Y-%m-%d") + '.log', level=logging.ERROR, format='%(levelname)s:%(asctime)s --> %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 
 def serve_forever():
     print('Starting server...')
@@ -53,7 +54,7 @@ def grim_reaper(signum, frame):
         except IOError:
             return
             
-        if pid == 0: # no zombies
+        if pid == 0:
             return
 
 
@@ -66,11 +67,19 @@ def handle_request(client_reader, client_writer):
         request_body = b''
         method, path, protocol = '', '', ''
         try:
+            timeout = time.time() + 10
             while True:
                 logging.info('Reading data...')
                 try:
                     data = yield from asyncio.wait_for(client_reader.read(env.RECV_BUFSIZE), 10.0)
                 except asyncio.TimeoutError as e:
+                    logging.error(traceback.format_exc())
+                    send_response_408(client_writer)
+                    return
+                try:
+                    if time.time() > timeout:
+                        raise TimeoutError
+                except TimeoutError as e:
                     logging.error(traceback.format_exc())
                     send_response_408(client_writer)
                     return
@@ -160,7 +169,7 @@ def handle_request(client_reader, client_writer):
                 client_writer.write(http_response)
                 client_writer.close()
             else:
-                logging.info('Clinet peername = {}'.format(client_writer.get_extra_info('peername')[0]))
+                logging.info('Client peername = {}'.format(client_writer.get_extra_info('peername')[0]))
                 path_is_allowed = False
                 path = convert_path(path)
                 path_str = str(path)
@@ -268,7 +277,6 @@ def handle_request(client_reader, client_writer):
                                             prev_content_length = len(request_body)
                                             if(content_length > len(request_body)):
                                                 logging.info('Getting POST request body...')
-                                                logging.info('POST body:')
                                                 while True:
                                                     logging.info('Sending data to CGI script')
                                                     try:
@@ -279,7 +287,7 @@ def handle_request(client_reader, client_writer):
                                                         return
                                                     if post_data != b'':
                                                         bytes_read+=len(post_data)
-                                                        logging.info('Total bytes read: {}'.format(bytes_read + len(request_body)))
+                                                        logging.info('Total bytes read: {}'.format(bytes_read))
                                                         try:
                                                             proc.stdin.write(post_data)
                                                         except BrokenPipeError as e:
@@ -291,9 +299,9 @@ def handle_request(client_reader, client_writer):
                                                     else:
                                                         break
                                                 
-                                                if prev_content_length == len(request_body) + bytes_read:
+                                                if prev_content_length == bytes_read:
                                                     raise TimeoutError
-                                            logging.info('Request body received. Total bytes read = {}'.format(len(request_body) + bytes_read))
+                                            logging.info('Request body received. Total bytes read = {}'.format(bytes_read))
                                             proc.stdin.close()
                                             logging.info('Response:\n')
                                             timeout = time.time() + 10
@@ -371,10 +379,21 @@ def handle_request(client_reader, client_writer):
                                             )
                             logging.info('Response:\n{}'.format(http_response.decode()))
                             client_writer.write(http_response)
-                            with open(path, 'rb') as f:
-                                for line in f:
-                                    client_writer.write(line)
+                            try:
+                                f = yield from aiofiles.open(path, mode='rb')
+                            except Exception as e:
+                                logging.error('Error reading file: {}'.format(str(path)))
+                                send_response_500(client_writer)
+                                return
+                            try:
+                                 while True:
+                                    line = yield from f.readline()
+                                    if not line:
+                                        break
+                                    client_writer.write(line)    
                                     yield from client_writer.drain()
+                            finally:
+                                yield from f.close()
                             client_writer.close()
                     else:
                         send_response_403(client_writer)
@@ -390,6 +409,7 @@ def handle_request(client_reader, client_writer):
     
     except OSError as e:
         logging.error('Client disonnected before receiveing response...')
+        send_response_500(client_writer)
     except BrokenPipeError as e:
         logging.error('Connection between server and client was broken')
         logging.error('Traceback:{}'.format(traceback.format_exc()))

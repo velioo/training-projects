@@ -28,7 +28,7 @@ try:
             proc = psutil.Process(psutil.Process(os.getppid()).pid)
         else:
             proc = psutil.Process(psutil.Process(os.getppid()).ppid())
-            children = proc.children(recursive=True)
+        children = proc.children(recursive=True)
         print('<dt>Server uptime: ' + strftime("%Y-%m-%d %H:%M:%S", localtime(proc.create_time())) + '</dt>')
     except (psutil.NoSuchProcess, psutil.ZombieProcess, psutil.AccessDenied) as e:
         print(e)
@@ -56,7 +56,6 @@ try:
         print(e)
         
     try:
-        children = proc.children(recursive=True)
         children.insert(0, proc)
         print('<table>')
         print('<tr>')

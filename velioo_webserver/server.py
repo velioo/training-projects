@@ -16,7 +16,7 @@ import logging
 import velioo_webserver.config.environment as env
 
 now = datetime.datetime.now()
-logging.basicConfig(filename='logs/server_' + now.strftime("%Y-%m-%d") + '.log', level=logging.DEBUG, format='%(levelname)s:%(asctime)s --> %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
+logging.basicConfig(filename='logs/server_' + now.strftime("%Y-%m-%d") + '.log', level=logging.ERROR, format='%(levelname)s:%(asctime)s --> %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 
 def serve_forever():
     logging.info('Creating socket with {} and {}'.format(env.ADDRESS_FAMILY, env.SOCKET_TYPE))
@@ -138,7 +138,7 @@ def handle_request(client_connection, client_address):
             logging.info('Child {}: Request headers:\n{}'.format(pid, request_headers))
             send_response_408(client_connection, pid)
             return
-    
+        
         logging.info('Child {}: Request headers:\n{}'.format(pid, request_headers))
         
         if request_headers == b'':
@@ -311,7 +311,7 @@ def handle_request(client_connection, client_address):
                                                     else:
                                                         break
                                                 
-                                                if prev_content_length == len(request_body) + bytes_read:
+                                                if prev_content_length == bytes_read:
                                                     raise TimeoutError
                                             logging.info('Child {}: Request body received. Total bytes read = {}'.format(pid, len(request_body) + bytes_read))
                                             proc.stdin.close()
@@ -357,8 +357,8 @@ def handle_request(client_connection, client_address):
                             http_response = (
                                             b"HTTP/1.1 200 OK\r\nContent-Type: "
                                             + bytearray(mime, 'utf-8')
-                                            #+ b"\r\nContent-Length: "
-                                            #+ str(os.path.getsize(path)).encode()
+                                            + b"\r\nContent-Length: "
+                                            + str(os.path.getsize(path)).encode()
                                             + b"\r\nDate: "
                                             + get_current_gmt_time()
                                             + b"\r\nServer: " 
