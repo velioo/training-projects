@@ -18,9 +18,11 @@ import resource
 import logging
 import velioo_webserver.config.environment as env
 import asyncio
+from async_logging_handler import AsyncFileHandler
 
 now = datetime.datetime.now()
-logging.basicConfig(filename='logs/async_server_' + now.strftime("%Y-%m-%d") + '.log', level=logging.ERROR, format='%(levelname)s:%(asctime)s --> %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
+async_handler = AsyncFileHandler('logs/async_server_' + now.strftime("%Y-%m-%d") + '.log')
+logging.basicConfig(level=logging.ERROR, format='%(levelname)s:%(asctime)s --> %(message)s', datefmt='%m/%d/%Y %H:%M:%S', handlers=[async_handler])
 
 def serve_forever():
     print('Starting server...')
@@ -58,7 +60,7 @@ def grim_reaper(signum, frame):
             return
 
 
-def handle_request(client_reader, client_writer):
+async def handle_request(client_reader, client_writer):
     logging.info('handle_request invoked...')
     arguments = ""
     try:
@@ -71,8 +73,9 @@ def handle_request(client_reader, client_writer):
             while True:
                 logging.info('Reading data...')
                 try:
-                    data = yield from asyncio.wait_for(client_reader.read(env.RECV_BUFSIZE), 10.0)
+                    data = await asyncio.wait_for(client_reader.read(env.RECV_BUFSIZE), 10.0)
                 except asyncio.TimeoutError as e:
+                    logging.error('Client timed out...')
                     logging.error(traceback.format_exc())
                     send_response_408(client_writer)
                     return
@@ -80,6 +83,7 @@ def handle_request(client_reader, client_writer):
                     if time.time() > timeout:
                         raise TimeoutError
                 except TimeoutError as e:
+                    logging.error('Global client timed out...')
                     logging.error(traceback.format_exc())
                     send_response_408(client_writer)
                     return
@@ -231,6 +235,7 @@ def handle_request(client_reader, client_writer):
                             logging.info('Failed to concatenate path_str to index.html...retrying with str(path) + index.html')
                             if isinstance(path, Path):
                                 path = convert_path(str(path) + "/index.html")
+                                path_str = str(path)
                             else:
                                 logging.info('Variable "path" is not a Path instance, concatenation aborted...')
                                 send_response_500(client_writer)
@@ -262,7 +267,7 @@ def handle_request(client_reader, client_writer):
                                                     server_port=os.environ.get('ALT_PORT', 8888)
                                                     )
                                     logging.info('Executing {}'.format(path))
-                                    proc = yield from asyncio.create_subprocess_exec(executable, path_str, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                                    proc = await asyncio.create_subprocess_exec(executable, path_str, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
                                     try:
                                         if method == 'POST':
                                             if request_body:
@@ -271,17 +276,27 @@ def handle_request(client_reader, client_writer):
                                                 except BrokenPipeError as e:
                                                     logging.info('PIPE broke while writing...')
                                                     raise OSError
-                                            logging.info("Content-Length from request = {}".format(content_length))
-                                            logging.info("Current Content-Length = {}".format(len(request_body)))
+                                            logging.info("Content-Length: {}".format(content_length))
+                                            logging.info("Current Content-Length: {}".format(len(request_body)))
                                             bytes_read = len(request_body)
                                             prev_content_length = len(request_body)
-                                            if(content_length > len(request_body)):
+                                            if(content_length > bytes_read):
                                                 logging.info('Getting POST request body...')
+                                                timeout = time.time() + 10
                                                 while True:
                                                     logging.info('Sending data to CGI script')
                                                     try:
-                                                        post_data = yield from asyncio.wait_for(client_reader.read(env.RECV_BUFSIZE), 10.0)
+                                                        post_data = await asyncio.wait_for(client_reader.read(env.RECV_BUFSIZE), 10.0)
                                                     except asyncio.TimeoutError as e:
+                                                        logging.error('Cient timed out...')
+                                                        logging.error(traceback.format_exc())
+                                                        send_response_408(client_writer)
+                                                        return
+                                                    try:
+                                                        if time.time() > timeout:
+                                                            raise TimeoutError
+                                                    except TimeoutError as e:
+                                                        logging.error('Global client timed out...')
                                                         logging.error(traceback.format_exc())
                                                         send_response_408(client_writer)
                                                         return
@@ -308,13 +323,13 @@ def handle_request(client_reader, client_writer):
                                             chunk = None
                                             while True:
                                                 logging.info('Getttng chunks from CGI script...\n')
-                                                chunk = yield from asyncio.wait_for(proc.stdout.read(env.RECV_BUFSIZE), 3.0)
+                                                chunk = await asyncio.wait_for(proc.stdout.read(env.RECV_BUFSIZE), 10.0)
                                                 if not chunk:
                                                     break
                                                 if time.time() > timeout:
                                                     raise TimeoutError
                                                 client_writer.write(chunk)
-                                                yield from client_writer.drain()
+                                                await client_writer.drain()
                                                 logging.info('{}'.format(chunk.decode().replace("\n","", 1)))
                                             if chunk == None:
                                                 logging.info('CGI script didn\'t return anything.')
@@ -329,7 +344,7 @@ def handle_request(client_reader, client_writer):
                                             while True:
                                                 try:
                                                     logging.info('Getttng chunks from CGI script...')
-                                                    chunk = yield from asyncio.wait_for(proc.stdout.read(env.RECV_BUFSIZE), 3.0)
+                                                    chunk = await asyncio.wait_for(proc.stdout.read(env.RECV_BUFSIZE), 10.0)
                                                 except asyncio.TimeoutError as e:
                                                     logging.error('CGI script timed out')
                                                     logging.error(traceback.format_exc())
@@ -339,7 +354,7 @@ def handle_request(client_reader, client_writer):
                                                 if time.time() > timeout:
                                                     raise TimeoutError
                                                 client_writer.write(chunk)
-                                                yield from client_writer.drain()
+                                                await client_writer.drain()
                                                 logging.info('{}'.format(chunk.decode().replace("\n","", 1)))
                                             if chunk == None:
                                                 logging.info('CGI script didn\'t return anything.')
@@ -379,21 +394,7 @@ def handle_request(client_reader, client_writer):
                                             )
                             logging.info('Response:\n{}'.format(http_response.decode()))
                             client_writer.write(http_response)
-                            try:
-                                f = yield from aiofiles.open(path, mode='rb')
-                            except Exception as e:
-                                logging.error('Error reading file: {}'.format(str(path)))
-                                send_response_500(client_writer)
-                                return
-                            try:
-                                 while True:
-                                    line = yield from f.readline()
-                                    if not line:
-                                        break
-                                    client_writer.write(line)    
-                                    yield from client_writer.drain()
-                            finally:
-                                yield from f.close()
+                            await send_static_file(path, client_writer)
                             client_writer.close()
                     else:
                         send_response_403(client_writer)
@@ -409,6 +410,7 @@ def handle_request(client_reader, client_writer):
     
     except OSError as e:
         logging.error('Client disonnected before receiveing response...')
+        logging.error('Traceback: {}'.format(traceback.format_exc()))
         send_response_500(client_writer)
     except BrokenPipeError as e:
         logging.error('Connection between server and client was broken')
@@ -426,6 +428,12 @@ def handle_request(client_reader, client_writer):
     except Exception as e:
         logging.error('Traceback:{}'.format(traceback.format_exc()))
         send_response_500(client_writer)
+
+async def send_static_file(path, client_writer):
+    async with aiofiles.open(path, 'rb') as f:
+        chunk = await f.read(env.FILE_CHUNK)
+        client_writer.write(chunk)
+        await client_writer.drain()
 
 
 def convert_path(path):

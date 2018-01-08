@@ -16,7 +16,7 @@ import logging
 import velioo_webserver.config.environment as env
 
 now = datetime.datetime.now()
-logging.basicConfig(filename='logs/server_' + now.strftime("%Y-%m-%d") + '.log', level=logging.ERROR, format='%(levelname)s:%(asctime)s --> %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
+logging.basicConfig(filename='logs/server_' + now.strftime("%Y-%m-%d") + '.log', level=logging.ERROR, format='%(levelname)s:%(asctime)s --> %(message)s', datefmt='%m/%d/%Y %H:%M:%S')
 
 def serve_forever():
     logging.info('Creating socket with {} and {}'.format(env.ADDRESS_FAMILY, env.SOCKET_TYPE))
@@ -38,8 +38,9 @@ def serve_forever():
         try:
             logging.info('Parent: Accepting connections...')
             client_connection, client_address = listen_socket.accept()
-        except IOError as e:
-            logging.error('Child {} Traceback:{}'.format(pid, traceback.format_exc()))
+        except OSError as e:
+            logging.error('Parent: Failed to accept client connection...')
+            logging.error('Parent: Traceback:{}'.format(pid, traceback.format_exc()))
             code, msg = e.args
             if code == errno.EINTR:  # restart 'accept' if it was interrupted
                 continue
@@ -47,19 +48,36 @@ def serve_forever():
                 break
         
         logging.info('Parent: Connection accepted, invoking fork()')
-        pid = os.fork()
+        try:
+            pid = os.fork()
+        except OSError as e:
+            logging.error('Failed to create child...')
+            logging.error('Traceback: {}'.format(traceback.format_exc()))
         if pid == 0: # child
             logging.info('Child {}: Closing child copy socket...'.format(os.getpid()))
-            listen_socket.close() # close child copy
+            try:
+                listen_socket.close() # close child copy
+            except OSError as e:
+                logging.error('Failed to close child copy connection...')
+                logging.error('Traceback: {}'.format(traceback.format_exc()))
             logging.info('Child {}: Handling request...'.format(os.getpid()))
             handle_request(client_connection, client_address)
             logging.info('Child {}: Closing client connection...'.format(os.getpid()))
-            client_connection.close()
+            try:
+                client_connection.close()
+            except OSError as e:
+                logging.error('Failed to close child connection')
+                logging.error('Traceback: {}'.format(traceback.format_exc()))
             logging.info('Child {}: Exiting...'.format(os.getpid()))
             os._exit(0)
         else: # parent
             logging.info('Parent: Closing parent client connection...')
-            client_connection.close() # close parent copy and loop over
+            try:
+                client_connection.close() # close parent copy and loop over
+            except OSError as e:
+                logging.error('Parent: Failed to close parent connection')
+                logging.error('Parent: Traceback: {}'.format(traceback.format_exc()))
+
 
 
 def grim_reaper(signum, frame):
@@ -286,7 +304,7 @@ def handle_request(client_connection, client_address):
                                             logging.info("Child {}: Current Content-Length = {}".format(pid, len(request_body)))
                                             bytes_read = len(request_body)
                                             prev_content_length = len(request_body)
-                                            if(content_length > len(request_body)):
+                                            if(content_length > bytes_read):
                                                 logging.info('Child {}: Getting POST request body...'.format(pid))
                                                 logging.info('Child {}: POST body:'.format(pid))
                                                 while True:
@@ -368,8 +386,8 @@ def handle_request(client_connection, client_address):
                             logging.info('Child {}: Response:\n{}'.format(pid, http_response.decode()))
                             client_connection.sendall(http_response)
                             with open(path, 'rb') as f:
-                                for line in f:
-                                    client_connection.sendall(line)
+                                for chunk in iter(lambda: f.read(env.FILE_CHUNK), b''):
+                                    client_connection.sendall(chunk)
                     else:
                         send_response_403(client_connection, pid)
                 else:
