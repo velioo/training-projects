@@ -68,6 +68,7 @@ async def handle_request(client_reader, client_writer):
         request_headers = b''
         request_body = b''
         method, path, protocol = '', '', ''
+        data = b''
         try:
             timeout = time.time() + 10
             while True:
@@ -76,7 +77,6 @@ async def handle_request(client_reader, client_writer):
                     data = await asyncio.wait_for(client_reader.read(env.RECV_BUFSIZE), 10.0)
                 except asyncio.TimeoutError as e:
                     logging.error('Client timed out...')
-                    logging.error(traceback.format_exc())
                     send_response_408(client_writer)
                     return
                 try:
@@ -84,7 +84,6 @@ async def handle_request(client_reader, client_writer):
                         raise TimeoutError
                 except TimeoutError as e:
                     logging.error('Global client timed out...')
-                    logging.error(traceback.format_exc())
                     send_response_408(client_writer)
                     return
                 if data != b'':
@@ -118,7 +117,7 @@ async def handle_request(client_reader, client_writer):
                         return
                 else:
                     logging.info('Request headers successfully received')
-                    break
+                    break      
         except UnicodeDecodeError as e:
             logging.error("Problem decoding request")
             logging.error('Traceback:{}'.format(traceback.format_exc()))

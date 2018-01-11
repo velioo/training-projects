@@ -1,0 +1,566 @@
+0.00 async_server.py(1): import sys
+0.00 async_server.py(2): import os
+0.00 async_server.py(3): sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+0.02 async_server.py(4): import errno
+0.02 async_server.py(5): import socket
+0.29 <frozen importlib._bootstrap>(177): 0.29 <frozen importlib._bootstrap>(178): 0.29 <frozen importlib._bootstrap>(182): 0.29 <frozen importlib._bootstrap>(183): 0.29 <frozen importlib._bootstrap>(185): 0.29 async_server.py(6): import subprocess
+0.41 <frozen importlib._bootstrap>(177): 0.41 <frozen importlib._bootstrap>(178): 0.41 <frozen importlib._bootstrap>(182): 0.41 <frozen importlib._bootstrap>(183): 0.41 <frozen importlib._bootstrap>(185): 0.41 async_server.py(7): import signal
+0.41 async_server.py(8): import traceback
+0.41 async_server.py(9): import datetime
+0.45 <frozen importlib._bootstrap>(177): 0.45 <frozen importlib._bootstrap>(178): 0.45 <frozen importlib._bootstrap>(182): 0.45 <frozen importlib._bootstrap>(183): 0.45 <frozen importlib._bootstrap>(185): 0.45 async_server.py(10): import select
+0.45 async_server.py(11): import aiofiles
+2.25 <frozen importlib._bootstrap>(177): 2.25 <frozen importlib._bootstrap>(178): 2.25 <frozen importlib._bootstrap>(182): 2.25 <frozen importlib._bootstrap>(183): 2.25 <frozen importlib._bootstrap>(185): 2.25 async_server.py(12): import time
+2.25 async_server.py(13): from time import mktime
+2.25 <frozen importlib._bootstrap>(1007): 2.25 <frozen importlib._bootstrap>(1025): 2.25 async_server.py(14): from wsgiref.handlers import format_date_time
+2.34 <frozen importlib._bootstrap>(1007): 2.34 <frozen importlib._bootstrap>(1025): 2.34 async_server.py(15): from pathlib import Path
+2.50 <frozen importlib._bootstrap>(1007): 2.50 <frozen importlib._bootstrap>(1025): 2.50 async_server.py(16): import magic
+2.69 <frozen importlib._bootstrap>(177): 2.69 <frozen importlib._bootstrap>(178): 2.69 <frozen importlib._bootstrap>(182): 2.69 <frozen importlib._bootstrap>(183): 2.69 <frozen importlib._bootstrap>(185): 2.69 async_server.py(17): import resource
+2.70 <frozen importlib._bootstrap>(177): 2.70 <frozen importlib._bootstrap>(178): 2.70 <frozen importlib._bootstrap>(182): 2.70 <frozen importlib._bootstrap>(183): 2.70 <frozen importlib._bootstrap>(185): 2.70 async_server.py(18): import logging
+2.70 async_server.py(19): import velioo_webserver.config.environment as env
+2.72 <frozen importlib._bootstrap>(177): 2.72 <frozen importlib._bootstrap>(178): 2.72 <frozen importlib._bootstrap>(182): 2.72 <frozen importlib._bootstrap>(183): 2.72 <frozen importlib._bootstrap>(185): 2.72 async_server.py(20): import asyncio
+2.72 async_server.py(21): from async_logging_handler import AsyncFileHandler
+2.76 <frozen importlib._bootstrap>(1007): 2.76 <frozen importlib._bootstrap>(1008): 2.76 <frozen importlib._bootstrap>(1013): 2.76 <frozen importlib._bootstrap>(1014): 2.76 <frozen importlib._bootstrap>(1013): 2.76 <frozen importlib._bootstrap>(1025): 2.76 async_server.py(23): now = datetime.datetime.now()
+2.76 async_server.py(24): async_handler = AsyncFileHandler('logs/async_server_' + now.strftime("%Y-%m-%d") + '.log')
+2.81 async_server.py(25): logging.basicConfig(level=logging.ERROR, format='%(levelname)s:%(asctime)s --> %(message)s', datefmt='%m/%d/%Y %H:%M:%S', handlers=[async_handler])
+2.81 async_server.py(27): def serve_forever():
+2.81 async_server.py(52): def grim_reaper(signum, frame):
+2.81 async_server.py(63): async def handle_request(client_reader, client_writer):
+2.81 async_server.py(431): async def send_static_file(path, client_writer):
+2.81 async_server.py(438): def convert_path(path):
+2.81 async_server.py(445): def set_environment(*args, **kwargs):
+2.81 async_server.py(456): def get_current_gmt_time():
+2.81 async_server.py(462): def get_server_name():
+2.81 async_server.py(466): def get_server_software():
+2.81 async_server.py(470): def send_response_400(client_writer):
+2.81 async_server.py(477): def send_response_403(client_writer):
+2.81 async_server.py(484): def send_response_404(client_writer):
+2.81 async_server.py(491): def send_response_408(client_writer):
+2.81 async_server.py(498): def send_response_411(client_writer):
+2.81 async_server.py(505): def send_response_500(client_writer):
+2.81 async_server.py(512): def send_response_501(client_writer):
+2.81 async_server.py(519): if __name__ == '__main__':
+2.81 async_server.py(520):     try:
+2.81 async_server.py(521):         serve_forever()
+2.81 async_server.py(28):     print('Starting server...')
+2.81 async_server.py(29):     loop = asyncio.get_event_loop()
+2.81 async_server.py(30):     coroutine = asyncio.start_server(handle_request, host=os.environ.get('SERVER_NAME', 'localhost'), 
+2.81 async_server.py(31):                                    port=os.environ.get('ALT_PORT', 8888),
+2.81 async_server.py(32):                                    backlog=env.REQUEST_QUEUE_SIZE,
+2.81 async_server.py(33):                                    family=env.ADDRESS_FAMILY, 
+2.81 async_server.py(34):                                    reuse_address=True)
+2.81 async_server.py(35):     loop.run_until_complete(coroutine)
+2.82 async_server.py(36):     signal.signal(signal.SIGCHLD, grim_reaper)
+2.82 async_server.py(37):     os.environ['SERVER_TYPE'] = 'ASYNC'
+2.82 async_server.py(38):     try:
+2.82 async_server.py(39):         resource.setrlimit(resource.RLIMIT_NOFILE, (65536, 65536))
+2.82 async_server.py(43):     while True:
+2.82 async_server.py(44):         try:
+2.82 async_server.py(45):             loop.run_forever()
+9.77 async_server.py(64):     logging.info('handle_request invoked...')
+9.77 async_server.py(65):     arguments = ""
+9.77 async_server.py(66):     try:
+9.77 async_server.py(67):         logging.info('Receiving request...')
+9.77 async_server.py(68):         request_headers = b''
+9.77 async_server.py(69):         request_body = b''
+9.77 async_server.py(70):         method, path, protocol = '', '', ''
+9.77 async_server.py(71):         data = b''
+9.77 async_server.py(72):         try:
+9.77 async_server.py(73):             timeout = time.time() + 10
+9.77 async_server.py(74):             while True:
+9.77 async_server.py(75):                 logging.info('Reading data...')
+9.77 async_server.py(76):                 try:
+9.77 async_server.py(77):                     data = await asyncio.wait_for(client_reader.read(env.RECV_BUFSIZE), 10.0)
+9.77 async_server.py(64):     logging.info('handle_request invoked...')
+9.77 async_server.py(65):     arguments = ""
+9.77 async_server.py(66):     try:
+9.77 async_server.py(67):         logging.info('Receiving request...')
+9.77 async_server.py(68):         request_headers = b''
+9.77 async_server.py(69):         request_body = b''
+9.77 async_server.py(70):         method, path, protocol = '', '', ''
+9.77 async_server.py(71):         data = b''
+9.77 async_server.py(72):         try:
+9.77 async_server.py(73):             timeout = time.time() + 10
+9.77 async_server.py(74):             while True:
+9.77 async_server.py(75):                 logging.info('Reading data...')
+9.77 async_server.py(76):                 try:
+9.77 async_server.py(77):                     data = await asyncio.wait_for(client_reader.read(env.RECV_BUFSIZE), 10.0)
+9.77 async_server.py(64):     logging.info('handle_request invoked...')
+9.78 async_server.py(65):     arguments = ""
+9.78 async_server.py(66):     try:
+9.78 async_server.py(67):         logging.info('Receiving request...')
+9.78 async_server.py(68):         request_headers = b''
+9.78 async_server.py(69):         request_body = b''
+9.78 async_server.py(70):         method, path, protocol = '', '', ''
+9.78 async_server.py(71):         data = b''
+9.78 async_server.py(72):         try:
+9.78 async_server.py(73):             timeout = time.time() + 10
+9.78 async_server.py(74):             while True:
+9.78 async_server.py(75):                 logging.info('Reading data...')
+9.78 async_server.py(76):                 try:
+9.78 async_server.py(77):                     data = await asyncio.wait_for(client_reader.read(env.RECV_BUFSIZE), 10.0)
+9.78 async_server.py(82):                 try:
+9.78 async_server.py(83):                     if time.time() > timeout:
+9.78 async_server.py(89):                 if data != b'':
+9.78 async_server.py(90):                     logging.info('Data read: {}'.format(data))
+9.78 async_server.py(91):                     try:
+9.78 async_server.py(92):                         request_headers+=data
+9.78 async_server.py(98):                     try:
+9.78 async_server.py(99):                         if b'\r\n' in request_headers and not method:
+9.78 async_server.py(100):                             method, path, protocol = request_headers.split(b'\r\n')[0].decode('utf-8').strip().split(" ")
+9.78 async_server.py(101):                         if b'\r\n\r\n' in request_headers:
+9.78 async_server.py(102):                             temp = request_headers
+9.78 async_server.py(103):                             request_headers = request_headers.split(b'\r\n\r\n')[0].decode('utf-8') + '\r\n\r\n'
+9.78 async_server.py(104):                             if method == 'POST':
+9.78 async_server.py(111):                             break
+9.78 async_server.py(126):         logging.info('Request headers:\n{}'.format(request_headers))
+9.78 async_server.py(127):         if request_headers == b'':
+9.78 async_server.py(131):         if '\r\n\r\n' not in request_headers:
+9.78 async_server.py(135):         headers = {}
+9.78 async_server.py(136):         try:
+9.78 async_server.py(137):             splitted_headers = request_headers.split('\r\n')
+9.78 async_server.py(138):             for header in splitted_headers:
+9.78 async_server.py(139):                 if ':' in header:
+9.78 async_server.py(138):             for header in splitted_headers:
+9.78 async_server.py(139):                 if ':' in header:
+9.78 async_server.py(140):                     splitted_header = header.split(":", 1)
+9.78 async_server.py(141):                     if len(splitted_header) > 1:
+9.78 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+9.78 async_server.py(138):             for header in splitted_headers:
+9.78 async_server.py(139):                 if ':' in header:
+9.78 async_server.py(140):                     splitted_header = header.split(":", 1)
+9.78 async_server.py(141):                     if len(splitted_header) > 1:
+9.78 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+9.78 async_server.py(138):             for header in splitted_headers:
+9.78 async_server.py(139):                 if ':' in header:
+9.78 async_server.py(140):                     splitted_header = header.split(":", 1)
+9.78 async_server.py(141):                     if len(splitted_header) > 1:
+9.78 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+9.78 async_server.py(138):             for header in splitted_headers:
+9.78 async_server.py(139):                 if ':' in header:
+9.78 async_server.py(140):                     splitted_header = header.split(":", 1)
+9.78 async_server.py(141):                     if len(splitted_header) > 1:
+9.78 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+9.78 async_server.py(138):             for header in splitted_headers:
+9.78 async_server.py(139):                 if ':' in header:
+9.78 async_server.py(140):                     splitted_header = header.split(":", 1)
+9.78 async_server.py(141):                     if len(splitted_header) > 1:
+9.78 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+9.78 async_server.py(138):             for header in splitted_headers:
+9.78 async_server.py(139):                 if ':' in header:
+9.78 async_server.py(140):                     splitted_header = header.split(":", 1)
+9.78 async_server.py(141):                     if len(splitted_header) > 1:
+9.78 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+9.78 async_server.py(138):             for header in splitted_headers:
+9.78 async_server.py(139):                 if ':' in header:
+9.78 async_server.py(140):                     splitted_header = header.split(":", 1)
+9.78 async_server.py(141):                     if len(splitted_header) > 1:
+9.78 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+9.78 async_server.py(138):             for header in splitted_headers:
+9.78 async_server.py(139):                 if ':' in header:
+9.78 async_server.py(140):                     splitted_header = header.split(":", 1)
+9.78 async_server.py(141):                     if len(splitted_header) > 1:
+9.78 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+9.78 async_server.py(138):             for header in splitted_headers:
+9.78 async_server.py(139):                 if ':' in header:
+9.78 async_server.py(138):             for header in splitted_headers:
+9.78 async_server.py(139):                 if ':' in header:
+9.78 async_server.py(138):             for header in splitted_headers:
+9.78 async_server.py(149):         if method == 'GET':
+9.78 async_server.py(150):             logging.info('Request method is GET')
+9.78 async_server.py(205):         if '?' in path:
+9.78 async_server.py(213):         logging.info('Converting path: {} to Path object...'.format(path))
+9.78 async_server.py(214):         path = convert_path(path)
+9.78 async_server.py(439):     if isinstance(path, str):
+9.78 async_server.py(440):         return Path("./{path}".format(path=path))
+9.79 async_server.py(215):         if path.exists():
+9.79 async_server.py(216):             path_str = str(path)
+9.79 async_server.py(217):             logging.info('Checking if {} is forbidden...'.format(path_str))
+9.79 async_server.py(218):             path_is_allowed = False
+9.79 async_server.py(219):             for p in env.allowed_dirs:
+9.79 async_server.py(220):                 if path_str.startswith(p):
+9.79 async_server.py(221):                     path_is_allowed = True
+9.79 async_server.py(222):                     break
+9.79 async_server.py(223):             if not path_is_allowed:      
+9.79 async_server.py(228):             if path_is_allowed:        
+9.79 async_server.py(229):                 if path.is_file() or path.is_dir():
+9.79 async_server.py(230):                     if path.is_dir():
+9.79 async_server.py(231):                         try:
+9.79 async_server.py(232):                             path = convert_path(path_str + "/index.html")
+9.79 async_server.py(439):     if isinstance(path, str):
+9.79 async_server.py(440):         return Path("./{path}".format(path=path))
+9.79 async_server.py(242):                         path_str = str(path)
+9.79 async_server.py(243):                         logging.info('Path is a directory. Changing path to {}'.format(path))
+9.79 async_server.py(244):                     if path.is_file():
+9.79 async_server.py(245):                         logging.info('Path is a file')
+9.79 async_server.py(246):                         if path_str.startswith("cgi-bin") and os.access(path_str, os.X_OK):
+9.79 async_server.py(379):                             logging.info('Path is a resource. Loading MIME detector...')
+9.79 async_server.py(380):                             ft_detector = magic.Magic(mime=True)
+9.79 async_server.py(381):                             mime = ft_detector.from_file(path_str)
+9.79 async_server.py(382):                             logging.info('MIME: {}'.format(mime))
+9.79 async_server.py(392):                                             + b"\r\n\r\n"
+9.79 async_server.py(457):     now = datetime.datetime.now()
+9.79 async_server.py(458):     stamp = mktime(now.timetuple())
+9.79 async_server.py(459):     return format_date_time(stamp).encode()
+9.79 async_server.py(467):     return os.environ.get('SERVER_SOFTWARE', "Velioo's Webserve").encode()
+9.79 async_server.py(394):                             logging.info('Response:\n{}'.format(http_response.decode()))
+9.79 async_server.py(395):                             client_writer.write(http_response)
+9.79 async_server.py(396):                             await send_static_file(path, client_writer)
+9.79 async_server.py(432):     async with aiofiles.open(path, 'rb') as f:
+9.80 async_server.py(433):         chunk = await f.read(env.FILE_CHUNK)
+9.81 async_server.py(434):         client_writer.write(chunk)
+9.81 async_server.py(435):         await client_writer.drain()
+9.83 async_server.py(397):                             client_writer.close()
+19.79 async_server.py(78):                 except asyncio.TimeoutError as e:
+19.79 async_server.py(79):                     logging.error('Client timed out...')
+19.80 async_server.py(80):                     send_response_408(client_writer)
+19.80 async_server.py(492):     http_response = b"HTTP/1.1 408 Request Timeout\r\nDate: " + get_current_gmt_time() + b"\r\nServer: " + get_server_software() + b"\r\n\r\nError 408\r\nRequest Timeout"
+19.80 async_server.py(457):     now = datetime.datetime.now()
+19.80 async_server.py(458):     stamp = mktime(now.timetuple())
+19.80 async_server.py(459):     return format_date_time(stamp).encode()
+19.80 async_server.py(467):     return os.environ.get('SERVER_SOFTWARE', "Velioo's Webserve").encode()
+19.80 async_server.py(493):     logging.info('Response:\n{}'.format(http_response.decode()))
+19.80 async_server.py(494):     client_writer.write(http_response)
+19.80 async_server.py(495):     client_writer.close()
+19.80 async_server.py(81):                     return
+19.80 async_server.py(78):                 except asyncio.TimeoutError as e:
+19.80 async_server.py(79):                     logging.error('Client timed out...')
+19.81 async_server.py(80):                     send_response_408(client_writer)
+19.81 async_server.py(492):     http_response = b"HTTP/1.1 408 Request Timeout\r\nDate: " + get_current_gmt_time() + b"\r\nServer: " + get_server_software() + b"\r\n\r\nError 408\r\nRequest Timeout"
+19.81 async_server.py(457):     now = datetime.datetime.now()
+19.81 async_server.py(458):     stamp = mktime(now.timetuple())
+19.81 async_server.py(459):     return format_date_time(stamp).encode()
+19.81 async_server.py(467):     return os.environ.get('SERVER_SOFTWARE', "Velioo's Webserve").encode()
+19.81 async_server.py(493):     logging.info('Response:\n{}'.format(http_response.decode()))
+19.81 async_server.py(494):     client_writer.write(http_response)
+19.81 async_server.py(495):     client_writer.close()
+19.82 async_server.py(81):                     return
+77.89 async_server.py(64):     logging.info('handle_request invoked...')
+77.89 async_server.py(65):     arguments = ""
+77.89 async_server.py(66):     try:
+77.89 async_server.py(67):         logging.info('Receiving request...')
+77.89 async_server.py(68):         request_headers = b''
+77.89 async_server.py(69):         request_body = b''
+77.89 async_server.py(70):         method, path, protocol = '', '', ''
+77.89 async_server.py(71):         data = b''
+77.89 async_server.py(72):         try:
+77.89 async_server.py(73):             timeout = time.time() + 10
+77.89 async_server.py(74):             while True:
+77.89 async_server.py(75):                 logging.info('Reading data...')
+77.89 async_server.py(76):                 try:
+77.89 async_server.py(77):                     data = await asyncio.wait_for(client_reader.read(env.RECV_BUFSIZE), 10.0)
+77.90 async_server.py(82):                 try:
+77.90 async_server.py(83):                     if time.time() > timeout:
+77.90 async_server.py(89):                 if data != b'':
+77.90 async_server.py(90):                     logging.info('Data read: {}'.format(data))
+77.90 async_server.py(91):                     try:
+77.90 async_server.py(92):                         request_headers+=data
+77.90 async_server.py(98):                     try:
+77.90 async_server.py(99):                         if b'\r\n' in request_headers and not method:
+77.90 async_server.py(100):                             method, path, protocol = request_headers.split(b'\r\n')[0].decode('utf-8').strip().split(" ")
+77.90 async_server.py(101):                         if b'\r\n\r\n' in request_headers:
+77.90 async_server.py(102):                             temp = request_headers
+77.90 async_server.py(103):                             request_headers = request_headers.split(b'\r\n\r\n')[0].decode('utf-8') + '\r\n\r\n'
+77.90 async_server.py(104):                             if method == 'POST':
+77.90 async_server.py(111):                             break
+77.90 async_server.py(126):         logging.info('Request headers:\n{}'.format(request_headers))
+77.90 async_server.py(127):         if request_headers == b'':
+77.90 async_server.py(131):         if '\r\n\r\n' not in request_headers:
+77.90 async_server.py(135):         headers = {}
+77.90 async_server.py(136):         try:
+77.90 async_server.py(137):             splitted_headers = request_headers.split('\r\n')
+77.90 async_server.py(138):             for header in splitted_headers:
+77.90 async_server.py(139):                 if ':' in header:
+77.90 async_server.py(138):             for header in splitted_headers:
+77.90 async_server.py(139):                 if ':' in header:
+77.90 async_server.py(140):                     splitted_header = header.split(":", 1)
+77.90 async_server.py(141):                     if len(splitted_header) > 1:
+77.90 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+77.90 async_server.py(138):             for header in splitted_headers:
+77.90 async_server.py(139):                 if ':' in header:
+77.90 async_server.py(140):                     splitted_header = header.split(":", 1)
+77.90 async_server.py(141):                     if len(splitted_header) > 1:
+77.90 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+77.90 async_server.py(138):             for header in splitted_headers:
+77.90 async_server.py(139):                 if ':' in header:
+77.90 async_server.py(140):                     splitted_header = header.split(":", 1)
+77.90 async_server.py(141):                     if len(splitted_header) > 1:
+77.90 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+77.90 async_server.py(138):             for header in splitted_headers:
+77.90 async_server.py(139):                 if ':' in header:
+77.90 async_server.py(140):                     splitted_header = header.split(":", 1)
+77.90 async_server.py(141):                     if len(splitted_header) > 1:
+77.90 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+77.90 async_server.py(138):             for header in splitted_headers:
+77.90 async_server.py(139):                 if ':' in header:
+77.90 async_server.py(140):                     splitted_header = header.split(":", 1)
+77.90 async_server.py(141):                     if len(splitted_header) > 1:
+77.90 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+77.90 async_server.py(138):             for header in splitted_headers:
+77.90 async_server.py(139):                 if ':' in header:
+77.90 async_server.py(140):                     splitted_header = header.split(":", 1)
+77.90 async_server.py(141):                     if len(splitted_header) > 1:
+77.90 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+77.90 async_server.py(138):             for header in splitted_headers:
+77.90 async_server.py(139):                 if ':' in header:
+77.90 async_server.py(140):                     splitted_header = header.split(":", 1)
+77.90 async_server.py(141):                     if len(splitted_header) > 1:
+77.90 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+77.90 async_server.py(138):             for header in splitted_headers:
+77.90 async_server.py(139):                 if ':' in header:
+77.90 async_server.py(140):                     splitted_header = header.split(":", 1)
+77.90 async_server.py(141):                     if len(splitted_header) > 1:
+77.90 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+77.90 async_server.py(138):             for header in splitted_headers:
+77.90 async_server.py(139):                 if ':' in header:
+77.90 async_server.py(138):             for header in splitted_headers:
+77.90 async_server.py(139):                 if ':' in header:
+77.90 async_server.py(138):             for header in splitted_headers:
+77.90 async_server.py(149):         if method == 'GET':
+77.90 async_server.py(150):             logging.info('Request method is GET')
+77.90 async_server.py(205):         if '?' in path:
+77.90 async_server.py(213):         logging.info('Converting path: {} to Path object...'.format(path))
+77.90 async_server.py(214):         path = convert_path(path)
+77.90 async_server.py(439):     if isinstance(path, str):
+77.90 async_server.py(440):         return Path("./{path}".format(path=path))
+77.90 async_server.py(215):         if path.exists():
+77.90 async_server.py(216):             path_str = str(path)
+77.90 async_server.py(217):             logging.info('Checking if {} is forbidden...'.format(path_str))
+77.90 async_server.py(218):             path_is_allowed = False
+77.90 async_server.py(219):             for p in env.allowed_dirs:
+77.90 async_server.py(220):                 if path_str.startswith(p):
+77.90 async_server.py(221):                     path_is_allowed = True
+77.90 async_server.py(222):                     break
+77.90 async_server.py(223):             if not path_is_allowed:      
+77.90 async_server.py(228):             if path_is_allowed:        
+77.90 async_server.py(229):                 if path.is_file() or path.is_dir():
+77.90 async_server.py(230):                     if path.is_dir():
+77.90 async_server.py(231):                         try:
+77.90 async_server.py(232):                             path = convert_path(path_str + "/index.html")
+77.90 async_server.py(439):     if isinstance(path, str):
+77.90 async_server.py(440):         return Path("./{path}".format(path=path))
+77.90 async_server.py(242):                         path_str = str(path)
+77.90 async_server.py(243):                         logging.info('Path is a directory. Changing path to {}'.format(path))
+77.90 async_server.py(244):                     if path.is_file():
+77.90 async_server.py(245):                         logging.info('Path is a file')
+77.90 async_server.py(246):                         if path_str.startswith("cgi-bin") and os.access(path_str, os.X_OK):
+77.90 async_server.py(379):                             logging.info('Path is a resource. Loading MIME detector...')
+77.90 async_server.py(380):                             ft_detector = magic.Magic(mime=True)
+77.90 async_server.py(381):                             mime = ft_detector.from_file(path_str)
+77.91 async_server.py(382):                             logging.info('MIME: {}'.format(mime))
+77.91 async_server.py(392):                                             + b"\r\n\r\n"
+77.91 async_server.py(457):     now = datetime.datetime.now()
+77.91 async_server.py(458):     stamp = mktime(now.timetuple())
+77.91 async_server.py(459):     return format_date_time(stamp).encode()
+77.91 async_server.py(467):     return os.environ.get('SERVER_SOFTWARE', "Velioo's Webserve").encode()
+77.91 async_server.py(394):                             logging.info('Response:\n{}'.format(http_response.decode()))
+77.91 async_server.py(395):                             client_writer.write(http_response)
+77.91 async_server.py(396):                             await send_static_file(path, client_writer)
+77.91 async_server.py(432):     async with aiofiles.open(path, 'rb') as f:
+77.92 async_server.py(433):         chunk = await f.read(env.FILE_CHUNK)
+77.93 async_server.py(434):         client_writer.write(chunk)
+77.93 async_server.py(435):         await client_writer.drain()
+77.96 async_server.py(397):                             client_writer.close()
+153.78 async_server.py(64):     logging.info('handle_request invoked...')
+153.78 async_server.py(65):     arguments = ""
+153.78 async_server.py(66):     try:
+153.78 async_server.py(67):         logging.info('Receiving request...')
+153.78 async_server.py(68):         request_headers = b''
+153.78 async_server.py(69):         request_body = b''
+153.78 async_server.py(70):         method, path, protocol = '', '', ''
+153.78 async_server.py(71):         data = b''
+153.78 async_server.py(72):         try:
+153.78 async_server.py(73):             timeout = time.time() + 10
+153.78 async_server.py(74):             while True:
+153.78 async_server.py(75):                 logging.info('Reading data...')
+153.78 async_server.py(76):                 try:
+153.78 async_server.py(77):                     data = await asyncio.wait_for(client_reader.read(env.RECV_BUFSIZE), 10.0)
+153.79 async_server.py(82):                 try:
+153.79 async_server.py(83):                     if time.time() > timeout:
+153.79 async_server.py(89):                 if data != b'':
+153.79 async_server.py(90):                     logging.info('Data read: {}'.format(data))
+153.79 async_server.py(91):                     try:
+153.79 async_server.py(92):                         request_headers+=data
+153.79 async_server.py(98):                     try:
+153.79 async_server.py(99):                         if b'\r\n' in request_headers and not method:
+153.79 async_server.py(100):                             method, path, protocol = request_headers.split(b'\r\n')[0].decode('utf-8').strip().split(" ")
+153.79 async_server.py(101):                         if b'\r\n\r\n' in request_headers:
+153.79 async_server.py(102):                             temp = request_headers
+153.79 async_server.py(103):                             request_headers = request_headers.split(b'\r\n\r\n')[0].decode('utf-8') + '\r\n\r\n'
+153.79 async_server.py(104):                             if method == 'POST':
+153.79 async_server.py(111):                             break
+153.79 async_server.py(126):         logging.info('Request headers:\n{}'.format(request_headers))
+153.79 async_server.py(127):         if request_headers == b'':
+153.79 async_server.py(131):         if '\r\n\r\n' not in request_headers:
+153.79 async_server.py(135):         headers = {}
+153.79 async_server.py(136):         try:
+153.79 async_server.py(137):             splitted_headers = request_headers.split('\r\n')
+153.79 async_server.py(138):             for header in splitted_headers:
+153.79 async_server.py(139):                 if ':' in header:
+153.79 async_server.py(138):             for header in splitted_headers:
+153.79 async_server.py(139):                 if ':' in header:
+153.79 async_server.py(140):                     splitted_header = header.split(":", 1)
+153.79 async_server.py(141):                     if len(splitted_header) > 1:
+153.79 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+153.79 async_server.py(138):             for header in splitted_headers:
+153.79 async_server.py(139):                 if ':' in header:
+153.79 async_server.py(140):                     splitted_header = header.split(":", 1)
+153.79 async_server.py(141):                     if len(splitted_header) > 1:
+153.79 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+153.79 async_server.py(138):             for header in splitted_headers:
+153.79 async_server.py(139):                 if ':' in header:
+153.79 async_server.py(140):                     splitted_header = header.split(":", 1)
+153.79 async_server.py(141):                     if len(splitted_header) > 1:
+153.79 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+153.79 async_server.py(138):             for header in splitted_headers:
+153.79 async_server.py(139):                 if ':' in header:
+153.79 async_server.py(140):                     splitted_header = header.split(":", 1)
+153.79 async_server.py(141):                     if len(splitted_header) > 1:
+153.79 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+153.79 async_server.py(138):             for header in splitted_headers:
+153.79 async_server.py(139):                 if ':' in header:
+153.79 async_server.py(140):                     splitted_header = header.split(":", 1)
+153.79 async_server.py(141):                     if len(splitted_header) > 1:
+153.79 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+153.79 async_server.py(138):             for header in splitted_headers:
+153.79 async_server.py(139):                 if ':' in header:
+153.79 async_server.py(140):                     splitted_header = header.split(":", 1)
+153.79 async_server.py(141):                     if len(splitted_header) > 1:
+153.79 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+153.79 async_server.py(138):             for header in splitted_headers:
+153.79 async_server.py(139):                 if ':' in header:
+153.79 async_server.py(140):                     splitted_header = header.split(":", 1)
+153.79 async_server.py(141):                     if len(splitted_header) > 1:
+153.79 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+153.79 async_server.py(138):             for header in splitted_headers:
+153.79 async_server.py(139):                 if ':' in header:
+153.79 async_server.py(140):                     splitted_header = header.split(":", 1)
+153.79 async_server.py(141):                     if len(splitted_header) > 1:
+153.79 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+153.79 async_server.py(138):             for header in splitted_headers:
+153.79 async_server.py(139):                 if ':' in header:
+153.79 async_server.py(138):             for header in splitted_headers:
+153.79 async_server.py(139):                 if ':' in header:
+153.79 async_server.py(138):             for header in splitted_headers:
+153.79 async_server.py(149):         if method == 'GET':
+153.79 async_server.py(150):             logging.info('Request method is GET')
+153.79 async_server.py(205):         if '?' in path:
+153.79 async_server.py(213):         logging.info('Converting path: {} to Path object...'.format(path))
+153.79 async_server.py(214):         path = convert_path(path)
+153.79 async_server.py(439):     if isinstance(path, str):
+153.79 async_server.py(440):         return Path("./{path}".format(path=path))
+153.79 async_server.py(215):         if path.exists():
+153.79 async_server.py(216):             path_str = str(path)
+153.79 async_server.py(217):             logging.info('Checking if {} is forbidden...'.format(path_str))
+153.79 async_server.py(218):             path_is_allowed = False
+153.79 async_server.py(219):             for p in env.allowed_dirs:
+153.79 async_server.py(220):                 if path_str.startswith(p):
+153.79 async_server.py(221):                     path_is_allowed = True
+153.79 async_server.py(222):                     break
+153.79 async_server.py(223):             if not path_is_allowed:      
+153.79 async_server.py(228):             if path_is_allowed:        
+153.79 async_server.py(229):                 if path.is_file() or path.is_dir():
+153.79 async_server.py(230):                     if path.is_dir():
+153.79 async_server.py(231):                         try:
+153.79 async_server.py(232):                             path = convert_path(path_str + "/index.html")
+153.79 async_server.py(439):     if isinstance(path, str):
+153.79 async_server.py(440):         return Path("./{path}".format(path=path))
+153.79 async_server.py(242):                         path_str = str(path)
+153.79 async_server.py(243):                         logging.info('Path is a directory. Changing path to {}'.format(path))
+153.79 async_server.py(244):                     if path.is_file():
+153.79 async_server.py(245):                         logging.info('Path is a file')
+153.79 async_server.py(246):                         if path_str.startswith("cgi-bin") and os.access(path_str, os.X_OK):
+153.79 async_server.py(379):                             logging.info('Path is a resource. Loading MIME detector...')
+153.79 async_server.py(380):                             ft_detector = magic.Magic(mime=True)
+153.79 async_server.py(381):                             mime = ft_detector.from_file(path_str)
+153.79 async_server.py(382):                             logging.info('MIME: {}'.format(mime))
+153.80 async_server.py(392):                                             + b"\r\n\r\n"
+153.80 async_server.py(457):     now = datetime.datetime.now()
+153.80 async_server.py(458):     stamp = mktime(now.timetuple())
+153.80 async_server.py(459):     return format_date_time(stamp).encode()
+153.80 async_server.py(467):     return os.environ.get('SERVER_SOFTWARE', "Velioo's Webserve").encode()
+153.80 async_server.py(394):                             logging.info('Response:\n{}'.format(http_response.decode()))
+153.80 async_server.py(395):                             client_writer.write(http_response)
+153.80 async_server.py(396):                             await send_static_file(path, client_writer)
+153.80 async_server.py(432):     async with aiofiles.open(path, 'rb') as f:
+153.81 async_server.py(433):         chunk = await f.read(env.FILE_CHUNK)
+153.82 async_server.py(434):         client_writer.write(chunk)
+153.82 async_server.py(435):         await client_writer.drain()
+153.83 async_server.py(397):                             client_writer.close()
+169.73 async_server.py(64):     logging.info('handle_request invoked...')
+169.73 async_server.py(65):     arguments = ""
+169.73 async_server.py(66):     try:
+169.73 async_server.py(67):         logging.info('Receiving request...')
+169.73 async_server.py(68):         request_headers = b''
+169.73 async_server.py(69):         request_body = b''
+169.73 async_server.py(70):         method, path, protocol = '', '', ''
+169.73 async_server.py(71):         data = b''
+169.73 async_server.py(72):         try:
+169.73 async_server.py(73):             timeout = time.time() + 10
+169.73 async_server.py(74):             while True:
+169.73 async_server.py(75):                 logging.info('Reading data...')
+169.73 async_server.py(76):                 try:
+169.73 async_server.py(77):                     data = await asyncio.wait_for(client_reader.read(env.RECV_BUFSIZE), 10.0)
+169.74 async_server.py(82):                 try:
+169.74 async_server.py(83):                     if time.time() > timeout:
+169.74 async_server.py(89):                 if data != b'':
+169.74 async_server.py(90):                     logging.info('Data read: {}'.format(data))
+169.74 async_server.py(91):                     try:
+169.74 async_server.py(92):                         request_headers+=data
+169.74 async_server.py(98):                     try:
+169.74 async_server.py(99):                         if b'\r\n' in request_headers and not method:
+169.74 async_server.py(100):                             method, path, protocol = request_headers.split(b'\r\n')[0].decode('utf-8').strip().split(" ")
+169.74 async_server.py(101):                         if b'\r\n\r\n' in request_headers:
+169.74 async_server.py(102):                             temp = request_headers
+169.74 async_server.py(103):                             request_headers = request_headers.split(b'\r\n\r\n')[0].decode('utf-8') + '\r\n\r\n'
+169.74 async_server.py(104):                             if method == 'POST':
+169.74 async_server.py(111):                             break
+169.74 async_server.py(126):         logging.info('Request headers:\n{}'.format(request_headers))
+169.74 async_server.py(127):         if request_headers == b'':
+169.74 async_server.py(131):         if '\r\n\r\n' not in request_headers:
+169.74 async_server.py(135):         headers = {}
+169.74 async_server.py(136):         try:
+169.74 async_server.py(137):             splitted_headers = request_headers.split('\r\n')
+169.74 async_server.py(138):             for header in splitted_headers:
+169.74 async_server.py(139):                 if ':' in header:
+169.74 async_server.py(138):             for header in splitted_headers:
+169.74 async_server.py(139):                 if ':' in header:
+169.74 async_server.py(140):                     splitted_header = header.split(":", 1)
+169.74 async_server.py(141):                     if len(splitted_header) > 1:
+169.74 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+169.74 async_server.py(138):             for header in splitted_headers:
+169.74 async_server.py(139):                 if ':' in header:
+169.74 async_server.py(140):                     splitted_header = header.split(":", 1)
+169.74 async_server.py(141):                     if len(splitted_header) > 1:
+169.74 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+169.74 async_server.py(138):             for header in splitted_headers:
+169.74 async_server.py(139):                 if ':' in header:
+169.74 async_server.py(140):                     splitted_header = header.split(":", 1)
+169.74 async_server.py(141):                     if len(splitted_header) > 1:
+169.74 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+169.74 async_server.py(138):             for header in splitted_headers:
+169.74 async_server.py(139):                 if ':' in header:
+169.74 async_server.py(140):                     splitted_header = header.split(":", 1)
+169.74 async_server.py(141):                     if len(splitted_header) > 1:
+169.74 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+169.74 async_server.py(138):             for header in splitted_headers:
+169.74 async_server.py(139):                 if ':' in header:
+169.74 async_server.py(140):                     splitted_header = header.split(":", 1)
+169.74 async_server.py(141):                     if len(splitted_header) > 1:
+169.74 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+169.74 async_server.py(138):             for header in splitted_headers:
+169.74 async_server.py(139):                 if ':' in header:
+169.74 async_server.py(140):                     splitted_header = header.split(":", 1)
+169.74 async_server.py(141):                     if len(splitted_header) > 1:
+169.74 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+169.74 async_server.py(138):             for header in splitted_headers:
+169.74 async_server.py(139):                 if ':' in header:
+169.74 async_server.py(140):                     splitted_header = header.split(":", 1)
+169.74 async_server.py(141):                     if len(splitted_header) > 1:
+169.74 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+169.74 async_server.py(138):             for header in splitted_headers:
+169.74 async_server.py(139):                 if ':' in header:
+169.74 async_server.py(140):                     splitted_header = header.split(":", 1)
+169.74 async_server.py(141):                     if len(splitted_header) > 1:
+169.74 async_server.py(142):                         headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+169.74 async_server.py(138):             for header in splitted_headers:
+169.74 async_server.py(139):                 if ':' in h

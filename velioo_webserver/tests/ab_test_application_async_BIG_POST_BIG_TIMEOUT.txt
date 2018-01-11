@@ -1,0 +1,50 @@
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+
+
+Server Software:        Velioo's
+Server Hostname:        localhost
+Server Port:            8887
+
+Document Path:          /application
+Document Length:        136 bytes
+
+Concurrency Level:      100
+Time taken for tests:   903.300 seconds
+Complete requests:      5864
+Failed requests:        0
+Total transferred:      1559824 bytes
+Total body sent:        59437092544
+HTML transferred:       797504 bytes
+Requests per second:    6.49 [#/sec] (mean)
+Time per request:       15404.168 [ms] (mean)
+Time per request:       154.042 [ms] (mean, across all concurrent requests)
+Transfer rate:          1.69 [Kbytes/sec] received
+                        64257.73 kb/s sent
+                        64259.42 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        3 6617 3879.3   6612   15177
+Processing:  1333 8623 3883.0   8603   17132
+Waiting:     1181 8466 3880.9   8453   16957
+Total:      12631 15240 4665.7  13288   30098
+
+Percentage of the requests served within a certain time (ms)
+  50%  13288
+  66%  13947
+  75%  14165
+  80%  14653
+  90%  25693
+  95%  26752
+  98%  28107
+  99%  28685
+ 100%  30098 (longest request)
+
+Global Server Timeout: 30s
+Local Server Timeout: 30s
+
+Both ab and the web server were using around 100% CPU during the whole test
