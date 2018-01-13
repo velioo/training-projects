@@ -1,0 +1,99 @@
+timeout = time.time() + 30
+            while True:
+                #logging.info('Reading data...')
+                try:
+                    if body:
+                        if content_length > bytes_read:
+                            data = await asyncio.wait_for(client_reader.read(env.RECV_BUFSIZE), 0.001)
+                        else:
+                            break
+                    else:
+                        data = await asyncio.wait_for(client_reader.read(env.RECV_BUFSIZE), 0.001)
+                        
+                except asyncio.TimeoutError as e:
+                    logging.error('Client timed out...Data: {}'.format(data))
+                    #logging.error(traceback.format_exc())
+                    send_response_408(client_writer)
+                    return
+                try:
+                    if time.time() > timeout:
+                        raise TimeoutError
+                except TimeoutError as e:
+                    logging.error('Global client timed out...')
+                    #logging.error(traceback.format_exc())
+                    send_response_408(client_writer)
+                    return
+                if data != b'':
+                    #logging.info('Data read: {}'.format(data))
+                    try:
+                        if not body:
+                            request_headers+=data
+                        else:
+                            bytes_read+=len(data)
+                            if content_length <= bytes_read:
+                                logging.info('Request body successfully received')
+                                break
+                            continue
+                    except TypeError as e:
+                        logging('Problem reading request. Request not in binary.')
+                        logging.info('Error 400 Bad request')
+                        send_response_400(client_writer)
+                        return
+                    try:
+                        if b'\r\n' in request_headers and not method:
+                            method, path, protocol = request_headers.split(b'\r\n')[0].decode('utf-8').strip().split(" ")
+                        if b'\r\n\r\n' in request_headers:
+                            temp = request_headers
+                            request_headers = request_headers.split(b'\r\n\r\n')[0].decode('utf-8') + '\r\n\r\n'
+                            if method == 'POST':
+                                try:
+                                    request_body = temp.split(b'\r\n\r\n', 1)[1]
+                                    
+                                    
+                                    bytes_read = len(request_body)
+                                    headers = {}
+                                    try:
+                                        splitted_headers = request_headers.split('\r\n')
+                                        for header in splitted_headers:
+                                            if ':' in header:
+                                                splitted_header = header.split(":", 1)
+                                                if len(splitted_header) > 1:
+                                                    headers[splitted_header[0].strip().rstrip()] = splitted_header[1].strip().rstrip()
+                                    except Exception as e:
+                                        logging.error("Problem parsing headers")
+                                        logging.error('Traceback:{}'.format(traceback.format_exc()))
+                                        send_response_500(client_writer)
+                                        return
+                                    try:
+                                        if 'Content-Length' in headers:
+                                            content_length = int(headers['Content-Length'])
+                                        elif 'Content-length' in headers:
+                                            content_length = int(headers['Content-length'])
+                                        elif 'content_length' in headers:
+                                            content_length = int(headers['content-length'])
+                                        else:
+                                            send_response_411(client_writer)
+                                            return
+                                        logging.info('Content-Length: {}'.format(content_length))
+                                    except (ValueError, KeyError) as e:
+                                        logging.info('Failed to parse Content-Length attribute...setting Content-Length to None')
+                                        logging.error('Traceback:{}'.format(traceback.format_exc()))
+                                        send_response_411(client_writer)
+                                        return
+                                        
+                                        
+                                except IndexError as e:
+                                    logging.info("Didn\'t parse any parts of the request body while parsing the request headers")
+                                if request_body:
+                                    logging.info("Parsed part of (the whole) request body while parsing the request headers")
+                            #break
+                            body = True
+                    except ValueError as e:
+                        logging.error('Failed to parse request headers')
+                        logging.error('Traceback:{}'.format(traceback.format_exc()))
+                        logging.info('Error 400 Bad request')
+                        send_response_400(client_writer)
+                        return
+                else:
+                    logging.info('Request headers successfully received')
+                    break

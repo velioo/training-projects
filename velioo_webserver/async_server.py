@@ -13,12 +13,12 @@ import time
 from time import mktime
 from wsgiref.handlers import format_date_time
 from pathlib import Path
-import magic
 import resource
 import logging
 import velioo_webserver.config.environment as env
 import asyncio
 from async_logging_handler import AsyncFileHandler
+import mimetypes
 
 now = datetime.datetime.now()
 async_handler = AsyncFileHandler('logs/async_server_' + now.strftime("%Y-%m-%d") + '.log')
@@ -33,7 +33,7 @@ def serve_forever():
                                    family=env.ADDRESS_FAMILY, 
                                    reuse_address=True)
     loop.run_until_complete(coroutine)
-    signal.signal(signal.SIGCHLD, grim_reaper)
+    loop.add_signal_handler(signal.SIGCHLD, grim_reaper)
     os.environ['SERVER_TYPE'] = 'ASYNC'
     try:
         resource.setrlimit(resource.RLIMIT_NOFILE, (65536, 65536))
@@ -376,9 +376,15 @@ async def handle_request(client_reader, client_writer):
                                 logging.error('Traceback:{}'.format(traceback.format_exc()))
                                 send_response_500(client_writer)
                         else:
-                            logging.info('Path is a resource. Loading MIME detector...')
-                            ft_detector = magic.Magic(mime=True)
-                            mime = ft_detector.from_file(path_str)
+                            logging.info('Path is a resource. Guessing MIME type...')
+                            try:
+                                mime = mimetypes.guess_type(path_str, False)[0]
+                                if mime == None:
+                                    mime = 'type/subtype'
+                            except KeyError as e:
+                                logging.error('Failed to get MIME type...')
+                                logging.error('Traceback: {}'.format(traceback.format_exc()))
+                                mime = 'type/subtype'
                             logging.info('MIME: {}'.format(mime))
                             http_response = (
                                             b"HTTP/1.1 200 OK\r\nContent-Type: "
@@ -433,7 +439,7 @@ async def send_static_file(path, client_writer):
         chunk = await f.read(env.FILE_CHUNK)
         client_writer.write(chunk)
         await client_writer.drain()
-
+    
 
 def convert_path(path):
     if isinstance(path, str):
