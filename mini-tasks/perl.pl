@@ -18,9 +18,9 @@ print "(-2 ** 53 - 1)  + (-2 ** 53 - 1) = ", $a, "\n";
 $a = (-2 ** 53 - 2)  - (-2**53 - 1);
 print "(-2 ** 53 - 2)  + (-2 ** 53 - 1) = ", $a, "\n";
 $a = 2**9999;
-print "2*9999 = ", $a, "\n";
+print "2**9999 = ", $a, "\n";
 $a = 2**9999/ 2**9999;
-print "2*9999 / 2**9999 = ", $a, "\n";
+print "2**9999 / 2**9999 = ", $a, "\n";
 $a = "String" + 1;
 print "'string' + 1 = ", $a, "\n";
 $a = "NaN" + 1;
@@ -95,10 +95,12 @@ print "Before test(): \@arr = @arr\n";
 sub test2 {
 	my @arr = @_;
 	print "Before \@arr change: \@arr = @arr\n";
-	push @arr, 4; 
+	#push @$arr, 4; 
+	#push @arr, 4; 
 	print "After \@arr change: \@arr = @arr\n";
 }
 test2(@arr);
+#test2(\@arr);
 print "After test(): \@arr = @arr\n";
 my @arr2 = @arr;
 print "\@arr2 = \@arr = @arr\n";

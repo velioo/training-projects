@@ -68,6 +68,9 @@ try:
         print('</tr>')
         if os.environ.get('SERVER_TYPE', 'SYNC') == 'ASYNC':
             children = [proc]
+            print('<dt>Total Connections: {}'.format(len(proc.connections()) - 1))
+        else:
+            print('<dt>Total Connections: {}'.format(len(children)))
         try:
             for l in children:
                 if l.is_running():
