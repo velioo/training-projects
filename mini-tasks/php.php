@@ -105,7 +105,7 @@ $replacements[1] = 'black';
 $replacements[0] = 'slow';
 echo "Array of replacements: \n";
 print_r($replacements);
-echo "ksort \$patterns and \$repalcements\n";
+echo "ksort \$patterns and \$replacements\n";
 ksort($patterns);
 ksort($replacements);
 echo "preg_replace(\$pattern, \$replacement, \$str): " . preg_replace($patterns, $replacements, $str) . "\n";

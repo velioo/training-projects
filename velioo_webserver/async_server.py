@@ -36,7 +36,7 @@ def serve_forever():
     loop.add_signal_handler(signal.SIGCHLD, grim_reaper)
     os.environ['SERVER_TYPE'] = 'ASYNC'
     try:
-        resource.setrlimit(resource.RLIMIT_NOFILE, (65536, 65536))
+        resource.setrlimit(resource.RLIMIT_NOFILE, (100000, 100000))
     except ValueError as e:
         logging.error(traceback.format_exc())
         return
@@ -70,11 +70,11 @@ async def handle_request(client_reader, client_writer):
         method, path, protocol = '', '', ''
         data = b''
         try:
-            timeout = time.time() + 10
+            timeout = time.time() + 100
             while True:
                 logging.info('Reading data...')
                 try:
-                    data = await asyncio.wait_for(client_reader.read(env.RECV_BUFSIZE), 10.0)
+                    data = await asyncio.wait_for(client_reader.read(env.RECV_BUFSIZE), 100.0)
                 except asyncio.TimeoutError as e:
                     logging.error('Client timed out...')
                     send_response_408(client_writer)
@@ -99,11 +99,10 @@ async def handle_request(client_reader, client_writer):
                         if b'\r\n' in request_headers and not method:
                             method, path, protocol = request_headers.split(b'\r\n')[0].decode('utf-8').strip().split(" ")
                         if b'\r\n\r\n' in request_headers:
-                            temp = request_headers
-                            request_headers = request_headers.split(b'\r\n\r\n')[0].decode('utf-8') + '\r\n\r\n'
+                            request_headers = request_headers.split(b'\r\n\r\n')[0] + b'\r\n\r\n'
                             if method == 'POST':
                                 try:
-                                    request_body = temp.split(b'\r\n\r\n', 1)[1]
+                                    request_body = request_headers.split(b'\r\n\r\n', 1)[1]
                                 except IndexError as e:
                                     logging.info("Didn\'t parse any parts of the request body while parsing the request headers")
                                 if request_body:
@@ -123,18 +122,18 @@ async def handle_request(client_reader, client_writer):
             logging.error('Traceback:{}'.format(traceback.format_exc()))
             send_response_500(client_writer)
             return
-        logging.info('Request headers:\n{}'.format(request_headers))
+        logging.info('Request headers:\n{}'.format(request_headers.decode('utf-8')))
         if request_headers == b'':
             logging.info('Request timeout: {}'.format(method))
             send_response_408(client_writer)
             return
-        if '\r\n\r\n' not in request_headers:
+        if b'\r\n\r\n' not in request_headers:
             logging.info('Error 400 Bad request')
             send_response_400(client_writer)
             return
         headers = {}
         try:
-            splitted_headers = request_headers.split('\r\n')
+            splitted_headers = request_headers.decode('utf-8').split('\r\n')
             for header in splitted_headers:
                 if ':' in header:
                     splitted_header = header.split(":", 1)
@@ -399,7 +398,10 @@ async def handle_request(client_reader, client_writer):
                                             )
                             logging.info('Response:\n{}'.format(http_response.decode()))
                             client_writer.write(http_response)
-                            await send_static_file(path, client_writer)
+                            try:
+                                await send_static_file(path, client_writer, os.path.getsize(path))
+                            except TimeoutError as e:
+                                logging.error('Timeout while writing to client')
                             client_writer.close()
                     else:
                         send_response_403(client_writer)
@@ -434,12 +436,18 @@ async def handle_request(client_reader, client_writer):
         logging.error('Traceback:{}'.format(traceback.format_exc()))
         send_response_500(client_writer)
 
-async def send_static_file(path, client_writer):
+async def send_static_file(path, client_writer, filesize):
+    timeout = time.time() + 10
     async with aiofiles.open(path, 'rb') as f:
-        chunk = await f.read(env.FILE_CHUNK)
-        client_writer.write(chunk)
-        await client_writer.drain()
-    
+        while True:
+            chunk = await f.read(env.FILE_CHUNK)
+            client_writer.write(chunk)
+            if len(chunk) >= filesize:
+                break
+            await client_writer.drain()
+            if time.time() > timeout:
+                raise TimeoutError
+
 
 def convert_path(path):
     if isinstance(path, str):
@@ -470,7 +478,7 @@ def get_server_name():
 
 
 def get_server_software():
-    return os.environ.get('SERVER_SOFTWARE', "Velioo's Webserve").encode()
+    return os.environ.get('SERVER_SOFTWARE', "Velioo's Webserver").encode()
 
 
 def send_response_400(client_writer):
@@ -520,7 +528,7 @@ def send_response_501(client_writer):
     logging.info('Response:\n{}'.format(http_response.decode()))
     client_writer.write(http_response)
     client_writer.close()
-    
+
 
 if __name__ == '__main__':
     try:

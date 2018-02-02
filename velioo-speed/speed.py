@@ -11,7 +11,7 @@ class Edge:
         self.node_b = int(args[1])
         self.price = int(args[2])
 
-    def __lt__(self, other):
+    def __lt__(self, other): # less than
         return self.price < other.price if self.price is not other.price else \
             self.node_a < other.node_a if self.node_a is not other.node_a else \
                 self.node_b < other.node_b
@@ -79,11 +79,12 @@ def drive(min_s, max_s):
     global global_key
     global nodes
     global m, n
-    #print("Min Max: ", min_s, max_s)
+    print("Min Max: ", min_s, max_s)
     nodes = dict()
     count = 0
     for edge in edges:
         if min_s <= edge.price <= max_s:
+            #print('City1: ' + str(edge.node_a) + ', City2: ' + str(edge.node_b))
             count += 1
             if edge.node_a not in nodes:
                 nodes[edge.node_a] = [edge.node_b]
@@ -94,24 +95,21 @@ def drive(min_s, max_s):
                 nodes[edge.node_b] = [edge.node_a]
             elif edge.node_a not in nodes[edge.node_b]:
                 nodes[edge.node_b].append(edge.node_a)
-
+    #print('------------------------')
     if count < n - 1:
         return False
 
     #print("Nodes: ", nodes)
-    result = []
+    #result = []
     for key, values in nodes.items():
+        conns.clear()
         conns.append(key)
         global_key = key
         node = check(key, values)
         if node:
-            result.append(key)
-        conns.clear()
-
-    if len(result) < n:
-        return False
-    else:
-        return True
+            return True
+        break
+    return False
 
 
 def main():
@@ -129,18 +127,22 @@ def main():
 
     edges.sort()
     #print(edges)
-
+    
     m, n = int(m), int(n)
     minimum = 1
     maximum = 30000
+    min_checked = []
 
     for i in range(int(m - 1)):
-        for k in range(i + 1, m):
-            #print(i, " -- ", k - i, " -- ", edges[i], " : ", edges[k])
-            can_drive = drive(edges[i].price, edges[k].price)
-            if can_drive:
-                if edges[k].price - edges[i].price < maximum - minimum:
-                    minimum, maximum = edges[i].price, edges[k].price
+        if edges[i].price not in min_checked:
+            for k in range(i + 1, m):
+                #print('Checking speeds: {}, {}'.format(edges[i].price, edges[k].price))
+                #print(i, " -- ", k - i, " -- ", edges[i], " : ", edges[k])
+                can_drive = drive(edges[i].price, edges[k].price)
+                if can_drive:
+                    if edges[k].price - edges[i].price < maximum - minimum:
+                        minimum, maximum = edges[i].price, edges[k].price
+                min_checked.append(edges[i].price)
 
         #print('________________')
 
