@@ -26,9 +26,13 @@ def main(max_clients, max_conns):
         #~ except OSError as e:
             #~ print('Failed to create child...')
             #~ client_num-=1
-        
         for connection_num in range(max_conns):
-            socks[connection_num].connect(SERVER_ADDRESS)
+            try:
+                socks[connection_num].connect(SERVER_ADDRESS)
+                print(connection_num)
+            except OSError as e:
+                print(e)
+                connection_num-=1
         sleep(100000)
         #~ if pid == 0:
             #~ for connection_num in range(max_conns):

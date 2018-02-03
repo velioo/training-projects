@@ -19,6 +19,9 @@ import velioo_webserver.config.environment as env
 import asyncio
 from async_logging_handler import AsyncFileHandler
 import mimetypes
+import gzip
+import shutil
+import uuid
 
 now = datetime.datetime.now()
 async_handler = AsyncFileHandler('logs/async_server_' + now.strftime("%Y-%m-%d") + '.log')
@@ -70,11 +73,11 @@ async def handle_request(client_reader, client_writer):
         method, path, protocol = '', '', ''
         data = b''
         try:
-            timeout = time.time() + 100
+            timeout = time.time() + env.SERVER_GLOBAL_REQUEST_TIMEOUT
             while True:
                 logging.info('Reading data...')
                 try:
-                    data = await asyncio.wait_for(client_reader.read(env.RECV_BUFSIZE), 100.0)
+                    data = await asyncio.wait_for(client_reader.read(env.RECV_BUFSIZE), env.SERVER_SINGLE_TIMEOUT)
                 except asyncio.TimeoutError as e:
                     logging.error('Client timed out...')
                     send_response_408(client_writer)
@@ -280,11 +283,11 @@ async def handle_request(client_reader, client_writer):
                                             prev_content_length = len(request_body)
                                             if(content_length > bytes_read):
                                                 logging.info('Getting POST request body...')
-                                                timeout = time.time() + 10
+                                                timeout = time.time() + env.SERVER_GLOBAL_POST_TIMEOUT
                                                 while True:
                                                     logging.info('Sending data to CGI script')
                                                     try:
-                                                        post_data = await asyncio.wait_for(client_reader.read(env.RECV_BUFSIZE), 10.0)
+                                                        post_data = await asyncio.wait_for(client_reader.read(env.RECV_BUFSIZE), env.SERVER_POST_TIMEOUT)
                                                     except asyncio.TimeoutError as e:
                                                         logging.error('Cient timed out...')
                                                         logging.error(traceback.format_exc())
@@ -317,11 +320,11 @@ async def handle_request(client_reader, client_writer):
                                             logging.info('Request body received. Total bytes read = {}'.format(bytes_read))
                                             proc.stdin.close()
                                             logging.info('Response:\n')
-                                            timeout = time.time() + 10
+                                            timeout = time.time() + env.SERVER_GLOBAL_CGI_TIMEOUT
                                             chunk = None
                                             while True:
                                                 logging.info('Getttng chunks from CGI script...\n')
-                                                chunk = await asyncio.wait_for(proc.stdout.read(env.RECV_BUFSIZE), 10.0)
+                                                chunk = await asyncio.wait_for(proc.stdout.read(env.RECV_BUFSIZE), env.SERVER_CGI_TIMEOUT)
                                                 if not chunk:
                                                     break
                                                 if time.time() > timeout:
@@ -337,12 +340,12 @@ async def handle_request(client_reader, client_writer):
                                                 client_writer.close()
                                         elif method == 'GET':
                                             logging.info('Response:\n')
-                                            timeout = time.time() + 10
+                                            timeout = time.time() + env.SERVER_GLOBAL_CGI_TIMEOUT
                                             chunk = None
                                             while True:
                                                 try:
                                                     logging.info('Getttng chunks from CGI script...')
-                                                    chunk = await asyncio.wait_for(proc.stdout.read(env.RECV_BUFSIZE), 10.0)
+                                                    chunk = await asyncio.wait_for(proc.stdout.read(env.RECV_BUFSIZE), env.SERVER_CGI_TIMEOUT)
                                                 except asyncio.TimeoutError as e:
                                                     logging.error('CGI script timed out')
                                                     logging.error(traceback.format_exc())
@@ -385,24 +388,82 @@ async def handle_request(client_reader, client_writer):
                                 logging.error('Traceback: {}'.format(traceback.format_exc()))
                                 mime = 'type/subtype'
                             logging.info('MIME: {}'.format(mime))
-                            http_response = (
-                                            b"HTTP/1.1 200 OK\r\nContent-Type: "
-                                            + bytearray(mime, 'utf-8')
-                                            + b"\r\nContent-Length: "
-                                            + str(os.path.getsize(path)).encode()
-                                            + b"\r\nDate: "
-                                            + get_current_gmt_time()
-                                            + b"\r\nServer: " 
-                                            + get_server_software()
-                                            + b"\r\n\r\n"
-                                            )
-                            logging.info('Response:\n{}'.format(http_response.decode()))
-                            client_writer.write(http_response)
+                            accept_encodings = []
                             try:
-                                await send_static_file(path, client_writer, os.path.getsize(path))
+                                if 'Accept-Encoding' in headers:
+                                    accept_encodings = "".join(headers['Accept-Encoding'].split()).split(',')
+                                elif 'Accept-encoding' in headers:
+                                    accept_encodings = "".join(headers['Accept-encoding'].split()).split(',')
+                                elif 'accept-encoding' in headers:
+                                    accept_encodings = "".join(headers['accept-encoding'].split()).split(',')
+                            except (ValueError, KeyError) as e:
+                                logging.error('KeyError while checking accept-encoding header')
+                                logging.error('Traceback: {}'.format(traceback.format_exc()))
+                            
+                            gzip_response = False
+                            if 'gzip' in accept_encodings:
+                                gzip_response = True                                                        
+                                
+                            if gzip_response:
+                                unique_num = str(uuid.uuid1())
+                                async with aiofiles.open(path, 'rb') as f_in:
+                                    with gzip.open('./temp/' + unique_num, 'wb') as f_out:
+                                        while True:
+                                            chunk = await f_in.read(env.FILE_CHUNK)
+                                            if not chunk:
+                                                break
+                                            f_out.write(chunk)        
+                                                                    
+                                path = convert_path('temp/' + unique_num)
+                                
+                            filesize = os.path.getsize(path) 
+                            http_response = (
+                                        b"HTTP/1.1 200 OK\r\nContent-Type: "
+                                        + bytearray(mime, 'utf-8')
+                                        + b"\r\nContent-Length: "
+                                        + str(filesize).encode()
+                                        + b"\r\nDate: "
+                                        + get_current_gmt_time()
+                                        + b"\r\nServer: " 
+                                        + get_server_software()
+                                        ) 
+                            if gzip_response:
+                                http_response+=b"\r\nContent-Encoding: gzip"
+                            http_response+=b"\r\n\r\n"
+                            client_writer.write(http_response)
+                            logging.info('Response:\n{}'.format(http_response.decode()))                            
+                            try:
+                                #await send_static_file(path, client_writer, os.path.getsize(path))
+                                timeout = time.time() + 10
+                                async with aiofiles.open(path, 'rb') as f:
+                                    chunk = await f.read(env.FILE_CHUNK)
+                                    client_writer.write(chunk)
+                                    bytes_read = len(chunk)
+                                    if bytes_read >= filesize:
+                                        client_writer.close()
+                                        logging.info('Bytes read: {}'.format(bytes_read))
+                                        if gzip_response:
+                                            os.remove(path)
+                                        return                                   
+                                    await client_writer.drain()
+                                    logging.info('While loop')
+                                    while True:
+                                        chunk = await f.read(env.FILE_CHUNK)
+                                        client_writer.write(chunk)
+                                        bytes_read+=len(chunk)
+                                        if bytes_read >= filesize:
+                                            client_writer.close()
+                                            logging.info('Bytes read: {}'.format(bytes_read))
+                                            if gzip_response:
+                                                os.remove(path)
+                                            return
+                                        await client_writer.drain()
+                                        if time.time() > timeout:
+                                            raise TimeoutError
+                                    
+                                                
                             except TimeoutError as e:
                                 logging.error('Timeout while writing to client')
-                            client_writer.close()
                     else:
                         send_response_403(client_writer)
                 else:
