@@ -10,7 +10,7 @@ import datetime
 import select
 import aiofiles
 import time
-from time import mktime, sleep
+from time import mktime
 from wsgiref.handlers import format_date_time
 from pathlib import Path
 import resource

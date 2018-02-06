@@ -1,0 +1,2695 @@
+[0] webserver.pl 19 main - Test error
+[0] webserver.pl 19 main - Test error
+[0] webserver.pl 19 main - Test error
+[0] webserver.pl 19 main - Test error
+[0] webserver.pl 19 main - Test error
+[0] webserver.pl 19 main - Test error
+[0] webserver.pl 19 main - Test error
+[0] webserver.pl 19 main - Test error
+[0] webserver.pl 19 main - Test error
+[0] webserver.pl 19 main - Test error
+[0] webserver.pl 19 main - Test error
+[0] webserver.pl 20 main - Test error
+$d - [0] webserver.pl 20 main - Test error
+2018/02/06 11:07:53 - [0] webserver.pl 20 main - Test error
+2018/02/06 11:09:32 - [0] webserver.pl 20 main - Test error
+2018/02/06 11:09:33 - [1259] webserver.pl 23 main - New connection accepted
+2018/02/06 11:09:33 - [1324] webserver.pl 23 main - New connection accepted
+2018/02/06 11:09:41 - [9437] webserver.pl 23 main - New connection accepted
+2018/02/06 11:09:41 - [9585] webserver.pl 23 main - New connection accepted
+2018/02/06 11:09:45 - [13077] webserver.pl 23 main - New connection accepted
+2018/02/06 11:09:45 - [13175] webserver.pl 23 main - New connection accepted
+2018/02/06 11:09:47 - [15270] webserver.pl 23 main - New connection accepted
+2018/02/06 11:09:47 - [15442] webserver.pl 23 main - New connection accepted
+2018/02/06 11:09:49 - [16776] webserver.pl 23 main - New connection accepted
+2018/02/06 11:09:49 - [16875] webserver.pl 23 main - New connection accepted
+2018/02/06 11:10:22 - [0] webserver.pl 20 main - Listening on port 8886
+2018/02/06 11:10:24 - [1446] webserver.pl 23 main - New connection accepted
+2018/02/06 11:10:24 - [1540] webserver.pl 23 main - New connection accepted
+2018/02/06 11:10:29 - [6558] webserver.pl 23 main - New connection accepted
+2018/02/06 11:35:44 - [0] webserver.pl 20 main - Listening on port 8886
+2018/02/06 11:35:50 - [6125] webserver.pl 23 main - Parent: New connection accepted
+2018/02/06 11:35:50 - [6126] webserver.pl 28 main - Parent: Failed to create child copy
+2018/02/06 11:35:50 - [6127] webserver.pl 29 main - Parent: Error: 
+2018/02/06 11:35:50 - [6127] webserver.pl 28 main - Parent: Failed to create child copy
+2018/02/06 11:35:50 - [6128] webserver.pl 29 main - Parent: Error: 
+2018/02/06 11:35:56 - [0] webserver.pl 20 main - Listening on port 8886
+2018/02/06 11:36:27 - [0] webserver.pl 21 main - Listening on port 8886
+2018/02/06 11:36:30 - [3148] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:36:33 - [0] webserver.pl 21 main - Listening on port 8886
+2018/02/06 11:36:35 - [1440] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:38:24 - [0] webserver.pl 21 main - Listening on port 8886
+2018/02/06 11:38:26 - [2728] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:38:26 - [2729] webserver.pl 54 main - Parent: Closing parent copy
+2018/02/06 11:39:27 - [62828] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:39:27 - [62829] webserver.pl 54 main - Parent: Closing parent copy
+2018/02/06 11:41:06 - [0] webserver.pl 21 main - Listening on port 8886
+2018/02/06 11:41:08 - [1687] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:41:08 - [1688] webserver.pl 58 main - Parent: Closing parent copy
+2018/02/06 11:41:08 - [1689] webserver.pl 34 main - Starting child 0
+2018/02/06 11:41:12 - [5755] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:41:12 - [5756] webserver.pl 34 main - Starting child 0
+2018/02/06 11:41:12 - [5756] webserver.pl 58 main - Parent: Closing parent copy
+2018/02/06 11:41:12 - [6471] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:41:12 - [6472] webserver.pl 34 main - Starting child 0
+2018/02/06 11:41:12 - [6472] webserver.pl 58 main - Parent: Closing parent copy
+2018/02/06 11:41:13 - [6764] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:41:13 - [6765] webserver.pl 58 main - Parent: Closing parent copy
+2018/02/06 11:41:13 - [6765] webserver.pl 34 main - Starting child 0
+2018/02/06 11:41:13 - [6959] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:41:13 - [6960] webserver.pl 58 main - Parent: Closing parent copy
+2018/02/06 11:41:13 - [6961] webserver.pl 34 main - Starting child 0
+2018/02/06 11:41:13 - [7129] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:41:13 - [7130] webserver.pl 58 main - Parent: Closing parent copy
+2018/02/06 11:41:13 - [7130] webserver.pl 34 main - Starting child 0
+2018/02/06 11:41:13 - [7398] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:41:13 - [7399] webserver.pl 58 main - Parent: Closing parent copy
+2018/02/06 11:41:13 - [7400] webserver.pl 34 main - Starting child 0
+2018/02/06 11:41:13 - [7590] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:41:13 - [7591] webserver.pl 34 main - Starting child 0
+2018/02/06 11:41:13 - [7591] webserver.pl 58 main - Parent: Closing parent copy
+2018/02/06 11:41:14 - [7794] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:41:14 - [7796] webserver.pl 58 main - Parent: Closing parent copy
+2018/02/06 11:41:14 - [7796] webserver.pl 34 main - Starting child 0
+2018/02/06 11:41:14 - [7992] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:41:14 - [7993] webserver.pl 58 main - Parent: Closing parent copy
+2018/02/06 11:41:14 - [7994] webserver.pl 34 main - Starting child 0
+2018/02/06 11:41:14 - [8154] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:41:14 - [8155] webserver.pl 58 main - Parent: Closing parent copy
+2018/02/06 11:41:14 - [8155] webserver.pl 34 main - Starting child 0
+2018/02/06 11:41:14 - [8329] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:41:14 - [8330] webserver.pl 58 main - Parent: Closing parent copy
+2018/02/06 11:41:14 - [8330] webserver.pl 34 main - Starting child 0
+2018/02/06 11:41:14 - [8508] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:41:14 - [8509] webserver.pl 58 main - Parent: Closing parent copy
+2018/02/06 11:41:14 - [8509] webserver.pl 34 main - Starting child 0
+2018/02/06 11:41:15 - [8689] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:41:15 - [8690] webserver.pl 58 main - Parent: Closing parent copy
+2018/02/06 11:41:15 - [8691] webserver.pl 34 main - Starting child 0
+2018/02/06 11:41:15 - [8898] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:41:15 - [8899] webserver.pl 58 main - Parent: Closing parent copy
+2018/02/06 11:41:15 - [8903] webserver.pl 34 main - Starting child 0
+2018/02/06 11:41:15 - [9085] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:41:15 - [9086] webserver.pl 58 main - Parent: Closing parent copy
+2018/02/06 11:41:15 - [9088] webserver.pl 34 main - Starting child 0
+2018/02/06 11:41:15 - [9221] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:41:15 - [9222] webserver.pl 58 main - Parent: Closing parent copy
+2018/02/06 11:41:15 - [9224] webserver.pl 34 main - Starting child 0
+2018/02/06 11:41:15 - [9358] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:41:15 - [9359] webserver.pl 58 main - Parent: Closing parent copy
+2018/02/06 11:41:15 - [9360] webserver.pl 34 main - Starting child 0
+2018/02/06 11:41:15 - [9521] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:41:15 - [9522] webserver.pl 58 main - Parent: Closing parent copy
+2018/02/06 11:41:15 - [9522] webserver.pl 34 main - Starting child 0
+2018/02/06 11:41:16 - [9689] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:41:16 - [9690] webserver.pl 58 main - Parent: Closing parent copy
+2018/02/06 11:41:16 - [9692] webserver.pl 34 main - Starting child 0
+2018/02/06 11:43:50 - [0] webserver.pl 21 main - Listening on port 8886
+2018/02/06 11:43:54 - [3182] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:43:54 - [3183] webserver.pl 57 main - Parent: Closing parent copy
+2018/02/06 11:43:54 - [3978] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:43:54 - [3980] webserver.pl 57 main - Parent: Closing parent copy
+2018/02/06 11:43:55 - [4709] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:43:55 - [4710] webserver.pl 57 main - Parent: Closing parent copy
+2018/02/06 11:44:23 - [32901] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:44:23 - [32902] webserver.pl 57 main - Parent: Closing parent copy
+2018/02/06 11:44:24 - [33705] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:44:24 - [33706] webserver.pl 57 main - Parent: Closing parent copy
+2018/02/06 11:44:25 - [34450] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:44:25 - [34451] webserver.pl 57 main - Parent: Closing parent copy
+2018/02/06 11:44:27 - [36301] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:44:27 - [36302] webserver.pl 57 main - Parent: Closing parent copy
+2018/02/06 11:44:27 - [36985] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:44:27 - [36987] webserver.pl 57 main - Parent: Closing parent copy
+2018/02/06 11:44:28 - [37435] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:44:28 - [37436] webserver.pl 57 main - Parent: Closing parent copy
+2018/02/06 11:44:28 - [37931] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:44:28 - [37933] webserver.pl 57 main - Parent: Closing parent copy
+2018/02/06 11:44:29 - [38475] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:44:29 - [38476] webserver.pl 57 main - Parent: Closing parent copy
+2018/02/06 11:44:30 - [39820] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:44:30 - [39821] webserver.pl 57 main - Parent: Closing parent copy
+2018/02/06 11:44:31 - [40266] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:44:31 - [40268] webserver.pl 57 main - Parent: Closing parent copy
+2018/02/06 11:44:31 - [40547] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:44:31 - [40548] webserver.pl 57 main - Parent: Closing parent copy
+2018/02/06 11:44:31 - [40786] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:44:31 - [40788] webserver.pl 57 main - Parent: Closing parent copy
+2018/02/06 11:44:31 - [40978] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:44:31 - [40980] webserver.pl 57 main - Parent: Closing parent copy
+2018/02/06 11:44:32 - [41178] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:44:32 - [41180] webserver.pl 57 main - Parent: Closing parent copy
+2018/02/06 11:44:32 - [41379] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:44:32 - [41380] webserver.pl 57 main - Parent: Closing parent copy
+2018/02/06 11:44:32 - [41568] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:44:32 - [41569] webserver.pl 57 main - Parent: Closing parent copy
+2018/02/06 11:44:32 - [41794] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:44:32 - [41795] webserver.pl 57 main - Parent: Closing parent copy
+2018/02/06 11:44:32 - [41977] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:44:32 - [41978] webserver.pl 57 main - Parent: Closing parent copy
+2018/02/06 11:44:55 - [0] webserver.pl 21 main - Listening on port 8886
+2018/02/06 11:44:57 - [1660] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:44:57 - [1661] webserver.pl 57 main - Parent: Closing parent copy
+2018/02/06 11:44:57 - [1661] webserver.pl 35 main - Child 0: Closing child copy
+2018/02/06 11:44:57 - [1661] webserver.pl 42 main - Child 0: invoking handle_connection
+2018/02/06 11:44:57 - [1661] webserver.pl 71 main - In handle connection
+2018/02/06 11:45:04 - [0] webserver.pl 21 main - Listening on port 8886
+2018/02/06 11:45:05 - [1368] webserver.pl 24 main - Parent: New connection accepted
+2018/02/06 11:45:05 - [1370] webserver.pl 57 main - Parent: Closing parent copy
+2018/02/06 11:45:05 - [1371] webserver.pl 35 main - Child 0: Closing child copy
+2018/02/06 11:45:05 - [1371] webserver.pl 42 main - Child 0: invoking handle_connection
+2018/02/06 11:45:05 - [1371] webserver.pl 71 main - In handle connection
+2018/02/06 11:47:49 - [0] webserver.pl 22 main - Listening on port 8886
+2018/02/06 11:47:55 - [6031] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 11:47:55 - [6032] webserver.pl 58 main - Parent: Closing parent copy
+2018/02/06 11:47:55 - [6033] webserver.pl 36 main - Child 927: Closing child copy
+2018/02/06 11:47:55 - [6041] webserver.pl 43 main - Child 927: invoking handle_connection
+2018/02/06 11:47:55 - [6042] webserver.pl 70 main - Child 927: In handle connection
+2018/02/06 11:49:39 - [0] webserver.pl 22 main - Listening on port 8886
+2018/02/06 11:49:41 - [1811] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 11:49:41 - [1812] webserver.pl 58 main - Parent: Closing parent copy
+2018/02/06 11:49:41 - [1813] webserver.pl 36 main - Child 953: Closing child copy
+2018/02/06 11:49:41 - [1817] webserver.pl 43 main - Child 953: invoking handle_connection
+2018/02/06 11:49:41 - [1817] webserver.pl 70 main - In handle connection
+2018/02/06 11:50:20 - [0] webserver.pl 22 main - Listening on port 8886
+2018/02/06 11:50:23 - [2117] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 11:50:23 - [2118] webserver.pl 58 main - Parent: Closing parent copy
+2018/02/06 11:50:23 - [2119] webserver.pl 36 main - Child 964: Closing child copy
+2018/02/06 11:50:23 - [2123] webserver.pl 43 main - Child 964: invoking handle_connection
+2018/02/06 11:50:23 - [2123] webserver.pl 69 main - In handle connection
+2018/02/06 11:51:16 - [0] webserver.pl 22 main - Listening on port 8886
+2018/02/06 11:51:17 - [1931] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 11:51:17 - [1933] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 11:51:17 - [1933] webserver.pl 36 main - Child 973: Closing child copy
+2018/02/06 11:51:17 - [1941] webserver.pl 43 main - Child 973: invoking handle_connection
+2018/02/06 11:51:17 - [1941] webserver.pl 69 main - In handle connection
+2018/02/06 11:53:24 - [0] webserver.pl 22 main - Listening on port 8886
+2018/02/06 11:53:28 - [3715] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 11:53:28 - [3717] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 11:53:28 - [3717] webserver.pl 36 main - Child 1108: Closing child copy
+2018/02/06 11:53:28 - [3717] webserver.pl 43 main - Child 1108: invoking handle_connection
+2018/02/06 11:53:28 - [3717] webserver.pl 69 main - In handle connection
+2018/02/06 11:53:31 - [6863] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 11:53:31 - [6864] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 11:53:31 - [6865] webserver.pl 36 main - Child 1111: Closing child copy
+2018/02/06 11:53:31 - [6865] webserver.pl 43 main - Child 1111: invoking handle_connection
+2018/02/06 11:53:31 - [6865] webserver.pl 69 main - In handle connection
+2018/02/06 11:53:31 - [7167] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 11:53:31 - [7168] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 11:53:31 - [7168] webserver.pl 36 main - Child 1113: Closing child copy
+2018/02/06 11:53:31 - [7169] webserver.pl 43 main - Child 1113: invoking handle_connection
+2018/02/06 11:53:31 - [7169] webserver.pl 69 main - In handle connection
+2018/02/06 11:53:31 - [7369] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 11:53:31 - [7370] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 11:53:31 - [7370] webserver.pl 36 main - Child 1114: Closing child copy
+2018/02/06 11:53:31 - [7370] webserver.pl 43 main - Child 1114: invoking handle_connection
+2018/02/06 11:53:31 - [7370] webserver.pl 69 main - In handle connection
+2018/02/06 11:53:33 - [9142] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 11:53:33 - [9143] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 11:53:33 - [9143] webserver.pl 36 main - Child 1118: Closing child copy
+2018/02/06 11:53:33 - [9143] webserver.pl 43 main - Child 1118: invoking handle_connection
+2018/02/06 11:53:33 - [9144] webserver.pl 69 main - In handle connection
+2018/02/06 11:56:27 - [0] webserver.pl 22 main - Listening on port 8886
+2018/02/06 11:56:30 - [2988] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 11:56:30 - [2989] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 11:56:30 - [2990] webserver.pl 36 main - Child 1145: Closing child copy
+2018/02/06 11:56:30 - [2990] webserver.pl 43 main - Child 1145: invoking handle_connection
+2018/02/06 11:56:30 - [2991] webserver.pl 69 main - In handle connection
+2018/02/06 11:56:32 - [5636] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 11:56:32 - [5637] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 11:56:32 - [5637] webserver.pl 36 main - Child 1151: Closing child copy
+2018/02/06 11:56:32 - [5637] webserver.pl 43 main - Child 1151: invoking handle_connection
+2018/02/06 11:56:32 - [5637] webserver.pl 69 main - In handle connection
+2018/02/06 11:56:33 - [5851] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 11:56:33 - [5853] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 11:56:33 - [5853] webserver.pl 36 main - Child 1152: Closing child copy
+2018/02/06 11:56:33 - [5854] webserver.pl 43 main - Child 1152: invoking handle_connection
+2018/02/06 11:56:33 - [5854] webserver.pl 69 main - In handle connection
+2018/02/06 11:56:33 - [6021] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 11:56:33 - [6022] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 11:56:33 - [6022] webserver.pl 36 main - Child 1153: Closing child copy
+2018/02/06 11:56:33 - [6022] webserver.pl 43 main - Child 1153: invoking handle_connection
+2018/02/06 11:56:33 - [6022] webserver.pl 69 main - In handle connection
+2018/02/06 12:01:10 - [0] webserver.pl 22 main - Listening on port 8886
+2018/02/06 12:01:13 - [2522] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:01:13 - [2523] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 12:01:13 - [2524] webserver.pl 43 main - Child 1322: invoking handle_connection
+2018/02/06 12:01:37 - [26939] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:01:37 - [26940] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 12:01:37 - [26941] webserver.pl 43 main - Child 1332: invoking handle_connection
+2018/02/06 12:02:03 - [0] webserver.pl 22 main - Listening on port 8886
+2018/02/06 12:02:05 - [1755] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:02:05 - [1756] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 12:02:05 - [1756] webserver.pl 43 main - Child 1340: invoking handle_connection
+2018/02/06 12:02:25 - [0] webserver.pl 22 main - Listening on port 8886
+2018/02/06 12:02:28 - [2543] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:02:28 - [2545] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 12:02:28 - [2545] webserver.pl 36 main - Child 1349: Closing child copy
+2018/02/06 12:02:28 - [2545] webserver.pl 43 main - Child 1349: invoking handle_connection
+2018/02/06 12:02:28 - [2545] webserver.pl 69 main - In handle connection
+2018/02/06 12:03:50 - [0] webserver.pl 22 main - Listening on port 8886
+2018/02/06 12:03:52 - [1967] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:03:52 - [1968] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 12:03:52 - [1968] webserver.pl 36 main - Child 1368: Closing child copy
+2018/02/06 12:03:52 - [1968] webserver.pl 43 main - Child 1368: invoking handle_connection
+2018/02/06 12:03:52 - [1968] webserver.pl 69 main - Child 1368: In handle connection
+2018/02/06 12:04:35 - [0] webserver.pl 22 main - Listening on port 8886
+2018/02/06 12:04:37 - [1615] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:04:37 - [1616] webserver.pl 60 main - Parent: Closing parent copy
+2018/02/06 12:04:37 - [1617] webserver.pl 36 main - Child 1377: Closing child copy
+2018/02/06 12:04:37 - [1617] webserver.pl 43 main - Child 1377: invoking handle_connection
+2018/02/06 12:04:37 - [1617] webserver.pl 44 main - Child 1377: IO::Socket::INET=GLOB(0x28cd718)
+2018/02/06 12:04:37 - [1617] webserver.pl 70 main - Child 1377: In handle connection
+2018/02/06 12:05:29 - [0] webserver.pl 22 main - Listening on port 8886
+2018/02/06 12:05:33 - [3694] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:05:33 - [3695] webserver.pl 36 main - Child 1388: Closing child copy
+2018/02/06 12:05:33 - [3695] webserver.pl 60 main - Parent: Closing parent copy
+2018/02/06 12:05:33 - [3695] webserver.pl 43 main - Child 1388: invoking handle_connection
+2018/02/06 12:05:33 - [3695] webserver.pl 44 main - Child 1388: IO::Socket::INET=GLOB(0xa6dcb8)
+2018/02/06 12:05:33 - [3695] webserver.pl 70 main - Child 1388: In handle connection
+2018/02/06 12:05:34 - [4628] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:05:34 - [4629] webserver.pl 60 main - Parent: Closing parent copy
+2018/02/06 12:05:34 - [4629] webserver.pl 36 main - Child 1393: Closing child copy
+2018/02/06 12:05:34 - [4629] webserver.pl 43 main - Child 1393: invoking handle_connection
+2018/02/06 12:05:34 - [4630] webserver.pl 44 main - Child 1393: IO::Socket::INET=GLOB(0x10f0d60)
+2018/02/06 12:05:34 - [4630] webserver.pl 70 main - Child 1393: In handle connection
+2018/02/06 12:06:11 - [0] webserver.pl 22 main - Listening on port 8886
+2018/02/06 12:06:13 - [1901] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:06:13 - [1902] webserver.pl 60 main - Parent: Closing parent copy
+2018/02/06 12:06:13 - [1903] webserver.pl 36 main - Child 1399: Closing child copy
+2018/02/06 12:06:13 - [1903] webserver.pl 43 main - Child 1399: invoking handle_connection
+2018/02/06 12:06:13 - [1903] webserver.pl 44 main - Child 1399: IO::Socket::INET=GLOB(0x17044b0)
+2018/02/06 12:06:13 - [1903] webserver.pl 70 main - Child 1399: In handle connection
+2018/02/06 12:06:13 - [1903] webserver.pl 72 main - Child 1399: IO::Socket::INET=GLOB(0x17044b0)
+2018/02/06 12:11:47 - [335551] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:11:47 - [335552] webserver.pl 60 main - Parent: Closing parent copy
+2018/02/06 12:11:47 - [335552] webserver.pl 36 main - Child 1705: Closing child copy
+2018/02/06 12:11:47 - [335553] webserver.pl 43 main - Child 1705: invoking handle_connection
+2018/02/06 12:11:47 - [335553] webserver.pl 44 main - Child 1705: IO::Socket::INET=GLOB(0x17def58)
+2018/02/06 12:11:47 - [335553] webserver.pl 70 main - Child 1705: In handle connection
+2018/02/06 12:11:47 - [335553] webserver.pl 72 main - Child 1705: IO::Socket::INET=GLOB(0x17def58)
+2018/02/06 12:13:01 - [0] webserver.pl 22 main - Listening on port 8886
+2018/02/06 12:13:04 - [2586] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:13:04 - [2587] webserver.pl 36 main - Child 1835: Closing child copy
+2018/02/06 12:13:04 - [2587] webserver.pl 60 main - Parent: Closing parent copy
+2018/02/06 12:13:04 - [2587] webserver.pl 43 main - Child 1835: invoking handle_connection
+2018/02/06 12:13:04 - [2587] webserver.pl 44 main - Child 1835: IO::Socket::INET=GLOB(0x201ed00)
+2018/02/06 12:13:04 - [2587] webserver.pl 70 main - Child 1835: In handle connection
+2018/02/06 12:13:04 - [2587] webserver.pl 72 main - Child 1835: IO::Socket::INET=GLOB(0x201ed00)
+2018/02/06 12:13:04 - [2588] webserver.pl 51 main - Child 1835: Closing connection
+2018/02/06 12:13:04 - [2689] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:13:04 - [2690] webserver.pl 60 main - Parent: Closing parent copy
+2018/02/06 12:13:04 - [2691] webserver.pl 36 main - Child 1847: Closing child copy
+2018/02/06 12:13:04 - [2691] webserver.pl 43 main - Child 1847: invoking handle_connection
+2018/02/06 12:13:04 - [2691] webserver.pl 44 main - Child 1847: IO::Socket::INET=GLOB(0x20fa1f0)
+2018/02/06 12:13:04 - [2691] webserver.pl 70 main - Child 1847: In handle connection
+2018/02/06 12:13:04 - [2691] webserver.pl 72 main - Child 1847: IO::Socket::INET=GLOB(0x20fa1f0)
+2018/02/06 12:13:04 - [2691] webserver.pl 51 main - Child 1847: Closing connection
+2018/02/06 12:13:05 - [3489] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:13:05 - [3491] webserver.pl 60 main - Parent: Closing parent copy
+2018/02/06 12:13:05 - [3493] webserver.pl 36 main - Child 1848: Closing child copy
+2018/02/06 12:13:05 - [3493] webserver.pl 43 main - Child 1848: invoking handle_connection
+2018/02/06 12:13:05 - [3494] webserver.pl 44 main - Child 1848: IO::Socket::INET=GLOB(0x20fa460)
+2018/02/06 12:13:05 - [3494] webserver.pl 70 main - Child 1848: In handle connection
+2018/02/06 12:13:05 - [3494] webserver.pl 72 main - Child 1848: IO::Socket::INET=GLOB(0x20fa460)
+2018/02/06 12:13:05 - [3494] webserver.pl 51 main - Child 1848: Closing connection
+2018/02/06 12:13:05 - [3604] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:13:05 - [3605] webserver.pl 60 main - Parent: Closing parent copy
+2018/02/06 12:13:05 - [3606] webserver.pl 36 main - Child 1849: Closing child copy
+2018/02/06 12:13:05 - [3606] webserver.pl 43 main - Child 1849: invoking handle_connection
+2018/02/06 12:13:05 - [3606] webserver.pl 44 main - Child 1849: IO::Socket::INET=GLOB(0x20fa160)
+2018/02/06 12:13:05 - [3606] webserver.pl 70 main - Child 1849: In handle connection
+2018/02/06 12:13:05 - [3606] webserver.pl 72 main - Child 1849: IO::Socket::INET=GLOB(0x20fa160)
+2018/02/06 12:13:05 - [3606] webserver.pl 51 main - Child 1849: Closing connection
+2018/02/06 12:13:05 - [3681] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:13:05 - [3682] webserver.pl 60 main - Parent: Closing parent copy
+2018/02/06 12:13:05 - [3683] webserver.pl 36 main - Child 1850: Closing child copy
+2018/02/06 12:13:05 - [3683] webserver.pl 43 main - Child 1850: invoking handle_connection
+2018/02/06 12:13:05 - [3683] webserver.pl 44 main - Child 1850: IO::Socket::INET=GLOB(0x20fa298)
+2018/02/06 12:13:05 - [3683] webserver.pl 70 main - Child 1850: In handle connection
+2018/02/06 12:13:05 - [3683] webserver.pl 72 main - Child 1850: IO::Socket::INET=GLOB(0x20fa298)
+2018/02/06 12:13:05 - [3683] webserver.pl 51 main - Child 1850: Closing connection
+2018/02/06 12:13:05 - [3775] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:13:05 - [3776] webserver.pl 60 main - Parent: Closing parent copy
+2018/02/06 12:13:05 - [3776] webserver.pl 36 main - Child 1851: Closing child copy
+2018/02/06 12:13:05 - [3777] webserver.pl 43 main - Child 1851: invoking handle_connection
+2018/02/06 12:13:05 - [3777] webserver.pl 44 main - Child 1851: IO::Socket::INET=GLOB(0x201ece8)
+2018/02/06 12:13:05 - [3777] webserver.pl 70 main - Child 1851: In handle connection
+2018/02/06 12:13:05 - [3777] webserver.pl 72 main - Child 1851: IO::Socket::INET=GLOB(0x201ece8)
+2018/02/06 12:13:05 - [3777] webserver.pl 51 main - Child 1851: Closing connection
+2018/02/06 12:13:05 - [3860] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:13:05 - [3861] webserver.pl 60 main - Parent: Closing parent copy
+2018/02/06 12:13:05 - [3861] webserver.pl 36 main - Child 1857: Closing child copy
+2018/02/06 12:13:05 - [3861] webserver.pl 43 main - Child 1857: invoking handle_connection
+2018/02/06 12:13:05 - [3861] webserver.pl 44 main - Child 1857: IO::Socket::INET=GLOB(0x1a74ad8)
+2018/02/06 12:13:05 - [3862] webserver.pl 70 main - Child 1857: In handle connection
+2018/02/06 12:13:05 - [3862] webserver.pl 72 main - Child 1857: IO::Socket::INET=GLOB(0x1a74ad8)
+2018/02/06 12:13:05 - [3862] webserver.pl 51 main - Child 1857: Closing connection
+2018/02/06 12:13:05 - [3967] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:13:05 - [3968] webserver.pl 60 main - Parent: Closing parent copy
+2018/02/06 12:13:05 - [3968] webserver.pl 36 main - Child 1859: Closing child copy
+2018/02/06 12:13:05 - [3968] webserver.pl 43 main - Child 1859: invoking handle_connection
+2018/02/06 12:13:05 - [3968] webserver.pl 44 main - Child 1859: IO::Socket::INET=GLOB(0x20fa370)
+2018/02/06 12:13:05 - [3968] webserver.pl 70 main - Child 1859: In handle connection
+2018/02/06 12:13:05 - [3969] webserver.pl 72 main - Child 1859: IO::Socket::INET=GLOB(0x20fa370)
+2018/02/06 12:13:05 - [3969] webserver.pl 51 main - Child 1859: Closing connection
+2018/02/06 12:13:05 - [4171] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:13:05 - [4173] webserver.pl 60 main - Parent: Closing parent copy
+2018/02/06 12:13:05 - [4173] webserver.pl 36 main - Child 1860: Closing child copy
+2018/02/06 12:13:05 - [4174] webserver.pl 43 main - Child 1860: invoking handle_connection
+2018/02/06 12:13:05 - [4174] webserver.pl 44 main - Child 1860: IO::Socket::INET=GLOB(0x20fa388)
+2018/02/06 12:13:05 - [4174] webserver.pl 70 main - Child 1860: In handle connection
+2018/02/06 12:13:05 - [4174] webserver.pl 72 main - Child 1860: IO::Socket::INET=GLOB(0x20fa388)
+2018/02/06 12:13:05 - [4174] webserver.pl 51 main - Child 1860: Closing connection
+2018/02/06 12:13:06 - [4418] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:13:06 - [4419] webserver.pl 60 main - Parent: Closing parent copy
+2018/02/06 12:13:06 - [4419] webserver.pl 36 main - Child 1861: Closing child copy
+2018/02/06 12:13:06 - [4419] webserver.pl 43 main - Child 1861: invoking handle_connection
+2018/02/06 12:13:06 - [4419] webserver.pl 44 main - Child 1861: IO::Socket::INET=GLOB(0x20fa238)
+2018/02/06 12:13:06 - [4419] webserver.pl 70 main - Child 1861: In handle connection
+2018/02/06 12:13:06 - [4419] webserver.pl 72 main - Child 1861: IO::Socket::INET=GLOB(0x20fa238)
+2018/02/06 12:13:06 - [4419] webserver.pl 51 main - Child 1861: Closing connection
+2018/02/06 12:13:06 - [4704] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:13:06 - [4706] webserver.pl 60 main - Parent: Closing parent copy
+2018/02/06 12:13:06 - [4707] webserver.pl 36 main - Child 1865: Closing child copy
+2018/02/06 12:13:06 - [4708] webserver.pl 43 main - Child 1865: invoking handle_connection
+2018/02/06 12:13:06 - [4708] webserver.pl 44 main - Child 1865: IO::Socket::INET=GLOB(0x201ec70)
+2018/02/06 12:13:06 - [4708] webserver.pl 70 main - Child 1865: In handle connection
+2018/02/06 12:13:06 - [4708] webserver.pl 72 main - Child 1865: IO::Socket::INET=GLOB(0x201ec70)
+2018/02/06 12:13:06 - [4708] webserver.pl 51 main - Child 1865: Closing connection
+2018/02/06 12:13:06 - [4809] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:13:06 - [4810] webserver.pl 60 main - Parent: Closing parent copy
+2018/02/06 12:13:06 - [4810] webserver.pl 36 main - Child 1866: Closing child copy
+2018/02/06 12:13:06 - [4810] webserver.pl 43 main - Child 1866: invoking handle_connection
+2018/02/06 12:13:06 - [4810] webserver.pl 44 main - Child 1866: IO::Socket::INET=GLOB(0x20fa148)
+2018/02/06 12:13:06 - [4810] webserver.pl 70 main - Child 1866: In handle connection
+2018/02/06 12:13:06 - [4811] webserver.pl 72 main - Child 1866: IO::Socket::INET=GLOB(0x20fa148)
+2018/02/06 12:13:06 - [4811] webserver.pl 51 main - Child 1866: Closing connection
+2018/02/06 12:13:55 - [0] webserver.pl 22 main - Listening on port 8886
+2018/02/06 12:18:35 - [0] webserver.pl 22 main - Listening on port 8886
+2018/02/06 12:20:11 - [0] webserver.pl 22 main - Listening on port 8886
+2018/02/06 12:20:12 - [1152] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:20:12 - [1153] webserver.pl 36 main - Child 2276: Closing child copy
+2018/02/06 12:20:12 - [1154] webserver.pl 43 main - Child 2276: invoking handle_connection
+2018/02/06 12:20:12 - [1154] webserver.pl 44 main - Child 2276: IO::Socket::INET=GLOB(0x1f11308)
+2018/02/06 12:20:12 - [1154] webserver.pl 70 main - Child 2276: In handle connection
+2018/02/06 12:20:12 - [1154] webserver.pl 72 main - Child 2276: IO::Socket::INET=GLOB(0x1f11308)
+2018/02/06 12:20:12 - [1154] webserver.pl 51 main - Child 2276: Closing connection
+2018/02/06 12:20:12 - [1157] webserver.pl 36 main - Child 2277: Closing child copy
+2018/02/06 12:20:12 - [1157] webserver.pl 43 main - Child 2277: invoking handle_connection
+2018/02/06 12:20:12 - [1157] webserver.pl 44 main - Child 2277: IO::Socket::INET=GLOB(0x1f11308)
+2018/02/06 12:20:12 - [1157] webserver.pl 70 main - Child 2277: In handle connection
+2018/02/06 12:20:12 - [1157] webserver.pl 72 main - Child 2277: IO::Socket::INET=GLOB(0x1f11308)
+2018/02/06 12:20:12 - [1157] webserver.pl 51 main - Child 2277: Closing connection
+2018/02/06 12:21:32 - [0] webserver.pl 22 main - Listening on port 8886
+2018/02/06 12:21:34 - [1934] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:21:34 - [1935] webserver.pl 60 main - Parent: Closing parent copy
+2018/02/06 12:21:34 - [1935] webserver.pl 36 main - Child 2290: Closing child copy
+2018/02/06 12:21:34 - [1935] webserver.pl 43 main - Child 2290: invoking handle_connection
+2018/02/06 12:21:34 - [1935] webserver.pl 44 main - Child 2290: IO::Socket::INET=GLOB(0x1875618)
+2018/02/06 12:21:34 - [1935] webserver.pl 70 main - Child 2290: In handle connection
+2018/02/06 12:21:34 - [1936] webserver.pl 72 main - Child 2290: IO::Socket::INET=GLOB(0x1875618)
+2018/02/06 12:21:34 - [1936] webserver.pl 51 main - Child 2290: Closing connection
+2018/02/06 12:21:34 - [2050] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:21:34 - [2051] webserver.pl 60 main - Parent: Closing parent copy
+2018/02/06 12:21:34 - [2051] webserver.pl 36 main - Child 2293: Closing child copy
+2018/02/06 12:21:34 - [2051] webserver.pl 43 main - Child 2293: invoking handle_connection
+2018/02/06 12:21:34 - [2051] webserver.pl 44 main - Child 2293: IO::Socket::INET=GLOB(0x1954228)
+2018/02/06 12:21:34 - [2051] webserver.pl 70 main - Child 2293: In handle connection
+2018/02/06 12:21:34 - [2051] webserver.pl 72 main - Child 2293: IO::Socket::INET=GLOB(0x1954228)
+2018/02/06 12:21:34 - [2052] webserver.pl 51 main - Child 2293: Closing connection
+2018/02/06 12:21:36 - [3914] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:21:36 - [3915] webserver.pl 60 main - Parent: Closing parent copy
+2018/02/06 12:21:36 - [3915] webserver.pl 36 main - Child 2295: Closing child copy
+2018/02/06 12:21:36 - [3915] webserver.pl 43 main - Child 2295: invoking handle_connection
+2018/02/06 12:21:36 - [3916] webserver.pl 44 main - Child 2295: IO::Socket::INET=GLOB(0x1954480)
+2018/02/06 12:21:36 - [3916] webserver.pl 70 main - Child 2295: In handle connection
+2018/02/06 12:21:36 - [3916] webserver.pl 72 main - Child 2295: IO::Socket::INET=GLOB(0x1954480)
+2018/02/06 12:21:36 - [3916] webserver.pl 51 main - Child 2295: Closing connection
+2018/02/06 12:21:36 - [4011] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:21:36 - [4012] webserver.pl 60 main - Parent: Closing parent copy
+2018/02/06 12:21:36 - [4012] webserver.pl 36 main - Child 2296: Closing child copy
+2018/02/06 12:21:36 - [4013] webserver.pl 43 main - Child 2296: invoking handle_connection
+2018/02/06 12:21:36 - [4013] webserver.pl 44 main - Child 2296: IO::Socket::INET=GLOB(0x1954420)
+2018/02/06 12:21:36 - [4013] webserver.pl 70 main - Child 2296: In handle connection
+2018/02/06 12:21:36 - [4013] webserver.pl 72 main - Child 2296: IO::Socket::INET=GLOB(0x1954420)
+2018/02/06 12:21:36 - [4013] webserver.pl 51 main - Child 2296: Closing connection
+2018/02/06 12:21:38 - [6040] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:21:38 - [6041] webserver.pl 60 main - Parent: Closing parent copy
+2018/02/06 12:21:38 - [6041] webserver.pl 36 main - Child 2297: Closing child copy
+2018/02/06 12:21:38 - [6041] webserver.pl 43 main - Child 2297: invoking handle_connection
+2018/02/06 12:21:38 - [6041] webserver.pl 44 main - Child 2297: IO::Socket::INET=GLOB(0x1954120)
+2018/02/06 12:21:38 - [6041] webserver.pl 70 main - Child 2297: In handle connection
+2018/02/06 12:21:38 - [6041] webserver.pl 72 main - Child 2297: IO::Socket::INET=GLOB(0x1954120)
+2018/02/06 12:21:38 - [6041] webserver.pl 51 main - Child 2297: Closing connection
+2018/02/06 12:21:39 - [6590] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:21:39 - [6591] webserver.pl 60 main - Parent: Closing parent copy
+2018/02/06 12:21:39 - [6591] webserver.pl 36 main - Child 2298: Closing child copy
+2018/02/06 12:21:39 - [6591] webserver.pl 43 main - Child 2298: invoking handle_connection
+2018/02/06 12:21:39 - [6591] webserver.pl 44 main - Child 2298: IO::Socket::INET=GLOB(0x19544f8)
+2018/02/06 12:21:39 - [6591] webserver.pl 70 main - Child 2298: In handle connection
+2018/02/06 12:21:39 - [6592] webserver.pl 72 main - Child 2298: IO::Socket::INET=GLOB(0x19544f8)
+2018/02/06 12:21:39 - [6592] webserver.pl 51 main - Child 2298: Closing connection
+2018/02/06 12:21:39 - [7002] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:21:39 - [7004] webserver.pl 60 main - Parent: Closing parent copy
+2018/02/06 12:21:39 - [7008] webserver.pl 36 main - Child 2299: Closing child copy
+2018/02/06 12:21:39 - [7008] webserver.pl 43 main - Child 2299: invoking handle_connection
+2018/02/06 12:21:39 - [7008] webserver.pl 44 main - Child 2299: IO::Socket::INET=GLOB(0x1954528)
+2018/02/06 12:21:39 - [7009] webserver.pl 70 main - Child 2299: In handle connection
+2018/02/06 12:21:39 - [7009] webserver.pl 72 main - Child 2299: IO::Socket::INET=GLOB(0x1954528)
+2018/02/06 12:21:39 - [7009] webserver.pl 51 main - Child 2299: Closing connection
+2018/02/06 12:21:40 - [7267] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:21:40 - [7268] webserver.pl 60 main - Parent: Closing parent copy
+2018/02/06 12:21:40 - [7268] webserver.pl 36 main - Child 2300: Closing child copy
+2018/02/06 12:21:40 - [7269] webserver.pl 43 main - Child 2300: invoking handle_connection
+2018/02/06 12:21:40 - [7269] webserver.pl 44 main - Child 2300: IO::Socket::INET=GLOB(0x1954588)
+2018/02/06 12:21:40 - [7269] webserver.pl 70 main - Child 2300: In handle connection
+2018/02/06 12:21:40 - [7269] webserver.pl 72 main - Child 2300: IO::Socket::INET=GLOB(0x1954588)
+2018/02/06 12:21:40 - [7269] webserver.pl 51 main - Child 2300: Closing connection
+2018/02/06 12:21:40 - [7601] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:21:40 - [7602] webserver.pl 60 main - Parent: Closing parent copy
+2018/02/06 12:21:40 - [7603] webserver.pl 36 main - Child 2302: Closing child copy
+2018/02/06 12:21:40 - [7603] webserver.pl 43 main - Child 2302: invoking handle_connection
+2018/02/06 12:21:40 - [7603] webserver.pl 44 main - Child 2302: IO::Socket::INET=GLOB(0x1954690)
+2018/02/06 12:21:40 - [7603] webserver.pl 70 main - Child 2302: In handle connection
+2018/02/06 12:21:40 - [7603] webserver.pl 72 main - Child 2302: IO::Socket::INET=GLOB(0x1954690)
+2018/02/06 12:21:40 - [7603] webserver.pl 51 main - Child 2302: Closing connection
+2018/02/06 12:21:40 - [7668] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:21:40 - [7669] webserver.pl 60 main - Parent: Closing parent copy
+2018/02/06 12:21:40 - [7669] webserver.pl 36 main - Child 2304: Closing child copy
+2018/02/06 12:21:40 - [7669] webserver.pl 43 main - Child 2304: invoking handle_connection
+2018/02/06 12:21:40 - [7669] webserver.pl 44 main - Child 2304: IO::Socket::INET=GLOB(0x1954390)
+2018/02/06 12:21:40 - [7669] webserver.pl 70 main - Child 2304: In handle connection
+2018/02/06 12:21:40 - [7669] webserver.pl 72 main - Child 2304: IO::Socket::INET=GLOB(0x1954390)
+2018/02/06 12:21:40 - [7669] webserver.pl 51 main - Child 2304: Closing connection
+2018/02/06 12:30:19 - [0] webserver.pl 22 main - Listening on port 8886
+2018/02/06 12:30:24 - [4333] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:30:24 - [4334] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 12:30:24 - [4334] webserver.pl 36 main - Child 2414: Closing child copy
+2018/02/06 12:30:24 - [4334] webserver.pl 43 main - Child 2414: invoking handle_connection
+2018/02/06 12:30:24 - [4334] webserver.pl 69 main - Child 2414: In handle connection
+2018/02/06 12:30:24 - [4334] webserver.pl 46 main - Child 0: Problem while handling request. Error: try() encountered an unexpected argument (1) - perhaps a missing semi-colon before or at webserver.pl line 77.
+2018/02/06 12:30:24 - [4335] webserver.pl 50 main - Child 2414: Closing connection
+2018/02/06 12:30:24 - [4399] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:30:24 - [4400] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 12:30:24 - [4400] webserver.pl 36 main - Child 2421: Closing child copy
+2018/02/06 12:30:24 - [4401] webserver.pl 43 main - Child 2421: invoking handle_connection
+2018/02/06 12:30:24 - [4401] webserver.pl 69 main - Child 2421: In handle connection
+2018/02/06 12:30:24 - [4401] webserver.pl 46 main - Child 0: Problem while handling request. Error: try() encountered an unexpected argument (1) - perhaps a missing semi-colon before or at webserver.pl line 77.
+2018/02/06 12:30:24 - [4401] webserver.pl 50 main - Child 2421: Closing connection
+2018/02/06 12:30:24 - [4594] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:30:24 - [4595] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 12:30:24 - [4596] webserver.pl 36 main - Child 2424: Closing child copy
+2018/02/06 12:30:24 - [4596] webserver.pl 43 main - Child 2424: invoking handle_connection
+2018/02/06 12:30:24 - [4596] webserver.pl 69 main - Child 2424: In handle connection
+2018/02/06 12:30:24 - [4597] webserver.pl 46 main - Child 0: Problem while handling request. Error: try() encountered an unexpected argument (1) - perhaps a missing semi-colon before or at webserver.pl line 77.
+2018/02/06 12:30:24 - [4597] webserver.pl 50 main - Child 2424: Closing connection
+2018/02/06 12:30:25 - [5745] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:30:25 - [5746] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 12:30:25 - [5746] webserver.pl 36 main - Child 2425: Closing child copy
+2018/02/06 12:30:25 - [5747] webserver.pl 43 main - Child 2425: invoking handle_connection
+2018/02/06 12:30:25 - [5747] webserver.pl 69 main - Child 2425: In handle connection
+2018/02/06 12:30:25 - [5747] webserver.pl 46 main - Child 0: Problem while handling request. Error: try() encountered an unexpected argument (1) - perhaps a missing semi-colon before or at webserver.pl line 77.
+2018/02/06 12:30:25 - [5748] webserver.pl 50 main - Child 2425: Closing connection
+2018/02/06 12:30:25 - [5833] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:30:25 - [5834] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 12:30:25 - [5834] webserver.pl 36 main - Child 2426: Closing child copy
+2018/02/06 12:30:25 - [5835] webserver.pl 43 main - Child 2426: invoking handle_connection
+2018/02/06 12:30:25 - [5835] webserver.pl 69 main - Child 2426: In handle connection
+2018/02/06 12:30:25 - [5835] webserver.pl 46 main - Child 0: Problem while handling request. Error: try() encountered an unexpected argument (1) - perhaps a missing semi-colon before or at webserver.pl line 77.
+2018/02/06 12:30:25 - [5836] webserver.pl 50 main - Child 2426: Closing connection
+2018/02/06 12:30:26 - [6656] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:30:26 - [6658] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 12:30:26 - [6658] webserver.pl 36 main - Child 2429: Closing child copy
+2018/02/06 12:30:26 - [6658] webserver.pl 43 main - Child 2429: invoking handle_connection
+2018/02/06 12:30:26 - [6658] webserver.pl 69 main - Child 2429: In handle connection
+2018/02/06 12:30:26 - [6659] webserver.pl 46 main - Child 0: Problem while handling request. Error: try() encountered an unexpected argument (1) - perhaps a missing semi-colon before or at webserver.pl line 77.
+2018/02/06 12:30:26 - [6659] webserver.pl 50 main - Child 2429: Closing connection
+2018/02/06 12:30:26 - [6823] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:30:26 - [6824] webserver.pl 36 main - Child 2430: Closing child copy
+2018/02/06 12:30:26 - [6824] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 12:30:26 - [6824] webserver.pl 43 main - Child 2430: invoking handle_connection
+2018/02/06 12:30:26 - [6824] webserver.pl 69 main - Child 2430: In handle connection
+2018/02/06 12:30:26 - [6825] webserver.pl 46 main - Child 0: Problem while handling request. Error: try() encountered an unexpected argument (1) - perhaps a missing semi-colon before or at webserver.pl line 77.
+2018/02/06 12:30:26 - [6825] webserver.pl 50 main - Child 2430: Closing connection
+2018/02/06 12:30:26 - [7015] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:30:26 - [7016] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 12:30:26 - [7017] webserver.pl 36 main - Child 2431: Closing child copy
+2018/02/06 12:30:26 - [7017] webserver.pl 43 main - Child 2431: invoking handle_connection
+2018/02/06 12:30:26 - [7017] webserver.pl 69 main - Child 2431: In handle connection
+2018/02/06 12:30:26 - [7018] webserver.pl 46 main - Child 0: Problem while handling request. Error: try() encountered an unexpected argument (1) - perhaps a missing semi-colon before or at webserver.pl line 77.
+2018/02/06 12:30:26 - [7019] webserver.pl 50 main - Child 2431: Closing connection
+2018/02/06 12:30:26 - [7115] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:30:26 - [7117] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 12:30:26 - [7117] webserver.pl 36 main - Child 2432: Closing child copy
+2018/02/06 12:30:26 - [7117] webserver.pl 43 main - Child 2432: invoking handle_connection
+2018/02/06 12:30:26 - [7118] webserver.pl 69 main - Child 2432: In handle connection
+2018/02/06 12:30:26 - [7118] webserver.pl 46 main - Child 0: Problem while handling request. Error: try() encountered an unexpected argument (1) - perhaps a missing semi-colon before or at webserver.pl line 77.
+2018/02/06 12:30:26 - [7118] webserver.pl 50 main - Child 2432: Closing connection
+2018/02/06 12:30:51 - [0] webserver.pl 22 main - Listening on port 8886
+2018/02/06 12:30:52 - [1644] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:30:52 - [1645] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 12:30:52 - [1645] webserver.pl 36 main - Child 2437: Closing child copy
+2018/02/06 12:30:52 - [1645] webserver.pl 43 main - Child 2437: invoking handle_connection
+2018/02/06 12:30:52 - [1645] webserver.pl 69 main - Child 2437: In handle connection
+2018/02/06 12:30:52 - [1645] webserver.pl 46 main - Child 0: Problem while handling request. Error: Can't use string ("IO::Socket::INET=GLOB(0x29cf4a0)") as a symbol ref while "strict refs" in use at webserver.pl line 78.
+2018/02/06 12:30:52 - [1646] webserver.pl 50 main - Child 2437: Closing connection
+2018/02/06 12:30:53 - [1768] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:30:53 - [1769] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 12:30:53 - [1770] webserver.pl 36 main - Child 2438: Closing child copy
+2018/02/06 12:30:53 - [1770] webserver.pl 43 main - Child 2438: invoking handle_connection
+2018/02/06 12:30:53 - [1770] webserver.pl 69 main - Child 2438: In handle connection
+2018/02/06 12:30:53 - [1770] webserver.pl 46 main - Child 0: Problem while handling request. Error: Can't use string ("IO::Socket::INET=GLOB(0x2aae0a8)") as a symbol ref while "strict refs" in use at webserver.pl line 78.
+2018/02/06 12:30:53 - [1770] webserver.pl 50 main - Child 2438: Closing connection
+2018/02/06 12:30:53 - [2660] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:30:53 - [2661] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 12:30:53 - [2661] webserver.pl 36 main - Child 2439: Closing child copy
+2018/02/06 12:30:53 - [2662] webserver.pl 43 main - Child 2439: invoking handle_connection
+2018/02/06 12:30:53 - [2662] webserver.pl 69 main - Child 2439: In handle connection
+2018/02/06 12:30:53 - [2662] webserver.pl 46 main - Child 0: Problem while handling request. Error: Can't use string ("IO::Socket::INET=GLOB(0x2aae2b8)") as a symbol ref while "strict refs" in use at webserver.pl line 78.
+2018/02/06 12:30:53 - [2662] webserver.pl 50 main - Child 2439: Closing connection
+2018/02/06 12:30:54 - [3240] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:30:54 - [3241] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 12:30:54 - [3242] webserver.pl 36 main - Child 2441: Closing child copy
+2018/02/06 12:30:54 - [3243] webserver.pl 43 main - Child 2441: invoking handle_connection
+2018/02/06 12:30:54 - [3243] webserver.pl 69 main - Child 2441: In handle connection
+2018/02/06 12:30:54 - [3243] webserver.pl 46 main - Child 0: Problem while handling request. Error: Can't use string ("IO::Socket::INET=GLOB(0x2aae138)") as a symbol ref while "strict refs" in use at webserver.pl line 78.
+2018/02/06 12:30:54 - [3243] webserver.pl 50 main - Child 2441: Closing connection
+2018/02/06 12:30:54 - [3438] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:30:54 - [3439] webserver.pl 36 main - Child 2443: Closing child copy
+2018/02/06 12:30:54 - [3439] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 12:30:54 - [3440] webserver.pl 43 main - Child 2443: invoking handle_connection
+2018/02/06 12:30:54 - [3440] webserver.pl 69 main - Child 2443: In handle connection
+2018/02/06 12:30:54 - [3440] webserver.pl 46 main - Child 0: Problem while handling request. Error: Can't use string ("IO::Socket::INET=GLOB(0x29cf4d0)") as a symbol ref while "strict refs" in use at webserver.pl line 78.
+2018/02/06 12:30:54 - [3440] webserver.pl 50 main - Child 2443: Closing connection
+2018/02/06 12:30:55 - [3736] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:30:55 - [3738] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 12:30:55 - [3742] webserver.pl 36 main - Child 2444: Closing child copy
+2018/02/06 12:30:55 - [3742] webserver.pl 43 main - Child 2444: invoking handle_connection
+2018/02/06 12:30:55 - [3742] webserver.pl 69 main - Child 2444: In handle connection
+2018/02/06 12:30:55 - [3744] webserver.pl 46 main - Child 0: Problem while handling request. Error: Can't use string ("IO::Socket::INET=GLOB(0x288d7e0)") as a symbol ref while "strict refs" in use at webserver.pl line 78.
+2018/02/06 12:30:55 - [3744] webserver.pl 50 main - Child 2444: Closing connection
+2018/02/06 12:30:55 - [4402] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:30:55 - [4403] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 12:30:55 - [4404] webserver.pl 36 main - Child 2445: Closing child copy
+2018/02/06 12:30:55 - [4404] webserver.pl 43 main - Child 2445: invoking handle_connection
+2018/02/06 12:30:55 - [4404] webserver.pl 69 main - Child 2445: In handle connection
+2018/02/06 12:30:55 - [4409] webserver.pl 46 main - Child 0: Problem while handling request. Error: Can't use string ("IO::Socket::INET=GLOB(0x2422b80)") as a symbol ref while "strict refs" in use at webserver.pl line 78.
+2018/02/06 12:30:55 - [4409] webserver.pl 50 main - Child 2445: Closing connection
+2018/02/06 12:31:00 - [9481] webserver.pl 25 main - Parent: New connection accepted
+2018/02/06 12:31:00 - [9482] webserver.pl 59 main - Parent: Closing parent copy
+2018/02/06 12:31:00 - [9483] webserver.pl 36 main - Child 2447: Closing child copy
+2018/02/06 12:31:00 - [9483] webserver.pl 43 main - Child 2447: invoking handle_connection
+2018/02/06 12:31:00 - [9483] webserver.pl 69 main - Child 2447: In handle connection
+2018/02/06 12:31:00 - [9483] webserver.pl 46 main - Child 0: Problem while handling request. Error: Can't use string ("IO::Socket::INET=GLOB(0x2aae2b8)") as a symbol ref while "strict refs" in use at webserver.pl line 78.
+2018/02/06 12:31:00 - [9484] webserver.pl 50 main - Child 2447: Closing connection
+2018/02/06 12:52:38 - [0] webserver.pl 23 main - Listening on port 8886
+2018/02/06 12:53:59 - [1] webserver.pl 23 main - Listening on port 8886
+2018/02/06 12:58:44 - [0] webserver.pl 24 main - Listening on port 8886
+2018/02/06 13:02:25 - [0] webserver.pl 25 main - Listening on port 8886
+2018/02/06 13:04:14 - [0] webserver.pl 25 main - Listening on port 8886
+2018/02/06 13:04:22 - [8080] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:04:22 - [8082] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:04:22 - [8083] webserver.pl 39 main - Child 3274: Closing child copy
+2018/02/06 13:04:22 - [8083] webserver.pl 46 main - Child 3274: invoking handle_connection
+2018/02/06 13:04:22 - [8083] webserver.pl 72 main - Child 3274: In handle connection
+2018/02/06 13:05:21 - [0] webserver.pl 25 main - Listening on port 8886
+2018/02/06 13:05:23 - [1541] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:05:23 - [1542] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:05:23 - [1544] webserver.pl 39 main - Child 3288: Closing child copy
+2018/02/06 13:05:23 - [1544] webserver.pl 46 main - Child 3288: invoking handle_connection
+2018/02/06 13:05:23 - [1544] webserver.pl 72 main - Child 3288: In handle connection
+2018/02/06 13:08:01 - [0] webserver.pl 25 main - Listening on port 8886
+2018/02/06 13:08:03 - [2405] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:08:03 - [2406] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:08:03 - [2407] webserver.pl 39 main - Child 3317: Closing child copy
+2018/02/06 13:08:03 - [2407] webserver.pl 46 main - Child 3317: invoking handle_connection
+2018/02/06 13:08:03 - [2407] webserver.pl 72 main - Child 3317: In handle connection
+2018/02/06 13:08:03 - [2407] webserver.pl 87 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:08:13 - [12412] webserver.pl 82 main - Client timed out
+2018/02/06 13:08:13 - [12412] webserver.pl 53 main - Child 3317: Closing connection
+2018/02/06 13:08:13 - [12519] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:08:13 - [12520] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:08:13 - [12521] webserver.pl 39 main - Child 3321: Closing child copy
+2018/02/06 13:08:13 - [12521] webserver.pl 46 main - Child 3321: invoking handle_connection
+2018/02/06 13:08:13 - [12521] webserver.pl 72 main - Child 3321: In handle connection
+2018/02/06 13:08:13 - [12522] webserver.pl 87 main - Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:08:23 - [22532] webserver.pl 82 main - Client timed out
+2018/02/06 13:08:23 - [22533] webserver.pl 53 main - Child 3321: Closing connection
+2018/02/06 13:11:10 - [189477] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:11:10 - [189479] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:11:10 - [189479] webserver.pl 39 main - Child 3531: Closing child copy
+2018/02/06 13:11:10 - [189480] webserver.pl 46 main - Child 3531: invoking handle_connection
+2018/02/06 13:11:10 - [189480] webserver.pl 72 main - Child 3531: In handle connection
+2018/02/06 13:11:10 - [189480] webserver.pl 87 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:11:11 - [189896] webserver.pl 87 main - Data read: 
+2018/02/06 13:11:11 - [189896] webserver.pl 89 main - No more data received
+2018/02/06 13:11:11 - [189896] webserver.pl 53 main - Child 3531: Closing connection
+2018/02/06 13:11:11 - [189910] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:11:11 - [189911] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:11:11 - [189911] webserver.pl 39 main - Child 3535: Closing child copy
+2018/02/06 13:11:11 - [189912] webserver.pl 46 main - Child 3535: invoking handle_connection
+2018/02/06 13:11:11 - [189912] webserver.pl 72 main - Child 3535: In handle connection
+2018/02/06 13:11:11 - [189913] webserver.pl 87 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:11:14 - [193327] webserver.pl 87 main - Data read: 
+2018/02/06 13:11:14 - [193327] webserver.pl 89 main - No more data received
+2018/02/06 13:11:14 - [193328] webserver.pl 53 main - Child 3535: Closing connection
+2018/02/06 13:11:14 - [193336] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:11:14 - [193337] webserver.pl 39 main - Child 3536: Closing child copy
+2018/02/06 13:11:14 - [193337] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:11:14 - [193337] webserver.pl 46 main - Child 3536: invoking handle_connection
+2018/02/06 13:11:14 - [193338] webserver.pl 72 main - Child 3536: In handle connection
+2018/02/06 13:11:14 - [193339] webserver.pl 87 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:11:24 - [203340] webserver.pl 82 main - Client timed out
+2018/02/06 13:11:24 - [203341] webserver.pl 53 main - Child 3536: Closing connection
+2018/02/06 13:11:24 - [203447] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:11:24 - [203449] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:11:24 - [203449] webserver.pl 39 main - Child 3541: Closing child copy
+2018/02/06 13:11:24 - [203450] webserver.pl 46 main - Child 3541: invoking handle_connection
+2018/02/06 13:11:24 - [203450] webserver.pl 72 main - Child 3541: In handle connection
+2018/02/06 13:11:24 - [203450] webserver.pl 87 main - Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:11:34 - [213458] webserver.pl 82 main - Client timed out
+2018/02/06 13:11:34 - [213459] webserver.pl 53 main - Child 3541: Closing connection
+2018/02/06 13:12:16 - [0] webserver.pl 25 main - Listening on port 8886
+2018/02/06 13:12:17 - [1696] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:12:17 - [1697] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:12:17 - [1698] webserver.pl 39 main - Child 3554: Closing child copy
+2018/02/06 13:12:17 - [1698] webserver.pl 46 main - Child 3554: invoking handle_connection
+2018/02/06 13:12:17 - [1698] webserver.pl 72 main - Child 3554: In handle connection
+2018/02/06 13:12:17 - [1699] webserver.pl 87 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:12:27 - [11709] webserver.pl 82 main - Client timed out
+2018/02/06 13:12:27 - [11710] webserver.pl 53 main - Child 3554: Closing connection
+2018/02/06 13:12:27 - [11797] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:12:27 - [11798] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:12:27 - [11799] webserver.pl 39 main - Child 3560: Closing child copy
+2018/02/06 13:12:27 - [11799] webserver.pl 46 main - Child 3560: invoking handle_connection
+2018/02/06 13:12:27 - [11799] webserver.pl 72 main - Child 3560: In handle connection
+2018/02/06 13:12:27 - [11800] webserver.pl 87 main - Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:12:37 - [21806] webserver.pl 82 main - Client timed out
+2018/02/06 13:12:37 - [21807] webserver.pl 53 main - Child 3560: Closing connection
+2018/02/06 13:14:14 - [0] webserver.pl 25 main - Listening on port 8886
+2018/02/06 13:14:16 - [2662] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:14:16 - [2663] webserver.pl 39 main - Child 3608: Closing child copy
+2018/02/06 13:14:16 - [2663] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:14:16 - [2663] webserver.pl 46 main - Child 3608: invoking handle_connection
+2018/02/06 13:14:16 - [2663] webserver.pl 72 main - Child 3608: In handle connection
+2018/02/06 13:14:16 - [2664] webserver.pl 86 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:14:16 - [2672] webserver.pl 86 main - Data read: 
+2018/02/06 13:14:16 - [2672] webserver.pl 88 main - No more data received
+2018/02/06 13:14:16 - [2672] webserver.pl 53 main - Child 3608: Closing connection
+2018/02/06 13:14:16 - [2687] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:14:16 - [2688] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:14:16 - [2688] webserver.pl 39 main - Child 3612: Closing child copy
+2018/02/06 13:14:16 - [2688] webserver.pl 46 main - Child 3612: invoking handle_connection
+2018/02/06 13:14:16 - [2688] webserver.pl 72 main - Child 3612: In handle connection
+2018/02/06 13:14:16 - [2689] webserver.pl 86 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:14:26 - [12691] webserver.pl 82 main - Client timed out
+2018/02/06 13:16:13 - [0] webserver.pl 25 main - Listening on port 8886
+2018/02/06 13:16:15 - [2179] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:16:15 - [2180] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:16:15 - [2181] webserver.pl 39 main - Child 3632: Closing child copy
+2018/02/06 13:16:15 - [2182] webserver.pl 46 main - Child 3632: invoking handle_connection
+2018/02/06 13:16:15 - [2182] webserver.pl 72 main - Child 3632: In handle connection
+2018/02/06 13:16:15 - [2182] webserver.pl 87 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:16:25 - [12193] webserver.pl 82 main - Client timed out
+2018/02/06 13:16:25 - [12193] webserver.pl 53 main - Child 3632: Closing connection
+2018/02/06 13:16:25 - [12299] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:16:25 - [12300] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:16:25 - [12300] webserver.pl 39 main - Child 3637: Closing child copy
+2018/02/06 13:16:25 - [12300] webserver.pl 46 main - Child 3637: invoking handle_connection
+2018/02/06 13:16:25 - [12300] webserver.pl 72 main - Child 3637: In handle connection
+2018/02/06 13:16:25 - [12300] webserver.pl 87 main - Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:16:35 - [22311] webserver.pl 82 main - Client timed out
+2018/02/06 13:16:35 - [22311] webserver.pl 53 main - Child 3637: Closing connection
+2018/02/06 13:21:30 - [0] webserver.pl 25 main - Listening on port 8886
+2018/02/06 13:26:47 - [0] webserver.pl 25 main - Listening on port 8886
+2018/02/06 13:27:01 - [0] webserver.pl 25 main - Listening on port 8886
+2018/02/06 13:27:04 - [2374] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:27:04 - [2376] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:27:04 - [2376] webserver.pl 39 main - Child 3839: Closing child copy
+2018/02/06 13:27:04 - [2376] webserver.pl 46 main - Child 3839: invoking handle_connection
+2018/02/06 13:27:04 - [2377] webserver.pl 72 main - Child 3839: In handle connection
+2018/02/06 13:27:04 - [2377] webserver.pl 88 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:27:04 - [2506] webserver.pl 88 main - Data read: 
+2018/02/06 13:27:04 - [2506] webserver.pl 90 main - Client didn't send any data
+2018/02/06 13:27:04 - [2507] webserver.pl 53 main - Child 3839: Closing connection
+2018/02/06 13:27:04 - [2518] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:27:04 - [2520] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:27:04 - [2521] webserver.pl 39 main - Child 3843: Closing child copy
+2018/02/06 13:27:04 - [2521] webserver.pl 46 main - Child 3843: invoking handle_connection
+2018/02/06 13:27:04 - [2521] webserver.pl 72 main - Child 3843: In handle connection
+2018/02/06 13:27:04 - [2521] webserver.pl 88 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:27:14 - [12528] webserver.pl 83 main - Client timed out
+2018/02/06 13:27:14 - [12528] webserver.pl 53 main - Child 3843: Closing connection
+2018/02/06 13:27:14 - [12655] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:27:14 - [12656] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:27:14 - [12657] webserver.pl 39 main - Child 3845: Closing child copy
+2018/02/06 13:27:14 - [12657] webserver.pl 46 main - Child 3845: invoking handle_connection
+2018/02/06 13:27:14 - [12657] webserver.pl 72 main - Child 3845: In handle connection
+2018/02/06 13:27:14 - [12659] webserver.pl 88 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:27:14 - [12660] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:27:14 - [12661] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:27:14 - [12661] webserver.pl 39 main - Child 3846: Closing child copy
+2018/02/06 13:27:14 - [12661] webserver.pl 46 main - Child 3846: invoking handle_connection
+2018/02/06 13:27:14 - [12661] webserver.pl 72 main - Child 3846: In handle connection
+2018/02/06 13:27:14 - [12662] webserver.pl 88 main - Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:27:24 - [22668] webserver.pl 83 main - Client timed out
+2018/02/06 13:27:24 - [22669] webserver.pl 53 main - Child 3845: Closing connection
+2018/02/06 13:27:24 - [22670] webserver.pl 83 main - Client timed out
+2018/02/06 13:27:24 - [22670] webserver.pl 53 main - Child 3846: Closing connection
+2018/02/06 13:27:24 - [22746] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:27:24 - [22748] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:27:24 - [22748] webserver.pl 39 main - Child 3847: Closing child copy
+2018/02/06 13:27:24 - [22749] webserver.pl 46 main - Child 3847: invoking handle_connection
+2018/02/06 13:27:24 - [22749] webserver.pl 72 main - Child 3847: In handle connection
+2018/02/06 13:27:24 - [22749] webserver.pl 88 main - Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:27:34 - [32757] webserver.pl 83 main - Client timed out
+2018/02/06 13:27:34 - [32757] webserver.pl 53 main - Child 3847: Closing connection
+2018/02/06 13:28:44 - [0] webserver.pl 25 main - Listening on port 8886
+2018/02/06 13:29:01 - [0] webserver.pl 25 main - Listening on port 8886
+2018/02/06 13:29:03 - [1952] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:29:03 - [1953] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:29:03 - [1954] webserver.pl 39 main - Child 3864: Closing child copy
+2018/02/06 13:29:03 - [1954] webserver.pl 46 main - Child 3864: invoking handle_connection
+2018/02/06 13:29:03 - [1954] webserver.pl 72 main - Child 3864: In handle connection
+2018/02/06 13:29:03 - [1955] webserver.pl 88 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:29:03 - [1955] webserver.pl 100 main - GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:29:13 - [11960] webserver.pl 83 main - Client timed out
+2018/02/06 13:29:13 - [11960] webserver.pl 53 main - Child 3864: Closing connection
+2018/02/06 13:29:13 - [12051] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:29:13 - [12052] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:29:13 - [12053] webserver.pl 39 main - Child 3868: Closing child copy
+2018/02/06 13:29:13 - [12053] webserver.pl 46 main - Child 3868: invoking handle_connection
+2018/02/06 13:29:13 - [12053] webserver.pl 72 main - Child 3868: In handle connection
+2018/02/06 13:29:13 - [12054] webserver.pl 88 main - Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:29:13 - [12054] webserver.pl 100 main - GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:29:23 - [22057] webserver.pl 83 main - Client timed out
+2018/02/06 13:29:23 - [22057] webserver.pl 53 main - Child 3868: Closing connection
+2018/02/06 13:30:08 - [0] webserver.pl 25 main - Listening on port 8886
+2018/02/06 13:30:10 - [1739] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:30:10 - [1740] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:30:10 - [1741] webserver.pl 39 main - Child 3880: Closing child copy
+2018/02/06 13:30:10 - [1741] webserver.pl 46 main - Child 3880: invoking handle_connection
+2018/02/06 13:30:10 - [1741] webserver.pl 72 main - Child 3880: In handle connection
+2018/02/06 13:30:10 - [1742] webserver.pl 88 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:30:10 - [1742] webserver.pl 100 main - Temp: 
+2018/02/06 13:30:20 - [11752] webserver.pl 83 main - Client timed out
+2018/02/06 13:30:20 - [11753] webserver.pl 53 main - Child 3880: Closing connection
+2018/02/06 13:30:20 - [11814] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:30:20 - [11815] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:30:20 - [11816] webserver.pl 39 main - Child 3883: Closing child copy
+2018/02/06 13:30:20 - [11816] webserver.pl 46 main - Child 3883: invoking handle_connection
+2018/02/06 13:30:20 - [11816] webserver.pl 72 main - Child 3883: In handle connection
+2018/02/06 13:30:20 - [11817] webserver.pl 88 main - Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:30:20 - [11817] webserver.pl 100 main - Temp: 
+2018/02/06 13:30:30 - [21826] webserver.pl 83 main - Client timed out
+2018/02/06 13:30:30 - [21826] webserver.pl 53 main - Child 3883: Closing connection
+2018/02/06 13:32:09 - [0] webserver.pl 25 main - Listening on port 8886
+2018/02/06 13:32:12 - [2832] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:32:12 - [2833] webserver.pl 39 main - Child 3951: Closing child copy
+2018/02/06 13:32:12 - [2833] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:32:12 - [2833] webserver.pl 46 main - Child 3951: invoking handle_connection
+2018/02/06 13:32:12 - [2833] webserver.pl 72 main - Child 3951: In handle connection
+2018/02/06 13:32:12 - [2834] webserver.pl 88 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:32:12 - [2834] webserver.pl 100 main - Temp: 
+2018/02/06 13:32:12 - [2842] webserver.pl 88 main - Data read: 
+2018/02/06 13:32:12 - [2842] webserver.pl 90 main - Client didn't send any data
+2018/02/06 13:32:12 - [2842] webserver.pl 53 main - Child 3951: Closing connection
+2018/02/06 13:32:12 - [2868] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:32:12 - [2869] webserver.pl 39 main - Child 3953: Closing child copy
+2018/02/06 13:32:12 - [2869] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:32:12 - [2869] webserver.pl 46 main - Child 3953: invoking handle_connection
+2018/02/06 13:32:12 - [2869] webserver.pl 72 main - Child 3953: In handle connection
+2018/02/06 13:32:12 - [2870] webserver.pl 88 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:32:12 - [2870] webserver.pl 100 main - Temp: 
+2018/02/06 13:32:13 - [4169] webserver.pl 88 main - Data read: 
+2018/02/06 13:32:13 - [4169] webserver.pl 90 main - Client didn't send any data
+2018/02/06 13:32:13 - [4170] webserver.pl 53 main - Child 3953: Closing connection
+2018/02/06 13:32:13 - [4181] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:32:13 - [4183] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:32:13 - [4183] webserver.pl 39 main - Child 3954: Closing child copy
+2018/02/06 13:32:13 - [4183] webserver.pl 46 main - Child 3954: invoking handle_connection
+2018/02/06 13:32:13 - [4183] webserver.pl 72 main - Child 3954: In handle connection
+2018/02/06 13:32:13 - [4183] webserver.pl 88 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:32:13 - [4184] webserver.pl 100 main - Temp: 
+2018/02/06 13:32:23 - [14192] webserver.pl 83 main - Client timed out
+2018/02/06 13:32:23 - [14192] webserver.pl 53 main - Child 3954: Closing connection
+2018/02/06 13:32:23 - [14361] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:32:23 - [14362] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:32:23 - [14363] webserver.pl 39 main - Child 3957: Closing child copy
+2018/02/06 13:32:23 - [14364] webserver.pl 46 main - Child 3957: invoking handle_connection
+2018/02/06 13:32:23 - [14364] webserver.pl 72 main - Child 3957: In handle connection
+2018/02/06 13:32:23 - [14364] webserver.pl 88 main - Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:32:23 - [14364] webserver.pl 100 main - Temp: 
+2018/02/06 13:33:31 - [0] webserver.pl 25 main - Listening on port 8886
+2018/02/06 13:33:34 - [2845] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:33:34 - [2846] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:33:34 - [2846] webserver.pl 39 main - Child 3990: Closing child copy
+2018/02/06 13:33:34 - [2846] webserver.pl 46 main - Child 3990: invoking handle_connection
+2018/02/06 13:33:34 - [2846] webserver.pl 72 main - Child 3990: In handle connection
+2018/02/06 13:33:34 - [2847] webserver.pl 88 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:33:34 - [2847] webserver.pl 100 main - Temp: 1
+2018/02/06 13:33:44 - [12854] webserver.pl 83 main - Client timed out
+2018/02/06 13:33:44 - [12854] webserver.pl 53 main - Child 3990: Closing connection
+2018/02/06 13:33:44 - [12950] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:33:44 - [12951] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:33:44 - [12952] webserver.pl 39 main - Child 3994: Closing child copy
+2018/02/06 13:33:44 - [12952] webserver.pl 46 main - Child 3994: invoking handle_connection
+2018/02/06 13:33:44 - [12952] webserver.pl 72 main - Child 3994: In handle connection
+2018/02/06 13:33:44 - [12953] webserver.pl 88 main - Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:33:44 - [12953] webserver.pl 100 main - Temp: 1
+2018/02/06 13:33:54 - [22963] webserver.pl 83 main - Client timed out
+2018/02/06 13:33:54 - [22963] webserver.pl 53 main - Child 3994: Closing connection
+2018/02/06 13:34:24 - [0] webserver.pl 25 main - Listening on port 8886
+2018/02/06 13:34:27 - [2992] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:34:27 - [2993] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:34:27 - [2993] webserver.pl 39 main - Child 4021: Closing child copy
+2018/02/06 13:34:27 - [2994] webserver.pl 46 main - Child 4021: invoking handle_connection
+2018/02/06 13:34:27 - [2994] webserver.pl 72 main - Child 4021: In handle connection
+2018/02/06 13:34:27 - [2994] webserver.pl 88 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:34:27 - [2994] webserver.pl 100 main - Temp: 1
+2018/02/06 13:34:37 - [13004] webserver.pl 83 main - Client timed out
+2018/02/06 13:34:37 - [13004] webserver.pl 53 main - Child 4021: Closing connection
+2018/02/06 13:34:37 - [13081] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:34:37 - [13082] webserver.pl 39 main - Child 4027: Closing child copy
+2018/02/06 13:34:37 - [13082] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:34:37 - [13083] webserver.pl 46 main - Child 4027: invoking handle_connection
+2018/02/06 13:34:37 - [13083] webserver.pl 72 main - Child 4027: In handle connection
+2018/02/06 13:34:37 - [13083] webserver.pl 88 main - Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:34:37 - [13084] webserver.pl 100 main - Temp: 1
+2018/02/06 13:34:47 - [23094] webserver.pl 83 main - Client timed out
+2018/02/06 13:34:47 - [23094] webserver.pl 53 main - Child 4027: Closing connection
+2018/02/06 13:35:19 - [0] webserver.pl 25 main - Listening on port 8886
+2018/02/06 13:35:21 - [1451] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:35:21 - [1452] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:35:21 - [1453] webserver.pl 39 main - Child 4032: Closing child copy
+2018/02/06 13:35:21 - [1453] webserver.pl 46 main - Child 4032: invoking handle_connection
+2018/02/06 13:35:21 - [1453] webserver.pl 72 main - Child 4032: In handle connection
+2018/02/06 13:35:21 - [1453] webserver.pl 88 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:35:21 - [1453] webserver.pl 99 main - Req headers: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:35:21 - [1453] webserver.pl 101 main - Temp: 1
+2018/02/06 13:35:31 - [11461] webserver.pl 83 main - Client timed out
+2018/02/06 13:35:31 - [11461] webserver.pl 53 main - Child 4032: Closing connection
+2018/02/06 13:35:31 - [11533] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:35:31 - [11534] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:35:31 - [11534] webserver.pl 39 main - Child 4042: Closing child copy
+2018/02/06 13:35:31 - [11534] webserver.pl 46 main - Child 4042: invoking handle_connection
+2018/02/06 13:35:31 - [11534] webserver.pl 72 main - Child 4042: In handle connection
+2018/02/06 13:35:31 - [11535] webserver.pl 88 main - Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:35:31 - [11535] webserver.pl 99 main - Req headers: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:35:31 - [11535] webserver.pl 101 main - Temp: 1
+2018/02/06 13:35:41 - [21545] webserver.pl 83 main - Client timed out
+2018/02/06 13:35:41 - [21546] webserver.pl 53 main - Child 4042: Closing connection
+2018/02/06 13:36:32 - [0] webserver.pl 25 main - Listening on port 8886
+2018/02/06 13:36:35 - [3178] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:36:35 - [3180] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:36:35 - [3180] webserver.pl 39 main - Child 4082: Closing child copy
+2018/02/06 13:36:35 - [3181] webserver.pl 46 main - Child 4082: invoking handle_connection
+2018/02/06 13:36:35 - [3181] webserver.pl 72 main - Child 4082: In handle connection
+2018/02/06 13:36:35 - [3182] webserver.pl 88 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:36:35 - [3182] webserver.pl 99 main - Req headers: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:36:35 - [3182] webserver.pl 101 main - Temp: 2
+2018/02/06 13:36:45 - [13190] webserver.pl 83 main - Client timed out
+2018/02/06 13:36:45 - [13191] webserver.pl 53 main - Child 4082: Closing connection
+2018/02/06 13:36:45 - [13282] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:36:45 - [13283] webserver.pl 39 main - Child 4088: Closing child copy
+2018/02/06 13:36:45 - [13283] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:36:45 - [13284] webserver.pl 46 main - Child 4088: invoking handle_connection
+2018/02/06 13:36:45 - [13284] webserver.pl 72 main - Child 4088: In handle connection
+2018/02/06 13:36:45 - [13284] webserver.pl 88 main - Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:36:45 - [13284] webserver.pl 99 main - Req headers: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:36:45 - [13284] webserver.pl 101 main - Temp: 2
+2018/02/06 13:36:52 - [0] webserver.pl 25 main - Listening on port 8886
+2018/02/06 13:36:54 - [1644] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:36:54 - [1645] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:36:54 - [1646] webserver.pl 39 main - Child 4094: Closing child copy
+2018/02/06 13:36:54 - [1646] webserver.pl 46 main - Child 4094: invoking handle_connection
+2018/02/06 13:36:54 - [1646] webserver.pl 72 main - Child 4094: In handle connection
+2018/02/06 13:36:54 - [1647] webserver.pl 88 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:36:54 - [1647] webserver.pl 99 main - Req headers: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:36:54 - [1647] webserver.pl 101 main - Temp: GET / HTTP/1.1
+2018/02/06 13:37:04 - [11657] webserver.pl 83 main - Client timed out
+2018/02/06 13:37:04 - [11658] webserver.pl 53 main - Child 4094: Closing connection
+2018/02/06 13:37:04 - [11749] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:37:04 - [11750] webserver.pl 39 main - Child 4095: Closing child copy
+2018/02/06 13:37:04 - [11750] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:37:04 - [11750] webserver.pl 46 main - Child 4095: invoking handle_connection
+2018/02/06 13:37:04 - [11750] webserver.pl 72 main - Child 4095: In handle connection
+2018/02/06 13:37:04 - [11751] webserver.pl 88 main - Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:37:04 - [11751] webserver.pl 99 main - Req headers: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:37:04 - [11751] webserver.pl 101 main - Temp: GET /favicon.ico HTTP/1.1
+2018/02/06 13:37:14 - [21760] webserver.pl 83 main - Client timed out
+2018/02/06 13:37:14 - [21760] webserver.pl 53 main - Child 4095: Closing connection
+2018/02/06 13:40:45 - [0] webserver.pl 25 main - Listening on port 8886
+2018/02/06 13:40:53 - [0] webserver.pl 25 main - Listening on port 8886
+2018/02/06 13:42:04 - [0] webserver.pl 25 main - Listening on port 8886
+2018/02/06 13:42:25 - [0] webserver.pl 25 main - Listening on port 8886
+2018/02/06 13:42:37 - [0] webserver.pl 25 main - Listening on port 8886
+2018/02/06 13:42:39 - [2172] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:42:39 - [2173] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:42:39 - [2174] webserver.pl 39 main - Child 4360: Closing child copy
+2018/02/06 13:42:39 - [2174] webserver.pl 46 main - Child 4360: invoking handle_connection
+2018/02/06 13:42:39 - [2174] webserver.pl 72 main - Child 4360: In handle connection
+2018/02/06 13:42:39 - [2175] webserver.pl 88 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:42:39 - [2175] webserver.pl 99 main - Req headers: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:42:39 - [2175] webserver.pl 106 main - Error while reading from client. Error: Can't use string ("2") as an ARRAY ref while "strict refs" in use at webserver.pl line 100.
+2018/02/06 13:42:39 - [2175] webserver.pl 53 main - Child 4360: Closing connection
+2018/02/06 13:42:39 - [2220] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:42:39 - [2221] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:42:39 - [2222] webserver.pl 39 main - Child 4362: Closing child copy
+2018/02/06 13:42:39 - [2222] webserver.pl 46 main - Child 4362: invoking handle_connection
+2018/02/06 13:42:39 - [2222] webserver.pl 72 main - Child 4362: In handle connection
+2018/02/06 13:42:39 - [2222] webserver.pl 88 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:42:39 - [2222] webserver.pl 99 main - Req headers: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:42:39 - [2223] webserver.pl 106 main - Error while reading from client. Error: Can't use string ("2") as an ARRAY ref while "strict refs" in use at webserver.pl line 100.
+2018/02/06 13:42:39 - [2223] webserver.pl 53 main - Child 4362: Closing connection
+2018/02/06 13:42:40 - [2427] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:42:40 - [2428] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:42:40 - [2429] webserver.pl 39 main - Child 4363: Closing child copy
+2018/02/06 13:42:40 - [2429] webserver.pl 46 main - Child 4363: invoking handle_connection
+2018/02/06 13:42:40 - [2429] webserver.pl 72 main - Child 4363: In handle connection
+2018/02/06 13:42:40 - [2429] webserver.pl 88 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:42:40 - [2430] webserver.pl 99 main - Req headers: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:42:40 - [2430] webserver.pl 106 main - Error while reading from client. Error: Can't use string ("2") as an ARRAY ref while "strict refs" in use at webserver.pl line 100.
+2018/02/06 13:42:40 - [2430] webserver.pl 53 main - Child 4363: Closing connection
+2018/02/06 13:42:40 - [2528] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:42:40 - [2529] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:42:40 - [2530] webserver.pl 39 main - Child 4364: Closing child copy
+2018/02/06 13:42:40 - [2530] webserver.pl 46 main - Child 4364: invoking handle_connection
+2018/02/06 13:42:40 - [2530] webserver.pl 72 main - Child 4364: In handle connection
+2018/02/06 13:42:40 - [2530] webserver.pl 88 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:42:40 - [2530] webserver.pl 99 main - Req headers: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:42:40 - [2530] webserver.pl 106 main - Error while reading from client. Error: Can't use string ("2") as an ARRAY ref while "strict refs" in use at webserver.pl line 100.
+2018/02/06 13:42:40 - [2531] webserver.pl 53 main - Child 4364: Closing connection
+2018/02/06 13:42:45 - [7614] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:42:45 - [7615] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:42:45 - [7615] webserver.pl 39 main - Child 4367: Closing child copy
+2018/02/06 13:42:45 - [7615] webserver.pl 46 main - Child 4367: invoking handle_connection
+2018/02/06 13:42:45 - [7616] webserver.pl 72 main - Child 4367: In handle connection
+2018/02/06 13:42:45 - [7616] webserver.pl 88 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:42:45 - [7616] webserver.pl 99 main - Req headers: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:42:45 - [7616] webserver.pl 106 main - Error while reading from client. Error: Can't use string ("2") as an ARRAY ref while "strict refs" in use at webserver.pl line 100.
+2018/02/06 13:42:45 - [7617] webserver.pl 53 main - Child 4367: Closing connection
+2018/02/06 13:43:15 - [37641] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:43:15 - [37642] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:43:15 - [37644] webserver.pl 39 main - Child 4369: Closing child copy
+2018/02/06 13:43:15 - [37644] webserver.pl 46 main - Child 4369: invoking handle_connection
+2018/02/06 13:43:15 - [37644] webserver.pl 72 main - Child 4369: In handle connection
+2018/02/06 13:43:15 - [37644] webserver.pl 88 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:43:15 - [37645] webserver.pl 99 main - Req headers: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:43:15 - [37645] webserver.pl 106 main - Error while reading from client. Error: Can't use string ("2") as an ARRAY ref while "strict refs" in use at webserver.pl line 100.
+2018/02/06 13:43:15 - [37645] webserver.pl 53 main - Child 4369: Closing connection
+2018/02/06 13:43:21 - [0] webserver.pl 25 main - Listening on port 8886
+2018/02/06 13:43:23 - [2515] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:43:23 - [2517] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:43:23 - [2518] webserver.pl 39 main - Child 4374: Closing child copy
+2018/02/06 13:43:23 - [2518] webserver.pl 46 main - Child 4374: invoking handle_connection
+2018/02/06 13:43:23 - [2518] webserver.pl 72 main - Child 4374: In handle connection
+2018/02/06 13:43:23 - [2519] webserver.pl 88 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:43:23 - [2519] webserver.pl 99 main - Req headers: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:43:23 - [2519] webserver.pl 101 main - Temp: GET / HTTP/1.1
+2018/02/06 13:43:33 - [12528] webserver.pl 83 main - Client timed out
+2018/02/06 13:43:33 - [12529] webserver.pl 53 main - Child 4374: Closing connection
+2018/02/06 13:43:33 - [12602] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:43:33 - [12603] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:43:33 - [12604] webserver.pl 39 main - Child 4380: Closing child copy
+2018/02/06 13:43:33 - [12604] webserver.pl 46 main - Child 4380: invoking handle_connection
+2018/02/06 13:43:33 - [12604] webserver.pl 72 main - Child 4380: In handle connection
+2018/02/06 13:43:33 - [12605] webserver.pl 88 main - Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:43:33 - [12605] webserver.pl 99 main - Req headers: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:43:33 - [12605] webserver.pl 101 main - Temp: GET /favicon.ico HTTP/1.1
+2018/02/06 13:43:43 - [22615] webserver.pl 83 main - Client timed out
+2018/02/06 13:43:43 - [22616] webserver.pl 53 main - Child 4380: Closing connection
+2018/02/06 13:45:51 - [0] webserver.pl 25 main - Listening on port 8886
+2018/02/06 13:46:24 - [32981] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:46:24 - [32982] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:46:24 - [32982] webserver.pl 39 main - Child 4470: Closing child copy
+2018/02/06 13:46:24 - [32983] webserver.pl 46 main - Child 4470: invoking handle_connection
+2018/02/06 13:46:24 - [32983] webserver.pl 72 main - Child 4470: In handle connection
+2018/02/06 13:46:24 - [32989] webserver.pl 88 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:46:24 - [32989] webserver.pl 99 main - Req headers: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:46:24 - [32989] webserver.pl 101 main - Temp:   3
+2018/02/06 13:46:24 - [33006] webserver.pl 88 main - Data read: 
+2018/02/06 13:46:24 - [33006] webserver.pl 90 main - Client didn't send any data
+2018/02/06 13:46:24 - [33006] webserver.pl 53 main - Child 4470: Closing connection
+2018/02/06 13:46:24 - [33030] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:46:24 - [33031] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:46:24 - [33031] webserver.pl 39 main - Child 4471: Closing child copy
+2018/02/06 13:46:24 - [33031] webserver.pl 46 main - Child 4471: invoking handle_connection
+2018/02/06 13:46:24 - [33031] webserver.pl 72 main - Child 4471: In handle connection
+2018/02/06 13:46:24 - [33032] webserver.pl 88 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:46:24 - [33032] webserver.pl 99 main - Req headers: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:46:24 - [33032] webserver.pl 101 main - Temp:   3
+2018/02/06 13:46:34 - [43041] webserver.pl 83 main - Client timed out
+2018/02/06 13:46:34 - [43041] webserver.pl 53 main - Child 4471: Closing connection
+2018/02/06 13:46:34 - [43141] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:46:34 - [43143] webserver.pl 39 main - Child 4478: Closing child copy
+2018/02/06 13:46:34 - [43143] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:46:34 - [43143] webserver.pl 46 main - Child 4478: invoking handle_connection
+2018/02/06 13:46:34 - [43143] webserver.pl 72 main - Child 4478: In handle connection
+2018/02/06 13:46:34 - [43143] webserver.pl 88 main - Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:46:34 - [43143] webserver.pl 99 main - Req headers: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:46:34 - [43144] webserver.pl 101 main - Temp:   3
+2018/02/06 13:46:34 - [43158] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:46:34 - [43160] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:46:34 - [43160] webserver.pl 39 main - Child 4479: Closing child copy
+2018/02/06 13:46:34 - [43161] webserver.pl 46 main - Child 4479: invoking handle_connection
+2018/02/06 13:46:34 - [43161] webserver.pl 72 main - Child 4479: In handle connection
+2018/02/06 13:46:34 - [43163] webserver.pl 88 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:46:34 - [43163] webserver.pl 99 main - Req headers: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:46:34 - [43163] webserver.pl 101 main - Temp:   3
+2018/02/06 13:46:45 - [0] webserver.pl 25 main - Listening on port 8886
+2018/02/06 13:46:47 - [2250] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:46:47 - [2252] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:46:47 - [2252] webserver.pl 39 main - Child 4483: Closing child copy
+2018/02/06 13:46:47 - [2252] webserver.pl 46 main - Child 4483: invoking handle_connection
+2018/02/06 13:46:47 - [2252] webserver.pl 72 main - Child 4483: In handle connection
+2018/02/06 13:46:47 - [2253] webserver.pl 88 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:46:47 - [2253] webserver.pl 99 main - Req headers: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:46:47 - [2253] webserver.pl 101 main - Temp: GET / HTTP/1.1
+2018/02/06 13:46:57 - [12262] webserver.pl 83 main - Client timed out
+2018/02/06 13:46:57 - [12262] webserver.pl 53 main - Child 4483: Closing connection
+2018/02/06 13:46:57 - [12317] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:46:57 - [12318] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:46:57 - [12318] webserver.pl 39 main - Child 4486: Closing child copy
+2018/02/06 13:46:57 - [12318] webserver.pl 46 main - Child 4486: invoking handle_connection
+2018/02/06 13:46:57 - [12318] webserver.pl 72 main - Child 4486: In handle connection
+2018/02/06 13:46:57 - [12319] webserver.pl 88 main - Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:46:57 - [12319] webserver.pl 99 main - Req headers: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:46:57 - [12319] webserver.pl 101 main - Temp: GET /favicon.ico HTTP/1.1
+2018/02/06 13:47:07 - [22321] webserver.pl 83 main - Client timed out
+2018/02/06 13:47:07 - [22322] webserver.pl 53 main - Child 4486: Closing connection
+2018/02/06 13:47:18 - [0] webserver.pl 25 main - Listening on port 8886
+2018/02/06 13:47:20 - [1434] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:47:20 - [1436] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:47:20 - [1437] webserver.pl 39 main - Child 4491: Closing child copy
+2018/02/06 13:47:20 - [1437] webserver.pl 46 main - Child 4491: invoking handle_connection
+2018/02/06 13:47:20 - [1437] webserver.pl 72 main - Child 4491: In handle connection
+2018/02/06 13:47:20 - [1437] webserver.pl 88 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:47:20 - [1442] webserver.pl 99 main - Req headers: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:47:20 - [1442] webserver.pl 101 main - Method: GET Path: / Protocol: HTTP/1.1
+2018/02/06 13:47:30 - [11450] webserver.pl 83 main - Client timed out
+2018/02/06 13:47:30 - [11450] webserver.pl 53 main - Child 4491: Closing connection
+2018/02/06 13:47:30 - [11529] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:47:30 - [11530] webserver.pl 39 main - Child 4501: Closing child copy
+2018/02/06 13:47:30 - [11530] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:47:30 - [11530] webserver.pl 46 main - Child 4501: invoking handle_connection
+2018/02/06 13:47:30 - [11531] webserver.pl 72 main - Child 4501: In handle connection
+2018/02/06 13:47:30 - [11531] webserver.pl 88 main - Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:47:30 - [11531] webserver.pl 99 main - Req headers: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:47:30 - [11531] webserver.pl 101 main - Method: GET Path: /favicon.ico Protocol: HTTP/1.1
+2018/02/06 13:47:40 - [21538] webserver.pl 83 main - Client timed out
+2018/02/06 13:47:40 - [21539] webserver.pl 53 main - Child 4501: Closing connection
+2018/02/06 13:54:46 - [0] webserver.pl 25 main - Listening on port 8886
+2018/02/06 13:54:48 - [2056] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:54:48 - [2057] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:54:48 - [2058] webserver.pl 39 main - Child 4621: Closing child copy
+2018/02/06 13:54:48 - [2058] webserver.pl 46 main - Child 4621: invoking handle_connection
+2018/02/06 13:54:48 - [2058] webserver.pl 72 main - Child 4621: In handle connection
+2018/02/06 13:54:48 - [2059] webserver.pl 89 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:54:48 - [2059] webserver.pl 100 main - Req headers: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:54:48 - [2059] webserver.pl 106 main - Method: GET, Path: /, Protocol: HTTP/1.1
+2018/02/06 13:54:48 - [2141] webserver.pl 89 main - Data read: 
+2018/02/06 13:54:48 - [2141] webserver.pl 91 main - Client didn't send any data
+2018/02/06 13:54:48 - [2141] webserver.pl 53 main - Child 4621: Closing connection
+2018/02/06 13:54:48 - [2155] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:54:48 - [2157] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:54:48 - [2157] webserver.pl 39 main - Child 4622: Closing child copy
+2018/02/06 13:54:48 - [2158] webserver.pl 46 main - Child 4622: invoking handle_connection
+2018/02/06 13:54:48 - [2158] webserver.pl 72 main - Child 4622: In handle connection
+2018/02/06 13:54:48 - [2158] webserver.pl 89 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:54:48 - [2158] webserver.pl 100 main - Req headers: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:54:48 - [2158] webserver.pl 106 main - Method: GET, Path: /, Protocol: HTTP/1.1
+2018/02/06 13:54:58 - [12162] webserver.pl 84 main - Client timed out
+2018/02/06 13:54:58 - [12163] webserver.pl 53 main - Child 4622: Closing connection
+2018/02/06 13:54:58 - [12324] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:54:58 - [12325] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:54:58 - [12326] webserver.pl 39 main - Child 4625: Closing child copy
+2018/02/06 13:54:58 - [12326] webserver.pl 46 main - Child 4625: invoking handle_connection
+2018/02/06 13:54:58 - [12326] webserver.pl 72 main - Child 4625: In handle connection
+2018/02/06 13:54:58 - [12327] webserver.pl 89 main - Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:54:58 - [12327] webserver.pl 100 main - Req headers: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:54:58 - [12327] webserver.pl 106 main - Method: GET, Path: /, Protocol: HTTP/1.1
+2018/02/06 13:54:58 - [12333] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:54:58 - [12334] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:54:58 - [12334] webserver.pl 39 main - Child 4626: Closing child copy
+2018/02/06 13:54:58 - [12335] webserver.pl 46 main - Child 4626: invoking handle_connection
+2018/02/06 13:54:58 - [12335] webserver.pl 72 main - Child 4626: In handle connection
+2018/02/06 13:54:58 - [12335] webserver.pl 89 main - Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:54:58 - [12335] webserver.pl 100 main - Req headers: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=0
+
+2018/02/06 13:54:58 - [12335] webserver.pl 106 main - Method: GET, Path: /favicon.ico, Protocol: HTTP/1.1
+2018/02/06 13:55:08 - [22337] webserver.pl 84 main - Client timed out
+2018/02/06 13:55:08 - [22338] webserver.pl 53 main - Child 4625: Closing connection
+2018/02/06 13:55:08 - [22345] webserver.pl 84 main - Client timed out
+2018/02/06 13:55:08 - [22346] webserver.pl 53 main - Child 4626: Closing connection
+2018/02/06 13:55:08 - [22449] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:55:08 - [22450] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:55:08 - [22451] webserver.pl 39 main - Child 4628: Closing child copy
+2018/02/06 13:55:08 - [22451] webserver.pl 46 main - Child 4628: invoking handle_connection
+2018/02/06 13:55:08 - [22451] webserver.pl 72 main - Child 4628: In handle connection
+2018/02/06 13:55:08 - [22453] webserver.pl 89 main - Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:55:08 - [22453] webserver.pl 100 main - Req headers: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:55:08 - [22453] webserver.pl 106 main - Method: GET, Path: /favicon.ico, Protocol: HTTP/1.1
+2018/02/06 13:55:18 - [32463] webserver.pl 84 main - Client timed out
+2018/02/06 13:55:18 - [32464] webserver.pl 53 main - Child 4628: Closing connection
+2018/02/06 13:57:27 - [0] webserver.pl 25 main - Listening on port 8886
+2018/02/06 13:57:30 - [2421] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:57:30 - [2423] webserver.pl 39 main - Child 4673: Closing child copy
+2018/02/06 13:57:30 - [2423] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:57:30 - [2423] webserver.pl 46 main - Child 4673: invoking handle_connection
+2018/02/06 13:57:30 - [2423] webserver.pl 72 main - Child 4673: In handle connection
+2018/02/06 13:57:30 - [2424] webserver.pl 89 main - Child 4673: Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:30 - [2424] webserver.pl 100 main - Child 4673: Req headers: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:30 - [2424] webserver.pl 106 main - Child 4673: Method: GET, Path: /, Protocol: HTTP/1.1
+2018/02/06 13:57:30 - [2424] webserver.pl 109 main - Child 4673: New line found
+2018/02/06 13:57:30 - [2424] webserver.pl 53 main - Child 4673: Closing connection
+2018/02/06 13:57:30 - [2491] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:57:30 - [2492] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:57:30 - [2493] webserver.pl 39 main - Child 4675: Closing child copy
+2018/02/06 13:57:30 - [2493] webserver.pl 46 main - Child 4675: invoking handle_connection
+2018/02/06 13:57:30 - [2493] webserver.pl 72 main - Child 4675: In handle connection
+2018/02/06 13:57:30 - [2494] webserver.pl 89 main - Child 4675: Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:30 - [2494] webserver.pl 100 main - Child 4675: Req headers: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:30 - [2494] webserver.pl 106 main - Child 4675: Method: GET, Path: /favicon.ico, Protocol: HTTP/1.1
+2018/02/06 13:57:30 - [2494] webserver.pl 109 main - Child 4675: New line found
+2018/02/06 13:57:30 - [2494] webserver.pl 53 main - Child 4675: Closing connection
+2018/02/06 13:57:31 - [3765] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:57:31 - [3766] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:57:31 - [3767] webserver.pl 39 main - Child 4678: Closing child copy
+2018/02/06 13:57:31 - [3768] webserver.pl 46 main - Child 4678: invoking handle_connection
+2018/02/06 13:57:31 - [3768] webserver.pl 72 main - Child 4678: In handle connection
+2018/02/06 13:57:31 - [3768] webserver.pl 89 main - Child 4678: Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:31 - [3768] webserver.pl 100 main - Child 4678: Req headers: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:31 - [3768] webserver.pl 106 main - Child 4678: Method: GET, Path: /, Protocol: HTTP/1.1
+2018/02/06 13:57:31 - [3768] webserver.pl 109 main - Child 4678: New line found
+2018/02/06 13:57:31 - [3769] webserver.pl 53 main - Child 4678: Closing connection
+2018/02/06 13:57:31 - [3837] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:57:31 - [3838] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:57:31 - [3838] webserver.pl 39 main - Child 4679: Closing child copy
+2018/02/06 13:57:31 - [3838] webserver.pl 46 main - Child 4679: invoking handle_connection
+2018/02/06 13:57:31 - [3838] webserver.pl 72 main - Child 4679: In handle connection
+2018/02/06 13:57:31 - [3838] webserver.pl 89 main - Child 4679: Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:31 - [3838] webserver.pl 100 main - Child 4679: Req headers: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:31 - [3839] webserver.pl 106 main - Child 4679: Method: GET, Path: /favicon.ico, Protocol: HTTP/1.1
+2018/02/06 13:57:31 - [3839] webserver.pl 109 main - Child 4679: New line found
+2018/02/06 13:57:31 - [3839] webserver.pl 53 main - Child 4679: Closing connection
+2018/02/06 13:57:31 - [3937] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:57:31 - [3938] webserver.pl 39 main - Child 4680: Closing child copy
+2018/02/06 13:57:31 - [3938] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:57:31 - [3939] webserver.pl 46 main - Child 4680: invoking handle_connection
+2018/02/06 13:57:31 - [3939] webserver.pl 72 main - Child 4680: In handle connection
+2018/02/06 13:57:31 - [3939] webserver.pl 89 main - Child 4680: Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:31 - [3939] webserver.pl 100 main - Child 4680: Req headers: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:31 - [3939] webserver.pl 106 main - Child 4680: Method: GET, Path: /, Protocol: HTTP/1.1
+2018/02/06 13:57:31 - [3939] webserver.pl 109 main - Child 4680: New line found
+2018/02/06 13:57:31 - [3940] webserver.pl 53 main - Child 4680: Closing connection
+2018/02/06 13:57:31 - [4006] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:57:31 - [4007] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:57:31 - [4007] webserver.pl 39 main - Child 4681: Closing child copy
+2018/02/06 13:57:31 - [4008] webserver.pl 46 main - Child 4681: invoking handle_connection
+2018/02/06 13:57:31 - [4008] webserver.pl 72 main - Child 4681: In handle connection
+2018/02/06 13:57:31 - [4008] webserver.pl 89 main - Child 4681: Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:31 - [4008] webserver.pl 100 main - Child 4681: Req headers: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:31 - [4008] webserver.pl 106 main - Child 4681: Method: GET, Path: /favicon.ico, Protocol: HTTP/1.1
+2018/02/06 13:57:31 - [4009] webserver.pl 109 main - Child 4681: New line found
+2018/02/06 13:57:31 - [4009] webserver.pl 53 main - Child 4681: Closing connection
+2018/02/06 13:57:31 - [4104] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:57:31 - [4105] webserver.pl 39 main - Child 4682: Closing child copy
+2018/02/06 13:57:31 - [4105] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:57:31 - [4105] webserver.pl 46 main - Child 4682: invoking handle_connection
+2018/02/06 13:57:31 - [4106] webserver.pl 72 main - Child 4682: In handle connection
+2018/02/06 13:57:31 - [4106] webserver.pl 89 main - Child 4682: Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:31 - [4106] webserver.pl 100 main - Child 4682: Req headers: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:31 - [4106] webserver.pl 106 main - Child 4682: Method: GET, Path: /, Protocol: HTTP/1.1
+2018/02/06 13:57:31 - [4106] webserver.pl 109 main - Child 4682: New line found
+2018/02/06 13:57:31 - [4107] webserver.pl 53 main - Child 4682: Closing connection
+2018/02/06 13:57:32 - [4176] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:57:32 - [4177] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:57:32 - [4177] webserver.pl 39 main - Child 4683: Closing child copy
+2018/02/06 13:57:32 - [4178] webserver.pl 46 main - Child 4683: invoking handle_connection
+2018/02/06 13:57:32 - [4178] webserver.pl 72 main - Child 4683: In handle connection
+2018/02/06 13:57:32 - [4178] webserver.pl 89 main - Child 4683: Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:32 - [4178] webserver.pl 100 main - Child 4683: Req headers: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:32 - [4179] webserver.pl 106 main - Child 4683: Method: GET, Path: /favicon.ico, Protocol: HTTP/1.1
+2018/02/06 13:57:32 - [4179] webserver.pl 109 main - Child 4683: New line found
+2018/02/06 13:57:32 - [4179] webserver.pl 53 main - Child 4683: Closing connection
+2018/02/06 13:57:32 - [4268] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:57:32 - [4269] webserver.pl 39 main - Child 4684: Closing child copy
+2018/02/06 13:57:32 - [4269] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:57:32 - [4270] webserver.pl 46 main - Child 4684: invoking handle_connection
+2018/02/06 13:57:32 - [4270] webserver.pl 72 main - Child 4684: In handle connection
+2018/02/06 13:57:32 - [4270] webserver.pl 89 main - Child 4684: Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:32 - [4270] webserver.pl 100 main - Child 4684: Req headers: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:32 - [4270] webserver.pl 106 main - Child 4684: Method: GET, Path: /, Protocol: HTTP/1.1
+2018/02/06 13:57:32 - [4270] webserver.pl 109 main - Child 4684: New line found
+2018/02/06 13:57:32 - [4271] webserver.pl 53 main - Child 4684: Closing connection
+2018/02/06 13:57:32 - [4377] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:57:32 - [4378] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:57:32 - [4378] webserver.pl 39 main - Child 4685: Closing child copy
+2018/02/06 13:57:32 - [4378] webserver.pl 46 main - Child 4685: invoking handle_connection
+2018/02/06 13:57:32 - [4378] webserver.pl 72 main - Child 4685: In handle connection
+2018/02/06 13:57:32 - [4379] webserver.pl 89 main - Child 4685: Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:32 - [4379] webserver.pl 100 main - Child 4685: Req headers: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:32 - [4379] webserver.pl 106 main - Child 4685: Method: GET, Path: /favicon.ico, Protocol: HTTP/1.1
+2018/02/06 13:57:32 - [4379] webserver.pl 109 main - Child 4685: New line found
+2018/02/06 13:57:32 - [4379] webserver.pl 53 main - Child 4685: Closing connection
+2018/02/06 13:57:32 - [4718] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:57:32 - [4719] webserver.pl 39 main - Child 4686: Closing child copy
+2018/02/06 13:57:32 - [4719] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:57:32 - [4719] webserver.pl 46 main - Child 4686: invoking handle_connection
+2018/02/06 13:57:32 - [4720] webserver.pl 72 main - Child 4686: In handle connection
+2018/02/06 13:57:32 - [4720] webserver.pl 89 main - Child 4686: Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:32 - [4720] webserver.pl 100 main - Child 4686: Req headers: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:32 - [4720] webserver.pl 106 main - Child 4686: Method: GET, Path: /, Protocol: HTTP/1.1
+2018/02/06 13:57:32 - [4720] webserver.pl 109 main - Child 4686: New line found
+2018/02/06 13:57:32 - [4720] webserver.pl 53 main - Child 4686: Closing connection
+2018/02/06 13:57:32 - [4796] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:57:32 - [4797] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:57:32 - [4797] webserver.pl 39 main - Child 4687: Closing child copy
+2018/02/06 13:57:32 - [4797] webserver.pl 46 main - Child 4687: invoking handle_connection
+2018/02/06 13:57:32 - [4797] webserver.pl 72 main - Child 4687: In handle connection
+2018/02/06 13:57:32 - [4798] webserver.pl 89 main - Child 4687: Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:32 - [4798] webserver.pl 100 main - Child 4687: Req headers: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:32 - [4798] webserver.pl 106 main - Child 4687: Method: GET, Path: /favicon.ico, Protocol: HTTP/1.1
+2018/02/06 13:57:32 - [4798] webserver.pl 109 main - Child 4687: New line found
+2018/02/06 13:57:32 - [4798] webserver.pl 53 main - Child 4687: Closing connection
+2018/02/06 13:57:32 - [4926] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:57:32 - [4927] webserver.pl 39 main - Child 4688: Closing child copy
+2018/02/06 13:57:32 - [4927] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:57:32 - [4927] webserver.pl 46 main - Child 4688: invoking handle_connection
+2018/02/06 13:57:32 - [4928] webserver.pl 72 main - Child 4688: In handle connection
+2018/02/06 13:57:32 - [4928] webserver.pl 89 main - Child 4688: Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:32 - [4928] webserver.pl 100 main - Child 4688: Req headers: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:32 - [4928] webserver.pl 106 main - Child 4688: Method: GET, Path: /, Protocol: HTTP/1.1
+2018/02/06 13:57:32 - [4928] webserver.pl 109 main - Child 4688: New line found
+2018/02/06 13:57:32 - [4929] webserver.pl 53 main - Child 4688: Closing connection
+2018/02/06 13:57:32 - [4990] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:57:32 - [4991] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:57:32 - [4991] webserver.pl 39 main - Child 4689: Closing child copy
+2018/02/06 13:57:32 - [4992] webserver.pl 46 main - Child 4689: invoking handle_connection
+2018/02/06 13:57:32 - [4992] webserver.pl 72 main - Child 4689: In handle connection
+2018/02/06 13:57:32 - [4992] webserver.pl 89 main - Child 4689: Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:32 - [4992] webserver.pl 100 main - Child 4689: Req headers: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:32 - [4992] webserver.pl 106 main - Child 4689: Method: GET, Path: /favicon.ico, Protocol: HTTP/1.1
+2018/02/06 13:57:32 - [4992] webserver.pl 109 main - Child 4689: New line found
+2018/02/06 13:57:32 - [4993] webserver.pl 53 main - Child 4689: Closing connection
+2018/02/06 13:57:32 - [5079] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:57:32 - [5080] webserver.pl 39 main - Child 4690: Closing child copy
+2018/02/06 13:57:32 - [5080] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:57:32 - [5081] webserver.pl 46 main - Child 4690: invoking handle_connection
+2018/02/06 13:57:32 - [5081] webserver.pl 72 main - Child 4690: In handle connection
+2018/02/06 13:57:32 - [5081] webserver.pl 89 main - Child 4690: Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:32 - [5081] webserver.pl 100 main - Child 4690: Req headers: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:32 - [5081] webserver.pl 106 main - Child 4690: Method: GET, Path: /, Protocol: HTTP/1.1
+2018/02/06 13:57:32 - [5081] webserver.pl 109 main - Child 4690: New line found
+2018/02/06 13:57:32 - [5082] webserver.pl 53 main - Child 4690: Closing connection
+2018/02/06 13:57:33 - [5172] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:57:33 - [5173] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:57:33 - [5174] webserver.pl 39 main - Child 4691: Closing child copy
+2018/02/06 13:57:33 - [5174] webserver.pl 46 main - Child 4691: invoking handle_connection
+2018/02/06 13:57:33 - [5174] webserver.pl 72 main - Child 4691: In handle connection
+2018/02/06 13:57:33 - [5174] webserver.pl 89 main - Child 4691: Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:33 - [5174] webserver.pl 100 main - Child 4691: Req headers: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:33 - [5174] webserver.pl 106 main - Child 4691: Method: GET, Path: /favicon.ico, Protocol: HTTP/1.1
+2018/02/06 13:57:33 - [5175] webserver.pl 109 main - Child 4691: New line found
+2018/02/06 13:57:33 - [5175] webserver.pl 53 main - Child 4691: Closing connection
+2018/02/06 13:57:43 - [16042] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:57:43 - [16043] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:57:43 - [16044] webserver.pl 39 main - Child 4694: Closing child copy
+2018/02/06 13:57:43 - [16045] webserver.pl 46 main - Child 4694: invoking handle_connection
+2018/02/06 13:57:43 - [16045] webserver.pl 72 main - Child 4694: In handle connection
+2018/02/06 13:57:43 - [16045] webserver.pl 89 main - Child 4694: Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:43 - [16045] webserver.pl 100 main - Child 4694: Req headers: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:43 - [16046] webserver.pl 106 main - Child 4694: Method: GET, Path: /, Protocol: HTTP/1.1
+2018/02/06 13:57:43 - [16046] webserver.pl 109 main - Child 4694: New line found
+2018/02/06 13:57:43 - [16046] webserver.pl 53 main - Child 4694: Closing connection
+2018/02/06 13:57:43 - [16150] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:57:43 - [16151] webserver.pl 39 main - Child 4695: Closing child copy
+2018/02/06 13:57:43 - [16151] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:57:43 - [16151] webserver.pl 46 main - Child 4695: invoking handle_connection
+2018/02/06 13:57:43 - [16151] webserver.pl 72 main - Child 4695: In handle connection
+2018/02/06 13:57:43 - [16152] webserver.pl 89 main - Child 4695: Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:43 - [16152] webserver.pl 100 main - Child 4695: Req headers: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:43 - [16152] webserver.pl 106 main - Child 4695: Method: GET, Path: /favicon.ico, Protocol: HTTP/1.1
+2018/02/06 13:57:43 - [16153] webserver.pl 109 main - Child 4695: New line found
+2018/02/06 13:57:43 - [16153] webserver.pl 53 main - Child 4695: Closing connection
+2018/02/06 13:57:44 - [16274] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:57:44 - [16276] webserver.pl 39 main - Child 4696: Closing child copy
+2018/02/06 13:57:44 - [16276] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:57:44 - [16276] webserver.pl 46 main - Child 4696: invoking handle_connection
+2018/02/06 13:57:44 - [16276] webserver.pl 72 main - Child 4696: In handle connection
+2018/02/06 13:57:44 - [16276] webserver.pl 89 main - Child 4696: Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:44 - [16277] webserver.pl 100 main - Child 4696: Req headers: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:44 - [16277] webserver.pl 106 main - Child 4696: Method: GET, Path: /, Protocol: HTTP/1.1
+2018/02/06 13:57:44 - [16277] webserver.pl 109 main - Child 4696: New line found
+2018/02/06 13:57:44 - [16277] webserver.pl 53 main - Child 4696: Closing connection
+2018/02/06 13:57:44 - [16350] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:57:44 - [16351] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:57:44 - [16351] webserver.pl 39 main - Child 4697: Closing child copy
+2018/02/06 13:57:44 - [16352] webserver.pl 46 main - Child 4697: invoking handle_connection
+2018/02/06 13:57:44 - [16352] webserver.pl 72 main - Child 4697: In handle connection
+2018/02/06 13:57:44 - [16352] webserver.pl 89 main - Child 4697: Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:44 - [16353] webserver.pl 100 main - Child 4697: Req headers: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:44 - [16353] webserver.pl 106 main - Child 4697: Method: GET, Path: /favicon.ico, Protocol: HTTP/1.1
+2018/02/06 13:57:44 - [16353] webserver.pl 109 main - Child 4697: New line found
+2018/02/06 13:57:44 - [16353] webserver.pl 53 main - Child 4697: Closing connection
+2018/02/06 13:57:44 - [16489] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:57:44 - [16490] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:57:44 - [16490] webserver.pl 39 main - Child 4698: Closing child copy
+2018/02/06 13:57:44 - [16490] webserver.pl 46 main - Child 4698: invoking handle_connection
+2018/02/06 13:57:44 - [16490] webserver.pl 72 main - Child 4698: In handle connection
+2018/02/06 13:57:44 - [16490] webserver.pl 89 main - Child 4698: Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:44 - [16491] webserver.pl 100 main - Child 4698: Req headers: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:44 - [16491] webserver.pl 106 main - Child 4698: Method: GET, Path: /, Protocol: HTTP/1.1
+2018/02/06 13:57:44 - [16491] webserver.pl 109 main - Child 4698: New line found
+2018/02/06 13:57:44 - [16491] webserver.pl 53 main - Child 4698: Closing connection
+2018/02/06 13:57:44 - [16582] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:57:44 - [16583] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:57:44 - [16584] webserver.pl 39 main - Child 4699: Closing child copy
+2018/02/06 13:57:44 - [16584] webserver.pl 46 main - Child 4699: invoking handle_connection
+2018/02/06 13:57:44 - [16584] webserver.pl 72 main - Child 4699: In handle connection
+2018/02/06 13:57:44 - [16586] webserver.pl 89 main - Child 4699: Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:44 - [16586] webserver.pl 100 main - Child 4699: Req headers: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:44 - [16587] webserver.pl 106 main - Child 4699: Method: GET, Path: /favicon.ico, Protocol: HTTP/1.1
+2018/02/06 13:57:44 - [16587] webserver.pl 109 main - Child 4699: New line found
+2018/02/06 13:57:44 - [16587] webserver.pl 53 main - Child 4699: Closing connection
+2018/02/06 13:57:44 - [16653] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:57:44 - [16655] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:57:44 - [16655] webserver.pl 39 main - Child 4701: Closing child copy
+2018/02/06 13:57:44 - [16656] webserver.pl 46 main - Child 4701: invoking handle_connection
+2018/02/06 13:57:44 - [16656] webserver.pl 72 main - Child 4701: In handle connection
+2018/02/06 13:57:44 - [16656] webserver.pl 89 main - Child 4701: Data read: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:44 - [16656] webserver.pl 100 main - Child 4701: Req headers: GET / HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:44 - [16656] webserver.pl 106 main - Child 4701: Method: GET, Path: /, Protocol: HTTP/1.1
+2018/02/06 13:57:44 - [16657] webserver.pl 109 main - Child 4701: New line found
+2018/02/06 13:57:44 - [16657] webserver.pl 53 main - Child 4701: Closing connection
+2018/02/06 13:57:44 - [16758] webserver.pl 28 main - Parent: New connection accepted
+2018/02/06 13:57:44 - [16759] webserver.pl 39 main - Child 4702: Closing child copy
+2018/02/06 13:57:44 - [16759] webserver.pl 62 main - Parent: Closing parent copy
+2018/02/06 13:57:44 - [16759] webserver.pl 46 main - Child 4702: invoking handle_connection
+2018/02/06 13:57:44 - [16759] webserver.pl 72 main - Child 4702: In handle connection
+2018/02/06 13:57:44 - [16760] webserver.pl 89 main - Child 4702: Data read: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:44 - [16760] webserver.pl 100 main - Child 4702: Req headers: GET /favicon.ico HTTP/1.1
+Host: localhost:8886
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:8886/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: gsScrollPos-353=
+
+2018/02/06 13:57:44 - [16760] webserver.pl 106 main - Child 4702: Method: GET, Path: /favicon.ico, Protocol: HTTP/1.1
+2018/02/06 13:57:44 - [16760] webserver.pl 109 main - Child 4702: New line found
+2018/02/06 13:57:44 - [16760] webserver.pl 53 main - Child 4702: Closing connection
