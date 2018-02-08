@@ -445,7 +445,7 @@ def get_server_name():
 
 
 def get_server_software():
-    return os.environ.get('SERVER_SOFTWARE', "Velioo's Webserve").encode()
+    return os.environ.get('SERVER_SOFTWARE', "Velioo's Webserver").encode()
 
 
 def send_response_400(client_connection, pid):

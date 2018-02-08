@@ -1,0 +1,1 @@
+android create project --target 10 --name CompMaxv4 --path /home/velioo/CompMaxv4 --activity MainActivity --package compmax.app --gradle --gradle-version 1.1.3
