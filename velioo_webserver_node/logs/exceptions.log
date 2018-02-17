@@ -1,0 +1,148 @@
+2018-2-17 13:55:53 error: uncaughtException: write after end
+Error: write after end
+    at write_ (_http_outgoing.js:634:15)
+    at ServerResponse.write (_http_outgoing.js:629:10)
+    at Socket.request.socket.setTimeout (/home/velioo/training-projects/velioo_webserver_node/server.js:51:17)
+    at Object.onceWrapper (events.js:254:19)
+    at Socket.emit (events.js:164:20)
+    at Socket._onTimeout (net.js:411:8)
+    at ontimeout (timers.js:478:11)
+    at tryOnTimeout (timers.js:302:5)
+    at Timer.listOnTimeout (timers.js:262:5)
+2018-2-17 13:55:53 error: uncaughtException: write after end
+Error: write after end
+    at write_ (_http_outgoing.js:634:15)
+    at ServerResponse.write (_http_outgoing.js:629:10)
+    at Socket.request.socket.setTimeout (/home/velioo/training-projects/velioo_webserver_node/server.js:51:17)
+    at Object.onceWrapper (events.js:254:19)
+    at Socket.emit (events.js:164:20)
+    at Socket._onTimeout (net.js:411:8)
+    at ontimeout (timers.js:478:11)
+    at tryOnTimeout (timers.js:302:5)
+    at Timer.listOnTimeout (timers.js:262:5)
+2018-2-17 13:55:53 error: uncaughtException: write after end
+Error: write after end
+    at write_ (_http_outgoing.js:634:15)
+    at ServerResponse.write (_http_outgoing.js:629:10)
+    at Socket.request.socket.setTimeout (/home/velioo/training-projects/velioo_webserver_node/server.js:51:17)
+    at Object.onceWrapper (events.js:254:19)
+    at Socket.emit (events.js:164:20)
+    at Socket._onTimeout (net.js:411:8)
+    at ontimeout (timers.js:478:11)
+    at tryOnTimeout (timers.js:302:5)
+    at Timer.listOnTimeout (timers.js:262:5)
+2018-2-17 13:55:53 error: uncaughtException: write after end
+Error: write after end
+    at write_ (_http_outgoing.js:634:15)
+    at ServerResponse.write (_http_outgoing.js:629:10)
+    at Socket.request.socket.setTimeout (/home/velioo/training-projects/velioo_webserver_node/server.js:51:17)
+    at Object.onceWrapper (events.js:254:19)
+    at Socket.emit (events.js:164:20)
+    at Socket._onTimeout (net.js:411:8)
+    at ontimeout (timers.js:478:11)
+    at tryOnTimeout (timers.js:302:5)
+    at Timer.listOnTimeout (timers.js:262:5)
+2018-2-17 13:55:53 error: uncaughtException: write after end
+Error: write after end
+    at write_ (_http_outgoing.js:634:15)
+    at ServerResponse.write (_http_outgoing.js:629:10)
+    at Socket.request.socket.setTimeout (/home/velioo/training-projects/velioo_webserver_node/server.js:51:17)
+    at Object.onceWrapper (events.js:254:19)
+    at Socket.emit (events.js:164:20)
+    at Socket._onTimeout (net.js:411:8)
+    at ontimeout (timers.js:478:11)
+    at tryOnTimeout (timers.js:302:5)
+    at Timer.listOnTimeout (timers.js:262:5)
+2018-2-17 13:55:53 error: uncaughtException: write after end
+Error: write after end
+    at write_ (_http_outgoing.js:634:15)
+    at ServerResponse.write (_http_outgoing.js:629:10)
+    at Socket.request.socket.setTimeout (/home/velioo/training-projects/velioo_webserver_node/server.js:51:17)
+    at Object.onceWrapper (events.js:254:19)
+    at Socket.emit (events.js:164:20)
+    at Socket._onTimeout (net.js:411:8)
+    at ontimeout (timers.js:478:11)
+    at tryOnTimeout (timers.js:302:5)
+    at Timer.listOnTimeout (timers.js:262:5)
+2018-2-17 13:55:53 error: uncaughtException: write after end
+Error: write after end
+    at write_ (_http_outgoing.js:634:15)
+    at ServerResponse.write (_http_outgoing.js:629:10)
+    at Socket.request.socket.setTimeout (/home/velioo/training-projects/velioo_webserver_node/server.js:51:17)
+    at Object.onceWrapper (events.js:254:19)
+    at Socket.emit (events.js:164:20)
+    at Socket._onTimeout (net.js:411:8)
+    at ontimeout (timers.js:478:11)
+    at tryOnTimeout (timers.js:302:5)
+    at Timer.listOnTimeout (timers.js:262:5)
+2018-2-17 13:55:53 error: uncaughtException: write after end
+Error: write after end
+    at write_ (_http_outgoing.js:634:15)
+    at ServerResponse.write (_http_outgoing.js:629:10)
+    at Socket.request.socket.setTimeout (/home/velioo/training-projects/velioo_webserver_node/server.js:51:17)
+    at Object.onceWrapper (events.js:254:19)
+    at Socket.emit (events.js:164:20)
+    at Socket._onTimeout (net.js:411:8)
+    at ontimeout (timers.js:478:11)
+    at tryOnTimeout (timers.js:302:5)
+    at Timer.listOnTimeout (timers.js:262:5)
+2018-2-17 14:07:05 error: uncaughtException: Callback must be a function
+TypeError [ERR_INVALID_CALLBACK]: Callback must be a function
+    at setTimeout (timers.js:423:11)
+    at Server.onRequest (/home/velioo/training-projects/velioo_webserver_node/server.js:48:4)
+    at Server.emit (events.js:159:13)
+    at parserOnIncoming (_http_server.js:619:12)
+    at HTTPParser.parserOnHeadersComplete (_http_common.js:117:23)
+2018-2-17 14:48:45 error: uncaughtException: write after end
+Error: write after end
+    at write_ (_http_outgoing.js:634:15)
+    at ServerResponse.write (_http_outgoing.js:629:10)
+    at Server.onRequest (/home/velioo/training-projects/velioo_webserver_node/server.js:56:8)
+    at Server.emit (events.js:159:13)
+    at parserOnIncoming (_http_server.js:619:12)
+    at HTTPParser.parserOnHeadersComplete (_http_common.js:117:23)
+2018-2-17 15:13:37 error: uncaughtException: pathname is not defined
+ReferenceError: pathname is not defined
+    at Server.onRequest (/home/velioo/training-projects/velioo_webserver_node/server.js:41:21)
+    at Server.emit (events.js:159:13)
+    at parserOnIncoming (_http_server.js:619:12)
+    at HTTPParser.parserOnHeadersComplete (_http_common.js:117:23)
+2018-2-17 15:14:14 error: uncaughtException: pathname is not defined
+ReferenceError: pathname is not defined
+    at Server.onRequest (/home/velioo/training-projects/velioo_webserver_node/server.js:41:21)
+    at Server.emit (events.js:159:13)
+    at parserOnIncoming (_http_server.js:619:12)
+    at HTTPParser.parserOnHeadersComplete (_http_common.js:117:23)
+2018-2-17 15:16:18 error: uncaughtException: logging is not defined
+ReferenceError: logging is not defined
+    at Server.onRequest (/home/velioo/training-projects/velioo_webserver_node/server.js:50:12)
+    at Server.emit (events.js:159:13)
+    at parserOnIncoming (_http_server.js:619:12)
+    at HTTPParser.parserOnHeadersComplete (_http_common.js:117:23)
+2018-2-17 15:18:48 error: uncaughtException: pathname is not defined
+ReferenceError: pathname is not defined
+    at Server.onRequest (/home/velioo/training-projects/velioo_webserver_node/server.js:36:25)
+    at Server.emit (events.js:159:13)
+    at parserOnIncoming (_http_server.js:619:12)
+    at HTTPParser.parserOnHeadersComplete (_http_common.js:117:23)
+2018-2-17 15:20:37 error: uncaughtException: pathname is not defined
+ReferenceError: pathname is not defined
+    at Server.onRequest (/home/velioo/training-projects/velioo_webserver_node/server.js:59:33)
+    at Server.emit (events.js:159:13)
+    at parserOnIncoming (_http_server.js:619:12)
+    at HTTPParser.parserOnHeadersComplete (_http_common.js:117:23)
+2018-2-17 16:00:28 error: uncaughtException: Illegal break statement
+SyntaxError: Illegal break statement
+    at Server.emit (events.js:159:13)
+    at parserOnIncoming (_http_server.js:619:12)
+    at HTTPParser.parserOnHeadersComplete (_http_common.js:117:23)
+2018-2-17 16:26:44 error: uncaughtException: Illegal break statement
+SyntaxError: Illegal break statement
+    at Server.emit (events.js:159:13)
+    at parserOnIncoming (_http_server.js:619:12)
+    at HTTPParser.parserOnHeadersComplete (_http_common.js:117:23)
+2018-2-17 16:28:17 error: uncaughtException: Illegal break statement
+SyntaxError: Illegal break statement
+    at Server.emit (events.js:159:13)
+    at parserOnIncoming (_http_server.js:619:12)
+    at HTTPParser.parserOnHeadersComplete (_http_common.js:117:23)

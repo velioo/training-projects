@@ -7,7 +7,7 @@ import resource
 import signal
 import asyncio
 
-SERVER_ADDRESS = 'localhost', 8887
+SERVER_ADDRESS = 'localhost', 8885
 REQUEST = b"""\
 GET /application/c10k HTTP/1.1
 Host: localhost:8887
@@ -29,11 +29,12 @@ def main(max_clients, max_conns):
         for connection_num in range(max_conns):
             try:
                 socks[connection_num].connect(SERVER_ADDRESS)
+                socks[connection_num].close();
                 print(connection_num)
             except OSError as e:
                 print(e)
                 connection_num-=1
-        sleep(100000)
+        #sleep(100000)
         #~ if pid == 0:
             #~ for connection_num in range(max_conns):
                 #~ try:
