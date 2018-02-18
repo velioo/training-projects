@@ -146,3 +146,107 @@ SyntaxError: Illegal break statement
     at Server.emit (events.js:159:13)
     at parserOnIncoming (_http_server.js:619:12)
     at HTTPParser.parserOnHeadersComplete (_http_common.js:117:23)
+2018-2-18 12:37:58 error: uncaughtException: Client timed out
+Error: Client timed out
+    at Socket.conn.on (/home/velioo/training-projects/velioo_webserver_node/server.js:87:19)
+    at Socket.emit (events.js:159:13)
+    at Socket._onTimeout (net.js:411:8)
+    at ontimeout (timers.js:478:11)
+    at tryOnTimeout (timers.js:302:5)
+    at Timer.listOnTimeout (timers.js:262:5)
+2018-2-18 12:39:03 error: uncaughtException: Client timed out
+Error: Client timed out
+    at Socket.conn.on (/home/velioo/training-projects/velioo_webserver_node/server.js:87:19)
+    at Socket.emit (events.js:159:13)
+    at Socket._onTimeout (net.js:411:8)
+    at ontimeout (timers.js:478:11)
+    at tryOnTimeout (timers.js:302:5)
+    at Timer.listOnTimeout (timers.js:262:5)
+2018-2-18 12:39:32 error: uncaughtException: Client timed out
+Error: Client timed out
+    at Socket.conn.on (/home/velioo/training-projects/velioo_webserver_node/server.js:87:19)
+    at Socket.emit (events.js:159:13)
+    at Socket._onTimeout (net.js:411:8)
+    at ontimeout (timers.js:478:11)
+    at tryOnTimeout (timers.js:302:5)
+    at Timer.listOnTimeout (timers.js:262:5)
+2018-2-18 12:45:24 error: uncaughtException: Client timed out
+Error: Client timed out
+    at Socket.conn.on (/home/velioo/training-projects/velioo_webserver_node/server.js:88:19)
+    at Socket.emit (events.js:159:13)
+    at Socket._onTimeout (net.js:411:8)
+    at ontimeout (timers.js:478:11)
+    at tryOnTimeout (timers.js:302:5)
+    at Timer.listOnTimeout (timers.js:262:5)
+2018-2-18 12:45:29 error: uncaughtException: Client timed out
+Error: Client timed out
+    at Socket.conn.on (/home/velioo/training-projects/velioo_webserver_node/server.js:88:19)
+    at Socket.emit (events.js:159:13)
+    at Socket._onTimeout (net.js:411:8)
+    at ontimeout (timers.js:478:11)
+    at tryOnTimeout (timers.js:302:5)
+    at Timer.listOnTimeout (timers.js:262:5)
+2018-2-18 12:45:32 error: uncaughtException: Client timed out
+Error: Client timed out
+    at Socket.conn.on (/home/velioo/training-projects/velioo_webserver_node/server.js:88:19)
+    at Socket.emit (events.js:159:13)
+    at Socket._onTimeout (net.js:411:8)
+    at ontimeout (timers.js:478:11)
+    at tryOnTimeout (timers.js:302:5)
+    at Timer.listOnTimeout (timers.js:262:5)
+2018-2-18 12:45:36 error: uncaughtException: Client timed out
+Error: Client timed out
+    at Socket.conn.on (/home/velioo/training-projects/velioo_webserver_node/server.js:88:19)
+    at Socket.emit (events.js:159:13)
+    at Socket._onTimeout (net.js:411:8)
+    at ontimeout (timers.js:478:11)
+    at tryOnTimeout (timers.js:302:5)
+    at Timer.listOnTimeout (timers.js:262:5)
+2018-2-18 12:45:37 error: uncaughtException: Client timed out
+Error: Client timed out
+    at Socket.conn.on (/home/velioo/training-projects/velioo_webserver_node/server.js:88:19)
+    at Socket.emit (events.js:159:13)
+    at Socket._onTimeout (net.js:411:8)
+    at ontimeout (timers.js:478:11)
+    at tryOnTimeout (timers.js:302:5)
+    at Timer.listOnTimeout (timers.js:262:5)
+2018-2-18 12:45:38 error: uncaughtException: Client timed out
+Error: Client timed out
+    at Socket.conn.on (/home/velioo/training-projects/velioo_webserver_node/server.js:88:19)
+    at Socket.emit (events.js:159:13)
+    at Socket._onTimeout (net.js:411:8)
+    at ontimeout (timers.js:478:11)
+    at tryOnTimeout (timers.js:302:5)
+    at Timer.listOnTimeout (timers.js:262:5)
+2018-2-18 12:46:19 error: uncaughtException: Client timed out
+Error: Client timed out
+    at Socket.conn.on (/home/velioo/training-projects/velioo_webserver_node/server.js:88:19)
+    at Socket.emit (events.js:159:13)
+    at Socket._onTimeout (net.js:411:8)
+    at ontimeout (timers.js:478:11)
+    at tryOnTimeout (timers.js:302:5)
+    at Timer.listOnTimeout (timers.js:262:5)
+2018-2-18 12:48:56 error: uncaughtException: Client timed out
+Error: Client timed out
+    at Socket.conn.on (/home/velioo/training-projects/velioo_webserver_node/server.js:88:19)
+    at Socket.emit (events.js:159:13)
+    at Socket._onTimeout (net.js:411:8)
+    at ontimeout (timers.js:478:11)
+    at tryOnTimeout (timers.js:302:5)
+    at Timer.listOnTimeout (timers.js:262:5)
+2018-2-18 12:48:56 error: uncaughtException: Client timed out
+Error: Client timed out
+    at Socket.conn.on (/home/velioo/training-projects/velioo_webserver_node/server.js:88:19)
+    at Socket.emit (events.js:159:13)
+    at Socket._onTimeout (net.js:411:8)
+    at ontimeout (timers.js:478:11)
+    at tryOnTimeout (timers.js:302:5)
+    at Timer.listOnTimeout (timers.js:262:5)
+2018-2-18 13:26:43 error: uncaughtException: Client timed out. Closing connection...
+Error: Client timed out. Closing connection...
+    at Socket.conn.on (/home/velioo/training-projects/velioo_webserver_node/server.js:95:23)
+    at Socket.emit (events.js:159:13)
+    at Socket._onTimeout (net.js:411:8)
+    at ontimeout (timers.js:478:11)
+    at tryOnTimeout (timers.js:302:5)
+    at Timer.listOnTimeout (timers.js:262:5)
