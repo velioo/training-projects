@@ -1,0 +1,255 @@
+2018-2-20 09:00:42 info: /users:id ctx = 
+2018-2-20 09:03:50 info: /users:id ctx = { request: 
+   { method: 'GET',
+     url: '/users/1337',
+     header: 
+      { host: 'localhost:8883',
+        'user-agent': 'curl/7.47.0',
+        accept: '*/*' } },
+  response: { status: 404, message: 'Not Found', header: {} },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/users/1337',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>' }
+2018-2-20 09:09:40 info: /users:id ctx = { request: 
+   { method: 'GET',
+     url: '/users/1337',
+     header: 
+      { host: 'localhost:8883',
+        'user-agent': 'curl/7.47.0',
+        accept: '*/*' } },
+  response: { status: 404, message: 'Not Found', header: {} },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/users/1337',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>' }
+2018-2-20 09:27:19 info: Admin request obj = { method: 'GET',
+  url: '/admins/52000',
+  header: 
+   { host: 'localhost:8883',
+     'user-agent': 'curl/7.47.0',
+     accept: '*/*' } }
+2018-2-20 09:27:38 info: Admin request obj = { method: 'GET',
+  url: '/admins/12345',
+  header: 
+   { host: 'localhost:8883',
+     connection: 'keep-alive',
+     'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36',
+     'upgrade-insecure-requests': '1',
+     accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+     'accept-encoding': 'gzip, deflate, br',
+     'accept-language': 'en-US,en;q=0.9',
+     cookie: 'gsScrollPos-577=0; gsScrollPos-353=' } }
+2018-2-20 09:33:53 info: Admin request obj = { method: 'GET',
+  url: '/admins/52000',
+  header: 
+   { host: 'localhost:8883',
+     'user-agent': 'curl/7.47.0',
+     accept: '*/*' } }
+2018-2-20 09:33:53 info: Admin response obj = { status: 200,
+  message: 'OK',
+  header: 
+   { 'content-type': 'text/plain; charset=utf-8',
+     'content-length': '16' },
+  body: 'Admin id = 52000' }
+2018-2-20 09:40:55 info: Admin request obj = { method: 'GET',
+  url: '/admins/52000',
+  header: 
+   { host: 'localhost:8883',
+     'user-agent': 'curl/7.47.0',
+     accept: '*/*' } }
+2018-2-20 09:40:55 info: Admin response obj = { status: 200,
+  message: 'OK',
+  header: 
+   { 'content-type': 'text/plain; charset=utf-8',
+     'content-length': '16' },
+  body: 'Admin id = 52000' }
+2018-2-20 09:41:50 info: Admin request obj = { method: 'GET',
+  url: '/admins/12345',
+  header: 
+   { host: 'localhost:8883',
+     connection: 'keep-alive',
+     'upgrade-insecure-requests': '1',
+     'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36',
+     accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+     'accept-encoding': 'gzip, deflate, br',
+     'accept-language': 'en-US,en;q=0.9',
+     cookie: 'gsScrollPos-353=0; gsScrollPos-577=0; gsScrollPos-353=' } }
+2018-2-20 09:41:51 info: Admin response obj = { status: 200,
+  message: 'OK',
+  header: 
+   { 'content-type': 'text/plain; charset=utf-8',
+     'content-length': '16' },
+  body: 'Admin id = 12345' }
+2018-2-20 09:41:52 info: Admin request obj = { method: 'GET',
+  url: '/admins/12345',
+  header: 
+   { host: 'localhost:8883',
+     connection: 'keep-alive',
+     'cache-control': 'max-age=0',
+     'upgrade-insecure-requests': '1',
+     'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36',
+     accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+     'accept-encoding': 'gzip, deflate, br',
+     'accept-language': 'en-US,en;q=0.9',
+     cookie: 'gsScrollPos-353=; gsScrollPos-577=0; gsScrollPos-353=' } }
+2018-2-20 09:41:52 info: Admin response obj = { status: 200,
+  message: 'OK',
+  header: 
+   { 'content-type': 'text/plain; charset=utf-8',
+     'content-length': '16' },
+  body: 'Admin id = 12345' }
+2018-2-20 10:04:54 error: Error Message
+2018-2-20 10:06:02 error: Error Message
+2018-2-20 10:06:18 error: Error Message
+2018-2-20 10:06:26 error: Error Message
+2018-2-20 10:06:27 error: Error Message
+2018-2-20 10:06:28 error: Error Message
+2018-2-20 10:06:28 error: Error Message
+2018-2-20 10:09:56 error: Brauh
+2018-2-20 10:09:56 error: Brauh
+2018-2-20 10:11:00 error: logge is not defined
+2018-2-20 10:11:37 info: /users:id ctx = { request: 
+   { method: 'GET',
+     url: '/users/2131',
+     header: 
+      { host: 'localhost:8883',
+        connection: 'keep-alive',
+        pragma: 'no-cache',
+        'cache-control': 'no-cache',
+        'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36',
+        'upgrade-insecure-requests': '1',
+        accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9',
+        cookie: 'gsScrollPos-577=0; gsScrollPos-353=' } },
+  response: { status: 404, message: 'Not Found', header: {} },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/users/2131',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>' }
+2018-2-20 10:11:37 error: hes is not defined
+2018-2-20 10:18:55 info: /users:id ctx = { request: 
+   { method: 'GET',
+     url: '/users/2131',
+     header: 
+      { host: 'localhost:8883',
+        connection: 'keep-alive',
+        'upgrade-insecure-requests': '1',
+        'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36',
+        accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9',
+        cookie: 'gsScrollPos-353=0; gsScrollPos-577=0; gsScrollPos-353=' } },
+  response: { status: 404, message: 'Not Found', header: {} },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/users/2131',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>' }
+2018-2-20 10:18:55 error: gas is not defined
+2018-2-20 10:18:57 info: /users:id ctx = { request: 
+   { method: 'GET',
+     url: '/users/2131',
+     header: 
+      { host: 'localhost:8883',
+        connection: 'keep-alive',
+        'cache-control': 'max-age=0',
+        'upgrade-insecure-requests': '1',
+        'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36',
+        accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9',
+        cookie: 'gsScrollPos-353=0; gsScrollPos-577=0; gsScrollPos-353=' } },
+  response: { status: 404, message: 'Not Found', header: {} },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/users/2131',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>' }
+2018-2-20 10:18:57 error: gas is not defined
+2018-2-20 10:19:48 info: /users:id ctx = { request: 
+   { method: 'GET',
+     url: '/users/2131',
+     header: 
+      { host: 'localhost:8883',
+        connection: 'keep-alive',
+        'cache-control': 'max-age=0',
+        'upgrade-insecure-requests': '1',
+        'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36',
+        accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9',
+        cookie: 'gsScrollPos-353=0; gsScrollPos-577=0; gsScrollPos-353=' } },
+  response: { status: 404, message: 'Not Found', header: {} },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/users/2131',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>' }
+2018-2-20 10:19:48 error: gas is not defined
+2018-2-20 10:19:48 info: /users:id ctx = { request: 
+   { method: 'GET',
+     url: '/users/2131',
+     header: 
+      { host: 'localhost:8883',
+        connection: 'keep-alive',
+        'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36',
+        'upgrade-insecure-requests': '1',
+        accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9',
+        cookie: 'gsScrollPos-353=0; gsScrollPos-577=0; gsScrollPos-353=' } },
+  response: { status: 404, message: 'Not Found', header: {} },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/users/2131',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>' }
+2018-2-20 10:19:48 error: gas is not defined
+2018-2-20 10:19:48 info: /users:id ctx = { request: 
+   { method: 'GET',
+     url: '/users/2131',
+     header: 
+      { host: 'localhost:8883',
+        connection: 'keep-alive',
+        'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36',
+        'upgrade-insecure-requests': '1',
+        accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9',
+        cookie: 'gsScrollPos-353=0; gsScrollPos-577=0; gsScrollPos-353=' } },
+  response: { status: 404, message: 'Not Found', header: {} },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/users/2131',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>' }
+2018-2-20 10:19:48 error: gas is not defined
+2018-2-20 10:20:00 info: /users:id ctx = { request: 
+   { method: 'GET',
+     url: '/users/2131',
+     header: 
+      { host: 'localhost:8883',
+        connection: 'keep-alive',
+        'cache-control': 'max-age=0',
+        'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36',
+        'upgrade-insecure-requests': '1',
+        accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9',
+        cookie: 'gsScrollPos-353=0; gsScrollPos-577=0; gsScrollPos-353=' } },
+  response: { status: 404, message: 'Not Found', header: {} },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/users/2131',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>' }
+2018-2-20 10:20:00 error: gas is not defined
+2018-2-20 10:20:19 error: gas is not defined
+2018-2-20 10:20:42 error: gas is not defined
+2018-2-20 10:21:59 error: gas is not defined
+2018-2-20 10:22:09 error: gas is not defined

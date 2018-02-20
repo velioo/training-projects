@@ -1,0 +1,91 @@
+2018-2-20 09:38:28 error: uncaughtException: middleware must be a function!
+TypeError: middleware must be a function!
+    at Application.use (/home/velioo/training-projects/velioo_koa/node_modules/koa/lib/application.js:105:41)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:59:5)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-20 09:38:36 error: uncaughtException: middleware must be a function!
+TypeError: middleware must be a function!
+    at Application.use (/home/velioo/training-projects/velioo_koa/node_modules/koa/lib/application.js:105:41)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:59:5)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-20 09:51:15 error: uncaughtException: handle_not_foun is not defined
+ReferenceError: handle_not_foun is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:59:9)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-20 09:51:18 error: uncaughtException: handle_not_foun is not defined
+ReferenceError: handle_not_foun is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:59:9)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-20 09:54:16 error: uncaughtException: handle_not_found is not defined
+ReferenceError: handle_not_found is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:59:9)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-20 10:00:04 error: uncaughtException: middleware must be a function!
+TypeError: middleware must be a function!
+    at Application.use (/home/velioo/training-projects/velioo_koa/node_modules/koa/lib/application.js:105:41)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:57:5)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-20 10:15:04 error: uncaughtException: winston is not defined
+ReferenceError: winston is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:23:15)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-20 10:15:55 error: uncaughtException: winston is not defined
+ReferenceError: winston is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:23:15)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3

@@ -75,7 +75,7 @@ const server = net.createServer({"allowHalfOpen": true}, (conn) => {
                 } catch (exc) {
                     logger.error("Error while concatenating client data: " + exc.stack);
                 }
-                conn.setTimeout(CLIENT_TIMEOUT)
+                conn.setTimeout(CLIENT_TIMEOUT);
             });
             conn.on('end', () => {
                 logger.info("Client sent a FIN packet");
