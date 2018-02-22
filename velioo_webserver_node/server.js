@@ -38,21 +38,21 @@ const mime = require('mime');
 Object.freeze(ALLOWED_DIRS);
 
 serverDomain.on('error', (err) => {
-    //logger.error("Uncaught error occurred: " + err.stack);
+    logger.error("Uncaught error occurred: " + err.stack);
 });
 
 serverDomain.run(() => {
-//logger.info("Creating server... ");
+logger.info("Creating server... ");
 const server = net.createServer((conn) => {
     conn.timeout = Date.now() + CLIENT_TIMEOUT;
     conn.responseSent = false;
     conns.push(conn);
     try {
         conn.setEncoding('utf8');
-        var req_headers = "";
-        var method = "";
-        var path = "";
-        var headersReceived = false;
+        let req_headers = "";
+        let method = "";
+        let path = "";
+        let headersReceived = false;
         try {
             conn.on('data', (data) => {
                 if (conns.indexOf(conn) == -1) return;
@@ -61,7 +61,7 @@ const server = net.createServer((conn) => {
                     if (!headersReceived) {
                         req_headers+=data;
                         if ((req_headers.indexOf("\r\n") != -1) && !method) {
-                            var temp = req_headers.split(" ", 2);
+                            let temp = req_headers.split(" ", 2);
                             method = temp[0];
                             path = temp[1];
                         }
@@ -69,53 +69,54 @@ const server = net.createServer((conn) => {
                             req_headers+=data.split("\r\n\r\n", 1)[0];
                             headersReceived = true;
                             //logger.info("Client headers received, continuing to request process");
-                            return processRequest(conn, req_headers, path, method);
+                            return processRequest(conn, path, method);
                         }
                     }
                 } catch (exc) {
-                    //logger.error("Error while concatenating client data: " + exc.stack);
+                    logger.error("Error while receiving request headers: " + exc.stack);
                 }
             });
             conn.on('end', () => {
                 //logger.info("Client sent a FIN packet");
-                var connIndex = conns.indexOf(conn);
-                if (connIndex > -1) {
-                    conns.splice(connIndex, 1);
+                try {
+                    conns.splice(conns.indexOf(conn), 1);
+                } catch (exc) {
+                    logger.error("Error removing element from conns array: " + exc.stack);
                 }
                 conn.end();
             });
             conn.on('error', (err) => {
                 if (err.code === 'ERR_STREAM_WRITE_AFTER_END') {
-                    //logger.error("Client socket was closed, cannot write to it");
+                    logger.error("Client socket was closed, cannot write to it");
                 } else {
-                    //logger.error("Client socket error: " + err.stack);
+                    logger.error("Client socket error: " + err.stack);
                 }
                 conn.destroy();
             });
             conn.on('close', (had_error) => {
                 if (had_error) {
-                    return //logger.error("Client socket closed due to a transmission error");
+                    return logger.error("Client socket closed due to a transmission error");
                 }
                 //logger.info("Client socket has fully closed");
             });
         } catch (exc) {
-            //logger.error("Exception while adding connection listeners: " + exc.stack);
+            logger.error("Exception while adding connection listeners: " + exc.stack);
             return sendResponse500(conn);
         }
             
-        async function processRequest(conn, req_headers, path, method) {
+        async function processRequest(conn, path, method) {
             //logger.info("Method: " + method + ", Path: " + path);
             try {
                 //logger.info("processRequest invoked");
-                var query = urlParser.parse(path);
+                let query = urlParser.parse(path);
                 if (method === 'GET') {
                     //logger.info("Request is GET");
                     //logger.info("Path is: " + query.pathname);
-                    var path = '.' + query.pathname;
-                    try {                      
-                        var pathIsAllowed = false;
+                    let path = '.' + query.pathname;
+                    try {
+                        let pathIsAllowed = false;
                         //logger.info("Checking if path is allowed...");
-                        for(var i = 0; i < ALLOWED_DIRS.length; i++) {
+                        for(let i = 0; i < ALLOWED_DIRS.length; i++) {
                             if(path.startsWith(ALLOWED_DIRS[i])) {
                                 pathIsAllowed = true;
                                 break;
@@ -123,8 +124,8 @@ const server = net.createServer((conn) => {
                         };
                         if (pathIsAllowed) {
                             //logger.info("Path is allowed");
-                            var pathStats = await stat(path);
-                            var contentType = mime.getType(path);
+                            let pathStats = await stat(path);
+                            let contentType = mime.getType(path);
                             if (contentType === null) {
                                 if (pathStats.isDirectory()) {
                                     //logger.info("Path is a directory. Concatenating index.html to path");
@@ -136,7 +137,7 @@ const server = net.createServer((conn) => {
                                             //logger.info("No index page in folder - path is forbidden");
                                             return sendResponse403(conn);
                                         } 
-                                        //logger.error("Error while concatenating index page or getting path info: " + exc.stack);
+                                        logger.error("Error while concatenating index page or getting path info: " + exc.stack);
                                         return sendResponse500(conn);
                                     }
                                     contentType = mime.getType(path)
@@ -146,10 +147,11 @@ const server = net.createServer((conn) => {
                             }
                             //logger.info("Sending headers to client...");
                             conn.write("HTTP/1.1 200 OK\r\nContent-Type: " + contentType + "\r\nContent-Length: " + pathStats.size  + "\r\n\r\n");
+                            conn.responseSent = true;
                             
                             const stream_in = fs.createReadStream(path);
                             stream_in.on('error', (err) => {
-                                //logger.error("Error while piping resource to client: " + err.stack); 
+                                logger.error("Error while piping resource to client: " + err.stack); 
                                 if (err.code === 'ENOENT') {
                                     return sendResponse403(conn);
                                 }
@@ -158,7 +160,6 @@ const server = net.createServer((conn) => {
                             
                             stream_in.on('end', (err) => {
                                 //logger.info("Resource has been sent to client");
-                                conn.responseSent = true;
                                 conn.end();
                             });
                             
@@ -175,7 +176,7 @@ const server = net.createServer((conn) => {
                             //logger.info("Path doesn't exist");
                             return sendResponse404(conn);
                         } 
-                        //logger.error("Error while checking path existence: " + exc.stack);
+                        logger.error("Error while checking path existence: " + exc.stack);
                         return sendResponse500(conn);
                     }
 
@@ -183,12 +184,12 @@ const server = net.createServer((conn) => {
                     return sendResponse501(conn, 'Request method is not Implemented\n');
                 }
             } catch (exc) {
-                //logger.error("Exception in processRequest: " + exc.stack);
+                logger.error("Exception in processRequest: " + exc.stack);
             }
         }
        
     } catch (exc) {
-        //logger.error("Error while processing request: " + exc.stack);
+        logger.error("Error while processing request: " + exc.stack);
     }
 });
 
@@ -197,16 +198,16 @@ var globalTimer = setInterval(() => {
     try {
     if (conns.length <= 0) return;
     //logger.info("Connections for potential cleaning available");
-    var cleanCount = CLEAN_COUNT;
+    let cleanCount = CLEAN_COUNT;
     if (conns.length < CLEAN_COUNT) cleanCount = conns.length;
-    var currentTime = Date.now();
-    for(var i = 0; i < cleanCount; i++) {
+    let currentTime = Date.now();
+    for(let i = 0; i < cleanCount; i++) {
         if (conns[0].timeout > currentTime) break;
         //logger.info("Cleaning connection...");
         sendResponse408(conns.shift());
     };
     } catch (exc) {
-        //logger.error("Exception in timeout timer: " + exc.stack);
+        logger.error("Exception in timeout timer: " + exc.stack);
     }
 }, TIMER_TIME);
 
@@ -237,14 +238,14 @@ function sendResponse501(conn, message) {
 
 server.on('error', (err) => {
    if(err.code === 'EADDRINUSE') {
-       //logger.error("Port in use. Retrying...");
+       logger.error("Port in use. Retrying...");
        setTimeout(() => {
             server.close();
             server.listen(PORT, HOST);
             //logger.info("Listening on port " + PORT);
        }, 1000);
    }
-   return //logger.error("Error while starting listen function.\n" + err.stack);
+   return logger.error("Error while starting listen function.\n" + err.stack);
 });
 
 server.listen(PORT, HOST, BACKLOG, () => {

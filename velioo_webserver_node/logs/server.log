@@ -14044,3 +14044,498 @@ Accept: */*
 2018-2-21 18:51:44 info: Resource has been sent to client
 2018-2-21 18:51:44 info: Client sent a FIN packet
 2018-2-21 18:51:44 info: Client socket has fully closed
+2018-2-22 08:54:38 error: Error removing element from conns array: ReferenceError: connIndex is not defined
+    at Socket.conn.on (/home/velioo/training-projects/velioo_webserver_node/server.js:82:34)
+    at Socket.emit (events.js:164:20)
+    at endReadableNT (_stream_readable.js:1054:12)
+    at _combinedTickCallback (internal/process/next_tick.js:138:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:218:9)
+2018-2-22 08:58:26 error: GET
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:33:04 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:37:41 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:37:41 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:37:41 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:37:41 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:37:41 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:37:41 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:37:41 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:37:41 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:37:41 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:37:41 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:37:41 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:37:41 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:37:41 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:37:41 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:37:41 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:37:41 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:37:41 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:37:41 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:37:41 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket error: Error: write EPIPE
+    at _errnoException (util.js:1031:13)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:873:14)
+2018-2-22 09:37:41 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:37:41 error: Client socket error: Error: read ECONNRESET
+    at _errnoException (util.js:1031:13)
+    at TCP.onread (net.js:619:25)
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error
+2018-2-22 09:37:41 error: Client socket closed due to a transmission error

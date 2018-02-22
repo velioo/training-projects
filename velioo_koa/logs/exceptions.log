@@ -89,3 +89,61 @@ ReferenceError: winston is not defined
     at Function.Module.runMain (module.js:682:10)
     at startup (bootstrap_node.js:191:16)
     at bootstrap_node.js:613:3
+2018-2-22 10:03:59 error: uncaughtException: router.gete is not a function
+TypeError: router.gete is not a function
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:64:8)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-22 10:04:05 error: uncaughtException: router.gete is not a function
+TypeError: router.gete is not a function
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:64:8)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-22 10:04:16 error: uncaughtException: router.gete is not a function
+TypeError: router.gete is not a function
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:64:8)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-22 10:52:40 error: uncaughtException: Cannot read property 'length' of undefined
+TypeError: Cannot read property 'length' of undefined
+    at parse (/home/velioo/training-projects/velioo_koa/node_modules/path-to-regexp/index.js:91:19)
+    at stringToRegexp (/home/velioo/training-projects/velioo_koa/node_modules/path-to-regexp/index.js:322:25)
+    at pathToRegexp (/home/velioo/training-projects/velioo_koa/node_modules/path-to-regexp/index.js:425:10)
+    at new Layer (/home/velioo/training-projects/velioo_koa/node_modules/koa-router/lib/layer.js:47:17)
+    at Router.register (/home/velioo/training-projects/velioo_koa/node_modules/koa-router/lib/router.js:553:15)
+    at Router.(anonymous function) [as get] (/home/velioo/training-projects/velioo_koa/node_modules/koa-router/lib/router.js:202:10)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:91:8)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+2018-2-22 10:56:26 error: uncaughtException: ENOENT: no such file or directory, open 'uploads/upload_b5300a7113a2a1385dc991f591a5efa7'
+Error: ENOENT: no such file or directory, open 'uploads/upload_b5300a7113a2a1385dc991f591a5efa7'
+2018-2-22 11:13:02 error: uncaughtException: serve is not defined
+ReferenceError: serve is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:130:5)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
