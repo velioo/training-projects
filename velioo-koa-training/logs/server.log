@@ -1,0 +1,637 @@
+2018-2-20 09:00:42 info: /users:id ctx = 
+2018-2-20 09:03:50 info: /users:id ctx = { request: 
+   { method: 'GET',
+     url: '/users/1337',
+     header: 
+      { host: 'localhost:8883',
+        'user-agent': 'curl/7.47.0',
+        accept: '*/*' } },
+  response: { status: 404, message: 'Not Found', header: {} },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/users/1337',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>' }
+2018-2-20 09:09:40 info: /users:id ctx = { request: 
+   { method: 'GET',
+     url: '/users/1337',
+     header: 
+      { host: 'localhost:8883',
+        'user-agent': 'curl/7.47.0',
+        accept: '*/*' } },
+  response: { status: 404, message: 'Not Found', header: {} },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/users/1337',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>' }
+2018-2-20 09:27:19 info: Admin request obj = { method: 'GET',
+  url: '/admins/52000',
+  header: 
+   { host: 'localhost:8883',
+     'user-agent': 'curl/7.47.0',
+     accept: '*/*' } }
+2018-2-20 09:27:38 info: Admin request obj = { method: 'GET',
+  url: '/admins/12345',
+  header: 
+   { host: 'localhost:8883',
+     connection: 'keep-alive',
+     'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36',
+     'upgrade-insecure-requests': '1',
+     accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+     'accept-encoding': 'gzip, deflate, br',
+     'accept-language': 'en-US,en;q=0.9',
+     cookie: 'gsScrollPos-577=0; gsScrollPos-353=' } }
+2018-2-20 09:33:53 info: Admin request obj = { method: 'GET',
+  url: '/admins/52000',
+  header: 
+   { host: 'localhost:8883',
+     'user-agent': 'curl/7.47.0',
+     accept: '*/*' } }
+2018-2-20 09:33:53 info: Admin response obj = { status: 200,
+  message: 'OK',
+  header: 
+   { 'content-type': 'text/plain; charset=utf-8',
+     'content-length': '16' },
+  body: 'Admin id = 52000' }
+2018-2-20 09:40:55 info: Admin request obj = { method: 'GET',
+  url: '/admins/52000',
+  header: 
+   { host: 'localhost:8883',
+     'user-agent': 'curl/7.47.0',
+     accept: '*/*' } }
+2018-2-20 09:40:55 info: Admin response obj = { status: 200,
+  message: 'OK',
+  header: 
+   { 'content-type': 'text/plain; charset=utf-8',
+     'content-length': '16' },
+  body: 'Admin id = 52000' }
+2018-2-20 09:41:50 info: Admin request obj = { method: 'GET',
+  url: '/admins/12345',
+  header: 
+   { host: 'localhost:8883',
+     connection: 'keep-alive',
+     'upgrade-insecure-requests': '1',
+     'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36',
+     accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+     'accept-encoding': 'gzip, deflate, br',
+     'accept-language': 'en-US,en;q=0.9',
+     cookie: 'gsScrollPos-353=0; gsScrollPos-577=0; gsScrollPos-353=' } }
+2018-2-20 09:41:51 info: Admin response obj = { status: 200,
+  message: 'OK',
+  header: 
+   { 'content-type': 'text/plain; charset=utf-8',
+     'content-length': '16' },
+  body: 'Admin id = 12345' }
+2018-2-20 09:41:52 info: Admin request obj = { method: 'GET',
+  url: '/admins/12345',
+  header: 
+   { host: 'localhost:8883',
+     connection: 'keep-alive',
+     'cache-control': 'max-age=0',
+     'upgrade-insecure-requests': '1',
+     'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36',
+     accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+     'accept-encoding': 'gzip, deflate, br',
+     'accept-language': 'en-US,en;q=0.9',
+     cookie: 'gsScrollPos-353=; gsScrollPos-577=0; gsScrollPos-353=' } }
+2018-2-20 09:41:52 info: Admin response obj = { status: 200,
+  message: 'OK',
+  header: 
+   { 'content-type': 'text/plain; charset=utf-8',
+     'content-length': '16' },
+  body: 'Admin id = 12345' }
+2018-2-20 10:04:54 error: Error Message
+2018-2-20 10:06:02 error: Error Message
+2018-2-20 10:06:18 error: Error Message
+2018-2-20 10:06:26 error: Error Message
+2018-2-20 10:06:27 error: Error Message
+2018-2-20 10:06:28 error: Error Message
+2018-2-20 10:06:28 error: Error Message
+2018-2-20 10:09:56 error: Brauh
+2018-2-20 10:09:56 error: Brauh
+2018-2-20 10:11:00 error: logge is not defined
+2018-2-20 10:11:37 info: /users:id ctx = { request: 
+   { method: 'GET',
+     url: '/users/2131',
+     header: 
+      { host: 'localhost:8883',
+        connection: 'keep-alive',
+        pragma: 'no-cache',
+        'cache-control': 'no-cache',
+        'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36',
+        'upgrade-insecure-requests': '1',
+        accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9',
+        cookie: 'gsScrollPos-577=0; gsScrollPos-353=' } },
+  response: { status: 404, message: 'Not Found', header: {} },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/users/2131',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>' }
+2018-2-20 10:11:37 error: hes is not defined
+2018-2-20 10:18:55 info: /users:id ctx = { request: 
+   { method: 'GET',
+     url: '/users/2131',
+     header: 
+      { host: 'localhost:8883',
+        connection: 'keep-alive',
+        'upgrade-insecure-requests': '1',
+        'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36',
+        accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9',
+        cookie: 'gsScrollPos-353=0; gsScrollPos-577=0; gsScrollPos-353=' } },
+  response: { status: 404, message: 'Not Found', header: {} },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/users/2131',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>' }
+2018-2-20 10:18:55 error: gas is not defined
+2018-2-20 10:18:57 info: /users:id ctx = { request: 
+   { method: 'GET',
+     url: '/users/2131',
+     header: 
+      { host: 'localhost:8883',
+        connection: 'keep-alive',
+        'cache-control': 'max-age=0',
+        'upgrade-insecure-requests': '1',
+        'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36',
+        accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9',
+        cookie: 'gsScrollPos-353=0; gsScrollPos-577=0; gsScrollPos-353=' } },
+  response: { status: 404, message: 'Not Found', header: {} },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/users/2131',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>' }
+2018-2-20 10:18:57 error: gas is not defined
+2018-2-20 10:19:48 info: /users:id ctx = { request: 
+   { method: 'GET',
+     url: '/users/2131',
+     header: 
+      { host: 'localhost:8883',
+        connection: 'keep-alive',
+        'cache-control': 'max-age=0',
+        'upgrade-insecure-requests': '1',
+        'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36',
+        accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9',
+        cookie: 'gsScrollPos-353=0; gsScrollPos-577=0; gsScrollPos-353=' } },
+  response: { status: 404, message: 'Not Found', header: {} },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/users/2131',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>' }
+2018-2-20 10:19:48 error: gas is not defined
+2018-2-20 10:19:48 info: /users:id ctx = { request: 
+   { method: 'GET',
+     url: '/users/2131',
+     header: 
+      { host: 'localhost:8883',
+        connection: 'keep-alive',
+        'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36',
+        'upgrade-insecure-requests': '1',
+        accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9',
+        cookie: 'gsScrollPos-353=0; gsScrollPos-577=0; gsScrollPos-353=' } },
+  response: { status: 404, message: 'Not Found', header: {} },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/users/2131',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>' }
+2018-2-20 10:19:48 error: gas is not defined
+2018-2-20 10:19:48 info: /users:id ctx = { request: 
+   { method: 'GET',
+     url: '/users/2131',
+     header: 
+      { host: 'localhost:8883',
+        connection: 'keep-alive',
+        'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36',
+        'upgrade-insecure-requests': '1',
+        accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9',
+        cookie: 'gsScrollPos-353=0; gsScrollPos-577=0; gsScrollPos-353=' } },
+  response: { status: 404, message: 'Not Found', header: {} },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/users/2131',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>' }
+2018-2-20 10:19:48 error: gas is not defined
+2018-2-20 10:20:00 info: /users:id ctx = { request: 
+   { method: 'GET',
+     url: '/users/2131',
+     header: 
+      { host: 'localhost:8883',
+        connection: 'keep-alive',
+        'cache-control': 'max-age=0',
+        'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36',
+        'upgrade-insecure-requests': '1',
+        accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9',
+        cookie: 'gsScrollPos-353=0; gsScrollPos-577=0; gsScrollPos-353=' } },
+  response: { status: 404, message: 'Not Found', header: {} },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/users/2131',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>' }
+2018-2-20 10:20:00 error: gas is not defined
+2018-2-20 10:20:19 error: gas is not defined
+2018-2-20 10:20:42 error: gas is not defined
+2018-2-20 10:21:59 error: gas is not defined
+2018-2-20 10:22:09 error: gas is not defined
+2018-2-22 10:20:03 error: Error while executing code: /home/velioo/training-projects/velioo_koa/views/sign_login.pug:5:1
+    3|         title Sign_Login Template
+    4|     body
+  > 5| 	if(user)
+-------^
+    6| 	    h1 Hi, #{user.name}
+    7| 	else
+    8| 	    a(href = '/sign_up') Sign Up
+
+Invalid indentation, you can use tabs or spaces but not both
+2018-2-22 10:21:23 error: Error while executing code: /home/velioo/training-projects/velioo_koa/views/sign_login.pug:7:12
+    5|     if(user)
+    6|         h1 Hi, #{user.name}
+  > 7|     else   a(href = '/sign_up') Sign Up
+------------------^
+    8| 
+    9| 
+
+`else` cannot have a condition, perhaps you meant `else if`
+2018-2-22 10:28:37 error: Error while executing code: /home/velioo/training-projects/velioo_koa/views/sign_login.pug:3:26
+    1| html
+    2|     head
+  > 3|         title=Sign_Login Template
+--------------------------------^
+    4|     body
+    5|     if(user)
+    6|         h1 Hi, #{user.name}
+
+Syntax Error: Unexpected token
+2018-2-22 10:29:17 error: Error while executing code: /home/velioo/training-projects/velioo_koa/views/sign_login.pug:3:27
+    1| html
+    2|     head
+  > 3|         title= Sign_Login Template
+---------------------------------^
+    4|     body
+    5|     if(user)
+    6|         h1 Hi, #{user.name}
+
+Syntax Error: Unexpected token
+2018-2-22 10:58:26 error: Error while executing code: Request aborted
+2018-2-22 11:00:19 info: Files: { image: 
+   File {
+     domain: null,
+     _events: {},
+     _eventsCount: 0,
+     _maxListeners: undefined,
+     size: 68208,
+     path: 'uploads/upload_96f58e0470e255292c60692ea97f5c53',
+     name: 'WebServices.PNG',
+     type: 'image/png',
+     hash: null,
+     lastModifiedDate: 2018-02-22T09:00:19.229Z,
+     _writeStream: 
+      WriteStream {
+        _writableState: 
+         WritableState {
+           objectMode: false,
+           highWaterMark: 16384,
+           finalCalled: false,
+           needDrain: true,
+           ending: true,
+           ended: true,
+           finished: true,
+           destroyed: true,
+           decodeStrings: true,
+           defaultEncoding: 'utf8',
+           length: 0,
+           writing: false,
+           corked: 0,
+           sync: false,
+           bufferProcessing: false,
+           onwrite: { [Function: bound onwrite] [length]: 1, [name]: 'bound onwrite' },
+           writecb: null,
+           writelen: 0,
+           bufferedRequest: null,
+           lastBufferedRequest: null,
+           pendingcb: 0,
+           prefinished: true,
+           errorEmitted: false,
+           bufferedRequestCount: 0,
+           corkedRequestsFree: { next: [Object], entry: null, finish: [Function] } },
+        writable: false,
+        domain: null,
+        _events: {},
+        _eventsCount: 0,
+        _maxListeners: undefined,
+        path: 'uploads/upload_96f58e0470e255292c60692ea97f5c53',
+        fd: null,
+        flags: 'w',
+        mode: 438,
+        start: undefined,
+        autoClose: true,
+        pos: undefined,
+        bytesWritten: 68208,
+        closed: true } } }
+2018-2-22 11:00:19 info: Fields: { name: 'sda' }
+2018-2-22 11:00:29 info: Files: { image: 
+   File {
+     domain: null,
+     _events: {},
+     _eventsCount: 0,
+     _maxListeners: undefined,
+     size: 68208,
+     path: 'uploads/upload_12e9f0b54d612fdb2223ae28dedf375a',
+     name: 'WebServices.PNG',
+     type: 'image/png',
+     hash: null,
+     lastModifiedDate: 2018-02-22T09:00:29.091Z,
+     _writeStream: 
+      WriteStream {
+        _writableState: 
+         WritableState {
+           objectMode: false,
+           highWaterMark: 16384,
+           finalCalled: false,
+           needDrain: false,
+           ending: true,
+           ended: true,
+           finished: true,
+           destroyed: true,
+           decodeStrings: true,
+           defaultEncoding: 'utf8',
+           length: 0,
+           writing: false,
+           corked: 0,
+           sync: false,
+           bufferProcessing: false,
+           onwrite: { [Function: bound onwrite] [length]: 1, [name]: 'bound onwrite' },
+           writecb: null,
+           writelen: 0,
+           bufferedRequest: null,
+           lastBufferedRequest: null,
+           pendingcb: 0,
+           prefinished: true,
+           errorEmitted: false,
+           bufferedRequestCount: 0,
+           corkedRequestsFree: { next: [Object], entry: null, finish: [Function] } },
+        writable: false,
+        domain: null,
+        _events: {},
+        _eventsCount: 0,
+        _maxListeners: undefined,
+        path: 'uploads/upload_12e9f0b54d612fdb2223ae28dedf375a',
+        fd: null,
+        flags: 'w',
+        mode: 438,
+        start: undefined,
+        autoClose: true,
+        pos: undefined,
+        bytesWritten: 68208,
+        closed: true } } }
+2018-2-22 11:00:29 info: Fields: { name: 'velioo' }
+2018-2-22 11:05:39 info: Files: { image: 
+   File {
+     domain: null,
+     _events: {},
+     _eventsCount: 0,
+     _maxListeners: undefined,
+     size: 72064,
+     path: 'uploads/upload_8dc4eb0405f7f4e8c3e48140a7d5d623',
+     name: 'CGI_scripting.PNG',
+     type: 'image/png',
+     hash: null,
+     lastModifiedDate: 2018-02-22T09:05:39.350Z,
+     _writeStream: 
+      WriteStream {
+        _writableState: 
+         WritableState {
+           objectMode: false,
+           highWaterMark: 16384,
+           finalCalled: false,
+           needDrain: true,
+           ending: true,
+           ended: true,
+           finished: true,
+           destroyed: true,
+           decodeStrings: true,
+           defaultEncoding: 'utf8',
+           length: 0,
+           writing: false,
+           corked: 0,
+           sync: false,
+           bufferProcessing: false,
+           onwrite: { [Function: bound onwrite] [length]: 1, [name]: 'bound onwrite' },
+           writecb: null,
+           writelen: 0,
+           bufferedRequest: null,
+           lastBufferedRequest: null,
+           pendingcb: 0,
+           prefinished: true,
+           errorEmitted: false,
+           bufferedRequestCount: 0,
+           corkedRequestsFree: { next: [Object], entry: null, finish: [Function] } },
+        writable: false,
+        domain: null,
+        _events: {},
+        _eventsCount: 0,
+        _maxListeners: undefined,
+        path: 'uploads/upload_8dc4eb0405f7f4e8c3e48140a7d5d623',
+        fd: null,
+        flags: 'w',
+        mode: 438,
+        start: undefined,
+        autoClose: true,
+        pos: undefined,
+        bytesWritten: 72064,
+        closed: true } } }
+2018-2-22 11:05:39 info: Fields: { name: 'image1' }
+2018-2-22 11:08:12 info: Files: { image: 
+   File {
+     domain: null,
+     _events: {},
+     _eventsCount: 0,
+     _maxListeners: undefined,
+     size: 68208,
+     path: 'uploads/upload_360994ec2e2924bcab9a99ee03a84b85',
+     name: 'WebServices.PNG',
+     type: 'image/png',
+     hash: null,
+     lastModifiedDate: 2018-02-22T09:08:12.183Z,
+     _writeStream: 
+      WriteStream {
+        _writableState: 
+         WritableState {
+           objectMode: false,
+           highWaterMark: 16384,
+           finalCalled: false,
+           needDrain: false,
+           ending: true,
+           ended: true,
+           finished: true,
+           destroyed: true,
+           decodeStrings: true,
+           defaultEncoding: 'utf8',
+           length: 0,
+           writing: false,
+           corked: 0,
+           sync: false,
+           bufferProcessing: false,
+           onwrite: { [Function: bound onwrite] [length]: 1, [name]: 'bound onwrite' },
+           writecb: null,
+           writelen: 0,
+           bufferedRequest: null,
+           lastBufferedRequest: null,
+           pendingcb: 0,
+           prefinished: true,
+           errorEmitted: false,
+           bufferedRequestCount: 0,
+           corkedRequestsFree: { next: null, entry: null, finish: [Function] } },
+        writable: false,
+        domain: null,
+        _events: {},
+        _eventsCount: 0,
+        _maxListeners: undefined,
+        path: 'uploads/upload_360994ec2e2924bcab9a99ee03a84b85',
+        fd: null,
+        flags: 'w',
+        mode: 438,
+        start: undefined,
+        autoClose: true,
+        pos: undefined,
+        bytesWritten: 68208,
+        closed: true } } }
+2018-2-22 11:08:12 info: Fields: { name: 'shalala' }
+2018-2-22 11:08:23 info: Files: { image: 
+   File {
+     domain: null,
+     _events: {},
+     _eventsCount: 0,
+     _maxListeners: undefined,
+     size: 68208,
+     path: 'uploads/upload_c4db32c62097e0d7ef9123b7a78d7b28',
+     name: 'WebServices.PNG',
+     type: 'image/png',
+     hash: null,
+     lastModifiedDate: 2018-02-22T09:08:23.622Z,
+     _writeStream: 
+      WriteStream {
+        _writableState: 
+         WritableState {
+           objectMode: false,
+           highWaterMark: 16384,
+           finalCalled: false,
+           needDrain: true,
+           ending: true,
+           ended: true,
+           finished: true,
+           destroyed: true,
+           decodeStrings: true,
+           defaultEncoding: 'utf8',
+           length: 0,
+           writing: false,
+           corked: 0,
+           sync: false,
+           bufferProcessing: false,
+           onwrite: { [Function: bound onwrite] [length]: 1, [name]: 'bound onwrite' },
+           writecb: null,
+           writelen: 0,
+           bufferedRequest: null,
+           lastBufferedRequest: null,
+           pendingcb: 0,
+           prefinished: true,
+           errorEmitted: false,
+           bufferedRequestCount: 0,
+           corkedRequestsFree: { next: null, entry: null, finish: [Function] } },
+        writable: false,
+        domain: null,
+        _events: {},
+        _eventsCount: 0,
+        _maxListeners: undefined,
+        path: 'uploads/upload_c4db32c62097e0d7ef9123b7a78d7b28',
+        fd: null,
+        flags: 'w',
+        mode: 438,
+        start: undefined,
+        autoClose: true,
+        pos: undefined,
+        bytesWritten: 68208,
+        closed: true } } }
+2018-2-22 11:08:23 info: Fields: { name: '' }
+2018-2-22 11:18:36 error: Error while executing code: Cannot read property 'set' of undefined
+2018-2-22 11:19:26 error: Error while executing code: Cannot read property 'set' of undefined
+2018-2-22 11:31:06 error: Error while executing code: this.expires.toUTCString is not a function
+2018-2-22 11:42:36 info: Cookie name: undefined
+2018-2-22 11:42:36 info: Cookie expired. Reseting...
+2018-2-22 11:42:39 info: Cookie name: bar
+2018-2-22 11:42:50 info: Cookie name: undefined
+2018-2-22 11:42:50 info: Cookie expired. Reseting...
+2018-2-22 11:42:52 info: Cookie name: bar
+2018-2-22 11:42:54 info: Cookie name: bar
+2018-2-22 11:42:54 info: Cookie name: bar
+2018-2-22 11:42:54 info: Cookie name: bar
+2018-2-22 11:42:55 info: Cookie name: undefined
+2018-2-22 11:42:55 info: Cookie expired. Reseting...
+2018-2-22 11:42:56 info: Cookie name: bar
+2018-2-22 11:42:56 info: Cookie name: bar
+2018-2-22 11:42:56 info: Cookie name: bar
+2018-2-22 11:42:56 info: Cookie name: bar
+2018-2-22 11:50:43 info: Cookie name: undefined
+2018-2-22 11:50:43 info: Cookie expired. Reseting...
+2018-2-22 11:50:44 info: Cookie name: bar
+2018-2-22 11:50:48 error: Error while executing code: .keys required for signed cookies
+2018-2-24 08:37:09 info: protected url
+2018-2-24 08:40:24 info: protected url
+2018-2-24 08:40:24 info: protected url
+2018-2-24 08:46:39 info: protected url
+2018-2-24 08:47:17 info: protected url
+2018-2-24 08:47:18 info: protected url
+2018-2-24 08:47:18 info: protected url
+2018-2-24 08:47:27 info: protected url
+2018-2-24 08:55:00 info: protected url
+2018-2-24 09:39:20 error: Error while executing code: self is not defined
+2018-2-24 09:43:09 info: [object Object]
+2018-2-24 09:44:14 error: Error while executing code: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+2018-2-24 09:46:54 error: Error while executing code: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+2018-2-24 09:52:50 info: Saving person
+2018-2-24 09:52:50 info: Query done
+2018-2-24 09:52:50 info: Person wasn't saved successfully
+2018-2-24 09:54:28 info: Saving person
+2018-2-24 09:54:28 info: Query done
+2018-2-24 09:54:28 info: Person wasn't saved successfully
+2018-2-24 09:54:58 info: Saving person
+2018-2-24 09:54:58 info: Query done
+2018-2-24 09:54:58 info: Person wasn't saved successfully

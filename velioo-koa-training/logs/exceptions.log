@@ -1,0 +1,1196 @@
+2018-2-20 09:38:28 error: uncaughtException: middleware must be a function!
+TypeError: middleware must be a function!
+    at Application.use (/home/velioo/training-projects/velioo_koa/node_modules/koa/lib/application.js:105:41)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:59:5)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-20 09:38:36 error: uncaughtException: middleware must be a function!
+TypeError: middleware must be a function!
+    at Application.use (/home/velioo/training-projects/velioo_koa/node_modules/koa/lib/application.js:105:41)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:59:5)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-20 09:51:15 error: uncaughtException: handle_not_foun is not defined
+ReferenceError: handle_not_foun is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:59:9)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-20 09:51:18 error: uncaughtException: handle_not_foun is not defined
+ReferenceError: handle_not_foun is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:59:9)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-20 09:54:16 error: uncaughtException: handle_not_found is not defined
+ReferenceError: handle_not_found is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:59:9)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-20 10:00:04 error: uncaughtException: middleware must be a function!
+TypeError: middleware must be a function!
+    at Application.use (/home/velioo/training-projects/velioo_koa/node_modules/koa/lib/application.js:105:41)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:57:5)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-20 10:15:04 error: uncaughtException: winston is not defined
+ReferenceError: winston is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:23:15)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-20 10:15:55 error: uncaughtException: winston is not defined
+ReferenceError: winston is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:23:15)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-22 10:03:59 error: uncaughtException: router.gete is not a function
+TypeError: router.gete is not a function
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:64:8)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-22 10:04:05 error: uncaughtException: router.gete is not a function
+TypeError: router.gete is not a function
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:64:8)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-22 10:04:16 error: uncaughtException: router.gete is not a function
+TypeError: router.gete is not a function
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:64:8)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-22 10:52:40 error: uncaughtException: Cannot read property 'length' of undefined
+TypeError: Cannot read property 'length' of undefined
+    at parse (/home/velioo/training-projects/velioo_koa/node_modules/path-to-regexp/index.js:91:19)
+    at stringToRegexp (/home/velioo/training-projects/velioo_koa/node_modules/path-to-regexp/index.js:322:25)
+    at pathToRegexp (/home/velioo/training-projects/velioo_koa/node_modules/path-to-regexp/index.js:425:10)
+    at new Layer (/home/velioo/training-projects/velioo_koa/node_modules/koa-router/lib/layer.js:47:17)
+    at Router.register (/home/velioo/training-projects/velioo_koa/node_modules/koa-router/lib/router.js:553:15)
+    at Router.(anonymous function) [as get] (/home/velioo/training-projects/velioo_koa/node_modules/koa-router/lib/router.js:202:10)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:91:8)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+2018-2-22 10:56:26 error: uncaughtException: ENOENT: no such file or directory, open 'uploads/upload_b5300a7113a2a1385dc991f591a5efa7'
+Error: ENOENT: no such file or directory, open 'uploads/upload_b5300a7113a2a1385dc991f591a5efa7'
+2018-2-22 11:13:02 error: uncaughtException: serve is not defined
+ReferenceError: serve is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:130:5)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-24 08:30:33 error: uncaughtException: Cannot find module 'koa-basic-auth'
+Error: Cannot find module 'koa-basic-auth'
+    at Function.Module._resolveFilename (module.js:542:15)
+    at Function.Module._load (module.js:472:25)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:36:14)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+2018-2-24 08:40:38 error: uncaughtException: basic auth .name required
+AssertionError [ERR_ASSERTION]: basic auth .name required
+    at module.exports (/home/velioo/training-projects/velioo_koa/node_modules/koa-basic-auth/index.js:26:3)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:163:29)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-24 08:52:20 error: uncaughtException: middleware must be a function!
+TypeError: middleware must be a function!
+    at Application.use (/home/velioo/training-projects/velioo_koa/node_modules/koa/lib/application.js:105:41)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:154:5)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-24 08:52:29 error: uncaughtException: compress is not defined
+ReferenceError: compress is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:154:5)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-24 08:52:34 error: uncaughtException: compress is not defined
+ReferenceError: compress is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:154:5)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-24 08:52:45 error: uncaughtException: compress is not defined
+ReferenceError: compress is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:154:5)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-24 08:53:10 error: uncaughtException: compress is not defined
+ReferenceError: compress is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:154:5)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-24 08:53:45 error: uncaughtException: compress is not defined
+ReferenceError: compress is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:154:5)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-24 08:54:08 error: uncaughtException: compress is not defined
+ReferenceError: compress is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:154:5)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-24 08:54:51 error: uncaughtException: missing path
+AssertionError [ERR_ASSERTION]: missing path
+    at Module.require (module.js:583:3)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:38:18)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+2018-2-24 09:01:54 error: uncaughtException: missing path
+AssertionError [ERR_ASSERTION]: missing path
+    at Module.require (module.js:583:3)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:39:21)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+2018-2-24 09:02:18 error: uncaughtException: app.user is not a function
+TypeError: app.user is not a function
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:174:5)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-24 09:02:48 error: uncaughtException: missing path
+AssertionError [ERR_ASSERTION]: missing path
+    at Module.require (module.js:583:3)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:40:14)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+2018-2-24 09:02:51 error: uncaughtException: app.user is not a function
+TypeError: app.user is not a function
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:175:5)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-24 09:03:12 error: uncaughtException: app.user is not a function
+TypeError: app.user is not a function
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:175:5)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+    at bootstrap_node.js:613:3
+2018-2-24 09:28:41 error: uncaughtException: missing path
+AssertionError [ERR_ASSERTION]: missing path
+    at Module.require (module.js:583:3)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo_koa/app.js:41:18)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Function.Module.runMain (module.js:682:10)
+    at startup (bootstrap_node.js:191:16)
+2018-2-24 09:39:57 error: uncaughtException: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+Error: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+    at makeError (/home/velioo/training-projects/velioo_koa/node_modules/pug-error/index.js:32:13)
+    at Lexer.error (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:58:15)
+    at Lexer.fail (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1304:10)
+    at Lexer.advance (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1364:15)
+    at Lexer.callLexerFunction (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1319:23)
+    at Lexer.getTokens (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1375:12)
+    at lex (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:12:42)
+    at Object.lex (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:99:27)
+    at Function.loadString [as string] (/home/velioo/training-projects/velioo_koa/node_modules/pug-load/index.js:44:24)
+    at compileBody (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:86:18)
+    at Object.exports.compile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:243:16)
+    at handleTemplateCache (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:216:25)
+    at Object.exports.compileFile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:357:10)
+    at compileFile (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:55:24)
+    at renderer (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:92:12)
+    at Object.contextRenderer [as render] (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:106:17)
+2018-2-24 09:39:59 error: uncaughtException: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+Error: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+    at makeError (/home/velioo/training-projects/velioo_koa/node_modules/pug-error/index.js:32:13)
+    at Lexer.error (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:58:15)
+    at Lexer.fail (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1304:10)
+    at Lexer.advance (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1364:15)
+    at Lexer.callLexerFunction (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1319:23)
+    at Lexer.getTokens (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1375:12)
+    at lex (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:12:42)
+    at Object.lex (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:99:27)
+    at Function.loadString [as string] (/home/velioo/training-projects/velioo_koa/node_modules/pug-load/index.js:44:24)
+    at compileBody (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:86:18)
+    at Object.exports.compile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:243:16)
+    at handleTemplateCache (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:216:25)
+    at Object.exports.compileFile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:357:10)
+    at compileFile (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:55:24)
+    at renderer (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:92:12)
+    at Object.contextRenderer [as render] (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:106:17)
+2018-2-24 09:40:13 error: uncaughtException: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+Error: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+    at makeError (/home/velioo/training-projects/velioo_koa/node_modules/pug-error/index.js:32:13)
+    at Lexer.error (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:58:15)
+    at Lexer.fail (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1304:10)
+    at Lexer.advance (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1364:15)
+    at Lexer.callLexerFunction (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1319:23)
+    at Lexer.getTokens (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1375:12)
+    at lex (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:12:42)
+    at Object.lex (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:99:27)
+    at Function.loadString [as string] (/home/velioo/training-projects/velioo_koa/node_modules/pug-load/index.js:44:24)
+    at compileBody (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:86:18)
+    at Object.exports.compile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:243:16)
+    at handleTemplateCache (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:216:25)
+    at Object.exports.compileFile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:357:10)
+    at compileFile (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:55:24)
+    at renderer (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:92:12)
+    at Object.contextRenderer [as render] (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:106:17)
+2018-2-24 09:40:13 error: uncaughtException: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+Error: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+    at makeError (/home/velioo/training-projects/velioo_koa/node_modules/pug-error/index.js:32:13)
+    at Lexer.error (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:58:15)
+    at Lexer.fail (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1304:10)
+    at Lexer.advance (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1364:15)
+    at Lexer.callLexerFunction (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1319:23)
+    at Lexer.getTokens (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1375:12)
+    at lex (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:12:42)
+    at Object.lex (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:99:27)
+    at Function.loadString [as string] (/home/velioo/training-projects/velioo_koa/node_modules/pug-load/index.js:44:24)
+    at compileBody (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:86:18)
+    at Object.exports.compile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:243:16)
+    at handleTemplateCache (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:216:25)
+    at Object.exports.compileFile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:357:10)
+    at compileFile (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:55:24)
+    at renderer (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:92:12)
+    at Object.contextRenderer [as render] (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:106:17)
+2018-2-24 09:40:13 error: uncaughtException: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+Error: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+    at makeError (/home/velioo/training-projects/velioo_koa/node_modules/pug-error/index.js:32:13)
+    at Lexer.error (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:58:15)
+    at Lexer.fail (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1304:10)
+    at Lexer.advance (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1364:15)
+    at Lexer.callLexerFunction (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1319:23)
+    at Lexer.getTokens (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1375:12)
+    at lex (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:12:42)
+    at Object.lex (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:99:27)
+    at Function.loadString [as string] (/home/velioo/training-projects/velioo_koa/node_modules/pug-load/index.js:44:24)
+    at compileBody (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:86:18)
+    at Object.exports.compile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:243:16)
+    at handleTemplateCache (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:216:25)
+    at Object.exports.compileFile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:357:10)
+    at compileFile (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:55:24)
+    at renderer (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:92:12)
+    at Object.contextRenderer [as render] (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:106:17)
+2018-2-24 09:40:14 error: uncaughtException: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+Error: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+    at makeError (/home/velioo/training-projects/velioo_koa/node_modules/pug-error/index.js:32:13)
+    at Lexer.error (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:58:15)
+    at Lexer.fail (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1304:10)
+    at Lexer.advance (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1364:15)
+    at Lexer.callLexerFunction (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1319:23)
+    at Lexer.getTokens (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1375:12)
+    at lex (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:12:42)
+    at Object.lex (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:99:27)
+    at Function.loadString [as string] (/home/velioo/training-projects/velioo_koa/node_modules/pug-load/index.js:44:24)
+    at compileBody (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:86:18)
+    at Object.exports.compile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:243:16)
+    at handleTemplateCache (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:216:25)
+    at Object.exports.compileFile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:357:10)
+    at compileFile (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:55:24)
+    at renderer (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:92:12)
+    at Object.contextRenderer [as render] (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:106:17)
+2018-2-24 09:40:14 error: uncaughtException: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+Error: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+    at makeError (/home/velioo/training-projects/velioo_koa/node_modules/pug-error/index.js:32:13)
+    at Lexer.error (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:58:15)
+    at Lexer.fail (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1304:10)
+    at Lexer.advance (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1364:15)
+    at Lexer.callLexerFunction (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1319:23)
+    at Lexer.getTokens (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1375:12)
+    at lex (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:12:42)
+    at Object.lex (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:99:27)
+    at Function.loadString [as string] (/home/velioo/training-projects/velioo_koa/node_modules/pug-load/index.js:44:24)
+    at compileBody (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:86:18)
+    at Object.exports.compile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:243:16)
+    at handleTemplateCache (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:216:25)
+    at Object.exports.compileFile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:357:10)
+    at compileFile (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:55:24)
+    at renderer (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:92:12)
+    at Object.contextRenderer [as render] (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:106:17)
+2018-2-24 09:40:14 error: uncaughtException: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+Error: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+    at makeError (/home/velioo/training-projects/velioo_koa/node_modules/pug-error/index.js:32:13)
+    at Lexer.error (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:58:15)
+    at Lexer.fail (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1304:10)
+    at Lexer.advance (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1364:15)
+    at Lexer.callLexerFunction (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1319:23)
+    at Lexer.getTokens (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1375:12)
+    at lex (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:12:42)
+    at Object.lex (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:99:27)
+    at Function.loadString [as string] (/home/velioo/training-projects/velioo_koa/node_modules/pug-load/index.js:44:24)
+    at compileBody (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:86:18)
+    at Object.exports.compile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:243:16)
+    at handleTemplateCache (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:216:25)
+    at Object.exports.compileFile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:357:10)
+    at compileFile (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:55:24)
+    at renderer (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:92:12)
+    at Object.contextRenderer [as render] (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:106:17)
+2018-2-24 09:40:14 error: uncaughtException: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+Error: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+    at makeError (/home/velioo/training-projects/velioo_koa/node_modules/pug-error/index.js:32:13)
+    at Lexer.error (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:58:15)
+    at Lexer.fail (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1304:10)
+    at Lexer.advance (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1364:15)
+    at Lexer.callLexerFunction (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1319:23)
+    at Lexer.getTokens (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1375:12)
+    at lex (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:12:42)
+    at Object.lex (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:99:27)
+    at Function.loadString [as string] (/home/velioo/training-projects/velioo_koa/node_modules/pug-load/index.js:44:24)
+    at compileBody (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:86:18)
+    at Object.exports.compile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:243:16)
+    at handleTemplateCache (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:216:25)
+    at Object.exports.compileFile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:357:10)
+    at compileFile (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:55:24)
+    at renderer (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:92:12)
+    at Object.contextRenderer [as render] (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:106:17)
+2018-2-24 09:40:34 error: uncaughtException: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+Error: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+    at makeError (/home/velioo/training-projects/velioo_koa/node_modules/pug-error/index.js:32:13)
+    at Lexer.error (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:58:15)
+    at Lexer.fail (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1304:10)
+    at Lexer.advance (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1364:15)
+    at Lexer.callLexerFunction (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1319:23)
+    at Lexer.getTokens (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1375:12)
+    at lex (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:12:42)
+    at Object.lex (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:99:27)
+    at Function.loadString [as string] (/home/velioo/training-projects/velioo_koa/node_modules/pug-load/index.js:44:24)
+    at compileBody (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:86:18)
+    at Object.exports.compile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:243:16)
+    at handleTemplateCache (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:216:25)
+    at Object.exports.compileFile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:357:10)
+    at compileFile (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:55:24)
+    at renderer (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:92:12)
+    at Object.contextRenderer [as render] (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:106:17)
+2018-2-24 09:40:35 error: uncaughtException: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+Error: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+    at makeError (/home/velioo/training-projects/velioo_koa/node_modules/pug-error/index.js:32:13)
+    at Lexer.error (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:58:15)
+    at Lexer.fail (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1304:10)
+    at Lexer.advance (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1364:15)
+    at Lexer.callLexerFunction (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1319:23)
+    at Lexer.getTokens (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1375:12)
+    at lex (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:12:42)
+    at Object.lex (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:99:27)
+    at Function.loadString [as string] (/home/velioo/training-projects/velioo_koa/node_modules/pug-load/index.js:44:24)
+    at compileBody (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:86:18)
+    at Object.exports.compile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:243:16)
+    at handleTemplateCache (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:216:25)
+    at Object.exports.compileFile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:357:10)
+    at compileFile (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:55:24)
+    at renderer (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:92:12)
+    at Object.contextRenderer [as render] (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:106:17)
+2018-2-24 09:40:36 error: uncaughtException: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+Error: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+    at makeError (/home/velioo/training-projects/velioo_koa/node_modules/pug-error/index.js:32:13)
+    at Lexer.error (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:58:15)
+    at Lexer.fail (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1304:10)
+    at Lexer.advance (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1364:15)
+    at Lexer.callLexerFunction (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1319:23)
+    at Lexer.getTokens (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1375:12)
+    at lex (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:12:42)
+    at Object.lex (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:99:27)
+    at Function.loadString [as string] (/home/velioo/training-projects/velioo_koa/node_modules/pug-load/index.js:44:24)
+    at compileBody (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:86:18)
+    at Object.exports.compile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:243:16)
+    at handleTemplateCache (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:216:25)
+    at Object.exports.compileFile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:357:10)
+    at compileFile (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:55:24)
+    at renderer (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:92:12)
+    at Object.contextRenderer [as render] (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:106:17)
+2018-2-24 09:40:36 error: uncaughtException: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+Error: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+    at makeError (/home/velioo/training-projects/velioo_koa/node_modules/pug-error/index.js:32:13)
+    at Lexer.error (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:58:15)
+    at Lexer.fail (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1304:10)
+    at Lexer.advance (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1364:15)
+    at Lexer.callLexerFunction (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1319:23)
+    at Lexer.getTokens (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1375:12)
+    at lex (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:12:42)
+    at Object.lex (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:99:27)
+    at Function.loadString [as string] (/home/velioo/training-projects/velioo_koa/node_modules/pug-load/index.js:44:24)
+    at compileBody (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:86:18)
+    at Object.exports.compile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:243:16)
+    at handleTemplateCache (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:216:25)
+    at Object.exports.compileFile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:357:10)
+    at compileFile (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:55:24)
+    at renderer (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:92:12)
+    at Object.contextRenderer [as render] (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:106:17)
+2018-2-24 09:40:36 error: uncaughtException: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+Error: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+    at makeError (/home/velioo/training-projects/velioo_koa/node_modules/pug-error/index.js:32:13)
+    at Lexer.error (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:58:15)
+    at Lexer.fail (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1304:10)
+    at Lexer.advance (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1364:15)
+    at Lexer.callLexerFunction (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1319:23)
+    at Lexer.getTokens (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1375:12)
+    at lex (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:12:42)
+    at Object.lex (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:99:27)
+    at Function.loadString [as string] (/home/velioo/training-projects/velioo_koa/node_modules/pug-load/index.js:44:24)
+    at compileBody (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:86:18)
+    at Object.exports.compile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:243:16)
+    at handleTemplateCache (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:216:25)
+    at Object.exports.compileFile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:357:10)
+    at compileFile (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:55:24)
+    at renderer (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:92:12)
+    at Object.contextRenderer [as render] (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:106:17)
+2018-2-24 09:40:36 error: uncaughtException: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+Error: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+    at makeError (/home/velioo/training-projects/velioo_koa/node_modules/pug-error/index.js:32:13)
+    at Lexer.error (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:58:15)
+    at Lexer.fail (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1304:10)
+    at Lexer.advance (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1364:15)
+    at Lexer.callLexerFunction (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1319:23)
+    at Lexer.getTokens (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1375:12)
+    at lex (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:12:42)
+    at Object.lex (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:99:27)
+    at Function.loadString [as string] (/home/velioo/training-projects/velioo_koa/node_modules/pug-load/index.js:44:24)
+    at compileBody (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:86:18)
+    at Object.exports.compile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:243:16)
+    at handleTemplateCache (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:216:25)
+    at Object.exports.compileFile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:357:10)
+    at compileFile (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:55:24)
+    at renderer (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:92:12)
+    at Object.contextRenderer [as render] (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:106:17)
+2018-2-24 09:40:36 error: uncaughtException: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+Error: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+    at makeError (/home/velioo/training-projects/velioo_koa/node_modules/pug-error/index.js:32:13)
+    at Lexer.error (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:58:15)
+    at Lexer.fail (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1304:10)
+    at Lexer.advance (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1364:15)
+    at Lexer.callLexerFunction (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1319:23)
+    at Lexer.getTokens (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1375:12)
+    at lex (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:12:42)
+    at Object.lex (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:99:27)
+    at Function.loadString [as string] (/home/velioo/training-projects/velioo_koa/node_modules/pug-load/index.js:44:24)
+    at compileBody (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:86:18)
+    at Object.exports.compile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:243:16)
+    at handleTemplateCache (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:216:25)
+    at Object.exports.compileFile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:357:10)
+    at compileFile (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:55:24)
+    at renderer (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:92:12)
+    at Object.contextRenderer [as render] (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:106:17)
+2018-2-24 09:40:37 error: uncaughtException: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+Error: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+    at makeError (/home/velioo/training-projects/velioo_koa/node_modules/pug-error/index.js:32:13)
+    at Lexer.error (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:58:15)
+    at Lexer.fail (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1304:10)
+    at Lexer.advance (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1364:15)
+    at Lexer.callLexerFunction (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1319:23)
+    at Lexer.getTokens (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1375:12)
+    at lex (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:12:42)
+    at Object.lex (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:99:27)
+    at Function.loadString [as string] (/home/velioo/training-projects/velioo_koa/node_modules/pug-load/index.js:44:24)
+    at compileBody (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:86:18)
+    at Object.exports.compile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:243:16)
+    at handleTemplateCache (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:216:25)
+    at Object.exports.compileFile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:357:10)
+    at compileFile (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:55:24)
+    at renderer (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:92:12)
+    at Object.contextRenderer [as render] (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:106:17)
+2018-2-24 09:40:42 error: uncaughtException: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+Error: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+    at makeError (/home/velioo/training-projects/velioo_koa/node_modules/pug-error/index.js:32:13)
+    at Lexer.error (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:58:15)
+    at Lexer.fail (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1304:10)
+    at Lexer.advance (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1364:15)
+    at Lexer.callLexerFunction (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1319:23)
+    at Lexer.getTokens (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1375:12)
+    at lex (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:12:42)
+    at Object.lex (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:99:27)
+    at Function.loadString [as string] (/home/velioo/training-projects/velioo_koa/node_modules/pug-load/index.js:44:24)
+    at compileBody (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:86:18)
+    at Object.exports.compile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:243:16)
+    at handleTemplateCache (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:216:25)
+    at Object.exports.compileFile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:357:10)
+    at compileFile (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:55:24)
+    at renderer (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:92:12)
+    at Object.contextRenderer [as render] (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:106:17)
+2018-2-24 09:40:42 error: uncaughtException: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+Error: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+    at makeError (/home/velioo/training-projects/velioo_koa/node_modules/pug-error/index.js:32:13)
+    at Lexer.error (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:58:15)
+    at Lexer.fail (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1304:10)
+    at Lexer.advance (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1364:15)
+    at Lexer.callLexerFunction (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1319:23)
+    at Lexer.getTokens (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1375:12)
+    at lex (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:12:42)
+    at Object.lex (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:99:27)
+    at Function.loadString [as string] (/home/velioo/training-projects/velioo_koa/node_modules/pug-load/index.js:44:24)
+    at compileBody (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:86:18)
+    at Object.exports.compile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:243:16)
+    at handleTemplateCache (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:216:25)
+    at Object.exports.compileFile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:357:10)
+    at compileFile (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:55:24)
+    at renderer (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:92:12)
+    at Object.contextRenderer [as render] (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:106:17)
+2018-2-24 09:40:42 error: uncaughtException: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+Error: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+    at makeError (/home/velioo/training-projects/velioo_koa/node_modules/pug-error/index.js:32:13)
+    at Lexer.error (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:58:15)
+    at Lexer.fail (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1304:10)
+    at Lexer.advance (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1364:15)
+    at Lexer.callLexerFunction (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1319:23)
+    at Lexer.getTokens (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1375:12)
+    at lex (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:12:42)
+    at Object.lex (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:99:27)
+    at Function.loadString [as string] (/home/velioo/training-projects/velioo_koa/node_modules/pug-load/index.js:44:24)
+    at compileBody (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:86:18)
+    at Object.exports.compile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:243:16)
+    at handleTemplateCache (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:216:25)
+    at Object.exports.compileFile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:357:10)
+    at compileFile (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:55:24)
+    at renderer (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:92:12)
+    at Object.contextRenderer [as render] (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:106:17)
+2018-2-24 09:40:42 error: uncaughtException: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+Error: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+    at makeError (/home/velioo/training-projects/velioo_koa/node_modules/pug-error/index.js:32:13)
+    at Lexer.error (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:58:15)
+    at Lexer.fail (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1304:10)
+    at Lexer.advance (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1364:15)
+    at Lexer.callLexerFunction (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1319:23)
+    at Lexer.getTokens (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1375:12)
+    at lex (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:12:42)
+    at Object.lex (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:99:27)
+    at Function.loadString [as string] (/home/velioo/training-projects/velioo_koa/node_modules/pug-load/index.js:44:24)
+    at compileBody (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:86:18)
+    at Object.exports.compile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:243:16)
+    at handleTemplateCache (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:216:25)
+    at Object.exports.compileFile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:357:10)
+    at compileFile (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:55:24)
+    at renderer (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:92:12)
+    at Object.contextRenderer [as render] (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:106:17)
+2018-2-24 09:40:42 error: uncaughtException: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+Error: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+    at makeError (/home/velioo/training-projects/velioo_koa/node_modules/pug-error/index.js:32:13)
+    at Lexer.error (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:58:15)
+    at Lexer.fail (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1304:10)
+    at Lexer.advance (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1364:15)
+    at Lexer.callLexerFunction (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1319:23)
+    at Lexer.getTokens (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1375:12)
+    at lex (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:12:42)
+    at Object.lex (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:99:27)
+    at Function.loadString [as string] (/home/velioo/training-projects/velioo_koa/node_modules/pug-load/index.js:44:24)
+    at compileBody (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:86:18)
+    at Object.exports.compile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:243:16)
+    at handleTemplateCache (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:216:25)
+    at Object.exports.compileFile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:357:10)
+    at compileFile (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:55:24)
+    at renderer (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:92:12)
+    at Object.contextRenderer [as render] (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:106:17)
+2018-2-24 09:41:44 error: uncaughtException: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+Error: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+    at makeError (/home/velioo/training-projects/velioo_koa/node_modules/pug-error/index.js:32:13)
+    at Lexer.error (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:58:15)
+    at Lexer.fail (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1304:10)
+    at Lexer.advance (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1364:15)
+    at Lexer.callLexerFunction (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1319:23)
+    at Lexer.getTokens (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1375:12)
+    at lex (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:12:42)
+    at Object.lex (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:99:27)
+    at Function.loadString [as string] (/home/velioo/training-projects/velioo_koa/node_modules/pug-load/index.js:44:24)
+    at compileBody (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:86:18)
+    at Object.exports.compile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:243:16)
+    at handleTemplateCache (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:216:25)
+    at Object.exports.compileFile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:357:10)
+    at compileFile (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:55:24)
+    at renderer (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:92:12)
+    at Object.contextRenderer [as render] (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:106:17)
+2018-2-24 09:41:47 error: uncaughtException: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+Error: /home/velioo/training-projects/velioo_koa/views/show_message.pug:9:27
+    7|       else
+    8|          h3 New person, name: 
+  > 9|             #{person.name}, age: 
+---------------------------------^
+    10|             #{person.age} and nationality: 
+    11|             #{person.nationality} added!
+    12| 
+
+unexpected text ", age"
+    at makeError (/home/velioo/training-projects/velioo_koa/node_modules/pug-error/index.js:32:13)
+    at Lexer.error (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:58:15)
+    at Lexer.fail (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1304:10)
+    at Lexer.advance (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1364:15)
+    at Lexer.callLexerFunction (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1319:23)
+    at Lexer.getTokens (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:1375:12)
+    at lex (/home/velioo/training-projects/velioo_koa/node_modules/pug-lexer/index.js:12:42)
+    at Object.lex (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:99:27)
+    at Function.loadString [as string] (/home/velioo/training-projects/velioo_koa/node_modules/pug-load/index.js:44:24)
+    at compileBody (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:86:18)
+    at Object.exports.compile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:243:16)
+    at handleTemplateCache (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:216:25)
+    at Object.exports.compileFile (/home/velioo/training-projects/velioo_koa/node_modules/pug/lib/index.js:357:10)
+    at compileFile (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:55:24)
+    at renderer (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:92:12)
+    at Object.contextRenderer [as render] (/home/velioo/training-projects/velioo_koa/node_modules/koa-pug/src/pug.js:106:17)
