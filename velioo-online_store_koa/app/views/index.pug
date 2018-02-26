@@ -1,0 +1,49 @@
+include ./header.pug
+
+<div id="body">
+<div id="wrap"></br>
+<div class="container-fluid">
+<div class="products_div">  
+    <div class="row row-eq-height">
+          
+-var index = 0
+each val in products
+    if index % 4 == 0 && index != 0
+        </div>
+        <div class="row row-eq-height">
+    <div class="col-sm-3 product" data-id="#{val.id}">  
+    <div class="image_product_wrapper">
+    <a href="./products/#{val.id}">
+    
+    if val.image
+        img.product_image(src="./imgs/" + val.image onerror="this.src='./imgs/no_image.png'")
+    else
+        img.product_image(src="" onerror="this.src='./imgs/no_image.png';")
+    </a></br></br>
+    </div>
+    <div class="product_wrapper">
+    <a href="./products/#{val.id}" class="product_name no_underline">Име: #{val.name}</a></br>
+    <a href="#" class="product_category no_underline">Категория: #{val.category}</a></br>       
+    <div class="product_price"><p style="font-size: 18px;">Цена: #{val.price_leva} лв.</p></div>
+    if val.quantity >= 1
+        <p style='color:blue;'>В наличност</p>
+    else
+        <p style='color:red;'>Няма наличност</p>    
+    </div>
+    </div>    
+    -index++
+</div>
+</br></br>
+<div style="text-align:center;">
+if pagination
+    pagination
+</div>
+</div>
+</div> 
+
+</div>
+</div>
+
+include ./footer.pug
+
+

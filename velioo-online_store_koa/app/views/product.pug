@@ -1,0 +1,56 @@
+include ./header.pug
+
+<div id="body">
+    <div id="wrap"></br>
+        <h2>#{product.name}</h2>
+        <hr>
+        <div class="container-fluid" id="product_container">
+            
+            <div class="product_left">
+if product.image
+    img.product_image.details(src="../imgs/" + product.image onerror="this.src='../imgs/no_image.png'")
+else
+    img.product_image.details(src="" onerror="this.src='../imgs/no_image.png';")
+</div>
+
+<div class="product_right details" data-id="#{product.id}"> 
+    <div class="product_price">
+        <p class="product_price_details">Цена: #{product.price_leva} лв.</p>
+    </div>  
+if product.quantity
+    if product.quantity >= 1
+        <p style='color:blue;'>В наличност</p>
+    else
+        <p style='color:red;'>Няма наличност</p>
+    if product.quantity != 0
+        <button type="button" class="btn btn-default buy_button details"><span class="glyphicon glyphicon-shopping-cart"></span> Добави в количката</button>
+
+</div>
+        
+<div class="table-responsive">   
+    <table class="table product_details_table" width="100%">
+    <thead>
+      <tr>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+<tbody>
+if product.specs
+    each spec in product.specs
+      <tr>
+        <td class="spec_name">#{spec.name}</td>
+        <td>#{spec.value}</td>
+      </tr>
+</tbody>
+  </table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+include ./footer.pug
+
+
