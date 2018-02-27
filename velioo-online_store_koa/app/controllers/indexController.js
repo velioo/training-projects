@@ -1,5 +1,4 @@
 const logger = require('../helpers/logger');
-const SqlString = require('sqlstring');
 
 async function list(ctx, next) {
     logger.info('In list()');
@@ -104,7 +103,7 @@ async function searchByName(ctx, next) {
     logger.info("Products count: " + productsCount.length);
     productsQuery+=" LIMIT ? OFFSET ?";
     productsQueryArgs.push(limit, offset);
-    console.log(productsQueryArgs);
+    //console.log(productsQueryArgs);
     let products = await ctx.myPool().query(productsQuery, productsQueryArgs);
     //logger.info("Products: %o", products);
     //console.log("Products: ", products);

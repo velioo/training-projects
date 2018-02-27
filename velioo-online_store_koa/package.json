@@ -17,7 +17,6 @@
     "koa-session": "^5.8.1",
     "koa-static": "^4.0.2",
     "koa-static-cache": "^5.1.2",
-    "koa2-mysql-wrapper": "^2.0.1",
-    "sqlstring": "^2.3.1"
+    "koa2-mysql-wrapper": "^2.0.1"
   }
 }
