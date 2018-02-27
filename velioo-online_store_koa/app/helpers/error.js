@@ -8,7 +8,7 @@ module.exports = async (ctx, next) => {
             ctx.set('WWW-Authenticate', 'Basic');
             ctx.body = 'You have no access here';
         } else {
-            logger.error("Error while executing code: " + err.message);
+            logger.error("Error while executing code: " + err.stack);
             //ctx.app.emit('error', err, ctx);
         }
         ctx.body = "Problem while processing your request";

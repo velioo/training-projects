@@ -1,10 +1,66 @@
 include ./header.pug
 
+<script src="#{root()}js/filter_tags.js"></script>
 <div id="body">
 <div id="wrap"></br>
+
+if searchInput
+    h2 Резултати за #{searchInput}
+else
+    h2 Нови Продукти
 <div class="container-fluid">
-<div class="products_div">  
-    <div class="row row-eq-height">
+    
+if tags
+    <div class="filtering_menu">
+    if category_id
+        <form action="./search/#{category_id}" method="get" id="filter_form">
+    else
+        <form action="./search" method="get" id="filter_form">
+    <h4 class="filter_header">Цена:</h4>
+    <span>От:</span><input type="number" min="0" step="1" name="price_from" value="#{price_from}">
+    <span>До:</span><input type="number" min="0" step="1" name="price_to" value="#{price_to}"></br></br>
+    <input type="submit" value="Търси">
+    <h4 class="filter_header">Избери:</h4>
+    each val, key in tags
+        <p class="filter_name">#{key}</p>
+        <div class="checkbox"><label>
+        if val.checked
+            <input type="checkbox" class="checkbox_tag" name="tags" checked value="#{key}:{val.value}">#{val.value} (#{val.count})
+        else
+            <input type="checkbox" class="checkbox_tag" name="tags" value="#{key}:#{val.value}">#{val.value} (#{val.count})
+        </label>
+        </div>
+    <input type="hidden" name="search_input" value="#{searchInput}">
+    </form>
+    </div>
+
+if !tags
+    <div class="products_div" style="width:90%;">
+else
+    <div class="products_div"> Подреди по 
+    
+if tags
+    <select name="sort_products" id="sort_products">
+    if !sort_products || sort_products == null || sort_products == 'latest_updated'
+        <option value="latest_update" selected="selected">Последно обновени</option>
+    else
+        <option value="latest_updated">Последно обновени</option>
+    if sort_products == 'price_asc'
+        <option value="price_asc" selected>Цена възх.</option>
+    else
+        <option value="price_asc">Цена възх.</option>
+    if sort_products == 'price_desc'
+        <option value="price_desc" selected>Цена низх.</option>
+    else
+        <option value="price_desc">Цена низх.</option>
+    if sort_products == 'newest'
+        <option value="newest" selected>Най-нови</option>
+    else
+        <option value="newest">Най-нови</option>
+    </select>
+    </form>
+        
+<div class="row row-eq-height">
           
 -var index = 0
 each val in products
