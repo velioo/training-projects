@@ -1,5 +1,7 @@
 const PORT = +process.argv[2] || 8883;
 module.exports = { port () { return PORT;} }
+const REC_LIMIT = 40;
+const REC_MAX_LIMIT = 100;
 
 const koa =  require('koa'),
       app = new koa(),
@@ -11,7 +13,8 @@ const koa =  require('koa'),
       session = require('koa-session'),
       staticCache = require('koa-static-cache'),
       path = require('path'),
-      mysql = require('./db/mysql');
+      mysql = require('./db/mysql'),
+      paginate = require('koa-ctx-paginate');
       
 var mysqlConfig = {
     host: 'localhost',
@@ -30,6 +33,7 @@ pug.use(app);
 app.keys = ['Shh, its a secret!'];
 app.use(session(app));
 app.use(mysql);
+app.use(paginate.middleware(REC_LIMIT, REC_MAX_LIMIT));
 app.use(routes());
 app.use(allowedMethods());
 app.use((ctx, next) => {

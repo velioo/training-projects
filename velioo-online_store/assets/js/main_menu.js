@@ -58,7 +58,7 @@ $(document).ready(function() {
 			infoLog = "";
 			$('.spinner.menu').hide();
 		},
-		error: function(xhr, status, errorThrown) {				
+		error: function(xhr, status, errorThrown) {		
 			if(status == 'timeout') {
 				infoLog += 'main_menu.js: Request timed out\n';
 				window.alert("Request timed out");

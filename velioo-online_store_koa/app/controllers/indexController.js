@@ -1,4 +1,5 @@
 const logger = require('../helpers/logger');
+const { getArrayPages } = require('koa-ctx-paginate');
 
 async function list(ctx, next) {
     logger.info('In list()');
@@ -26,7 +27,7 @@ async function getId(ctx, next) {
 }
 
 async function searchByName(ctx, next) {
-    
+
     let data = {};
     let searchInput = ctx.query.search_input || "";
     logger.info("SearchInput: " + searchInput);
@@ -41,21 +42,23 @@ async function searchByName(ctx, next) {
         JOIN categories ON categories.id=products.category_id\
         JOIN product_tags ON product_tags.product_id=products.id\
         JOIN tags ON tags.id=product_tags.tag_id WHERE products.name LIKE '%" + searchInput + "%' ";
-        
+
     let productsQueryArgs = [];
     let tagsQueryArgs = [];
-    
+
     logger.info("In searchByName");
-    let limit = 40;
-    let offset = (ctx.query.page) ? (+ctx.query.page > 0) ? +ctx.query.page * limit - limit : 0 : 0;
+    let limit = ctx.query.limit;
+    logger.info("Limit: " + limit);
+    //logger.info("Query String: %o", ctx.query);
+    let offset = (ctx.query.page) ? (+ctx.query.page > 0) ? +ctx.query.page * ctx.query.limit - ctx.query.limit : 0 : 0;
     logger.info("Offset: " + offset);
     //console.log(ctx.query);
-    logger.info("Tags got: %o", ctx.query.tags);
+    //logger.info("Tags got: %o", ctx.query.tags);
     if(ctx.query.tags) {
         productsQuery+=" AND tags.name IN (?) ";
         productsQueryArgs.push(ctx.query.tags);
     }
-    
+
     if (ctx.query.price_from) {
         productsQuery+=" AND products.price_leva >= ?";
         productsQueryArgs.push(+ctx.query.price_from);
@@ -63,7 +66,7 @@ async function searchByName(ctx, next) {
         tagsQueryArgs.push(+ctx.query.price_from);
         data['price_from'] = ctx.query.price_from;
     }
-    
+
     if (ctx.query.price_to) {
         productsQuery+=" AND products.price_leva <= ?";
         productsQueryArgs.push(+ctx.query.price_to);
@@ -71,13 +74,19 @@ async function searchByName(ctx, next) {
         tagsQueryArgs.push(+ctx.query.price_to);
         data['price_to'] = ctx.query.price_to;
     }
-    
+
+    if (ctx.query.category) {
+        productsQuery+=" AND categories.id = ?";
+        productsQueryArgs.push(+ctx.query.category);
+        tagsQuery+=" AND categories.id = ?";
+        tagsQueryArgs.push(+ctx.query.category);
+        data['category'] = ctx.query.category;
+    }
+
     productsQuery+=" GROUP BY products.id";
-    
+
     if (ctx.query.sort_products) {
         switch(ctx.query.sort_products) {
-            case 'most_buyed':
-                break;
             case 'price_asc':
                 productsQuery+=" ORDER BY products.price_leva ASC";
                 break;
@@ -91,7 +100,7 @@ async function searchByName(ctx, next) {
                 productsQuery+=" ORDER BY products.updated_at DESC";
                 break;
             default:
-                process.exit(1);
+                break;
         }
         data['sort_products'] = ctx.query.sort_products;
     } else {
@@ -101,17 +110,17 @@ async function searchByName(ctx, next) {
     
     let productsCount = await ctx.myPool().query(productsQuery, productsQueryArgs);
     logger.info("Products count: " + productsCount.length);
+    if (productsCount.length <= 0) {
+        return ctx.render('index.pug', data);
+    }
     productsQuery+=" LIMIT ? OFFSET ?";
     productsQueryArgs.push(limit, offset);
-    //console.log(productsQueryArgs);
     let products = await ctx.myPool().query(productsQuery, productsQueryArgs);
-    //logger.info("Products: %o", products);
-    //console.log("Products: ", products);
+    logger.info("Products: %o", products);
     
     tagsQuery+=" GROUP BY tags.name";
     let tags = await ctx.myPool().query(tagsQuery, tagsQueryArgs);
     //logger.info("Query: " + productsQuery);
-    //console.log("Query: " + productsQuery);
     //logger.info("Tags object: %o", tags);
     //logger.info("Query: " + tagsQuery);
     
@@ -131,18 +140,27 @@ async function searchByName(ctx, next) {
                 tempObj['count'] = tag['tag_count'];
                 newTags[splitedTag[0]] = tempObj;
             }
-        });		
+        });
     }
 
     //logger.info('New Tags: %o', newTags);
     data['tags'] = newTags;
     data['products'] = products;
+    data['pageCount'] = Math.ceil(productsCount.length / ctx.query.limit);
+    data['itemCount'] = productsCount;
+    data['currentPage'] = ctx.query.page;
+    //console.log(data['pageCount']);
+    //logger.info("pageCount: " + data['pageCount']);
+    //logger.info("itemCount: " + data['itemCount']);
+    data['pages'] = getArrayPages(ctx)(10, data['pageCount'], ctx.query.page);
+    //console.log(data['pages']);
     ctx.render('index.pug', data);
-    
 }
 
-async function searchByCategory(ctx, next) {
-    
+async function getMenuItems(ctx, next) {
+    let items = await ctx.myPool().query("SELECT id, name, type as c_type FROM categories");
+    //logger.info("Items: %o", items);
+    ctx.body = items;
 }
 
 async function not_found(ctx, next) {
@@ -151,4 +169,4 @@ async function not_found(ctx, next) {
     ctx.render('not_found', {message: "Resource Not Found"});
 }
 
-module.exports = {list, getId, searchByName, searchByCategory, not_found}
+module.exports = {list, getId, searchByName, getMenuItems, not_found}

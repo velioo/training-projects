@@ -12,6 +12,7 @@
   "dependencies": {
     "koa": "^2.5.0",
     "koa-body": "^2.5.0",
+    "koa-ctx-paginate": "0.0.3",
     "koa-pug": "^3.0.0-2",
     "koa-router": "^7.4.0",
     "koa-session": "^5.8.1",

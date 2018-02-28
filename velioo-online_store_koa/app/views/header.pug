@@ -10,18 +10,36 @@
     <link rel="stylesheet" href="#{root()}css/main.css">
 </head>
 <body>
-<div id="holder">   
     
+script.
+    function getMenuItemsUrl() {
+        var url = "#{root()}menu_items";
+        return url;
+    }
+    
+    function getActiveTab() {
+        var tab = "#{category}";
+        return tab;
+    }
+    
+    function getCategorySearchUrl() {
+        var url = "#{root()}search?category=";
+        return url;
+    }
+
+<script src="#{root()}js/main_menu.js"></script> 
+    
+<div id="holder">   
 <nav class="navbar" id="navigation_top">
   <div class="container-fluid" style="width: 1150px;">
     <div class="navbar-header">
       <a class="navbar-brand" href="/">Computer Store</a>
     </div>
-    <form action="./search" method="get" class="navbar-form navbar-left" id="search_form"> 
+    <form action="#{root()}search" method="get" class="navbar-form navbar-left" id="search_form"> 
       <div class="input-group">
         <input type="text" class="form-control" name="search_input" placeholder="Search" id="search_input">
         <div class="input-group-btn">
-          <button class="btn btn-default" name="search_button" type="submit">
+          <button class="btn btn-default" type="submit">
             <i class="glyphicon glyphicon-search"></i>
           </button>
         </div>
@@ -57,7 +75,7 @@
          
         </ul>
       </li>     
-      <img class="spinner menu" src="#">
+      <img class="spinner menu" src="#{root()}imgs/spinner.gif">
     </ul>
   </div>
 </nav>
