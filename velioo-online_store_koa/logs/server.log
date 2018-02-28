@@ -71799,3 +71799,1491 @@ unexpected text "}
 2018-2-28 17:48:46 info: Request starts with /imgs
 2018-2-28 17:48:46 info: Checking if 404
 2018-2-28 17:48:46 info: Request starts with /imgs
+2018-2-28 17:55:20 info: In list()
+2018-2-28 17:55:20 info: Offset: 0
+2018-2-28 17:55:20 info: In list()
+2018-2-28 17:55:20 info: Offset: 0
+2018-2-28 17:55:20 info: Checking if 404
+2018-2-28 17:55:20 info: Request starts with /imgs
+2018-2-28 17:55:20 info: Checking if 404
+2018-2-28 17:55:20 info: Request starts with /imgs
+2018-2-28 17:55:20 info: Checking if 404
+2018-2-28 17:55:20 info: Request starts with /imgs
+2018-2-28 17:55:20 info: Checking if 404
+2018-2-28 17:55:20 info: Request starts with /imgs
+2018-2-28 17:55:20 info: Checking if 404
+2018-2-28 17:55:20 info: Request starts with /imgs
+2018-2-28 17:55:20 info: Checking if 404
+2018-2-28 17:55:20 info: Request starts with /imgs
+2018-2-28 17:55:20 info: Checking if 404
+2018-2-28 17:55:20 info: Request starts with /imgs
+2018-2-28 17:55:20 info: Checking if 404
+2018-2-28 17:55:20 info: Request starts with /imgs
+2018-2-28 17:55:21 info: Checking if 404
+2018-2-28 17:55:21 info: Request starts with /imgs
+2018-2-28 17:55:21 info: Checking if 404
+2018-2-28 17:55:21 info: Request starts with /imgs
+2018-2-28 17:55:21 info: Checking if 404
+2018-2-28 17:55:21 info: Request starts with /imgs
+2018-2-28 17:55:21 info: Checking if 404
+2018-2-28 17:55:21 info: Request starts with /imgs
+2018-2-28 17:55:21 info: Checking if 404
+2018-2-28 17:55:21 info: Request starts with /imgs
+2018-2-28 17:55:21 info: Checking if 404
+2018-2-28 17:55:21 info: Request starts with /imgs
+2018-2-28 17:55:21 info: Checking if 404
+2018-2-28 17:55:21 info: Request starts with /imgs
+2018-2-28 17:55:21 info: Checking if 404
+2018-2-28 17:55:21 info: Request starts with /imgs
+2018-2-28 17:55:21 info: Checking if 404
+2018-2-28 17:55:21 info: Request starts with /imgs
+2018-2-28 17:55:21 info: Checking if 404
+2018-2-28 17:55:21 info: Request starts with /imgs
+2018-2-28 17:55:21 info: Checking if 404
+2018-2-28 17:55:21 info: Request starts with /imgs
+2018-2-28 17:55:21 info: Checking if 404
+2018-2-28 17:55:21 info: Request starts with /imgs
+2018-2-28 17:55:21 info: Checking if 404
+2018-2-28 17:55:21 info: Request starts with /imgs
+2018-2-28 17:55:21 info: Checking if 404
+2018-2-28 17:55:21 info: Request starts with /imgs
+2018-2-28 17:55:21 info: Checking if 404
+2018-2-28 17:55:21 info: Request starts with /imgs
+2018-2-28 17:55:22 info: In getId()
+2018-2-28 17:55:26 info: SearchInput: 
+2018-2-28 17:55:26 info: In searchByName
+2018-2-28 17:55:26 info: Limit: 40
+2018-2-28 17:55:26 info: Offset: 0
+2018-2-28 17:55:26 info: Products count: 8421
+2018-2-28 17:55:26 info: Products: [ BinaryRow {
+    id: 190013,
+    category_id: 4,
+    name: 'SET TOP BOX ( декодер) DVB-T NOT ONLY TV Deluxe USB',
+    description: ' ',
+    price_leva: '42.00',
+    quantity: 6307,
+    image: '115443.200x0.jpg',
+    created_at: 2017-12-14T10:01:05.000Z,
+    updated_at: 2017-12-14T10:01:05.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 190015,
+    category_id: 4,
+    name: 'AVerMedia DarkCrystal HD SDK PCI-Express Вътрешен кепчър  ',
+    description: ' ',
+    price_leva: '531.00',
+    quantity: 6710,
+    image: '161225.200x0.jpg',
+    created_at: 2017-12-14T10:01:05.000Z,
+    updated_at: 2017-12-14T10:01:05.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 188995,
+    category_id: 4,
+    name: 'HTC Desire 10 5.5" HD Nano SIM смартфон бял',
+    description: ' ',
+    price_leva: '389.00',
+    quantity: 1340,
+    image: '147722.200x0.jpg',
+    created_at: 2017-12-14T09:50:26.000Z,
+    updated_at: 2017-12-14T09:50:26.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 188994,
+    category_id: 4,
+    name: 'HTC Desire 728G 5.5" HD Octa-core 1.3 GHz Dual SIM смартфон бял + 32GB microSDHC памет',
+    description: ' ',
+    price_leva: '389.00',
+    quantity: 3119,
+    image: '196047.200x0.jpg',
+    created_at: 2017-12-14T09:50:25.000Z,
+    updated_at: 2017-12-14T09:50:25.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 188993,
+    category_id: 4,
+    name: 'HTC Desire 728G 5.5" Octa-core 1.3 GHz  Dual SIM смартфон + 32GB microSDHC памет',
+    description: ' ',
+    price_leva: '389.00',
+    quantity: 9693,
+    image: '196046.200x0.jpg',
+    created_at: 2017-12-14T09:50:24.000Z,
+    updated_at: 2017-12-14T09:50:24.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 188973,
+    category_id: 4,
+    name: 'HTC Desire 10 5.5" HD Nano SIM смартфон черен',
+    description: ' ',
+    price_leva: '489.00',
+    quantity: 6847,
+    image: '147710.200x0.jpg',
+    created_at: 2017-12-14T09:50:14.000Z,
+    updated_at: 2017-12-14T09:50:14.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 188970,
+    category_id: 4,
+    name: 'Huawei NOVA Dual Sim 5" FHD 32Gb LTE Смартфон златист + Huawei NOVA калъф',
+    description: ' ',
+    price_leva: '740.00',
+    quantity: 4509,
+    image: '160233.200x0.jpg',
+    created_at: 2017-12-14T09:50:13.000Z,
+    updated_at: 2017-12-14T09:50:13.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 188971,
+    category_id: 4,
+    name: 'Huawei NOVA Dual Sim 5" FHD 32Gb LTE Смартфон титан + Huawei NOVA калъф',
+    description: ' ',
+    price_leva: '740.00',
+    quantity: 9568,
+    image: '160242.200x0.jpg',
+    created_at: 2017-12-14T09:50:13.000Z,
+    updated_at: 2017-12-14T09:50:13.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 188966,
+    category_id: 4,
+    name: 'ZTE Blade А610 LTE Dual SIM 5.0" IPS Смартфон',
+    description: ' ',
+    price_leva: '369.00',
+    quantity: 8325,
+    image: '165149.200x0.jpg',
+    created_at: 2017-12-14T09:50:12.000Z,
+    updated_at: 2017-12-14T09:50:12.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 188967,
+    category_id: 4,
+    name: 'ZTE Blade А610 LTE Dual SIM 5.0" IPS  Смартфон сив',
+    description: ' ',
+    price_leva: '369.00',
+    quantity: 7062,
+    image: '165151.200x0.jpg',
+    created_at: 2017-12-14T09:50:12.000Z,
+    updated_at: 2017-12-14T09:50:12.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 188915,
+    category_id: 4,
+    name: 'Huawei NOVA Dual Sim 5" FHD 32Gb LTE Смартфон златист + Huawei NOVA калъф',
+    description: ' ',
+    price_leva: '740.00',
+    quantity: 659,
+    image: '160233.200x0.jpg',
+    created_at: 2017-12-14T09:49:50.000Z,
+    updated_at: 2017-12-14T09:49:50.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 188916,
+    category_id: 4,
+    name: 'Huawei NOVA Dual Sim 5" FHD 32Gb LTE Смартфон титан + Huawei NOVA калъф',
+    description: ' ',
+    price_leva: '740.00',
+    quantity: 6145,
+    image: '160242.200x0.jpg',
+    created_at: 2017-12-14T09:49:50.000Z,
+    updated_at: 2017-12-14T09:49:50.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 188891,
+    category_id: 4,
+    name: 'HP SMB Backpack Case 15.6 T0F84AA Раница',
+    description: ' ',
+    price_leva: '56.00',
+    quantity: 4594,
+    image: '131689.200x0.png',
+    created_at: 2017-12-14T09:49:11.000Z,
+    updated_at: 2017-12-14T09:49:11.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 188848,
+    category_id: 4,
+    name: 'HP SMB Backpack Case 15.6 T0F84AA Раница',
+    description: ' ',
+    price_leva: '56.00',
+    quantity: 2441,
+    image: '131689.200x0.png',
+    created_at: 2017-12-14T09:48:00.000Z,
+    updated_at: 2017-12-14T09:48:00.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 188740,
+    category_id: 4,
+    name: 'адаптер mSATA към SATA III 2.5" за Mini PCIE SSD диск',
+    description: ' ',
+    price_leva: '25.00',
+    quantity: 832,
+    image: '117046.200x0.jpg',
+    created_at: 2017-12-14T09:47:24.000Z,
+    updated_at: 2017-12-14T09:47:24.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 188747,
+    category_id: 4,
+    name: 'RaidSonic mSATA/M.2 SSD 12.5мм caddy монтажен адаптор',
+    description: ' ',
+    price_leva: '65.00',
+    quantity: 8208,
+    image: '196480.200x0.jpg',
+    created_at: 2017-12-14T09:47:24.000Z,
+    updated_at: 2017-12-14T09:47:24.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 188739,
+    category_id: 4,
+    name: 'RaidSonic 2.5\'\' SSD / HDD Sata адаптер',
+    description: ' ',
+    price_leva: '68.00',
+    quantity: 9383,
+    image: '196572.200x0.jpg',
+    created_at: 2017-12-14T09:47:22.000Z,
+    updated_at: 2017-12-14T09:47:22.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 188726,
+    category_id: 4,
+    name: 'RaidSonic M.2 SSD 9.5мм caddy монтажен адаптор  ',
+    description: ' ',
+    price_leva: '72.00',
+    quantity: 7067,
+    image: '196484.200x0.jpg',
+    created_at: 2017-12-14T09:47:21.000Z,
+    updated_at: 2017-12-14T09:47:21.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 188723,
+    category_id: 4,
+    name: 'HP SMB Backpack Case 15.6 T0F84AA Раница',
+    description: ' ',
+    price_leva: '56.00',
+    quantity: 7501,
+    image: '131689.200x0.png',
+    created_at: 2017-12-14T09:47:19.000Z,
+    updated_at: 2017-12-14T09:47:19.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 188682,
+    category_id: 4,
+    name: 'HP 15.6 SMB Topload Case Чанта за преносим комютър ',
+    description: ' ',
+    price_leva: '52.00',
+    quantity: 4200,
+    image: '167165.200x0.jpg',
+    created_at: 2017-12-14T09:47:06.000Z,
+    updated_at: 2017-12-14T09:47:06.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 188564,
+    category_id: 4,
+    name: 'Acer Predator 21X GX21-71-746S 21" Curved  i7-7820HK 2xGTX1080 SLI',
+    description: ' ',
+    price_leva: '11999.00',
+    quantity: 8220,
+    image: '167460.200x0.png',
+    created_at: 2017-12-14T09:46:21.000Z,
+    updated_at: 2017-12-14T09:46:21.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 188494,
+    category_id: 4,
+    name: 'Dell XPS 9360 i7-7500U 13.3"FullHD 256GB SSD Win10 ултрабук сребрист',
+    description: ' ',
+    price_leva: '3399.00',
+    quantity: 1408,
+    image: '151408.200x0.jpg',
+    created_at: 2017-12-14T09:46:03.000Z,
+    updated_at: 2017-12-14T09:46:03.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 188495,
+    category_id: 4,
+    name: 'Dell XPS 9360 i7-7500U 13.3"WQXGA+  1TB SSD Win10 ултрабук сребрист',
+    description: ' ',
+    price_leva: '4649.00',
+    quantity: 2157,
+    image: '151409.200x0.jpg',
+    created_at: 2017-12-14T09:46:03.000Z,
+    updated_at: 2017-12-14T09:46:03.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 188268,
+    category_id: 4,
+    name: 'лаптоп HP ProBook 440 G3 Intel i5-6200U 256 SSD Win7 Pro P5R89EA',
+    description: ' ',
+    price_leva: '1585.00',
+    quantity: 1117,
+    image: '123589.200x0.png',
+    created_at: 2017-12-14T09:45:37.000Z,
+    updated_at: 2017-12-14T09:45:37.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 188217,
+    category_id: 4,
+    name: 'лаптоп HP ProBook 440 G3 Intel i7-6500U 256 SSD Win7 Pro P5R90EA',
+    description: ' ',
+    price_leva: '1826.00',
+    quantity: 9722,
+    image: '123597.200x0.png',
+    created_at: 2017-12-14T09:45:32.000Z,
+    updated_at: 2017-12-14T09:45:32.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 188221,
+    category_id: 4,
+    name: 'лаптоп Dell XPS 13 9350 i7-6560U QHD 8GB 256GB SSD',
+    description: ' ',
+    price_leva: '3397.00',
+    quantity: 957,
+    image: '116778.200x0.jpg',
+    created_at: 2017-12-14T09:45:32.000Z,
+    updated_at: 2017-12-14T09:45:32.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 188227,
+    category_id: 4,
+    name: 'лаптоп HP 250 G4 Intel i3-5005U 128GB SSD T6P86EA',
+    description: ' ',
+    price_leva: '744.00',
+    quantity: 7719,
+    image: '123605.200x0.jpg',
+    created_at: 2017-12-14T09:45:32.000Z,
+    updated_at: 2017-12-14T09:45:32.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 187857,
+    category_id: 4,
+    name: 'лаптоп Lenovo Y50-70 i7-4720HQ GTX 960M 512GB SSD 59445732',
+    description: ' ',
+    price_leva: '2339.00',
+    quantity: 1514,
+    image: '105001.200x0.jpg',
+    created_at: 2017-12-14T09:44:49.000Z,
+    updated_at: 2017-12-14T09:44:49.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 187790,
+    category_id: 4,
+    name: 'лаптоп Acer Aspire E5-575G i3-6100U 15.6 FullHD GT940M 120GB SSD бял',
+    description: ' ',
+    price_leva: '999.00',
+    quantity: 9719,
+    image: '126299.200x0.jpg',
+    created_at: 2017-12-14T09:44:40.000Z,
+    updated_at: 2017-12-14T09:44:40.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 187744,
+    category_id: 4,
+    name: 'лаптоп HP 250 G5 Intel N3060 128GB SSD Win10 W4N54EA',
+    description: ' ',
+    price_leva: '629.00',
+    quantity: 6981,
+    image: '123657.200x0.jpg',
+    created_at: 2017-12-14T09:44:36.000Z,
+    updated_at: 2017-12-14T09:44:36.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 187733,
+    category_id: 4,
+    name: 'лаптоп Acer Aspire E5-575G i3-6100U 15.6 FullHD GT940M 120GB SSD червен',
+    description: ' ',
+    price_leva: '999.00',
+    quantity: 8041,
+    image: '126305.200x0.jpg',
+    created_at: 2017-12-14T09:44:35.000Z,
+    updated_at: 2017-12-14T09:44:35.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 187741,
+    category_id: 4,
+    name: 'лаптоп ASUS G752VY-GC100D GTX 980M 64GB 480GB SSD',
+    description: ' ',
+    price_leva: '4099.00',
+    quantity: 3003,
+    image: '108454.200x0.jpg',
+    created_at: 2017-12-14T09:44:35.000Z,
+    updated_at: 2017-12-14T09:44:35.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 187694,
+    category_id: 4,
+    name: 'лаптоп  Lenovo IdeaPad B51 Intel N3050 500GB SSHD 80LK00DERI',
+    description: ' ',
+    price_leva: '469.00',
+    quantity: 5662,
+    image: '122512.200x0.jpg',
+    created_at: 2017-12-14T09:44:30.000Z,
+    updated_at: 2017-12-14T09:44:30.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 187661,
+    category_id: 4,
+    name: 'лаптоп Acer Aspire V5-591G Intel i7-6700HQ 120GB SSD',
+    description: ' ',
+    price_leva: '1629.00',
+    quantity: 9014,
+    image: '114313.200x0.jpg',
+    created_at: 2017-12-14T09:44:26.000Z,
+    updated_at: 2017-12-14T09:44:26.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 187642,
+    category_id: 4,
+    name: 'лаптоп  Lenovo IdeaPad B51 Intel N3060 500GB SSHD 80LK00W1BM',
+    description: ' ',
+    price_leva: '479.00',
+    quantity: 3883,
+    image: '122521.200x0.jpg',
+    created_at: 2017-12-14T09:44:25.000Z,
+    updated_at: 2017-12-14T09:44:25.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 187628,
+    category_id: 4,
+    name: 'лаптоп Lenovo Ideapad 110 Intel N3710 128GB SSD 80T7007YBM черен',
+    description: ' ',
+    price_leva: '579.00',
+    quantity: 4094,
+    image: '123684.200x0.png',
+    created_at: 2017-12-14T09:44:23.000Z,
+    updated_at: 2017-12-14T09:44:23.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 187640,
+    category_id: 4,
+    name: 'лаптоп Acer Aspire E5-572G 71K6 i7-4712MQ 120GB SSD ',
+    description: ' ',
+    price_leva: '1399.00',
+    quantity: 8292,
+    image: '123775.200x0.jpg',
+    created_at: 2017-12-14T09:44:23.000Z,
+    updated_at: 2017-12-14T09:44:23.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 187498,
+    category_id: 4,
+    name: 'лаптоп Acer Aspire V5-591G 240GB SSD Intel i5-6300HQ',
+    description: ' ',
+    price_leva: '1499.00',
+    quantity: 3460,
+    image: '109672.200x0.jpg',
+    created_at: 2017-12-14T09:44:08.000Z,
+    updated_at: 2017-12-14T09:44:08.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 187496,
+    category_id: 4,
+    name: 'лаптоп Acer Aspire V 15 Nitro VN7-571G i7-5500U 120GB SSD',
+    description: ' ',
+    price_leva: '1699.00',
+    quantity: 3821,
+    image: '110092.200x0.jpg',
+    created_at: 2017-12-14T09:44:04.000Z,
+    updated_at: 2017-12-14T09:44:04.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 187467,
+    category_id: 4,
+    name: 'лаптоп Acer Aspire V5-591G 77DF  i7-6700HQ NX.G5WEX.024 + SSD диск',
+    description: ' ',
+    price_leva: '1549.00',
+    quantity: 6969,
+    image: '108034.200x0.jpg',
+    created_at: 2017-12-14T09:43:59.000Z,
+    updated_at: 2017-12-14T09:43:59.000Z,
+    category: 'SSD' },
+  [length]: 40 ]
+2018-2-28 17:55:26 info: Checking if 404
+2018-2-28 17:55:26 info: Request starts with /imgs
+2018-2-28 17:55:26 info: Checking if 404
+2018-2-28 17:55:26 info: Request starts with /imgs
+2018-2-28 17:55:26 info: Checking if 404
+2018-2-28 17:55:26 info: Request starts with /imgs
+2018-2-28 17:55:26 info: Checking if 404
+2018-2-28 17:55:26 info: Request starts with /imgs
+2018-2-28 17:55:26 info: Checking if 404
+2018-2-28 17:55:26 info: Request starts with /imgs
+2018-2-28 17:55:26 info: Checking if 404
+2018-2-28 17:55:26 info: Request starts with /imgs
+2018-2-28 17:55:26 info: Checking if 404
+2018-2-28 17:55:26 info: Request starts with /imgs
+2018-2-28 17:55:26 info: Checking if 404
+2018-2-28 17:55:26 info: Request starts with /imgs
+2018-2-28 17:55:26 info: Checking if 404
+2018-2-28 17:55:26 info: Request starts with /imgs
+2018-2-28 17:55:27 info: Checking if 404
+2018-2-28 17:55:27 info: Request starts with /imgs
+2018-2-28 17:55:27 info: Checking if 404
+2018-2-28 17:55:27 info: Request starts with /imgs
+2018-2-28 17:55:27 info: Checking if 404
+2018-2-28 17:55:27 info: Request starts with /imgs
+2018-2-28 17:55:27 info: Checking if 404
+2018-2-28 17:55:27 info: Request starts with /imgs
+2018-2-28 17:55:27 info: Checking if 404
+2018-2-28 17:55:27 info: Request starts with /imgs
+2018-2-28 17:55:27 info: Checking if 404
+2018-2-28 17:55:27 info: Request starts with /imgs
+2018-2-28 17:55:27 info: Checking if 404
+2018-2-28 17:55:27 info: Request starts with /imgs
+2018-2-28 17:55:27 info: Checking if 404
+2018-2-28 17:55:27 info: Request starts with /imgs
+2018-2-28 17:55:27 info: Checking if 404
+2018-2-28 17:55:27 info: Request starts with /imgs
+2018-2-28 17:55:27 info: Checking if 404
+2018-2-28 17:55:27 info: Request starts with /imgs
+2018-2-28 17:55:27 info: Checking if 404
+2018-2-28 17:55:27 info: Request starts with /imgs
+2018-2-28 17:55:27 info: Checking if 404
+2018-2-28 17:55:27 info: Request starts with /imgs
+2018-2-28 17:55:27 info: Checking if 404
+2018-2-28 17:55:27 info: Request starts with /imgs
+2018-2-28 17:55:27 info: Checking if 404
+2018-2-28 17:55:27 info: Request starts with /imgs
+2018-2-28 17:55:27 info: Checking if 404
+2018-2-28 17:55:27 info: Request starts with /imgs
+2018-2-28 17:55:27 info: Checking if 404
+2018-2-28 17:55:27 info: Request starts with /imgs
+2018-2-28 17:55:27 info: Checking if 404
+2018-2-28 17:55:27 info: Request starts with /imgs
+2018-2-28 17:55:27 info: Checking if 404
+2018-2-28 17:55:27 info: Request starts with /imgs
+2018-2-28 17:55:27 info: Checking if 404
+2018-2-28 17:55:27 info: Request starts with /imgs
+2018-2-28 17:55:27 info: Checking if 404
+2018-2-28 17:55:27 info: Request starts with /imgs
+2018-2-28 17:55:30 info: SearchInput: 
+2018-2-28 17:55:30 info: In searchByName
+2018-2-28 17:55:30 info: Limit: 40
+2018-2-28 17:55:30 info: Offset: 0
+2018-2-28 17:55:32 info: Products count: 62607
+2018-2-28 17:55:34 info: Products: [ BinaryRow {
+    id: 102468,
+    category_id: 10,
+    name: 'Name89314',
+    description: 'Description89314',
+    price_leva: '23170.18',
+    quantity: 42,
+    image: '',
+    created_at: 2017-10-23T16:02:37.000Z,
+    updated_at: 2017-10-23T16:02:37.000Z,
+    category: 'Лаптопи' },
+  BinaryRow {
+    id: 102464,
+    category_id: 2,
+    name: 'Name89310',
+    description: 'Description89310',
+    price_leva: '74445.12',
+    quantity: 432,
+    image: '',
+    created_at: 2017-10-23T16:02:36.000Z,
+    updated_at: 2017-10-23T16:02:36.000Z,
+    category: 'Захранване' },
+  BinaryRow {
+    id: 102466,
+    category_id: 1,
+    name: 'Name89312',
+    description: 'Description89312',
+    price_leva: '62606.49',
+    quantity: 535,
+    image: '',
+    created_at: 2017-10-23T16:02:36.000Z,
+    updated_at: 2017-10-23T16:02:36.000Z,
+    category: 'Видео Карти' },
+  BinaryRow {
+    id: 102459,
+    category_id: 14,
+    name: 'Name89305',
+    description: 'Description89305',
+    price_leva: '65873.10',
+    quantity: 983,
+    image: '',
+    created_at: 2017-10-23T16:02:35.000Z,
+    updated_at: 2017-10-23T16:02:35.000Z,
+    category: 'Мишки' },
+  BinaryRow {
+    id: 102460,
+    category_id: 7,
+    name: 'Name89306',
+    description: 'Description89306',
+    price_leva: '89541.21',
+    quantity: 784,
+    image: '',
+    created_at: 2017-10-23T16:02:35.000Z,
+    updated_at: 2017-10-23T16:02:35.000Z,
+    category: 'Кутии' },
+  BinaryRow {
+    id: 102461,
+    category_id: 13,
+    name: 'Name89307',
+    description: 'Description89307',
+    price_leva: '98637.11',
+    quantity: 277,
+    image: '',
+    created_at: 2017-10-23T16:02:35.000Z,
+    updated_at: 2017-10-23T16:02:35.000Z,
+    category: 'Монитори' },
+  BinaryRow {
+    id: 102462,
+    category_id: 1,
+    name: 'Name89308',
+    description: 'Description89308',
+    price_leva: '19252.93',
+    quantity: 675,
+    image: '',
+    created_at: 2017-10-23T16:02:35.000Z,
+    updated_at: 2017-10-23T16:02:35.000Z,
+    category: 'Видео Карти' },
+  BinaryRow {
+    id: 102455,
+    category_id: 2,
+    name: 'Name89301',
+    description: 'Description89301',
+    price_leva: '35859.68',
+    quantity: 584,
+    image: '',
+    created_at: 2017-10-23T16:02:34.000Z,
+    updated_at: 2017-10-23T16:02:34.000Z,
+    category: 'Захранване' },
+  BinaryRow {
+    id: 102456,
+    category_id: 1,
+    name: 'Name89302',
+    description: 'Description89302',
+    price_leva: '8433.16',
+    quantity: 374,
+    image: '',
+    created_at: 2017-10-23T16:02:34.000Z,
+    updated_at: 2017-10-23T16:02:34.000Z,
+    category: 'Видео Карти' },
+  BinaryRow {
+    id: 102457,
+    category_id: 11,
+    name: 'Name89303',
+    description: 'Description89303',
+    price_leva: '12137.00',
+    quantity: 755,
+    image: '',
+    created_at: 2017-10-23T16:02:34.000Z,
+    updated_at: 2017-10-23T16:02:34.000Z,
+    category: 'Подложки за мишки' },
+  BinaryRow {
+    id: 102458,
+    category_id: 4,
+    name: 'Name89304',
+    description: 'Description89304',
+    price_leva: '55133.29',
+    quantity: 126,
+    image: '',
+    created_at: 2017-10-23T16:02:34.000Z,
+    updated_at: 2017-10-23T16:02:34.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 102452,
+    category_id: 14,
+    name: 'Name89298',
+    description: 'Description89298',
+    price_leva: '16189.20',
+    quantity: 273,
+    image: '',
+    created_at: 2017-10-23T16:02:33.000Z,
+    updated_at: 2017-10-23T16:02:33.000Z,
+    category: 'Мишки' },
+  BinaryRow {
+    id: 102453,
+    category_id: 17,
+    name: 'Name89299',
+    description: 'Description89299',
+    price_leva: '49639.71',
+    quantity: 481,
+    image: '',
+    created_at: 2017-10-23T16:02:33.000Z,
+    updated_at: 2017-10-23T16:02:33.000Z,
+    category: 'Процесори' },
+  BinaryRow {
+    id: 102454,
+    category_id: 13,
+    name: 'Name89300',
+    description: 'Description89300',
+    price_leva: '11761.59',
+    quantity: 905,
+    image: '',
+    created_at: 2017-10-23T16:02:33.000Z,
+    updated_at: 2017-10-23T16:02:33.000Z,
+    category: 'Монитори' },
+  BinaryRow {
+    id: 102450,
+    category_id: 9,
+    name: 'Name89296',
+    description: 'Description89296',
+    price_leva: '35021.01',
+    quantity: 651,
+    image: '',
+    created_at: 2017-10-23T16:02:32.000Z,
+    updated_at: 2017-10-23T16:02:32.000Z,
+    category: 'Компютри' },
+  BinaryRow {
+    id: 102451,
+    category_id: 15,
+    name: 'Name89297',
+    description: 'Description89297',
+    price_leva: '72534.89',
+    quantity: 108,
+    image: '',
+    created_at: 2017-10-23T16:02:32.000Z,
+    updated_at: 2017-10-23T16:02:32.000Z,
+    category: 'Клавиатури' },
+  BinaryRow {
+    id: 102444,
+    category_id: 10,
+    name: 'Name89290',
+    description: 'Description89290',
+    price_leva: '1247.43',
+    quantity: 442,
+    image: '',
+    created_at: 2017-10-23T16:02:31.000Z,
+    updated_at: 2017-10-23T16:02:31.000Z,
+    category: 'Лаптопи' },
+  BinaryRow {
+    id: 102448,
+    category_id: 14,
+    name: 'Name89294',
+    description: 'Description89294',
+    price_leva: '11725.81',
+    quantity: 255,
+    image: '',
+    created_at: 2017-10-23T16:02:31.000Z,
+    updated_at: 2017-10-23T16:02:31.000Z,
+    category: 'Мишки' },
+  BinaryRow {
+    id: 102439,
+    category_id: 11,
+    name: 'Name89285',
+    description: 'Description89285',
+    price_leva: '23686.03',
+    quantity: 493,
+    image: '',
+    created_at: 2017-10-23T16:02:30.000Z,
+    updated_at: 2017-10-23T16:02:30.000Z,
+    category: 'Подложки за мишки' },
+  BinaryRow {
+    id: 102442,
+    category_id: 17,
+    name: 'Name89288',
+    description: 'Description89288',
+    price_leva: '80997.88',
+    quantity: 764,
+    image: '',
+    created_at: 2017-10-23T16:02:30.000Z,
+    updated_at: 2017-10-23T16:02:30.000Z,
+    category: 'Процесори' },
+  BinaryRow {
+    id: 102436,
+    category_id: 15,
+    name: 'Name89282',
+    description: 'Description89282',
+    price_leva: '41296.67',
+    quantity: 264,
+    image: '',
+    created_at: 2017-10-23T16:02:29.000Z,
+    updated_at: 2017-10-23T16:02:29.000Z,
+    category: 'Клавиатури' },
+  BinaryRow {
+    id: 102437,
+    category_id: 14,
+    name: 'Name89283',
+    description: 'Description89283',
+    price_leva: '12324.76',
+    quantity: 690,
+    image: '',
+    created_at: 2017-10-23T16:02:29.000Z,
+    updated_at: 2017-10-23T16:02:29.000Z,
+    category: 'Мишки' },
+  BinaryRow {
+    id: 102438,
+    category_id: 15,
+    name: 'Name89284',
+    description: 'Description89284',
+    price_leva: '14075.81',
+    quantity: 42,
+    image: '',
+    created_at: 2017-10-23T16:02:29.000Z,
+    updated_at: 2017-10-23T16:02:29.000Z,
+    category: 'Клавиатури' },
+  BinaryRow {
+    id: 102431,
+    category_id: 2,
+    name: 'Name89277',
+    description: 'Description89277',
+    price_leva: '82052.85',
+    quantity: 496,
+    image: '',
+    created_at: 2017-10-23T16:02:28.000Z,
+    updated_at: 2017-10-23T16:02:28.000Z,
+    category: 'Захранване' },
+  BinaryRow {
+    id: 102433,
+    category_id: 12,
+    name: 'Name89279',
+    description: 'Description89279',
+    price_leva: '40483.34',
+    quantity: 884,
+    image: '',
+    created_at: 2017-10-23T16:02:28.000Z,
+    updated_at: 2017-10-23T16:02:28.000Z,
+    category: 'Кабели' },
+  BinaryRow {
+    id: 102434,
+    category_id: 13,
+    name: 'Name89280',
+    description: 'Description89280',
+    price_leva: '8810.90',
+    quantity: 711,
+    image: '',
+    created_at: 2017-10-23T16:02:28.000Z,
+    updated_at: 2017-10-23T16:02:28.000Z,
+    category: 'Монитори' },
+  BinaryRow {
+    id: 102428,
+    category_id: 2,
+    name: 'Name89274',
+    description: 'Description89274',
+    price_leva: '2190.39',
+    quantity: 79,
+    image: '',
+    created_at: 2017-10-23T16:02:27.000Z,
+    updated_at: 2017-10-23T16:02:27.000Z,
+    category: 'Захранване' },
+  BinaryRow {
+    id: 102429,
+    category_id: 17,
+    name: 'Name89275',
+    description: 'Description89275',
+    price_leva: '53714.78',
+    quantity: 799,
+    image: '',
+    created_at: 2017-10-23T16:02:27.000Z,
+    updated_at: 2017-10-23T16:02:27.000Z,
+    category: 'Процесори' },
+  BinaryRow {
+    id: 102430,
+    category_id: 2,
+    name: 'Name89276',
+    description: 'Description89276',
+    price_leva: '861.15',
+    quantity: 98,
+    image: '',
+    created_at: 2017-10-23T16:02:27.000Z,
+    updated_at: 2017-10-23T16:02:27.000Z,
+    category: 'Захранване' },
+  BinaryRow {
+    id: 102422,
+    category_id: 5,
+    name: 'Name89268',
+    description: 'Description89268',
+    price_leva: '98061.33',
+    quantity: 518,
+    image: '',
+    created_at: 2017-10-23T16:02:26.000Z,
+    updated_at: 2017-10-23T16:02:26.000Z,
+    category: 'RAM Памет' },
+  BinaryRow {
+    id: 102423,
+    category_id: 3,
+    name: 'Name89269',
+    description: 'Description89269',
+    price_leva: '75340.38',
+    quantity: 127,
+    image: '',
+    created_at: 2017-10-23T16:02:26.000Z,
+    updated_at: 2017-10-23T16:02:26.000Z,
+    category: 'Дънни платки' },
+  BinaryRow {
+    id: 102416,
+    category_id: 12,
+    name: 'Name89262',
+    description: 'Description89262',
+    price_leva: '23707.64',
+    quantity: 506,
+    image: '',
+    created_at: 2017-10-23T16:02:25.000Z,
+    updated_at: 2017-10-23T16:02:25.000Z,
+    category: 'Кабели' },
+  BinaryRow {
+    id: 102419,
+    category_id: 10,
+    name: 'Name89265',
+    description: 'Description89265',
+    price_leva: '53296.64',
+    quantity: 72,
+    image: '',
+    created_at: 2017-10-23T16:02:25.000Z,
+    updated_at: 2017-10-23T16:02:25.000Z,
+    category: 'Лаптопи' },
+  BinaryRow {
+    id: 102421,
+    category_id: 2,
+    name: 'Name89267',
+    description: 'Description89267',
+    price_leva: '40444.53',
+    quantity: 331,
+    image: '',
+    created_at: 2017-10-23T16:02:25.000Z,
+    updated_at: 2017-10-23T16:02:25.000Z,
+    category: 'Захранване' },
+  BinaryRow {
+    id: 102412,
+    category_id: 16,
+    name: 'Name89258',
+    description: 'Description89258',
+    price_leva: '68536.44',
+    quantity: 387,
+    image: '',
+    created_at: 2017-10-23T16:02:24.000Z,
+    updated_at: 2017-10-23T16:02:24.000Z,
+    category: 'Външен твърд диск' },
+  BinaryRow {
+    id: 102413,
+    category_id: 3,
+    name: 'Name89259',
+    description: 'Description89259',
+    price_leva: '545.79',
+    quantity: 501,
+    image: '',
+    created_at: 2017-10-23T16:02:24.000Z,
+    updated_at: 2017-10-23T16:02:24.000Z,
+    category: 'Дънни платки' },
+  BinaryRow {
+    id: 102415,
+    category_id: 4,
+    name: 'Name89261',
+    description: 'Description89261',
+    price_leva: '64465.36',
+    quantity: 708,
+    image: '',
+    created_at: 2017-10-23T16:02:24.000Z,
+    updated_at: 2017-10-23T16:02:24.000Z,
+    category: 'SSD' },
+  BinaryRow {
+    id: 102409,
+    category_id: 8,
+    name: 'Name89255',
+    description: 'Description89255',
+    price_leva: '42053.65',
+    quantity: 583,
+    image: '',
+    created_at: 2017-10-23T16:02:23.000Z,
+    updated_at: 2017-10-23T16:02:23.000Z,
+    category: 'Охладители за процесор' },
+  BinaryRow {
+    id: 102410,
+    category_id: 10,
+    name: 'Name89256',
+    description: 'Description89256',
+    price_leva: '34909.73',
+    quantity: 528,
+    image: '',
+    created_at: 2017-10-23T16:02:23.000Z,
+    updated_at: 2017-10-23T16:02:23.000Z,
+    category: 'Лаптопи' },
+  BinaryRow {
+    id: 102402,
+    category_id: 12,
+    name: 'Name89248',
+    description: 'Description89248',
+    price_leva: '331.59',
+    quantity: 957,
+    image: '',
+    created_at: 2017-10-23T16:02:22.000Z,
+    updated_at: 2017-10-23T16:02:22.000Z,
+    category: 'Кабели' },
+  [length]: 40 ]
+2018-2-28 17:56:47 info: Server started
+2018-2-28 17:56:51 info: SearchInput: 
+2018-2-28 17:56:51 info: In searchByName
+2018-2-28 17:56:51 info: Limit: 40
+2018-2-28 17:56:51 info: Offset: 0
+2018-2-28 17:56:53 info: Products count: 62607
+2018-2-28 17:57:51 info: Server started
+2018-2-28 17:57:59 info: Server started
+2018-2-28 17:58:01 info: Server started
+2018-2-28 17:58:06 info: Server started
+2018-2-28 17:58:10 info: Server started
+2018-2-28 17:58:12 info: SearchInput: 
+2018-2-28 17:58:12 info: In searchByName
+2018-2-28 17:58:12 info: Limit: 40
+2018-2-28 17:58:12 info: Offset: 0
+2018-2-28 17:58:14 info: Products count: 62607
+2018-2-28 17:58:16 info: Products received
+2018-2-28 17:58:19 info: Tags received
+2018-2-28 17:58:29 info: Server started
+2018-2-28 17:58:34 info: SearchInput: 
+2018-2-28 17:58:34 info: In searchByName
+2018-2-28 17:58:34 info: Limit: 40
+2018-2-28 17:58:34 info: Offset: 0
+2018-2-28 17:58:35 info: Server started
+2018-2-28 17:58:38 info: SearchInput: 
+2018-2-28 17:58:38 info: In searchByName
+2018-2-28 17:58:38 info: Limit: 40
+2018-2-28 17:58:38 info: Offset: 0
+2018-2-28 17:58:40 info: Products count: 62607
+2018-2-28 17:58:42 info: Products received
+2018-2-28 17:58:45 info: Tags received
+2018-2-28 17:58:45 info: Rendering page
+2018-2-28 17:59:10 info: Server started
+2018-2-28 17:59:15 info: Server started
+2018-2-28 17:59:41 info: Server started
+2018-2-28 17:59:42 info: SearchInput: 
+2018-2-28 17:59:42 info: In searchByName
+2018-2-28 17:59:42 info: Limit: 40
+2018-2-28 17:59:42 info: Offset: 0
+2018-2-28 17:59:45 info: Products count: 62607
+2018-2-28 17:59:47 info: Products received
+2018-2-28 17:59:49 info: Tags received
+2018-2-28 17:59:49 info: Tags count: 71
+2018-2-28 17:59:49 info: Tags processed
+2018-2-28 17:59:49 info: Rendering page
+2018-2-28 18:00:27 info: SearchInput: 
+2018-2-28 18:00:27 info: In searchByName
+2018-2-28 18:00:27 info: Limit: 40
+2018-2-28 18:00:27 info: Offset: 0
+2018-2-28 18:00:29 info: Products count: 62607
+2018-2-28 18:00:31 info: Products received
+2018-2-28 18:00:34 info: Tags received
+2018-2-28 18:00:34 info: Tags count: 71
+2018-2-28 18:00:34 info: Tags processed
+2018-2-28 18:00:34 info: Rendering page
+2018-2-28 18:01:01 info: Server started
+2018-2-28 18:01:02 info: SearchInput: 
+2018-2-28 18:01:02 info: In searchByName
+2018-2-28 18:01:02 info: Limit: 40
+2018-2-28 18:01:02 info: Offset: 0
+2018-2-28 18:01:04 info: Products count: 62607
+2018-2-28 18:01:06 info: Products received
+2018-2-28 18:01:09 info: Tags processed
+2018-2-28 18:01:09 info: Rendering page
+2018-2-28 18:01:30 info: Server started
+2018-2-28 18:01:37 info: Server started
+2018-2-28 18:01:38 info: SearchInput: 
+2018-2-28 18:01:38 info: In searchByName
+2018-2-28 18:01:38 info: Limit: 40
+2018-2-28 18:01:38 info: Offset: 0
+2018-2-28 18:01:40 info: Products count: 62607
+2018-2-28 18:01:42 info: Products received
+2018-2-28 18:01:45 info: Tags received
+2018-2-28 18:01:45 info: Tags count: 71
+2018-2-28 18:01:45 info: Tags processed
+2018-2-28 18:01:45 info: Rendering page
+2018-2-28 18:02:08 info: Server started
+2018-2-28 18:02:11 info: Server started
+2018-2-28 18:02:12 info: SearchInput: 
+2018-2-28 18:02:12 info: In searchByName
+2018-2-28 18:02:12 info: Limit: 40
+2018-2-28 18:02:12 info: Offset: 0
+2018-2-28 18:02:14 info: Products count: 62607
+2018-2-28 18:02:16 info: Products received
+2018-2-28 18:02:19 info: Tags received
+2018-2-28 18:02:19 info: Tags count: 71
+2018-2-28 18:02:27 info: Server started
+2018-2-28 18:02:29 info: Server started
+2018-2-28 18:02:30 info: SearchInput: 
+2018-2-28 18:02:30 info: In searchByName
+2018-2-28 18:02:30 info: Limit: 40
+2018-2-28 18:02:30 info: Offset: 0
+2018-2-28 18:02:32 info: Products count: 62607
+2018-2-28 18:02:34 info: Products received
+2018-2-28 18:02:37 info: Tags received
+2018-2-28 18:02:37 info: Tags count: 71
+2018-2-28 18:02:43 info: Server started
+2018-2-28 18:03:24 info: Server started
+2018-2-28 18:03:27 info: SearchInput: 
+2018-2-28 18:03:27 info: In searchByName
+2018-2-28 18:03:27 info: Limit: 40
+2018-2-28 18:03:27 info: Offset: 0
+2018-2-28 18:03:29 info: Products count: 62607
+2018-2-28 18:03:31 info: Products received
+2018-2-28 18:03:34 info: Tags received
+2018-2-28 18:03:34 info: Tags count: 71
+2018-2-28 18:03:34 info: Tags processed
+2018-2-28 18:03:34 error: Error while executing code: Error: koa-ctx-paginate: `pageCount` is not a number >= 0
+    at /home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-ctx-paginate/lib/index.js:83:63
+    at searchByName (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:157:39)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:188:7)
+2018-2-28 18:03:34 info: Checking if 404
+2018-2-28 18:03:34 info: In not_found()
+2018-2-28 18:03:38 info: Server started
+2018-2-28 18:03:48 info: Server started
+2018-2-28 18:03:49 info: SearchInput: 
+2018-2-28 18:03:49 info: In searchByName
+2018-2-28 18:03:49 info: Limit: 40
+2018-2-28 18:03:49 info: Offset: 0
+2018-2-28 18:03:51 info: Products count: 62607
+2018-2-28 18:03:53 info: Products received
+2018-2-28 18:03:56 info: Tags received
+2018-2-28 18:03:56 info: Tags count: 71
+2018-2-28 18:03:56 info: Tags processed
+2018-2-28 18:03:56 info: Rendering page
+2018-2-28 18:04:18 info: Server started
+2018-2-28 18:04:24 info: Server started
+2018-2-28 18:04:24 info: SearchInput: 
+2018-2-28 18:04:24 info: In searchByName
+2018-2-28 18:04:24 info: Limit: 40
+2018-2-28 18:04:24 info: Offset: 0
+2018-2-28 18:04:27 info: Products count: 62607
+2018-2-28 18:04:29 info: Products received
+2018-2-28 18:04:32 info: Tags received
+2018-2-28 18:04:49 info: Server started
+2018-2-28 18:04:53 info: SearchInput: 
+2018-2-28 18:04:53 info: In searchByName
+2018-2-28 18:04:53 info: Limit: 40
+2018-2-28 18:04:53 info: Offset: 0
+2018-2-28 18:04:56 info: Products count: 62607
+2018-2-28 18:04:56 info: Server started
+2018-2-28 18:04:59 info: Server started
+2018-2-28 18:05:01 info: Server started
+2018-2-28 18:05:07 info: Server started
+2018-2-28 18:05:08 info: SearchInput: 
+2018-2-28 18:05:08 info: In searchByName
+2018-2-28 18:05:08 info: Limit: 40
+2018-2-28 18:05:08 info: Offset: 0
+2018-2-28 18:05:11 info: Products count: 62607
+2018-2-28 18:05:13 info: Products received
+2018-2-28 18:05:15 info: Tags received
+2018-2-28 18:05:15 info: Tags count: 71
+2018-2-28 18:05:15 info: Tags processed
+2018-2-28 18:05:15 error: Error while executing code: Error: koa-ctx-paginate: `pageCount` is not a number >= 0
+    at /home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-ctx-paginate/lib/index.js:83:63
+    at searchByName (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:157:39)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:188:7)
+2018-2-28 18:05:15 info: Checking if 404
+2018-2-28 18:05:15 info: In not_found()
+2018-2-28 18:05:26 info: Server started
+2018-2-28 18:05:28 info: In list()
+2018-2-28 18:05:28 info: Offset: 0
+2018-2-28 18:05:29 info: Checking if 404
+2018-2-28 18:05:29 info: Request starts with /imgs
+2018-2-28 18:05:29 info: Checking if 404
+2018-2-28 18:05:29 info: Request starts with /imgs
+2018-2-28 18:05:29 info: Checking if 404
+2018-2-28 18:05:29 info: Request starts with /imgs
+2018-2-28 18:05:29 info: Checking if 404
+2018-2-28 18:05:29 info: Request starts with /imgs
+2018-2-28 18:05:29 info: Checking if 404
+2018-2-28 18:05:29 info: Request starts with /imgs
+2018-2-28 18:05:29 info: Checking if 404
+2018-2-28 18:05:29 info: Request starts with /imgs
+2018-2-28 18:05:29 info: Checking if 404
+2018-2-28 18:05:29 info: Request starts with /imgs
+2018-2-28 18:05:29 info: Checking if 404
+2018-2-28 18:05:29 info: Request starts with /imgs
+2018-2-28 18:05:29 info: Checking if 404
+2018-2-28 18:05:29 info: Request starts with /imgs
+2018-2-28 18:05:29 info: Checking if 404
+2018-2-28 18:05:29 info: Request starts with /imgs
+2018-2-28 18:05:29 info: Checking if 404
+2018-2-28 18:05:29 info: Request starts with /imgs
+2018-2-28 18:05:29 info: Checking if 404
+2018-2-28 18:05:29 info: Request starts with /imgs
+2018-2-28 18:05:29 info: Checking if 404
+2018-2-28 18:05:29 info: Request starts with /imgs
+2018-2-28 18:05:29 info: Checking if 404
+2018-2-28 18:05:29 info: Request starts with /imgs
+2018-2-28 18:05:29 info: Checking if 404
+2018-2-28 18:05:29 info: Request starts with /imgs
+2018-2-28 18:05:29 info: Checking if 404
+2018-2-28 18:05:29 info: Request starts with /imgs
+2018-2-28 18:05:29 info: Checking if 404
+2018-2-28 18:05:29 info: Request starts with /imgs
+2018-2-28 18:05:29 info: Checking if 404
+2018-2-28 18:05:29 info: Request starts with /imgs
+2018-2-28 18:05:29 info: Checking if 404
+2018-2-28 18:05:29 info: Request starts with /imgs
+2018-2-28 18:05:29 info: Checking if 404
+2018-2-28 18:05:29 info: Request starts with /imgs
+2018-2-28 18:05:29 info: Checking if 404
+2018-2-28 18:05:29 info: Request starts with /imgs
+2018-2-28 18:05:29 info: Checking if 404
+2018-2-28 18:05:29 info: Request starts with /imgs
+2018-2-28 18:05:29 info: Checking if 404
+2018-2-28 18:05:29 info: Request starts with /imgs
+2018-2-28 18:06:38 info: In list()
+2018-2-28 18:06:38 info: Offset: 0
+2018-2-28 18:06:38 info: Checking if 404
+2018-2-28 18:06:38 info: Request starts with /imgs
+2018-2-28 18:06:38 info: Checking if 404
+2018-2-28 18:06:38 info: Request starts with /imgs
+2018-2-28 18:06:38 info: Checking if 404
+2018-2-28 18:06:38 info: Request starts with /imgs
+2018-2-28 18:06:38 info: Checking if 404
+2018-2-28 18:06:38 info: Request starts with /imgs
+2018-2-28 18:06:38 info: Checking if 404
+2018-2-28 18:06:38 info: Request starts with /imgs
+2018-2-28 18:06:38 info: Checking if 404
+2018-2-28 18:06:38 info: Request starts with /imgs
+2018-2-28 18:06:38 info: Checking if 404
+2018-2-28 18:06:38 info: Request starts with /imgs
+2018-2-28 18:06:38 info: Checking if 404
+2018-2-28 18:06:38 info: Request starts with /imgs
+2018-2-28 18:06:38 info: Checking if 404
+2018-2-28 18:06:38 info: Request starts with /imgs
+2018-2-28 18:06:38 info: Checking if 404
+2018-2-28 18:06:38 info: Request starts with /imgs
+2018-2-28 18:06:38 info: Checking if 404
+2018-2-28 18:06:38 info: Request starts with /imgs
+2018-2-28 18:06:38 info: Checking if 404
+2018-2-28 18:06:38 info: Request starts with /imgs
+2018-2-28 18:06:38 info: Checking if 404
+2018-2-28 18:06:38 info: Request starts with /imgs
+2018-2-28 18:06:38 info: Checking if 404
+2018-2-28 18:06:38 info: Request starts with /imgs
+2018-2-28 18:06:38 info: Checking if 404
+2018-2-28 18:06:38 info: Request starts with /imgs
+2018-2-28 18:06:38 info: Checking if 404
+2018-2-28 18:06:38 info: Request starts with /imgs
+2018-2-28 18:06:38 info: Checking if 404
+2018-2-28 18:06:38 info: Request starts with /imgs
+2018-2-28 18:06:38 info: Checking if 404
+2018-2-28 18:06:38 info: Request starts with /imgs
+2018-2-28 18:06:38 info: Checking if 404
+2018-2-28 18:06:38 info: Request starts with /imgs
+2018-2-28 18:06:38 info: Checking if 404
+2018-2-28 18:06:38 info: Request starts with /imgs
+2018-2-28 18:06:38 info: Checking if 404
+2018-2-28 18:06:38 info: Request starts with /imgs
+2018-2-28 18:06:38 info: Checking if 404
+2018-2-28 18:06:38 info: Request starts with /imgs
+2018-2-28 18:06:38 info: Checking if 404
+2018-2-28 18:06:38 info: Request starts with /imgs
+2018-2-28 18:07:46 info: SearchInput: 
+2018-2-28 18:07:46 info: In searchByName
+2018-2-28 18:07:46 info: Limit: 40
+2018-2-28 18:07:46 info: Offset: 0
+2018-2-28 18:07:52 info: Products count: 190473
+2018-2-28 18:07:55 info: Products received
+2018-2-28 18:07:58 info: Tags received
+2018-2-28 18:08:29 info: Server started
+2018-2-28 18:09:22 info: Server started
+2018-2-28 18:09:25 info: In list()
+2018-2-28 18:09:25 info: Offset: 0
+2018-2-28 18:09:25 info: Checking if 404
+2018-2-28 18:09:25 info: Request starts with /imgs
+2018-2-28 18:09:26 info: Checking if 404
+2018-2-28 18:09:26 info: Request starts with /imgs
+2018-2-28 18:09:26 info: Checking if 404
+2018-2-28 18:09:26 info: Request starts with /imgs
+2018-2-28 18:09:26 info: Checking if 404
+2018-2-28 18:09:26 info: Request starts with /imgs
+2018-2-28 18:09:26 info: Checking if 404
+2018-2-28 18:09:26 info: Request starts with /imgs
+2018-2-28 18:09:26 info: Checking if 404
+2018-2-28 18:09:26 info: Request starts with /imgs
+2018-2-28 18:09:26 info: Checking if 404
+2018-2-28 18:09:26 info: Request starts with /imgs
+2018-2-28 18:09:26 info: Checking if 404
+2018-2-28 18:09:26 info: Request starts with /imgs
+2018-2-28 18:09:26 info: Checking if 404
+2018-2-28 18:09:26 info: Request starts with /imgs
+2018-2-28 18:09:26 info: Checking if 404
+2018-2-28 18:09:26 info: Request starts with /imgs
+2018-2-28 18:09:26 info: Checking if 404
+2018-2-28 18:09:26 info: Request starts with /imgs
+2018-2-28 18:09:26 info: Checking if 404
+2018-2-28 18:09:26 info: Request starts with /imgs
+2018-2-28 18:09:26 info: Checking if 404
+2018-2-28 18:09:26 info: Request starts with /imgs
+2018-2-28 18:09:26 info: Checking if 404
+2018-2-28 18:09:26 info: Request starts with /imgs
+2018-2-28 18:09:26 info: Checking if 404
+2018-2-28 18:09:26 info: Request starts with /imgs
+2018-2-28 18:09:26 info: Checking if 404
+2018-2-28 18:09:26 info: Request starts with /imgs
+2018-2-28 18:09:26 info: Checking if 404
+2018-2-28 18:09:26 info: Request starts with /imgs
+2018-2-28 18:09:26 info: Checking if 404
+2018-2-28 18:09:26 info: Request starts with /imgs
+2018-2-28 18:09:26 info: Checking if 404
+2018-2-28 18:09:26 info: Request starts with /imgs
+2018-2-28 18:09:26 info: Checking if 404
+2018-2-28 18:09:26 info: Request starts with /imgs
+2018-2-28 18:09:26 info: Checking if 404
+2018-2-28 18:09:26 info: Request starts with /imgs
+2018-2-28 18:09:26 info: Checking if 404
+2018-2-28 18:09:26 info: Request starts with /imgs
+2018-2-28 18:09:26 info: Checking if 404
+2018-2-28 18:09:26 info: Request starts with /imgs
+2018-2-28 18:09:40 info: Server started
+2018-2-28 18:09:48 info: Checking if 404
+2018-2-28 18:09:48 info: Request starts with /imgs
+2018-2-28 18:09:48 info: Checking if 404
+2018-2-28 18:09:48 info: Request starts with /imgs
+2018-2-28 18:09:48 info: Checking if 404
+2018-2-28 18:09:48 info: Request starts with /imgs
+2018-2-28 18:09:48 info: Checking if 404
+2018-2-28 18:09:48 info: Request starts with /imgs
+2018-2-28 18:09:48 info: Checking if 404
+2018-2-28 18:09:48 info: Request starts with /imgs
+2018-2-28 18:09:48 info: Checking if 404
+2018-2-28 18:09:48 info: Request starts with /imgs
+2018-2-28 18:09:48 info: Checking if 404
+2018-2-28 18:09:48 info: Request starts with /imgs
+2018-2-28 18:09:48 info: Checking if 404
+2018-2-28 18:09:48 info: Request starts with /imgs
+2018-2-28 18:09:48 info: Checking if 404
+2018-2-28 18:09:48 info: Request starts with /imgs
+2018-2-28 18:09:48 info: Checking if 404
+2018-2-28 18:09:48 info: Request starts with /imgs
+2018-2-28 18:09:48 info: Checking if 404
+2018-2-28 18:09:48 info: Request starts with /imgs
+2018-2-28 18:09:48 info: Checking if 404
+2018-2-28 18:09:48 info: Request starts with /imgs
+2018-2-28 18:09:48 info: Checking if 404
+2018-2-28 18:09:48 info: Request starts with /imgs
+2018-2-28 18:09:48 info: Checking if 404
+2018-2-28 18:09:48 info: Request starts with /imgs
+2018-2-28 18:09:48 info: Checking if 404
+2018-2-28 18:09:48 info: Request starts with /imgs
+2018-2-28 18:09:48 info: Checking if 404
+2018-2-28 18:09:48 info: Request starts with /imgs
+2018-2-28 18:09:48 info: Checking if 404
+2018-2-28 18:09:48 info: Request starts with /imgs
+2018-2-28 18:09:48 info: Checking if 404
+2018-2-28 18:09:48 info: Request starts with /imgs
+2018-2-28 18:09:48 info: Checking if 404
+2018-2-28 18:09:48 info: Request starts with /imgs
+2018-2-28 18:09:48 info: Checking if 404
+2018-2-28 18:09:48 info: Request starts with /imgs
+2018-2-28 18:09:48 info: Checking if 404
+2018-2-28 18:09:48 info: Request starts with /imgs
+2018-2-28 18:09:49 info: Checking if 404
+2018-2-28 18:09:49 info: Request starts with /imgs
+2018-2-28 18:09:49 info: Checking if 404
+2018-2-28 18:09:49 info: Request starts with /imgs
+2018-2-28 18:10:44 info: Server started
+2018-2-28 18:10:47 info: Server started
+2018-2-28 18:10:53 info: Checking if 404
+2018-2-28 18:10:53 info: Request starts with /imgs
+2018-2-28 18:10:53 info: Checking if 404
+2018-2-28 18:10:53 info: Request starts with /imgs
+2018-2-28 18:10:53 info: Checking if 404
+2018-2-28 18:10:53 info: Request starts with /imgs
+2018-2-28 18:10:53 info: Checking if 404
+2018-2-28 18:10:53 info: Request starts with /imgs
+2018-2-28 18:10:53 info: Checking if 404
+2018-2-28 18:10:53 info: Request starts with /imgs
+2018-2-28 18:10:53 info: Checking if 404
+2018-2-28 18:10:53 info: Request starts with /imgs
+2018-2-28 18:10:53 info: Checking if 404
+2018-2-28 18:10:53 info: Request starts with /imgs
+2018-2-28 18:10:53 info: Checking if 404
+2018-2-28 18:10:53 info: Request starts with /imgs
+2018-2-28 18:10:54 info: Checking if 404
+2018-2-28 18:10:54 info: Request starts with /imgs
+2018-2-28 18:10:54 info: Checking if 404
+2018-2-28 18:10:54 info: Request starts with /imgs
+2018-2-28 18:10:54 info: Checking if 404
+2018-2-28 18:10:54 info: Request starts with /imgs
+2018-2-28 18:10:54 info: Checking if 404
+2018-2-28 18:10:54 info: Request starts with /imgs
+2018-2-28 18:10:54 info: Checking if 404
+2018-2-28 18:10:54 info: Request starts with /imgs
+2018-2-28 18:10:54 info: Checking if 404
+2018-2-28 18:10:54 info: Request starts with /imgs
+2018-2-28 18:10:54 info: Checking if 404
+2018-2-28 18:10:54 info: Request starts with /imgs
+2018-2-28 18:10:54 info: Checking if 404
+2018-2-28 18:10:54 info: Request starts with /imgs
+2018-2-28 18:10:54 info: Checking if 404
+2018-2-28 18:10:54 info: Request starts with /imgs
+2018-2-28 18:10:54 info: Checking if 404
+2018-2-28 18:10:54 info: Request starts with /imgs
+2018-2-28 18:10:54 info: Checking if 404
+2018-2-28 18:10:54 info: Request starts with /imgs
+2018-2-28 18:10:54 info: Checking if 404
+2018-2-28 18:10:54 info: Request starts with /imgs
+2018-2-28 18:10:54 info: Checking if 404
+2018-2-28 18:10:54 info: Request starts with /imgs
+2018-2-28 18:10:54 info: Checking if 404
+2018-2-28 18:10:54 info: Request starts with /imgs
+2018-2-28 18:10:54 info: Checking if 404
+2018-2-28 18:10:54 info: Request starts with /imgs
+2018-2-28 18:11:09 info: Server started
+2018-2-28 18:11:11 info: Server started
+2018-2-28 18:11:17 info: Server started
+2018-2-28 18:11:20 info: Checking if 404
+2018-2-28 18:11:20 info: Request starts with /imgs
+2018-2-28 18:11:20 info: Checking if 404
+2018-2-28 18:11:20 info: Request starts with /imgs
+2018-2-28 18:11:20 info: Checking if 404
+2018-2-28 18:11:20 info: Request starts with /imgs
+2018-2-28 18:11:20 info: Checking if 404
+2018-2-28 18:11:20 info: Request starts with /imgs
+2018-2-28 18:11:20 info: Checking if 404
+2018-2-28 18:11:20 info: Request starts with /imgs
+2018-2-28 18:11:20 info: Checking if 404
+2018-2-28 18:11:20 info: Request starts with /imgs
+2018-2-28 18:11:20 info: Checking if 404
+2018-2-28 18:11:20 info: Request starts with /imgs
+2018-2-28 18:11:20 info: Checking if 404
+2018-2-28 18:11:20 info: Request starts with /imgs
+2018-2-28 18:11:20 info: Checking if 404
+2018-2-28 18:11:20 info: Request starts with /imgs
+2018-2-28 18:11:20 info: Checking if 404
+2018-2-28 18:11:20 info: Request starts with /imgs
+2018-2-28 18:11:20 info: Checking if 404
+2018-2-28 18:11:20 info: Request starts with /imgs
+2018-2-28 18:11:20 info: Checking if 404
+2018-2-28 18:11:20 info: Request starts with /imgs
+2018-2-28 18:11:20 info: Checking if 404
+2018-2-28 18:11:20 info: Request starts with /imgs
+2018-2-28 18:11:20 info: Checking if 404
+2018-2-28 18:11:20 info: Request starts with /imgs
+2018-2-28 18:11:20 info: Checking if 404
+2018-2-28 18:11:20 info: Request starts with /imgs
+2018-2-28 18:11:20 info: Checking if 404
+2018-2-28 18:11:20 info: Request starts with /imgs
+2018-2-28 18:11:20 info: Checking if 404
+2018-2-28 18:11:20 info: Request starts with /imgs
+2018-2-28 18:11:21 info: Checking if 404
+2018-2-28 18:11:21 info: Request starts with /imgs
+2018-2-28 18:11:21 info: Checking if 404
+2018-2-28 18:11:21 info: Request starts with /imgs
+2018-2-28 18:11:49 info: Server started
+2018-2-28 18:11:53 info: Server started
+2018-2-28 18:12:01 info: Server started
+2018-2-28 18:12:04 info: Server started
+2018-2-28 18:12:11 error: Error while executing code: Error: koa-ctx-paginate: `pageCount` is not a number >= 0
+    at Object.hasNextPages (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-ctx-paginate/lib/index.js:70:63)
+    at eval (eval at wrap (/home/velioo/training-projects/velioo-online_store_koa/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:155:43)
+    at template (eval at wrap (/home/velioo/training-projects/velioo-online_store_koa/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:196:807)
+    at compileFile (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-pug/src/pug.js:60:12)
+    at renderer (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-pug/src/pug.js:92:12)
+    at Object.contextRenderer [as render] (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-pug/src/pug.js:106:17)
+    at searchByName (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:160:9)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:188:7)
+2018-2-28 18:12:11 info: Checking if 404
+2018-2-28 18:12:20 info: Server started
+2018-2-28 18:12:24 info: Server started
+2018-2-28 18:12:26 info: Server started
+2018-2-28 18:13:24 info: Server started
+2018-2-28 18:14:00 info: Server started
+2018-2-28 18:14:11 info: Server started
+2018-2-28 18:14:29 info: Server started
+2018-2-28 18:14:31 info: Server started
+2018-2-28 18:14:55 info: Server started
+2018-2-28 18:15:03 error: Error while executing code: Error: koa-ctx-paginate: `pageCount` is not a number >= 0
+    at /home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-ctx-paginate/lib/index.js:83:63
+    at searchByName (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:157:39)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:188:7)
+2018-2-28 18:15:27 info: Server started
+2018-2-28 18:15:48 info: Server started
+2018-2-28 18:16:02 info: Server started
+2018-2-28 18:16:05 info: Server started
+2018-2-28 18:16:15 info: Server started
+2018-2-28 18:16:34 info: Server started
+2018-2-28 18:16:39 info: Server started
