@@ -3,36 +3,42 @@ const { getArrayPages } = require('koa-ctx-paginate');
 
 async function list(ctx, next) {
     //logger.info('In list()');
+    ctx.data = {};
     let limit = 40;
     let offset = (ctx.query.page) ? (+ctx.query.page > 0) ? +ctx.query.page * limit - limit : 0 : 0;
     //logger.info("Offset: " + offset);
     let query = await ctx.myPool().query('SELECT products.* FROM products JOIN categories ON \
                                           categories.id = products.category_id ORDER BY created_at DESC LIMIT ? OFFSET ?',
                                           [limit, offset]);
-    ctx.render('index.pug', {products: query});
+    ctx.data.products = query
+    await next();
+    ctx.render('index.pug', ctx.data);
 }
 
 async function getId(ctx, next) {
 
     //logger.info('In getId()');
+    ctx.data = {};
     let id = ctx.params.id;
     let query = await ctx.myPool().query('SELECT products.* FROM products JOIN categories ON \
                                           categories.id = products.category_id WHERE products.id = ?', [id]);
     
-    if (query.length > 0)
-        query = query[0];
-    else
-        ctx.redirect('/not_found');
-    ctx.render('product.pug', {product: query});
+    if (query.length > 0) {
+        ctx.data.product = query[0]
+    } else {
+        return ctx.redirect('/not_found');
+    }
+    await next();
+    ctx.render('product.pug', ctx.data);
 }
 
 async function searchByName(ctx, next) {
 
-    let data = {};
+    ctx.data = {};
     let searchInput = ctx.query.search_input || "";
     //logger.info("SearchInput: " + searchInput);
     if (searchInput) {
-        data['searchInput'] = searchInput;
+        ctx.data.searchInput = searchInput;
         searchInput = searchInput.replace(/%/g, "!%").replace(/_/g, "!_").replace(/'/g, "\\'").replace(/"/g, '\\"');
     }
     let productsQuery = "SELECT products.*, categories.name as category, categories.id as category_id FROM products JOIN categories ON categories.id=products.category_id\
@@ -64,7 +70,7 @@ async function searchByName(ctx, next) {
         productsQueryArgs.push(+ctx.query.price_from);
         tagsQuery+=" AND products.price_leva >= ?";
         tagsQueryArgs.push(+ctx.query.price_from);
-        data['price_from'] = ctx.query.price_from;
+        ctx.data.price_from = ctx.query.price_from;
     }
 
     if (ctx.query.price_to) {
@@ -72,7 +78,7 @@ async function searchByName(ctx, next) {
         productsQueryArgs.push(+ctx.query.price_to);
         tagsQuery+=" AND products.price_leva <= ?";
         tagsQueryArgs.push(+ctx.query.price_to);
-        data['price_to'] = ctx.query.price_to;
+        ctx.data.price_to = ctx.query.price_to;
     }
 
     if (ctx.query.category) {
@@ -80,7 +86,7 @@ async function searchByName(ctx, next) {
         productsQueryArgs.push(+ctx.query.category);
         tagsQuery+=" AND categories.id = ?";
         tagsQueryArgs.push(+ctx.query.category);
-        data['category'] = ctx.query.category;
+        ctx.data.category = ctx.query.category;
     }
 
     productsQuery+=" GROUP BY products.id";
@@ -102,16 +108,16 @@ async function searchByName(ctx, next) {
             default:
                 break;
         }
-        data['sort_products'] = ctx.query.sort_products;
+        ctx.data.sort_products = ctx.query.sort_products;
     } else {
-        data['sort_products'] = 'newest';
+        ctx.data.sort_products = 'newest';
         productsQuery+=" ORDER BY products.updated_at DESC";
     }
     
     let productsCount = await ctx.myPool().query(productsQuery, productsQueryArgs);
     //logger.info("Products count: " + productsCount.length);
     if (productsCount.length <= 0) {
-        return ctx.render('index.pug', data);
+        return ctx.render('index.pug', ctx.data);
     }
     productsQuery+=" LIMIT ? OFFSET ?";
     productsQueryArgs.push(limit, offset);
@@ -146,18 +152,19 @@ async function searchByName(ctx, next) {
     //logger.info("Tags processed");
 
     ////logger.info('New Tags: %o', newTags);
-    data['tags'] = newTags;
-    data['products'] = products;
-    data['pageCount'] = Math.ceil(productsCount.length / +ctx.query.limit);
-    data['itemCount'] = productsCount.length;
-    data['currentPage'] = ctx.query.page;
+    ctx.data.tags = newTags;
+    ctx.data.products = products;
+    ctx.data.pageCount = Math.ceil(productsCount.length / +ctx.query.limit);
+    ctx.data.itemCount = productsCount.length;
+    ctx.data.currentPage = ctx.query.page;
     //console.log(data['pageCount']);
     ////logger.info("pageCount: " + data['pageCount']);
     ////logger.info("itemCount: " + data['itemCount']);
-    data['pages'] = getArrayPages(ctx)(10, 2, ctx.query.page);
+    ctx.data.pages = getArrayPages(ctx)(10, 2, ctx.query.page);
     //console.log(data['pages']);
     //logger.info("Rendering page");
-    ctx.render('index.pug', data);
+    await next();
+    ctx.render('index.pug', ctx.data);
 }
 
 async function getMenuItems(ctx, next) {

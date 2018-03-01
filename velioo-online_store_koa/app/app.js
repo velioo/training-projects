@@ -8,6 +8,7 @@ const koa =  require('koa'),
       logger = require('./helpers/logger'),
       err = require('./helpers/error'),
       pug = require('./helpers/pug'),
+      authenticate = require('./helpers/authenticate'),
       { routes, allowedMethods } = require('./routes'),
       serve = require('koa-static'),
       session = require('koa-session'),
@@ -34,8 +35,10 @@ app.keys = ['Shh, its a secret!'];
 app.use(session(app));
 app.use(mysql);
 app.use(paginate.middleware(REC_LIMIT, REC_MAX_LIMIT));
+require('koa-validate')(app);
 app.use(routes());
 app.use(allowedMethods());
+app.use(authenticate);
 app.use((ctx, next) => {
     logger.info("Checking if 404");
     if (404 != ctx.status) return;

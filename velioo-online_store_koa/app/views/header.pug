@@ -46,13 +46,13 @@ script.
       </div>
     </form>
     <ul class="nav navbar-nav navbar-right">
-    if(1)
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Регистрация</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Вход</a></li>
+    if !logged
+        <li><a href="#{root()}signup"><span class="glyphicon glyphicon-user"></span> Регистрация</a></li>
+        <li><a href="#{root()}login"><span class="glyphicon glyphicon-log-in"></span> Вход</a></li>
     else 
         <li><a href="#"><img class="spinner cart" src="#"><span class="glyphicon glyphicon-shopping-cart" style="float:right;"> Количка</span></br><span id="cart_count_price"></span></a></li>
         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Моят профил</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Изход</a></li>
+        <li><a href="#{root()}log_out"><span class="glyphicon glyphicon-log-in"></span> Изход</a></li>
     </ul>
   </div>    
 </nav>  
