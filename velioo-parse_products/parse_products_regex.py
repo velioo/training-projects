@@ -16,7 +16,6 @@ from socket import timeout
 html_p = HTMLParser()
 base_url = sys.argv[1] if (len(sys.argv) > 1 and sys.argv[1]) else False
 visited = []
-to_visit = []
 products_inserted = 0
 
 
@@ -51,7 +50,7 @@ def main():
 		except AttributeError as ae:
 			print(ae)
 		except TypeError as te:
-			print(ty)
+			print(te)
 		except Exception as e:
 			print('Unknown error occured',e)
 		finally:
@@ -149,7 +148,7 @@ if __name__ == "__main__":
 	except AttributeError as ae:
 		print(ae)
 	except TypeError as te:
-		print(ty)
+		print(te)
 	except NameError as ne:
 		print(e)
 	except Exception as e:
