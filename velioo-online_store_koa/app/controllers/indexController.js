@@ -2,7 +2,7 @@ const logger = require('../helpers/logger');
 const { getArrayPages } = require('koa-ctx-paginate');
 
 async function list(ctx, next) {
-    //logger.info('In list()');
+    logger.info('In list()');
     ctx.data = {};
     let limit = 40;
     let offset = (ctx.query.page) ? (+ctx.query.page > 0) ? +ctx.query.page * limit - limit : 0 : 0;
@@ -10,7 +10,7 @@ async function list(ctx, next) {
     let query = await ctx.myPool().query('SELECT products.* FROM products JOIN categories ON \
                                           categories.id = products.category_id ORDER BY created_at DESC LIMIT ? OFFSET ?',
                                           [limit, offset]);
-    ctx.data.products = query
+    ctx.data.products = query;
     await next();
     ctx.render('index.pug', ctx.data);
 }
@@ -22,7 +22,7 @@ async function getId(ctx, next) {
     let id = ctx.params.id;
     let query = await ctx.myPool().query('SELECT products.* FROM products JOIN categories ON \
                                           categories.id = products.category_id WHERE products.id = ?', [id]);
-    
+
     if (query.length > 0) {
         ctx.data.product = query[0]
     } else {
@@ -48,6 +48,7 @@ async function searchByName(ctx, next) {
         JOIN categories ON categories.id=products.category_id\
         JOIN product_tags ON product_tags.product_id=products.id\
         JOIN tags ON tags.id=product_tags.tag_id WHERE products.name LIKE '%" + searchInput + "%' ";
+        
 
     let productsQueryArgs = [];
     let tagsQueryArgs = [];
@@ -55,11 +56,11 @@ async function searchByName(ctx, next) {
     //logger.info("In searchByName");
     let limit = ctx.query.limit;
     //logger.info("Limit: " + limit);
-    ////logger.info("Query String: %o", ctx.query);
+    //logger.info("Query String: %o", ctx.query);
     let offset = (ctx.query.page) ? (+ctx.query.page > 0) ? +ctx.query.page * ctx.query.limit - ctx.query.limit : 0 : 0;
     //logger.info("Offset: " + offset);
     //console.log(ctx.query);
-    ////logger.info("Tags got: %o", ctx.query.tags);
+    //logger.info("Tags got: %o", ctx.query.tags);
     if(ctx.query.tags) {
         productsQuery+=" AND tags.name IN (?) ";
         productsQueryArgs.push(ctx.query.tags);
@@ -90,6 +91,7 @@ async function searchByName(ctx, next) {
     }
 
     productsQuery+=" GROUP BY products.id";
+    tagsQuery+=" GROUP BY tags.name";
 
     if (ctx.query.sort_products) {
         switch(ctx.query.sort_products) {
@@ -122,14 +124,14 @@ async function searchByName(ctx, next) {
     productsQuery+=" LIMIT ? OFFSET ?";
     productsQueryArgs.push(limit, offset);
     let products = await ctx.myPool().query(productsQuery, productsQueryArgs);
-    ////logger.info("Products: %o", products);
+    logger.info("Products: %o", products);
     //logger.info("Products received");
-    tagsQuery+=" GROUP BY tags.name";
+
     let tags = await ctx.myPool().query(tagsQuery, tagsQueryArgs);
     //logger.info("Tags received");
-    ////logger.info("Query: " + productsQuery);
-    ////logger.info("Tags object: %o", tags);
-    ////logger.info("Query: " + tagsQuery);
+    //logger.info("Query: " + productsQuery);
+    //logger.info("Tags object: %o", tags);
+    //logger.info("Query: " + tagsQuery);
     //logger.info("Tags count: " + tags.length);
     let newTags = {};
     if (tags.length > 0) {
@@ -151,7 +153,7 @@ async function searchByName(ctx, next) {
     }
     //logger.info("Tags processed");
 
-    ////logger.info('New Tags: %o', newTags);
+    //logger.info('New Tags: %o', newTags);
     ctx.data.tags = newTags;
     ctx.data.products = products;
     ctx.data.pageCount = Math.ceil(productsCount.length / +ctx.query.limit);

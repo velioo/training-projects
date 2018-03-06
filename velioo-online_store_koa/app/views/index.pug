@@ -12,10 +12,7 @@ else
     
 if tags
     <div class="filtering_menu">
-    if category
-        <form action="#{root()}search/?#{category}" method="get" id="filter_form">
-    else
-        <form action="#{root()}search" method="get" id="filter_form">
+    <form action="#{root()}search" method="get" id="filter_form">
     <h4 class="filter_header">Цена:</h4>
     <span>От:</span><input type="number" min="0" step="1" name="price_from" value="#{price_from}">
     <span>До:</span><input type="number" min="0" step="1" name="price_to" value="#{price_to}"></br></br>
@@ -25,12 +22,13 @@ if tags
         <p class="filter_name">#{key}</p>
         <div class="checkbox"><label>
         if val.checked
-            <input type="checkbox" class="checkbox_tag" name="tags" checked value="#{key}:{val.value}">#{val.value} (#{val.count})
+            <input type="checkbox" class="checkbox_tag" name="tags" checked value="#{key}:#{val.value}">#{val.value} (#{val.count})
         else
             <input type="checkbox" class="checkbox_tag" name="tags" value="#{key}:#{val.value}">#{val.value} (#{val.count})
         </label>
         </div>
     <input type="hidden" name="search_input" value="#{searchInput}">
+    <input type="hidden" name="category" value="#{category}">
     </div>
 
 if !tags
