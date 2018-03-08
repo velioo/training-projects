@@ -2,7 +2,7 @@ const logger = require('../helpers/logger');
 const Router = require('koa-router'),
       KoaBody = require('koa-body'),
       {list, getId, searchByName, getMenuItems, not_found} = require('../controllers/indexController'),
-      {renderLogin, login, renderSignUp, signUp, logOut} = require('../controllers/usersController');
+      {renderLogin, login, renderSignUp, signUp, logOut, confirmAccount} = require('../controllers/usersController');
       
       //~ {
         //~ formidable: {uploadDir: '../../uploads'},
@@ -21,6 +21,7 @@ router.get('/products', list)
     .get('/sign_up', renderSignUp)
     .post('/sign_up', KoaBody(), signUp)
     .get('/log_out', logOut)
+    .get('/confirm_account', confirmAccount)
     //~ .post('/products', KoaBody(), createProduct)
     //~ .post('/products/:id', KoaBody, updateProduct)
     //~ .delete('/products/:id', removeProduct)

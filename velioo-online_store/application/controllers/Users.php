@@ -247,7 +247,7 @@ class Users extends CI_Controller {
 				log_message('user_info', 'Creating new user...');
                 $insertId = $this->user_model->insert($userData);      
 
-                if($insertId) {		
+                if($insertId) {
 					
 					assert_v(is_numeric($insertId));			
 					

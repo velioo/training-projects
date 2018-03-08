@@ -15,18 +15,18 @@ class Products extends CI_Controller {
 	}
 	
 	public function search($searchCategoryId=null) {
-
+		
 		log_message('user_info', "\n\n" . site_url('products/search') . ' loaded.');
-
+		
 		log_message('user_info', 'Loading pagination library');
 		$this->load->library('pagination');
 		log_message('user_info', 'Configuring pagination');
 		$config = $this->configure_pagination();
 		$config['base_url'] = site_url("products/search/{$searchCategoryId}");
 		$config['per_page'] = 40;
-
+		
 		log_message('user_info', 'Records limit: ' . $config['per_page']);
-
+		
 		if($this->input->get('page') != NULL and is_numeric($this->input->get('page')) and $this->input->get('page') > 0) {
 			log_message('user_info', 'Got page number: ' . $this->input->get('page'));
 			$start = $this->input->get('page') * $config['per_page'] - $config['per_page'];
@@ -35,9 +35,9 @@ class Products extends CI_Controller {
 			$start = 0;
 			log_message('user_info', 'No page number specified. Using default offset: ' . $start);
 		}
-
+		
 		assert_v(is_numeric($start));
-
+		
 		$rowsArray = array(
 			'select' => array('p.*', 'categories.name as category', 'categories.id as category_id'),
 			'joins' => array('categories' => 'categories.id=p.category_id', 
@@ -48,7 +48,7 @@ class Products extends CI_Controller {
 			'group_by' => 'p.id',
 			'alias' => 'p'
 		);
-
+		
 		$tagsArray = array(
 			'select' => array('tags.name, COUNT(tags.name) as tag_count'),
 			'joins' => array('categories' => 'categories.id=products.category_id', 
@@ -56,7 +56,8 @@ class Products extends CI_Controller {
 							 'tags' => 'tags.id=product_tags.tag_id'),
 			'group_by' => 'tags.name'
 		);
-
+		
+		
 		$filterTags = $this->input->get('tags');
 		if($filterTags) {
 			log_message('user_info', 'Filtering by tags: ' . implode(", ",$filterTags));
