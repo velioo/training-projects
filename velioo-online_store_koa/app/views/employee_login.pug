@@ -1,0 +1,32 @@
+include ./header.pug
+
+<div id="body">
+<div id="wrap">
+<h2 style="text-align:center; margin-right: 15%;">Вход за служители</h2></br></br>
+if message
+    <span>#{message}</span>
+<form action="#{root()}employee_login" method="post" class="form-horizontal login_register_form">
+    <div class="form-group">
+      <label class="col-sm-1 control-label" for="name">Потребителско име:</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="username" name="username" value="#{user.username}">
+        <span class="glyphicon glyphicon-remove form-control-feedback"></span>             
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="col-sm-1 control-label" for="password">Парола:</label>
+      <div class="col-sm-8">
+        <input type="password" class="form-control" id="password" name="password">
+        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+      </div>
+    </div>
+        </br>
+    <div class="form-group form_submit">
+        <button type="submit" value="Влез" id="loginSubmit" name="loginSubmit" class="btn btn-primary form_submit_button login">Влез</button>
+    </div> 
+</form>
+</div>
+</div>
+
+include ./footer.pug

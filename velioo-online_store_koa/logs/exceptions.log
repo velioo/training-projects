@@ -7496,3 +7496,662 @@ Error: get `/send_mail`: `middleware` must be a function, not `undefined`
     at Object.Module._extensions..js (module.js:652:10)
     at Module.load (module.js:560:32)
     at tryModuleLoad (module.js:503:12)
+2018-3-10 09:34:43 error: uncaughtException: Cannot find module '../constants/'
+Error: Cannot find module '../constants/'
+    at Function.Module._resolveFilename (module.js:542:15)
+    at Function.Module._load (module.js:472:25)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/usersController.js:7:20)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+2018-3-10 09:54:12 error: uncaughtException: await is only valid in async function
+/home/velioo/training-projects/velioo-online_store_koa/app/helpers/validations.js:7
+    let query = await ctx.myPool().query("SELECT email FROM users WHERE email = ?", [ctx.request.body.email]);
+                ^^^^^
+
+SyntaxError: await is only valid in async function
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/usersController.js:6:23)
+2018-3-10 09:57:49 error: uncaughtException: Unexpected token }
+/home/velioo/training-projects/velioo-online_store_koa/app/helpers/validations.js:8
+}
+^
+
+SyntaxError: Unexpected token }
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/usersController.js:6:23)
+2018-3-10 09:57:53 error: uncaughtException: Unexpected token }
+/home/velioo/training-projects/velioo-online_store_koa/app/helpers/validations.js:8
+}
+^
+
+SyntaxError: Unexpected token }
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/usersController.js:6:23)
+2018-3-10 09:58:17 error: uncaughtException: Unexpected token }
+/home/velioo/training-projects/velioo-online_store_koa/app/helpers/validations.js:8
+}
+^
+
+SyntaxError: Unexpected token }
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/usersController.js:6:23)
+2018-3-10 09:58:39 error: uncaughtException: Unexpected token }
+/home/velioo/training-projects/velioo-online_store_koa/app/helpers/validations.js:10
+}
+^
+
+SyntaxError: Unexpected token }
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/usersController.js:6:23)
+2018-3-10 10:00:13 error: uncaughtException: Unexpected token }
+/home/velioo/training-projects/velioo-online_store_koa/app/helpers/validations.js:12
+}
+^
+
+SyntaxError: Unexpected token }
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/usersController.js:6:23)
+2018-3-10 10:00:29 error: uncaughtException: Unexpected token }
+/home/velioo/training-projects/velioo-online_store_koa/app/helpers/validations.js:12
+}
+^
+
+SyntaxError: Unexpected token }
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/usersController.js:6:23)
+2018-3-10 10:00:55 error: uncaughtException: Unexpected token )
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/usersController.js:76
+    if() {
+       ^
+
+SyntaxError: Unexpected token )
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:5:76)
+2018-3-10 10:13:55 error: uncaughtException: await is only valid in async function
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/usersController.js:141
+                    await ctx.myPool().query("ROLLBACK");
+                    ^^^^^
+
+SyntaxError: await is only valid in async function
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:5:76)
+2018-3-10 10:15:29 error: uncaughtException: await is only valid in async function
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/usersController.js:141
+                    await ctx.myPool().query("ROLLBACK");
+                    ^^^^^
+
+SyntaxError: await is only valid in async function
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:5:76)
+2018-3-10 10:15:42 error: uncaughtException: await is only valid in async function
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/usersController.js:141
+                    await ctx.myPool().query("ROLLBACK");
+                    ^^^^^
+
+SyntaxError: await is only valid in async function
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:5:76)
+2018-3-10 10:15:47 error: uncaughtException: await is only valid in async function
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/usersController.js:141
+                    await ctx.myPool().query("ROLLBACK");
+                    ^^^^^
+
+SyntaxError: await is only valid in async function
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:5:76)
+2018-3-10 10:15:51 error: uncaughtException: await is only valid in async function
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/usersController.js:141
+                    await ctx.myPool().query("ROLLBACK");
+                    ^^^^^
+
+SyntaxError: await is only valid in async function
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:5:76)
+2018-3-10 10:16:10 error: uncaughtException: await is only valid in async function
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/usersController.js:141
+                    await ctx.myPool().query("ROLLBACK");
+                    ^^^^^
+
+SyntaxError: await is only valid in async function
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:5:76)
+2018-3-10 10:16:14 error: uncaughtException: await is only valid in async function
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/usersController.js:141
+                    await ctx.myPool().query("ROLLBACK");
+                    ^^^^^
+
+SyntaxError: await is only valid in async function
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:5:76)
+2018-3-10 10:16:34 error: uncaughtException: await is only valid in async function
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/usersController.js:141
+                    await ctx.myPool().query("ROLLBACK");
+                    ^^^^^
+
+SyntaxError: await is only valid in async function
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:5:76)
+2018-3-10 10:17:04 error: uncaughtException: await is only valid in async function
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/usersController.js:145
+                    await ctx.myPool().query("ROLLBACK");
+                    ^^^^^
+
+SyntaxError: await is only valid in async function
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:5:76)
+2018-3-10 10:17:14 error: uncaughtException: await is only valid in async function
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/usersController.js:145
+                    await ctx.myPool().query("ROLLBACK");
+                    ^^^^^
+
+SyntaxError: await is only valid in async function
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:5:76)
+2018-3-10 10:17:21 error: uncaughtException: await is only valid in async function
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/usersController.js:146
+                    await ctx.myPool().query("ROLLBACK");
+                    ^^^^^
+
+SyntaxError: await is only valid in async function
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:5:76)
+2018-3-10 10:18:15 error: uncaughtException: await is only valid in async function
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/usersController.js:146
+                    await ctx.myPool().query("ROLLBACK");
+                    ^^^^^
+
+SyntaxError: await is only valid in async function
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:5:76)
+2018-3-10 10:18:27 error: uncaughtException: await is only valid in async function
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/usersController.js:146
+                    let query = await ctx.myPool().query("ROLLBACK");
+                                ^^^^^
+
+SyntaxError: await is only valid in async function
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:5:76)
+2018-3-10 10:29:05 error: uncaughtException: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+TypeError: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+    at /home/velioo/training-projects/velioo-online_store_koa/node_modules/mysql2/lib/connection.js:690:15
+    at Array.forEach (<anonymous>)
+    at PoolConnection.execute (/home/velioo/training-projects/velioo-online_store_koa/node_modules/mysql2/lib/connection.js:688:20)
+    at /home/velioo/training-projects/velioo-online_store_koa/node_modules/mysql2/lib/pool.js:180:29
+    at /home/velioo/training-projects/velioo-online_store_koa/node_modules/mysql2/lib/pool.js:36:14
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)
+    at process._tickCallback (internal/process/next_tick.js:180:9)
+2018-3-10 10:32:31 error: uncaughtException: Unexpected identifier
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/usersController.js:122
+        START TRANSACTION;
+              ^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:5:76)
+2018-3-10 10:34:42 error: uncaughtException: Unexpected token ,
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/usersController.js:72
+    ctx.checkBody('gender').notEmpty(, "You must select a gender.");
+                                     ^
+
+SyntaxError: Unexpected token ,
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:5:76)
+2018-3-10 10:39:52 error: uncaughtException: Unexpected token )
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/usersController.js:89
+    if() {
+       ^
+
+SyntaxError: Unexpected token )
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:5:76)
+2018-3-10 10:40:35 error: uncaughtException: Unexpected token )
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/usersController.js:89
+    if() {
+       ^
+
+SyntaxError: Unexpected token )
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:5:76)
+2018-3-10 10:40:43 error: uncaughtException: Unexpected token )
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/usersController.js:89
+    if() {
+       ^
+
+SyntaxError: Unexpected token )
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:5:76)
+2018-3-10 11:06:21 error: uncaughtException: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+TypeError: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+    at /home/velioo/training-projects/velioo-online_store_koa/node_modules/mysql2/lib/connection.js:690:15
+    at Array.forEach (<anonymous>)
+    at PoolConnection.execute (/home/velioo/training-projects/velioo-online_store_koa/node_modules/mysql2/lib/connection.js:688:20)
+    at /home/velioo/training-projects/velioo-online_store_koa/node_modules/mysql2/lib/pool.js:180:29
+    at /home/velioo/training-projects/velioo-online_store_koa/node_modules/mysql2/lib/pool.js:36:14
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)
+    at process._tickCallback (internal/process/next_tick.js:180:9)
+2018-3-10 11:07:12 error: uncaughtException: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+TypeError: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+    at /home/velioo/training-projects/velioo-online_store_koa/node_modules/mysql2/lib/connection.js:690:15
+    at Array.forEach (<anonymous>)
+    at PoolConnection.execute (/home/velioo/training-projects/velioo-online_store_koa/node_modules/mysql2/lib/connection.js:688:20)
+    at /home/velioo/training-projects/velioo-online_store_koa/node_modules/mysql2/lib/pool.js:180:29
+    at /home/velioo/training-projects/velioo-online_store_koa/node_modules/mysql2/lib/pool.js:36:14
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)
+    at process._tickCallback (internal/process/next_tick.js:180:9)
+2018-3-10 11:27:54 error: uncaughtException: missing path
+AssertionError [ERR_ASSERTION]: missing path
+    at Module.require (module.js:583:3)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/usersController.js:8:14)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+2018-3-10 12:15:10 error: uncaughtException: get `/employee_login`: `middleware` must be a function, not `undefined`
+Error: get `/employee_login`: `middleware` must be a function, not `undefined`
+    at Layer.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/layer.js:39:13)
+    at Array.forEach (<anonymous>)
+    at new Layer (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/layer.js:36:14)
+    at Router.register (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/router.js:553:15)
+    at Router.(anonymous function) [as get] (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/router.js:202:10)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:26:6)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+2018-3-10 12:15:27 error: uncaughtException: get `/employee_login`: `middleware` must be a function, not `undefined`
+Error: get `/employee_login`: `middleware` must be a function, not `undefined`
+    at Layer.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/layer.js:39:13)
+    at Array.forEach (<anonymous>)
+    at new Layer (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/layer.js:36:14)
+    at Router.register (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/router.js:553:15)
+    at Router.(anonymous function) [as get] (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/router.js:202:10)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:26:6)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+2018-3-10 12:15:36 error: uncaughtException: missing path
+AssertionError [ERR_ASSERTION]: missing path
+    at Module.require (module.js:583:3)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:1:78)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+2018-3-10 12:15:43 error: uncaughtException: get `/employee_login`: `middleware` must be a function, not `undefined`
+Error: get `/employee_login`: `middleware` must be a function, not `undefined`
+    at Layer.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/layer.js:39:13)
+    at Array.forEach (<anonymous>)
+    at new Layer (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/layer.js:36:14)
+    at Router.register (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/router.js:553:15)
+    at Router.(anonymous function) [as get] (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/router.js:202:10)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:26:6)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+2018-3-10 12:21:28 error: uncaughtException: renderEmployeeLogin is not defined
+ReferenceError: renderEmployeeLogin is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:26:29)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:12:36)
+    at Module._compile (module.js:641:30)
+2018-3-10 12:21:37 error: uncaughtException: renderEmployeeLogin is not defined
+ReferenceError: renderEmployeeLogin is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:26:29)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:12:36)
+    at Module._compile (module.js:641:30)
+2018-3-10 12:21:47 error: uncaughtException: get `/employee_login`: `middleware` must be a function, not `undefined`
+Error: get `/employee_login`: `middleware` must be a function, not `undefined`
+    at Layer.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/layer.js:39:13)
+    at Array.forEach (<anonymous>)
+    at new Layer (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/layer.js:36:14)
+    at Router.register (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/router.js:553:15)
+    at Router.(anonymous function) [as get] (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/router.js:202:10)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:26:6)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+2018-3-10 12:21:57 error: uncaughtException: renderOfficeLogin is not defined
+ReferenceError: renderOfficeLogin is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:12:19)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:31)
+    at Module._compile (module.js:641:30)
+2018-3-10 12:22:07 error: uncaughtException: renderOfficeLogin is not defined
+ReferenceError: renderOfficeLogin is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:16:19)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:31)
+    at Module._compile (module.js:641:30)
+2018-3-10 12:22:10 error: uncaughtException: renderOfficeLogin is not defined
+ReferenceError: renderOfficeLogin is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:16:19)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:31)
+    at Module._compile (module.js:641:30)
+2018-3-10 12:22:13 error: uncaughtException: renderOfficeLogin is not defined
+ReferenceError: renderOfficeLogin is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:16:19)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:31)
+    at Module._compile (module.js:641:30)
+2018-3-10 12:22:28 error: uncaughtException: employeeLogin is not defined
+ReferenceError: employeeLogin is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:27:41)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:12:36)
+    at Module._compile (module.js:641:30)
+2018-3-10 12:31:16 error: uncaughtException: renderDashboard is not defined
+ReferenceError: renderDashboard is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:28:23)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:12:36)
+    at Module._compile (module.js:641:30)
+2018-3-10 12:31:21 error: uncaughtException: get `dashboard`: `middleware` must be a function, not `undefined`
+Error: get `dashboard`: `middleware` must be a function, not `undefined`
+    at Layer.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/layer.js:39:13)
+    at Array.forEach (<anonymous>)
+    at new Layer (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/layer.js:36:14)
+    at Router.register (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/router.js:553:15)
+    at Router.(anonymous function) [as get] (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/router.js:202:10)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:28:6)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+2018-3-10 12:31:26 error: uncaughtException: get `/dashboard`: `middleware` must be a function, not `undefined`
+Error: get `/dashboard`: `middleware` must be a function, not `undefined`
+    at Layer.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/layer.js:39:13)
+    at Array.forEach (<anonymous>)
+    at new Layer (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/layer.js:36:14)
+    at Router.register (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/router.js:553:15)
+    at Router.(anonymous function) [as get] (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/router.js:202:10)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:28:6)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+2018-3-10 12:31:39 error: uncaughtException: get `/dashboard`: `middleware` must be a function, not `undefined`
+Error: get `/dashboard`: `middleware` must be a function, not `undefined`
+    at Layer.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/layer.js:39:13)
+    at Array.forEach (<anonymous>)
+    at new Layer (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/layer.js:36:14)
+    at Router.register (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/router.js:553:15)
+    at Router.(anonymous function) [as get] (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/router.js:202:10)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:28:6)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
