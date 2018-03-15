@@ -8155,3 +8155,3495 @@ Error: get `/dashboard`: `middleware` must be a function, not `undefined`
     at Object.Module._extensions..js (module.js:652:10)
     at Module.load (module.js:560:32)
     at tryModuleLoad (module.js:503:12)
+2018-3-12 13:57:11 error: uncaughtException: logOut is not defined
+ReferenceError: logOut is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:48:72)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:63)
+    at Module._compile (module.js:641:30)
+2018-3-12 13:57:13 error: uncaughtException: logOut is not defined
+ReferenceError: logOut is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:48:72)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:63)
+    at Module._compile (module.js:641:30)
+2018-3-12 13:57:20 error: uncaughtException: logOut is not defined
+ReferenceError: logOut is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:48:72)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:63)
+    at Module._compile (module.js:641:30)
+2018-3-12 13:57:27 error: uncaughtException: logOut is not defined
+ReferenceError: logOut is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:48:72)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:63)
+    at Module._compile (module.js:641:30)
+2018-3-12 14:13:52 error: uncaughtException: getProducts is not defined
+ReferenceError: getProducts is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:30:27)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:12:36)
+    at Module._compile (module.js:641:30)
+2018-3-12 14:15:03 error: uncaughtException: get `/get_products`: `middleware` must be a function, not `undefined`
+Error: get `/get_products`: `middleware` must be a function, not `undefined`
+    at Layer.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/layer.js:39:13)
+    at Array.forEach (<anonymous>)
+    at new Layer (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/layer.js:36:14)
+    at Router.register (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/router.js:553:15)
+    at Router.(anonymous function) [as get] (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/router.js:202:10)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:30:6)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+2018-3-12 14:15:26 error: uncaughtException: get `/get_products`: `middleware` must be a function, not `undefined`
+Error: get `/get_products`: `middleware` must be a function, not `undefined`
+    at Layer.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/layer.js:39:13)
+    at Array.forEach (<anonymous>)
+    at new Layer (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/layer.js:36:14)
+    at Router.register (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/router.js:553:15)
+    at Router.(anonymous function) [as get] (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/router.js:202:10)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:30:6)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+2018-3-12 14:20:08 error: uncaughtException: get `/get_products`: `middleware` must be a function, not `undefined`
+Error: get `/get_products`: `middleware` must be a function, not `undefined`
+    at Layer.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/layer.js:39:13)
+    at Array.forEach (<anonymous>)
+    at new Layer (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/layer.js:36:14)
+    at Router.register (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/router.js:553:15)
+    at Router.(anonymous function) [as get] (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/router.js:202:10)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:30:6)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+2018-3-12 14:21:50 error: uncaughtException: get `/get_products`: `middleware` must be a function, not `undefined`
+Error: get `/get_products`: `middleware` must be a function, not `undefined`
+    at Layer.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/layer.js:39:13)
+    at Array.forEach (<anonymous>)
+    at new Layer (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/layer.js:36:14)
+    at Router.register (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/router.js:553:15)
+    at Router.(anonymous function) [as get] (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/router.js:202:10)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:30:6)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+2018-3-12 14:23:34 error: uncaughtException: get `/get_products`: `middleware` must be a function, not `undefined`
+Error: get `/get_products`: `middleware` must be a function, not `undefined`
+    at Layer.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/layer.js:39:13)
+    at Array.forEach (<anonymous>)
+    at new Layer (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/layer.js:36:14)
+    at Router.register (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/router.js:553:15)
+    at Router.(anonymous function) [as get] (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/router.js:202:10)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:30:6)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+2018-3-12 14:24:25 error: uncaughtException: Unexpected string
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:52
+		$getRows = array('select' => array('products.*' , 'categories.name as category'), 
+		                 ^^^^^^^^
+
+SyntaxError: Unexpected string
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:25:01 error: uncaughtException: Unexpected string
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:52
+		let getRows = array('select' => array('products.*' , 'categories.name as category'), 
+		                    ^^^^^^^^
+
+SyntaxError: Unexpected string
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:26:11 error: uncaughtException: Unexpected string
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:54
+		let getRows = array('select' => array('products.*' , 'categories.name as category'), 
+		                    ^^^^^^^^
+
+SyntaxError: Unexpected string
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:26:25 error: uncaughtException: Unexpected string
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:54
+		let getRows = array('select' => array('products.*' , 'categories.name as category'), 
+		                    ^^^^^^^^
+
+SyntaxError: Unexpected string
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:26:33 error: uncaughtException: Unexpected string
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:54
+		let getRows = array('select' => array('products.*' , 'categories.name as category'), 
+		                    ^^^^^^^^
+
+SyntaxError: Unexpected string
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:26:56 error: uncaughtException: Unexpected string
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:54
+		let getRows = array('select' => array('products.*' , 'categories.name as category'), 
+		                    ^^^^^^^^
+
+SyntaxError: Unexpected string
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:27:06 error: uncaughtException: Unexpected string
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:54
+		let getRows = array('select' => array('products.*' , 'categories.name as category'), 
+		                    ^^^^^^^^
+
+SyntaxError: Unexpected string
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:27:34 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:57
+		if($this->input->get('size') && is_numeric($this->input->get('size'))) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:28:48 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:58
+		if($this->input->get('size') && is_numeric($this->input->get('size'))) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:28:57 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:62
+		if($this->input->get('size') && is_numeric($this->input->get('size'))) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:31:34 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:62
+		if($this->input->get('size') && is_numeric($this->input->get('size'))) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:31:39 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:62
+		if($this->input->get('size') && is_numeric($this->input->get('size'))) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:31:54 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:62
+		if($this->input->get('size') && is_numeric($this->input->get('size'))) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:32:09 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:69
+		if($this->input->get('page') && is_numeric($this->input->get('page'))) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:32:15 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:69
+		if($this->input->get('page') && is_numeric($this->input->get('page'))) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:32:26 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:69
+		if($this->input->get('page') && is_numeric($this->input->get('page'))) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:32:33 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:69
+		if($this->input->get('page') && is_numeric($this->input->get('page'))) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:32:51 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:70
+		if($this->input->get('page') && is_numeric($this->input->get('page'))) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:33:23 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:71
+		if($this->input->get('page') && is_numeric($this->input->get('page'))) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:33:26 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:71
+		if($this->input->get('page') && is_numeric($this->input->get('page'))) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:33:34 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:71
+		if($this->input->get('page') && is_numeric($this->input->get('page'))) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:33:49 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:73
+		if($this->input->get('page') && is_numeric($this->input->get('page'))) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:34:00 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:73
+		if($this->input->get('page') && is_numeric($this->input->get('page'))) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:35:39 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:74
+		if($this->input->get('page') && is_numeric($this->input->get('page'))) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:35:59 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:74
+		if($this->input->get('page') && is_numeric($this->input->get('page'))) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:36:18 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:75
+		if($this->input->get('page') && is_numeric($this->input->get('page'))) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:36:36 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:76
+		if($this->input->get('page') && is_numeric($this->input->get('page'))) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:36:47 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:76
+		if($this->input->get('page') && is_numeric($this->input->get('page'))) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:37:12 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:78
+			$sort = $this->input->get('col');			
+			              ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:37:19 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:78
+			let sort = $this->input->get('col');			
+			                 ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:37:27 error: uncaughtException: missing ) after argument list
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:79
+			foreach($sort as $key => $value) {
+			        ^^^^^
+
+SyntaxError: missing ) after argument list
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:37:39 error: uncaughtException: missing ) after argument list
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:79
+			sort.forEach($sort as $key => $value) {
+			             ^^^^^
+
+SyntaxError: missing ) after argument list
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:39:22 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:145
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:42:55 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:145
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:42:59 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:145
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:43:15 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:146
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:43:24 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:146
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:44:06 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:147
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:44:13 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:147
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:44:19 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:148
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:44:24 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:148
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:44:30 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:149
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:44:34 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:149
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:44:39 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:150
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:44:46 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:150
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:44:52 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:151
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:45:01 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:151
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:45:03 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:151
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:45:17 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:152
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:45:21 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:152
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:45:33 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:153
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:45:37 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:154
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:45:42 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:154
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:45:44 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:154
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:45:53 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:155
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:45:57 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:155
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:46:02 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:156
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:46:04 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:156
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:46:08 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:156
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:46:12 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:157
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:46:16 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:157
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:46:21 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:158
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:46:29 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:158
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:46:41 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:158
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:46:49 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:230
+		$products = $this->product_model->getRows($getRows);													  
+		                  ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:47:25 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:230
+		$products = $this->product_model->getRows($getRows);													  
+		                  ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:47:38 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:230
+		$products = $this->product_model->getRows($getRows);													  
+		                  ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:47:55 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:230
+		let $products = $this->product_model->getRows($getRows);													  
+		                      ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:47:55 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:230
+		let products = $this->product_model->getRows($getRows);													  
+		                     ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:48:09 error: uncaughtException: Unexpected token )
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:271
+});
+ ^
+
+SyntaxError: Unexpected token )
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:48:23 error: uncaughtException: Unexpected token )
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:271
+});
+ ^
+
+SyntaxError: Unexpected token )
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:48:55 error: uncaughtException: Unexpected token )
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:272
+});
+ ^
+
+SyntaxError: Unexpected token )
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 14:49:27 error: uncaughtException: get `/get_products`: `middleware` must be a function, not `undefined`
+Error: get `/get_products`: `middleware` must be a function, not `undefined`
+    at Layer.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/layer.js:39:13)
+    at Array.forEach (<anonymous>)
+    at new Layer (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/layer.js:36:14)
+    at Router.register (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/router.js:553:15)
+    at Router.(anonymous function) [as get] (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/router.js:202:10)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:30:6)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+2018-3-12 15:20:16 error: uncaughtException: Unexpected token {
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:273
+function parseQueryArray {
+                         ^
+
+SyntaxError: Unexpected token {
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 15:20:34 error: uncaughtException: url is not defined
+ReferenceError: url is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:273:1)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+    at Module._compile (module.js:641:30)
+2018-3-12 15:26:16 error: uncaughtException: url is not defined
+ReferenceError: url is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:275:1)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+    at Module._compile (module.js:641:30)
+2018-3-12 15:26:25 error: uncaughtException: url is not defined
+ReferenceError: url is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:275:1)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+    at Module._compile (module.js:641:30)
+2018-3-12 15:27:15 error: uncaughtException: url is not defined
+ReferenceError: url is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:275:1)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+    at Module._compile (module.js:641:30)
+2018-3-12 15:27:24 error: uncaughtException: url is not defined
+ReferenceError: url is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:275:1)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+    at Module._compile (module.js:641:30)
+2018-3-12 15:29:35 error: uncaughtException: Unexpected token }
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:61
+        });
+        ^
+
+SyntaxError: Unexpected token }
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 15:36:14 error: uncaughtException: Unexpected token }
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:65
+            }
+            ^
+
+SyntaxError: Unexpected token }
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 15:39:45 error: uncaughtException: Unexpected token )
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:64
+                if() {
+                   ^
+
+SyntaxError: Unexpected token )
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 15:41:25 error: uncaughtException: Unexpected token ]
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:67
+                sortColumns[]
+                            ^
+
+SyntaxError: Unexpected token ]
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 15:41:28 error: uncaughtException: Unexpected token ]
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:67
+                sortColumns[]
+                            ^
+
+SyntaxError: Unexpected token ]
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 15:41:30 error: uncaughtException: Unexpected token ]
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:65
+                    sortColumns[]
+                                ^
+
+SyntaxError: Unexpected token ]
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 15:53:22 error: uncaughtException: Unexpected token ;
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:170
+                productsQuery+=;
+                               ^
+
+SyntaxError: Unexpected token ;
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 15:58:35 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:193
+		if($this->input->get('fcol')) {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 15:58:48 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:196
+			$filter = $this->input->get('fcol');	
+			                ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 15:58:53 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:195
+			$filter = $this->input->get('fcol');	
+			                ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 15:58:58 error: uncaughtException: missing ) after argument list
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:195
+			foreach($filter as $key => $value) {
+			        ^^^^^^^
+
+SyntaxError: missing ) after argument list
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 15:59:17 error: uncaughtException: missing ) after argument list
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:230
+			}
+			^
+
+SyntaxError: missing ) after argument list
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:17:17 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:252
+		if($this->input->get('date_c_from') != '') {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:19:31 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:204
+		if($this->input->get('date_c_from') != '') {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:19:50 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:205
+		if($this->input->get('date_c_from') != '') {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:20:07 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:206
+		if($this->input->get('date_c_from') != '') {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:20:26 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:207
+		if($this->input->get('date_c_from') != '') {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:20:59 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:209
+		if($this->input->get('date_c_from') != '') {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:21:18 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:211
+			$getRows['conditions']['DATE(products.created_at) >= '] = $this->input->get('date_c_from');
+			                                                                ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:23:47 error: uncaughtException: Unexpected token )
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:210
+            conditionClause.push(DATE(products.created_at) >=);
+                                                             ^
+
+SyntaxError: Unexpected token )
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:23:49 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:211
+			$getRows['conditions']['DATE(products.created_at) >= '] = $this->input->get('date_c_from');
+			                                                                ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:23:52 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:211
+			$getRows['conditions']['DATE(products.created_at) >= '] = $this->input->get('date_c_from');
+			                                                                ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:23:54 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:211
+			$getRows['conditions']['DATE(products.created_at) >= '] = $this->input->get('date_c_from');
+			                                                                ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:24:00 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:211
+			$getRows['conditions']['DATE(products.created_at) >= '] = $this->input->get('date_c_from');
+			                                                                ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:24:11 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:212
+			$getRows['conditions']['DATE(products.created_at) >= '] = $this->input->get('date_c_from');
+			                                                                ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:24:17 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:212
+			$getRows['conditions']['DATE(products.created_at) >= '] = $this->input->get('date_c_from');
+			                                                                ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:24:21 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:216
+		if($this->input->get('date_c_to') != '') {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:24:33 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:216
+		if($this->input->get('date_c_to') != '') {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:24:41 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:216
+		if($this->input->get('date_c_to') != '') {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:24:43 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:216
+		if($this->input->get('date_c_to') != '') {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:24:51 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:223
+		if($this->input->get('date_m_from') != '') {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:25:11 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:224
+			$getRows['conditions']['DATE(products.updated_at) >= '] = $this->input->get('date_m_from');
+			                                                                ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:25:15 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:224
+			$getRows['conditions'][' DATE(products.updated_at) >= '] = $this->input->get('date_m_from');
+			                                                                 ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:25:27 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:226
+			$getRows['conditions']['DATE(products.updated_at) >= '] = $this->input->get('date_m_from');
+			                                                                ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:25:35 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:226
+			$getRows['conditions']['DATE(products.updated_at) >= '] = $this->input->get('date_m_from');
+			                                                                ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:25:37 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:226
+			$getRows['conditions']['DATE(products.updated_at) >= '] = $this->input->get('date_m_from');
+			                                                                ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:25:45 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:226
+			$getRows['conditions']['DATE(products.updated_at) >= '] = $this->input->get('date_m_from');
+			                                                                ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:25:48 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:230
+		if($this->input->get('date_m_to') != '') {
+		         ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:26:02 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:231
+			$getRows['conditions']['DATE(products.updated_at) <= '] = $this->input->get('date_m_to');
+			                                                                ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:26:12 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:233
+			$getRows['conditions']['DATE(products.updated_at) <= '] = $this->input->get('date_m_to');
+			                                                                ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:26:21 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:233
+			$getRows['conditions']['DATE(products.updated_at) <= '] = $this->input->get('date_m_to');
+			                                                                ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:26:41 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:238
+			$getRows['conditions']['products.price_leva >= '] = floatval($this->input->get('price_from'));
+			                                                                   ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:26:45 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:240
+			$getRows['conditions']['products.price_leva >= '] = floatval($this->input->get('price_from'));
+			                                                                   ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:26:52 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:240
+			$getRows['conditions']['products.price_leva >= '] = floatval($this->input->get('price_from'));
+			                                                                   ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:26:55 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:240
+			$getRows['conditions']['products.price_leva >= '] = floatval($this->input->get('price_from'));
+			                                                                   ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:27:02 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:240
+			$getRows['conditions']['products.price_leva >= '] = floatval($this->input->get('price_from'));
+			                                                                   ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:27:17 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:245
+			$getRows['conditions']['products.price_leva <= '] = floatval($this->input->get('price_to'));
+			                                                                   ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:27:22 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:247
+			$getRows['conditions']['products.price_leva <= '] = floatval($this->input->get('price_to'));
+			                                                                   ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:27:32 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:247
+			$getRows['conditions']['products.price_leva <= '] = floatval($this->input->get('price_to'));
+			                                                                   ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:27:43 error: uncaughtException: Unexpected token >
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:247
+			$getRows['conditions']['products.price_leva <= '] = floatval($this->input->get('price_to'));
+			                                                                   ^
+
+SyntaxError: Unexpected token >
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:47:07 error: uncaughtException: Unexpected string
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:280
+                productArray.push("<a href=\"" . site_url("products/product/") . htmlentities($product['id'], ENT_QUOTES) . "\">" . htmlentities($product['name'], ENT_QUOTES) . "</a>");
+                                                                                                                            ^^^^^
+
+SyntaxError: Unexpected string
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:47:17 error: uncaughtException: Unexpected string
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:280
+                productArray.push("<a href=\"" + site_url("products/product/") + htmlentities($product['id'], ENT_QUOTES) . "\">" . htmlentities($product['name'], ENT_QUOTES) . "</a>");
+                                                                                                                            ^^^^^
+
+SyntaxError: Unexpected string
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:47:46 error: uncaughtException: Unexpected string
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:280
+                productArray.push("<a href=\"" +  + "\">" . htmlentities($product['name'], ENT_QUOTES) . "</a>");
+                                                                                                         ^^^^^^
+
+SyntaxError: Unexpected string
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:49:22 error: uncaughtException: Unexpected string
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:281
+                productArray.push("<a href=\"" +  + "\">" . htmlentities($product['name'], ENT_QUOTES) . "</a>");
+                                                                                                         ^^^^^^
+
+SyntaxError: Unexpected string
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:49:30 error: uncaughtException: Unexpected string
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:281
+                productArray.push("<a href=\"" +  + "\">" . htmlentities($product['name'], ENT_QUOTES) . "</a>");
+                                                                                                         ^^^^^^
+
+SyntaxError: Unexpected string
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 16:49:41 error: uncaughtException: Cannot find module '../helpers/pug_helpers'
+Error: Cannot find module '../helpers/pug_helpers'
+    at Function.Module._resolveFilename (module.js:542:15)
+    at Function.Module._load (module.js:472:25)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:4:14)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+2018-3-12 16:49:47 error: uncaughtException: Cannot find module '../helpers/pug_helpers'
+Error: Cannot find module '../helpers/pug_helpers'
+    at Function.Module._resolveFilename (module.js:542:15)
+    at Function.Module._load (module.js:472:25)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:4:14)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+2018-3-12 17:54:15 error: uncaughtException: Unexpected string
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:280
+                productArray.push("<a href=\"" +  + "\">" . htmlentities($product['name'], ENT_QUOTES) . "</a>");
+                                                                                                         ^^^^^^
+
+SyntaxError: Unexpected string
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 17:54:21 error: uncaughtException: Unexpected string
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:280
+                productArray.push("<a href=\"" + root.moduleBody() + "\">" . htmlentities($product['name'], ENT_QUOTES) . "</a>");
+                                                                                                                          ^^^^^^
+
+SyntaxError: Unexpected string
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 17:54:27 error: uncaughtException: Unexpected string
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:280
+                productArray.push("<a href=\"" + root.moduleBody() + "\">" + htmlentities($product['name'], ENT_QUOTES) . "</a>");
+                                                                                                                          ^^^^^^
+
+SyntaxError: Unexpected string
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 17:58:14 error: uncaughtException: missing ) after argument list
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:284
+                productArray.push("<a href=\"" + root.moduleBody() + "employee/update_product/" + "\" class="product_details">" + escape(product['name']) + "</a>");
+                                                                                                  ^^^^^^^^^^^
+
+SyntaxError: missing ) after argument list
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 17:59:05 error: uncaughtException: missing ) after argument list
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:284
+                productArray.push("<a href=\"" + root.moduleBody() + "employee/update_product/" + escape(product['id'])S +"\" class=\"product_details\">Редактирай</a>");
+                                                                                                                      ^
+
+SyntaxError: missing ) after argument list
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 17:59:40 error: uncaughtException: missing ) after argument list
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:285
+                productArray.push("<a href="" class=\"product_details\">Редактирай</a>");
+                                  ^^^^^^^^^^
+
+SyntaxError: missing ) after argument list
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 17:59:58 error: uncaughtException: missing ) after argument list
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:285
+                productArray.push("<a href="" data-id=\"" +  + "\" class=\"product_details\">Редактирай</a>");
+                                  ^^^^^^^^^^
+
+SyntaxError: missing ) after argument list
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 18:00:11 error: uncaughtException: missing ) after argument list
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:285
+                productArray.push("<a href="" data-id=\"" + escape(product['id']) + "\" class=\"product_details\">Редактирай</a>");
+                                  ^^^^^^^^^^
+
+SyntaxError: missing ) after argument list
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 18:00:27 error: uncaughtException: missing ) after argument list
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:285
+                productArray.push("<a href="" data-id=\"" + escape(product['id']) + "\" class=\"delete_record\">Изтрий</a>");
+                                  ^^^^^^^^^^
+
+SyntaxError: missing ) after argument list
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-12 18:00:51 error: uncaughtException: missing ) after argument list
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:285
+                productArray.push("<a href="" data-id=\"" + escape(product['id']) + "\" class=\"delete_record\">Изтрий</a>");
+                                  ^^^^^^^^^^
+
+SyntaxError: missing ) after argument list
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:92)
+2018-3-13 08:31:42 error: uncaughtException: REC_LIMIT is not defined
+ReferenceError: REC_LIMIT is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:41:29)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/index.js:1:63)
+    at Module._compile (module.js:641:30)
+2018-3-13 08:32:28 error: uncaughtException: REC_MAX_LIMIT is not defined
+ReferenceError: REC_MAX_LIMIT is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:41:47)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/index.js:1:63)
+    at Module._compile (module.js:641:30)
+2018-3-15 08:26:03 error: uncaughtException: err is not defined
+ReferenceError: err is not defined
+    at Object.<anonymous> (/home/velioo/training-projects_/velioo-online_store_koa/app/app.js:29:9)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects_/velioo-online_store_koa/index.js:1:63)
+    at Module._compile (module.js:641:30)
+2018-3-15 08:26:05 error: uncaughtException: err is not defined
+ReferenceError: err is not defined
+    at Object.<anonymous> (/home/velioo/training-projects_/velioo-online_store_koa/app/app.js:29:9)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects_/velioo-online_store_koa/index.js:1:63)
+    at Module._compile (module.js:641:30)
+2018-3-15 08:26:59 error: uncaughtException: serve is not defined
+ReferenceError: serve is not defined
+    at Object.<anonymous> (/home/velioo/training-projects_/velioo-online_store_koa/app/app.js:33:5)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects_/velioo-online_store_koa/index.js:1:63)
+    at Module._compile (module.js:641:30)
+2018-3-15 08:33:15 error: uncaughtException: EACCES: permission denied, scandir '/etc/cups/ssl'
+Error: EACCES: permission denied, scandir '/etc/cups/ssl'
+    at Object.fs.readdirSync (fs.js:924:18)
+    at read (/home/velioo/training-projects/velioo-online_store_koa/node_modules/fs-readdir-recursive/index.js:14:8)
+    at /home/velioo/training-projects/velioo-online_store_koa/node_modules/fs-readdir-recursive/index.js:19:7
+    at Array.forEach (<anonymous>)
+    at read (/home/velioo/training-projects/velioo-online_store_koa/node_modules/fs-readdir-recursive/index.js:18:6)
+    at /home/velioo/training-projects/velioo-online_store_koa/node_modules/fs-readdir-recursive/index.js:19:7
+    at Array.forEach (<anonymous>)
+    at read (/home/velioo/training-projects/velioo-online_store_koa/node_modules/fs-readdir-recursive/index.js:18:6)
+    at /home/velioo/training-projects/velioo-online_store_koa/node_modules/fs-readdir-recursive/index.js:19:7
+    at Array.forEach (<anonymous>)
+2018-3-15 08:36:48 error: uncaughtException: dirs is not defined
+ReferenceError: dirs is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:35:4)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/index.js:1:63)
+    at Module._compile (module.js:641:30)
+2018-3-15 08:48:14 error: uncaughtException: not_found is not defined
+ReferenceError: not_found is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:35:24)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:13:36)
+    at Module._compile (module.js:641:30)
+2018-3-15 08:48:17 error: uncaughtException: get `/not_found`: `middleware` must be a function, not `undefined`
+Error: get `/not_found`: `middleware` must be a function, not `undefined`
+    at Layer.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/layer.js:39:13)
+    at Array.forEach (<anonymous>)
+    at new Layer (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/layer.js:36:14)
+    at Router.register (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/router.js:553:15)
+    at Router.(anonymous function) [as get] (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/router.js:202:10)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:35:6)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+2018-3-15 08:48:25 error: uncaughtException: not_found is not defined
+ReferenceError: not_found is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:230:60)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+    at Module._compile (module.js:641:30)
+2018-3-15 09:09:09 error: uncaughtException: koa is not defined
+ReferenceError: koa is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:11:13)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/index.js:1:63)
+    at Module._compile (module.js:641:30)
+2018-3-15 09:09:12 error: uncaughtException: koa is not defined
+ReferenceError: koa is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:11:13)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/index.js:1:63)
+    at Module._compile (module.js:641:30)
+2018-3-15 09:09:36 error: uncaughtException: koa is not defined
+ReferenceError: koa is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:13:13)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/index.js:1:63)
+    at Module._compile (module.js:641:30)
+2018-3-15 09:09:43 error: uncaughtException: koa is not defined
+ReferenceError: koa is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:20:13)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/index.js:1:63)
+    at Module._compile (module.js:641:30)
+2018-3-15 09:09:46 error: uncaughtException: koa is not defined
+ReferenceError: koa is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:20:13)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/index.js:1:63)
+    at Module._compile (module.js:641:30)
+2018-3-15 09:09:49 error: uncaughtException: koa is not defined
+ReferenceError: koa is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:20:13)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/index.js:1:63)
+    at Module._compile (module.js:641:30)
+2018-3-15 09:10:13 error: uncaughtException: koa is not defined
+ReferenceError: koa is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:20:13)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/index.js:1:63)
+    at Module._compile (module.js:641:30)
+2018-3-15 09:10:26 error: uncaughtException: koa is not defined
+ReferenceError: koa is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:20:13)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/index.js:1:63)
+    at Module._compile (module.js:641:30)
+2018-3-15 09:10:32 error: uncaughtException: koa is not defined
+ReferenceError: koa is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:20:13)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/index.js:1:63)
+    at Module._compile (module.js:641:30)
+2018-3-15 09:10:50 error: uncaughtException: koa is not defined
+ReferenceError: koa is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:20:13)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/index.js:1:63)
+    at Module._compile (module.js:641:30)
+2018-3-15 09:11:01 error: uncaughtException: koa is not defined
+ReferenceError: koa is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:20:13)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/index.js:1:63)
+    at Module._compile (module.js:641:30)
+2018-3-15 09:11:06 error: uncaughtException: koa is not defined
+ReferenceError: koa is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:20:13)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/index.js:1:63)
+    at Module._compile (module.js:641:30)
+2018-3-15 09:11:11 error: uncaughtException: logger is not defined
+ReferenceError: logger is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:65:1)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/index.js:1:63)
+    at Module._compile (module.js:641:30)
+2018-3-15 10:26:25 error: uncaughtException: Unexpected token =
+/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4
+      { list, getId, searchByName, getMenuItems, notFound } = require('../controllers/indexController'),
+                                                            ^
+
+SyntaxError: Unexpected token =
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:9:36)
+2018-3-15 10:30:55 error: uncaughtException: Unexpected token {
+/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:32
+    routes { router.routes(); },
+           ^
+
+SyntaxError: Unexpected token {
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:9:36)
+2018-3-15 10:31:07 error: uncaughtException: Unexpected token {
+/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:32
+    routes { router.routes() },
+           ^
+
+SyntaxError: Unexpected token {
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:9:36)
+2018-3-15 10:31:22 error: uncaughtException: Unexpected token {
+/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:32
+    routes { router.routes(); },
+           ^
+
+SyntaxError: Unexpected token {
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:9:36)
+2018-3-15 10:31:24 error: uncaughtException: Unexpected token {
+/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:32
+    routes { router.routes() },
+           ^
+
+SyntaxError: Unexpected token {
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:9:36)
+2018-3-15 10:33:38 error: uncaughtException: router.router is not a function
+TypeError: router.router is not a function
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:36:25)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:9:36)
+    at Module._compile (module.js:641:30)
+2018-3-15 10:33:39 error: uncaughtException: router.router is not a function
+TypeError: router.router is not a function
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:36:25)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:9:36)
+    at Module._compile (module.js:641:30)
+2018-3-15 10:34:12 error: uncaughtException: router.router is not a function
+TypeError: router.router is not a function
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:36:25)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:9:36)
+    at Module._compile (module.js:641:30)
+2018-3-15 10:34:19 error: uncaughtException: router.router is not a function
+TypeError: router.router is not a function
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:36:25)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:9:36)
+    at Module._compile (module.js:641:30)
+2018-3-15 10:34:23 error: uncaughtException: router.router is not a function
+TypeError: router.router is not a function
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:36:25)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:9:36)
+    at Module._compile (module.js:641:30)
+2018-3-15 10:34:26 error: uncaughtException: router.router is not a function
+TypeError: router.router is not a function
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:35:25)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:9:36)
+    at Module._compile (module.js:641:30)
+2018-3-15 10:34:31 error: uncaughtException: router.router is not a function
+TypeError: router.router is not a function
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:35:25)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:9:36)
+    at Module._compile (module.js:641:30)
+2018-3-15 10:34:51 error: uncaughtException: router.router is not a function
+TypeError: router.router is not a function
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:35:25)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:9:36)
+    at Module._compile (module.js:641:30)
+2018-3-15 10:34:55 error: uncaughtException: router.router is not a function
+TypeError: router.router is not a function
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:35:25)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:9:36)
+    at Module._compile (module.js:641:30)
+2018-3-15 10:35:06 error: uncaughtException: router.router is not a function
+TypeError: router.router is not a function
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:35:25)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:9:36)
+    at Module._compile (module.js:641:30)
+2018-3-15 10:47:08 error: uncaughtException: Unexpected token ?
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:17
+        ? (+ctx.query.page > 0) 
+        ^
+
+SyntaxError: Unexpected token ?
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 10:57:54 error: uncaughtException: Unexpected identifier
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:73
+    let productsQuery = "\
+    ^^^
+
+SyntaxError: Unexpected identifier
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 10:58:54 error: uncaughtException: Unexpected identifier
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:74
+    let productsQuery = "\
+    ^^^
+
+SyntaxError: Unexpected identifier
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:03:02 error: uncaughtException: Unexpected identifier
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:82
+        WHERE (products.name LIKE '%" ${searchInputExpr} "%' OR products.description LIKE '%" + searchInput + "%' ESCAPE '!')\
+                                      ^
+
+SyntaxError: Unexpected identifier
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:12:11 error: uncaughtException: Unexpected token ;
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:74
+    productsQueryArgs.push(limitExpr);
+                                     ^
+
+SyntaxError: Unexpected token ;
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:12:19 error: uncaughtException: Unexpected identifier
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:74
+    productsQueryArgs.push(limitExpr);
+    ^^^^^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:25:02 error: uncaughtException: missing ) after argument list
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:87
+        : 0;);
+          ^
+
+SyntaxError: missing ) after argument list
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:32:03 error: uncaughtException: Unexpected token )
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:92
+    productsQueryArgs.push((ctx.query.tags) ? );
+                                              ^
+
+SyntaxError: Unexpected token )
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:32:13 error: uncaughtException: Unexpected token )
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:92
+    productsQueryArgs.push((ctx.query.tags) ? ctx.query.tags);
+                                                            ^
+
+SyntaxError: Unexpected token )
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:38:22 error: uncaughtException: Unexpected identifier
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:101
+    let productsQuery = `
+        ^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:38:23 error: uncaughtException: Unexpected identifier
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:101
+    let productsQuery = `
+        ^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:38:53 error: uncaughtException: Unexpected identifier
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:101
+    let productsQuery = `
+        ^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:39:22 error: uncaughtException: Unexpected identifier
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:101
+    let productsQuery = `
+        ^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:39:31 error: uncaughtException: Unexpected identifier
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:99
+    let productsQuery = `
+        ^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:39:41 error: uncaughtException: Unexpected identifier
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:98
+    let productsQuery = `
+        ^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:39:56 error: uncaughtException: Unexpected identifier
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:95
+    let productsQuery = `
+        ^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:41:34 error: uncaughtException: Unexpected token ;
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:94
+    productsQueryArgs.push(((ctx.query.price_from) ? 'products.price_leva >= ?' : '?';
+                                                                                     ^
+
+SyntaxError: Unexpected token ;
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:41:41 error: uncaughtException: Unexpected token ;
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:94
+    productsQueryArgs.push(((ctx.query.price_from) ? 'products.price_leva >= ?' : '?';
+                                                                                     ^
+
+SyntaxError: Unexpected token ;
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:41:42 error: uncaughtException: Unexpected token ;
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:94
+    productsQueryArgs.push(((ctx.query.price_from) ? 'products.price_leva >= ?' : '?';
+                                                                                     ^
+
+SyntaxError: Unexpected token ;
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:41:55 error: uncaughtException: Unexpected token ;
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:94
+    productsQueryArgs.push(((ctx.query.price_from) ? 'products.price_leva >= ?' : '?';
+                                                                                     ^
+
+SyntaxError: Unexpected token ;
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:41:56 error: uncaughtException: Unexpected token ;
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:94
+    productsQueryArgs.push(((ctx.query.price_from) ? 'products.price_leva >= ?' : '?';
+                                                                                     ^
+
+SyntaxError: Unexpected token ;
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:41:58 error: uncaughtException: Unexpected token ;
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:94
+    productsQueryArgs.push(((ctx.query.price_from) ? 'products.price_leva >= ?' : '?';
+                                                                                     ^
+
+SyntaxError: Unexpected token ;
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:42:02 error: uncaughtException: Unexpected token ;
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:94
+    productsQueryArgs.push(((ctx.query.price_from) ? 'products.price_leva >= ?' : '?';
+                                                                                     ^
+
+SyntaxError: Unexpected token ;
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:42:04 error: uncaughtException: Unexpected token ;
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:94
+    productsQueryArgs.push(((ctx.query.price_from) ? 'products.price_leva >= ?' : '?';
+                                                                                     ^
+
+SyntaxError: Unexpected token ;
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:42:15 error: uncaughtException: Unexpected token ;
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:94
+    productsQueryArgs.push(((ctx.query.price_from) ? 'products.price_leva >= ?' : '?';
+                                                                                     ^
+
+SyntaxError: Unexpected token ;
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:43:08 error: uncaughtException: Unexpected token ;
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:94
+    productsQueryArgs.push(((ctx.query.price_from) ? 'products.price_leva >= ?' : '?';
+                                                                                     ^
+
+SyntaxError: Unexpected token ;
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:43:20 error: uncaughtException: Unexpected token ;
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:94
+    productsQueryArgs.push(((ctx.query.price_from) ? 'products.price_leva >= ?' : '?';
+                                                                                     ^
+
+SyntaxError: Unexpected token ;
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:43:22 error: uncaughtException: Unexpected token ;
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:94
+    productsQueryArgs.push(((ctx.query.price_from) ? 'products.price_leva >= ?' : '?';
+                                                                                     ^
+
+SyntaxError: Unexpected token ;
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:43:23 error: uncaughtException: Unexpected token ;
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:94
+    productsQueryArgs.push(((ctx.query.price_from) ? 'products.price_leva >= ?' : '?';
+                                                                                     ^
+
+SyntaxError: Unexpected token ;
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:43:25 error: uncaughtException: Unexpected token ;
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:94
+    productsQueryArgs.push(((ctx.query.price_from) ? 'products.price_leva >= ?' : '?';
+                                                                                     ^
+
+SyntaxError: Unexpected token ;
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:43:36 error: uncaughtException: Unexpected token ;
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:94
+    productsQueryArgs.push(((ctx.query.price_from) ? 'products.price_leva >= ?' : '?';
+                                                                                     ^
+
+SyntaxError: Unexpected token ;
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:43:41 error: uncaughtException: Unexpected token ;
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:94
+    productsQueryArgs.push(((ctx.query.price_from) ? 'products.price_leva >= ?' : '?';
+                                                                                     ^
+
+SyntaxError: Unexpected token ;
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:44:00 error: uncaughtException: missing ) after argument list
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:94
+    productsQueryArgs.push((ctx.query.price_from) ? 'products.price_leva >= ?' : '?';
+                                                                                 ^^^
+
+SyntaxError: missing ) after argument list
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:44:11 error: uncaughtException: missing ) after argument list
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:95
+    tagsQueryArgs.push((ctx.query.price_from) ? 'products.price_leva >= ?' : '?';
+                                                                             ^^^
+
+SyntaxError: missing ) after argument list
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:45:38 error: uncaughtException: missing ) after argument list
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:259
+    }});
+    ^
+
+SyntaxError: missing ) after argument list
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:51:30 error: uncaughtException: Unexpected identifier
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:267
+        pages: getArrayPages(ctx)(10, 2, ctx.query.page)
+        ^^^^^
+
+SyntaxError: Unexpected identifier
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-15 11:51:32 error: uncaughtException: Unexpected identifier
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:267
+        pages: getArrayPages(ctx)(10, 2, ctx.query.page)
+        ^^^^^
+
+SyntaxError: Unexpected identifier
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)

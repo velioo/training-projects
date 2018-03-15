@@ -1,38 +1,31 @@
-const logger = require('../helpers/logger');
-const Router = require('koa-router'),
-      KoaBody = require('koa-body'),
-      {list, getId, searchByName, getMenuItems, not_found} = require('../controllers/indexController'),
-      {renderLogin, login, renderSignUp, signUp, logOut, confirmAccount} = require('../controllers/usersController'),
-      {renderEmployeeLogin, employeeLogin, renderDashboard} = require('../controllers/backOfficeController');
-      
-      //~ {
-        //~ formidable: {uploadDir: '../../uploads'},
-        //~ multipart: true,
-        //~ urlencoded: true
-      //~ }
-      //getId, createProduct, updateProduct, removeProduct
+// const logger = require('../helpers/logger');
+const Router = require('koa-router');
+const KoaBody = require('koa-body');
+const { list, getId, searchByName, getMenuItems, notFound } = require('../controllers/indexController');
+const { renderLogin, login, renderSignUp, signUp, logOut, confirmAccount } = require('../controllers/usersController');
+const { renderEmployeeLogin, employeeLogin, renderDashboard, employeeLogOut, getProducts } = require('../controllers/backOfficeController');
 const router = new Router();
 
-router.get('/products', list)
+router
+    .get('/products', list)
     .get('/products/:id([0-9]+)', getId)
     .get('/search', searchByName)
     .get('/menu_items', getMenuItems)
     .get('/login', renderLogin)
-    .post('/login', KoaBody(), login)
+    .post('/login', new KoaBody(), login)
     .get('/sign_up', renderSignUp)
-    .post('/sign_up', KoaBody(), signUp)
+    .post('/sign_up', new KoaBody(), signUp)
     .get('/log_out', logOut)
     .get('/confirm_account/:code', confirmAccount)
     .get('/employee_login', renderEmployeeLogin)
-    .post('/employee_login', KoaBody(), employeeLogin)
+    .post('/employee_login', new KoaBody(), employeeLogin)
     .get('/employee/dashboard', renderDashboard)
+    .get('/employee/log_out', employeeLogOut)
+    .get('/get_products', getProducts)
     //~ .post('/products', KoaBody(), createProduct)
     //~ .post('/products/:id', KoaBody, updateProduct)
     //~ .delete('/products/:id', removeProduct)
-    .get('/not_found', not_found)
-    .get('/', (ctx) => {ctx.redirect('/products');});
-    
-module.exports = {
-    routes () { return router.routes(); },
-    allowedMethods () { return router.allowedMethods(); }
-};
+    .get('/not_found', notFound)
+    .get('/', (ctx) => { ctx.redirect('/products'); });
+exports.routes = router.routes();
+exports.allowedMethods = router.allowedMethods();

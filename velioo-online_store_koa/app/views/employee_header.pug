@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Dashboard</title>
+  <meta charset="utf-8">
+
+<link rel="icon" href="http://downloadicons.net/sites/default/files/computer-icon-65917.png">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="#{root()}css/main.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ajv/5.3.0/ajv.min.js"></script>  
+<script src="#{root()}js/schemas.js"></script>  
+<script src="#{root()}js/remove_notification.js"></script>
+</head>
+<body>
+
+script.
+    window.onerror = function (msg, url, lineNo, columnNo, error) {
+    if(error.stack != "") {
+        console.log(error.name + ": ", error.message + "\n" + error.stack);
+    } else {
+        console.log(error.name + ": ", error.message + "\n" + url + ":" + lineNo + ":" + columnNo + "\n");
+    }
+    return true;
+    };
+    
+
+script.
+    function assert(condition, message) {
+        if (!condition) {
+            message = message || "Assertion failed";
+            if (typeof Error !== "undefined") {
+                throw new Error(message);
+            }
+            throw message;
+        }
+    }
+
+<div id="holder">   
+    
+<nav class="navbar navbar-inverse navbar-fixed-top" id="navigation_top">
+  <div class="container-fluid" style="width: 1150px;">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#{root()}employee/dashboard">Dashboard</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="#{root()}products"><span class="glyphicon glyphicon-home"></span> Kъм Магазина</a></li>
+if employeeLogged
+    <li><a href="#{root()}employee/log_out"><span class="glyphicon glyphicon-log-in"></span> Изход</a></li>
+</ul>
+  </div>    
+</nav>

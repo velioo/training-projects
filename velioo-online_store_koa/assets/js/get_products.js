@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	
-	infoLog += '\nget_products.js loaded\n';
+	//infoLog += '\nget_products.js loaded\n';
 	
 	var productsUrl = getProductsUrl();
 	
@@ -12,7 +12,7 @@ $(document).ready(function() {
 		});
 	});
 	
-	infoLog += 'get_products.js: Initialize tablesorter\n';
+	//infoLog += 'get_products.js: Initialize tablesorter\n';
 	$("#products_table").tablesorter({
 		theme: 'blue',
 		widthFixed: true,
@@ -37,7 +37,7 @@ $(document).ready(function() {
 			dataType: 'json'
 		},
 		ajaxProcessing: function(data){
-			//console.log(data);
+			console.log(data);
 			var total, rows, headers;			
 			total   = data.total_rows;
 			//headers = data.headers;
@@ -63,43 +63,43 @@ $(document).ready(function() {
 		cssErrorRow    : 'tablesorter-errorRow'
 	});
 	
-	logger.info(infoLog);
-	infoLog = "";
+	//logger.info(//infoLog);
+	//infoLog = "";
 	
 	$('.filter').on('change', function() {
-		infoLog += '\nget_products.js/.filter: Executing...\n';
-		infoLog += 'get_products.js/.filter: Trigerring tablesorter pagerUpdate\n';
+		//infoLog += '\nget_products.js/.filter: Executing...\n';
+		//infoLog += 'get_products.js/.filter: Trigerring tablesorter pagerUpdate\n';
 		$("#products_table").trigger('pagerUpdate');
 		if ($('#clear_filters').length <= 0) {
-			infoLog += 'get_products.js/.filter: #clear_filters doesn\'t exist. Prepending...\n';
+			//infoLog += 'get_products.js/.filter: #clear_filters doesn\'t exist. Prepending...\n';
 			$('#clean_filters').prepend('<a href="#" style="color:red;" id="clear_filters">Изчисти филтрите</a>');
 		} else {
-			infoLog += 'get_products.js/.filter: #clear_filters exist\n';
+			//infoLog += 'get_products.js/.filter: #clear_filters exist\n';
 			flag = 0;
-			infoLog += 'get_products.js/.filter: Checking if all filters are empty\n';
+			//infoLog += 'get_products.js/.filter: Checking if all filters are empty\n';
 			$('.filters').each(function() {
 				if($(this).val() == "") {
 					flag = 1;
 				}
 			});
 			if(flag) {
-				infoLog += 'get_products.js/.filter: All filters are empty. Removing #clear_filters\n';
+				//infoLog += 'get_products.js/.filter: All filters are empty. Removing #clear_filters\n';
 				$('#clear_filters').remove();
 			} else {
-				infoLog += 'get_products.js/.filter: There are active filters\n';
+				//infoLog += 'get_products.js/.filter: There are active filters\n';
 			}
 		}
-		logger.info(infoLog);
-		infoLog = "";				
+		//logger.info(//infoLog);
+		//infoLog = "";				
 	});
 	
 	$('#clean_filters').on('click', '#clear_filters', function() {
-		infoLog += '\nget_products.js/#clean_filters: Executing...\n';
+		//infoLog += '\nget_products.js/#clean_filters: Executing...\n';
 		$('.filter').val('');
 		$('#clear_filters').remove();
-		infoLog += 'get_orders.js/#clean_filters: Trigerring tablesorter pagerUpdate\n';
+		//infoLog += 'get_orders.js/#clean_filters: Trigerring tablesorter pagerUpdate\n';
 		$("#products_table").trigger('pagerUpdate');
-		logger.info(infoLog);
-		infoLog = "";
+		//logger.info(//infoLog);
+		//infoLog = "";
 	});
 });

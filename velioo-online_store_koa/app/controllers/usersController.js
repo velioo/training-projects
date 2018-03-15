@@ -8,6 +8,7 @@ const constants = require('../constants/constants');
 var unique = require('../helpers/unique');
 
 async function renderLogin(ctx, next) {
+    ctx.status = 200;
     ctx.data = {user: {}};
     if (ctx.session.userData) {
         return ctx.redirect('/products');
@@ -17,6 +18,7 @@ async function renderLogin(ctx, next) {
 }
 
 async function login(ctx, next) {
+    ctx.status = 200;
     ctx.data = {user: {}};
     let userData = await ctx.myPool().query("SELECT password, salt, id, confirmed FROM users WHERE email = ?", [ctx.request.body.email]);
     if (userData instanceof Array && userData.length === 1 && (sha256(ctx.request.body.password + userData[0].salt) === userData[0].password)) {
@@ -39,6 +41,7 @@ async function login(ctx, next) {
 
 
 async function renderSignUp(ctx, next) {
+    ctx.status = 200;
     ctx.data = {user: {}}
     if (ctx.session.userData) {
         return ctx.redirect('/products');
@@ -50,6 +53,7 @@ async function renderSignUp(ctx, next) {
 
 async function signUp(ctx, next) {
     
+    ctx.status = 200;
     ctx.data = {}
     
     ctx.checkBody('name').len(2, 20, "Name is too long or too short");
@@ -96,6 +100,10 @@ async function signUp(ctx, next) {
         'street_address': ctx.request.body.street_address
     };
 
+    //~ const fields = ['name', 'last_name', 'email'];
+    
+    //~ const dbData = fields.map(fieldName => ctx.data.user[ fieldName ]);
+
     let userData = [
         ctx.request.body.name,
         ctx.request.body.last_name,
@@ -111,14 +119,15 @@ async function signUp(ctx, next) {
     ];
 
     if(!ctx.errors) {
-        userData[6].replace(/[^0-9]/, "").toString('base64');
+        ctx.data.user.phone.replace(/[^0-9]/, "");
         var query = await ctx.myPool().query("INSERT INTO users (name, last_name, email, password, salt, gender, phone, phone_unformatted, country, region, street_address)\
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", userData);
         
         if(query) {
-            
             let tempCode = unique();
+            
             logger.info("Temp code = " + tempCode);
+            
             query = await ctx.myPool().query("SELECT LAST_INSERT_ID() as userId");
             
             if(!query || query.length == 0) {
@@ -188,24 +197,34 @@ async function signUp(ctx, next) {
 }
 
 async function logOut(ctx, next) {
+    ctx.status = 200;
     ctx.data = {};
-    ctx.session = null;
-    await next();
-    ctx.redirect('products');
+    
+    if(ctx.session.userData) {
+        ctx.session.userData = null;
+        await next();
+    }
+
+    ctx.redirect('/products');
 }
 
 async function confirmAccount(ctx, next) {
+    
+    ctx.status = 200;
     let query = await ctx.myPool().query("SELECT * FROM temp_codes WHERE hash = ?", [ctx.params.code]);
 
     if(query && query.length > 0) {
         let userId = query[0].user_id;
+        
         query = await ctx.myPool().query("UPDATE users SET confirmed = 1 WHERE id = ?", [userId]);
         
         if(query) {
             await ctx.myPool().query("DELETE FROM temp_codes WHERE hash = ?", [ctx.params.code]);
             ctx.data = {user: {}};
             ctx.data.message = "You succecssfully validated your account";
+            
             await next();
+            
             ctx.render('login.pug', ctx.data);
         } else {
             ctx.body = "There was a problem confirming your account";
