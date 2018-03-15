@@ -9,15 +9,16 @@ async function list(ctx, next) {
     await next();
 
     let limit = 40;
-    // let offset = ctx.query.page || 0;
-
-    // assert(!isNaN(offset));
+    // let offset = (ctx.query.page) || 0;
 
     let offset = (ctx.query.page)
         ? (+ctx.query.page > 0)
             ? +ctx.query.page * limit - limit
             : 0
         : 0;
+        
+    assert(!isNaN(offset));    
+        
     let query = await ctx.myPool().query(`
         SELECT products.*
         FROM products
@@ -36,41 +37,121 @@ async function list(ctx, next) {
 }
 
 async function getId(ctx, next) {
-
     //logger.info('In getId()');
+    
     ctx.status = 200;
-    ctx.data = {};
-    let id = ctx.params.id;
-    let query = await ctx.myPool().query(`
-        SELECT products.* FROM products JOIN categories ON
-        categories.id = products.category_id WHERE products.id = ?
+    await next();
+    
+    let id = +ctx.params.id;
+    
+    assert(!isNaN(id));
+    
+    let productRows = await ctx.myPool().query(`
+        SELECT products.*
+        FROM products
+        JOIN categories ON categories.id = products.category_id
+        WHERE
+            products.id = ?
         `, [id]);
-    //assert single product
-    if (query.length > 0) {
-        ctx.data.product = query[0]
+    
+    assert(productRows.length === 1 || productRows.length === 0);
+
+    if (productRows.length === 1) {
+        ctx.render('product.pug', {
+            product: productRows.shift(),
+            ctx.logged
+        });
     } else {
         return ctx.redirect('/not_found');
     }
-    await next();
-    ctx.render('product.pug', ctx.data);
 }
 
 async function searchByName(ctx, next) {
     ctx.status = 200;
     await next();
 
-    let searchInputExpr = (ctx.query.search_input)
-        ? (ctx.query.search_input !== '')
-            ? ctx.query.search_input.replace(/%/g, "!%").replace(/_/g, "!_").replace(/'/g, "\\'").replace(/"/g, '\\"')
-            : '?'
-        : '?';
-
-    logger.info("Search Expr = " + searchInputExpr);
+    if (ctx.query.search_input) {
+        ctx.query.search_input = ctx.query.search_input.replace(/%/g, "!%").replace(/_/g, "!_").replace(/'/g, "\\'").replace(/"/g, '\\"');
+    }
+    
+    let searchInputExpr1 = (ctx.query.search_input)
+        ? "products.name LIKE '%" + ctx.query.search_input + "%' ESCAPE '!'"
+        : true;
+    
+    let searchInputExpr2 = (ctx.query.search_input)
+        ? "products.description LIKE '%" + ctx.query.search_input + "%' ESCAPE '!'"
+        : true;
+    
+    logger.info("SearchInputExpr1 = " + searchInputExpr1);
 
     let productsQueryArgs = [];
     let tagsQueryArgs = [];
+    
+    if (ctx.query.tags && !Array.isArray(ctx.query.tags)) {
+        ctx.query.tags = [ctx.query.tags];
+    }
 
-    let limit = (ctx.query.limit)? +ctx.query.limit: 40;
+    assert(!ctx.query.tags || Array.isArray(ctx.query.tags));
+
+    let tagsExpr = (ctx.query.tags) ? 'tags.name IN (?)' : '?';
+    productsQueryArgs.push((ctx.query.tags) ? ctx.query.tags : true);
+
+    logger.info("Tags: %o" + ctx.query.tags);
+    
+        assert(!ctx.query.price_from || !isNaN(+ctx.query.price_from));
+
+    let priceFromExpr = (ctx.query.price_from)
+        ? 'products.price_leva >= ?'
+        : '?';
+
+    let priceFromArgsExpr = (ctx.query.price_from)
+        ? +ctx.query.price_from
+        : true;
+
+    productsQueryArgs.push(priceFromArgsExpr);
+    tagsQueryArgs.push(priceFromArgsExpr);
+
+    logger.info("PriceFromExpr = ", priceFromExpr);
+
+    let priceToExpr = (ctx.query.price_to)
+        ? 'products.price_leva <= ?'
+        : '?';
+
+    let priceToArgsExpr = (ctx.query.price_to)
+        ? +ctx.query.price_to
+        : true;
+
+    productsQueryArgs.push(priceToArgsExpr);    
+    tagsQueryArgs.push(priceToArgsExpr);
+
+    logger.info("PriceToExpr = ", priceToExpr);
+
+    assert(!ctx.query.category || !isNaN(+ctx.query.category));
+
+    let categoryExpr = (ctx.query.category)
+        ? 'categories.id = ?'
+        : '?';
+
+    productsQueryArgs.push((ctx.query.category) ? ctx.query.category : true);
+    tagsQueryArgs.push((ctx.query.category) ? ctx.query.category : true);
+
+    logger.info("CategoryExpr = ", categoryExpr);
+
+    const cases = {
+        price_asc: 'products.price_leva ASC',
+        price_desc: 'products.price_leva DESC',
+        newest: 'products.created_at DESC',
+        latest_updated: 'products.updated_at DESC'
+    };
+
+    assert(cases[ctx.query.sort_products]);
+
+    let orderByExpr = cases[ctx.query.sort_products];
+
+    let limit = (ctx.query.limit) ? +ctx.query.limit : 40;
+
+    assert(!isNaN(limit));
+
     productsQueryArgs.push(limit);
 
     logger.info("Limit: " + limit);
@@ -81,32 +162,11 @@ async function searchByName(ctx, next) {
             : 0
         : 0;
 
+    assert(!isNaN(offset));
+
     productsQueryArgs.push(offset);
 
     logger.info("Offset: " + offset);
-
-    let tagsExpr = (ctx.query.tags) ? 'tags.name IN (?)' : '?';
-    productsQueryArgs.push((ctx.query.tags) ? ctx.query.tags : true);
-
-    logger.info("Tags: %o" + ctx.query.tags);
-
-    let priceFromExpr = (ctx.query.price_from) ? 'products.price_leva >= ?' : '?';
-    productsQueryArgs.push((ctx.query.price_from) ? +ctx.query.price_from : true);
-    tagsQueryArgs.push((ctx.query.price_from) ? +ctx.query.price_from : true);
-
-    logger.info("PriceFromExpr = ", priceFromExpr);
-
-    let priceToExpr = (ctx.query.price_to) ? 'products.price_leva <= ?' : '?';    
-    productsQueryArgs.push((ctx.query.price_to) ? +ctx.query.price_to : true);
-    tagsQueryArgs.push((ctx.query.price_to) ? +ctx.query.price_to : true);
-
-    logger.info("PriceToExpr = ", priceToExpr);
-
-    let categoryExpr = (ctx.query.category) ? 'categories.id = ?' : '?';    
-    productsQueryArgs.push((ctx.query.category) ? ctx.query.category : true);
-    tagsQueryArgs.push((ctx.query.category) ? ctx.query.category : true);
-
-    logger.info("CategoryExpr = ", categoryExpr);
 
     let productsQuery = `
         SELECT products.*, categories.name as category, categories.id as category_id 
@@ -114,26 +174,45 @@ async function searchByName(ctx, next) {
         JOIN categories ON categories.id=products.category_id
         LEFT JOIN product_tags ON product_tags.product_id=products.id
         LEFT JOIN tags ON tags.id=product_tags.tag_id
-        WHERE 
-            (products.name LIKE '%${searchInputExpr}%' OR products.description LIKE '%${searchInputExpr}%' ESCAPE '!')
+        WHERE
+            (${searchInputExpr1} OR ${searchInputExpr2})
             AND ${tagsExpr}
             AND ${priceFromExpr}
             AND ${priceToExpr}
             AND ${categoryExpr}
+        GROUP BY products.id
+        ORDER BY ${orderByExpr}
         LIMIT ?
         OFFSET ?
         `;
+    
+    let productsCountQuery = `
+        SELECT COUNT(1) 
+        FROM products
+        JOIN categories ON categories.id=products.category_id
+        LEFT JOIN product_tags ON product_tags.product_id=products.id
+        LEFT JOIN tags ON tags.id=product_tags.tag_id
+        WHERE
+            (${searchInputExpr1} OR ${searchInputExpr2})
+            AND ${tagsExpr}
+            AND ${priceFromExpr}
+            AND ${priceToExpr}
+            AND ${categoryExpr}
+        GROUP BY products.id
+        `;
+     
     let tagsQuery = `
         SELECT tags.name, COUNT(tags.name) as tag_count 
         FROM products
         JOIN categories ON categories.id=products.category_id
         JOIN product_tags ON product_tags.product_id=products.id
         JOIN tags ON tags.id=product_tags.tag_id 
-        WHERE 
-            products.name LIKE '%${searchInputExpr}%'
+        WHERE
+            ${searchInputExpr1}
             AND ${priceFromExpr}
             AND ${priceToExpr}
             AND ${categoryExpr}
+        GROUP BY tags.name
         `;
 
     // var tagsExpr = condition ? 'tags.name IN (?)' : '?';
@@ -170,18 +249,18 @@ async function searchByName(ctx, next) {
         ctx.data.price_to = ctx.query.price_to;
     }*/
 
-    if (ctx.query.category) {
+  /*   if (ctx.query.category) {
         productsQuery+=" AND categories.id = ?";
         productsQueryArgs.push(+ctx.query.category);
         tagsQuery+=" AND categories.id = ?";
         tagsQueryArgs.push(+ctx.query.category);
         ctx.data.category = ctx.query.category;
-    }
+    } */
 
-    productsQuery+=" GROUP BY products.id";
-    tagsQuery+=" GROUP BY tags.name";
+    /* productsQuery+=" GROUP BY products.id";
+    tagsQuery+=" GROUP BY tags.name"; */
 
-    if (ctx.query.sort_products) {
+    //if (ctx.query.sort_products) {
         //~ const cases = {
                 //~ price_asc: 'order by producsts.price_leva asc',
                 //~ price_desc: 'order by producsts.price_leva desc',
@@ -192,7 +271,7 @@ async function searchByName(ctx, next) {
         //~ productsQuery += cases[ctx.query.sort_products];
         
         
-        switch(ctx.query.sort_products) {
+ /*        switch(ctx.query.sort_products) {
             case 'price_asc':
                 productsQuery+=" ORDER BY products.price_leva ASC";
                 break;
@@ -212,36 +291,48 @@ async function searchByName(ctx, next) {
     } else {
         ctx.data.sort_products = 'newest';
         productsQuery+=" ORDER BY products.updated_at DESC";
-    }
+    } */
     
-    let productsCount = await ctx.myPool().query(productsQuery, productsQueryArgs);
-    //logger.info("Products count: " + productsCount.length);
-    if (productsCount.length <= 0) {
+    let products = await ctx.myPool().query(productsQuery, productsQueryArgs);
+    
+    productsQueryArgs.pop();
+    productsQueryArgs.pop();
+    
+    //logger.info("Query: " + productsQuery);
+    //logger.info("Products: %o", products);
+    
+    let productsCountRows = await ctx.myPool().query(productsCountQuery, productsQueryArgs);
+    
+    //logger.info("Products count: " + productsCountRows.length);
+    
+    if (productsCountRows.length <= 0) {
         return ctx.render('index.pug', ctx.data);
     }
+  
     //productsQuery+=" LIMIT ? OFFSET ?";
     //productsQueryArgs.push(limit, offset);
-    let products = await ctx.myPool().query(productsQuery, productsQueryArgs);
-    //logger.info("Products: %o", products);
-    //logger.info("Products received");
 
     let tags = await ctx.myPool().query(tagsQuery, tagsQueryArgs);
-    //logger.info("Tags received");
-    //logger.info("Query: " + productsQuery);
+ 
     //logger.info("Tags object: %o", tags);
     //logger.info("Query: " + tagsQuery);
     //logger.info("Tags count: " + tags.length);
+    
     let newTags = {};
     if (tags.length > 0) {
         tags.forEach(function(tag) {
             ////logger.info("Tag: %o", tag);
+            
             let tempObj = {};
+            
             if (ctx.query.tags) {
                 if (ctx.query.tags.includes(tag['name'])) {
                     tempObj['checked'] = 1;
                 }
             }
+            
             let splitedTag = tag['name'].split(':', 2);
+            
             if (splitedTag.length > 1) {
                 tempObj['value'] = splitedTag[1].trim();
                 tempObj['count'] = tag['tag_count'];
@@ -272,8 +363,8 @@ async function searchByName(ctx, next) {
         sort_products: ctx.query.sort_products,
         tags: newTags,
         products: products,
-        pageCount: Math.ceil(productsCount.length / +ctx.query.limit),
-        itemCount: productsCount.length,
+        pageCount: Math.ceil(productsCountRows.length / +ctx.query.limit),
+        itemCount: productsCountRows.length,
         pages: getArrayPages(ctx)(10, 2, ctx.query.page)
     });
 }
