@@ -32,9 +32,10 @@ async function employeeLogin(ctx, next) {
 
 async function renderDashboard(ctx, next) {
     ctx.status = 200;
+    logger.info("In renderDashboard");
     ctx.data = {user: {}};
-    let logged = await next();
-    if(ctx.data.employeeLogged === true) {
+    await next();
+    if(ctx.employeeLogged === true) {
         ctx.render('dashboard.pug', ctx.data);
     } else {
         ctx.redirect('/employee_login');
@@ -316,4 +317,4 @@ async function getProducts(ctx, next) {
         ctx.body = products;
 }
 
-module.exports = {renderEmployeeLogin, employeeLogin, renderDashboard, employeeLogOut, getProducts}
+module.exports = {renderEmployeeLogin, employeeLogin, renderDashboard, employeeLogOut, getProducts};

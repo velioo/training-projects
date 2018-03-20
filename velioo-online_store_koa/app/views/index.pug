@@ -38,8 +38,12 @@ else
     
 if tags
     <select name="sort_products" id="sort_products">
-    if !sort_products || sort_products == null || sort_products == 'latest_updated'
-        <option value="latest_update" selected="selected">Последно обновени</option>
+    if !sort_products || sort_products == null || sort_products == 'newest'
+        <option value="newest" selected>Най-нови</option>
+    else
+        <option value="newest">Най-нови</option>
+    if sort_products == 'latest_updated'
+        <option value="latest_update" selected>Последно обновени</option>
     else
         <option value="latest_updated">Последно обновени</option>
     if sort_products == 'price_asc'
@@ -50,10 +54,6 @@ if tags
         <option value="price_desc" selected>Цена низх.</option>
     else
         <option value="price_desc">Цена низх.</option>
-    if sort_products == 'newest'
-        <option value="newest" selected>Най-нови</option>
-    else
-        <option value="newest">Най-нови</option>
     </select>
     </form>
 

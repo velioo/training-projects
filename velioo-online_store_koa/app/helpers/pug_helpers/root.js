@@ -1,7 +1,8 @@
-const {port} = require('../../app');
+const { port } = require('../../app');
+
 module.exports = {
     moduleName: 'root',
     moduleBody: function () {
-        return 'http://localhost:' + port() + '/';
+        return 'http://localhost:' + port + '/';
     }
-}
+};

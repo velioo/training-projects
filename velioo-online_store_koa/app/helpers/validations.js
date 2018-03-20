@@ -1,6 +1,12 @@
 async function emailExists(ctx) {
-    let query = await ctx.myPool().query("SELECT email FROM users WHERE email = ?", [ctx.request.body.email]);
-    return query.length;
+    let userEmailRow = await ctx.myPool().query(`
+        SELECT email
+        FROM users
+        WHERE
+            email = ?
+        `, [ctx.request.body.email]);
+
+    return userEmailRow.length;
 }
 
 function phoneMatch(phone) {
@@ -15,4 +21,4 @@ function phoneMatch(phone) {
     }
 }
 
-module.exports = {emailExists, phoneMatch}
+module.exports = {emailExists, phoneMatch};

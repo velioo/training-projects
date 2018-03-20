@@ -1,61 +1,76 @@
+const Constants = require('../constants/constants');
+const { emailExists, phoneMatch } = require('../helpers/validations');
 const logger = require('../helpers/logger');
-const sha256 = require('js-sha256').sha256;
-const crypto = require('crypto');
-const assert = require('assert');
-const nodemailer = require('nodemailer');
-const {emailExists, phoneMatch} = require('../helpers/validations');
-const constants = require('../constants/constants');
 var unique = require('../helpers/unique');
 
+const sha256 = require('js-sha256').sha256;
+const Crypto = require('crypto');
+const assert = require('assert');
+const Nodemailer = require('nodemailer');
+
 async function renderLogin(ctx, next) {
-    ctx.status = 200;
-    ctx.data = {user: {}};
-    if (ctx.session.userData) {
-        return ctx.redirect('/products');
-    }
+
     await next();
-    ctx.render('login.pug', ctx.data);
+
+    ctx.render('login.pug', { 
+        user: {
+            logged: false
+        }
+    });
 }
 
 async function login(ctx, next) {
-    ctx.status = 200;
-    ctx.data = {user: {}};
-    let userData = await ctx.myPool().query("SELECT password, salt, id, confirmed FROM users WHERE email = ?", [ctx.request.body.email]);
+    let userData = await ctx.myPool().query(`
+        SELECT password, salt, id, confirmed
+        FROM users
+        WHERE
+            email = ?
+        `, [ctx.request.body.email]);
+
+    let loginMessage = "";
+
     if (userData instanceof Array && userData.length === 1 && (sha256(ctx.request.body.password + userData[0].salt) === userData[0].password)) {
-        
-        if (userData[0].confirmed == 1) {
+
+        if (+userData[0].confirmed === 1) {
             ctx.session.userData = {userId: userData[0].id};
-            ctx.redirect('/products');
+            return ctx.redirect('/products');
         } else {
-            ctx.data.message = "Email is not confirmed";
+            loginMessage = "Email is not confirmed";
         }
-        await next();
-        return ctx.render('login.pug', ctx.data);
     } else {
-        ctx.data.message = "Wrong username or password";
+        loginMessage = "Wrong username or password";
     }
-    
-    await next();
-    ctx.render('login.pug', ctx.data);
+
+    ctx.render('login.pug', {
+        user: {
+            loginMessage: loginMessage,
+            logged: false
+        }
+    });
 }
 
 
 async function renderSignUp(ctx, next) {
-    ctx.status = 200;
-    ctx.data = {user: {}}
-    if (ctx.session.userData) {
-        return ctx.redirect('/products');
-    }
-    ctx.data.countries = await ctx.myPool().query("SELECT nicename, phonecode FROM countries");
+
     await next();
-    ctx.render('signup.pug', ctx.data);
+
+    let countryRows = await ctx.myPool().query(`
+        SELECT nicename, phonecode
+        FROM countries
+        `);
+
+    ctx.render('signup.pug', {
+        countries: countryRows,
+        user: {
+            logged: false
+        }
+    });
 }
 
 async function signUp(ctx, next) {
-    
-    ctx.status = 200;
-    ctx.data = {}
-    
+
+    ctx.errors = [];
+
     ctx.checkBody('name').len(2, 20, "Name is too long or too short");
     ctx.checkBody('last_name').optional().empty().len(2, 20, "Last name is too long or too short");
     ctx.checkBody('email').isEmail("Your entered a bad email.");
@@ -66,26 +81,19 @@ async function signUp(ctx, next) {
     ctx.checkBody('password').len(8, 255, "Password is too short or too long");
     ctx.checkBody('conf_password').eq(ctx.request.body.password, "Passwords don't match");
     ctx.checkBody('gender').default('Unknown');
-    
-    if(await emailExists(ctx)) {
-        //console.log("email exists");
-        if(!ctx.errors) {
-            ctx.errors = [];
-        }
+
+    if (await emailExists(ctx)) {
         ctx.errors.push({email_exists: "Email already exists."});
     }
-    
-    if(!phoneMatch(ctx.request.body.phone)) {
-        if(!ctx.errors) {
-            ctx.errors = [];
-        }
+
+    if (!phoneMatch(ctx.request.body.phone)) {
         ctx.errors.push({phone: "Your entered a bad phone."});
     }
-    
+
     //console.log(ctx.request.body);
-    
-    let salt = crypto.randomBytes(32).toString('base64');
-    
+
+    let salt = Crypto.randomBytes(32).toString('base64');
+    ctx.data = {};
     ctx.data.user = {
         'name': ctx.request.body.name,
         'last_name': ctx.request.body.last_name,
@@ -100,9 +108,8 @@ async function signUp(ctx, next) {
         'street_address': ctx.request.body.street_address
     };
 
-    //~ const fields = ['name', 'last_name', 'email'];
-    
-    //~ const dbData = fields.map(fieldName => ctx.data.user[ fieldName ]);
+    const fields = ['name', 'last_name', 'email', 'password', 'salt', 'gender', 'phone', 'phone_unformatted', 'country', 'region', 'street_address'];
+    const dbData = fields.map(fieldName => ctx.data.user[ fieldName ]);
 
     let userData = [
         ctx.request.body.name,
@@ -118,41 +125,50 @@ async function signUp(ctx, next) {
         ctx.request.body.street_address
     ];
 
-    if(!ctx.errors) {
-        ctx.data.user.phone.replace(/[^0-9]/, "");
-        var query = await ctx.myPool().query("INSERT INTO users (name, last_name, email, password, salt, gender, phone, phone_unformatted, country, region, street_address)\
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", userData);
-        
+    logger.info("userData = %o", userData);
+    logger.info("dbData = %o", dbData);
+
+    return ctx.body = "Temporary unavailable";
+
+
+    if(ctx.errors.length === 0) {
+        userData.phone.replace(/[^0-9]/, "");
+
+        var query = await ctx.myPool().query(`
+            INSERT INTO users (name, last_name, email, password, salt, gender, phone, phone_unformatted, country, region, street_address)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            `, userData);
+
         if(query) {
             let tempCode = unique();
-            
+
             logger.info("Temp code = " + tempCode);
-            
+
             query = await ctx.myPool().query("SELECT LAST_INSERT_ID() as userId");
-            
+
             if(!query || query.length == 0) {
                 logger.info("Error getting user insert id.");
                 return ctx.redirect("/sign_up");
             }
-            
+
             let userId = query[0].userId;
             logger.info("last insert id: " + userId);
             query = await ctx.myPool().query("INSERT INTO temp_codes(user_id, hash, type) VALUES(?, ?, ?)", [userId, tempCode, "email"]);
-            
+
             if(!query) {
                 logger.info("Failed to insert into temp_codes.");
                 await ctx.myPool().query("DELETE FROM users WHERE id = ?", [userId]);
                 return ctx.redirect("/sign_up");
             }
-            
-            var transporter = nodemailer.createTransport({
+
+            var transporter = Nodemailer.createTransport({
               service: 'gmail',
               auth: {
                 user: "vanime.staff@gmail.com",
-                pass: constants.EMAIL_PASS
+                pass: Constants.EMAIL_PASS
               }
             });
-            
+
             var mailOptions = {
                 from: "Darth Velioo <velioocs@gmail.com>",
                 to: ctx.request.body.email,
@@ -173,14 +189,14 @@ async function signUp(ctx, next) {
                 } else {
                     ctx.session.message = "You successfully signed up";
                 }
-                
+
                 transporter.close();
             });
 
             if(ctx.errors) {
                 return ctx.redirect('sign_up');
-            } 
-            
+            }
+
             ctx.data = {user: {}};
             ctx.data.message = "An confirmation email was sent to your our. Please confirm your account before logging in.";
             await next();
@@ -199,7 +215,7 @@ async function signUp(ctx, next) {
 async function logOut(ctx, next) {
     ctx.status = 200;
     ctx.data = {};
-    
+
     if(ctx.session.userData) {
         ctx.session.userData = null;
         await next();
@@ -209,22 +225,22 @@ async function logOut(ctx, next) {
 }
 
 async function confirmAccount(ctx, next) {
-    
+
     ctx.status = 200;
     let query = await ctx.myPool().query("SELECT * FROM temp_codes WHERE hash = ?", [ctx.params.code]);
 
     if(query && query.length > 0) {
         let userId = query[0].user_id;
-        
+
         query = await ctx.myPool().query("UPDATE users SET confirmed = 1 WHERE id = ?", [userId]);
-        
+
         if(query) {
             await ctx.myPool().query("DELETE FROM temp_codes WHERE hash = ?", [ctx.params.code]);
             ctx.data = {user: {}};
             ctx.data.message = "You succecssfully validated your account";
-            
+
             await next();
-            
+
             ctx.render('login.pug', ctx.data);
         } else {
             ctx.body = "There was a problem confirming your account";
@@ -234,4 +250,4 @@ async function confirmAccount(ctx, next) {
     }
 }
 
-module.exports = {renderLogin, login, renderSignUp, signUp, logOut, confirmAccount}
+module.exports = {renderLogin, login, renderSignUp, signUp, logOut, confirmAccount};

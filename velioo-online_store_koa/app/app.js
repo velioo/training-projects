@@ -1,5 +1,5 @@
 const PORT = +process.argv[2] || 8883;
-exports.port = () => PORT;
+exports.port = PORT;
 
 const RECORDS_PER_PAGE = 40;
 const MAX_RECORDS_PER_PAGE = 100;
