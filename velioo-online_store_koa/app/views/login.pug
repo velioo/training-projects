@@ -2,11 +2,12 @@ include ./header.pug
 
 <div id="body">
 <div id="wrap">
-<h2 style="text-align:center; margin-right: 15%;">Влез в профил</h2>
-    </br></br>
-<form action="#{root()}login" method="post" class="form-horizontal login_register_form">
+<h2 style="text-align:center; margin-right: 15%;">Влез в профил</h2></br>
+<form action="#{root}login" method="post" class="form-horizontal login_register_form">
 if message
     <span>#{message}</span>
+if error
+    <span style="color:red;">#{error}</span>
 <div class="form-group "> 
     <label class="col-sm-1 control-label" for="email">Имейл:</label>
     <div class="col-sm-8">
@@ -28,8 +29,8 @@ if message
     </div> 
 </form>
 </br></br>
-<p class="footInfo" style="margin-left:170px;">Нямаш профил? <a href="#{root()}signup">Регистрирай се</a></p>
-<p class="footInfo" style="margin-left:170px;"><a href="#{root()}users/reset_page">Забравена парола?</a></p>
+<p class="footInfo" style="margin-left:170px;">Нямаш профил? <a href="#{root}sign_up">Регистрирай се</a></p>
+<p class="footInfo" style="margin-left:170px;"><a href="#{root}users/reset_page">Забравена парола?</a></p>
 </div>
 </div>
 

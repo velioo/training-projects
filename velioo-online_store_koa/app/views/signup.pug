@@ -1,6 +1,6 @@
 include ./header.pug
 
-<script src="#{root()}js/phone_form.js"></script>
+<script src="#{root}js/phone_form.js"></script>
 script.
     function getCountries() {
         var countries = !{JSON.stringify(countries)};
@@ -9,14 +9,14 @@ script.
 
 <div id="body">
 <div id="wrap">
-<h2 s>Регистрация</h2></br></br>
+<h2 s>Регистрация</h2></br>
 if message
     <span>#{message}</span>
 if errors
     each err in errors
         each val, key in err
             <p style="color:red;">#{val}</p>
-<form action="#{root()}sign_up" method="post" class="form-horizontal login_register_form">
+<form action="#{root}sign_up" method="post" class="form-horizontal login_register_form">
         <div class="form-group">
           <label class="col-sm-1 control-label" for="name">Име*:</label>
           <div class="col-sm-8">
@@ -59,7 +59,7 @@ each country in countries
         <div class="form-group">
           <label class="col-sm-1 control-label" for="phone" id="phone_label">Телефон*: </label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" id="phone" name="phone" value="#{user.phone}">
+            <input type="text" class="form-control" id="phone" name="phone" value="#{user.phone_unformatted}">
             <span class="glyphicon glyphicon-remove form-control-feedback"></span>
           </div>
         </div>

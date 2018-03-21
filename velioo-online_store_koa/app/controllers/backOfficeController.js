@@ -1,320 +1,308 @@
+const ROOT = require('../constants/constants').ROOT;
 const logger = require('../helpers/logger');
+
+const assert = require('assert');
 const sha256 = require('js-sha256').sha256;
 const escape = require('escape-html');
-const root = require('../helpers/pug_helpers/root');
 
 async function renderEmployeeLogin(ctx, next) {
     ctx.status = 200;
-    logger.info("In renderEmployeelogin");
-    ctx.data = {user: {}};
-    if (ctx.session.employeeData) {
-        return ctx.redirect('/employee/dashboard');
-    }
+
     await next();
-    ctx.render('employee_login.pug', ctx.data);
+
+    ctx.render('employee_login.pug', {
+        user: {}
+    });
 }
 
 async function employeeLogin(ctx, next) {
-    ctx.status = 200;
-    ctx.data = {user: {}};
-    let userData = await ctx.myPool().query("SELECT password, salt, id FROM employees WHERE username = ?", [ctx.request.body.username]);
+
+    let message;
+    let userData = await ctx.myPool().query(`
+        SELECT password, salt, id
+        FROM employees
+        WHERE
+            username = ?
+        `, [ctx.request.body.username]);
+
     if (userData instanceof Array && userData.length === 1 && (sha256(ctx.request.body.password + userData[0].salt) === userData[0].password)) {
         
-        ctx.session.employeeData = {employeeId: userData[0].id};
+        ctx.session.employeeData = { employeeId: userData[0].id };
+
         return ctx.redirect('/employee/dashboard');
     } else {
-        ctx.data.message = "Wrong username or password";
+        error = "Wrong username or password.";
     }
-    
-    await next();
-    ctx.render('employee_login.pug', ctx.data);
+
+    ctx.render('employee_login.pug', {
+        error: error,
+        user: {}
+    });
 }
 
 async function renderDashboard(ctx, next) {
-    ctx.status = 200;
-    logger.info("In renderDashboard");
-    ctx.data = {user: {}};
+
     await next();
-    if(ctx.employeeLogged === true) {
-        ctx.render('dashboard.pug', ctx.data);
-    } else {
-        ctx.redirect('/employee_login');
-    }
+
+    ctx.render('dashboard.pug', {
+        logged: true,
+        user: {}
+    });
 }
 
 async function employeeLogOut(ctx, next) {
-    ctx.data = {};
-    if(ctx.session.employeeData) {
+
+    await next();
+
+    if (ctx.session.employeeData) {
         ctx.session.employeeData = null;
-        await next();
+        ctx.redirect('/products');
     }
-    ctx.redirect('/products'); 
+
 }
 
 async function getProducts(ctx, next) {
-		
-        let productsQuery = "SELECT products.*, categories.name as category FROM products JOIN categories ON categories.id = products.category_id ";
-        let productsQueryArgs = [];
-        let orderClause = [];
-        let likeClause = [];
-        let conditionClause = [];
-        let whereClauseStarted = false;
-        
-        console.log("Query: ", ctx.request);
-        console.log("Query params: ", ctx.query);
-        let sortColumns = {};
-        let filterColumns = {};
-        Object.keys(ctx.query).forEach(function(key) {
-            if(key.startsWith('col[')) {
-                if(typeof (+key.charAt(4)) == "number") {
-                    sortColumns[+key.charAt(4)] = ctx.query[key];
-                }
+
+    logger.info('Query params = %o', ctx.query);
+
+    let sortColumns = {};
+    let filterColumns = {};
+
+    Object.keys(ctx.query).forEach(function (key) {
+        if (key.startsWith('col[')) {
+            if (typeof (+key.charAt(4)) === 'number') {
+                sortColumns[+key.charAt(4)] = ctx.query[key];
             }
-            if(key.startsWith('fcol[')) {
-                if(typeof (+key.charAt(5)) == "number") {
-                    filterColumns[+key.charAt(5)] = ctx.query[key];
-                }
-            }
-        });
-        console.log("sortColumns = ", sortColumns);
-        console.log("filterColumns = ", filterColumns);
-		if(Object.keys(sortColumns).length !== 0 && sortColumns.constructor === Object) {
-			Object.keys(sortColumns).forEach(function(key) {
-                let value = sortColumns[key];
-                switch(key) {
-					case '0':
-						if(value === '1') {
-                            orderClause.push("products.created_at DESC");
-						} else {
-                            orderClause.push("products.created_at ASC");
-						}
-						break;
-					case '1':
-						if(value === '1') {
-                            orderClause.push("products.updated_at DESC");
-						} else {
-                            orderClause.push("products.updated_at ASC");
-						}
-						break;
-					case '2':
-						if(value === '1') {
-                            orderClause.push("products.name DESC");
-						} else {
-                            orderClause.push("products.name ASC");
-						}
-						break;
-					case '3': 
-						if(value === '1') {
-                            orderClause.push("categories.name DESC");
-						} else {
-                            orderClause.push("categories.name ASC");
-						}
-						break;
-					case '4': 
-						if(value === '1') {
-                            orderClause.push("products.price_leva DESC");
-						} else {
-                            orderClause.push("products.price_leva ASC");
-						}
-						break;
-					case '5': 
-						if(value === '1') {
-                            orderClause.push("products.quantity DESC");
-						} else {
-                            orderClause.push("products.quantity ASC");
-						}	
-						break;
-					case '6': 
-						break;
-					case '7': 
-						break;
-					default: 	
-						//assert_v(false);
-						break;
-				}
-            });
         }
-        
-		if(Object.keys(filterColumns).length !== 0 && filterColumns.constructor === Object) {		
-			Object.keys(filterColumns).forEach(function(key) {
-                let value = filterColumns[key].replace(/%/g, "!%").replace(/_/g, "!_").replace(/'/g, "\\'").replace(/"/g, '\\"');;
-				switch(key) {
-					case '0': 
-                        likeClause.push("products.created_at LIKE '%" + value + "%'");
-						break;
-					case '1': 
-                        likeClause.push("products.updated_at LIKE '%" + value + "%'");
-						break;
-					case '2': 
-                        likeClause.push("products.name LIKE '%" + value + "%'");
-						break;
-					case '3': 
-                        likeClause.push("categories.name LIKE '%" + value + "%'");
-						break;
-					case '4': 
-                        likeClause.push("products.price_leva LIKE '%" + value + "%'");
-						break;
-					case '5': 
-                        likeClause.push("products.quantity LIKE '%" + value + "%'");
-						break;
-					case '6': 
-						break;
-					case '7': 
-						break;
-					default: 	
-						//assert_v(false);
-						break;
-				}
-			});
-		}
-        
-        likeClause.forEach(function(e, index) {
-            if(index === 0) {
-                productsQuery+=" WHERE ";
-                whereClauseStarted = true;
-            } else {
-                productsQuery+=" AND ";
+        if (key.startsWith('fcol[')) {
+            if (typeof (+key.charAt(5)) === 'number') {
+                filterColumns[+key.charAt(5)] = ctx.query[key];
             }
-            productsQuery+=e;
-            if(index == likeClause.length - 1) {
-                productsQuery+=" ESCAPE '!' ";
-            }
-        });
-        
-        if(ctx.query.date_c_from != '') {
-            conditionClause.push(" DATE(products.created_at) >= ? ");
-            productsQueryArgs.push(ctx.query.date_c_from);
-			//$getRows['conditions']['DATE(products.created_at) >= '] = $this->input->get('date_c_from');
-			//log_message('user_info', 'Got filter by date created_at >= : ' . $this->input->get('date_c_from'));
-		}	
-		
-		if(ctx.query.date_c_to != '') {
-            conditionClause.push(" DATE(products.created_at) <= ? ");
-            productsQueryArgs.push(ctx.query.date_c_to);
-			//$getRows['conditions']['DATE(products.created_at) <= '] = $this->input->get('date_c_to');
-			//log_message('user_info', 'Got filter by date created_at <=: ' . $this->input->get('date_c_to'));
-		}	
-																			 
-		if(ctx.query.date_m_from != '') {
-            conditionClause.push(" DATE(products.updated_at) >= ? ");
-            productsQueryArgs.push(ctx.query.date_m_from);
-			//$getRows['conditions']['DATE(products.updated_at) >= '] = $this->input->get('date_m_from');
-			//log_message('user_info', 'Got filter by date updated_at >= : ' . $this->input->get('date_m_from'));
-		}	
-		
-		if(ctx.query.date_m_to != '') {
-            conditionClause.push(" DATE(products.updated_at) <= ? ");
-            productsQueryArgs.push(ctx.query.date_m_to);
-			//$getRows['conditions']['DATE(products.updated_at) <= '] = $this->input->get('date_m_to');
-			//log_message('user_info', 'Got filter by date updated_at <= : ' . $this->input->get('date_m_to'));
-		}	
-																			 
-		if(ctx.query.price_from != '') {
-            conditionClause.push(" products.price_leva >= ? ");
-            productsQueryArgs.push(ctx.query.price_from);
-			//$getRows['conditions']['products.price_leva >= '] = floatval($this->input->get('price_from'));
-			//log_message('user_info', 'Got filter by price >= : ' . $this->input->get('price_from'));
-		}	
-		
-		if(ctx.query.price_to != '') {
-            conditionClause.push(" products.price_leva <= ? ");
-            productsQueryArgs.push(ctx.query.price_to);
-			//$getRows['conditions']['products.price_leva <= '] = floatval($this->input->get('price_to'));
-			//log_message('user_info', 'Got filter by price <= : ' . $this->input->get('price_to'));
-		}
-        
-        conditionClause.forEach(function(e, index) {
-            if(index === 0) {
-                if(!whereClauseStarted) {
-                    productsQuery+=" WHERE ";
-                } else {
-                    productsQuery+=" AND ";
-                }
-            } else {
-                productsQuery+=" AND ";
-            }
-            productsQuery+=e;
-        });
-        
-        console.log("ProductsQuery: " + productsQuery);
-		                                          
-		
-		//log_message('user_info', 'Executing products result query...');
-        let result = {};
-        
-        let productsCount = await ctx.myPool().query(productsQuery, productsQueryArgs);
-        productsCount = productsCount.length;
-        result.total_rows = productsCount;
-        
-        orderClause.forEach(function(e, index) {
-            if(index === 0) {
-                productsQuery+=" ORDER BY ";
-            } else {
-                productsQuery+=", ";
-            }
-            productsQuery+=e;
-        });
-        
-        if(ctx.query.size) {
-            productsQuery+=" LIMIT ? ";
-            productsQueryArgs.push(ctx.query.size);
-            console.log("Limit : " + ctx.query.size);
-        } else {
-            productsQuery+=" LIMIT 50 ";
-            productsQueryArgs.push(50);
         }
-        
-        if(ctx.query.page) {
-            productsQuery+=" OFFSET ? ";
-            let offset = +ctx.query.page * (ctx.query.size) ? +ctx.query.size : 50;
-            console.log("Offset: " + offset);
-            productsQueryArgs.push(offset);
-        } else {
-            productsQuery+=" OFFSET 0 ";
-        }
-        
-		let products = await ctx.myPool().query(productsQuery, productsQueryArgs);											  
-        
-        //~ let productArray = [];
-        //~ let productsArray = [];
-        //~ if(products.length > 0) {
-            //~ products.forEach(function(product) {
-                //~ productArray.push(escape(product['created_at']));
-                //~ productArray.push(escape(product['updated_at']));
-                //~ productArray.push("<a href=\"" + root.moduleBody() + "products/" + escape(product['id']) + "\">" + escape(product['name']) + "</a>");
-                //~ productArray.push(escape(product['category']));
-                //~ productArray.push(escape(product['price_leva']));
-                //~ productArray.push(escape(product['quantity']));
-                //~ productArray.push("<a href=\"" + root.moduleBody() + "employee/update_product/" + escape(product['id']) +"\" class=\"product_details\">Редактирай</a>");
-                //~ productArray.push("<a href="" data-id=\"" + escape(product['id']) + "\" class=\"delete_record\">Изтрий</a>");
-                
-            //~ });
-        //~ }					
-        
-        
-        
-        
-        						  
-			//~ foreach($products as $product) {
-				//~ $productArray[] = htmlentities($product['created_at'], ENT_QUOTES);
-				//~ $productArray[] = htmlentities($product['updated_at'], ENT_QUOTES);
-				//~ $productArray[] = "<a href=\"" . site_url("products/product/") . htmlentities($product['id'], ENT_QUOTES) . "\">" . htmlentities($product['name'], ENT_QUOTES) . "</a>";
-				//~ $productArray[] = htmlentities($product['category'], ENT_QUOTES);
-				//~ $productArray[] = htmlentities($product['price_leva'], ENT_QUOTES);
-				//~ $productArray[] = htmlentities($product['quantity'], ENT_QUOTES);
-				//~ $productArray[] = '<a href="' . site_url("employees/update_product/" . htmlentities($product['id'], ENT_QUOTES)) . '" class="product_details">Редактирай</a>';
-				//~ $productArray[] = '<a href="#" data-id="' . htmlspecialchars($product['id'], ENT_QUOTES) .'" class="delete_record">Изтрий</a>';
-				//~ $productsArray[] = $productArray;
-				//~ $productArray = array();
-			//~ }
-		
-		//~ $resultArray['rows'] = $productsArray;
-		
-		//~ //log_message('user_info', 'Returning result to browser');		
-			
-		//~ header('Content-Type:application/json');													  		
-		//~ echo json_encode($resultArray);	
-        ctx.body = products;
+    });
+
+    logger.info('sortColumns = %o', sortColumns);
+    logger.info('filterColumns = %o', filterColumns);
+
+    const filterCases = {
+        '0': "products.created_at LIKE '%",
+        '1': "products.updated_at LIKE '%",
+        '2': "products.name LIKE '%",
+        '3': "categories.name LIKE '%",
+        '4': "products.price_leva LIKE '%",
+        '5': "products.quantity LIKE '%",
+        '6': "",
+        '7': ""
+    };
+
+    let filterExprs = [true, true, true, true, true, true, true, true];
+
+    if (Object.keys(filterColumns).length !== 0 && filterColumns.constructor === Object) {
+        Object.keys(filterColumns).forEach(function (key) {
+            let filterInput = filterColumns[key].replace(/%/g, "!%").replace(/_/g, "!_").replace(/'/g, "\\'").replace(/"/g, '\\"');
+
+            assert(key in filterCases === true);
+
+            filterExprs[key] = (filterCases[key])
+                ? filterCases[key] + filterInput + "%' ESCAPE '!'"
+                : true;
+        });
+    }
+
+    logger.info('FilterExprs = %o', filterExprs);
+
+    let productsQueryArgs = [];
+
+    let dateCreatedAtFromExpr = (ctx.query.date_c_from)
+        ? 'DATE(products.created_at) >= ?'
+        : '?';
+    productsQueryArgs.push(ctx.query.date_c_from || true);
+
+    logger.info('DateCreatedAtFromExpr = ' + dateCreatedAtFromExpr);
+
+    let dateCreatedAtToExpr = (ctx.query.date_c_to)
+        ? 'DATE(products.created_at) <= ?'
+        : '?';
+    productsQueryArgs.push(ctx.query.date_c_to || true);
+
+    logger.info('DateCreatedAtToExpr = ' + dateCreatedAtToExpr);
+
+    let dateUpdatedAtFromExpr = (ctx.query.date_m_from)
+        ? 'DATE(products.updated_at) >= ?'
+        : '?';
+    productsQueryArgs.push(ctx.query.date_m_from || true);
+
+    logger.info('DateUpdatedAtFromExpr = ' + dateUpdatedAtFromExpr);
+
+    let dateUpdatedAtToExpr = (ctx.query.date_m_to)
+        ? 'DATE(products.updated_at) <= ?'
+        : '?';
+    productsQueryArgs.push(ctx.query.date_m_to || true);
+
+    logger.info('DateUpdatedAtToExpr = ' + dateUpdatedAtToExpr);
+
+    let priceFromExpr = (ctx.query.price_from)
+        ? 'products.price_leva >= ?'
+        : '?';
+    productsQueryArgs.push(ctx.query.price_from || true);
+
+    logger.info('PriceFromExpr = ' + priceFromExpr);
+
+    let priceToExpr = (ctx.query.price_to)
+        ? 'products.price_leva <= ?'
+        : '?';
+    productsQueryArgs.push(ctx.query.price_to || true);
+
+    logger.info('PriceToExpr = ' + priceToExpr);
+
+    const sortCases = {
+        '0': 'products.created_at ',
+        '1': 'products.updated_at ',
+        '2': 'products.name ',
+        '3': 'categories.name ',
+        '4': 'products.price_leva ',
+        '5': 'products.quantity ',
+        '6': '',
+        '7': ''
+    };
+
+    //let sortExprs = [true, true, true, true, true, true, true, true];
+    let sortExpr = '';
+    let orderByClause = '';
+
+    if (Object.keys(sortColumns).length !== 0 && sortColumns.constructor === Object) {
+        Object.keys(sortColumns).forEach(function (key) {
+            let sortInput = sortColumns[key];
+
+            assert(key in sortCases === true);
+
+            sortExpr += (sortCases[key])
+                ? sortCases[key] + ((sortInput === '1')
+                    ? 'DESC, '
+                    : 'ASC, '
+                    )
+                : '';
+        });
+    }
+
+    if (sortExpr) {
+        orderByClause = 'ORDER BY';
+        sortExpr = sortExpr.slice(0, sortExpr.lastIndexOf(','));
+    }
+
+    logger.info('sortExpr = ' + sortExpr);
+
+    let limit = +ctx.query.size || 30;
+
+    assert(!isNaN(limit));
+
+    productsQueryArgs.push(limit);
+
+    logger.info("Limit = " + limit);
+
+    let offset = (ctx.query.page)
+        ? (+ctx.query.page > 0)
+            ? +ctx.query.page * limit - limit
+            : 0
+        : 0;
+
+    assert(!isNaN(offset));
+
+    productsQueryArgs.push(offset);
+
+    logger.info("Offset = " + offset);
+
+    let productsQuery = `
+        SELECT products.*, categories.name as category
+        FROM products
+        JOIN categories ON categories.id = products.category_id
+        WHERE
+            ${filterExprs[0]}
+            AND ${filterExprs[1]}
+            AND ${filterExprs[2]}
+            AND ${filterExprs[3]}
+            AND ${filterExprs[4]}
+            AND ${filterExprs[5]}
+            AND ${filterExprs[6]}
+            AND ${filterExprs[7]}
+            AND ${dateCreatedAtFromExpr}
+            AND ${dateCreatedAtToExpr}
+            AND ${dateUpdatedAtFromExpr}
+            AND ${dateUpdatedAtToExpr}
+            AND ${priceFromExpr}
+            AND ${priceToExpr}
+        ${orderByClause}
+            ${sortExpr}
+        LIMIT ?
+        OFFSET ?
+        `;
+
+    let productsCountQuery = `
+        SELECT COUNT(1) as count
+        FROM products
+        JOIN categories ON categories.id = products.category_id
+        WHERE
+            ${filterExprs[0]}
+            AND ${filterExprs[1]}
+            AND ${filterExprs[2]}
+            AND ${filterExprs[3]}
+            AND ${filterExprs[4]}
+            AND ${filterExprs[5]}
+            AND ${filterExprs[6]}
+            AND ${filterExprs[7]}
+            AND ${dateCreatedAtFromExpr}
+            AND ${dateCreatedAtToExpr}
+            AND ${dateUpdatedAtFromExpr}
+            AND ${dateUpdatedAtToExpr}
+            AND ${priceFromExpr}
+            AND ${priceToExpr}
+    `;
+
+    logger.info('ProductsQuery = ' + productsQuery);
+    logger.info('ProductsQueryArgs = %o', productsQueryArgs);
+
+    let productsRows = await ctx.myPool().query(productsQuery, productsQueryArgs);
+
+    assert(productsRows.length >= 0);
+
+    //logger.info("ProductsRows = %o", productsRows);
+
+    productsQueryArgs.pop();
+    productsQueryArgs.pop();
+
+    let productsCountRows = await ctx.myPool().query(productsCountQuery, productsQueryArgs);
+
+    //logger.info("ProductsCountRows = %o", productsCountRows);
+
+    assert(productsCountRows.length >= 0);
+
+    let productsCount = productsCountRows.shift().count;
+
+    let result = { total_rows: productsCount };
+
+    let productArray = [];
+    let productsArray = [];
+
+    if (productsCount > 0) {
+        productsRows.forEach(function (productRow) {
+            productArray.push(escape(productRow.created_at));
+            productArray.push(escape(productRow.updated_at));
+            productArray.push('<a href="' + ROOT + 'products/' + escape(productRow.id) + '">' + escape(productRow.name) + '</a>');
+            productArray.push(escape(productRow.category));
+            productArray.push(escape(productRow.price_leva));
+            productArray.push(escape(productRow.quantity));
+            productArray.push('<a href="' + ROOT + 'employee/update_product/' + escape(productRow.id) + '" class="product_details">Редактирай</a>');
+            productArray.push('<a href="#" data-id="' + escape(productRow.id) + '" class="delete_record">Изтрий</a>');
+            productsArray.push(productArray);
+            productArray = [];
+        });
+    }
+
+    result.rows = productsArray;
+
+    //logger.info('Result = %o', result);
+
+    ctx.body = result;
 }
 
-module.exports = {renderEmployeeLogin, employeeLogin, renderDashboard, employeeLogOut, getProducts};
+module.exports = { renderEmployeeLogin, employeeLogin, renderDashboard, employeeLogOut, getProducts };

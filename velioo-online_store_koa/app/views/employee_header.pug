@@ -6,12 +6,12 @@
 
 <link rel="icon" href="http://downloadicons.net/sites/default/files/computer-icon-65917.png">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="#{root()}css/main.css">
+<link rel="stylesheet" href="#{root}css/main.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ajv/5.3.0/ajv.min.js"></script>  
-<script src="#{root()}js/schemas.js"></script>  
-<script src="#{root()}js/remove_notification.js"></script>
+<script src="#{root}js/schemas.js"></script>  
+<script src="#{root}js/remove_notification.js"></script>
 </head>
 <body>
 
@@ -42,12 +42,12 @@ script.
 <nav class="navbar navbar-inverse navbar-fixed-top" id="navigation_top">
   <div class="container-fluid" style="width: 1150px;">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#{root()}employee/dashboard">Dashboard</a>
+      <a class="navbar-brand" href="#{root}employee/dashboard">Dashboard</a>
     </div>
     <ul class="nav navbar-nav navbar-right">
-        <li><a href="#{root()}products"><span class="glyphicon glyphicon-home"></span> Kъм Магазина</a></li>
-if employeeLogged
-    <li><a href="#{root()}employee/log_out"><span class="glyphicon glyphicon-log-in"></span> Изход</a></li>
+        <li><a href="#{root}products"><span class="glyphicon glyphicon-home"></span> Kъм Магазина</a></li>
+if logged
+    <li><a href="#{root}employee/log_out"><span class="glyphicon glyphicon-log-in"></span> Изход</a></li>
 </ul>
   </div>    
 </nav>

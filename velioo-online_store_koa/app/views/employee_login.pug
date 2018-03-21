@@ -2,10 +2,12 @@ include ./header.pug
 
 <div id="body">
 <div id="wrap">
-<h2 style="text-align:center; margin-right: 15%;">Вход за служители</h2></br></br>
+<h2 style="text-align:center; margin-right: 15%;">Вход за служители</h2></br>
 if message
     <span>#{message}</span>
-<form action="#{root()}employee_login" method="post" class="form-horizontal login_register_form">
+if error
+    <span style="color:red;">#{error}</span>
+<form action="#{root}employee_login" method="post" class="form-horizontal login_register_form">
     <div class="form-group">
       <label class="col-sm-1 control-label" for="name">Потребителско име:</label>
       <div class="col-sm-8">

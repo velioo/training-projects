@@ -64,7 +64,7 @@ async function getId(ctx, next) {
 async function searchByName(ctx, next) {
     ctx.status = 200;
 
-    logger.info("Query string = %o", ctx.query);
+    logger.info('Query string = %o', ctx.query);
 
     if (ctx.query.search_input) {
         ctx.query.search_input = ctx.query.search_input.replace(/%/g, "!%").replace(/_/g, "!_").replace(/'/g, "\\'").replace(/"/g, '\\"');
@@ -92,7 +92,6 @@ async function searchByName(ctx, next) {
     let tagsExpr = (ctx.query.tags)
         ? 'tags.name IN (?)'
         : '?';
-
     productsQueryArgs.push(ctx.query.tags || true);
 
     logger.info("Tags = %o", ctx.query.tags);
@@ -102,7 +101,6 @@ async function searchByName(ctx, next) {
     let priceFromExpr = (ctx.query.price_from)
         ? 'products.price_leva >= ?'
         : '?';
-
     let priceFromArgsExpr = +ctx.query.price_from || true;
 
     productsQueryArgs.push(priceFromArgsExpr);
@@ -116,7 +114,6 @@ async function searchByName(ctx, next) {
     let priceToExpr = (ctx.query.price_to)
         ? 'products.price_leva <= ?'
         : '?';
-
     let priceToArgsExpr = +ctx.query.price_to || true;
 
     productsQueryArgs.push(priceToArgsExpr);
@@ -129,26 +126,25 @@ async function searchByName(ctx, next) {
     let categoryExpr = (ctx.query.category)
         ? 'categories.id = ?'
         : '?';
-
     productsQueryArgs.push(ctx.query.category || true);
     tagsQueryArgs.push(ctx.query.category || true);
 
     logger.info("CategoryExpr = ", categoryExpr);
 
-    const cases = {
+    const sortCases = {
         price_asc: 'products.price_leva ASC',
         price_desc: 'products.price_leva DESC',
         newest: 'products.created_at DESC',
         latest_updated: 'products.updated_at DESC'
     };
 
-    assert((!ctx.query.sort_products && cases[DEFAULT_PRODUCT_ORDER]) || cases[ctx.query.sort_products]);
+    assert((!ctx.query.sort_products && sortCases[DEFAULT_PRODUCT_ORDER]) || sortCases[ctx.query.sort_products]);
 
     let orderByExpr = (ctx.query.sort_products)
-        ? cases[ctx.query.sort_products]
-        : cases[DEFAULT_PRODUCT_ORDER];
+        ? sortCases[ctx.query.sort_products]
+        : sortCases[DEFAULT_PRODUCT_ORDER];
 
-    logger.info("Sort products by = " + ctx.query.sort_products);
+    logger.info('Sort products by = ' + ctx.query.sort_products);
 
     let limit = +ctx.query.limit || 40;
 
@@ -189,18 +185,22 @@ async function searchByName(ctx, next) {
         `;
 
     let productsCountQuery = `
-        SELECT COUNT(1)
-        FROM products
-        JOIN categories ON categories.id=products.category_id
-        LEFT JOIN product_tags ON product_tags.product_id=products.id
-        LEFT JOIN tags ON tags.id=product_tags.tag_id
-        WHERE
-            (${searchInputExpr1} OR ${searchInputExpr2})
-            AND ${tagsExpr}
-            AND ${priceFromExpr}
-            AND ${priceToExpr}
-            AND ${categoryExpr}
-        GROUP BY products.id
+        SELECT COUNT(1) as count
+        FROM
+            (
+                SELECT products.id
+                FROM products
+                JOIN categories ON categories.id=products.category_id
+                LEFT JOIN product_tags ON product_tags.product_id=products.id
+                LEFT JOIN tags ON tags.id=product_tags.tag_id
+                WHERE
+                    (${searchInputExpr1} OR ${searchInputExpr2})
+                    AND ${tagsExpr}
+                    AND ${priceFromExpr}
+                    AND ${priceToExpr}
+                    AND ${categoryExpr}
+                GROUP BY products.id
+            ) a
         `;
 
     let tagsQuery = `
@@ -224,28 +224,33 @@ async function searchByName(ctx, next) {
     productsQueryArgs.pop();
     productsQueryArgs.pop();
 
-    //logger.info("Query = " + productsQuery);
-
-    //logger.info("ProductsRows = %o", productsRows);
+    //logger.info('Query = '' + productsQuery);
+    //logger.info('ProductsRows = %o', productsRows);
+    //logger.info('ProductsCountQuery = ' + productsCountQuery);
 
     let productsCountRows = await ctx.myPool().query(productsCountQuery, productsQueryArgs);
 
+    logger.info('ProductsCountRows = %o', productsCountRows);
+
     assert(productsCountRows.length >= 0);
 
-    //logger.info("Products count = " + productsCountRows.length);
+    let productsCount = productsCountRows.shift().count;
+
+    //logger.info('Products count = ' + productsCount);
+    //logger.info('ProductsCountRows = %o' + productsCountRows);
 
     let tagRows = await ctx.myPool().query(tagsQuery, tagsQueryArgs);
 
     assert(tagRows.length >= 0);
 
-    //logger.info("TagRows = %o", tagRows);
-    //logger.info("TagsQuery = " + tagsQuery);
-    //logger.info("Tags count = " + tagRows.length);
+    //logger.info('TagRows = %o', tagRows);
+    //logger.info('TagsQuery = ' + tagsQuery);
+    //logger.info('Tags count = ' + tagRows.length);
 
     let processedTagRows = {};
     if (tagRows.length > 0) {
         tagRows.forEach(function (tagRow) {
-            ////logger.info("TagRow = %o", tagRow);
+            ////logger.info('TagRow = %o', tagRow);
 
             let newTagRow = {};
 
@@ -267,6 +272,8 @@ async function searchByName(ctx, next) {
 
     //logger.info('Tags = %o', processedTagRows);
 
+    const pageCount = Math.ceil(productsCount / +ctx.query.limit);
+
     ctx.render('index.pug', {
         searchInput: ctx.query.search_input,
         price_from: ctx.query.price_from,
@@ -275,10 +282,10 @@ async function searchByName(ctx, next) {
         sort_products: ctx.query.sort_products,
         tags: processedTagRows,
         products: productsRows,
-        pageCount: Math.ceil(productsCountRows.length / +ctx.query.limit),
-        itemCount: productsCountRows.length,
+        pageCount: pageCount,
+        itemCount: productsCount,
         currentPage: ctx.query.page || 1,
-        pages: getArrayPages(ctx)(10, 2, ctx.query.page),
+        pages: getArrayPages(ctx)(10, pageCount, ctx.query.page),
         logged: (ctx.session && ctx.session.userData && ctx.session.userData.userId)
     });
 }
@@ -289,7 +296,7 @@ async function getMenuItems(ctx) {
         FROM categories
         `);
 
-    ////logger.info("Items = %o", items);
+    ////logger.info('Items = %o', items);
 
     ctx.body = items;
 }
@@ -298,7 +305,7 @@ async function notFound(ctx) {
     //logger.info('In not_found()');
 
     ctx.status = 404;
-    ctx.render('not_found', {message: "Resource Not Found"});
+    ctx.render('not_found', {message: 'Resource Not Found'});
 }
 
 module.exports = { list, getId, searchByName, getMenuItems, notFound };

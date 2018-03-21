@@ -1,6 +1,6 @@
 include ./header.pug
 
-<script src="#{root()}js/filter_tags.js"></script>
+<script src="#{root}js/filter_tags.js"></script>
 <div id="body">
 <div id="wrap"></br>
 
@@ -12,7 +12,7 @@ else
     
 if tags
     <div class="filtering_menu">
-    <form action="#{root()}search" method="get" id="filter_form">
+    <form action="#{root}search" method="get" id="filter_form">
     <h4 class="filter_header">Цена:</h4>
     <span>От:</span><input type="number" min="0" step="1" name="price_from" value="#{price_from}">
     <span>До:</span><input type="number" min="0" step="1" name="price_to" value="#{price_to}"></br></br>
@@ -67,16 +67,16 @@ if products
             <div class="row row-eq-height">
         <div class="col-sm-3 product" data-id="#{val.id}">  
         <div class="image_product_wrapper">
-        <a href="#{root()}products/#{val.id}">
+        <a href="#{root}products/#{val.id}">
         
         if val.image
-            img.product_image(src="" + root() + "imgs/" + val.image onerror="" + "this.src='" + root() + "imgs/no_image.png'")
+            img.product_image(src="" + root + "imgs/" + val.image onerror="" + "this.src='" + root + "imgs/no_image.png'")
         else
-            img.product_image(src="" onerror="" + "this.src='" + root() + "imgs/no_image.png'")
+            img.product_image(src="" onerror="" + "this.src='" + root + "imgs/no_image.png'")
         </a></br></br>
         </div>
         <div class="product_wrapper">
-        <a href="#{root()}products/#{val.id}" class="product_name no_underline">Име: #{val.name}</a></br>
+        <a href="#{root}products/#{val.id}" class="product_name no_underline">Име: #{val.name}</a></br>
         <a href="#" class="product_category no_underline">Категория: #{val.category}</a></br>       
         <div class="product_price"><p style="font-size: 18px;">Цена: #{val.price_leva} лв.</p></div>
         if val.quantity >= 1

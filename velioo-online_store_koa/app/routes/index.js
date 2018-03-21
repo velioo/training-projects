@@ -27,5 +27,6 @@ router
     //~ .delete('/products/:id', removeProduct)
     .get('/not_found', notFound)
     .get('/', (ctx) => { ctx.redirect('/products'); });
+
 exports.routes = router.routes();
 exports.allowedMethods = router.allowedMethods();
