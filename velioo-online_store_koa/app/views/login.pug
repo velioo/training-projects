@@ -3,7 +3,7 @@ include ./header.pug
 <div id="body">
 <div id="wrap">
 <h2 style="text-align:center; margin-right: 15%;">Влез в профил</h2></br>
-<form action="#{root}login" method="post" class="form-horizontal login_register_form">
+<form action="../login" method="post" class="form-horizontal login_register_form">
 if message
     <span>#{message}</span>
 if error
@@ -29,8 +29,8 @@ if error
     </div> 
 </form>
 </br></br>
-<p class="footInfo" style="margin-left:170px;">Нямаш профил? <a href="#{root}sign_up">Регистрирай се</a></p>
-<p class="footInfo" style="margin-left:170px;"><a href="#{root}users/reset_page">Забравена парола?</a></p>
+<p class="footInfo" style="margin-left:170px;">Нямаш профил? <a href="../sign_up">Регистрирай се</a></p>
+<p class="footInfo" style="margin-left:170px;"><a href="../reset_page">Забравена парола?</a></p>
 </div>
 </div>
 

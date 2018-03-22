@@ -1,14 +1,14 @@
 include ./employee_header.pug
 
-<script src="#{root}js/delete_product.js"></script>
-<script src="#{root}js/get_products.js"></script>
+<script src="../js/delete_product.js"></script>
+<script src="../js/get_products.js"></script>
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link rel="stylesheet" href="#{root}tablesorter/css/theme.blue.css"></script>
-<script src="#{root}tablesorter/jquery.tablesorter.js"></script>
-<link rel="stylesheet" href="#{root}tablesorter/addons/pager/jquery.tablesorter.pager.css">
-<script src="#{root}tablesorter/addons/pager/jquery.tablesorter.pager.js"></script>
-<script src="#{root}tablesorter/jquery.tablesorter.widgets.js"></script>
+<link rel="stylesheet" href="../tablesorter/css/theme.blue.css"></script>
+<script src="../tablesorter/jquery.tablesorter.js"></script>
+<link rel="stylesheet" href="../tablesorter/addons/pager/jquery.tablesorter.pager.css">
+<script src="../tablesorter/addons/pager/jquery.tablesorter.pager.js"></script>
+<script src="../tablesorter/jquery.tablesorter.widgets.js"></script>
 
 script.
     function getDeleteUrl() {
@@ -24,16 +24,16 @@ script.
 <div id="body" style="width: 100%;">
 
 <div class="vertical-menu employee">
-      <a href="#{root}employees/orders">Поръчки</a>
-      <a href="#{root}employees/dashboard" class="active">Продукти</a>
-      <a href="=#{root}employees/tags">Тагове</a>
-      <img class="spinner dashboard" src="#{root}imgs/spinner.gif">
+      <a href="../employees/orders">Поръчки</a>
+      <a href="../employees/dashboard" class="active">Продукти</a>
+      <a href="../employees/tags">Тагове</a>
+      <img class="spinner dashboard" src="../imgs/spinner.gif">
 </div>
 
 <div class="account-info employee">
     <div class="profile_tab_title">Всички продукти</div>
     <hr>
-    <a href="#{root}employees/add_product">Добави нов продукт</a>
+    <a href="../employees/add_product">Добави нов продукт</a>
     
     </br>
     <p id="clean_filters" style="height:30px;"></p> 
@@ -61,11 +61,11 @@ script.
         <thead>
           <tr class="tablesorter-ignoreRow">
             <td class="pager" colspan="8" style="text-align:left;">
-                <img src="#{root}tablesorter/addons/pager/icons/first.png" class="first"/>
-                <img src="#{root}tablesorter/addons/pager/icons/prev.png" class="prev"/>
+                <img src="../tablesorter/addons/pager/icons/first.png" class="first"/>
+                <img src="../tablesorter/addons/pager/icons/prev.png" class="prev"/>
                 <span class="pagedisplay"></span>
-                <img src="#{root}tablesorter/addons/pager/icons/next.png" class="next"/>
-                <img src="#{root}tablesorter/addons/pager/icons/last.png" class="last"/>
+                <img src="../tablesorter/addons/pager/icons/next.png" class="next"/>
+                <img src="../tablesorter/addons/pager/icons/last.png" class="last"/>
                 <select class="pagesize">
                   <option value="30">30</option>
                   <option value="50">50</option>
@@ -99,11 +99,11 @@ script.
         </tr>
           <tr>
               <td class="pager" colspan="8" style="text-align:left;">
-                <img src="#{root}tablesorter/addons/pager/icons/first.png" class="first"/>
-                <img src="#{root}tablesorter/addons/pager/icons/prev.png" class="prev"/>
+                <img src="../tablesorter/addons/pager/icons/first.png" class="first"/>
+                <img src="../tablesorter/addons/pager/icons/prev.png" class="prev"/>
                 <span class="pagedisplay"></span>
-                <img src="#{root}tablesorter/addons/pager/icons/next.png" class="next"/>
-                <img src="#{root}tablesorter/addons/pager/icons/last.png" class="last"/>
+                <img src="../tablesorter/addons/pager/icons/next.png" class="next"/>
+                <img src="../tablesorter/addons/pager/icons/last.png" class="last"/>
                 <select class="pagesize">
                   <option value="30">30</option>
                   <option value="50">50</option>

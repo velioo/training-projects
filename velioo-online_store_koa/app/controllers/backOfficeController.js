@@ -1,4 +1,4 @@
-const ROOT = require('../constants/constants').ROOT;
+//const ROOT = require('../constants/constants').ROOT;
 const logger = require('../helpers/logger');
 
 const assert = require('assert');
@@ -287,11 +287,11 @@ async function getProducts(ctx, next) {
         productsRows.forEach(function (productRow) {
             productArray.push(escape(productRow.created_at));
             productArray.push(escape(productRow.updated_at));
-            productArray.push('<a href="' + ROOT + 'products/' + escape(productRow.id) + '">' + escape(productRow.name) + '</a>');
+            productArray.push('<a href="../products/' + escape(productRow.id) + '">' + escape(productRow.name) + '</a>');
             productArray.push(escape(productRow.category));
             productArray.push(escape(productRow.price_leva));
             productArray.push(escape(productRow.quantity));
-            productArray.push('<a href="' + ROOT + 'employee/update_product/' + escape(productRow.id) + '" class="product_details">Редактирай</a>');
+            productArray.push('<a href="../employee/update_product/' + escape(productRow.id) + '" class="product_details">Редактирай</a>');
             productArray.push('<a href="#" data-id="' + escape(productRow.id) + '" class="delete_record">Изтрий</a>');
             productsArray.push(productArray);
             productArray = [];

@@ -10,7 +10,7 @@ $(document).ready(function() {
 		$('#filter_form').submit();
 	});
 	
-	if($('.checkbox_tag:checked').length > 0) {
+	if ($('.checkbox_tag:checked').length > 0) {
 		$('#filter_form').prepend('<a href="#" style="color:red;" id="clear_filters">Изчисти филтрите</a>');
 		$('#clear_filters').on('click', function() {
 			//infoLog += '\nfilter_tag.js/#clear_filters: Executing... \n';

@@ -13283,3 +13283,19 @@ SyntaxError: Unexpected number
     at Module.require (module.js:585:17)
     at require (internal/module.js:11:18)
     at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:94)
+2018-3-22 08:19:27 error: uncaughtException: Unexpected token :
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/indexController.js:283
+        sort_products: ctx.query.sort_products,
+                     ^
+
+SyntaxError: Unexpected token :
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)

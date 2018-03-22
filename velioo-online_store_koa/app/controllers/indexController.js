@@ -109,7 +109,7 @@ async function searchByName(ctx, next) {
     logger.info("PriceFromExpr = ", priceFromExpr);
     logger.info("PriceFromArgsExpr = ", priceFromArgsExpr);
 
-    assert(!ctx.query.price_tp || !isNaN(+ctx.query.price_to));
+    assert(!ctx.query.price_to || !isNaN(+ctx.query.price_to));
 
     let priceToExpr = (ctx.query.price_to)
         ? 'products.price_leva <= ?'
