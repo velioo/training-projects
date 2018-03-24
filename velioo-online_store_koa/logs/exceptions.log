@@ -13299,3 +13299,1663 @@ SyntaxError: Unexpected token :
     at Module.require (module.js:585:17)
     at require (internal/module.js:11:18)
     at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:4:63)
+2018-3-24 09:10:33 error: uncaughtException: getOrders is not defined
+ReferenceError: getOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:25:30)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:12:36)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:10:42 error: uncaughtException: renderOrders is not defined
+ReferenceError: renderOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:25:30)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:12:36)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:10:56 error: uncaughtException: renderOrders is not defined
+ReferenceError: renderOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:25:30)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:12:36)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:11:02 error: uncaughtException: renderOrders is not defined
+ReferenceError: renderOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:25:30)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:12:36)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:11:02 error: uncaughtException: renderOrders is not defined
+ReferenceError: renderOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:25:30)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:12:36)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:11:06 error: uncaughtException: renderOrders is not defined
+ReferenceError: renderOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:25:30)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/app.js:12:36)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:11:27 error: uncaughtException: get `/employee/orders`: `middleware` must be a function, not `undefined`
+Error: get `/employee/orders`: `middleware` must be a function, not `undefined`
+    at Layer.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/layer.js:39:13)
+    at Array.forEach (<anonymous>)
+    at new Layer (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/layer.js:36:14)
+    at Router.register (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/router.js:553:15)
+    at Router.(anonymous function) [as get] (/home/velioo/training-projects/velioo-online_store_koa/node_modules/koa-router/lib/router.js:202:10)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:25:6)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+2018-3-24 09:11:46 error: uncaughtException: getOrders is not defined
+ReferenceError: getOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:318:116)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:119)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:12:19 error: uncaughtException: getOrders is not defined
+ReferenceError: getOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:318:116)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:119)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:16:44 error: uncaughtException: getOrders is not defined
+ReferenceError: getOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:318:116)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:119)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:16:51 error: uncaughtException: getOrders is not defined
+ReferenceError: getOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:318:116)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:119)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:16:57 error: uncaughtException: getOrders is not defined
+ReferenceError: getOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:318:116)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:138)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:17:06 error: uncaughtException: getOrders is not defined
+ReferenceError: getOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:318:116)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:7:85)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:17:13 error: uncaughtException: getOrders is not defined
+ReferenceError: getOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:318:116)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:7:85)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:17:20 error: uncaughtException: getOrders is not defined
+ReferenceError: getOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:318:116)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:7:85)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:17:32 error: uncaughtException: getOrders is not defined
+ReferenceError: getOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:318:116)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:7:85)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:17:48 error: uncaughtException: getOrders is not defined
+ReferenceError: getOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:318:116)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:7:85)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:17:53 error: uncaughtException: getOrders is not defined
+ReferenceError: getOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:318:116)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:7:85)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:18:14 error: uncaughtException: getOrders is not defined
+ReferenceError: getOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:318:116)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:7:85)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:18:27 error: uncaughtException: getOrders is not defined
+ReferenceError: getOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:318:116)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:7:85)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:18:34 error: uncaughtException: getOrders is not defined
+ReferenceError: getOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:318:116)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:7:85)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:18:42 error: uncaughtException: getOrders is not defined
+ReferenceError: getOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:318:116)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:7:85)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:19:14 error: uncaughtException: getOrders is not defined
+ReferenceError: getOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:318:116)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:7:85)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:19:32 error: uncaughtException: getOrders is not defined
+ReferenceError: getOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:318:116)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:7:85)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:19:43 error: uncaughtException: getOrders is not defined
+ReferenceError: getOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:318:116)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:7:85)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:19:51 error: uncaughtException: getOrders is not defined
+ReferenceError: getOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:318:116)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:7:85)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:20:30 error: uncaughtException: Unexpected identifier
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:320
+module.exports = { renderEmployeeLogin, employeeLogin, renderDashboard, employeeLogOut, getProducts, renderOrders, getOrders };
+^^^^^^
+
+SyntaxError: Unexpected identifier
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:7:85)
+2018-3-24 09:20:32 error: uncaughtException: getOrders is not defined
+ReferenceError: getOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:322:116)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:7:85)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:20:55 error: uncaughtException: getOrders is not defined
+ReferenceError: getOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:322:116)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:7:85)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:21:02 error: uncaughtException: getOrders is not defined
+ReferenceError: getOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:322:116)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:7:85)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:21:10 error: uncaughtException: getOrders is not defined
+ReferenceError: getOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:323:64)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:7:85)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:21:18 error: uncaughtException: getOrders is not defined
+ReferenceError: getOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:323:63)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:7:85)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:21:25 error: uncaughtException: getOrders is not defined
+ReferenceError: getOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:323:63)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:7:85)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:21:52 error: uncaughtException: getOrders is not defined
+ReferenceError: getOrders is not defined
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:322:116)
+    at Module._compile (module.js:641:30)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:7:85)
+    at Module._compile (module.js:641:30)
+2018-3-24 09:48:19 error: uncaughtException: Unexpected token )
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:119
+                    )
+                    ^
+
+SyntaxError: Unexpected token )
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 09:48:23 error: uncaughtException: Unexpected token )
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:119
+                    )
+                    ^
+
+SyntaxError: Unexpected token )
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 09:49:23 error: uncaughtException: Unexpected token )
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:117
+                ? filterCases[key] + filterInput + (()
+                                                     ^
+
+SyntaxError: Unexpected token )
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 09:51:20 error: uncaughtException: Unexpected token )
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:120
+                    )
+                    ^
+
+SyntaxError: Unexpected token )
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:18:10 error: uncaughtException: Unexpected token )
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:576
+                if ()
+                    ^
+
+SyntaxError: Unexpected token )
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:18:12 error: uncaughtException: Unexpected token )
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:576
+                if () {
+                    ^
+
+SyntaxError: Unexpected token )
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:18:17 error: uncaughtException: Unexpected token )
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:576
+                if () {
+                    ^
+
+SyntaxError: Unexpected token )
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:38:40 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:586
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:38:55 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:588
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:39:11 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:590
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:39:12 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:590
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:39:28 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:590
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:39:35 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:590
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:39:51 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:39:57 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:40:06 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:40:20 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:40:25 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:40:50 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:40:56 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:41:02 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:41:04 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:41:05 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:41:07 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:41:22 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:593
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:41:35 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:593
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:41:50 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:593
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:41:55 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:593
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:42:05 error: uncaughtException: Unexpected token )
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:571
+    while () {
+           ^
+
+SyntaxError: Unexpected token )
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:42:15 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:597
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:42:29 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:599
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:42:41 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:597
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:44:28 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:598
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:44:30 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:598
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:44:33 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:598
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:44:38 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:598
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:45:07 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:598
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:45:11 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:598
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:45:19 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:46:41 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:592
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:47:54 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:589
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:48:23 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:589
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:48:59 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:586
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:49:23 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:587
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:49:29 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:588
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:49:33 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:588
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:49:39 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:589
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:49:40 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:589
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:50:55 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:51:41 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:51:56 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:51:59 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:52:05 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:54:46 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:55:03 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:55:25 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:55:35 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:55:41 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:56:15 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:56:46 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:57:29 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:59:02 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:59:06 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:59:15 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:59:17 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:59:25 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 10:59:33 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 11:00:10 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 11:00:16 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 11:00:23 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 11:00:44 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 11:00:49 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 11:00:59 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 11:02:07 error: uncaughtException: Missing initializer in destructuring declaration
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:591
+        `, [offset];
+           ^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 11:36:45 error: uncaughtException: Unexpected token {
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:559
+    let result { rows: ordersArray }
+               ^
+
+SyntaxError: Unexpected token {
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 11:36:46 error: uncaughtException: Unexpected token {
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:559
+    let result { rows: ordersArray }
+               ^
+
+SyntaxError: Unexpected token {
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 11:36:48 error: uncaughtException: Unexpected token {
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:559
+    let result { rows: ordersArray };
+               ^
+
+SyntaxError: Unexpected token {
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)
+2018-3-24 11:56:25 error: uncaughtException: missing ) after argument list
+/home/velioo/training-projects/velioo-online_store_koa/app/controllers/backOfficeController.js:308
+            productArray.push(`<a href="#" data-id="' + escape(productRow.id) + '" class="delete_record">Изтрий</a>');
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: missing ) after argument list
+    at createScript (vm.js:80:10)
+    at Object.runInThisContext (vm.js:152:10)
+    at Module._compile (module.js:605:28)
+    at Object.Module._extensions..js (module.js:652:10)
+    at Module.load (module.js:560:32)
+    at tryModuleLoad (module.js:503:12)
+    at Function.Module._load (module.js:495:3)
+    at Module.require (module.js:585:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/velioo/training-projects/velioo-online_store_koa/app/routes/index.js:6:85)

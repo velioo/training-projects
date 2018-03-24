@@ -1,9 +1,9 @@
-// const logger = require('../helpers/logger');
 const Router = require('koa-router');
 const KoaBody = require('koa-body');
 const { list, getId, searchByName, getMenuItems, notFound } = require('../controllers/indexController');
 const { renderLogin, login, renderSignUp, signUp, logOut, confirmAccount } = require('../controllers/usersController');
-const { renderEmployeeLogin, employeeLogin, renderDashboard, employeeLogOut, getProducts } = require('../controllers/backOfficeController');
+const { renderEmployeeLogin, employeeLogin, renderDashboard,
+        employeeLogOut, getProducts, renderOrders, getOrders, changeOrderStatus } = require('../controllers/backOfficeController');
 const router = new Router();
 
 router
@@ -21,10 +21,10 @@ router
     .post('/employee_login', new KoaBody(), employeeLogin)
     .get('/employee/dashboard', renderDashboard)
     .get('/employee/log_out', employeeLogOut)
-    .get('/get_products', getProducts)
-    //~ .post('/products', KoaBody(), createProduct)
-    //~ .post('/products/:id', KoaBody, updateProduct)
-    //~ .delete('/products/:id', removeProduct)
+    .get('/employee/get_products', getProducts)
+    .get('/employee/orders', renderOrders)
+    .get('/employee/get_orders', getOrders)
+    .get('/employee/change_order_status', changeOrderStatus)
     .get('/not_found', notFound)
     .get('/', (ctx) => { ctx.redirect('/products'); });
 
