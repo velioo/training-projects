@@ -37,7 +37,7 @@ $(document).ready(function() {
             dataType: 'json'
         },
         ajaxProcessing: function(data){
-            console.log(data);
+            //console.log(data);
             var total, rows, headers;
             $('#profits_tbody').find('*').not('#profits').remove();
             $.each(data.sums, function(index, value) {

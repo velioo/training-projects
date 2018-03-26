@@ -6,22 +6,23 @@ exports.ROOT = ROOT;
 
 const RECORDS_PER_PAGE = 40;
 const MAX_RECORDS_PER_PAGE = 100;
+
 const logger = require('./helpers/logger');
-const Err = require('./helpers/error');
+const globalErrHandler = require('./helpers/error');
 const Authenticate = require('./helpers/authenticate');
 const { routes, allowedMethods } = require('./routes');
 const pug = require('./helpers/pug');
+const Mysql = require('./db/mysql');
 let dirs = {};
 
 const Koa = require('koa');
 const app = new Koa();
 const Session = require('koa-session');
 const StaticCache = require('koa-static-cache');
-const Mysql = require('./db/mysql');
 const Paginate = require('koa-ctx-paginate');
 const Validate = require('koa-validate');
 
-app.use(Err);
+app.use(globalErrHandler);
 
 app.use(new StaticCache('./assets', {
     maxAge: 365 * 24 * 60 * 60
@@ -47,7 +48,7 @@ app.use(Authenticate);
 app.use((ctx) => {
     logger.info('Checking if 404');
 
-    if (404 != ctx.status) {
+    if (ctx.status !== 404) {
         return;
     }
 

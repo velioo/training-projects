@@ -16,16 +16,15 @@ $(document).ready(function () {
             $.post(changeStatusUrl, {orderId: orderId, statusId: statusId}, function (data, status) {
                 if (data) {
                     //infoLog += '\nchange_order_status.js/#orders_table: Request successfull\n';
-                    //notification(orderId);
+                    notification(orderId);
                 } else {
                     //infoLog += '\nchange_order_status.js/#orders_table: Request failed\n';
                     window.alert("Възникна проблем при обработката на заявката ви.");
                 }
                 //logger.info(//infoLog);
                 //infoLog = "";
-            });
-
-            fail(function(xmlObject, status, errorThrown) {
+            })
+            .fail(function(xmlObject, status, errorThrown) {
                 if (status === 'timeout') {
                     //infoLog += 'change_order_status.js/#orders_table: Request timed out\n';
                     window.alert("Request timed out");

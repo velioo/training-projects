@@ -2,8 +2,16 @@ const Router = require('koa-router');
 const KoaBody = require('koa-body');
 const { list, getId, searchByName, getMenuItems, notFound } = require('../controllers/indexController');
 const { renderLogin, login, renderSignUp, signUp, logOut, confirmAccount } = require('../controllers/usersController');
-const { renderEmployeeLogin, employeeLogin, renderDashboard,
-        employeeLogOut, getProducts, renderOrders, getOrders, changeOrderStatus } = require('../controllers/backOfficeController');
+const {
+  renderEmployeeLogin,
+  employeeLogin,
+  renderDashboard,
+  employeeLogOut,
+  getProducts,
+  renderOrders,
+  getOrders,
+  changeOrderStatus
+  } = require('../controllers/backOfficeController');
 const router = new Router();
 
 router
@@ -24,9 +32,43 @@ router
     .get('/employee/get_products', getProducts)
     .get('/employee/orders', renderOrders)
     .get('/employee/get_orders', getOrders)
-    .get('/employee/change_order_status', changeOrderStatus)
+    .post('/employee/change_order_status', new KoaBody(), changeOrderStatus)
     .get('/not_found', notFound)
     .get('/', (ctx) => { ctx.redirect('/products'); });
 
 exports.routes = router.routes();
 exports.allowedMethods = router.allowedMethods();
+
+
+
+// router.use('/countries', countries().routes());
+// router.use('/velio', countries().routes());
+
+
+// const countries =  (queriesFactory, configuredMethods = {}) => {
+//   const router = new Router();
+//   const pgCrud = pgCrudFactory(queriesFactory, configuredMethods);
+
+//   // GET /
+//   router.get('/', pgCrud.initialize, pgCrud.get);
+
+//   // GET /:id
+//   router.get('/:id', pgCrud.initialize, pgCrud.getById);
+
+//   // POST /
+//   router.post('/', pgCrud.initialize, pgCrud.post);
+
+//   // POST /multi
+//   router.post('/multi', pgCrud.initialize, pgCrud.postMulti);
+
+//   // DELETE /
+//   router.delete('/:id', pgCrud.initialize, pgCrud.delete);
+
+//   // DELETE /multi
+//   router.delete('/multi', pgCrud.initialize, pgCrud.deleteMulti);
+
+//   // PUT /:id
+//   router.put('/:id', pgCrud.initialize, pgCrud.put);
+
+//   return router;
+// };

@@ -30,7 +30,7 @@ async function login(ctx, next) {
 
     let error = "";
 
-    if (userData instanceof Array && userData.length === 1 && (sha256(ctx.request.body.password + userData[0].salt) === userData[0].password)) {
+    if (userData.length === 1 && (sha256(ctx.request.body.password + userData[0].salt) === userData[0].password)) {
 
         if (+userData[0].confirmed === 1) {
             ctx.session.userData = { userId: userData[0].id };
@@ -111,14 +111,14 @@ async function signUp(ctx, next) {
     };
 
     const userDbfields = ['name', 'last_name', 'email', 'password', 'salt', 'gender', 'phone', 'phone_unformatted', 'country', 'region', 'street_address'];
-    const userDbData = userDbfields.map(fieldName => userData[ fieldName ]);
+    const userDbData = userDbfields.map( (fieldName) => userData[ fieldName ]);
 
-    if(ctx.errors.length === 0) {
+    if(ctx.errors.length === 0) { // if is too long
 
         let resultSetHeader = await ctx.myPool().query(`
             INSERT INTO users (name, last_name, email, password, salt, gender, phone, phone_unformatted, country, region, street_address)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            `, userDbData);
+            `, userDbData); // use dbFields
 
         logger.info('Result from insert = ' + resultSetHeader.insertId);
         logger.info('ResultsetHeader = %o', resultSetHeader);
@@ -145,7 +145,7 @@ async function signUp(ctx, next) {
                   }
                 });
 
-                let mailOptions = {
+                let mailOptions = { // in pug template
                     from: 'Darth Velioo <velioocs@gmail.com>',
                     to: ctx.request.body.email,
                     subject: "Confirm email",
@@ -239,7 +239,7 @@ async function confirmAccount(ctx, next) {
 
     let message;
 
-    if(userTempData && userTempData.length > 0) {
+    if (userTempData.length > 0) {
 
         let userId = userTempData[0].user_id;
 

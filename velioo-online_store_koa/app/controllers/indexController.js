@@ -1,5 +1,6 @@
 const DEFAULT_PRODUCT_ORDER = 'newest';
 const HOMEPAGE_PRODUCTS_LIMIT = 40;
+
 const logger = require('../helpers/logger');
 
 const assert = require('assert');
@@ -9,7 +10,7 @@ async function list(ctx, next) {
     logger.info('In list()');
 
     let limit = HOMEPAGE_PRODUCTS_LIMIT;
-    let offset = (ctx.query.page)
+    let offset = (ctx.query.page) // simplify
         ? (+ctx.query.page > 0)
             ? +ctx.query.page * limit - limit
             : 0
@@ -30,7 +31,7 @@ async function list(ctx, next) {
 
     ctx.render('index.pug', {
         products: query,
-        logged: (ctx.session && ctx.session.userData && ctx.session.userData.userId)
+        logged: (ctx.session && ctx.session.userData && ctx.session.userData.userId) //ctx.session.isUserLoggedIn (example)
     });
 }
 
@@ -49,7 +50,7 @@ async function getId(ctx, next) {
             products.id = ?
         `, [id]);
 
-    assert(productRows.length === 1 || productRows.length === 0);
+    assert(productRows.length <= 1);
 
     if (productRows.length === 1) {
         ctx.render('product.pug', {
@@ -65,13 +66,17 @@ async function searchByName(ctx, next) {
     ctx.status = 200;
 
     logger.info('Query string = %o', ctx.query);
-
-    if (ctx.query.search_input) {
-        ctx.query.search_input = ctx.query.search_input.replace(/%/g, "!%").replace(/_/g, "!_").replace(/'/g, "\\'").replace(/"/g, '\\"');
+    //can assert length of string
+    if (ctx.query.search_input) { // move in variable
+        ctx.query.search_input = ctx.query.search_input // move in function
+            .replace(/%/g, '!%')
+            .replace(/_/g, '!_')
+            .replace(/'/g, "\\'")
+            .replace(/"/g, '\\"');
     }
 
-    let searchInputExpr1 = (ctx.query.search_input)
-        ? "products.name LIKE '%" + ctx.query.search_input + "%' ESCAPE '!'"
+    let searchInputExpr1 = (ctx.query.search_input)// use const where you can
+        ? `products.name LIKE '%${ctx.query.search_input}%' ESCAPE '!'`
         : true;
 
     let searchInputExpr2 = (ctx.query.search_input)
@@ -138,15 +143,17 @@ async function searchByName(ctx, next) {
         latest_updated: 'products.updated_at DESC'
     };
 
-    assert((!ctx.query.sort_products && sortCases[DEFAULT_PRODUCT_ORDER]) || sortCases[ctx.query.sort_products]);
+    const orderByExpr = sortCases[ ctx.query.sort_products ] || sortCases[ DEFAULT_PRODUCT_ORDER ];
+    //assert((!ctx.query.sort_products && sortCases[DEFAULT_PRODUCT_ORDER]) || sortCases[ctx.query.sort_products]);
+    assert(orderByExpr);
 
-    let orderByExpr = (ctx.query.sort_products)
-        ? sortCases[ctx.query.sort_products]
-        : sortCases[DEFAULT_PRODUCT_ORDER];
+    // let orderByExpr = (ctx.query.sort_products)
+    //     ? sortCases[ctx.query.sort_products]
+    //     : sortCases[DEFAULT_PRODUCT_ORDER];
 
     logger.info('Sort products by = ' + ctx.query.sort_products);
 
-    let limit = +ctx.query.limit || 40;
+    let limit = +ctx.query.limit;
 
     assert(!isNaN(limit));
 
@@ -167,23 +174,23 @@ async function searchByName(ctx, next) {
     logger.info("Offset = " + offset);
 
     let productsQuery = `
-        SELECT products.*, categories.name as category, categories.id as category_id
-        FROM products
-        JOIN categories ON categories.id=products.category_id
-        LEFT JOIN product_tags ON product_tags.product_id=products.id
-        LEFT JOIN tags ON tags.id=product_tags.tag_id
+        SELECT p.*, c.name as category, c.id as category_id
+        FROM products as p
+        JOIN categories as c ON c.id = p.category_id
+        LEFT JOIN product_tags as pt ON pt.product_id = p.id
+        LEFT JOIN tags ON tags.id = pt.tag_id
         WHERE
             (${searchInputExpr1} OR ${searchInputExpr2})
             AND ${tagsExpr}
             AND ${priceFromExpr}
             AND ${priceToExpr}
             AND ${categoryExpr}
-        GROUP BY products.id
+        GROUP BY p.id
         ORDER BY ${orderByExpr}
         LIMIT ?
         OFFSET ?
         `;
-
+ // as above
     let productsCountQuery = `
         SELECT COUNT(1) as count
         FROM
@@ -217,12 +224,16 @@ async function searchByName(ctx, next) {
         GROUP BY tags.name
         `;
 
-    let productsRows = await ctx.myPool().query(productsQuery, productsQueryArgs);
+    let productsRows = await ctx.myPool().query(productsQuery, [
+        ...productsQueryArgs,  // remove offset and limit from queryArgs
+        offset,
+        limit
+    ]); // inline sql
 
     assert(productsRows.length >= 0);
 
-    productsQueryArgs.pop();
-    productsQueryArgs.pop();
+    /*productsQueryArgs.pop();
+    productsQueryArgs.pop();*/
 
     //logger.info('Query = '' + productsQuery);
     //logger.info('ProductsRows = %o', productsRows);
@@ -234,7 +245,7 @@ async function searchByName(ctx, next) {
 
     assert(productsCountRows.length >= 0);
 
-    let productsCount = productsCountRows.shift().count;
+    let productsCount = productsCountRows[0].count;
 
     //logger.info('Products count = ' + productsCount);
     //logger.info('ProductsCountRows = %o' + productsCountRows);
@@ -248,9 +259,11 @@ async function searchByName(ctx, next) {
     //logger.info('Tags count = ' + tagRows.length);
 
     let processedTagRows = {};
+
     if (tagRows.length > 0) {
+        // do with Array.reduce
         tagRows.forEach(function (tagRow) {
-            ////logger.info('TagRow = %o', tagRow);
+            //logger.info('TagRow = %o', tagRow);
 
             let newTagRow = {};
 
@@ -305,7 +318,7 @@ async function notFound(ctx) {
     //logger.info('In not_found()');
 
     ctx.status = 404;
-    ctx.render('not_found', {message: 'Resource Not Found'});
+    ctx.render('not_found', { message: 'Resource Not Found' });
 }
 
 module.exports = { list, getId, searchByName, getMenuItems, notFound };

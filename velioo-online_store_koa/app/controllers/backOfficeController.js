@@ -26,8 +26,9 @@ async function employeeLogin(ctx, next) {
             username = ?
         `, [ctx.request.body.username]);
 
-    if (userData instanceof Array && userData.length === 1 && (sha256(ctx.request.body.password + userData[0].salt) === userData[0].password)) {
-        
+    // whole check in function checkLogin(username, pass)
+    if (userData.length === 1 && (sha256(ctx.request.body.password + userData[0].salt) === userData[0].password)) {
+
         ctx.session.employeeData = { employeeId: userData[0].id };
 
         return ctx.redirect('/employee/dashboard');
@@ -79,24 +80,25 @@ async function getProducts(ctx, next) {
     let sortColumns = {};
     let filterColumns = {};
 
-    Object.keys(ctx.query).forEach(function (key) {
-        if (key.startsWith('col[')) {
-            if (typeof (+key.charAt(4)) === 'number') {
-                sortColumns[+key.charAt(4)] = ctx.query[key];
+    Object.keys(ctx.query)
+        .forEach(function (key) {
+            if (key.startsWith('col[')) {
+                if (typeof (+key.charAt(4)) === 'number') {
+                    sortColumns[+key.charAt(4)] = ctx.query[key];
+                }
             }
-        }
-        if (key.startsWith('fcol[')) {
-            if (typeof (+key.charAt(5)) === 'number') {
-                filterColumns[+key.charAt(5)] = ctx.query[key];
+            if (key.startsWith('fcol[')) {
+                if (typeof (+key.charAt(5)) === 'number') {
+                    filterColumns[+key.charAt(5)] = ctx.query[key];
+                }
             }
-        }
-    });
+        });
 
     logger.info('sortColumns = %o', sortColumns);
     logger.info('filterColumns = %o', filterColumns);
 
     const filterCases = {
-        '0': "products.created_at LIKE '%",
+        0: "products.created_at LIKE '%",
         '1': "products.updated_at LIKE '%",
         '2': "products.name LIKE '%",
         '3': "categories.name LIKE '%",
@@ -108,7 +110,7 @@ async function getProducts(ctx, next) {
 
     let filterExprs = [true, true, true, true, true, true, true, true];
 
-    if (Object.keys(filterColumns).length !== 0 && filterColumns.constructor === Object) {
+    if (Object.keys(filterColumns).length !== 0) {
         Object.keys(filterColumns).forEach(function (key) {
             let filterInput = filterColumns[key].replace(/%/g, "!%").replace(/_/g, "!_").replace(/'/g, "\\'").replace(/"/g, '\\"');
 
@@ -168,6 +170,30 @@ async function getProducts(ctx, next) {
     productsQueryArgs.push(ctx.query.price_to || true);
 
     logger.info('PriceToExpr = ' + priceToExpr);
+
+
+
+
+    // ivan({
+    //     'DATE(products.created_at) <= ?': ctx.query.sometvalue,
+    //     'DATE(products.created_at2) <= ?': ctx.query.somethingelse
+    // })
+
+    // ivan = (params) => {
+    //     const exprs = [];
+    //     const vals = []
+        
+    //     for(let [expr, value] of params) {
+    //         exprs.push(value ? exprs : '?')
+    //         vals.push(value ? value : true)
+    //     }
+
+    //     return {
+    //         exprs,
+    //         vals
+    //     }
+    // }
+
 
     const sortCases = {
         '0': 'products.created_at ',
@@ -324,7 +350,7 @@ async function getOrders(ctx, next) {
     let sortColumns = {};
     let filterColumns = {};
 
-    Object.keys(ctx.query).forEach(function (key) {
+    Object.keys(ctx.query).forEach(function (key) { // in function
         if (key.startsWith('col[')) {
             if (typeof (+key.charAt(4)) === 'number') {
                 sortColumns[+key.charAt(4)] = ctx.query[key];
@@ -523,7 +549,7 @@ async function getOrders(ctx, next) {
     let ordersArray = [];
 
     if (ordersRows.length > 0) {
-        ordersRows.forEach(function (orderRow) {
+        ordersRows.forEach(function (orderRow) { // use pug to create html string
             orderArray.push(escape(orderRow.order_created_at));
             orderArray.push(escape(orderRow.order_updated_at));
             orderArray.push(escape(orderRow.order_id));
@@ -583,7 +609,7 @@ async function getOrders(ctx, next) {
         `;
 
     let ordersCount = 0;
-    let ordersSums = { 'Всички': 0.00, 'Настоящи': 0.00, 'Очаквани': 0.00 };
+    let ordersSums = { 'Всички': 0.00, 'Настоящи': 0.00, 'Очаквани': 0.00 }; //  don't use float use int or bigInt libarary
     let orderStatusesRows;
 
     logger.info('Offset = ' + offset);
@@ -607,7 +633,7 @@ async function getOrders(ctx, next) {
             }
         });
 
-        logger.info('Offset = ' + offset);
+        //logger.info('Offset = ' + offset);
 
         offset += ORDER_STATUSES_QUERY_LIMIT;
         orderStatusesQueryArgs[orderStatusesQueryArgs.length - 1] = offset;
@@ -620,13 +646,32 @@ async function getOrders(ctx, next) {
     result.total_rows = ordersCount;
     result.sums = ordersSums;
 
-    logger.info('Result = %o', result);
+    //logger.info('Result = %o', result);
 
     ctx.body = result;
 }
 
-async function changeOrderStatus(ctx, next) {
+// async function changeOrderStatus(ctx, next) {
 
-}
+//     if (ctx.request.body.statusId && ctx.request.body.orderId) {
+//         assert(!isNaN(ctx.request.body.statusId) && !isNaN(ctx.request.body.orderId));
+
+//         let resultSetHeader = await ctx.myPool().query(`
+//             UPDATE orders
+//             SET
+//                 status_id = ?,
+//             WHERE
+//                 id = ?
+//             `, [ctx.request.body.statusId, ctx.request.body.orderId]);
+
+//         logger.info('resultSetHeader = %o', resultSetHeader);
+
+//         if (resultSetHeader) {
+//             ctx.body = true;
+//         } else {
+//             ctx.body = false;
+//         }
+//     }
+// }
 
 module.exports = { renderEmployeeLogin, employeeLogin, renderDashboard, employeeLogOut, getProducts, renderOrders, getOrders, changeOrderStatus };
