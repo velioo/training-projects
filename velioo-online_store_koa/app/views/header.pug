@@ -42,26 +42,26 @@ script.
         var url = "#{root}menu_items";
         return url;
     }
-    
+
     function getActiveTab() {
         var tab = "#{category}";
         return tab;
     }
-    
+
     function getCategorySearchUrl() {
         var url = "#{root}search?category=";
         return url;
     }
 
-<script src="#{root}js/main_menu.js"></script> 
-    
-<div id="holder">   
+<script src="#{root}js/main_menu.js"></script>
+
+<div id="holder">
 <nav class="navbar" id="navigation_top">
   <div class="container-fluid" style="width: 1150px;">
     <div class="navbar-header">
       <a class="navbar-brand" href="/">Computer Store</a>
     </div>
-    <form action="#{root}search" method="get" class="navbar-form navbar-left" id="search_form"> 
+    <form action="#{root}search" method="get" class="navbar-form navbar-left" id="search_form">
       <div class="input-group">
         <input type="text" class="form-control" name="search_input" placeholder="Search" id="search_input">
         <div class="input-group-btn">
@@ -72,20 +72,20 @@ script.
       </div>
     </form>
     <ul class="nav navbar-nav navbar-right">
-    if !logged
+    if !isUserLoggedIn
         <li><a href="#{root}sign_up"><span class="glyphicon glyphicon-user"></span> Регистрация</a></li>
         <li><a href="#{root}login"><span class="glyphicon glyphicon-log-in"></span> Вход</a></li>
-    else 
+    else
         <li><a href="#"><img class="spinner cart" src="#"><span class="glyphicon glyphicon-shopping-cart" style="float:right;"> Количка</span></br><span id="cart_count_price"></span></a></li>
         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Моят профил</a></li>
         <li><a href="#{root}log_out"><span class="glyphicon glyphicon-log-in"></span> Изход</a></li>
     </ul>
-  </div>    
-</nav>  
-    
+  </div>
+</nav>
+
 <nav class="navbar" id="navigation_top2">
   <div class="container-fluid" style="width: 1150px;">
-    <ul class="nav navbar-nav" id="main_menu">      
+    <ul class="nav navbar-nav" id="main_menu">
 
       <li class="dropdown" id="components_tab">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="components_dropdown_tab">Компоненти
@@ -93,14 +93,14 @@ script.
         <ul class="dropdown-menu" id="components_dropdown">
 
         </ul>
-      </li>  
+      </li>
       <li class="dropdown" id="peripheral_tab">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="peripheral_dropdown_tab">Периферия
         <span class="caret"></span></a>
         <ul class="dropdown-menu" id="peripheral_dropdown">
-         
+
         </ul>
-      </li>     
+      </li>
       <img class="spinner menu" src="#{root}imgs/spinner.gif">
     </ul>
   </div>

@@ -1,4 +1,4 @@
-const Constants = require('../constants/constants');
+const CONSTANTS = require('../constants/constants');
 const { emailExists, phoneMatch } = require('../helpers/validations');
 const logger = require('../helpers/logger');
 var unique = require('../helpers/unique');
@@ -8,269 +8,268 @@ const Crypto = require('crypto');
 const assert = require('assert');
 const Nodemailer = require('nodemailer');
 
-async function renderLogin(ctx, next) {
-    ctx.status = 200;
+async function renderLogin (ctx, next) {
+  ctx.status = 200;
 
-    await next();
+  await next();
 
-    ctx.render('login.pug', {
-        user: {
-            logged: false
-        }
-    });
+  ctx.render('login.pug', {
+    user: {
+      isUserLoggedIn: ctx.session.isUserLoggedIn
+    }
+  });
 }
 
-async function login(ctx, next) {
-    let userData = await ctx.myPool().query(`
-        SELECT password, salt, id, confirmed
-        FROM users
-        WHERE
-            email = ?
-        `, [ctx.request.body.email]);
+async function login (ctx, next) {
+  let userData = await ctx.myPool().query(`
+    SELECT password, salt, id, confirmed
+    FROM users
+    WHERE
+      email = ?
+    `, [ctx.request.body.email]);
 
-    let error = "";
+  assert(userData.length <= 1);
 
-    if (userData.length === 1 && (sha256(ctx.request.body.password + userData[0].salt) === userData[0].password)) {
+  let error = '';
 
-        if (+userData[0].confirmed === 1) {
-            ctx.session.userData = { userId: userData[0].id };
-            return ctx.redirect('/products');
-        } else {
-            error = 'Email is not confirmed.';
-        }
+  if (userData.length === 1 && (sha256(ctx.request.body.password + userData[0].salt) === userData[0].password)) {
+    if (+userData[0].confirmed === 1) {
+      ctx.session.userData = { userId: userData[0].id };
+      ctx.session.isUserLoggedIn = true;
+      return ctx.redirect('/products');
     } else {
-        error = 'Wrong username or password.';
+      error = 'Email is not confirmed.';
     }
+  } else {
+    error = 'Wrong username or password.';
+  }
 
-    ctx.render('login.pug', {
-        error: error,
-        user: {
-            logged: false
-        }
-    });
+  ctx.render('login.pug', {
+    error: error,
+    user: {
+      isUserLoggedIn: ctx.session.isUserLoggedIn
+    }
+  });
 }
 
+async function renderSignUp (ctx, next) {
+  ctx.status = 200;
 
-async function renderSignUp(ctx, next) {
-    ctx.status = 200;
+  await next();
 
-    await next();
+  let countryRows = await ctx.myPool().query(`
+    SELECT nicename, phonecode
+    FROM countries
+    `);
 
-    let countryRows = await ctx.myPool().query(`
-        SELECT nicename, phonecode
-        FROM countries
-        `);
+  assert(countryRows.length >= 0);
 
-    ctx.render('signup.pug', {
-        countries: countryRows,
-        user: {
-            logged: false
-        }
-    });
+  ctx.render('signup.pug', {
+    countries: countryRows,
+    user: {
+      logged: false
+    }
+  });
 }
 
-async function signUp(ctx, next) {
+async function signUp (ctx, next) {
+  ctx.errors = [];
 
-    ctx.errors = [];
+  ctx.checkBody('name').len(2, 20, 'Name is too long or too short');
+  ctx.checkBody('last_name').optional().empty().len(2, 20, 'Last name is too long or too short');
+  ctx.checkBody('email').isEmail('Your entered a bad email.');
+  ctx.checkBody('phone');
+  ctx.checkBody('country').optional().empty().len(2, 64, 'Country is too long or too short');
+  ctx.checkBody('region').optional().empty().len(2, 64, 'Region is too long or too short');
+  ctx.checkBody('street_address').optional().empty().len(2, 64, 'Street address is too long is invalid');
+  ctx.checkBody('password').len(8, 255, 'Password is too short or too long');
+  ctx.checkBody('conf_password').eq(ctx.request.body.password, 'Passwords don\'t match');
+  ctx.checkBody('gender').default('Unknown');
 
-    ctx.checkBody('name').len(2, 20, 'Name is too long or too short');
-    ctx.checkBody('last_name').optional().empty().len(2, 20, 'Last name is too long or too short');
-    ctx.checkBody('email').isEmail('Your entered a bad email.');
-    ctx.checkBody('phone');
-    ctx.checkBody('country').optional().empty().len(2, 64, 'Country is too long or too short');
-    ctx.checkBody('region').optional().empty().len(2, 64, 'Region is too long or too short');
-    ctx.checkBody('street_address').optional().empty().len(2, 64, 'Street address is too long is invalid');
-    ctx.checkBody('password').len(8, 255, 'Password is too short or too long');
-    ctx.checkBody('conf_password').eq(ctx.request.body.password, 'Passwords don\'t match');
-    ctx.checkBody('gender').default('Unknown');
+  if (await emailExists(ctx)) {
+    ctx.errors.push({email_exists: 'Email already exists.'});
+  }
 
-    if (await emailExists(ctx)) {
-        ctx.errors.push({email_exists: 'Email already exists.'});
-    }
+  if (!phoneMatch(ctx.request.body.phone)) {
+    ctx.errors.push({phone: 'Your entered a bad phone.'});
+  }
 
-    if (!phoneMatch(ctx.request.body.phone)) {
-        ctx.errors.push({phone: 'Your entered a bad phone.'});
-    }
+  // console.log(ctx.request.body);
 
-    //console.log(ctx.request.body);
+  let salt = Crypto.randomBytes(32).toString('base64');
 
-    let salt = Crypto.randomBytes(32).toString('base64');
+  let userData = {
+    'name': ctx.request.body.name,
+    'last_name': ctx.request.body.last_name,
+    'email': ctx.request.body.email,
+    'password': sha256(ctx.request.body.password + salt),
+    'salt': salt,
+    'gender': (ctx.request.body.gender) ? ctx.request.body.gender : 'Unknown',
+    'phone': ctx.request.body.phone.replace(/[^0-9]/, ''),
+    'phone_unformatted': ctx.request.body.phone,
+    'country': ctx.request.body.country,
+    'region': ctx.request.body.region,
+    'street_address': ctx.request.body.street_address
+  };
 
-    let userData = {
-        'name': ctx.request.body.name,
-        'last_name': ctx.request.body.last_name,
-        'email': ctx.request.body.email,
-        'password': sha256(ctx.request.body.password + salt),
-        'salt': salt,
-        'gender': (ctx.request.body.gender) ? ctx.request.body.gender : 'Unknown',
-        'phone': ctx.request.body.phone.replace(/[^0-9]/, ""),
-        'phone_unformatted': ctx.request.body.phone,
-        'country': ctx.request.body.country,
-        'region': ctx.request.body.region,
-        'street_address': ctx.request.body.street_address
-    };
+  const userDbfields = ['name', 'last_name', 'email', 'password', 'salt', 'gender', 'phone', 'phone_unformatted', 'country', 'region', 'street_address'];
+  const userDbData = userDbfields.map((fieldName) => userData[ fieldName ]);
 
-    const userDbfields = ['name', 'last_name', 'email', 'password', 'salt', 'gender', 'phone', 'phone_unformatted', 'country', 'region', 'street_address'];
-    const userDbData = userDbfields.map( (fieldName) => userData[ fieldName ]);
+  if (ctx.errors.length === 0) { // if is too long
+    let resultSetHeader = await ctx.myPool().query(`
+      INSERT INTO users (name, last_name, email, password, salt, gender, phone, phone_unformatted, country, region, street_address)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      `, userDbData); // use dbFields
 
-    if(ctx.errors.length === 0) { // if is too long
+    logger.info('Result from insert = ' + resultSetHeader.insertId);
+    logger.info('ResultsetHeader = %o', resultSetHeader);
 
-        let resultSetHeader = await ctx.myPool().query(`
-            INSERT INTO users (name, last_name, email, password, salt, gender, phone, phone_unformatted, country, region, street_address)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            `, userDbData); // use dbFields
+    if (resultSetHeader) {
+      let tempCode = unique();
 
-        logger.info('Result from insert = ' + resultSetHeader.insertId);
-        logger.info('ResultsetHeader = %o', resultSetHeader);
+      logger.info(`Temp code = ${tempCode}`);
 
-        if(resultSetHeader) {
-            let tempCode = unique();
+      let userId = resultSetHeader.insertId;
 
-            logger.info('Temp code = ' + tempCode);
+      resultSetHeader = await ctx.myPool().query(`
+        INSERT INTO temp_codes(user_id, hash, type)
+        VALUES(?, ?, ?)
+        `, [userId, tempCode, 'email']);
 
-            let userId = resultSetHeader.insertId;
+      if (resultSetHeader) {
+        let transporter = Nodemailer.createTransport({
+          service: 'gmail',
+          auth: {
+            user: 'vanime.staff@gmail.com',
+            pass: CONSTANTS.EMAIL_PASS
+          }
+        });
 
-            resultSetHeader = await ctx.myPool().query(`
-                INSERT INTO temp_codes(user_id, hash, type)
-                VALUES(?, ?, ?)
-                `, [userId, tempCode, 'email']);
+        let mailOptions = { // in pug template
+          from: 'Darth Velioo <velioocs@gmail.com>',
+          to: ctx.request.body.email,
+          subject: 'Confirm email',
+          text: 'Please confirm your account by clicking the link below.',
+          html: `Confirm Account: <p><a href="${CONSTANTS.ROOT}confirm_account/${tempCode}">\nClick here </a></p>`
+        };
 
-            if(resultSetHeader) {
+        let message;
 
-                let transporter = Nodemailer.createTransport({
-                  service: 'gmail',
-                  auth: {
-                    user: 'vanime.staff@gmail.com',
-                    pass: Constants.EMAIL_PASS
-                  }
-                });
+        transporter.sendMail(mailOptions, async function (error, info) {
+          if (error) {
+            logger.error('Error while sending mail: ' + error.stack);
+            message = 'There was an error while sending confirmation email. Please try again later.';
 
-                let mailOptions = { // in pug template
-                    from: 'Darth Velioo <velioocs@gmail.com>',
-                    to: ctx.request.body.email,
-                    subject: "Confirm email",
-                    text: 'Please confirm your account by clicking the link below.',
-                    html: 'Confirm Account: <p><a href="' + Constants.ROOT + 'confirm_account/' + tempCode + '"> \nClick here </a></p>'
-                }
-
-                let message;
-
-                transporter.sendMail(mailOptions, async function(error, info){
-                    if(error) {
-                        logger.error('Error while sending mail: ' + error.stack);
-                        message = 'There was an error while sending confirmation email. Please try again later.';
-
-                        ctx.errors.push({email_send: 'There was a problem while sending confirmation email.'});
-
-                        await ctx.myPool().query(`
-                            DELETE
-                            FROM users
-                            WHERE
-                                id = ?
-                            `, [userId]);
-
-                        await ctx.myPool().query(`
-                            DELETE
-                            FROM temp_codes
-                            WHERE
-                                user_id = ?
-                                AND type = 'email'
-                            `, [userId]);
-                    } else {
-                        message = 'A confirmation email was sent to your email address. Please confirm your account before logging in.';
-                    }
-
-                    transporter.close();
-                });
-
-                return ctx.render('login.pug', {
-                    message: message,
-                    user: {}
-                });
-
-            } else {
-
-                logger.error('Failed to insert into temp_codes.');
-
-                let resultSetHeader = await ctx.myPool().query(`
-                    DELETE
-                    FROM users
-                    WHERE
-                        id = ?
-                    `, [userId]);
-
-                if (!resultSetHeader) {
-                    throw Error('Error while deleting temp_codes table row. User id = ' + userId + '. Status = ' + resultSetHeader);
-                }
-            }
-        }
-    }
-
-    let countryRows = await ctx.myPool().query(`
-        SELECT nicename, phonecode
-        FROM countries
-        `);
-
-    ctx.render('signup.pug', {
-        user: userData,
-        countries: countryRows,
-        errors: ctx.errors
-    });
-}
-
-async function logOut(ctx, next) {
-
-    await next();
-
-    if(ctx.session.userData) {
-        ctx.session.userData = null;
-        ctx.redirect('/products');
-    }
-}
-
-async function confirmAccount(ctx, next) {
-
-    let userTempData = await ctx.myPool().query(`
-        SELECT *
-        FROM temp_codes
-        WHERE
-            hash = ?
-        `, [ctx.params.code]);
-
-    let message;
-
-    if (userTempData.length > 0) {
-
-        let userId = userTempData[0].user_id;
-
-        let resultSetHeader = await ctx.myPool().query(`
-            UPDATE users
-            SET confirmed = 1
-            WHERE
-                id = ?
-            `, [userId]);
-
-        if(resultSetHeader) {
+            ctx.errors.push({email_send: 'There was a problem while sending confirmation email.'});
 
             await ctx.myPool().query(`
-                DELETE
-                FROM temp_codes
-                WHERE
-                    hash = ?
-                `, [ctx.params.code]);
+              DELETE
+              FROM users
+              WHERE
+                id = ?
+              `, [userId]);
 
-            message = 'You succecssfully validated your account.';
-        } else {
-            message = 'There was a problem confirming your account.';
+            await ctx.myPool().query(`
+              DELETE
+              FROM temp_codes
+              WHERE
+                user_id = ?
+                AND type = 'email'
+              `, [userId]);
+          } else {
+            message = 'A confirmation email was sent to your email address. Please confirm your account before logging in.';
+          }
+
+          transporter.close();
+        });
+
+        return ctx.render('login.pug', {
+          message: message,
+          user: {}
+        });
+      } else {
+        logger.error('Failed to insert into temp_codes.');
+
+        let resultSetHeader = await ctx.myPool().query(`
+          DELETE
+          FROM users
+          WHERE
+            id = ?
+          `, [userId]);
+
+        if (!resultSetHeader) {
+          throw Error(`Error while deleting temp_codes table row. User id = ${userId}. Status = ${resultSetHeader}`);
         }
-    } else {
-        message = 'Link is invalid or has expired.';
+      }
     }
+  }
 
-    ctx.render('login.pug', {
-        message: message,
-        user: {}
-    });
+  let countryRows = await ctx.myPool().query(`
+    SELECT nicename, phonecode
+    FROM countries
+    `);
+
+  assert(countryRows.length >= 0);
+
+  ctx.render('signup.pug', {
+    user: userData,
+    countries: countryRows,
+    errors: ctx.errors
+  });
+}
+
+async function logOut (ctx, next) {
+  await next();
+
+  if (ctx.session.isUserLoggedIn) {
+    ctx.session.userData = null;
+    ctx.session.isUserLoggedIn = null;
+    ctx.redirect('/products');
+  }
+}
+
+async function confirmAccount (ctx, next) {
+  let userTempData = await ctx.myPool().query(`
+    SELECT *
+    FROM temp_codes
+    WHERE
+      hash = ?
+    `, [ctx.params.code]);
+
+  assert(userTempData.length <= 1);
+
+  let message;
+
+  if (userTempData.length > 0) {
+    let userId = userTempData[0].user_id;
+
+    let resultSetHeader = await ctx.myPool().query(`
+      UPDATE users
+      SET confirmed = 1
+      WHERE
+        id = ?
+      `, [userId]);
+
+    if (resultSetHeader) {
+      await ctx.myPool().query(`
+        DELETE
+        FROM temp_codes
+        WHERE
+          hash = ?
+        `, [ctx.params.code]);
+
+      message = 'You succecssfully validated your account.';
+    } else {
+      message = 'There was a problem confirming your account.';
+    }
+  } else {
+    message = 'Link is invalid or has expired.';
+  }
+
+  ctx.render('login.pug', {
+    message: message,
+    user: {}
+  });
 }
 
 module.exports = { renderLogin, login, renderSignUp, signUp, logOut, confirmAccount };

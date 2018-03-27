@@ -22,6 +22,7 @@
     "koa-static-cache": "^5.1.2",
     "koa-validate": "^1.0.7",
     "koa2-mysql-wrapper": "^2.0.1",
+    "lodash": "^4.17.5",
     "nodemailer": "^4.6.2"
   }
 }

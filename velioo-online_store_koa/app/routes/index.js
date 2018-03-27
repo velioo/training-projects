@@ -11,64 +11,49 @@ const {
   renderOrders,
   getOrders,
   changeOrderStatus
-  } = require('../controllers/backOfficeController');
+} = require('../controllers/backOfficeController');
 const router = new Router();
 
+const employees = () => {
+  const router = new Router();
+
+  router
+    .get('/dashboard', renderDashboard)
+    .get('/log_out', employeeLogOut)
+    .get('/get_products', getProducts)
+    .get('/orders', renderOrders)
+    .get('/get_orders', getOrders)
+    .post('/change_order_status', new KoaBody(), changeOrderStatus);
+
+  return router;
+};
+
+const products = () => {
+  const router = new Router();
+
+  router
+    .get('/', list)
+    .get('/:id([0-9]+)', getId);
+
+  return router;
+};
+
 router
-    .get('/products', list)
-    .get('/products/:id([0-9]+)', getId)
-    .get('/search', searchByName)
-    .get('/menu_items', getMenuItems)
-    .get('/login', renderLogin)
-    .post('/login', new KoaBody(), login)
-    .get('/sign_up', renderSignUp)
-    .post('/sign_up', new KoaBody(), signUp)
-    .get('/log_out', logOut)
-    .get('/confirm_account/:code', confirmAccount)
-    .get('/employee_login', renderEmployeeLogin)
-    .post('/employee_login', new KoaBody(), employeeLogin)
-    .get('/employee/dashboard', renderDashboard)
-    .get('/employee/log_out', employeeLogOut)
-    .get('/employee/get_products', getProducts)
-    .get('/employee/orders', renderOrders)
-    .get('/employee/get_orders', getOrders)
-    .post('/employee/change_order_status', new KoaBody(), changeOrderStatus)
-    .get('/not_found', notFound)
-    .get('/', (ctx) => { ctx.redirect('/products'); });
+  .get('/search', searchByName)
+  .get('/menu_items', getMenuItems)
+  .get('/login', renderLogin)
+  .post('/login', new KoaBody(), login)
+  .get('/sign_up', renderSignUp)
+  .post('/sign_up', new KoaBody(), signUp)
+  .get('/log_out', logOut)
+  .get('/confirm_account/:code', confirmAccount)
+  .get('/employee_login', renderEmployeeLogin)
+  .post('/employee_login', new KoaBody(), employeeLogin)
+  .get('/not_found', notFound)
+  .get('/', (ctx) => { ctx.redirect('/products'); });
+
+router.use('/employee', employees().routes());
+router.use('/products', products().routes());
 
 exports.routes = router.routes();
 exports.allowedMethods = router.allowedMethods();
-
-
-
-// router.use('/countries', countries().routes());
-// router.use('/velio', countries().routes());
-
-
-// const countries =  (queriesFactory, configuredMethods = {}) => {
-//   const router = new Router();
-//   const pgCrud = pgCrudFactory(queriesFactory, configuredMethods);
-
-//   // GET /
-//   router.get('/', pgCrud.initialize, pgCrud.get);
-
-//   // GET /:id
-//   router.get('/:id', pgCrud.initialize, pgCrud.getById);
-
-//   // POST /
-//   router.post('/', pgCrud.initialize, pgCrud.post);
-
-//   // POST /multi
-//   router.post('/multi', pgCrud.initialize, pgCrud.postMulti);
-
-//   // DELETE /
-//   router.delete('/:id', pgCrud.initialize, pgCrud.delete);
-
-//   // DELETE /multi
-//   router.delete('/multi', pgCrud.initialize, pgCrud.deleteMulti);
-
-//   // PUT /:id
-//   router.put('/:id', pgCrud.initialize, pgCrud.put);
-
-//   return router;
-// };
