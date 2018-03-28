@@ -1,6 +1,6 @@
 const Router = require('koa-router');
 const KoaBody = require('koa-body');
-const { list, getId, searchByName, getMenuItems, notFound } = require('../controllers/indexController');
+const { list, getId, searchProducts, getMenuItems, notFound } = require('../controllers/indexController');
 const { renderLogin, login, renderSignUp, signUp, logOut, confirmAccount } = require('../controllers/usersController');
 const {
   renderEmployeeLogin,
@@ -39,7 +39,7 @@ const products = () => {
 };
 
 router
-  .get('/search', searchByName)
+  .get('/search', searchProducts)
   .get('/menu_items', getMenuItems)
   .get('/login', renderLogin)
   .post('/login', new KoaBody(), login)

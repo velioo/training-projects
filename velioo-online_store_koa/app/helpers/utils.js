@@ -11,9 +11,9 @@ module.exports = {
     return escapedStr;
   },
   createExprs: (params) => {
-    console.log(params);
     const exprs = [];
     const vals = [];
+
     for (let [expr, value] of params) {
       exprs.push(value ? expr : '?');
       vals.push(value || true);
