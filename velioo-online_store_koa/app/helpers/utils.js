@@ -1,8 +1,10 @@
+const _ = require('lodash/lang');
+
 module.exports = {
   escapeSql: (str) => {
-    let escapedStr;
+    if (_.isNil(str)) return str;
 
-    escapedStr = str
+    const escapedStr = str
       .replace(/%/g, '!%')
       .replace(/_/g, '!_')
       .replace(/'/g, "\\'")

@@ -7,14 +7,14 @@ const assert = require('assert');
 const { getArrayPages } = require('koa-ctx-paginate');
 
 async function list (ctx, next) {
-  let limit = HOMEPAGE_PRODUCTS_LIMIT;
-  let offset = (+ctx.query.page > 0)
+  const limit = HOMEPAGE_PRODUCTS_LIMIT;
+  const offset = (+ctx.query.page > 0)
     ? +ctx.query.page * limit - limit
     : 0;
 
   assert(!isNaN(offset));
 
-  let productsRows = await ctx.myPool().query(`
+  const productsRows = await ctx.myPool().query(`
     SELECT products.*
     FROM products
     JOIN categories ON categories.id = products.category_id
@@ -29,16 +29,16 @@ async function list (ctx, next) {
 
   ctx.render('index.pug', {
     products: productsRows,
-    isUserLoggedIn: (ctx.session.isUserLoggedIn)
+    isUserLoggedIn: ctx.session.isUserLoggedIn
   });
 }
 
 async function getId (ctx, next) {
-  let id = +ctx.params.id;
+  const id = +ctx.params.id;
 
   assert(!isNaN(id));
 
-  let productRows = await ctx.myPool().query(`
+  const productRows = await ctx.myPool().query(`
     SELECT products.*
     FROM products
     JOIN categories ON categories.id = products.category_id
@@ -51,7 +51,7 @@ async function getId (ctx, next) {
   if (productRows.length === 1) {
     ctx.render('product.pug', {
       product: productRows[0],
-      isUserLoggedIn: (ctx.session.isUserLoggedIn)
+      isUserLoggedIn: ctx.session.isUserLoggedIn
     });
   } else {
     return ctx.redirect('/not_found');
@@ -61,106 +61,41 @@ async function getId (ctx, next) {
 async function searchProducts (ctx, next) {
   ctx.status = 200;
 
-  let productsQueryArgs = [];
-  let tagsQueryArgs = [];
-
   logger.info('Query string = %o', ctx.query);
-  // let queryStrObj = {...ctx.query...};
-  // let queryStrObj = assertQueryStr(queryStrObj)
-  // Put query string fields in an object then assert object and pass it to processQueryString
-  // queryArgs = Utils.processQueryString(queryStrObj)
 
   const queryArgs = Utils.processQueryStr(ctx.query);
 
   logger.info('QueryArgs = %o', queryArgs);
 
-  logger.info('ProductsQueryArgs = %o', productsQueryArgs);
-  logger.info('TagsQueryArgs = %o', tagsQueryArgs);
+  const productsRows = await Utils.executeProductsQuery(ctx, queryArgs);
 
-  let productsRows = await ctx.myPool().query(`
-    SELECT p.*, c.name as category, c.id as category_id
-    FROM products as p
-    JOIN categories as c ON c.id = p.category_id
-    LEFT JOIN product_tags as pt ON pt.product_id = p.id
-    LEFT JOIN tags ON tags.id = pt.tag_id
-    WHERE
-      (${queryArgs.exprs[0]} OR ${queryArgs.exprs[1]})
-      AND ${queryArgs.exprs[2]}
-      AND ${queryArgs.exprs[3]}
-      AND ${queryArgs.exprs[4]}
-      AND ${queryArgs.exprs[5]}
-    GROUP BY p.id
-    ORDER BY ${queryArgs.exprs[6]} LIMIT ?
-    OFFSET ?
-    `, [
-    ...queryArgs.vals,
-    queryArgs.limit,
-    queryArgs.offset
-  ]);
-
-  logger.info('ProductsRows = %o', productsRows);
+  logger.info('ProductsRows[0] = %o', productsRows[0]);
 
   assert(productsRows.length >= 0);
 
-  let productsCountRows = await ctx.myPool().query(`
-    SELECT COUNT(1) as count
-    FROM
-      (
-        SELECT p.id
-        FROM products as p
-        JOIN categories as c ON c.id = p.category_id
-        LEFT JOIN product_tags as pt ON pt.product_id = p.id
-        LEFT JOIN tags ON tags.id = pt.tag_id
-        WHERE
-          (${queryArgs.exprs[0]} OR ${queryArgs.exprs[1]})
-          AND ${queryArgs.exprs[2]}
-          AND ${queryArgs.exprs[3]}
-          AND ${queryArgs.exprs[4]}
-          AND ${queryArgs.exprs[5]}
-        GROUP BY p.id
-      ) a
-    `, [
-    ...queryArgs.vals
-  ]);
+  const productsCountRows = await Utils.executeProductsCountQuery(ctx, queryArgs);
 
   logger.info('ProductsCountRows = %o', productsCountRows);
 
   assert(productsCountRows.length >= 0);
 
-  let productsCount = productsCountRows[0].count;
+  const productsCount = productsCountRows[0].count;
 
   logger.info(`Products count = ${productsCount}`);
 
-  let tagRows = await ctx.myPool().query(`
-    SELECT tags.name, COUNT(tags.name) as tag_count
-    FROM products as p
-    JOIN categories as c ON c.id = p.category_id
-    JOIN product_tags as pt ON pt.product_id = p.id
-    JOIN tags ON tags.id = pt.tag_id
-    WHERE
-      ${queryArgs.exprs[0]}
-      AND ${queryArgs.exprs[3]}
-      AND ${queryArgs.exprs[4]}
-      AND ${queryArgs.exprs[5]}
-    GROUP BY tags.name
-    `, [
-    ...queryArgs.vals.slice(1)
-  ]);
+  const tagRows = await Utils.executeTagsQuery(ctx, queryArgs);
 
-  // logger.info('TagRows = %o', tagRows);
+  logger.info('TagRows[0] = %o', tagRows[0]);
 
   assert(tagRows.length >= 0);
 
   logger.info(`Tags count = ${tagRows.length}`);
 
-  let processedTagRows = Utils.processTagRows(tagRows, queryArgs.vals[0]);
-
-  // logger.info('Tags = %o', processedTagRows);
-
-  const pageCount = Math.ceil(productsCount / +ctx.query.limit);
+  const processedTagRows = Utils.processTagRows(tagRows, queryArgs.tags);
+  const pageCount = Math.ceil(productsCount / queryArgs.limit);
 
   ctx.render('index.pug', {
-    searchInput: queryArgs.inputStr,
+    searchInput: ctx.query.search_input,
     price_from: ctx.query.price_from,
     price_to: ctx.query.price_to,
     category: ctx.query.category,
@@ -176,7 +111,7 @@ async function searchProducts (ctx, next) {
 }
 
 async function getMenuItems (ctx) {
-  let items = await ctx.myPool().query(`
+  const items = await ctx.myPool().query(`
     SELECT id, name, type as c_type
     FROM categories
     `);

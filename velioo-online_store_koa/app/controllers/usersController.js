@@ -21,7 +21,7 @@ async function renderLogin (ctx, next) {
 }
 
 async function login (ctx, next) {
-  let userData = await ctx.myPool().query(`
+  const userData = await ctx.myPool().query(`
     SELECT password, salt, id, confirmed
     FROM users
     WHERE

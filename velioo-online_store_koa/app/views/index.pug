@@ -13,7 +13,7 @@ else
     h2 Нови Продукти
 
 <div class="container-fluid">
-    
+
 if tags
     <div class="filtering_menu">
     <form action="../search" method="get" id="filter_form">
@@ -38,8 +38,8 @@ if tags
 if !tags
     <div class="products_div" style="width:90%;">
 else
-    <div class="products_div"> Подреди по 
-    
+    <div class="products_div"> Подреди по&nbsp;
+
 if tags
     <select name="sort_products" id="sort_products">
     if !sort_products || sort_products == null || sort_products == 'newest'
@@ -62,17 +62,17 @@ if tags
     </form>
 
 <div class="row row-eq-height">
-          
+
 -var index = 0
 if products
     each val in products
         if index % 4 == 0 && index != 0
             </div>
             <div class="row row-eq-height">
-        <div class="col-sm-3 product" data-id="#{val.id}">  
+        <div class="col-sm-3 product" data-id="#{val.id}">
         <div class="image_product_wrapper">
         <a href="../products/#{val.id}">
-        
+
         if val.image
             img.product_image(src="../imgs/" + val.image onerror="" + "this.src='../imgs/no_image.png'")
         else
@@ -81,14 +81,14 @@ if products
         </div>
         <div class="product_wrapper">
         <a href="../products/#{val.id}" class="product_name no_underline">Име: #{val.name}</a></br>
-        <a href="#" class="product_category no_underline">Категория: #{val.category}</a></br>       
+        <a href="#" class="product_category no_underline">Категория: #{val.category}</a></br>
         <div class="product_price"><p style="font-size: 18px;">Цена: #{val.price_leva} лв.</p></div>
         if val.quantity >= 1
             <p style='color:blue;'>В наличност</p>
         else
-            <p style='color:red;'>Няма наличност</p>    
+            <p style='color:red;'>Няма наличност</p>
         </div>
-        </div>    
+        </div>
         -index++
 </div>
 </br></br>
@@ -97,7 +97,7 @@ if pages
     include ./_paginate.pug
 </div>
 </div>
-</div> 
+</div>
 
 </div>
 </div>

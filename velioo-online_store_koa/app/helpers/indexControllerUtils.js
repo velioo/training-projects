@@ -1,22 +1,33 @@
 const DEFAULT_PRODUCT_ORDER = 'newest';
-const MAX_INPUT_STRING_LEN = 100;
+const MAX_INPUT_STR_LEN = 100;
+const MIN_INPUT_STR_LEN = 1;
 
 const Utils = require('../helpers/utils');
 
 const assert = require('assert');
-const lodashLang = require('lodash/lang');
+const _ = require('lodash/lang');
 
 module.exports = {
-  processQueryStr: (queryStr) => {
-    let inputStr = queryStr.search_input;
+  processQueryStr: (queryStrObj) => {
+    const inputStr = Utils.escapeSql(queryStrObj.search_input);
+    const priceFrom = +queryStrObj.price_from;
+    const priceTo = +queryStrObj.price_to;
+    const categoryId = +queryStrObj.category;
+    const limit = +queryStrObj.limit;
+    const offset = +queryStrObj.page * limit - limit;
+    const tags = (!_.isNil(queryStrObj.tags) && !Array.isArray(queryStrObj.tags))
+      ? [queryStrObj.tags]
+      : queryStrObj.tags;
 
-    assert((!inputStr && lodashLang.isNil(inputStr)) || inputStr.length < MAX_INPUT_STRING_LEN);
+    assert((!inputStr && _.isNil(inputStr)) || inputStr.length < MAX_INPUT_STR_LEN);
+    assert((!_.isNil(tags) && Array.isArray(tags)) || _.isNil(tags));
+    assert(!priceFrom || !isNaN(+priceFrom));
+    assert(!priceTo || !isNaN(+priceTo));
+    assert(!categoryId || (!isNaN(+categoryId) && categoryId > 0));
+    assert(!isNaN(limit) && limit >= 0);
+    assert(!isNaN(offset) && offset >= 0);
 
-    if (inputStr) {
-      inputStr = Utils.escapeSql(inputStr);
-    }
-
-    const searchExpr = (inputStr)
+    const searchExpr = (!_.isNil(inputStr) && inputStr.length > MIN_INPUT_STR_LEN)
       ? `LIKE '%${inputStr}%' ESCAPE '!'`
       : true;
 
@@ -25,22 +36,11 @@ module.exports = {
       (searchExpr === true) ? true : `p.description ${searchExpr}`
     ];
 
-    let tags = queryStr.tags;
-
-    if (!lodashLang.isNil(tags) && !Array.isArray(tags)) {
-      tags = [tags];
-    }
-
-    assert((!lodashLang.isNil(tags) && Array.isArray(tags)) || lodashLang.isNil(tags));
-    assert(!queryStr.price_from || !isNaN(+queryStr.price_from));
-    assert(!queryStr.price_to || !isNaN(+queryStr.price_to));
-    assert(!queryStr.category || !isNaN(+queryStr.category));
-
-    let parsedExprs = Utils.createExprs(new Map([
+    const parsedExprs = Utils.createExprs(new Map([
       ['tags.name IN (?)', tags],
-      ['p.price_leva >= ?', queryStr.price_from],
-      ['p.price_leva <= ?', queryStr.price_to],
-      ['c.id = ?', queryStr.category]
+      ['p.price_leva >= ?', priceFrom],
+      ['p.price_leva <= ?', priceTo],
+      ['c.id = ?', categoryId]
     ]));
 
     const sortCases = {
@@ -50,18 +50,8 @@ module.exports = {
       latest_updated: 'p.updated_at DESC'
     };
 
-    const orderByExpr = sortCases[ queryStr.sort_products ] || sortCases[ DEFAULT_PRODUCT_ORDER ];
+    const orderByExpr = sortCases[ queryStrObj.sort_products ] || sortCases[ DEFAULT_PRODUCT_ORDER ];
     assert(orderByExpr);
-
-    let limit = +queryStr.limit;
-
-    assert(!isNaN(limit));
-
-    let offset = (+queryStr.page > 0)
-      ? +queryStr.page * limit - limit
-      : 0;
-
-    assert(!isNaN(offset));
 
     return {
       exprs: [
@@ -74,33 +64,91 @@ module.exports = {
       ],
       limit: limit,
       offset: offset,
-      inputStr: inputStr
+      tags: tags
     };
   },
   processTagRows: (tagRows, queryTags) => {
-    let processedTagRows = {};
+    const processedTagRows = tagRows.reduce((processedTagRows, tagRow) => {
+      const newTagRow = {};
 
-    if (tagRows.length > 0) {
-      // do with Array.reduce
-      tagRows.forEach(function (tagRow) {
-        let newTagRow = {};
-
-        if (queryTags && Array.isArray(queryTags)) {
-          if (queryTags.includes(tagRow.name)) {
-            newTagRow.checked = 1;
-          }
+      if (!_.isNil(queryTags)) {
+        if (queryTags.includes(tagRow.name)) {
+          newTagRow.checked = 1;
         }
+      }
 
-        let splitedTagRow = tagRow.name.split(':', 2);
+      const splitedTagRow = tagRow.name.split(':', 2);
 
-        if (splitedTagRow.length > 1) {
-          newTagRow.value = splitedTagRow[1].trim();
-          newTagRow.count = tagRow.tag_count;
-          processedTagRows[splitedTagRow[0]] = newTagRow;
-        }
-      });
-    }
+      if (splitedTagRow.length > 1) {
+        newTagRow.value = splitedTagRow[1].trim();
+        newTagRow.count = tagRow.tag_count;
+        processedTagRows[splitedTagRow[0]] = newTagRow;
+      }
+
+      return processedTagRows;
+    }, {});
 
     return processedTagRows;
+  },
+  executeProductsQuery: async (ctx, queryArgs) => {
+    return ctx.myPool().query(`
+      SELECT p.*, c.name as category, c.id as category_id
+      FROM products as p
+      JOIN categories as c ON c.id = p.category_id
+      LEFT JOIN product_tags as pt ON pt.product_id = p.id
+      LEFT JOIN tags ON tags.id = pt.tag_id
+      WHERE
+        (${queryArgs.exprs[0]} OR ${queryArgs.exprs[1]})
+        AND ${queryArgs.exprs[2]}
+        AND ${queryArgs.exprs[3]}
+        AND ${queryArgs.exprs[4]}
+        AND ${queryArgs.exprs[5]}
+      GROUP BY p.id
+      ORDER BY ${queryArgs.exprs[6]} LIMIT ?
+      OFFSET ?
+      `, [
+      ...queryArgs.vals,
+      queryArgs.limit,
+      queryArgs.offset
+    ]);
+  },
+  executeProductsCountQuery: async (ctx, queryArgs) => {
+    return ctx.myPool().query(`
+      SELECT COUNT(1) as count
+      FROM
+        (
+          SELECT p.id
+          FROM products as p
+          JOIN categories as c ON c.id = p.category_id
+          LEFT JOIN product_tags as pt ON pt.product_id = p.id
+          LEFT JOIN tags ON tags.id = pt.tag_id
+          WHERE
+            (${queryArgs.exprs[0]} OR ${queryArgs.exprs[1]})
+            AND ${queryArgs.exprs[2]}
+            AND ${queryArgs.exprs[3]}
+            AND ${queryArgs.exprs[4]}
+            AND ${queryArgs.exprs[5]}
+          GROUP BY p.id
+        ) a
+      `, [
+      ...queryArgs.vals
+    ]);
+  },
+  executeTagsQuery: async (ctx, queryArgs) => {
+    return ctx.myPool().query(`
+      SELECT tags.name, COUNT(tags.name) as tag_count
+      FROM products as p
+      JOIN categories as c ON c.id = p.category_id
+      JOIN product_tags as pt ON pt.product_id = p.id
+      JOIN tags ON tags.id = pt.tag_id
+      WHERE
+        ${queryArgs.exprs[0]}
+        AND ${queryArgs.exprs[3]}
+        AND ${queryArgs.exprs[4]}
+        AND ${queryArgs.exprs[5]}
+      GROUP BY tags.name
+      `, [
+      ...queryArgs.vals.slice(1)
+    ]);
   }
 };

@@ -13,7 +13,7 @@ const authenticate = require('./helpers/authenticate');
 const { routes, allowedMethods } = require('./routes');
 const pug = require('./helpers/pug');
 const mysql = require('./db/mysql');
-let dirs = {};
+const dirs = {};
 
 const Koa = require('koa');
 const app = new Koa();
