@@ -8,12 +8,11 @@ module.exports = async (ctx, next) => {
   logger.info(`Url = ${requestUrl}`);
 
   if (userServiceUrls.some((url) => requestUrl.startsWith(url)) &&
-      (ctx.session && ctx.session.userData && ctx.session.userData.userId)) {
+      ctx.session.isUserLoggedIn) {
     return ctx.redirect('/');
   }
 
-  if (requestUrl.startsWith('/log_out') &&
-      (!ctx.session || (!ctx.session.userData || !ctx.session.userData.userId))) {
+  if (requestUrl.startsWith('/log_out') && !ctx.session.isUserLoggedIn) {
     return ctx.redirect('/login');
   }
 

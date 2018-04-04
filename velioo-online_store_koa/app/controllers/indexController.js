@@ -1,5 +1,4 @@
-const HOMEPAGE_PRODUCTS_LIMIT = 40;
-
+const CONSTANTS = require('../constants/constants');
 const logger = require('../helpers/logger');
 const Utils = require('../helpers/indexControllerUtils');
 
@@ -7,7 +6,7 @@ const assert = require('assert');
 const { getArrayPages } = require('koa-ctx-paginate');
 
 async function list (ctx, next) {
-  const limit = HOMEPAGE_PRODUCTS_LIMIT;
+  const limit = CONSTANTS.HOMEPAGE_PRODUCTS_LIMIT;
   const offset = (+ctx.query.page > 0)
     ? +ctx.query.page * limit - limit
     : 0;

@@ -4,9 +4,7 @@ const ROOT = 'http://localhost:' + PORT + '/';
 exports.PORT = PORT;
 exports.ROOT = ROOT;
 
-const RECORDS_PER_PAGE = 40;
-const MAX_RECORDS_PER_PAGE = 100;
-
+const CONSTANTS = require('./constants/constants');
 const logger = require('./helpers/logger');
 const globalErrHandler = require('./helpers/error');
 const authenticate = require('./helpers/authenticate');
@@ -38,7 +36,7 @@ app.keys = ['Shh, its a secret!'];
 
 app.use(new Session(app));
 app.use(mysql);
-app.use(Paginate.middleware(RECORDS_PER_PAGE, MAX_RECORDS_PER_PAGE));
+app.use(Paginate.middleware(CONSTANTS.RECORDS_PER_PAGE, CONSTANTS.MAX_RECORDS_PER_PAGE));
 
 Validate(app);
 

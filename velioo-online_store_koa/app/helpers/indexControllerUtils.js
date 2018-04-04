@@ -1,7 +1,4 @@
-const DEFAULT_PRODUCT_ORDER = 'newest';
-const MAX_INPUT_STR_LEN = 100;
-const MIN_INPUT_STR_LEN = 1;
-
+const CONSTANTS = require('../constants/constants');
 const Utils = require('../helpers/utils');
 
 const assert = require('assert');
@@ -19,7 +16,7 @@ module.exports = {
       ? [queryStrObj.tags]
       : queryStrObj.tags;
 
-    assert((!inputStr && _.isNil(inputStr)) || inputStr.length < MAX_INPUT_STR_LEN);
+    assert(_.isNil(inputStr) || (typeof inputStr === 'string' && inputStr.length <= CONSTANTS.MAX_SEARCH_INPUT_LEN));
     assert((!_.isNil(tags) && Array.isArray(tags)) || _.isNil(tags));
     assert(!priceFrom || !isNaN(+priceFrom));
     assert(!priceTo || !isNaN(+priceTo));
@@ -27,7 +24,7 @@ module.exports = {
     assert(!isNaN(limit) && limit >= 0);
     assert(!isNaN(offset) && offset >= 0);
 
-    const searchExpr = (!_.isNil(inputStr) && inputStr.length > MIN_INPUT_STR_LEN)
+    const searchExpr = (!_.isNil(inputStr) && inputStr.length >= CONSTANTS.MIN_SEARCH_INPUT_LEN)
       ? `LIKE '%${inputStr}%' ESCAPE '!'`
       : true;
 
@@ -50,7 +47,7 @@ module.exports = {
       latest_updated: 'p.updated_at DESC'
     };
 
-    const orderByExpr = sortCases[ queryStrObj.sort_products ] || sortCases[ DEFAULT_PRODUCT_ORDER ];
+    const orderByExpr = sortCases[ queryStrObj.sort_products ] || sortCases[ CONSTANTS.DEFAULT_PRODUCTS_SORT_ORDER ];
     assert(orderByExpr);
 
     return {
