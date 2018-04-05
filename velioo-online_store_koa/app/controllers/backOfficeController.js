@@ -1,8 +1,9 @@
+const CONSTANTS = require('../constants/constants');
 const logger = require('../helpers/logger');
-const ORDER_STATUSES_QUERY_LIMIT = 10000;
+const mysql = require('../db/mysql');
+const Utils = require('../helpers/backOfficeControllerUtils');
 
 const assert = require('assert');
-const sha256 = require('js-sha256').sha256;
 const escape = require('escape-html');
 
 async function renderEmployeeLogin (ctx, next) {
@@ -10,34 +11,27 @@ async function renderEmployeeLogin (ctx, next) {
 
   await next();
 
-  ctx.render('employee_login.pug', {
-    user: {}
-  });
+  Utils.renderLoginPage(ctx);
 }
 
 async function employeeLogin (ctx, next) {
-  let error;
-  let userData = await ctx.myPool().query(`
-    SELECT password, salt, id
-    FROM employees
-    WHERE
-      username = ?
-    `, [ctx.request.body.username]);
+  const requestBody = ctx.request.body;
 
-  // whole check in function checkLogin(username, pass)
-  if (userData.length === 1 && (sha256(ctx.request.body.password + userData[0].salt) === userData[0].password)) {
+  assert(requestBody.username.length <= CONSTANTS.MAX_USERNAME_LEN);
+  assert(requestBody.password.length <= CONSTANTS.MAX_USER_PASSWORD_LEN);
+
+  const userData = await Utils.executeLoginQuery([ requestBody.username ]);
+
+  if (userData.length === 1 && Utils.isLoginSuccessfull(requestBody.password, userData[0])) {
     ctx.session.employeeData = { employeeId: userData[0].id };
     ctx.session.isEmployeeLoggedIn = true;
 
     return ctx.redirect('/employee/dashboard');
   } else {
-    error = 'Wrong username or password.';
+    ctx.error = 'Wrong username or password.';
   }
 
-  ctx.render('employee_login.pug', {
-    error: error,
-    user: {}
-  });
+  Utils.renderLoginPage(ctx);
 }
 
 async function renderDashboard (ctx, next) {
@@ -71,55 +65,11 @@ async function employeeLogOut (ctx, next) {
 async function getProducts (ctx, next) {
   logger.info('Query params = %o', ctx.query);
 
-  let sortColumns = {};
-  let filterColumns = {};
+  const queryArgs = Utils.processQueryStr(ctx.query);
 
-  Object.keys(ctx.query)
-    .forEach(function (key) {
-      if (key.startsWith('col[')) {
-        if (typeof (+key.charAt(4)) === 'number') {
-          sortColumns[+key.charAt(4)] = ctx.query[key];
-        }
-      }
-      if (key.startsWith('fcol[')) {
-        if (typeof (+key.charAt(5)) === 'number') {
-          filterColumns[+key.charAt(5)] = ctx.query[key];
-        }
-      }
-    });
+  logger.info('QueryArgs = %o', queryArgs);
 
-  logger.info('sortColumns = %o', sortColumns);
-  logger.info('filterColumns = %o', filterColumns);
-
-  const filterCases = {
-    0: "products.created_at LIKE '%",
-    '1': "products.updated_at LIKE '%",
-    '2': "products.name LIKE '%",
-    '3': "categories.name LIKE '%",
-    '4': "products.price_leva LIKE '%",
-    '5': 'products.quantity = ',
-    '6': '',
-    '7': ''
-  };
-
-  let filterExprs = [true, true, true, true, true, true, true, true];
-
-  if (Object.keys(filterColumns).length !== 0) {
-    Object.keys(filterColumns).forEach(function (key) {
-      let filterInput = filterColumns[key].replace(/%/g, "!%").replace(/_/g, "!_").replace(/'/g, "\\'").replace(/"/g, '\\"');
-
-      assert(key in filterCases === true);
-
-      filterExprs[key] = (filterCases[key])
-        ? filterCases[key] + filterInput + ((filterCases[key].indexOf('=') === -1)
-          ? "%' ESCAPE '!'"
-          : ''
-          )
-        : true;
-    });
-  }
-
-  logger.info('FilterExprs = %o', filterExprs);
+  return;
 
   let productsQueryArgs = [];
 
@@ -270,7 +220,7 @@ async function getProducts (ctx, next) {
   logger.info('ProductsQuery = ' + productsQuery);
   logger.info('ProductsQueryArgs = %o', productsQueryArgs);
 
-  let productsRows = await ctx.myPool().query(productsQuery, productsQueryArgs);
+  let productsRows = await mysql.pool.query(productsQuery, productsQueryArgs);
 
   assert(productsRows.length >= 0);
 
@@ -279,7 +229,7 @@ async function getProducts (ctx, next) {
   productsQueryArgs.pop();
   productsQueryArgs.pop();
 
-  let productsCountRows = await ctx.myPool().query(productsCountQuery, productsQueryArgs);
+  let productsCountRows = await mysql.pool.query(productsCountQuery, productsQueryArgs);
 
   // logger.info('ProductsCountRows = %o', productsCountRows);
 
@@ -507,13 +457,13 @@ async function getOrders (ctx, next) {
   logger.info('ordersQuery = ' + ordersQuery);
   logger.info('ordersQueryArgs = %o', ordersQueryArgs);
 
-  let ordersRows = await ctx.myPool().query(ordersQuery, ordersQueryArgs);
+  let ordersRows = await mysql.pool.query(ordersQuery, ordersQueryArgs);
 
   assert(ordersRows.length >= 0);
 
   logger.info('ordersRows = %o', ordersRows);
 
-  let statusesRows = await ctx.myPool().query(statusesQuery);
+  let statusesRows = await mysql.pool.query(statusesQuery);
 
   assert(statusesRows.length >= 0);
 
@@ -588,7 +538,7 @@ async function getOrders (ctx, next) {
 
   logger.info('Offset = ' + offset);
 
-  while ((orderStatusesRows = await ctx.myPool().query(orderStatusesQuery, orderStatusesQueryArgs)).length > 0) {
+  while ((orderStatusesRows = await mysql.pool.query(orderStatusesQuery, orderStatusesQueryArgs)).length > 0) {
     assert(orderStatusesRows.length >= 0);
 
     // logger.info('orderStatusesRows = %o', orderStatusesRows);
@@ -608,7 +558,7 @@ async function getOrders (ctx, next) {
 
     // logger.info('Offset = ' + offset);
 
-    offset += ORDER_STATUSES_QUERY_LIMIT;
+    offset += CONSTANTS.ORDER_STATUSES_QUERY_LIMIT;
     orderStatusesQueryArgs[orderStatusesQueryArgs.length - 1] = offset;
   }
 
@@ -628,7 +578,7 @@ async function changeOrderStatus (ctx, next) {
   if (ctx.request.body.statusId && ctx.request.body.orderId) {
     assert(!isNaN(ctx.request.body.statusId) && !isNaN(ctx.request.body.orderId));
 
-    let resultSetHeader = await ctx.myPool().query(`
+    let resultSetHeader = await mysql.pool.query(`
       UPDATE orders
       SET
         status_id = ?,

@@ -1,8 +1,9 @@
 const _ = require('lodash/lang');
 const assert = require('assert');
 const Crypto = require('crypto');
+const mysql = require('../db/mysql');
 
-module.exports = {
+const self = module.exports = {
   escapeSql: (str) => {
     if (_.isNil(str)) return str;
 
@@ -14,7 +15,7 @@ module.exports = {
 
     return escapedStr;
   },
-  createExprs: (params) => {
+  createExprsVals: (params) => {
     const exprs = [];
     const vals = [];
 
@@ -28,10 +29,35 @@ module.exports = {
       vals
     };
   },
-  rowExists: async (ctx, params) => {
+  createWhereClauseExprs: (filterExprs, filterColumns) => {
+    let resultExprs = Array(Object.keys(filterExprs).length).fill(true);
+
+    //resultExprs = [true, true, true, true, true, true, true, true];
+
+    if (Object.keys(filterColumns).length !== 0) {
+      Object.keys(filterColumns).forEach(function (key) {
+        let filterInput = self.escapeSql(filterExprs[key]);
+
+        assert(key in filterExprs === true);
+
+        filterExprs[key] = (filterExprs[key])
+          ? filterExprs[key] +
+            filterInput +
+            (
+              (filterExprs[key].indexOf('=') === -1)
+                ? "%' ESCAPE '!'"
+                : ''
+            )
+          : true;
+      });
+    }
+
+    return resultExprs;
+  },
+  rowExists: async (params) => {
     assert(_.isString(params.table) && _.isString(params.field) && _.isString(params.queryArg));
 
-    const results = await ctx.myPool().query(`
+    const results = await mysql.pool.query(`
       SELECT *
       FROM ${params.table}
       WHERE
@@ -54,5 +80,18 @@ module.exports = {
     }
 
     return text;
+  },
+  parseArrayQueryStr: (obj, str) => {
+    const result = {};
+
+    Object.keys(obj).forEach((key) => {
+      if (key.startsWith(str + '[') && key.indexOf(']') !== -1) {
+        let index = key.slice(str.length + 1, (key.indexOf(']')));
+
+        result[index] = obj[key];
+      }
+    });
+
+    return result;
   }
 };

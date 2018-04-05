@@ -1,11 +1,14 @@
 const CONSTANTS = require('../constants/constants');
 const Utils = require('../helpers/utils');
+const mysql = require('../db/mysql');
 
 const assert = require('assert');
 const _ = require('lodash/lang');
 
 module.exports = {
   processQueryStr: (queryStrObj) => {
+    assert(_.isObject(queryStrObj));
+
     const inputStr = Utils.escapeSql(queryStrObj.search_input);
     const priceFrom = +queryStrObj.price_from;
     const priceTo = +queryStrObj.price_to;
@@ -33,7 +36,7 @@ module.exports = {
       (searchExpr === true) ? true : `p.description ${searchExpr}`
     ];
 
-    const parsedExprs = Utils.createExprs(new Map([
+    const parsedExprs = Utils.createExprsVals(new Map([
       ['tags.name IN (?)', tags],
       ['p.price_leva >= ?', priceFrom],
       ['p.price_leva <= ?', priceTo],
@@ -87,8 +90,35 @@ module.exports = {
 
     return processedTagRows;
   },
-  executeProductsQuery: async (ctx, queryArgs) => {
-    return ctx.myPool().query(`
+  executeHomepageQuery: async (queryArgs) => {
+    assert(_.isArray(queryArgs));
+
+    return mysql.pool.query(`
+      SELECT products.*
+      FROM products
+      JOIN categories ON categories.id = products.category_id
+      ORDER BY created_at DESC
+      LIMIT ?
+      OFFSET ?
+    `, queryArgs);
+  },
+  executeProductIdQuery: async (queryArgs) => {
+    assert(_.isArray(queryArgs));
+
+    return mysql.pool.query(`
+      SELECT products.*
+      FROM products
+      JOIN categories ON categories.id = products.category_id
+      WHERE
+        products.id = ?
+    `, queryArgs);
+  },
+  executeProductsQuery: async (queryArgs) => {
+    assert(_.isObject(queryArgs));
+    assert(_.isArray(queryArgs.exprs));
+    assert(_.isArray(queryArgs.vals));
+
+    return mysql.pool.query(`
       SELECT p.*, c.name as category, c.id as category_id
       FROM products as p
       JOIN categories as c ON c.id = p.category_id
@@ -109,8 +139,12 @@ module.exports = {
       queryArgs.offset
     ]);
   },
-  executeProductsCountQuery: async (ctx, queryArgs) => {
-    return ctx.myPool().query(`
+  executeProductsCountQuery: async (queryArgs) => {
+    assert(_.isObject(queryArgs));
+    assert(_.isArray(queryArgs.exprs));
+    assert(_.isArray(queryArgs.vals));
+
+    return mysql.pool.query(`
       SELECT COUNT(1) as count
       FROM
         (
@@ -131,8 +165,12 @@ module.exports = {
       ...queryArgs.vals
     ]);
   },
-  executeTagsQuery: async (ctx, queryArgs) => {
-    return ctx.myPool().query(`
+  executeTagsQuery: async (queryArgs) => {
+    assert(_.isObject(queryArgs));
+    assert(_.isArray(queryArgs.exprs));
+    assert(_.isArray(queryArgs.vals));
+
+    return mysql.pool.query(`
       SELECT tags.name, COUNT(tags.name) as tag_count
       FROM products as p
       JOIN categories as c ON c.id = p.category_id
@@ -147,5 +185,11 @@ module.exports = {
       `, [
       ...queryArgs.vals.slice(1)
     ]);
+  },
+  executeMenuItemsQuery: async () => {
+    return mysql.pool.query(`
+      SELECT id, name, type as c_type
+      FROM categories
+    `);
   }
 };

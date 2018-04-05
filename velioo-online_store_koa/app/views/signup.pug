@@ -11,21 +11,24 @@ script.
 <div id="body">
 <div id="wrap">
 <h2 s>Регистрация</h2></br>
-if message
-    <span>#{message}</span>
+if userMessage
+    <span style="color:blue;">#{message}</span>
+    <br>
+    <br>
 if errors
     each err in errors
         each val, key in err
             <p style="color:red;">#{val}</p>
+<br>
 <form action="../sign_up" method="post" class="form-horizontal login_register_form">
         <div class="form-group">
           <label class="col-sm-1 control-label" for="name">Име*:</label>
           <div class="col-sm-8">
             <input type="text" class="form-control" id="name" name="name" value="#{user.name}">
-            <span class="glyphicon glyphicon-remove form-control-feedback"></span>        
+            <span class="glyphicon glyphicon-remove form-control-feedback"></span>
           </div>
         </div>
-        
+
         <div class="form-group">
           <label class="col-sm-1 control-label" for="last_name">Фамилия:</label>
           <div class="col-sm-8">
@@ -33,7 +36,7 @@ if errors
             <span class="glyphicon glyphicon-remove form-control-feedback" ></span>
           </div>
         </div>
-        
+
         <div class="form-group">
           <label class="col-sm-1 control-label" for="email">Имейл*:</label>
           <div class="col-sm-8">
@@ -41,7 +44,7 @@ if errors
             <span class="glyphicon glyphicon-remove form-control-feedback"></span>
           </div>
         </div>
-        
+
         <div class="form-group">
           <label class="col-sm-1 control-label" for="country">Държава:</label>
           <div class="col-sm-8">
@@ -53,10 +56,10 @@ each country in countries
     else
         <option value="#{country.nicename}" data-id="#{country.phonecode}">#{country.nicename}</option>
 
-</select> 
+</select>
           </div>
 </div>
-        
+
         <div class="form-group">
           <label class="col-sm-1 control-label" for="phone" id="phone_label">Телефон*: </label>
           <div class="col-sm-8">
@@ -64,7 +67,7 @@ each country in countries
             <span class="glyphicon glyphicon-remove form-control-feedback"></span>
           </div>
         </div>
-        
+
         <div class="form-group">
           <label class="col-sm-1 control-label" for="region">Регион:</label>
           <div class="col-sm-8">
@@ -72,7 +75,7 @@ each country in countries
             <span class="glyphicon glyphicon-remove form-control-feedback"></span>
           </div>
         </div>
-        
+
         <div class="form-group">
           <label class="col-sm-1 control-label" for="address">Адрес:</label>
           <div class="col-sm-8">
@@ -80,7 +83,7 @@ each country in countries
             <span class="glyphicon glyphicon-remove form-control-feedback"></span>
           </div>
         </div>
-        
+
         <div class="form-group">
           <label class="col-sm-1 control-label" for="password">Парола*:</label>
           <div class="col-sm-8">
@@ -88,7 +91,7 @@ each country in countries
             <span class="glyphicon glyphicon-remove form-control-feedback"></span>
           </div>
         </div>
-        
+
         <div class="form-group">
           <label class="col-sm-1 control-label" for="conf_password">Потвърди парола*:</label>
           <div class="col-sm-8">
@@ -96,24 +99,24 @@ each country in countries
             <span class="glyphicon glyphicon-remove form-control-feedback"></span>
           </div>
         </div>
-        
+
         <div class="form-group">
             <label class="col-sm-1 control-label">Пол:</label>
 
 if user.gender == 'Male'
-    <label><input type="radio" name="gender" value="Male" checked>Мъж</label> 
+    <label><input type="radio" name="gender" value="Male" checked>Мъж</label>
 else
-    <label><input type="radio" name="gender" value="Male">Мъж</label> 
+    <label><input type="radio" name="gender" value="Male">Мъж</label>&nbsp;&nbsp;
 if user.gender == 'Female'
-    <label><input type="radio" name="gender" value="Female" checked>Жена</label> 
+    <label><input type="radio" name="gender" value="Female" checked>Жена</label>
 else
-    <label><input type="radio" name="gender" value="Female">Жена</label> 
+    <label><input type="radio" name="gender" value="Female">Жена</label>
         </div></br>
         </br></br>
         <div class="form-group form_submit">
             <button type="submit" value="Регистрация" id="registrSubmit" name="registrSubmit" class="btn btn-primary form_submit_button register">Регистрация</button>
-        </div>  
-    </form>    
+        </div>
+    </form>
 </div>
 </div>
 

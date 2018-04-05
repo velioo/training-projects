@@ -2,7 +2,7 @@ const Utils = require('./utils');
 
 module.exports = {
   emailExists: async (ctx) => {
-    return Utils.rowExists(ctx, { table: 'users', field: 'email', queryArg: ctx.request.body.email });
+    return Utils.rowExists({ table: 'users', field: 'email', queryArg: ctx.request.body.email });
   },
   phoneMatch: (phone) => {
     phone = phone.replace(' ', '');

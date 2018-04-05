@@ -13,14 +13,7 @@ async function list (ctx, next) {
 
   assert(!isNaN(offset));
 
-  const productsRows = await ctx.myPool().query(`
-    SELECT products.*
-    FROM products
-    JOIN categories ON categories.id = products.category_id
-    ORDER BY created_at DESC
-    LIMIT ?
-    OFFSET ?
-    `, [limit, offset]);
+  const productsRows = await Utils.executeHomepageQuery([limit, offset]);
 
   assert(productsRows.length >= 0);
 
@@ -37,13 +30,7 @@ async function getId (ctx, next) {
 
   assert(!isNaN(id));
 
-  const productRows = await ctx.myPool().query(`
-    SELECT products.*
-    FROM products
-    JOIN categories ON categories.id = products.category_id
-    WHERE
-      products.id = ?
-    `, [id]);
+  const productRows = await Utils.executeProductIdQuery([id]);
 
   assert(productRows.length <= 1);
 
@@ -66,13 +53,13 @@ async function searchProducts (ctx, next) {
 
   logger.info('QueryArgs = %o', queryArgs);
 
-  const productsRows = await Utils.executeProductsQuery(ctx, queryArgs);
+  const productsRows = await Utils.executeProductsQuery(queryArgs);
 
   logger.info('ProductsRows[0] = %o', productsRows[0]);
 
   assert(productsRows.length >= 0);
 
-  const productsCountRows = await Utils.executeProductsCountQuery(ctx, queryArgs);
+  const productsCountRows = await Utils.executeProductsCountQuery(queryArgs);
 
   logger.info('ProductsCountRows = %o', productsCountRows);
 
@@ -82,7 +69,7 @@ async function searchProducts (ctx, next) {
 
   logger.info(`Products count = ${productsCount}`);
 
-  const tagRows = await Utils.executeTagsQuery(ctx, queryArgs);
+  const tagRows = await Utils.executeTagsQuery(queryArgs);
 
   logger.info('TagRows[0] = %o', tagRows[0]);
 
@@ -110,17 +97,14 @@ async function searchProducts (ctx, next) {
 }
 
 async function getMenuItems (ctx) {
-  const items = await ctx.myPool().query(`
-    SELECT id, name, type as c_type
-    FROM categories
-    `);
+  const items = await Utils.executeMenuItemsQuery();
 
   ctx.body = items;
 }
 
 async function notFound (ctx) {
   ctx.status = 404;
-  ctx.render('not_found', { message: 'Resource Not Found' });
+  ctx.render('not_found', { userMessage: 'Resource Not Found' });
 }
 
 module.exports = { list, getId, searchProducts, getMenuItems, notFound };

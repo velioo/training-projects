@@ -1,11 +1,7 @@
-const logger = require('../helpers/logger');
-
 module.exports = async (ctx, next) => {
   let requestUrl = ctx.request.url;
   let userServiceUrls = [ '/login', '/sign_up' ];
   let employeeServiceUrls = [ '/employee_login' ];
-
-  logger.info(`Url = ${requestUrl}`);
 
   if (userServiceUrls.some((url) => requestUrl.startsWith(url)) &&
       ctx.session.isUserLoggedIn) {

@@ -1,20 +1,35 @@
 const CONSTANTS = require('../constants/constants');
 const Utils = require('./utils');
 const Validations = require('./validations');
+const mysql = require('../db/mysql');
+const pug = require('../helpers/pug').baseRenderer;
+const logger = require('../helpers/logger');
 
 const assert = require('assert');
 const _ = require('lodash/lang');
 const sha256 = require('js-sha256').sha256;
+const Nodemailer = require('nodemailer');
 
 const self = module.exports = {
+  renderLoginPage: (ctx) => {
+    return ctx.render('login.pug', {
+      error: ctx.error,
+      userMessage: ctx.userMessage,
+      user: {
+        isUserLoggedIn: ctx.session.isUserLoggedIn
+      }
+    });
+  },
   isLoginSuccessfull: (inputPassword, userData) => {
     return sha256(inputPassword + userData.salt) === userData.password;
   },
   isAccountConfirmed: (userData) => {
     return +userData.confirmed === 1;
   },
-  executeUserEmailQuery: async (ctx, queryArgs) => {
-    return ctx.myPool().query(`
+  executeUserEmailQuery: async (queryArgs) => {
+    assert(_.isArray(queryArgs));
+
+    return mysql.pool.query(`
       SELECT email
       FROM users
       WHERE
@@ -79,22 +94,119 @@ const self = module.exports = {
       'street_address': ctx.request.body.street_address
     };
   },
-  executeLoginQuery: async (ctx, queryArgs) => {
-    return ctx.myPool().query(`
+  sendConfirmationEmail: async (ctx, tempCode) => {
+    const transporter = Nodemailer.createTransport({
+      service: CONSTANTS.SERVICE_EMAIL_PROVIDER,
+      auth: {
+        user: CONSTANTS.SERVICE_EMAIL,
+        pass: CONSTANTS.EMAIL_PASS
+      }
+    });
+
+    const mailOptions = {
+      from: pug.render('PC Store, <#{email}>', { email: CONSTANTS.SERVICE_EMAIL }, { fromString: true }),
+      to: ctx.request.body.email,
+      subject: 'Confirm email',
+      text: 'Please confirm your account by clicking the link below.',
+      html: `Confirm Account:` + pug.render("p: a(href=ROOT + 'confirm_account/' + tempCode) Click Here",
+        { ROOT: CONSTANTS.ROOT, tempCode: tempCode }, { fromString: true })
+    };
+
+    try {
+      await transporter.sendMail(mailOptions);
+      ctx.userMessage = `A confirmation email was sent to your email address.
+        Please confirm your account before logging in.`;
+    } catch (err) {
+      logger.error('Error while sending mail: ' + err.stack);
+      ctx.errors.push({ confirmation_email: 'There was a problem while sending confirmation email.' });
+    }
+
+    logger.info('userMessageMail = ' + ctx.userMessage);
+
+    transporter.close();
+  },
+  executeLoginQuery: async (queryArgs) => {
+    assert(_.isArray(queryArgs));
+
+    return mysql.pool.query(`
       SELECT password, salt, id, confirmed
       FROM users
       WHERE
         email = ?
     `, queryArgs);
   },
-  executeCountriesQuery: async (ctx) => {
-    return ctx.myPool().query(`
+  executeCountriesQuery: async () => {
+    return mysql.pool.query(`
       SELECT nicename, phonecode
       FROM countries
     `);
   },
+  executeBeginTransaction: async () => {
+    const connection = await mysql.pool.getConnection();
+    await connection.beginTransaction();
+
+    return connection;
+  },
+  exucuteCommitTransaction: async (connection) => {
+    return connection.commit();
+  },
+  exucuteRollbackTransaction: async (connection) => {
+    return connection.rollback();
+  },
+  executeInsertUser: async (connection, userData) => {
+    assert(_.isObject(userData));
+
+    const userDbData = Object.keys(userData).map((fieldName) => userData[ fieldName ]);
+
+    const queryStatus = await connection.query(`
+      INSERT INTO users (${Object.keys(userData).join(', ')})
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `, userDbData);
+
+    assert(queryStatus.insertId);
+
+    return queryStatus.insertId;
+  },
+  executeInsertTempCode: async (connection, queryArgs) => {
+    assert(_.isArray(queryArgs));
+
+    return connection.query(`
+      INSERT INTO temp_codes(user_id, hash, type)
+      VALUES(?, ?, ?)
+    `, queryArgs);
+  },
+  executeTempCodeQuery: async (queryArgs) => {
+    assert(_.isArray(queryArgs));
+
+    return mysql.pool.query(`
+      SELECT *
+      FROM temp_codes
+      WHERE
+        hash = ?
+    `, queryArgs);
+  },
+  executeUpdateAccountStatus: async (connection, queryArgs) => {
+    assert(_.isArray(queryArgs));
+
+    return connection.query(`
+      UPDATE users
+      SET confirmed = 1
+      WHERE
+        id = ?
+    `, queryArgs);
+  },
+  executeDeleteTempCode: async (connection, queryArgs) => {
+    assert(_.isArray(queryArgs));
+
+    return connection.query(`
+      DELETE
+      FROM temp_codes
+      WHERE
+        hash = ?
+      `, queryArgs);
+  },
   renderSignUpPage: async (ctx, userData = {}) => {
-    const countryRows = await self.executeCountriesQuery(ctx);
+    const countryRows = await self.executeCountriesQuery();
 
     assert(countryRows.length >= 0);
 

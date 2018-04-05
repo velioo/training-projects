@@ -9,8 +9,7 @@ const logger = require('./helpers/logger');
 const globalErrHandler = require('./helpers/error');
 const authenticate = require('./helpers/authenticate');
 const { routes, allowedMethods } = require('./routes');
-const pug = require('./helpers/pug');
-const mysql = require('./db/mysql');
+const pug = require('./helpers/pug').fileRenderer;
 const dirs = {};
 
 const Koa = require('koa');
@@ -35,7 +34,6 @@ pug.use(app);
 app.keys = ['Shh, its a secret!'];
 
 app.use(new Session(app));
-app.use(mysql);
 app.use(Paginate.middleware(CONSTANTS.RECORDS_PER_PAGE, CONSTANTS.MAX_RECORDS_PER_PAGE));
 
 Validate(app);
@@ -44,14 +42,11 @@ app.use(routes);
 app.use(allowedMethods);
 app.use(authenticate);
 app.use((ctx) => {
-  logger.info('Checking if 404');
-
   if (ctx.status !== 404) {
     return;
   }
 
   if (ctx.request.url.startsWith('/imgs')) {
-    logger.info('Request starts with /imgs');
     ctx.redirect('http://localhost:8883/imgs/no_image.png');
   } else {
     ctx.redirect('/not_found');
