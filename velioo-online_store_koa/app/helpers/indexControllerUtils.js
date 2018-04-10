@@ -36,7 +36,7 @@ module.exports = {
       (searchExpr === true) ? true : `p.description ${searchExpr}`
     ];
 
-    const parsedExprs = Utils.createExprsVals(new Map([
+    const parsedExprsVals = Utils.createExprsVals(new Map([
       ['tags.name IN (?)', tags],
       ['p.price_leva >= ?', priceFrom],
       ['p.price_leva <= ?', priceTo],
@@ -56,11 +56,11 @@ module.exports = {
     return {
       exprs: [
         ...searchExprs,
-        ...parsedExprs.exprs,
+        ...parsedExprsVals.exprs,
         orderByExpr
       ],
       vals: [
-        ...parsedExprs.vals
+        ...parsedExprsVals.vals
       ],
       limit: limit,
       offset: offset,

@@ -5,6 +5,8 @@ const mysql = require('../db/mysql');
 
 const self = module.exports = {
   escapeSql: (str) => {
+    assert(_.isString(str));
+
     if (_.isNil(str)) return str;
 
     const escapedStr = str
@@ -16,10 +18,12 @@ const self = module.exports = {
     return escapedStr;
   },
   createExprsVals: (params) => {
+    assert(_.isObject(params));
+
     const exprs = [];
     const vals = [];
 
-    for (let [expr, value] of params) {
+    for (let [ expr, value ] of params) {
       exprs.push(value ? expr : '?');
       vals.push(value || true);
     }
@@ -29,22 +33,27 @@ const self = module.exports = {
       vals
     };
   },
-  createWhereClauseExprs: (filterExprs, filterColumns) => {
-    let resultExprs = Array(Object.keys(filterExprs).length).fill(true);
+  createWhereClauseExprs: (filterCases, filterColumns) => {
+    assert(_.isObject(filterCases) && _.isArray(filterColumns));
 
-    //resultExprs = [true, true, true, true, true, true, true, true];
+    const resultExprs = Array(Object.keys(filterCases).length).fill(true);
 
-    if (Object.keys(filterColumns).length !== 0) {
-      Object.keys(filterColumns).forEach(function (key) {
-        let filterInput = self.escapeSql(filterExprs[key]);
+    if (filterColumns.length !== 0) {
+      filterColumns.forEach(function (obj) {
+        const entries = Object.entries(obj)[0];
 
-        assert(key in filterExprs === true);
+        assert(entries.length === 2);
 
-        filterExprs[key] = (filterExprs[key])
-          ? filterExprs[key] +
+        const key = entries[0];
+        const filterInput = self.escapeSql(entries[1]);
+
+        assert(entries[0] in filterCases === true);
+
+        resultExprs[ key ] = (filterCases[ key ])
+          ? filterCases[ key ] +
             filterInput +
             (
-              (filterExprs[key].indexOf('=') === -1)
+              (filterCases[ key ].indexOf('=') === -1)
                 ? "%' ESCAPE '!'"
                 : ''
             )
@@ -54,6 +63,39 @@ const self = module.exports = {
 
     return resultExprs;
   },
+  createOrderByClauseExpr: (sortCases, sortColumns) => {
+    assert(_.isObject(sortCases) && _.isObject(sortColumns));
+
+    let sortExpr = '';
+
+    if (sortColumns.length !== 0) {
+      sortColumns.forEach(function (obj) {
+        const entries = Object.entries(obj)[0];
+
+        assert(entries.length === 2);
+
+        const key = entries[0];
+        const sortInput = self.escapeSql(entries[1]);
+
+        assert(entries[0] in sortCases === true);
+
+        sortExpr += (sortCases[ key ])
+          ? sortCases[ key ] +
+          (
+            (sortInput === '1')
+              ? 'DESC, '
+              : 'ASC, '
+          )
+          : '';
+      });
+    }
+
+    if (sortExpr) {
+      sortExpr = sortExpr.slice(0, sortExpr.lastIndexOf(','));
+    }
+
+    return sortExpr;
+  },
   rowExists: async (params) => {
     assert(_.isString(params.table) && _.isString(params.field) && _.isString(params.queryArg));
 
@@ -62,7 +104,7 @@ const self = module.exports = {
       FROM ${params.table}
       WHERE
         ${params.field} = ?
-      `, [params.queryArg]);
+      `, [ params.queryArg ]);
 
     assert(results.length <= 1);
 
@@ -82,16 +124,45 @@ const self = module.exports = {
     return text;
   },
   parseArrayQueryStr: (obj, str) => {
-    const result = {};
+    assert(_.isObject(obj) && _.isString(str));
+
+    const result = [];
 
     Object.keys(obj).forEach((key) => {
       if (key.startsWith(str + '[') && key.indexOf(']') !== -1) {
-        let index = key.slice(str.length + 1, (key.indexOf(']')));
+        const valIndex = key.slice(str.length + 1, (key.indexOf(']')));
+        const val = self.escapeSql(obj[ key ]);
 
-        result[index] = obj[key];
+        assert(_.isFinite(+valIndex));
+
+        result.push({ [ valIndex ]: val });
       }
     });
 
     return result;
+  },
+  assertObjStrLen: (obj, limit) => {
+    for (let key in obj) {
+      if (_.isString(obj[ key ])) {
+        assert(obj[ key ].length < limit);
+      }
+    }
+  },
+  isValidDate: (dateStr) => { // yyyy-mm-dd
+    assert(_.isString(dateStr));
+
+    const regEx = /^\d{4}-\d{2}-\d{2}$/;
+
+    if (!dateStr.match(regEx)) {
+      return false;
+    }
+
+    const date = new Date(dateStr);
+
+    if (!date.getTime() && date.getTime() !== 0) {
+      return false;
+    }
+
+    return date.toISOString().slice(0, 10) === dateStr;
   }
 };
