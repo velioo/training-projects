@@ -1,0 +1,67 @@
+include ./header.pug
+
+<div id="body">
+
+<h2>Количка</h2>
+  <div class="vertical-menu">
+  <a href="./cart" class="active">Количка</a>
+  <a href="./orders">Поръчки</a>
+  <a href="./account">Настройки</a>
+  <a href="./details">Детайли</a>
+</div>
+
+  <div class="account-info">
+    <hr>
+    <div class="table-responsive">
+      <table class="table">
+      <thead>
+        <tr>
+        <th></th>
+        <th>Име</th>
+        <th class="price_th">Ед.Цена в лв.</th>
+        <th>Брой</th>
+        <th class="sum_th">Сума в лв.</th>
+        <th>Премахни</th>
+        </tr>
+      </thead>
+      <tbody>
+if products.length > 0
+  each product in products
+    <tr data-id="#{product.id}">
+    <td>
+    <a href="../products/#{product.id}"><img src="../imgs/#{product.image}" onerror="this.src='../imgs/no_image.png'" class="cart_product_image">
+    </a>
+    </td>
+    <td class="cart_product_name_td">#{product.name}</td>
+    <td class="cart_product_price_td">#{product.price_leva}</td>
+    <td>
+    <input class="input_change_count" min="0" step="1" type="number" value="#{product.quantity}">
+    <img class="spinner change_cart" src="../imgs/spinner.gif">
+    </td>
+    <td class="cart_product_sum_td">#{product.price_leva * product.quantity}</td>
+    <td><span class="remove_product">Премахни</span></td>
+    </tr>
+else
+  <h3>Нямате продукти в кошницата</h3>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td><b style="font-size: 18px;">Общо</b></td>
+<td class="cart_sum"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+if products.length > 0
+  <div class="cart_purchase_div">
+  <a href="../orders/payment_method">
+  <button type="button" class="btn btn-default purchase_button">
+  <span class="glyphicon glyphicon-shopping-cart"></span> Продължи към плащане</button>
+  </a>
+  </div>
+</div>
+</div>
+
+include ./footer.pug

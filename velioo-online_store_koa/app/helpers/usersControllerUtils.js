@@ -153,7 +153,7 @@ const self = module.exports = {
   exucuteRollbackTransaction: async (connection) => {
     return connection.rollback();
   },
-  executeInsertUser: async (connection, userData) => {
+  executeInsertUserQuery: async (connection, userData) => {
     assert(_.isObject(userData));
 
     const userDbData = Object.keys(userData).map((fieldName) => userData[ fieldName ]);
@@ -167,7 +167,7 @@ const self = module.exports = {
 
     return queryStatus.insertId;
   },
-  executeInsertTempCode: async (connection, queryArgs) => {
+  executeInsertTempCodeQuery: async (connection, queryArgs) => {
     assert(_.isArray(queryArgs));
 
     return connection.query(`
@@ -185,7 +185,7 @@ const self = module.exports = {
         hash = ?
     `, queryArgs);
   },
-  executeUpdateAccountStatus: async (connection, queryArgs) => {
+  executeUpdateAccountStatusQuery: async (connection, queryArgs) => {
     assert(_.isArray(queryArgs));
 
     return connection.query(`
@@ -195,7 +195,7 @@ const self = module.exports = {
         id = ?
     `, queryArgs);
   },
-  executeDeleteTempCode: async (connection, queryArgs) => {
+  executeDeleteTempCodeQuery: async (connection, queryArgs) => {
     assert(_.isArray(queryArgs));
 
     return connection.query(`

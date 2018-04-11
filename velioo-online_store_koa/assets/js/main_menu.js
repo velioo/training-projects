@@ -17,7 +17,7 @@ $(document).ready(function () {
         success: function (data, status) {
             //infoLog += 'main_menu.js: Request returned data\n';
             //infoLog += 'main_menu.js: Checking if returned data is valid JSON...\n';
-            if (typeof data === 'object') { //&& ajv.validate(menuItemsSchema, data)
+            if (typeof data === 'object' && ajv.validate(menuItemsSchema, data)) {
                 //infoLog += 'main_menu.js: Data is valid JSON\n';
                 $.each(data, function (index, e) {
                     if (e.c_type === 1) {

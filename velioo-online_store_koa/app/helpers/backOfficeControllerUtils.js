@@ -1,12 +1,11 @@
 const CONSTANTS = require('../constants/constants');
 const mysql = require('../db/mysql');
 const pug = require('../helpers/pug').baseRenderer;
-const Utils = require('../helpers/utils');
-const logger = require('../helpers/logger');
+const Utils = require('./utils');
+// const logger = require('../helpers/logger');
 
 const assert = require('assert');
 const _ = require('lodash/lang');
-const escapeHtml = require('escape-html');
 const sha256 = require('js-sha256').sha256;
 
 const self = module.exports = {
@@ -30,7 +29,7 @@ const self = module.exports = {
         username = ?
     `, queryArgs);
   },
-  processQueryStr: (queryStrObj, filterColumnsCases, sortColumnsCases) => {
+  processQueryStr: (queryStrObj, filterColumnsCases, sortColumnsCases, customColumnsCases) => {
     assert(_.isObject(queryStrObj));
     Utils.assertObjStrLen([ queryStrObj ], CONSTANTS.MAX_SEARCH_FILTER_LEN);
 
@@ -57,12 +56,12 @@ const self = module.exports = {
     const filterColumnsExprs = Utils.createWhereClauseExprs(filterColumnsCases, filterColumns);
 
     const customFilterExprsVals = Utils.createExprsVals(new Map([
-      ['DATE(products.created_at) >= ?', dates[0]],
-      ['DATE(products.created_at) <= ?', dates[1]],
-      ['DATE(products.updated_at) >= ?', dates[2]],
-      ['DATE(products.updated_at) <= ?', dates[3]],
-      ['products.price_leva >= ?', priceFrom],
-      ['products.price_leva <= ?', priceTo]
+      [customColumnsCases[0], dates[0]],
+      [customColumnsCases[1], dates[1]],
+      [customColumnsCases[2], dates[2]],
+      [customColumnsCases[3], dates[3]],
+      [customColumnsCases[4], priceFrom],
+      [customColumnsCases[5], priceTo]
     ]));
 
     const sortExpr = Utils.createOrderByClauseExpr(sortColumnsCases, sortColumns);
@@ -80,22 +79,28 @@ const self = module.exports = {
       offset: offset
     };
   },
-  prepareHtmlData: (productsRows) => {
+  prepareHtmlDataProducts: (productsRows) => {
     assert(_.isObject(productsRows));
 
     let productArray = [];
     const productsArray = [];
 
     productsRows.forEach((productRow) => {
-      productArray.push(escapeHtml(productRow.created_at));
-      productArray.push(escapeHtml(productRow.updated_at));
+      productArray.push(pug.render('p #{createdAt}', { createdAt: productRow.created_at },
+        { fromString: true }));
+      productArray.push(pug.render('p #{updatedAt}', { updatedAt: productRow.updated_at },
+        { fromString: true }));
       productArray.push(pug.render('a(href = "../products/" + productId) #{productName}',
         { productId: productRow.id, productName: productRow.name }, { fromString: true }));
-      productArray.push(escapeHtml(productRow.category));
-      productArray.push(escapeHtml(productRow.price_leva));
-      productArray.push(escapeHtml(productRow.quantity));
-      productArray.push(pug.render('a(href = "../employee/update_product/" + productId class = "product_details") Редактирай',
-        { productId: productRow.id }, { fromString: true }));
+      productArray.push(pug.render('p #{category}', { category: productRow.category },
+        { fromString: true }));
+      productArray.push(pug.render('p #{price}', { price: productRow.price_leva },
+        { fromString: true }));
+      productArray.push(pug.render('p #{quantity}', { quantity: productRow.quantity },
+        { fromString: true }));
+      productArray.push(
+        pug.render('a(href = "../employee/update_product/" + productId class = "product_details") Редактирай',
+          { productId: productRow.id }, { fromString: true }));
       productArray.push(pug.render('a(href = "#" class = "delete_record" data-id = productId) Изтрий',
         { productId: productRow.id }, { fromString: true }));
       productsArray.push(productArray);
@@ -103,6 +108,47 @@ const self = module.exports = {
     });
 
     return productsArray;
+  },
+  prepareHtmlDataOrders: (ordersRows, statusesRows) => {
+    assert(_.isObject(ordersRows));
+
+    let orderArray = [];
+    const ordersArray = [];
+
+    ordersRows.forEach((orderRow) => {
+      orderArray.push(pug.render('p #{createdAt}', { createdAt: orderRow.order_created_at },
+        { fromString: true }));
+      orderArray.push(pug.render('p #{updatedAt}', { updatedAt: orderRow.order_updated_at },
+        { fromString: true }));
+      orderArray.push(pug.render('p #{productId}', { productId: orderRow.order_id },
+        { fromString: true }));
+      orderArray.push(pug.render('p #{userEmail}', { userEmail: orderRow.user_email },
+        { fromString: true }));
+      orderArray.push(pug.render('p #{amount}', { amount: orderRow.amount_leva },
+        { fromString: true }));
+
+      let selectElement = '<select class = "select_status">';
+
+      statusesRows.forEach((statusRow) => {
+        let optionElement = 'option(value = statusId';
+        optionElement += (orderRow.status_id === statusRow.id)
+          ? ' selected)'
+          : ')';
+        optionElement += ' #{statusName}';
+        selectElement += pug.render(optionElement,
+          { statusId: statusRow.id, statusName: statusRow.name }, { fromString: true });
+      });
+      selectElement += '</select>';
+
+      orderArray.push(selectElement);
+      orderArray.push(
+        pug.render('a(href = "../employee/orders/" + productId class = "order_details") Детайли',
+          { productId: orderRow.order_id }, { fromString: true }));
+      ordersArray.push(orderArray);
+      orderArray = [];
+    });
+
+    return ordersArray;
   },
   executeProductsQuery: async (queryArgs) => {
     assert(_.isObject(queryArgs));
@@ -209,9 +255,16 @@ const self = module.exports = {
       queryArgs.offset
     ]);
   },
-  executeOrderStatusesQuery: async (queryArgs) => {
+  executeOrderStatusesQuery: async (queryArgs = null) => {
     return mysql.pool.query(`
-      SELECT statuses.name
+      SELECT *
+      FROM statuses
+      ORDER BY statuses.name ASC
+    `);
+  },
+  executeUserOrderStatusesQuery: async (queryArgs) => {
+    return mysql.pool.query(`
+      SELECT statuses.name, orders.amount_leva
       FROM orders
       JOIN statuses ON statuses.id = orders.status_id
       JOIN users ON users.id = orders.user_id
@@ -237,7 +290,18 @@ const self = module.exports = {
       queryArgs.offset
     ]);
   },
-  processOrders: async (queryArgs) => {
+  executeChangeOrderStatusQuery: async (queryArgs) => {
+    assert(_.isObject(queryArgs));
+
+    return mysql.pool.query(`
+      UPDATE orders
+      SET
+        status_id = ?
+      WHERE
+        id = ?
+    `, queryArgs);
+  },
+  calculateOrdersProfitAndCount: async (queryArgs) => {
     assert(_.isObject(queryArgs));
     assert(_.isArray(queryArgs.exprs));
     assert(_.isArray(queryArgs.vals));
@@ -248,33 +312,33 @@ const self = module.exports = {
     queryArgsCopy.offset = 0;
 
     let ordersCount = 0;
-    let ordersSums = { 'Всички': 0, 'Настоящи': 0, 'Очаквани': 0 }; //  don't use float use int or bigInt libarar
-    let orderStatusesRows;
+    let ordersSums = { 'Всички': 0, 'Настоящи': 0, 'Очаквани': 0 };
+    let orderStatusRows;
 
-    while ((orderStatusesRows = await self.executeOrderStatusesQuery(queryArgsCopy)).length > 0) {
-      assert(orderStatusesRows.length >= 0);
+    while ((orderStatusRows = await self.executeUserOrderStatusesQuery(queryArgsCopy)).length > 0) {
+      assert(orderStatusRows.length >= 0);
 
-      ordersCount += orderStatusesRows.length;
+      ordersCount += orderStatusRows.length;
 
-      logger.info('OrdersCount = ' + ordersCount);
+      orderStatusRows.forEach((statusRow) => {
+        const statusName = statusRow.name.toLowerCase();
 
-      orderStatusesRows.forEach(function (orderStatusRow) {
-        if (orderStatusRow.status_name === 'Delivered' || orderStatusRow.status_name === 'Awaiting Shipment' ||
-          orderStatusRow.status_name === 'Awaiting Delivery') {
-          ordersSums['Настоящи'] += orderStatusRow.amount_leva;
+        if (statusName === 'delivered' || statusName === 'awaiting shipment' ||
+          statusName === 'awaiting delivery') {
+          ordersSums['Настоящи'] += statusRow.amount_leva * 100;
         }
 
-        if (orderStatusRow.status_name === 'Awaiting Payment' || orderStatusRow.status_name === 'Payment being verified') {
-          ordersSums['Очаквани'] += orderStatusRow.amount_leva;
+        if (statusName === 'awaiting payment' || statusName === 'payment being verified') {
+          ordersSums['Очаквани'] += statusRow.amount_leva * 100;
         }
       });
 
       queryArgsCopy.offset += CONSTANTS.ORDER_STATUSES_QUERY_LIMIT;
     }
 
-    ordersSums['Всички'] = (ordersSums['Настоящи'] + ordersSums['Очаквани']).toFixed(2);
-    ordersSums['Настоящи'] = ordersSums['Настоящи'].toFixed(2);
-    ordersSums['Очаквани'] = ordersSums['Очаквани'].toFixed(2);
+    ordersSums['Всички'] = ((ordersSums['Настоящи'] + ordersSums['Очаквани']) / 100).toFixed(2);
+    ordersSums['Настоящи'] = (ordersSums['Настоящи'] / 100).toFixed(2);
+    ordersSums['Очаквани'] = (ordersSums['Очаквани'] / 100).toFixed(2);
 
     return {
       ordersCount,

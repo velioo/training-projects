@@ -64,7 +64,7 @@ if tags
 <div class="row row-eq-height">
 
 -var index = 0
-if products
+if products.length
     each val in products
         if index % 4 == 0 && index != 0
             </div>
@@ -81,15 +81,21 @@ if products
         </div>
         <div class="product_wrapper">
         <a href="../products/#{val.id}" class="product_name no_underline">Име: #{val.name}</a></br>
-        <a href="#" class="product_category no_underline">Категория: #{val.category}</a></br>
+        <a href="../search?category=#{val.category_id}" class="product_category no_underline">Категория: #{val.category_name}</a></br>
         <div class="product_price"><p style="font-size: 18px;">Цена: #{val.price_leva} лв.</p></div>
         if val.quantity >= 1
             <p style='color:blue;'>В наличност</p>
         else
             <p style='color:red;'>Няма наличност</p>
         </div>
+        if val.quantity > 0
+            <button type="button" class="btn btn-default buy_button">
+            <span class="glyphicon glyphicon-shopping-cart"></span>Купи
+            </button><img class="spinner buy" src="../imgs/spinner.gif">
         </div>
         -index++
+else
+    h1 Няма налични продукти в момента
 </div>
 </br></br>
 <div style="text-align:center;">

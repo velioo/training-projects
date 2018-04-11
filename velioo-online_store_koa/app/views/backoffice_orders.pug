@@ -14,16 +14,21 @@ include ./employee_header.pug
 
 script.
     function getChangeStatusUrl() {
-      var url = "#{root}employee/change_order_status";
+      var url = "../employee/change_order_status";
       return url;
     }
 
     function getOrdersUrl() {
-      var url = "#{root}employee/get_orders";
+      var url = "../employee/get_orders";
       return url;
     }
 
 <div id="body" style="width: 100%;">
+
+<div id="notification" style="display: none;">
+  <span class="dismiss"><a title="dismiss this notification">X</a></span>
+  <div id="container"></div>
+</div>
 
 <div class="vertical-menu employee">
       <a href="../employee/orders" class="active">Поръчки</a>
@@ -57,7 +62,6 @@ script.
     </div>
 
 </div>
-
 <table class="tablesorter" id="orders_table">
         <thead>
           <tr class="tablesorter-ignoreRow">

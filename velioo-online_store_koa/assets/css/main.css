@@ -27,7 +27,7 @@ html,body{
 }
 
 #navigation_top2 {
-	z-index: 1; 
+	z-index: 1;
 	 background-color: rgb(238,238,238);
 }
 
@@ -107,7 +107,7 @@ html,body{
   display: -webkit-flex;
   display: -ms-flexbox;
   display:  flex;
-   
+
 }
 .col-sm-3.product {
 	background-color: white;
@@ -297,7 +297,7 @@ font-size: 12px;
 }
 
 .cart_sum {
-	
+
 }
 
 .right_aligned_td {
@@ -309,7 +309,7 @@ font-size: 12px;
 }
 
 .purchase_button {
-	
+
 }
 
 .glyphicon.form-control-feedback {
@@ -380,7 +380,7 @@ font-size: 12px;
 }
 
 .order_details_div {
-	
+
 }
 
 .change_product_count {
@@ -397,7 +397,7 @@ font-size: 12px;
 
 .input_change_count {
 	width: 70px;
-}	
+}
 
 #message {
 	margin-top: 30px;
@@ -418,7 +418,7 @@ font-size: 12px;
 }
 
 .product_left {
-	width:50%; 
+	width:50%;
 	display:inline-block;
 }
 
@@ -452,7 +452,7 @@ font-size: 12px;
 	color:red;
 	font-weight: normal;
 	margin-left: 10px;
-	display: none;	
+	display: none;
 }
 
 .filtering_menu {
@@ -575,6 +575,36 @@ tr:nth-child(even)  {
 
 }
 
+#notification {
+    position:fixed;
+    top:51px; /* Set to 0 or wherever */
+    width:21%; /* set to 100% if space is available */
+    z-index:105;
+    text-align:left;
+    font-weight:normal;
+    font-size:14px;
+    font-weight:bold;
+    color:white;
+    background-color:#98BEE5;
+    padding:5px;
+    padding-left: 15px;
+    margin-left: 67%;
+    max-height:100px;
+    overflow-y:auto;
+}
+#notification span.dismiss {
+    border:2px solid #FFF;
+    padding:0 5px;
+    cursor:pointer;
+    float:right;
+    margin-right:10px;
+}
+#notification a {
+    color:white;
+    text-decoration:none;
+    font-weight:bold
+}
+
 
 #product_container {
 	background-color: white;
@@ -590,5 +620,5 @@ tr:nth-child(even)  {
 	#search_form {
 		width: 300px;
 	}
-	
+
 }

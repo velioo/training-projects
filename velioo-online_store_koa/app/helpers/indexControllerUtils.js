@@ -1,5 +1,5 @@
 const CONSTANTS = require('../constants/constants');
-const Utils = require('../helpers/utils');
+const Utils = require('./utils');
 const mysql = require('../db/mysql');
 
 const assert = require('assert');
@@ -8,6 +8,7 @@ const _ = require('lodash/lang');
 module.exports = {
   processQueryStr: (queryStrObj) => {
     assert(_.isObject(queryStrObj));
+    Utils.assertObjStrLen([ queryStrObj ], CONSTANTS.MAX_SEARCH_FILTER_LEN);
 
     const inputStr = Utils.escapeSql(queryStrObj.search_input);
     const priceFrom = +queryStrObj.price_from;
@@ -94,7 +95,7 @@ module.exports = {
     assert(_.isArray(queryArgs));
 
     return mysql.pool.query(`
-      SELECT products.*
+      SELECT products.*, categories.name as category_name
       FROM products
       JOIN categories ON categories.id = products.category_id
       ORDER BY created_at DESC

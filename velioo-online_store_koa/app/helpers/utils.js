@@ -5,9 +5,9 @@ const mysql = require('../db/mysql');
 
 const self = module.exports = {
   escapeSql: (str) => {
-    assert(_.isString(str));
-
     if (_.isNil(str)) return str;
+
+    assert(_.isString(str));
 
     const escapedStr = str
       .replace(/%/g, '!%')

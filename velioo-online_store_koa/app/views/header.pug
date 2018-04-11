@@ -7,53 +7,97 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="#{root}css/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ajv/5.3.0/ajv.min.js"></script>
+    <script src="../log4javascript/log4javascript.js"></script>
+    <script src="../js/schemas.js"></script>
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
 
 script.
     window.onerror = function (msg, url, lineNo, columnNo, error) {
-      //infoLog = "";
+      infoLog = '';
       if(error !== null) {
-        if(error.stack != "") {
-          //logger.error(error.name + ": ", error.message + "\n" + error.stack);
+        if(error.stack != '') {
+          logger.error(error.name + ': ', error.message + '\n' + error.stack);
         } else {
-          //logger.error(error.name + ": ", error.message + "\n" + url + ":" + lineNo + ":" + columnNo + "\n");
+          logger.error(error.name + ': ', error.message + '\n' + url + ':' + lineNo + ':' + columnNo + '\n');
         }
       } else if(ajv.errors) {
-        //logger.error("Request didn\'t return a valid JSON object\n" + JSON.stringify(ajv.errors, null, 2));
+        logger.error("Request didn\'t return a valid JSON object\n" + JSON.stringify(ajv.errors, null, 2));
       } else {
-        //logger.error(msg + ": " + url + ": " + lineNo + ": " + columnNo + "\n");
+        logger.error(msg + ': ' + url + ': ' + lineNo + ': ' + columnNo + '\n');
       }
       return true;
     };
 
+
+    const logger = log4javascript.getLogger();
+    const ajaxAppender = new log4javascript.AjaxAppender('../frontend_logger');
+
+    ajaxAppender.setSendAllOnUnload();
+    logger.addAppender(ajaxAppender);
+
+    function getLogger() {
+      return logger;
+    }
+
+    var infoLog = '';
+
+    var ajv = new Ajv({allErrors: true});
+
     function assert(condition, message) {
         if (!condition) {
-          message = message || "Assertion failed";
-          if (typeof Error !== "undefined") {
+          message = message || 'Assertion failed';
+          if (typeof Error !== 'undefined') {
             throw new Error(message);
           }
           throw message;
         }
     }
 
+    function getAddToCartUrl() {
+      var url = '../users/cart/add';
+      return url;
+    }
+
+    function getChangeQuantityUrl() {
+      var url = '../users/cart/change_quantity';
+      return url;
+    }
+
+    function getRemoveFromCartUrl() {
+      var url = '../users/cart/remove';
+      return url;
+    }
+
+    function getCartCountPriceUrl() {
+      var url = '../users/cart/count_price';
+      return url;
+    }
+
+    function getRedirectUrl() {
+      var url = '../login';
+      return url;
+    }
+
     function getMenuItemsUrl() {
-        var url = "#{root}menu_items";
+        var url = '../menu_items';
         return url;
     }
 
     function getActiveTab() {
-        var tab = "#{category}";
+        var tab = '#{category}';
         return tab;
     }
 
     function getCategorySearchUrl() {
-        var url = "#{root}search?category=";
+        var url = '../search?category=';
         return url;
     }
 
-<script src="#{root}js/main_menu.js"></script>
+<script src="../js/main_menu.js"></script>
+<script src="../js/cart.js"></script>
 
 <div id="holder">
 <nav class="navbar" id="navigation_top">
@@ -61,7 +105,7 @@ script.
     <div class="navbar-header">
       <a class="navbar-brand" href="/">Computer Store</a>
     </div>
-    <form action="#{root}search" method="get" class="navbar-form navbar-left" id="search_form">
+    <form action="../search" method="get" class="navbar-form navbar-left" id="search_form">
       <div class="input-group">
         <input type="text" class="form-control" name="search_input" placeholder="Search" id="search_input">
         <div class="input-group-btn">
@@ -73,12 +117,12 @@ script.
     </form>
     <ul class="nav navbar-nav navbar-right">
     if !isUserLoggedIn
-        <li><a href="#{root}sign_up"><span class="glyphicon glyphicon-user"></span> Регистрация</a></li>
-        <li><a href="#{root}login"><span class="glyphicon glyphicon-log-in"></span> Вход</a></li>
+        <li><a href="../sign_up"><span class="glyphicon glyphicon-user"></span> Регистрация</a></li>
+        <li><a href="../login"><span class="glyphicon glyphicon-log-in"></span> Вход</a></li>
     else
-        <li><a href="#"><img class="spinner cart" src="#"><span class="glyphicon glyphicon-shopping-cart" style="float:right;"> Количка</span></br><span id="cart_count_price"></span></a></li>
+        <li><a href="../users/cart"><img class="spinner cart" src="#"><span class="glyphicon glyphicon-shopping-cart" style="float:right;"> Количка</span></br><span id="cart_count_price"></span></a></li>
         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Моят профил</a></li>
-        <li><a href="#{root}log_out"><span class="glyphicon glyphicon-log-in"></span> Изход</a></li>
+        <li><a href="../users/log_out"><span class="glyphicon glyphicon-log-in"></span> Изход</a></li>
     </ul>
   </div>
 </nav>
@@ -101,7 +145,7 @@ script.
 
         </ul>
       </li>
-      <img class="spinner menu" src="#{root}imgs/spinner.gif">
+      <img class="spinner menu" src="../imgs/spinner.gif">
     </ul>
   </div>
 </nav>

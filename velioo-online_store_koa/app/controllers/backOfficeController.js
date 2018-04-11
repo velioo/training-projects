@@ -1,220 +1,189 @@
 const CONSTANTS = require('../constants/constants');
 const logger = require('../helpers/logger');
-const mysql = require('../db/mysql');
 const Utils = require('../helpers/backOfficeControllerUtils');
 
 const assert = require('assert');
-const escapeHtml = require('escape-html');
 
-async function renderEmployeeLogin (ctx, next) {
-  ctx.status = 200;
+module.exports = {
+  renderEmployeeLogin: async (ctx, next) => {
+    ctx.status = 200;
 
-  await next();
+    await next();
 
-  Utils.renderLoginPage(ctx);
-}
-
-async function employeeLogin (ctx, next) {
-  const requestBody = ctx.request.body;
-
-  assert(requestBody.username.length <= CONSTANTS.MAX_USERNAME_LEN);
-  assert(requestBody.password.length <= CONSTANTS.MAX_USER_PASSWORD_LEN);
-
-  const userData = await Utils.executeLoginQuery([ requestBody.username ]);
-
-  if (userData.length === 1 && Utils.isLoginSuccessfull(requestBody.password, userData[0])) {
-    ctx.session.employeeData = { employeeId: userData[0].id };
-    ctx.session.isEmployeeLoggedIn = true;
-
-    return ctx.redirect('/employee/dashboard');
-  } else {
-    ctx.error = 'Wrong username or password.';
-  }
-
-  Utils.renderLoginPage(ctx);
-}
-
-async function renderDashboard (ctx, next) {
-  await next();
-
-  ctx.render('dashboard.pug', {
-    isEmployeeLoggedIn: ctx.session.isEmployeeLoggedIn,
-    user: {}
-  });
-}
-
-async function renderOrders (ctx, next) {
-  await next();
-
-  ctx.render('backoffice_orders.pug', {
-    isEmployeeLoggedIn: ctx.session.isEmployeeLoggedIn,
-    user: {}
-  });
-}
-
-async function employeeLogOut (ctx, next) {
-  await next();
-
-  if (ctx.session.isEmployeeLoggedIn) {
-    ctx.session.employeeData = null;
-    ctx.session.isEmployeeLoggedIn = null;
-    ctx.redirect('/products');
-  }
-}
-
-async function getProducts (ctx, next) {
-  logger.info('Query params = %o', ctx.query);
-
-  const queryArgs = Utils.processQueryStr(ctx.query, {
-    0: "products.created_at LIKE '%",
-    1: "products.updated_at LIKE '%",
-    2: "products.name LIKE '%",
-    3: "categories.name LIKE '%",
-    4: "products.price_leva LIKE '%",
-    5: 'products.quantity = ',
-    6: '',
-    7: ''
+    Utils.renderLoginPage(ctx);
   },
-  {
-    0: 'products.created_at ',
-    1: 'products.updated_at ',
-    2: 'products.name ',
-    3: 'categories.name ',
-    4: 'products.price_leva ',
-    5: 'products.quantity ',
-    6: '',
-    7: ''
-  });
+  employeeLogin: async (ctx, next) => {
+    const requestBody = ctx.request.body;
 
-  logger.info('QueryArgs = %o', queryArgs);
+    assert(requestBody.username.length <= CONSTANTS.MAX_USERNAME_LEN);
+    assert(requestBody.password.length <= CONSTANTS.MAX_USER_PASSWORD_LEN);
 
-  const productsRows = await Utils.executeProductsQuery(queryArgs);
-  const productsCountRows = await Utils.executeProductsCountQuery(queryArgs);
+    const userData = await Utils.executeLoginQuery([ requestBody.username ]);
 
-  assert(productsRows.length >= 0);
+    if (userData.length === 1 && Utils.isLoginSuccessfull(requestBody.password, userData[0])) {
+      ctx.session.employeeData = { employeeId: userData[0].id };
+      ctx.session.isEmployeeLoggedIn = true;
 
-  logger.info('ProductsRows[0] = %o', productsRows[0]);
+      return ctx.redirect('/employee/dashboard');
+    } else {
+      ctx.error = 'Wrong username or password.';
+    }
 
-  assert(productsCountRows.length >= 0);
-
-  const productsCount = productsCountRows[0].count;
-
-  logger.info('ProductsCount = ' + productsCount);
-
-  const result = { total_rows: productsCount };
-
-  const products = (productsCount > 0) ? Utils.prepareHtmlData(productsRows) : [];
-
-  result.rows = products;
-
-  ctx.body = result;
-}
-
-async function getOrders (ctx, next) {
-  logger.info('Query params = %o', ctx.query);
-
-  const queryArgs = Utils.processQueryStr(ctx.query, {
-    0: "orders.created_at LIKE '%",
-    1: "orders.updated_at LIKE '%",
-    2: 'orders.id = ',
-    3: "users.email LIKE '%",
-    4: 'orders.amount_leva = ',
-    5: "statuses.name LIKE '%",
-    6: ''
+    Utils.renderLoginPage(ctx);
   },
-  {
-    0: 'orders.created_at ',
-    1: 'orders.updated_at ',
-    2: 'orders.id ',
-    3: 'usrs.email ',
-    4: 'orders.amount_leva ',
-    5: 'statuses.name ',
-    6: ''
-  });
+  renderDashboard: async (ctx, next) => {
+    await next();
 
-  logger.info('QueryArgs = %o', queryArgs);
-
-  const ordersRows = await Utils.executeOrdersQuery(queryArgs);
-
-  let statusesQuery = `
-      SELECT *
-      FROM statuses
-      ORDER BY statuses.name ASC
-    `;
-
-  assert(ordersRows.length >= 0);
-
-  logger.info('ordersRows = %o', ordersRows);
-
-  let statusesRows = await mysql.pool.query(statusesQuery);
-
-  assert(statusesRows.length >= 0);
-
-  logger.info('statusesRows = %o', statusesRows);
-
-  let orderArray = [];
-  let ordersArray = [];
-
-  if (ordersRows.length > 0) {
-    ordersRows.forEach(function (orderRow) { // use pug to create html string
-      orderArray.push(escapeHtml(orderRow.order_created_at));
-      orderArray.push(escapeHtml(orderRow.order_updated_at));
-      orderArray.push(escapeHtml(orderRow.order_id));
-      orderArray.push(escapeHtml(orderRow.user_email));
-      orderArray.push(escapeHtml(orderRow.amount_leva));
-
-      let selectElement = '<select class="select_status">';
-
-      statusesRows.forEach(function (statusRow) {
-        selectElement += `<option value="${escapeHtml(statusRow.id)}"`;
-
-        selectElement += (orderRow.status_id === statusRow.id)
-          ? 'selected>'
-          : '>';
-
-        selectElement += escapeHtml(statusRow.name) + '</option>';
-      });
-
-      selectElement += '</select>';
-      orderArray.push(selectElement);
-      orderArray.push(`<a href="../employee/orders/${escapeHtml(orderRow.id)}" class="order_details">Детайли</a>`);
-      ordersArray.push(orderArray);
-      orderArray = [];
+    ctx.render('dashboard.pug', {
+      isEmployeeLoggedIn: ctx.session.isEmployeeLoggedIn,
+      user: {}
     });
-  }
+  },
+  renderOrders: async (ctx, next) => {
+    await next();
 
-  let result = { rows: ordersArray };
+    ctx.render('backoffice_orders.pug', {
+      isEmployeeLoggedIn: ctx.session.isEmployeeLoggedIn,
+      user: {}
+    });
+  },
+  employeeLogOut: async (ctx, next) => {
+    await next();
 
-  const ordersInfo = await Utils.processOrders(queryArgs);
+    if (ctx.session.isEmployeeLoggedIn) {
+      ctx.session.employeeData = null;
+      ctx.session.isEmployeeLoggedIn = null;
+      ctx.redirect('/products');
+    }
+  },
+  getProducts: async (ctx, next) => {
+    logger.info('Query params = %o', ctx.query);
 
-  logger.info('OrdersInfo = %o', ordersInfo);
+    const queryArgs = Utils.processQueryStr(ctx.query,
+      {
+        0: "products.created_at LIKE '%",
+        1: "products.updated_at LIKE '%",
+        2: "products.name LIKE '%",
+        3: "categories.name LIKE '%",
+        4: "products.price_leva LIKE '%",
+        5: 'products.quantity = ',
+        6: '',
+        7: ''
+      },
+      {
+        0: 'products.created_at ',
+        1: 'products.updated_at ',
+        2: 'products.name ',
+        3: 'categories.name ',
+        4: 'products.price_leva ',
+        5: 'products.quantity ',
+        6: '',
+        7: ''
+      },
+      {
+        0: 'DATE(products.created_at) >= ?',
+        1: 'DATE(products.created_at) <= ?',
+        2: 'DATE(products.updated_at) >= ?',
+        3: 'DATE(products.updated_at) <= ?',
+        4: 'products.price_leva >= ?',
+        5: 'products.price_leva <= ?'
+      }
+    );
 
-  result.total_rows = ordersInfo.ordersCount;
-  result.sums = ordersInfo.ordersSums;
+    logger.info('QueryArgs = %o', queryArgs);
 
-  ctx.body = result;
-}
+    const productsRows = await Utils.executeProductsQuery(queryArgs);
+    const productsCountRows = await Utils.executeProductsCountQuery(queryArgs);
 
-async function changeOrderStatus (ctx, next) {
-  if (ctx.request.body.statusId && ctx.request.body.orderId) {
+    assert(productsRows.length >= 0);
+
+    logger.info('ProductsRows[0] = %o', productsRows[0]);
+
+    assert(productsCountRows.length >= 0);
+
+    const productsCount = productsCountRows[0].count;
+
+    logger.info('ProductsCount = ' + productsCount);
+
+    const result = { total_rows: productsCount };
+
+    const products = (productsCount > 0) ? Utils.prepareHtmlDataProducts(productsRows) : [];
+
+    result.rows = products;
+
+    ctx.body = result;
+  },
+  getOrders: async (ctx, next) => {
+    logger.info('Query params = %o', ctx.query);
+
+    const queryArgs = Utils.processQueryStr(ctx.query,
+      {
+        0: "orders.created_at LIKE '%",
+        1: "orders.updated_at LIKE '%",
+        2: 'orders.id = ',
+        3: "users.email LIKE '%",
+        4: 'orders.amount_leva = ',
+        5: "statuses.name LIKE '%",
+        6: ''
+      },
+      {
+        0: 'orders.created_at ',
+        1: 'orders.updated_at ',
+        2: 'orders.id ',
+        3: 'users.email ',
+        4: 'orders.amount_leva ',
+        5: 'statuses.name ',
+        6: ''
+      },
+      {
+        0: 'DATE(orders.created_at) >= ?',
+        1: 'DATE(orders.created_at) <= ?',
+        2: 'DATE(orders.updated_at) >= ?',
+        3: 'DATE(orders.updated_at) <= ?',
+        4: 'orders.amount_leva >= ?',
+        5: 'orders.amount_leva <= ?'
+      }
+    );
+
+    logger.info('QueryArgs = %o', queryArgs);
+
+    const ordersRows = await Utils.executeOrdersQuery(queryArgs);
+
+    assert(ordersRows.length >= 0);
+
+    logger.info('OrdersRows[0] = %o', ordersRows[0]);
+
+    const statusesRows = await Utils.executeOrderStatusesQuery();
+
+    assert(statusesRows.length >= 0);
+
+    logger.info('OrderStatusesRows = %o', statusesRows);
+
+    const orders = (ordersRows.length > 0)
+      ? Utils.prepareHtmlDataOrders(ordersRows, statusesRows)
+      : [];
+
+    const result = { rows: orders };
+
+    const ordersInfo = await Utils.calculateOrdersProfitAndCount(queryArgs);
+
+    logger.info('OrdersInfo = %o', ordersInfo);
+
+    result.total_rows = ordersInfo.ordersCount;
+    result.sums = ordersInfo.ordersSums;
+
+    ctx.body = result;
+  },
+  changeOrderStatus: async (ctx, next) => {
     assert(!isNaN(ctx.request.body.statusId) && !isNaN(ctx.request.body.orderId));
 
-    let resultSetHeader = await mysql.pool.query(`
-      UPDATE orders
-      SET
-        status_id = ?,
-      WHERE
-        id = ?
-      `, [ctx.request.body.statusId, ctx.request.body.orderId]);
+    ctx.body = true;
 
-    logger.info('resultSetHeader = %o', resultSetHeader);
-
-    if (resultSetHeader) {
-      ctx.body = true;
-    } else {
+    try {
+      await Utils.executeChangeOrderStatusQuery([+ctx.request.body.statusId, +ctx.request.body.orderId]);
+    } catch (err) {
+      logger.info('ChangeOrderStatus Error = %o', err);
       ctx.body = false;
     }
   }
-}
-
-module.exports = { renderEmployeeLogin, employeeLogin, renderDashboard, employeeLogOut, getProducts, renderOrders, getOrders, changeOrderStatus };
+};
