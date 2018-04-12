@@ -58,7 +58,7 @@ const cart = () => {
     .post('/add', new KoaBody(), addProductCart)
     .post('/remove', new KoaBody(), removeProductCart)
     .post('/change_quantity', new KoaBody(), changeProductQuantityCart)
-    .get('/count_price', getCountPriceCart);
+    .post('/count_price', getCountPriceCart);
 
   return router;
 };

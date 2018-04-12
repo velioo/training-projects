@@ -57,15 +57,15 @@ module.exports = {
       return Utils.renderSignUpPage(ctx, userData);
     }
 
-    const connection = await Utils.executeBeginTransaction();
+    const connection = await Utils.baseUtils.executeBeginTransaction();
 
     const tempCode = Utils.baseUtils.generateUniqueId(32);
 
-    const userId = await Utils.executeInsertUserQuery(connection, userData);
-    await Utils.executeInsertTempCodeQuery(connection, [userId, tempCode, 'email']);
+    const userId = await Utils.executeInsertUserQuery(userData, connection);
+    await Utils.executeInsertTempCodeQuery([userId, tempCode, 'email'], connection);
 
     try {
-      await Utils.exucuteCommitTransaction(connection);
+      await Utils.baseUtils.exucuteCommitTransaction(connection);
     } catch (err) {
       ctx.userMessage = 'There was a problem creating your account.';
     }
@@ -94,13 +94,13 @@ module.exports = {
 
     const userId = userTempData[0].user_id;
 
-    const connection = await Utils.executeBeginTransaction();
+    const connection = await Utils.baseUtils.executeBeginTransaction();
 
-    await Utils.executeUpdateAccountStatusQuery(connection, [userId]);
-    await Utils.executeDeleteTempCodeQuery(connection, [ctx.params.code]);
+    await Utils.executeUpdateAccountStatusQuery([userId], connection);
+    await Utils.executeDeleteTempCodeQuery([ctx.params.code], connection);
 
     try {
-      await Utils.exucuteCommitTransaction(connection);
+      await Utils.baseUtils.exucuteCommitTransaction(connection);
     } catch (err) {
       ctx.userMessage = 'There was a problem confirming your account.';
     }

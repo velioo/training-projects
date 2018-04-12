@@ -17,6 +17,7 @@
 script.
     window.onerror = function (msg, url, lineNo, columnNo, error) {
       infoLog = '';
+      window.alert(`There was a problem while processing your request.`);
       if(error !== null) {
         if(error.stack != '') {
           logger.error(error.name + ': ', error.message + '\n' + error.stack);
@@ -44,7 +45,7 @@ script.
 
     var infoLog = '';
 
-    var ajv = new Ajv({allErrors: true});
+    var ajv = new Ajv({ allErrors: true });
 
     function assert(condition, message) {
         if (!condition) {

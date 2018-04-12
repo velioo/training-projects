@@ -4,20 +4,21 @@ module.exports = async (ctx, next) => {
   const userLoggedInUrls = [ '/users/' ];
   const employeeLoggedInUrls = [ '/employee/' ];
   const employeeServiceUrls = [ '/employee_login' ];
+  // const logger = require('./logger');
 
   if (userServiceUrls.some((url) => requestUrl.startsWith(url)) &&
       ctx.session.isUserLoggedIn) {
-    return ctx.redirect('/');
+    ctx.throw(200, 'User already logged in.', { userLoggedIn: true });
   }
 
   if (employeeServiceUrls.some((url) => requestUrl.startsWith(url)) &&
       ctx.session.isEmployeeLoggedIn) {
-    return ctx.redirect('/employee/dashboard');
+    ctx.throw(200, 'Employee already logged in.', { employeeLoggedIn: true });
   }
 
   if (userLoggedInUrls.some((url) => requestUrl.startsWith(url) || (requestUrl + '/').startsWith(url))) {
     if (!ctx.session.isUserLoggedIn) {
-      return ctx.redirect('/login');
+      ctx.throw(403, 'User not logged in.', { userNotLoggedIn: true });
     }
 
     return;
@@ -25,7 +26,7 @@ module.exports = async (ctx, next) => {
 
   if (employeeLoggedInUrls.some((url) => requestUrl.startsWith(url) || (requestUrl + '/').startsWith(url))) {
     if (!ctx.session.isEmployeeLoggedIn) {
-      return ctx.redirect('/employee_login');
+      ctx.throw(403, 'Employee not logged in.', { employeeNotLoggedIn: true });
     }
 
     return;

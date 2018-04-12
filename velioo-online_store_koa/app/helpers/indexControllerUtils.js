@@ -91,10 +91,10 @@ module.exports = {
 
     return processedTagRows;
   },
-  executeHomepageQuery: async (queryArgs) => {
+  executeHomepageQuery: async (queryArgs, connection = mysql.pool) => {
     assert(_.isArray(queryArgs));
 
-    return mysql.pool.query(`
+    return connection.query(`
       SELECT products.*, categories.name as category_name
       FROM products
       JOIN categories ON categories.id = products.category_id
@@ -103,10 +103,10 @@ module.exports = {
       OFFSET ?
     `, queryArgs);
   },
-  executeProductIdQuery: async (queryArgs) => {
+  executeProductIdQuery: async (queryArgs, connection = mysql.pool) => {
     assert(_.isArray(queryArgs));
 
-    return mysql.pool.query(`
+    return connection.query(`
       SELECT products.*
       FROM products
       JOIN categories ON categories.id = products.category_id
@@ -114,13 +114,13 @@ module.exports = {
         products.id = ?
     `, queryArgs);
   },
-  executeProductsQuery: async (queryArgs) => {
+  executeProductsQuery: async (queryArgs, connection = mysql.pool) => {
     assert(_.isObject(queryArgs));
     assert(_.isArray(queryArgs.exprs));
     assert(_.isArray(queryArgs.vals));
 
-    return mysql.pool.query(`
-      SELECT p.*, c.name as category, c.id as category_id
+    return connection.query(`
+      SELECT p.*, c.name as category_name, c.id as category_id
       FROM products as p
       JOIN categories as c ON c.id = p.category_id
       LEFT JOIN product_tags as pt ON pt.product_id = p.id
@@ -132,7 +132,8 @@ module.exports = {
         AND ${queryArgs.exprs[4]}
         AND ${queryArgs.exprs[5]}
       GROUP BY p.id
-      ORDER BY ${queryArgs.exprs[6]} LIMIT ?
+      ORDER BY ${queryArgs.exprs[6]}
+      LIMIT ?
       OFFSET ?
       `, [
       ...queryArgs.vals,
@@ -140,12 +141,12 @@ module.exports = {
       queryArgs.offset
     ]);
   },
-  executeProductsCountQuery: async (queryArgs) => {
+  executeProductsCountQuery: async (queryArgs, connection = mysql.pool) => {
     assert(_.isObject(queryArgs));
     assert(_.isArray(queryArgs.exprs));
     assert(_.isArray(queryArgs.vals));
 
-    return mysql.pool.query(`
+    return connection.query(`
       SELECT COUNT(1) as count
       FROM
         (
@@ -166,12 +167,12 @@ module.exports = {
       ...queryArgs.vals
     ]);
   },
-  executeTagsQuery: async (queryArgs) => {
+  executeTagsQuery: async (queryArgs, connection = mysql.pool) => {
     assert(_.isObject(queryArgs));
     assert(_.isArray(queryArgs.exprs));
     assert(_.isArray(queryArgs.vals));
 
-    return mysql.pool.query(`
+    return connection.query(`
       SELECT tags.name, COUNT(tags.name) as tag_count
       FROM products as p
       JOIN categories as c ON c.id = p.category_id
@@ -187,8 +188,8 @@ module.exports = {
       ...queryArgs.vals.slice(1)
     ]);
   },
-  executeMenuItemsQuery: async () => {
-    return mysql.pool.query(`
+  executeMenuItemsQuery: async (queryArgs = null, connection = mysql.pool) => {
+    return connection.query(`
       SELECT id, name, type as c_type
       FROM categories
     `);

@@ -164,5 +164,17 @@ const self = module.exports = {
     }
 
     return date.toISOString().slice(0, 10) === dateStr;
+  },
+  executeBeginTransaction: async () => {
+    const connection = await mysql.pool.getConnection();
+    await connection.beginTransaction();
+
+    return connection;
+  },
+  exucuteCommitTransaction: async (connection) => {
+    return connection.commit();
+  },
+  exucuteRollbackTransaction: async (connection) => {
+    return connection.rollback();
   }
 };

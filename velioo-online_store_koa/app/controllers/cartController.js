@@ -23,8 +23,6 @@ module.exports = {
   addProductCart: async (ctx, next) => {
     await next();
 
-    logger.info('addProductCart');
-
     const productId = +ctx.request.body.productId;
     const userId = +ctx.session.userData.userId;
 
@@ -34,25 +32,28 @@ module.exports = {
     assert(_.isInteger(productId));
     assert(_.isInteger(userId));
 
-    const productQuantityRow = await Utils.executeProductExistsInCartQuery([ userId, productId ]);
+    const connection = await Utils.baseUtils.executeBeginTransaction();
+
+    const productQuantityRow = await Utils.executeProductExistsInCartQuery([ userId, productId ], connection);
+
+    logger.info('productQuantityRow = %o', productQuantityRow);
 
     assert(productQuantityRow.length <= 1);
 
-    let productQuantity = +productQuantityRow.quantity;
+    const productQuantity = (productQuantityRow[0]) ? +productQuantityRow[0].quantity : 0;
 
     try {
       if (productQuantity) {
-        logger.info('product Exists');
-        await Utils.executeUpdateProductQuantityQuery([ ++productQuantity, userId, productId ]);
+        await Utils.executeUpdateProductQuantityQuery([ productQuantity + 1, userId, productId ], connection);
       } else {
-        logger.info('product doesn\'t Exists');
-        await Utils.executeAddProductToCartQuery([ userId, productId ]);
+        await Utils.executeAddProductToCartQuery([ userId, productId ], connection);
       }
+
+      await Utils.baseUtils.exucuteCommitTransaction(connection);
 
       ctx.body = true;
     } catch (err) {
       logger.error(`Error while updating user cart: %o`, err);
-      ctx.body = false;
     }
   },
   removeProductCart: async (ctx, next) => {
@@ -62,6 +63,16 @@ module.exports = {
 
   },
   getCountPriceCart: async (ctx, next) => {
+    await next();
 
+    const userId = +ctx.session.userData.userId;
+
+    assert(_.isInteger(userId));
+
+    const cartInfoRow = await Utils.executeGetCartInfoQuery([ userId ]);
+
+    assert(cartInfoRow.length <= 1);
+
+    ctx.body = cartInfoRow[0];
   }
 };

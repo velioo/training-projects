@@ -40,7 +40,7 @@ $(document).ready(() => {
         infoLog += `cart.js/.remove_product: Sending request to ` +
           removeFromCartUrl + ` with params: productId = ` + productId + `\n`;
 
-        $.post(removeFromCartUrl, {productId: productId}, function (data, status) {
+        $.post(removeFromCartUrl, { productId: productId }, function (data, status) {
           if (data) {
             if (data != `login`) {
               infoLog += `cart.js/.remove_product: Reqest successfull\n`;
@@ -61,19 +61,16 @@ $(document).ready(() => {
 
             window.alert(`Имаше проблем в обработването на заявката ви.`);
           }
-
-          logger.info(infoLog);
-          infoLog = ``;
-        });
+        }).fail(failHandler);
       } else {
         infoLog += `cart.js/.remove_product: Product id is not integer: ` +
           productId + `\n`;
 
-        logger.info(infoLog);
-        infoLog = ``;
         window.alert(`Имаше проблем в обработването на заявката ви.`);
       }
     }
+    logger.info(infoLog);
+    infoLog = ``;
   });
 
   var delayTimer;
@@ -121,91 +118,47 @@ $(document).ready(() => {
         infoLog += `cart.js/updateCart(): Request returned data\n`;
         infoLog += `cart.js/updateCart(): Checking if returned data is valid JSON...\n`;
 
-        if (typeof data === `object` && ajv.validate(cartSchema, data) &&
-          !data.hasOwnProperty(`not_logged`)) {
-          infoLog += `cart.js/updateCart(): Data is valid JSON\n`;
+        assert(typeof data === 'object', 'Request didn\'t return an object');
+        assert(ajv.validate(cartSchema, data), 'Request didn\'t return a valid JSON object' +
+          JSON.stringify(ajv.errors, null, 2));
 
-          $(`#cart_count_price`).text(data.count + ` артикул(а) - ` +
-            formatter.format(data.price_leva) + ` лв.`);
+        infoLog += `cart.js/updateCart(): Data is valid JSON\n`;
 
-          if ($(`.cart_sum`).length > 0) {
-            $(`.cart_sum`).text(formatter.format(data.price_leva));
-            $(`.spinner.order_sum`).hide();
+        $(`#cart_count_price`).text(data.count + ` артикул(а) - ` +
+          formatter.format(data.price_leva) + ` лв.`);
+
+        if ($(`.cart_sum`).length > 0) {
+          $(`.cart_sum`).text(formatter.format(data.price_leva));
+          $(`.spinner.order_sum`).hide();
+        }
+
+        infoLog += `cart.js/updateCart(): Cart update successfull\n`;
+
+        // console.log(`Out: ` + requests);
+
+        if (requests <= 1) {
+          if ($(`.purchase_button`).length > 0) {
+            $(`.purchase_button`).prop(`disabled`, false);
           }
 
-          infoLog += `cart.js/updateCart(): Cart update successfull\n`;
-
-          console.log(`Out: ` + requests);
-
-          if (requests <= 1) {
-            if ($(`.purchase_button`).length > 0) {
-              $(`.purchase_button`).prop(`disabled`, false);
-            }
-
-            if ($(`#paymentSubmit`).length > 0) {
-              $(`#paymentSubmit`).prop(`disabled`, false);
-            }
-          }
-
-          if (requests > 0) {
-            requests--;
-          }
-
-          $(`.spinner.cart`).css(`margin-top`, `-42px`);
-          $(`.spinner.cart`).css(`margin-left`, `40px`);
-        } else {
-          if (data.hasOwnProperty(`not_logged`)) {
-            infoLog += `cart.js/updateCart(): User is not logged. No cart data returned\n`;
-          } else {
-            infoLog += `cart.js/updateCart(): Request didn\`t return a valid JSON object\n`;
-            infoLog += JSON.stringify(ajv.errors, null, 2);
-
-            window.alert(`Failed to get data from server. Please try again later`);
+          if ($(`#paymentSubmit`).length > 0) {
+            $(`#paymentSubmit`).prop(`disabled`, false);
           }
         }
+
+        if (requests > 0) {
+          requests--;
+        }
+
+        $(`.spinner.cart`).css(`margin-top`, `-42px`);
+        $(`.spinner.cart`).css(`margin-left`, `40px`);
+
         logger.info(infoLog);
         infoLog = ``;
 
         $(`.spinner.cart`).hide();
       },
-      error: function (xhr, status, errorThrown) {
-        if (status === `timeout`) {
-          infoLog += `cart.js/updateCart(): Request timed out\n`;
-
-          window.alert(`Request timed out`);
-        } else {
-          if (xhr.readyState === 0) {
-            infoLog += `cart.js/updateCart(): Internet connection is off or server is
-              not responding\n`;
-
-            window.alert(`Internet connection is off or server is not responding`);
-          } else if (xhr.readyState == 1) {
-          } else if (xhr.readyState == 2) {
-          } else if (xhr.readyState == 3) {
-          } else {
-            if (xhr.status === 200) {
-              infoLog += `cart.js/updateCart(): Error parsing JSON data\n`;
-            } else if (xhr.status === 404) {
-              infoLog += `cart.js/updateCart(): The resource at the requested location
-                could not be found\n`;
-            } else if (xhr.status === 403) {
-              infoLog += `cart.js/updateCart(): You don\`t have permission to access
-                this data\n`;
-            } else if (xhr.status === 500) {
-              infoLog += `cart.js/updateCart(): Internal sever error\n`;
-            }
-          }
-          window.alert(`Failed to get data from server. Please try again later`);
-        }
-
-        infoLog += `cart.js/updateCart():\n Response Text:` + xhr.responseText +
-                         `\n Ready State:` + xhr.readyState +
-                         `\n Status Code: ` + xhr.status;
-        logger.info(infoLog);
-        infoLog = ``;
-
-        $(`.spinner.cart`).hide();
-      },
+      error: failHandler,
       timeout: 10000
     });
   }
@@ -226,19 +179,19 @@ $(document).ready(() => {
 
       $.post(addToCartUrl, { productId: productId }, function (data, status) {
         if (data) {
-            infoLog += `cart.js/addToCart(): Reqest successfull\n`;
+          infoLog += `cart.js/addToCart(): Reqest successfull\n`;
 
-            updateCart();
+          updateCart();
 
-            $(e).parent().find(`.spinner.buy`).hide();
+          $(e).parent().find(`.spinner.buy`).hide();
 
-            window.alert(`Продуктът е добавен успешно в количката.`);
+          window.alert(`Продуктът е добавен успешно в количката.`);
         } else {
           infoLog += `cart.js/addToCart(): Reqest failed\n`;
 
           window.alert(`Имаше проблем в обработването на заявката ви.`);
         }
-      });
+      }).fail(failHandler);
     } else {
       infoLog += `cart.js/addToCart(): ProductId is not integer`;
 
@@ -302,15 +255,7 @@ $(document).ready(() => {
           logger.info(infoLog);
           infoLog = ``;
         },
-        error: function (msg, status, errorThrown) {
-          infoLog += `cart.js/changeCart(): Error parsing JSON data\n`;
-          infoLog += `cart.js/changeCart(): ` + errorThrown + `\n`;
-
-          logger.info(infoLog);
-          infoLog = ``;
-
-          window.alert(`Имаше проблем в обработването на заявката ви.`);
-        }
+        error: failHandler,
       });
     } else {
       infoLog += `cart.js/changeCart(): Product id or/and quantity is not integer\n`;
@@ -319,6 +264,45 @@ $(document).ready(() => {
 
       window.alert(`Имаше проблем в обработването на заявката ви.`);
     }
+  }
+
+  function failHandler (xhr, status, errorThrown) {
+    if (status === `timeout`) {
+      infoLog += `Request timed out\n`;
+
+      window.alert(`Request timed out`);
+    } else {
+      if (xhr.readyState === 0) {
+        infoLog += `Internet connection is off or server is
+          not responding\n`;
+
+        window.alert(`Internet connection is off or server is not responding`);
+      } else if (xhr.readyState === 1) {
+      } else if (xhr.readyState === 2) {
+      } else if (xhr.readyState === 3) {
+      } else {
+        if (xhr.status === 200) {
+          infoLog += `Error parsing JSON data\n`;
+        } else if (xhr.status === 404) {
+          infoLog += `The resource at the requested location
+            could not be found\n`;
+        } else if (xhr.status === 403) {
+          infoLog += `You don\`t have permission to access
+            this data\n`;
+        } else if (xhr.status === 500) {
+          infoLog += `Internal sever error\n`;
+        }
+      }
+      window.alert(`There was a problem while processing your reqeust. Please try again later.`);
+    }
+
+    infoLog += `Response Text: ` +
+      xhr.responseText + `\n Ready State: ` +
+      xhr.readyState + `\n Status Code: ` + xhr.status;
+    logger.info(infoLog);
+    infoLog = ``;
+
+    $(`.spinner.cart`).hide();
   }
 
   var formatter = new Intl.NumberFormat(`en-US`, {

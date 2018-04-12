@@ -26,10 +26,10 @@ const self = module.exports = {
   isAccountConfirmed: (userData) => {
     return +userData.confirmed === 1;
   },
-  executeUserEmailQuery: async (queryArgs) => {
+  executeUserEmailQuery: async (queryArgs, connection = mysql.pool) => {
     assert(_.isArray(queryArgs));
 
-    return mysql.pool.query(`
+    return connection.query(`
       SELECT email
       FROM users
       WHERE
@@ -125,35 +125,23 @@ const self = module.exports = {
 
     transporter.close();
   },
-  executeLoginQuery: async (queryArgs) => {
+  executeLoginQuery: async (queryArgs, connection = mysql.pool) => {
     assert(_.isArray(queryArgs));
 
-    return mysql.pool.query(`
+    return connection.query(`
       SELECT password, salt, id, confirmed
       FROM users
       WHERE
         email = ?
     `, queryArgs);
   },
-  executeCountriesQuery: async () => {
-    return mysql.pool.query(`
+  executeCountriesQuery: async (queryArgs = null, connection = mysql.pool) => {
+    return connection.query(`
       SELECT nicename, phonecode
       FROM countries
     `);
   },
-  executeBeginTransaction: async () => {
-    const connection = await mysql.pool.getConnection();
-    await connection.beginTransaction();
-
-    return connection;
-  },
-  exucuteCommitTransaction: async (connection) => {
-    return connection.commit();
-  },
-  exucuteRollbackTransaction: async (connection) => {
-    return connection.rollback();
-  },
-  executeInsertUserQuery: async (connection, userData) => {
+  executeInsertUserQuery: async (userData, connection = mysql.pool) => {
     assert(_.isObject(userData));
 
     const userDbData = Object.keys(userData).map((fieldName) => userData[ fieldName ]);
@@ -167,7 +155,7 @@ const self = module.exports = {
 
     return queryStatus.insertId;
   },
-  executeInsertTempCodeQuery: async (connection, queryArgs) => {
+  executeInsertTempCodeQuery: async (queryArgs, connection = mysql.pool) => {
     assert(_.isArray(queryArgs));
 
     return connection.query(`
@@ -175,17 +163,17 @@ const self = module.exports = {
       VALUES(?, ?, ?)
     `, queryArgs);
   },
-  executeTempCodeQuery: async (queryArgs) => {
+  executeTempCodeQuery: async (queryArgs, connection = mysql.pool) => {
     assert(_.isArray(queryArgs));
 
-    return mysql.pool.query(`
+    return connection.query(`
       SELECT *
       FROM temp_codes
       WHERE
         hash = ?
     `, queryArgs);
   },
-  executeUpdateAccountStatusQuery: async (connection, queryArgs) => {
+  executeUpdateAccountStatusQuery: async (queryArgs, connection = mysql.pool) => {
     assert(_.isArray(queryArgs));
 
     return connection.query(`
@@ -195,7 +183,7 @@ const self = module.exports = {
         id = ?
     `, queryArgs);
   },
-  executeDeleteTempCodeQuery: async (connection, queryArgs) => {
+  executeDeleteTempCodeQuery: async (queryArgs, connection = mysql.pool) => {
     assert(_.isArray(queryArgs));
 
     return connection.query(`

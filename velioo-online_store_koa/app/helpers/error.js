@@ -9,6 +9,18 @@ module.exports = async (ctx, next) => {
     if (err.status === 401) {
       ctx.set('WWW-Authenticate', 'Basic');
       ctx.body = 'You have no access here';
+    } else if (err.status === 403) {
+      if (err.userNotLoggedIn) {
+        ctx.redirect('/login');
+      } else if (err.employeeNotLoggedIn) {
+        ctx.redirect('/employee_login');
+      }
+    } else if (err.status === 200) {
+      if (err.userLoggedIn) {
+        ctx.redirect('/');
+      } else if (err.employeeLoggedIn) {
+        ctx.redirect('/employee/dashboard');
+      }
     } else {
       logger.error(`Error while executing code: ${err.stack}`);
     }

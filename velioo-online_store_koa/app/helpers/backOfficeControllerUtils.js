@@ -19,10 +19,10 @@ const self = module.exports = {
   isLoginSuccessfull: (inputPassword, userData) => {
     return sha256(inputPassword + userData.salt) === userData.password;
   },
-  executeLoginQuery: async (queryArgs) => {
+  executeLoginQuery: async (queryArgs, connection = mysql.pool) => {
     assert(_.isArray(queryArgs));
 
-    return mysql.pool.query(`
+    return connection.query(`
       SELECT password, salt, id
       FROM employees
       WHERE
@@ -150,12 +150,12 @@ const self = module.exports = {
 
     return ordersArray;
   },
-  executeProductsQuery: async (queryArgs) => {
+  executeProductsQuery: async (queryArgs, connection = mysql.pool) => {
     assert(_.isObject(queryArgs));
     assert(_.isArray(queryArgs.exprs));
     assert(_.isArray(queryArgs.vals));
 
-    return mysql.pool.query(`
+    return connection.query(`
       SELECT products.*, categories.name as category
       FROM products
       JOIN categories ON categories.id = products.category_id
@@ -184,12 +184,12 @@ const self = module.exports = {
       queryArgs.offset
     ]);
   },
-  executeProductsCountQuery: async (queryArgs) => {
+  executeProductsCountQuery: async (queryArgs, connection = mysql.pool) => {
     assert(_.isObject(queryArgs));
     assert(_.isArray(queryArgs.exprs));
     assert(_.isArray(queryArgs.vals));
 
-    return mysql.pool.query(`
+    return connection.query(`
       SELECT COUNT(1) as count
       FROM products
       JOIN categories ON categories.id = products.category_id
@@ -214,12 +214,12 @@ const self = module.exports = {
       queryArgs.offset
     ]);
   },
-  executeOrdersQuery: async (queryArgs) => {
+  executeOrdersQuery: async (queryArgs, connection = mysql.pool) => {
     assert(_.isObject(queryArgs));
     assert(_.isArray(queryArgs.exprs));
     assert(_.isArray(queryArgs.vals));
 
-    return mysql.pool.query(`
+    return connection.query(`
       SELECT
         orders.id as order_id,
         orders.created_at as order_created_at,
@@ -255,15 +255,15 @@ const self = module.exports = {
       queryArgs.offset
     ]);
   },
-  executeOrderStatusesQuery: async (queryArgs = null) => {
-    return mysql.pool.query(`
+  executeOrderStatusesQuery: async (queryArgs = null, connection = mysql.pool) => {
+    return connection.query(`
       SELECT *
       FROM statuses
       ORDER BY statuses.name ASC
     `);
   },
-  executeUserOrderStatusesQuery: async (queryArgs) => {
-    return mysql.pool.query(`
+  executeUserOrderStatusesQuery: async (queryArgs, connection = mysql.pool) => {
+    return connection.query(`
       SELECT statuses.name, orders.amount_leva
       FROM orders
       JOIN statuses ON statuses.id = orders.status_id
@@ -290,10 +290,10 @@ const self = module.exports = {
       queryArgs.offset
     ]);
   },
-  executeChangeOrderStatusQuery: async (queryArgs) => {
+  executeChangeOrderStatusQuery: async (queryArgs, connection = mysql.pool) => {
     assert(_.isObject(queryArgs));
 
-    return mysql.pool.query(`
+    return connection.query(`
       UPDATE orders
       SET
         status_id = ?
