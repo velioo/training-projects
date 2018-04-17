@@ -1,4 +1,4 @@
-var cartSchema = {
+var updateCartSchema = {
   "type": "object",
   "properties": {
 	"count": { "type": "integer", "minimum": 0 },
@@ -7,7 +7,7 @@ var cartSchema = {
   "required": [ "count", "price_leva"]
 };
 
-var cartChangeQuantitySchema = {
+var addToCartSchema = {
   "type": "object",
   "properties": {
 	"quantity": { "type": "integer", "minumum": 1 },

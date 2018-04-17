@@ -11,9 +11,17 @@ module.exports = async (ctx, next) => {
       ctx.body = 'You have no access here';
     } else if (err.status === 403) {
       if (err.userNotLoggedIn) {
-        ctx.redirect('/login');
+        if (err.ajax) {
+          ctx.body = err.ajax.message;
+        } else {
+          ctx.redirect('/login');
+        }
       } else if (err.employeeNotLoggedIn) {
-        ctx.redirect('/employee_login');
+        if (err.ajax) {
+          ctx.body = err.ajax.message;
+        } else {
+          ctx.redirect('/employee_login');
+        }
       }
     } else if (err.status === 200) {
       if (err.userLoggedIn) {
@@ -25,6 +33,6 @@ module.exports = async (ctx, next) => {
       logger.error(`Error while executing code: ${err.stack}`);
     }
 
-    ctx.body = 'Problem while processing your request';
+    ctx.body = ctx.body || 'Problem while processing your request';
   }
 };

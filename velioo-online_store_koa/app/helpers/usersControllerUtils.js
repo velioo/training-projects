@@ -1,7 +1,6 @@
 const CONSTANTS = require('../constants/constants');
 const Utils = require('./utils');
 const Validations = require('./validations');
-const mysql = require('../db/mysql');
 const pug = require('../helpers/pug').baseRenderer;
 const logger = require('../helpers/logger');
 
@@ -15,9 +14,8 @@ const self = module.exports = {
     return ctx.render('login.pug', {
       error: ctx.error,
       userMessage: ctx.userMessage,
-      user: {
-        isUserLoggedIn: ctx.session.isUserLoggedIn
-      }
+      isUserLoggedIn: ctx.session.isUserLoggedIn,
+      user: {}
     });
   },
   isLoginSuccessfull: (inputPassword, userData) => {
@@ -25,16 +23,6 @@ const self = module.exports = {
   },
   isAccountConfirmed: (userData) => {
     return +userData.confirmed === 1;
-  },
-  executeUserEmailQuery: async (queryArgs, connection = mysql.pool) => {
-    assert(_.isArray(queryArgs));
-
-    return connection.query(`
-      SELECT email
-      FROM users
-      WHERE
-        email = ?
-    `, queryArgs);
   },
   validateFields: async (ctx) => {
     ctx.checkBody('name')
@@ -125,84 +113,13 @@ const self = module.exports = {
 
     transporter.close();
   },
-  executeLoginQuery: async (queryArgs, connection = mysql.pool) => {
-    assert(_.isArray(queryArgs));
-
-    return connection.query(`
-      SELECT password, salt, id, confirmed
-      FROM users
-      WHERE
-        email = ?
-    `, queryArgs);
-  },
-  executeCountriesQuery: async (queryArgs = null, connection = mysql.pool) => {
-    return connection.query(`
-      SELECT nicename, phonecode
-      FROM countries
-    `);
-  },
-  executeInsertUserQuery: async (userData, connection = mysql.pool) => {
-    assert(_.isObject(userData));
-
-    const userDbData = Object.keys(userData).map((fieldName) => userData[ fieldName ]);
-
-    const queryStatus = await connection.query(`
-      INSERT INTO users (${Object.keys(userData).join(', ')})
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `, userDbData);
-
-    assert(queryStatus.insertId);
-
-    return queryStatus.insertId;
-  },
-  executeInsertTempCodeQuery: async (queryArgs, connection = mysql.pool) => {
-    assert(_.isArray(queryArgs));
-
-    return connection.query(`
-      INSERT INTO temp_codes(user_id, hash, type)
-      VALUES(?, ?, ?)
-    `, queryArgs);
-  },
-  executeTempCodeQuery: async (queryArgs, connection = mysql.pool) => {
-    assert(_.isArray(queryArgs));
-
-    return connection.query(`
-      SELECT *
-      FROM temp_codes
-      WHERE
-        hash = ?
-    `, queryArgs);
-  },
-  executeUpdateAccountStatusQuery: async (queryArgs, connection = mysql.pool) => {
-    assert(_.isArray(queryArgs));
-
-    return connection.query(`
-      UPDATE users
-      SET confirmed = 1
-      WHERE
-        id = ?
-    `, queryArgs);
-  },
-  executeDeleteTempCodeQuery: async (queryArgs, connection = mysql.pool) => {
-    assert(_.isArray(queryArgs));
-
-    return connection.query(`
-      DELETE
-      FROM temp_codes
-      WHERE
-        hash = ?
-      `, queryArgs);
-  },
-  renderSignUpPage: async (ctx, userData = {}) => {
-    const countryRows = await self.executeCountriesQuery();
-
-    assert(countryRows.length >= 0);
-
+  renderSignUpPage: async (ctx, userData = {}, countryRows = {}) => {
     ctx.render('signup.pug', {
       user: userData,
       countries: countryRows,
       errors: ctx.errors,
-      logged: ctx.session.isuserLoggedIn
+      isUserLoggedIn: ctx.session.isUserLoggedIn,
+      userMessage: ctx.userMessage
     });
   },
   baseUtils: Utils

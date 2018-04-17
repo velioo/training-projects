@@ -2,7 +2,13 @@ module.exports = async (ctx, next) => {
   const requestUrl = ctx.request.url;
   const userServiceUrls = [ '/login', '/sign_up' ];
   const userLoggedInUrls = [ '/users/' ];
+  const userLoggedInAjaxUrls = [ '/users/cart/' ];
   const employeeLoggedInUrls = [ '/employee/' ];
+  const employeeLoggedInAjaxUrls = [
+    '/employee/get_products/',
+    '/employee/get_orders/',
+    '/change_order_status/'
+  ];
   const employeeServiceUrls = [ '/employee_login' ];
   // const logger = require('./logger');
 
@@ -18,6 +24,9 @@ module.exports = async (ctx, next) => {
 
   if (userLoggedInUrls.some((url) => requestUrl.startsWith(url) || (requestUrl + '/').startsWith(url))) {
     if (!ctx.session.isUserLoggedIn) {
+      if (userLoggedInAjaxUrls.some((url) => requestUrl.startsWith(url) || (requestUrl + '/').startsWith(url))) {
+        ctx.throw(403, 'User not logged in.', { userNotLoggedIn: true, ajax: { message: 'login' } });
+      }
       ctx.throw(403, 'User not logged in.', { userNotLoggedIn: true });
     }
 
@@ -26,7 +35,11 @@ module.exports = async (ctx, next) => {
 
   if (employeeLoggedInUrls.some((url) => requestUrl.startsWith(url) || (requestUrl + '/').startsWith(url))) {
     if (!ctx.session.isEmployeeLoggedIn) {
-      ctx.throw(403, 'Employee not logged in.', { employeeNotLoggedIn: true });
+      if (employeeLoggedInAjaxUrls.some((url) => requestUrl.startsWith(url) || (requestUrl + '/').startsWith(url))) {
+        ctx.throw(403, 'Employee not logged in.', { employeeNotLoggedIn: true, ajax: { message: 'login' } });
+      } else {
+        ctx.throw(403, 'Employee not logged in.', { employeeNotLoggedIn: true });
+      }
     }
 
     return;

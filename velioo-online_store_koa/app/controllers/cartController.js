@@ -1,5 +1,6 @@
 const CONSTANTS = require('../constants/constants');
 const logger = require('../helpers/logger');
+const mysql = require('../db/mysql');
 const Utils = require('../helpers/cartControllerUtils');
 
 const assert = require('assert');
@@ -13,54 +14,137 @@ module.exports = {
 
     assert(_.isInteger(userId));
 
-    const productsRows = await Utils.executeCartProductsQuery([ userId ]);
+    const productsRows = await mysql.pool.query(`
+      SELECT
+        products.id,
+        products.name,
+        products.price_leva,
+        products.image,
+        cart.quantity
+      FROM products
+      JOIN cart ON cart.product_id = products.id
+      JOIN users ON users.id = cart.user_id
+      WHERE
+        users.id = ?
+    `, [ userId ]);
+
+    const paymentMethodsRows = await mysql.pool.query(`
+      SELECT *
+      FROM payment_methods
+    `);
+
+    assert(paymentMethodsRows.length >= 0);
 
     ctx.render('user_cart.pug', {
       isUserLoggedIn: ctx.session.isUserLoggedIn,
-      products: productsRows
+      products: productsRows,
+      paymentMethods: paymentMethodsRows
     });
   },
   addProductCart: async (ctx, next) => {
     await next();
 
     const productId = +ctx.request.body.productId;
+    const inputQuantity = +ctx.request.body.quantity || null;
     const userId = +ctx.session.userData.userId;
 
     logger.info('productId = ' + productId);
     logger.info('userId = ' + userId);
+    logger.info('quantity = ' + inputQuantity);
+
+    assert(_.isInteger(productId));
+    assert(_.isInteger(inputQuantity) || _.isNil(inputQuantity));
+    assert(_.isInteger(userId));
+
+    const connection = await mysql.pool.getConnection();
+    await connection.beginTransaction();
+
+    const productQuantityRow = await connection.query(`
+      SELECT quantity
+      FROM cart
+      WHERE
+        user_id = ?
+        AND product_id = ?
+    `, [ userId, productId ]);
+
+    assert(productQuantityRow.length <= 1);
+
+    let productQuantity = (productQuantityRow[0])
+      ? +productQuantityRow[0].quantity
+      : 0;
+
+    try {
+      if (productQuantity > 0) {
+        productQuantity = (!_.isNil(inputQuantity))
+          ? inputQuantity
+          : productQuantity + 1;
+
+        await connection.query(`
+          UPDATE cart SET quantity = ?
+          WHERE
+          user_id = ?
+          AND product_id = ?
+        `, [ productQuantity, userId, productId ]);
+      } else {
+        productQuantity = (!_.isNil(inputQuantity))
+          ? inputQuantity
+          : CONSTANTS.DEFAULT_CART_QUANTITY;
+
+        await connection.query(`
+          INSERT INTO cart(user_id, product_id, quantity)
+          VALUES (?, ?, ?)
+        `, [ userId, productId, productQuantity ]);
+      }
+
+      const productInfo = await connection.query(`
+        SELECT cart.quantity as quantity, p.price_leva as price_leva
+        FROM cart
+        JOIN products p ON p.id = cart.product_id
+        WHERE
+          cart.user_id = ?
+          AND cart.product_id = ?
+      `, [ userId, productId ]);
+
+      assert(productInfo.length <= 1);
+
+      await connection.commit();
+
+      logger.info('ProductInfo[0] = %o', productInfo[0]);
+
+      ctx.body = productInfo[0];
+    } catch (err) {
+      logger.error(`Error while updating user cart: %o`, err);
+      ctx.throw(500, 'Error while updating user cart');
+    }
+  },
+  removeProductCart: async (ctx, next) => {
+    await next();
+
+    const productId = +ctx.request.body.productId;
+    const userId = +ctx.session.userData.userId;
 
     assert(_.isInteger(productId));
     assert(_.isInteger(userId));
 
-    const connection = await Utils.baseUtils.executeBeginTransaction();
-
-    const productQuantityRow = await Utils.executeProductExistsInCartQuery([ userId, productId ], connection);
-
-    logger.info('productQuantityRow = %o', productQuantityRow);
-
-    assert(productQuantityRow.length <= 1);
-
-    const productQuantity = (productQuantityRow[0]) ? +productQuantityRow[0].quantity : 0;
+    const connection = await mysql.pool.getConnection();
+    await connection.beginTransaction();
 
     try {
-      if (productQuantity) {
-        await Utils.executeUpdateProductQuantityQuery([ productQuantity + 1, userId, productId ], connection);
-      } else {
-        await Utils.executeAddProductToCartQuery([ userId, productId ], connection);
-      }
+      await connection.query(`
+        DELETE
+        FROM cart
+        WHERE
+          user_id = ?
+          AND product_id = ?
+      `, [ userId, productId ]);
 
-      await Utils.baseUtils.exucuteCommitTransaction(connection);
+      await connection.commit();
 
       ctx.body = true;
     } catch (err) {
-      logger.error(`Error while updating user cart: %o`, err);
+      logger.error('Failed to delete product from cart: %o', err);
+      ctx.throw(500, 'Failed to delete product from cart');
     }
-  },
-  removeProductCart: async (ctx, next) => {
-
-  },
-  changeProductQuantityCart: async (ctx, next) => {
-
   },
   getCountPriceCart: async (ctx, next) => {
     await next();
@@ -69,7 +153,15 @@ module.exports = {
 
     assert(_.isInteger(userId));
 
-    const cartInfoRow = await Utils.executeGetCartInfoQuery([ userId ]);
+    const cartInfoRow = await mysql.pool.query(`
+      SELECT
+        IFNULL(SUM(cart.quantity), 0) as count,
+        IFNULL(SUM(products.price_leva * cart.quantity), 0) as price_leva
+      FROM cart
+      JOIN products ON products.id = cart.product_id
+      WHERE
+        cart.user_id = ?
+    `, [ userId ]);
 
     assert(cartInfoRow.length <= 1);
 

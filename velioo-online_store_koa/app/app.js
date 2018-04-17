@@ -34,6 +34,12 @@ pug.use(app);
 app.keys = ['Shh, its a secret!'];
 
 app.use(new Session(app));
+app.use(async (ctx, next) => {
+  ctx.session.isUserLoggedIn = ctx.session.isUserLoggedIn || false;
+  ctx.session.isEmployeeLoggedIn = ctx.session.isEmployeeLoggedIn || false;
+
+  await next();
+});
 app.use(Paginate.middleware(CONSTANTS.RECORDS_PER_PAGE, CONSTANTS.MAX_RECORDS_PER_PAGE));
 
 Validate(app);

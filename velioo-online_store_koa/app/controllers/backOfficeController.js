@@ -1,5 +1,6 @@
 const CONSTANTS = require('../constants/constants');
 const logger = require('../helpers/logger');
+const mysql = require('../db/mysql');
 const Utils = require('../helpers/backOfficeControllerUtils');
 
 const assert = require('assert');
@@ -18,7 +19,12 @@ module.exports = {
     assert(requestBody.username.length <= CONSTANTS.MAX_USERNAME_LEN);
     assert(requestBody.password.length <= CONSTANTS.MAX_USER_PASSWORD_LEN);
 
-    const userData = await Utils.executeLoginQuery([ requestBody.username ]);
+    const userData = await mysql.pool.query(`
+      SELECT password, salt, id
+      FROM employees
+      WHERE
+        username = ?
+    `, [ requestBody.username ]);
 
     if (userData.length === 1 && Utils.isLoginSuccessfull(requestBody.password, userData[0])) {
       ctx.session.employeeData = { employeeId: userData[0].id };
@@ -52,7 +58,7 @@ module.exports = {
 
     if (ctx.session.isEmployeeLoggedIn) {
       ctx.session.employeeData = null;
-      ctx.session.isEmployeeLoggedIn = null;
+      ctx.session.isEmployeeLoggedIn = false;
       ctx.redirect('/products');
     }
   },
@@ -92,8 +98,59 @@ module.exports = {
 
     logger.info('QueryArgs = %o', queryArgs);
 
-    const productsRows = await Utils.executeProductsQuery(queryArgs);
-    const productsCountRows = await Utils.executeProductsCountQuery(queryArgs);
+    const productsRows = await mysql.pool.query(`
+      SELECT products.*, categories.name as category
+      FROM products
+      JOIN categories ON categories.id = products.category_id
+      WHERE
+        ${queryArgs.exprs[0]}
+        AND ${queryArgs.exprs[1]}
+        AND ${queryArgs.exprs[2]}
+        AND ${queryArgs.exprs[3]}
+        AND ${queryArgs.exprs[4]}
+        AND ${queryArgs.exprs[5]}
+        AND ${queryArgs.exprs[6]}
+        AND ${queryArgs.exprs[7]}
+        AND ${queryArgs.exprs[8]}
+        AND ${queryArgs.exprs[9]}
+        AND ${queryArgs.exprs[10]}
+        AND ${queryArgs.exprs[11]}
+        AND ${queryArgs.exprs[12]}
+        AND ${queryArgs.exprs[13]}
+      ORDER BY
+        ${queryArgs.exprs[14]}
+      LIMIT ?
+      OFFSET ?
+    `, [
+      ...queryArgs.vals,
+      queryArgs.limit,
+      queryArgs.offset
+    ]);
+
+    const productsCountRows = await mysql.pool.query(`
+      SELECT COUNT(1) as count
+      FROM products
+      JOIN categories ON categories.id = products.category_id
+      WHERE
+        ${queryArgs.exprs[0]}
+        AND ${queryArgs.exprs[1]}
+        AND ${queryArgs.exprs[2]}
+        AND ${queryArgs.exprs[3]}
+        AND ${queryArgs.exprs[4]}
+        AND ${queryArgs.exprs[5]}
+        AND ${queryArgs.exprs[6]}
+        AND ${queryArgs.exprs[7]}
+        AND ${queryArgs.exprs[8]}
+        AND ${queryArgs.exprs[9]}
+        AND ${queryArgs.exprs[10]}
+        AND ${queryArgs.exprs[11]}
+        AND ${queryArgs.exprs[12]}
+        AND ${queryArgs.exprs[13]}
+    `, [
+      ...queryArgs.vals,
+      queryArgs.limit,
+      queryArgs.offset
+    ]);
 
     assert(productsRows.length >= 0);
 
@@ -147,25 +204,84 @@ module.exports = {
 
     logger.info('QueryArgs = %o', queryArgs);
 
-    const ordersRows = await Utils.executeOrdersQuery(queryArgs);
+    const ordersRows = await mysql.pool.query(`
+      SELECT
+        orders.id as order_id,
+        orders.created_at as order_created_at,
+        orders.updated_at as order_updated_at,
+        orders.amount_leva,
+        statuses.name as status_name,
+        statuses.id as status_id,
+        users.email as user_email
+      FROM orders
+      JOIN statuses ON statuses.id = orders.status_id
+      JOIN users ON users.id = orders.user_id
+      WHERE
+        ${queryArgs.exprs[0]}
+        AND ${queryArgs.exprs[1]}
+        AND ${queryArgs.exprs[2]}
+        AND ${queryArgs.exprs[3]}
+        AND ${queryArgs.exprs[4]}
+        AND ${queryArgs.exprs[5]}
+        AND ${queryArgs.exprs[6]}
+        AND ${queryArgs.exprs[7]}
+        AND ${queryArgs.exprs[8]}
+        AND ${queryArgs.exprs[9]}
+        AND ${queryArgs.exprs[10]}
+        AND ${queryArgs.exprs[11]}
+        AND ${queryArgs.exprs[12]}
+      ORDER BY
+        ${queryArgs.exprs[13]}
+      LIMIT ?
+      OFFSET ?
+    `, [
+      ...queryArgs.vals,
+      queryArgs.limit,
+      queryArgs.offset
+    ]);
 
     assert(ordersRows.length >= 0);
 
     logger.info('OrdersRows[0] = %o', ordersRows[0]);
 
-    const statusesRows = await Utils.executeOrderStatusesQuery();
+    const statusRows = await mysql.pool.query(`
+      SELECT *
+      FROM statuses
+      ORDER BY statuses.name ASC
+    `);
 
-    assert(statusesRows.length >= 0);
+    assert(statusRows.length >= 0);
 
-    logger.info('OrderStatusesRows = %o', statusesRows);
+    logger.info('OrderStatusRows = %o', statusRows);
 
     const orders = (ordersRows.length > 0)
-      ? Utils.prepareHtmlDataOrders(ordersRows, statusesRows)
+      ? Utils.prepareHtmlDataOrders(ordersRows, statusRows)
       : [];
 
     const result = { rows: orders };
 
-    const ordersInfo = await Utils.calculateOrdersProfitAndCount(queryArgs);
+    const ordersInfo = await Utils.calculateOrdersProfitAndCount(`
+      SELECT statuses.name, orders.amount_leva
+      FROM orders
+      JOIN statuses ON statuses.id = orders.status_id
+      JOIN users ON users.id = orders.user_id
+      WHERE
+        ${queryArgs.exprs[0]}
+        AND ${queryArgs.exprs[1]}
+        AND ${queryArgs.exprs[2]}
+        AND ${queryArgs.exprs[3]}
+        AND ${queryArgs.exprs[4]}
+        AND ${queryArgs.exprs[5]}
+        AND ${queryArgs.exprs[6]}
+        AND ${queryArgs.exprs[7]}
+        AND ${queryArgs.exprs[8]}
+        AND ${queryArgs.exprs[9]}
+        AND ${queryArgs.exprs[10]}
+        AND ${queryArgs.exprs[11]}
+        AND ${queryArgs.exprs[12]}
+      LIMIT ?
+      OFFSET ?
+    `, queryArgs);
 
     logger.info('OrdersInfo = %o', ordersInfo);
 
@@ -180,10 +296,16 @@ module.exports = {
     ctx.body = true;
 
     try {
-      await Utils.executeChangeOrderStatusQuery([+ctx.request.body.statusId, +ctx.request.body.orderId]);
+      await mysql.pool.query(`
+        UPDATE orders
+        SET
+          status_id = ?
+        WHERE
+          id = ?
+      `, [+ctx.request.body.statusId, +ctx.request.body.orderId]);
     } catch (err) {
-      logger.info('ChangeOrderStatus Error = %o', err);
-      ctx.body = false;
+      logger.info('Error changing order status: %o', err);
+      ctx.throw(500, 'Error changing order status');
     }
   }
 };

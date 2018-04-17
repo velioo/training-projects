@@ -30,7 +30,6 @@ const {
   renderCart,
   addProductCart,
   removeProductCart,
-  changeProductQuantityCart,
   getCountPriceCart
 } = require('../controllers/cartController');
 
@@ -57,7 +56,7 @@ const cart = () => {
     .get('/', renderCart)
     .post('/add', new KoaBody(), addProductCart)
     .post('/remove', new KoaBody(), removeProductCart)
-    .post('/change_quantity', new KoaBody(), changeProductQuantityCart)
+    .post('/change_quantity', new KoaBody(), addProductCart)
     .post('/count_price', getCountPriceCart);
 
   return router;

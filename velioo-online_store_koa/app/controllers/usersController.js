@@ -1,5 +1,6 @@
 const CONSTANTS = require('../constants/constants');
 const logger = require('../helpers/logger');
+const mysql = require('../db/mysql');
 const Utils = require('../helpers/usersControllerUtils');
 
 const assert = require('assert');
@@ -18,7 +19,12 @@ module.exports = {
     assert(requestBody.email.length <= CONSTANTS.MAX_USER_EMAIL_LEN);
     assert(requestBody.password.length <= CONSTANTS.MAX_USER_PASSWORD_LEN);
 
-    const userData = await Utils.executeLoginQuery([ requestBody.email ]);
+    const userData = await mysql.pool.query(`
+      SELECT password, salt, id, confirmed
+      FROM users
+      WHERE
+        email = ?
+    `, [ requestBody.email ]);
 
     assert(userData.length <= 1);
 
@@ -42,7 +48,14 @@ module.exports = {
 
     await next();
 
-    await Utils.renderSignUpPage(ctx);
+    const countryRows = await mysql.pool.query(`
+      SELECT nicename, phonecode
+      FROM countries
+    `);
+
+    assert(countryRows.length >= 0);
+
+    await Utils.renderSignUpPage(ctx, {}, countryRows);
   },
   signUp: async (ctx, next) => {
     ctx.errors = [];
@@ -57,17 +70,33 @@ module.exports = {
       return Utils.renderSignUpPage(ctx, userData);
     }
 
-    const connection = await Utils.baseUtils.executeBeginTransaction();
-
     const tempCode = Utils.baseUtils.generateUniqueId(32);
 
-    const userId = await Utils.executeInsertUserQuery(userData, connection);
-    await Utils.executeInsertTempCodeQuery([userId, tempCode, 'email'], connection);
+    const userDbData = Object.keys(userData).map((fieldName) => userData[ fieldName ]);
+    const userDbFields = Object.keys(userData).join(', ');
+
+    const connection = await mysql.pool.getConnection();
+    await connection.beginTransaction();
 
     try {
-      await Utils.baseUtils.exucuteCommitTransaction(connection);
+      const queryStatus = await connection.query(`
+        INSERT INTO users (${userDbFields})
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      `, userDbData);
+
+      assert(queryStatus.insertId);
+
+      const userId = queryStatus.insertId;
+
+      await connection.query(`
+        INSERT INTO temp_codes(user_id, hash, type)
+        VALUES(?, ?, ?)
+      `, [userId, tempCode, 'email']);
+
+      await connection.commit();
     } catch (err) {
       ctx.userMessage = 'There was a problem creating your account.';
+      return Utils.renderSignUpPage(ctx, userData);
     }
 
     await Utils.sendConfirmationEmail(ctx, tempCode);
@@ -79,12 +108,17 @@ module.exports = {
 
     if (ctx.session.isUserLoggedIn) {
       ctx.session.userData = null;
-      ctx.session.isUserLoggedIn = null;
+      ctx.session.isUserLoggedIn = false;
       ctx.redirect('/products');
     }
   },
   confirmAccount: async (ctx, next) => {
-    const userTempData = await Utils.executeTempCodeQuery([ctx.params.code]);
+    const userTempData = await mysql.pool.query(`
+      SELECT *
+      FROM temp_codes
+      WHERE
+        hash = ?
+    `, [ctx.params.code]);
 
     assert(userTempData.length <= 1);
 
@@ -94,15 +128,28 @@ module.exports = {
 
     const userId = userTempData[0].user_id;
 
-    const connection = await Utils.baseUtils.executeBeginTransaction();
-
-    await Utils.executeUpdateAccountStatusQuery([userId], connection);
-    await Utils.executeDeleteTempCodeQuery([ctx.params.code], connection);
+    const connection = await mysql.pool.getConnection();
+    await connection.beginTransaction();
 
     try {
-      await Utils.baseUtils.exucuteCommitTransaction(connection);
+      await connection.query(`
+        UPDATE users
+        SET confirmed = 1
+        WHERE
+          id = ?
+      `, [userId]);
+
+      await connection.query(`
+        DELETE
+        FROM temp_codes
+        WHERE
+          hash = ?
+      `, [ctx.params.code]);
+
+      await connection.commit();
     } catch (err) {
       ctx.userMessage = 'There was a problem confirming your account.';
+      return Utils.renderLoginPage(ctx);
     }
 
     ctx.userMessage = 'You succecssfully validated your account.';

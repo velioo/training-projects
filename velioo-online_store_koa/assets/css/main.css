@@ -502,6 +502,10 @@ tr:nth-child(even)  {
     text-align: right;
 }
 
+#products_table td:nth-last-child(4) {
+    text-align: right;
+}
+
 .filter_label {
 	margin-right:25px;
 	text-align: left;

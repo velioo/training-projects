@@ -1,4 +1,5 @@
 const Utils = require('./utils');
+const mysql = require('../db/mysql');
 
 module.exports = {
   emailExists: async (ctx) => {

@@ -1,8 +1,8 @@
 const CONSTANTS = require('../constants/constants');
-const mysql = require('../db/mysql');
 const pug = require('../helpers/pug').baseRenderer;
+const mysql = require('../db/mysql');
 const Utils = require('./utils');
-// const logger = require('../helpers/logger');
+const logger = require('../helpers/logger');
 
 const assert = require('assert');
 const _ = require('lodash/lang');
@@ -18,16 +18,6 @@ const self = module.exports = {
   },
   isLoginSuccessfull: (inputPassword, userData) => {
     return sha256(inputPassword + userData.salt) === userData.password;
-  },
-  executeLoginQuery: async (queryArgs, connection = mysql.pool) => {
-    assert(_.isArray(queryArgs));
-
-    return connection.query(`
-      SELECT password, salt, id
-      FROM employees
-      WHERE
-        username = ?
-    `, queryArgs);
   },
   processQueryStr: (queryStrObj, filterColumnsCases, sortColumnsCases, customColumnsCases) => {
     assert(_.isObject(queryStrObj));
@@ -85,51 +75,84 @@ const self = module.exports = {
     let productArray = [];
     const productsArray = [];
 
+    const decimalFormatter = new Intl.NumberFormat(`en-US`, {
+      style: `decimal`,
+      maximumFractionDigits: 2,
+      minimumFractionDigits: 2
+    });
+
+    const basicNumberFormatter = new Intl.NumberFormat();
+
     productsRows.forEach((productRow) => {
-      productArray.push(pug.render('p #{createdAt}', { createdAt: productRow.created_at },
+      productArray.push(pug.render('p #{createdAt}',
+        { createdAt: productRow.created_at },
         { fromString: true }));
-      productArray.push(pug.render('p #{updatedAt}', { updatedAt: productRow.updated_at },
+      productArray.push(pug.render('p #{updatedAt}',
+        { updatedAt: productRow.updated_at },
         { fromString: true }));
       productArray.push(pug.render('a(href = "../products/" + productId) #{productName}',
-        { productId: productRow.id, productName: productRow.name }, { fromString: true }));
-      productArray.push(pug.render('p #{category}', { category: productRow.category },
+        { productId: productRow.id, productName: productRow.name },
         { fromString: true }));
-      productArray.push(pug.render('p #{price}', { price: productRow.price_leva },
+      productArray.push(pug.render('p #{category}',
+        { category: productRow.category },
         { fromString: true }));
-      productArray.push(pug.render('p #{quantity}', { quantity: productRow.quantity },
+      productArray.push(pug.render('p #{price}',
+        { price: decimalFormatter
+          .format(productRow.price_leva) },
+        { fromString: true }));
+      productArray.push(pug.render('p #{quantity}',
+        { quantity: basicNumberFormatter
+          .format(productRow.quantity) },
         { fromString: true }));
       productArray.push(
         pug.render('a(href = "../employee/update_product/" + productId class = "product_details") Редактирай',
-          { productId: productRow.id }, { fromString: true }));
+          { productId: productRow.id },
+          { fromString: true }));
       productArray.push(pug.render('a(href = "#" class = "delete_record" data-id = productId) Изтрий',
-        { productId: productRow.id }, { fromString: true }));
+        { productId: productRow.id },
+        { fromString: true }));
       productsArray.push(productArray);
       productArray = [];
     });
 
     return productsArray;
   },
-  prepareHtmlDataOrders: (ordersRows, statusesRows) => {
+  prepareHtmlDataOrders: (ordersRows, statusRows) => {
     assert(_.isObject(ordersRows));
 
     let orderArray = [];
     const ordersArray = [];
 
+    const decimalFormatter = new Intl.NumberFormat(`en-US`, {
+      style: `decimal`,
+      maximumFractionDigits: 2,
+      minimumFractionDigits: 2
+    });
+
+    const basicNumberFormatter = new Intl.NumberFormat();
+
     ordersRows.forEach((orderRow) => {
-      orderArray.push(pug.render('p #{createdAt}', { createdAt: orderRow.order_created_at },
+      orderArray.push(pug.render('p #{createdAt}',
+        { createdAt: orderRow.order_created_at },
         { fromString: true }));
-      orderArray.push(pug.render('p #{updatedAt}', { updatedAt: orderRow.order_updated_at },
+      orderArray.push(pug.render('p #{updatedAt}',
+        { updatedAt: orderRow.order_updated_at },
         { fromString: true }));
-      orderArray.push(pug.render('p #{productId}', { productId: orderRow.order_id },
+      orderArray.push(pug.render('p #{productId}',
+        { productId: basicNumberFormatter
+          .format(orderRow.order_id) },
         { fromString: true }));
-      orderArray.push(pug.render('p #{userEmail}', { userEmail: orderRow.user_email },
+      orderArray.push(pug.render('p #{userEmail}',
+        { userEmail: orderRow.user_email },
         { fromString: true }));
-      orderArray.push(pug.render('p #{amount}', { amount: orderRow.amount_leva },
+      orderArray.push(pug.render('p #{amount}',
+        { amount: decimalFormatter
+          .format(orderRow.amount_leva) },
         { fromString: true }));
 
       let selectElement = '<select class = "select_status">';
 
-      statusesRows.forEach((statusRow) => {
+      statusRows.forEach((statusRow) => {
         let optionElement = 'option(value = statusId';
         optionElement += (orderRow.status_id === statusRow.id)
           ? ' selected)'
@@ -150,158 +173,8 @@ const self = module.exports = {
 
     return ordersArray;
   },
-  executeProductsQuery: async (queryArgs, connection = mysql.pool) => {
-    assert(_.isObject(queryArgs));
-    assert(_.isArray(queryArgs.exprs));
-    assert(_.isArray(queryArgs.vals));
-
-    return connection.query(`
-      SELECT products.*, categories.name as category
-      FROM products
-      JOIN categories ON categories.id = products.category_id
-      WHERE
-        ${queryArgs.exprs[0]}
-        AND ${queryArgs.exprs[1]}
-        AND ${queryArgs.exprs[2]}
-        AND ${queryArgs.exprs[3]}
-        AND ${queryArgs.exprs[4]}
-        AND ${queryArgs.exprs[5]}
-        AND ${queryArgs.exprs[6]}
-        AND ${queryArgs.exprs[7]}
-        AND ${queryArgs.exprs[8]}
-        AND ${queryArgs.exprs[9]}
-        AND ${queryArgs.exprs[10]}
-        AND ${queryArgs.exprs[11]}
-        AND ${queryArgs.exprs[12]}
-        AND ${queryArgs.exprs[13]}
-      ORDER BY
-        ${queryArgs.exprs[14]}
-      LIMIT ?
-      OFFSET ?
-    `, [
-      ...queryArgs.vals,
-      queryArgs.limit,
-      queryArgs.offset
-    ]);
-  },
-  executeProductsCountQuery: async (queryArgs, connection = mysql.pool) => {
-    assert(_.isObject(queryArgs));
-    assert(_.isArray(queryArgs.exprs));
-    assert(_.isArray(queryArgs.vals));
-
-    return connection.query(`
-      SELECT COUNT(1) as count
-      FROM products
-      JOIN categories ON categories.id = products.category_id
-      WHERE
-        ${queryArgs.exprs[0]}
-        AND ${queryArgs.exprs[1]}
-        AND ${queryArgs.exprs[2]}
-        AND ${queryArgs.exprs[3]}
-        AND ${queryArgs.exprs[4]}
-        AND ${queryArgs.exprs[5]}
-        AND ${queryArgs.exprs[6]}
-        AND ${queryArgs.exprs[7]}
-        AND ${queryArgs.exprs[8]}
-        AND ${queryArgs.exprs[9]}
-        AND ${queryArgs.exprs[10]}
-        AND ${queryArgs.exprs[11]}
-        AND ${queryArgs.exprs[12]}
-        AND ${queryArgs.exprs[13]}
-    `, [
-      ...queryArgs.vals,
-      queryArgs.limit,
-      queryArgs.offset
-    ]);
-  },
-  executeOrdersQuery: async (queryArgs, connection = mysql.pool) => {
-    assert(_.isObject(queryArgs));
-    assert(_.isArray(queryArgs.exprs));
-    assert(_.isArray(queryArgs.vals));
-
-    return connection.query(`
-      SELECT
-        orders.id as order_id,
-        orders.created_at as order_created_at,
-        orders.updated_at as order_updated_at,
-        orders.amount_leva,
-        statuses.name as status_name,
-        statuses.id as status_id,
-        users.email as user_email
-      FROM orders
-      JOIN statuses ON statuses.id = orders.status_id
-      JOIN users ON users.id = orders.user_id
-      WHERE
-        ${queryArgs.exprs[0]}
-        AND ${queryArgs.exprs[1]}
-        AND ${queryArgs.exprs[2]}
-        AND ${queryArgs.exprs[3]}
-        AND ${queryArgs.exprs[4]}
-        AND ${queryArgs.exprs[5]}
-        AND ${queryArgs.exprs[6]}
-        AND ${queryArgs.exprs[7]}
-        AND ${queryArgs.exprs[8]}
-        AND ${queryArgs.exprs[9]}
-        AND ${queryArgs.exprs[10]}
-        AND ${queryArgs.exprs[11]}
-        AND ${queryArgs.exprs[12]}
-      ORDER BY
-        ${queryArgs.exprs[13]}
-      LIMIT ?
-      OFFSET ?
-    `, [
-      ...queryArgs.vals,
-      queryArgs.limit,
-      queryArgs.offset
-    ]);
-  },
-  executeOrderStatusesQuery: async (queryArgs = null, connection = mysql.pool) => {
-    return connection.query(`
-      SELECT *
-      FROM statuses
-      ORDER BY statuses.name ASC
-    `);
-  },
-  executeUserOrderStatusesQuery: async (queryArgs, connection = mysql.pool) => {
-    return connection.query(`
-      SELECT statuses.name, orders.amount_leva
-      FROM orders
-      JOIN statuses ON statuses.id = orders.status_id
-      JOIN users ON users.id = orders.user_id
-      WHERE
-        ${queryArgs.exprs[0]}
-        AND ${queryArgs.exprs[1]}
-        AND ${queryArgs.exprs[2]}
-        AND ${queryArgs.exprs[3]}
-        AND ${queryArgs.exprs[4]}
-        AND ${queryArgs.exprs[5]}
-        AND ${queryArgs.exprs[6]}
-        AND ${queryArgs.exprs[7]}
-        AND ${queryArgs.exprs[8]}
-        AND ${queryArgs.exprs[9]}
-        AND ${queryArgs.exprs[10]}
-        AND ${queryArgs.exprs[11]}
-        AND ${queryArgs.exprs[12]}
-      LIMIT ?
-      OFFSET ?
-    `, [
-      ...queryArgs.vals,
-      queryArgs.limit,
-      queryArgs.offset
-    ]);
-  },
-  executeChangeOrderStatusQuery: async (queryArgs, connection = mysql.pool) => {
-    assert(_.isObject(queryArgs));
-
-    return connection.query(`
-      UPDATE orders
-      SET
-        status_id = ?
-      WHERE
-        id = ?
-    `, queryArgs);
-  },
-  calculateOrdersProfitAndCount: async (queryArgs) => {
+  calculateOrdersProfitAndCount: async (query, queryArgs) => {
+    assert(_.isString(query));
     assert(_.isObject(queryArgs));
     assert(_.isArray(queryArgs.exprs));
     assert(_.isArray(queryArgs.vals));
@@ -315,7 +188,12 @@ const self = module.exports = {
     let ordersSums = { 'Всички': 0, 'Настоящи': 0, 'Очаквани': 0 };
     let orderStatusRows;
 
-    while ((orderStatusRows = await self.executeUserOrderStatusesQuery(queryArgsCopy)).length > 0) {
+    while ((orderStatusRows = await mysql.pool.query(query,
+      [
+        ...queryArgsCopy.vals,
+        queryArgsCopy.limit,
+        queryArgsCopy.offset
+      ])).length > 0) {
       assert(orderStatusRows.length >= 0);
 
       ordersCount += orderStatusRows.length;

@@ -1,6 +1,5 @@
 const CONSTANTS = require('../constants/constants');
 const Utils = require('./utils');
-const mysql = require('../db/mysql');
 
 const assert = require('assert');
 const _ = require('lodash/lang');
@@ -90,108 +89,5 @@ module.exports = {
     }, {});
 
     return processedTagRows;
-  },
-  executeHomepageQuery: async (queryArgs, connection = mysql.pool) => {
-    assert(_.isArray(queryArgs));
-
-    return connection.query(`
-      SELECT products.*, categories.name as category_name
-      FROM products
-      JOIN categories ON categories.id = products.category_id
-      ORDER BY created_at DESC
-      LIMIT ?
-      OFFSET ?
-    `, queryArgs);
-  },
-  executeProductIdQuery: async (queryArgs, connection = mysql.pool) => {
-    assert(_.isArray(queryArgs));
-
-    return connection.query(`
-      SELECT products.*
-      FROM products
-      JOIN categories ON categories.id = products.category_id
-      WHERE
-        products.id = ?
-    `, queryArgs);
-  },
-  executeProductsQuery: async (queryArgs, connection = mysql.pool) => {
-    assert(_.isObject(queryArgs));
-    assert(_.isArray(queryArgs.exprs));
-    assert(_.isArray(queryArgs.vals));
-
-    return connection.query(`
-      SELECT p.*, c.name as category_name, c.id as category_id
-      FROM products as p
-      JOIN categories as c ON c.id = p.category_id
-      LEFT JOIN product_tags as pt ON pt.product_id = p.id
-      LEFT JOIN tags ON tags.id = pt.tag_id
-      WHERE
-        (${queryArgs.exprs[0]} OR ${queryArgs.exprs[1]})
-        AND ${queryArgs.exprs[2]}
-        AND ${queryArgs.exprs[3]}
-        AND ${queryArgs.exprs[4]}
-        AND ${queryArgs.exprs[5]}
-      GROUP BY p.id
-      ORDER BY ${queryArgs.exprs[6]}
-      LIMIT ?
-      OFFSET ?
-      `, [
-      ...queryArgs.vals,
-      queryArgs.limit,
-      queryArgs.offset
-    ]);
-  },
-  executeProductsCountQuery: async (queryArgs, connection = mysql.pool) => {
-    assert(_.isObject(queryArgs));
-    assert(_.isArray(queryArgs.exprs));
-    assert(_.isArray(queryArgs.vals));
-
-    return connection.query(`
-      SELECT COUNT(1) as count
-      FROM
-        (
-          SELECT p.id
-          FROM products as p
-          JOIN categories as c ON c.id = p.category_id
-          LEFT JOIN product_tags as pt ON pt.product_id = p.id
-          LEFT JOIN tags ON tags.id = pt.tag_id
-          WHERE
-            (${queryArgs.exprs[0]} OR ${queryArgs.exprs[1]})
-            AND ${queryArgs.exprs[2]}
-            AND ${queryArgs.exprs[3]}
-            AND ${queryArgs.exprs[4]}
-            AND ${queryArgs.exprs[5]}
-          GROUP BY p.id
-        ) a
-      `, [
-      ...queryArgs.vals
-    ]);
-  },
-  executeTagsQuery: async (queryArgs, connection = mysql.pool) => {
-    assert(_.isObject(queryArgs));
-    assert(_.isArray(queryArgs.exprs));
-    assert(_.isArray(queryArgs.vals));
-
-    return connection.query(`
-      SELECT tags.name, COUNT(tags.name) as tag_count
-      FROM products as p
-      JOIN categories as c ON c.id = p.category_id
-      JOIN product_tags as pt ON pt.product_id = p.id
-      JOIN tags ON tags.id = pt.tag_id
-      WHERE
-        ${queryArgs.exprs[0]}
-        AND ${queryArgs.exprs[3]}
-        AND ${queryArgs.exprs[4]}
-        AND ${queryArgs.exprs[5]}
-      GROUP BY tags.name
-      `, [
-      ...queryArgs.vals.slice(1)
-    ]);
-  },
-  executeMenuItemsQuery: async (queryArgs = null, connection = mysql.pool) => {
-    return connection.query(`
-      SELECT id, name, type as c_type
-      FROM categories
-    `);
   }
 };
