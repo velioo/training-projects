@@ -1,8 +1,8 @@
 const Router = require('koa-router');
 const KoaBody = require('koa-body');
 const {
-  list,
-  getId,
+  getHomepageProducts,
+  getProductById,
   searchProducts,
   getMenuItems,
   frontendLogger,
@@ -14,7 +14,10 @@ const {
   renderSignUp,
   signUp,
   logOut,
-  confirmAccount
+  confirmAccount,
+  confirmOrder,
+  createOrder,
+  renderUserOrders
 } = require('../controllers/usersController');
 const {
   renderEmployeeLogin,
@@ -22,8 +25,9 @@ const {
   renderDashboard,
   employeeLogOut,
   getProducts,
-  renderOrders,
+  renderOrdersTable,
   getOrders,
+  getOrderById,
   changeOrderStatus
 } = require('../controllers/backOfficeController');
 const {
@@ -35,6 +39,28 @@ const {
 
 const router = new Router();
 
+const userOrders = () => { // move routes to files
+  const router = new Router();
+
+  router
+    .get('/', renderUserOrders)
+    .get('/:id([0-9]+)', getOrderById)
+    .post('/confirm_order', new KoaBody(), confirmOrder)
+    .post('/create_order', new KoaBody(), createOrder);
+
+  return router;
+};
+
+const backOfficeOrders = () => {
+  const router = new Router();
+
+  router
+    .get('/', renderOrdersTable)
+    .get('/:id([0-9]+)', getOrderById);
+
+  return router;
+};
+
 const employees = () => {
   const router = new Router();
 
@@ -42,9 +68,10 @@ const employees = () => {
     .get('/dashboard', renderDashboard)
     .get('/log_out', employeeLogOut)
     .get('/get_products', getProducts)
-    .get('/orders', renderOrders)
     .get('/get_orders', getOrders)
     .post('/change_order_status', new KoaBody(), changeOrderStatus);
+
+  router.use('/orders', backOfficeOrders().routes());
 
   return router;
 };
@@ -72,6 +99,7 @@ const users = () => {
     .get('/log_out', logOut);
 
   router.use('/cart', cart().routes());
+  router.use('/orders', userOrders().routes());
 
   return router;
 };
@@ -80,8 +108,8 @@ const products = () => {
   const router = new Router();
 
   router
-    .get('/', list)
-    .get('/:id([0-9]+)', getId);
+    .get('/', getHomepageProducts)
+    .get('/:id([0-9]+)', getProductById);
 
   return router;
 };

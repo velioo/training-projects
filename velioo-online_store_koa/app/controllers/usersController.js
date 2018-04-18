@@ -155,5 +155,20 @@ module.exports = {
     ctx.userMessage = 'You succecssfully validated your account.';
 
     Utils.renderLoginPage(ctx);
+  },
+  renderUserOrders: async (ctx, next) => {
+    ctx.status = 200;
+  },
+  confirmOrder: async (ctx, next) => {
+    await next();
+
+    const requestBody = ctx.request.body;
+    const paymentMethodId = +requestBody.paymentMethod;
+
+    assert(_.isInteger(paymentMethodId));
+
+  },
+  createOrder: async (ctx, next) => {
+    ctx.status = 200;
   }
 };

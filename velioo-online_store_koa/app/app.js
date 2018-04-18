@@ -7,7 +7,7 @@ exports.ROOT = ROOT;
 const CONSTANTS = require('./constants/constants');
 const logger = require('./helpers/logger');
 const globalErrHandler = require('./helpers/error');
-const authenticate = require('./helpers/authenticate');
+const authenticate = require('./helpers/authenticate'); // middlewares
 const { routes, allowedMethods } = require('./routes');
 const pug = require('./helpers/pug').fileRenderer;
 const dirs = {};
@@ -22,7 +22,7 @@ const Validate = require('koa-validate');
 app.use(globalErrHandler);
 
 app.use(new StaticCache('./assets', {
-  maxAge: 365 * 24 * 60 * 60
+  maxAge: 365 * 24 * 60 * 60 // constant
 }, dirs));
 app.use(new StaticCache('./uploads', {
   maxAge: 365 * 24 * 60 * 60

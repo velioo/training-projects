@@ -3,26 +3,27 @@ const logger = require('../helpers/logger');
 const mysql = require('../db/mysql');
 const Utils = require('../helpers/indexControllerUtils');
 
+// include constants like routes index.js
+
 const assert = require('assert');
 const { getArrayPages } = require('koa-ctx-paginate');
 
 module.exports = {
-  list: async (ctx, next) => {
-    const limit = CONSTANTS.HOMEPAGE_PRODUCTS_LIMIT;
-    const offset = (+ctx.query.page > 0)
-      ? +ctx.query.page * limit - limit
-      : 0;
+  getHomepageProducts: async (ctx, next) => {
+    const offset = parseInt(ctx.query.page) * CONSTANTS.HOMEPAGE_PRODUCTS_LIMIT - CONSTANTS.HOMEPAGE_PRODUCTS_LIMIT || 0;
 
     assert(!isNaN(offset));
 
     const productsRows = await mysql.pool.query(`
-      SELECT products.*, categories.name as category_name
-      FROM products
-      JOIN categories ON categories.id = products.category_id
+      SELECT
+        p.*,
+        categories.name as category_name
+      FROM products p
+      JOIN categories ON categories.id = p.category_id
       ORDER BY created_at DESC
       LIMIT ?
       OFFSET ?
-    `, [limit, offset]);
+    `, [CONSTANTS.HOMEPAGE_PRODUCTS_LIMIT, offset]);
 
     assert(productsRows.length >= 0);
 
@@ -33,10 +34,8 @@ module.exports = {
       isUserLoggedIn: ctx.session.isUserLoggedIn
     });
   },
-  getId: async (ctx, next) => {
-    const id = +ctx.params.id;
-
-    assert(!isNaN(id));
+  getProductById: async (ctx, next) => {
+    assert(!isNaN(ctx.params.id));
 
     const productRows = await mysql.pool.query(`
       SELECT products.*
@@ -44,18 +43,18 @@ module.exports = {
       JOIN categories ON categories.id = products.category_id
       WHERE
         products.id = ?
-    `, [id]);
+    `, [ctx.params.id]);
 
     assert(productRows.length <= 1);
 
-    if (productRows.length === 1) {
-      ctx.render('product.pug', {
-        product: productRows[0],
-        isUserLoggedIn: ctx.session.isUserLoggedIn
-      });
-    } else {
+    if (productRows.length !== 1) {
       return ctx.redirect('/not_found');
     }
+
+    ctx.render('product.pug', {
+      product: productRows[0],
+      isUserLoggedIn: ctx.session.isUserLoggedIn
+    });
   },
   searchProducts: async (ctx, next) => {
     ctx.status = 200;
@@ -64,7 +63,7 @@ module.exports = {
 
     const queryArgs = Utils.processQueryStr(ctx.query);
 
-    logger.info('QueryArgs = %o', queryArgs);
+    logger.info('QueryArgs = %o', queryArgs); // use join with 'AND' on queryArgs.exprs, join inputStr to be 1 expr
 
     const productsRows = await mysql.pool.query(`
       SELECT p.*, c.name as category_name, c.id as category_id

@@ -10,11 +10,10 @@ module.exports = {
   renderCart: async (ctx, next) => {
     await next();
 
-    const userId = ctx.session.userData.userId;
-
-    assert(_.isInteger(userId));
+    assert(_.isInteger(ctx.session.userData.userId));
 
     const productsRows = await mysql.pool.query(`
+
       SELECT
         products.id,
         products.name,
@@ -26,11 +25,14 @@ module.exports = {
       JOIN users ON users.id = cart.user_id
       WHERE
         users.id = ?
-    `, [ userId ]);
+
+    `, [ ctx.session.userData.userId ]);
 
     const paymentMethodsRows = await mysql.pool.query(`
+
       SELECT *
       FROM payment_methods
+
     `);
 
     assert(paymentMethodsRows.length >= 0);
@@ -75,9 +77,9 @@ module.exports = {
 
     try {
       if (productQuantity > 0) {
-        productQuantity = (!_.isNil(inputQuantity))
-          ? inputQuantity
-          : productQuantity + 1;
+        productQuantity = inputQuantity === null
+          ? productQuantity + 1
+          : inputQuantity;
 
         await connection.query(`
           UPDATE cart SET quantity = ?
@@ -96,7 +98,7 @@ module.exports = {
         `, [ userId, productId, productQuantity ]);
       }
 
-      const productInfo = await connection.query(`
+      const productInfoRows = await connection.query(`
         SELECT cart.quantity as quantity, p.price_leva as price_leva
         FROM cart
         JOIN products p ON p.id = cart.product_id
@@ -105,13 +107,13 @@ module.exports = {
           AND cart.product_id = ?
       `, [ userId, productId ]);
 
-      assert(productInfo.length <= 1);
+      assert(productInfoRows.length <= 1);
 
       await connection.commit();
 
-      logger.info('ProductInfo[0] = %o', productInfo[0]);
+      logger.info('ProductInfoRows[0] = %o', productInfoRows[0]);
 
-      ctx.body = productInfo[0];
+      ctx.body = productInfoRows[0];
     } catch (err) {
       logger.error(`Error while updating user cart: %o`, err);
       ctx.throw(500, 'Error while updating user cart');
@@ -120,13 +122,11 @@ module.exports = {
   removeProductCart: async (ctx, next) => {
     await next();
 
-    const productId = +ctx.request.body.productId;
-    const userId = +ctx.session.userData.userId;
+    assert(_.isInteger(+ctx.session.userData.userId));
+    assert(_.isInteger(+ctx.request.body.productId));
 
-    assert(_.isInteger(productId));
-    assert(_.isInteger(userId));
+    const connection = await mysql.pool.getConnection(); // not needed
 
-    const connection = await mysql.pool.getConnection();
     await connection.beginTransaction();
 
     try {
@@ -136,7 +136,7 @@ module.exports = {
         WHERE
           user_id = ?
           AND product_id = ?
-      `, [ userId, productId ]);
+      `, [ ctx.session.userData.userId, ctx.request.body.productId ]);
 
       await connection.commit();
 
@@ -145,6 +145,8 @@ module.exports = {
       logger.error('Failed to delete product from cart: %o', err);
       ctx.throw(500, 'Failed to delete product from cart');
     }
+
+    await connection.rollback();
   },
   getCountPriceCart: async (ctx, next) => {
     await next();

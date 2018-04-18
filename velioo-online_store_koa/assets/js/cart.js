@@ -1,6 +1,6 @@
 $(document).ready(() => {
   infoLog += `\ncart.js loaded\n`;
-
+ // rewrite
   var addToCartUrl = getAddToCartUrl();
   var changeQuantityUrl = getChangeQuantityUrl();
   var removeFromCartUrl = getRemoveFromCartUrl();

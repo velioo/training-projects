@@ -21,8 +21,8 @@ module.exports = {
 
     assert(_.isNil(inputStr) || (typeof inputStr === 'string' && inputStr.length <= CONSTANTS.MAX_SEARCH_INPUT_LEN));
     assert((!_.isNil(tags) && Array.isArray(tags)) || _.isNil(tags));
-    assert(!priceFrom || !isNaN(+priceFrom));
-    assert(!priceTo || !isNaN(+priceTo));
+    assert(!priceFrom || !isNaN(priceFrom));
+    assert(!priceTo || !isNaN(priceTo));
     assert(!categoryId || (!isNaN(+categoryId) && categoryId > 0));
     assert(!isNaN(limit) && limit >= 0);
     assert(!isNaN(offset) && offset >= 0);
@@ -71,18 +71,18 @@ module.exports = {
     const processedTagRows = tagRows.reduce((processedTagRows, tagRow) => {
       const newTagRow = {};
 
-      if (!_.isNil(queryTags)) {
+      if (!_.isNil(queryTags)) { // simplify
         if (queryTags.includes(tagRow.name)) {
           newTagRow.checked = 1;
         }
       }
 
-      const splitedTagRow = tagRow.name.split(':', 2);
+      const [key, value] = tagRow.name.split(':', 2);
 
-      if (splitedTagRow.length > 1) {
-        newTagRow.value = splitedTagRow[1].trim();
+      if (value !== undefined) {
+        newTagRow.value = value.trim();
         newTagRow.count = tagRow.tag_count;
-        processedTagRows[splitedTagRow[0]] = newTagRow;
+        processedTagRows[ key ] = newTagRow;
       }
 
       return processedTagRows;

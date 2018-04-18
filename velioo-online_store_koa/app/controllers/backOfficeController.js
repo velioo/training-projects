@@ -45,7 +45,7 @@ module.exports = {
       user: {}
     });
   },
-  renderOrders: async (ctx, next) => {
+  renderOrdersTable: async (ctx, next) => {
     await next();
 
     ctx.render('backoffice_orders.pug', {
@@ -289,6 +289,11 @@ module.exports = {
     result.sums = ordersInfo.ordersSums;
 
     ctx.body = result;
+  },
+  getOrderById: async (ctx, next) => {
+    await next();
+
+    assert();
   },
   changeOrderStatus: async (ctx, next) => {
     assert(!isNaN(ctx.request.body.statusId) && !isNaN(ctx.request.body.orderId));
