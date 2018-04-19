@@ -19,15 +19,9 @@ $(document).ready(function () {
       $.post(changeStatusUrl, { orderId: orderId, statusId: statusId }, function (data, status) {
         assert(data === true);
 
-        if (data === true) {
-          infoLog += '\nchange_order_status.js/#orders_table: Request successfull\n';
+        infoLog += '\nchange_order_status.js/#orders_table: Request successfull\n';
 
-          notification(orderId);
-        } else {
-          infoLog += '\nchange_order_status.js/#orders_table: Request failed\n';
-
-          window.alert('Възникна проблем при обработката на заявката ви.');
-        }
+        notification(orderId);
 
         logger.info(infoLog);
         infoLog = '';

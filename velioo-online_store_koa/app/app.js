@@ -4,7 +4,12 @@ const ROOT = 'http://localhost:' + PORT + '/';
 exports.PORT = PORT;
 exports.ROOT = ROOT;
 
-const CONSTANTS = require('./constants/constants');
+const {
+  MAX_ASSETS_AGE,
+  MAX_UPLOADS_AGE,
+  RECORDS_PER_PAGE,
+  MAX_RECORDS_PER_PAGE
+} = require('./constants/constants');
 const logger = require('./helpers/logger');
 const globalErrHandler = require('./helpers/error');
 const authenticate = require('./helpers/authenticate'); // middlewares
@@ -22,10 +27,10 @@ const Validate = require('koa-validate');
 app.use(globalErrHandler);
 
 app.use(new StaticCache('./assets', {
-  maxAge: 365 * 24 * 60 * 60 // constant
+  maxAge: MAX_ASSETS_AGE
 }, dirs));
 app.use(new StaticCache('./uploads', {
-  maxAge: 365 * 24 * 60 * 60
+  maxAge: MAX_UPLOADS_AGE
 }, dirs));
 
 pug.locals.root = ROOT;
@@ -40,7 +45,7 @@ app.use(async (ctx, next) => {
 
   await next();
 });
-app.use(Paginate.middleware(CONSTANTS.RECORDS_PER_PAGE, CONSTANTS.MAX_RECORDS_PER_PAGE));
+app.use(Paginate.middleware(RECORDS_PER_PAGE, MAX_RECORDS_PER_PAGE));
 
 Validate(app);
 

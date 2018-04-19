@@ -1,8 +1,4 @@
-const Router = require('koa-router');
-const KoaBody = require('koa-body');
 const {
-  getHomepageProducts,
-  getProductById,
   searchProducts,
   getMenuItems,
   frontendLogger,
@@ -13,106 +9,20 @@ const {
   login,
   renderSignUp,
   signUp,
-  logOut,
-  confirmAccount,
-  confirmOrder,
-  createOrder,
-  renderUserOrders
+  confirmAccount
 } = require('../controllers/usersController');
 const {
   renderEmployeeLogin,
-  employeeLogin,
-  renderDashboard,
-  employeeLogOut,
-  getProducts,
-  renderOrdersTable,
-  getOrders,
-  getOrderById,
-  changeOrderStatus
+  employeeLogin
 } = require('../controllers/backOfficeController');
-const {
-  renderCart,
-  addProductCart,
-  removeProductCart,
-  getCountPriceCart
-} = require('../controllers/cartController');
+const employees = require('./employees');
+const users = require('./users');
+const products = require('./products');
+
+const Router = require('koa-router');
+const KoaBody = require('koa-body');
 
 const router = new Router();
-
-const userOrders = () => { // move routes to files
-  const router = new Router();
-
-  router
-    .get('/', renderUserOrders)
-    .get('/:id([0-9]+)', getOrderById)
-    .post('/confirm_order', new KoaBody(), confirmOrder)
-    .post('/create_order', new KoaBody(), createOrder);
-
-  return router;
-};
-
-const backOfficeOrders = () => {
-  const router = new Router();
-
-  router
-    .get('/', renderOrdersTable)
-    .get('/:id([0-9]+)', getOrderById);
-
-  return router;
-};
-
-const employees = () => {
-  const router = new Router();
-
-  router
-    .get('/dashboard', renderDashboard)
-    .get('/log_out', employeeLogOut)
-    .get('/get_products', getProducts)
-    .get('/get_orders', getOrders)
-    .post('/change_order_status', new KoaBody(), changeOrderStatus);
-
-  router.use('/orders', backOfficeOrders().routes());
-
-  return router;
-};
-
-const cart = () => {
-  const router = new Router();
-
-  router
-    .get('/', renderCart)
-    .post('/add', new KoaBody(), addProductCart)
-    .post('/remove', new KoaBody(), removeProductCart)
-    .post('/change_quantity', new KoaBody(), addProductCart)
-    .post('/count_price', getCountPriceCart);
-
-  return router;
-};
-
-const users = () => {
-  const router = new Router();
-
-  router
-    // .get('/acount', renderDashboard),
-    // .get('/details', getProducts),
-    // .get('/orders', getOrders),
-    .get('/log_out', logOut);
-
-  router.use('/cart', cart().routes());
-  router.use('/orders', userOrders().routes());
-
-  return router;
-};
-
-const products = () => {
-  const router = new Router();
-
-  router
-    .get('/', getHomepageProducts)
-    .get('/:id([0-9]+)', getProductById);
-
-  return router;
-};
 
 router
   .get('/search', searchProducts)
