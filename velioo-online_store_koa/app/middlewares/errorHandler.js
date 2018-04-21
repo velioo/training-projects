@@ -1,4 +1,4 @@
-const logger = require('./logger');
+const logger = require('../helpers/logger');
 
 module.exports = async (ctx, next) => {
   try {

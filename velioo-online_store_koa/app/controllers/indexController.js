@@ -20,6 +20,7 @@ module.exports = {
     assert(!isNaN(offset));
 
     const productsRows = await mysql.pool.query(`
+
       SELECT
         p.*,
         categories.name as category_name
@@ -28,6 +29,7 @@ module.exports = {
       ORDER BY created_at DESC
       LIMIT ?
       OFFSET ?
+
     `, [HOMEPAGE_PRODUCTS_LIMIT, offset]);
 
     assert(productsRows.length >= 0);
@@ -43,11 +45,13 @@ module.exports = {
     assert(!isNaN(ctx.params.id));
 
     const productRows = await mysql.pool.query(`
+
       SELECT products.*
       FROM products
       JOIN categories ON categories.id = products.category_id
       WHERE
         products.id = ?
+
     `, [ctx.params.id]);
 
     assert(productRows.length <= 1);
@@ -66,9 +70,10 @@ module.exports = {
 
     const queryArgs = processQueryStr(ctx.query);
 
-    logger.info('QueryArgs = %o', queryArgs); // use join with 'AND' on queryArgs.exprs, join inputStr to be 1 expr
+    logger.info('QueryArgs = %o', queryArgs);
 
     const productsRows = await mysql.pool.query(`
+
       SELECT p.*, c.name as category_name, c.id as category_id
       FROM products as p
       JOIN categories as c ON c.id = p.category_id
@@ -80,6 +85,7 @@ module.exports = {
       ORDER BY ${queryArgs.orderByExpr}
       LIMIT ?
       OFFSET ?
+
       `, [
       ...queryArgs.vals,
       queryArgs.limit,
@@ -91,6 +97,7 @@ module.exports = {
     assert(productsRows.length >= 0);
 
     const productsCountRows = await mysql.pool.query(`
+
       SELECT COUNT(1) as count
       FROM
         (
@@ -103,6 +110,7 @@ module.exports = {
            ${queryArgs.productsExpr}
           GROUP BY p.id
         ) a
+
       `, [
       ...queryArgs.vals
     ]);
@@ -116,6 +124,7 @@ module.exports = {
     logger.info(`Products count = ${productsCount}`);
 
     const tagRows = await mysql.pool.query(`
+
       SELECT tags.name, COUNT(tags.name) as tag_count
       FROM products as p
       JOIN categories as c ON c.id = p.category_id
@@ -124,6 +133,7 @@ module.exports = {
       WHERE
         ${queryArgs.tagsExpr}
       GROUP BY tags.name
+
       `, [
       ...queryArgs.vals.slice(1)
     ]);
@@ -154,8 +164,10 @@ module.exports = {
   },
   getMenuItems: async (ctx) => {
     const items = await mysql.pool.query(`
+
       SELECT id, name, type as c_type
       FROM categories
+
     `);
 
     ctx.body = items;
@@ -187,26 +199,24 @@ let processQueryStr = (queryStrObj) => {
   utils.assertObjStrLen([ queryStrObj ], MAX_SEARCH_INPUT_LEN);
 
   assert(_.isNil(queryStrObj.search_input) || typeof queryStrObj.search_input === 'string');
-  assert(!queryStrObj.price_from || !isNaN(queryStrObj.price_from));
-  assert(!queryStrObj.price_to || !isNaN(queryStrObj.price_to));
-  assert(!queryStrObj.category || parseInt(queryStrObj.category) > 0);
+  assert(_.isNil(queryStrObj.price_from) || !isNaN(queryStrObj.price_from));
+  assert(_.isNil(queryStrObj.price_to) || !isNaN(queryStrObj.price_to));
+  assert(_.isNil(queryStrObj.category) || parseInt(queryStrObj.category) > 0);
   assert(parseInt(queryStrObj.limit) >= 0);
 
   const inputStr = utils.escapeSql(queryStrObj.search_input);
-  const offset = +queryStrObj.page * queryStrObj.limit - queryStrObj.limit;
-  const tags = (!_.isNil(queryStrObj.tags) && !Array.isArray(queryStrObj.tags))
-    ? [queryStrObj.tags]
-    : queryStrObj.tags;
+  const offset = parseInt(queryStrObj.page) * queryStrObj.limit - queryStrObj.limit;
+  const tags = (_.isNil(queryStrObj.tags) || Array.isArray(queryStrObj.tags))
+    ? queryStrObj.tags
+    : [queryStrObj.tags];
 
-  assert((!_.isNil(tags) && Array.isArray(tags)) || _.isNil(tags));
+  assert(Array.isArray(tags) || _.isNil(tags));
 
   assert(parseInt(offset) >= 0);
 
   const likeClause = (!_.isNil(inputStr) && inputStr.length >= MIN_SEARCH_INPUT_LEN)
     ? `LIKE '%${inputStr}%' ESCAPE '!'`
     : true;
-
-  logger.info('likeClause = %o', likeClause);
 
   const searchExprs = [
     (likeClause === true) ? true : `p.name ${likeClause}`,
@@ -253,10 +263,8 @@ let processTagRows = (tagRows, queryTags) => {
   const processedTagRows = tagRows.reduce((processedTagRows, tagRow) => {
     const newTagRow = {};
 
-    if (!_.isNil(queryTags)) { // simplify
-      if (queryTags.includes(tagRow.name)) {
-        newTagRow.checked = 1;
-      }
+    if (!_.isNil(queryTags) && queryTags.includes(tagRow.name)) {
+      newTagRow.checked = 1;
     }
 
     const [key, value] = tagRow.name.split(':', 2);

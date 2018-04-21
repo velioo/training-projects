@@ -40,6 +40,15 @@ $(document).ready(function () {
       ajaxProcessing: function (data) {
         var total, rows, headers;
 
+        $('#profits_tbody').html('<tr id="profits">' +
+            '<td></td>' +
+            '<td></td>' +
+            '<td class="left_aligned_td"><b style="font-size:18px;</b>">Печалби:</b></td>' +
+            '<td></td>' +
+            '<td></td>' +
+            '<td></td>' +
+          '</tr>');
+
         $.each(data.sums, function (index, value) {
           $('<tr class="sums">\
               <td></td>\

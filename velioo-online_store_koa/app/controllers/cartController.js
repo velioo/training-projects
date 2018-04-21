@@ -1,7 +1,9 @@
-const CONSTANTS = require('../constants/constants');
+const {
+  DEFAULT_CART_QUANTITY
+} = require('../constants/constants');
 const logger = require('../helpers/logger');
 const mysql = require('../db/mysql');
-const Utils = require('../helpers/cartControllerUtils');
+const utils = require('../helpers/utils');
 
 const assert = require('assert');
 const _ = require('lodash/lang');
@@ -62,11 +64,13 @@ module.exports = {
     await connection.beginTransaction();
 
     const productQuantityRow = await connection.query(`
+
       SELECT quantity
       FROM cart
       WHERE
         user_id = ?
         AND product_id = ?
+
     `, [ userId, productId ]);
 
     assert(productQuantityRow.length <= 1);
@@ -82,29 +86,35 @@ module.exports = {
           : inputQuantity;
 
         await connection.query(`
+
           UPDATE cart SET quantity = ?
           WHERE
           user_id = ?
           AND product_id = ?
+
         `, [ productQuantity, userId, productId ]);
       } else {
-        productQuantity = (!_.isNil(inputQuantity))
-          ? inputQuantity
-          : CONSTANTS.DEFAULT_CART_QUANTITY;
+        productQuantity = inputQuantity === null
+          ? DEFAULT_CART_QUANTITY
+          : inputQuantity;
 
         await connection.query(`
+
           INSERT INTO cart(user_id, product_id, quantity)
           VALUES (?, ?, ?)
+
         `, [ userId, productId, productQuantity ]);
       }
 
       const productInfoRows = await connection.query(`
+
         SELECT cart.quantity as quantity, p.price_leva as price_leva
         FROM cart
         JOIN products p ON p.id = cart.product_id
         WHERE
           cart.user_id = ?
           AND cart.product_id = ?
+
       `, [ userId, productId ]);
 
       assert(productInfoRows.length <= 1);
@@ -118,6 +128,8 @@ module.exports = {
       logger.error(`Error while updating user cart: %o`, err);
       ctx.throw(500, 'Error while updating user cart');
     }
+
+    await connection.rollback();
   },
   removeProductCart: async (ctx, next) => {
     await next();
@@ -125,37 +137,25 @@ module.exports = {
     assert(_.isInteger(+ctx.session.userData.userId));
     assert(_.isInteger(+ctx.request.body.productId));
 
-    const connection = await mysql.pool.getConnection(); // not needed
+    await mysql.pool.query(`
 
-    await connection.beginTransaction();
+      DELETE
+      FROM cart
+      WHERE
+        user_id = ?
+        AND product_id = ?
 
-    try {
-      await connection.query(`
-        DELETE
-        FROM cart
-        WHERE
-          user_id = ?
-          AND product_id = ?
-      `, [ ctx.session.userData.userId, ctx.request.body.productId ]);
+    `, [ ctx.session.userData.userId, ctx.request.body.productId ]);
 
-      await connection.commit();
-
-      ctx.body = true;
-    } catch (err) {
-      logger.error('Failed to delete product from cart: %o', err);
-      ctx.throw(500, 'Failed to delete product from cart');
-    }
-
-    await connection.rollback();
+    ctx.body = true;
   },
   getCountPriceCart: async (ctx, next) => {
     await next();
 
-    const userId = +ctx.session.userData.userId;
-
-    assert(_.isInteger(userId));
+    assert(_.isInteger(ctx.session.userData.userId));
 
     const cartInfoRow = await mysql.pool.query(`
+
       SELECT
         IFNULL(SUM(cart.quantity), 0) as count,
         IFNULL(SUM(products.price_leva * cart.quantity), 0) as price_leva
@@ -163,7 +163,8 @@ module.exports = {
       JOIN products ON products.id = cart.product_id
       WHERE
         cart.user_id = ?
-    `, [ userId ]);
+
+    `, [ ctx.session.userData.userId ]);
 
     assert(cartInfoRow.length <= 1);
 

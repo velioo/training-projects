@@ -11,8 +11,8 @@ const {
   MAX_RECORDS_PER_PAGE
 } = require('./constants/constants');
 const logger = require('./helpers/logger');
-const globalErrHandler = require('./helpers/error');
-const authenticate = require('./helpers/authenticate'); // middlewares
+const globalErrHandler = require('./middlewares/errorHandler');
+const authenticate = require('./middlewares/authenticate');
 const { routes, allowedMethods } = require('./routes');
 const pug = require('./helpers/pug').fileRenderer;
 const dirs = {};

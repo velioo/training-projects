@@ -24,15 +24,21 @@ module.exports = async (ctx, next) => {
   ];
 
   if (userServiceUrls.some((url) => requestUrl.startsWith(url) ||
-    (requestUrl + '/').startsWith(url)) &&
-      ctx.session.isUserLoggedIn) {
-    ctx.throw(200, 'User already logged in.', { userLoggedIn: true });
+    (requestUrl + '/').startsWith(url))) {
+    if (ctx.session.isUserLoggedIn) {
+      ctx.throw(200, 'User already logged in.', { userLoggedIn: true });
+    }
+
+    return;
   }
 
   if (employeeServiceUrls.some((url) => requestUrl.startsWith(url) ||
-    (requestUrl + '/').startsWith(url)) &&
-      ctx.session.isEmployeeLoggedIn) {
-    ctx.throw(200, 'Employee already logged in.', { employeeLoggedIn: true });
+    (requestUrl + '/').startsWith(url))) {
+    if (ctx.session.isEmployeeLoggedIn) {
+      ctx.throw(200, 'Employee already logged in.', { employeeLoggedIn: true });
+    }
+
+    return;
   }
 
   if (userLoggedInUrls.some((url) => requestUrl.startsWith(url) ||
