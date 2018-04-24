@@ -189,13 +189,84 @@ module.exports = {
   renderUserOrders: async (ctx, next) => {
     ctx.status = 200;
   },
+  renderConfirmOrder: async (ctx, next) => {
+    await next();
+
+    renderConfirmOrder(ctx, {});
+  },
   confirmOrder: async (ctx, next) => {
     await next();
 
-    const requestBody = ctx.request.body;
-    const paymentMethodId = +requestBody.paymentMethod;
+    assert(_.isInteger(+ctx.request.body.paymentMethodId));
+    assert(_.isInteger(+ctx.session.userData.userId));
+    assert(utils.rowExists({
+      table: 'payment_methods',
+      field: 'id',
+      queryArg: ctx.request.body.paymentMethodId
+    }));
 
-    assert(_.isInteger(paymentMethodId));
+    const userInfoRows = await mysql.pool.query(`
+
+      SELECT
+        u.name,
+        u.last_name,
+        u.country,
+        u.region,
+        u.street_address,
+        u.phone_unformatted,
+        u.email
+      FROM users as u
+      WHERE
+        u.id = ?
+
+    `, [ ctx.session.userData.userId ]);
+
+    logger.info('UserInfoRows = %o', userInfoRows);
+
+    assert(userInfoRows.length === 1);
+
+    const userCartProductsRows = await mysql.pool.query(`
+
+      SELECT
+        p.name as product_name,
+        p.price_leva as product_price,
+        c.quantity as product_cart_quantity
+      FROM products p
+      JOIN cart c ON c.product_id = p.id
+      WHERE
+        c.user_id = ?
+
+    `, [ ctx.session.userData.userId ]);
+
+    logger.info('UserCartProductsRows = %o', userCartProductsRows);
+
+    assert(userCartProductsRows.length >= 0);
+
+    const paymentMethodRows = await mysql.pool.query(`
+
+      SELECT *
+      FROM payment_methods
+      WHERE
+        id = ?
+
+    `, [ ctx.request.body.paymentMethodId ]);
+
+    logger.info('PaymentMethodRows = %o', paymentMethodRows);
+
+    assert(paymentMethodRows.length === 1);
+
+    // ctx.render('user_order_confirm.pug', {
+    //   user: userInfoRows,
+    //   products: userCartProductsRows,
+    //   paymentMethod: paymentMethodRows,
+    //   isUserLoggedIn: ctx.session.isUserLoggedIn
+    // });
+    renderConfirmOrder(ctx, {
+      user: userInfoRows,
+      products: userCartProductsRows,
+      paymentMethod: paymentMethodRows,
+      isUserLoggedIn: ctx.session.isUserLoggedIn
+    });
   },
   createOrder: async (ctx, next) => {
     ctx.status = 200;
@@ -209,6 +280,10 @@ let renderLoginPage = (ctx) => {
     isUserLoggedIn: ctx.session.isUserLoggedIn,
     user: {}
   });
+};
+
+let renderConfirmOrder = (ctx, obj) => {
+  return ctx.render('user_order_confirm.pug', obj);
 };
 
 let isLoginSuccessfull = (inputPassword, userData) => {

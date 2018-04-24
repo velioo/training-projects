@@ -38,28 +38,30 @@ const self = module.exports = {
 
     const resultExprs = Array(Object.keys(filterCases).length).fill(true);
 
-    if (filterColumns.length !== 0) {
-      filterColumns.forEach(function (obj) {
-        const entries = Object.entries(obj)[0];
-
-        assert(entries.length === 2);
-
-        const key = entries[0];
-        const filterInput = self.escapeSql(entries[1]);
-
-        assert(entries[0] in filterCases === true);
-
-        resultExprs[ key ] = (filterCases[ key ])
-          ? filterCases[ key ] +
-            filterInput +
-            (
-              (filterCases[ key ].indexOf('=') === -1)
-                ? "%' ESCAPE '!'"
-                : ''
-            )
-          : true;
-      });
+    if (filterColumns.length === 0) {
+      return resultExprs;
     }
+
+    filterColumns.forEach(function (obj) {
+      const entries = Object.entries(obj)[0];
+
+      assert(entries.length === 2);
+
+      const key = entries[0];
+      const filterInput = self.escapeSql(entries[1]);
+
+      assert(entries[0] in filterCases === true);
+
+      resultExprs[ key ] = (filterCases[ key ])
+        ? filterCases[ key ] +
+          filterInput +
+          (
+            (filterCases[ key ].indexOf('=') === -1)
+              ? "%' ESCAPE '!'"
+              : ''
+          )
+        : true;
+    });
 
     return resultExprs;
   },
@@ -68,27 +70,29 @@ const self = module.exports = {
 
     let sortExpr = '';
 
-    if (sortColumns.length !== 0) {
-      sortColumns.forEach(function (obj) {
-        const entries = Object.entries(obj)[0];
-
-        assert(entries.length === 2);
-
-        const key = entries[0];
-        const sortInput = self.escapeSql(entries[1]);
-
-        assert(entries[0] in sortCases === true);
-
-        sortExpr += (sortCases[ key ])
-          ? sortCases[ key ] +
-          (
-            (sortInput === '1')
-              ? 'DESC, '
-              : 'ASC, '
-          )
-          : '';
-      });
+    if (sortColumns.length === 0) {
+      return sortExpr;
     }
+
+    sortColumns.forEach(function (obj) {
+      const entries = Object.entries(obj)[0];
+
+      assert(entries.length === 2);
+
+      const key = entries[0];
+      const sortInput = self.escapeSql(entries[1]);
+
+      assert(entries[0] in sortCases === true);
+
+      sortExpr += (sortCases[ key ])
+        ? sortCases[ key ] +
+        (
+          (sortInput === '1')
+            ? 'DESC, '
+            : 'ASC, '
+        )
+        : '';
+    });
 
     if (sortExpr) {
       sortExpr = sortExpr.slice(0, sortExpr.lastIndexOf(','));
@@ -108,7 +112,7 @@ const self = module.exports = {
 
     assert(results.length <= 1);
 
-    return results.length;
+    return (results.length);
   },
   generateSalt: (bytes = 32) => {
     return Crypto.randomBytes(bytes).toString('base64');
@@ -164,17 +168,5 @@ const self = module.exports = {
     }
 
     return date.toISOString().slice(0, 10) === dateStr;
-  },
-  executeBeginTransaction: async () => {
-    const connection = await mysql.pool.getConnection();
-    await connection.beginTransaction();
-
-    return connection;
-  },
-  exucuteCommitTransaction: async (connection) => {
-    return connection.commit();
-  },
-  exucuteRollbackTransaction: async (connection) => {
-    return connection.rollback();
   }
 };

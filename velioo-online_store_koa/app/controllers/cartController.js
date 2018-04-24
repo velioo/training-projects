@@ -42,7 +42,8 @@ module.exports = {
     ctx.render('user_cart.pug', {
       isUserLoggedIn: ctx.session.isUserLoggedIn,
       products: productsRows,
-      paymentMethods: paymentMethodsRows
+      paymentMethods: paymentMethodsRows,
+      shouldHaveForm: (productsRows.length > 0 && paymentMethodsRows.length > 0)
     });
   },
   addProductCart: async (ctx, next) => {

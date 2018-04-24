@@ -8,9 +8,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ajv/5.3.0/ajv.min.js"></script>
-    <script src="../log4javascript/log4javascript.js"></script>
-    <script src="../js/schemas.js"></script>
-    <link rel="stylesheet" href="../css/main.css">
+    <script src="/log4javascript/log4javascript.js"></script>
+    <script src="/js/schemas.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
 
@@ -34,9 +34,12 @@ script.
 
 
     const logger = log4javascript.getLogger();
-    const ajaxAppender = new log4javascript.AjaxAppender('../frontend_logger');
+    const ajaxAppender = new log4javascript.AjaxAppender('/frontend_logger');
 
     ajaxAppender.setSendAllOnUnload();
+    ajaxAppender.setTimerInterval(#{FRONTEND_LOGGER_INTERVAL});
+    ajaxAppender.setTimed(true);
+
     logger.addAppender(ajaxAppender);
 
     function getLogger() {
@@ -63,32 +66,32 @@ script.
     }
 
     function getAddToCartUrl() {
-      var url = '../users/cart/add';
+      var url = '/users/cart/add';
       return url;
     }
 
     function getChangeQuantityUrl() {
-      var url = '../users/cart/change_quantity';
+      var url = '/users/cart/change_quantity';
       return url;
     }
 
     function getRemoveFromCartUrl() {
-      var url = '../users/cart/remove';
+      var url = '/users/cart/remove';
       return url;
     }
 
     function getCartCountPriceUrl() {
-      var url = '../users/cart/count_price';
+      var url = '/users/cart/count_price';
       return url;
     }
 
     function getRedirectUrl() {
-      var url = '../login';
+      var url = '/login';
       return url;
     }
 
     function getMenuItemsUrl() {
-        var url = '../menu_items';
+        var url = '/menu_items';
         return url;
     }
 
@@ -98,12 +101,12 @@ script.
     }
 
     function getCategorySearchUrl() {
-        var url = '../search?category=';
+        var url = '/search?category=';
         return url;
     }
 
-<script src="../js/main_menu.js"></script>
-<script src="../js/cart.js"></script>
+<script src="/js/main_menu.js"></script>
+<script src="/js/cart.js"></script>
 
 <div id="holder">
 <nav class="navbar" id="navigation_top">
@@ -111,7 +114,7 @@ script.
     <div class="navbar-header">
       <a class="navbar-brand" href="/">Computer Store</a>
     </div>
-    <form action="../search" method="get" class="navbar-form navbar-left" id="search_form">
+    <form action="/search" method="get" class="navbar-form navbar-left" id="search_form">
       <div class="input-group">
         <input type="text" class="form-control" name="search_input" placeholder="Search" id="search_input">
         <div class="input-group-btn">
@@ -123,12 +126,12 @@ script.
     </form>
     <ul class="nav navbar-nav navbar-right">
     if !isUserLoggedIn
-        <li><a href="../sign_up"><span class="glyphicon glyphicon-user"></span> Регистрация</a></li>
-        <li><a href="../login"><span class="glyphicon glyphicon-log-in"></span> Вход</a></li>
+        <li><a href="/sign_up"><span class="glyphicon glyphicon-user"></span> Регистрация</a></li>
+        <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Вход</a></li>
     else
-        <li><a href="../users/cart"><img class="spinner cart" src="#"><span class="glyphicon glyphicon-shopping-cart" style="float:right;"> Количка</span></br><span id="cart_count_price"></span></a></li>
+        <li><a href="/users/cart"><img class="spinner cart" src="#"><span class="glyphicon glyphicon-shopping-cart" style="float:right;"> Количка</span></br><span id="cart_count_price"></span></a></li>
         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Моят профил</a></li>
-        <li><a href="../users/log_out"><span class="glyphicon glyphicon-log-in"></span> Изход</a></li>
+        <li><a href="/users/log_out"><span class="glyphicon glyphicon-log-in"></span> Изход</a></li>
     </ul>
   </div>
 </nav>
@@ -151,7 +154,7 @@ script.
 
         </ul>
       </li>
-      <img class="spinner menu" src="../imgs/spinner.gif">
+      <img class="spinner menu" src="/imgs/spinner.gif">
     </ul>
   </div>
 </nav>

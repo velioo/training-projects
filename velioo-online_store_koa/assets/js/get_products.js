@@ -1,8 +1,9 @@
 $(document).ready(function () {
-  infoLog += '\nget_products.js loaded\n';
+  logger.info('get_products.js loaded');
 
   var productsUrl = getProductsUrl();
   var redirectUrl = getRedirectUrl();
+  var clearFiltersFlag = false;
 
   $(function () {
     $('.data_picker').datepicker({
@@ -12,7 +13,7 @@ $(document).ready(function () {
     });
   });
 
-  infoLog += 'get_products.js: Initialize tablesorter\n';
+  logger.info('get_products.js: Initialize tablesorter');
 
   $('#products_table').tablesorter({
     theme: 'blue',
@@ -64,64 +65,55 @@ $(document).ready(function () {
       cssErrorRow: 'tablesorter-errorRow'
     });
 
-  logger.info(infoLog);
-  infoLog = '';
-
   $('.filter').on('change', function () {
-    infoLog += '\nget_products.js/.filter: Executing...\n';
-    infoLog += 'get_products.js/.filter: Trigerring tablesorter pagerUpdate\n';
+    logger.info('get_products.js/.filter: Executing...');
+    logger.info('get_products.js/.filter: Trigerring tablesorter pagerUpdate');
 
     $('#products_table').trigger('pagerUpdate');
 
     if ($('#clear_filters').length <= 0) {
-      infoLog += 'get_products.js/.filter: #clear_filters doesn\'t exist. Prepending...\n';
+      logger.info('get_products.js/.filter: #clear_filters doesn\'t exist. Prepending...');
 
       $('#clean_filters').prepend('<a href="#" style="color:red;" id="clear_filters">Изчисти филтрите</a>');
     } else {
-      infoLog += 'get_products.js/.filter: #clear_filters exist\n';
+      logger.info('get_products.js/.filter: #clear_filters exist');
 
-      flag = 0;
+      clearFiltersFlag = 0;
 
-      infoLog += 'get_products.js/.filter: Checking if all filters are empty\n';
+      logger.info('get_products.js/.filter: Checking if all filters are empty');
 
       $('.filters').each(function () {
         if ($(this).val() === '') {
-          flag = 1;
+          clearFiltersFlag = 1;
         }
       });
 
-      if (flag) {
-        infoLog += 'get_products.js/.filter: All filters are empty. Removing #clear_filters\n';
+      if (clearFiltersFlag) {
+        logger.info('get_products.js/.filter: All filters are empty. Removing #clear_filters');
 
         $('#clear_filters').remove();
       } else {
-        infoLog += 'get_products.js/.filter: There are active filters\n';
+        logger.info('get_products.js/.filter: There are active filters');
       }
     }
-
-    logger.info(infoLog);
-    infoLog = '';
   });
 
   $('#clean_filters').on('click', '#clear_filters', function () {
-    infoLog += '\nget_products.js/#clean_filters: Executing...\n';
+    logger.info('get_products.js/#clean_filters: Executing...');
 
     $('.filter').val('');
     $('#clear_filters').remove();
 
-    infoLog += 'get_orders.js/#clean_filters: Trigerring tablesorter pagerUpdate\n';
+    logger.info('get_orders.js/#clean_filters: Trigerring tablesorter pagerUpdate');
 
     $('#products_table').trigger('pagerUpdate');
-
-    logger.info(infoLog);
-    infoLog = '';
   });
 
   function failHandler (config, xhr, settings, exception) {
     if (xhr === undefined) return false;
 
     if (xhr.readyState === 0) {
-      infoLog += `Internet connection is off or server is not responding\n`;
+      logger.info(`Internet connection is off or server is not responding`);
 
       window.alert(`Internet connection is off or server is not responding`);
     } else if (xhr.readyState === 1) {
@@ -129,26 +121,24 @@ $(document).ready(function () {
     } else if (xhr.readyState === 3) {
     } else {
       if (xhr.status === 200) {
-        infoLog += `Error parsing JSON data\n`;
+        logger.info(`Error parsing JSON data`);
       } else if (xhr.status === 404) {
-        infoLog += `The resource at the requested location
-          could not be found\n`;
+        logger.info(`The resource at the requested location
+          could not be found`);
       } else if (xhr.status === 403) {
         if (xhr.responseText === 'login') {
           return window.location.href = redirectUrl;
         }
-        infoLog += `You don\`t have permission to access this data\n`;
+        logger.info(`You don\`t have permission to access this data`);
       } else if (xhr.status === 500) {
-        infoLog += `Internal sever error\n`;
+        logger.info(`Internal sever error`);
       }
     }
 
     window.alert(`There was a problem while processing your request. Please try again later.`);
 
-    infoLog += `Response Text: ` +
+    logger.info(`Response Text: ` +
       xhr.responseText + `\n Ready State: ` +
-      xhr.readyState + `\n Status Code: ` + xhr.status;
-    logger.info(infoLog);
-    infoLog = ``;
+      xhr.readyState + `\n Status Code: ` + xhr.status);
   }
 });

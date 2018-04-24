@@ -89,6 +89,14 @@ html,body{
 	font-size:16px;
 }
 
+.payment_method_details {
+	font-weight: bold;
+}
+
+.user_order_products_title {
+	text-align: right;
+}
+
 #category {
 	width: auto;
 }
@@ -168,7 +176,13 @@ html,body{
 	cursor:pointer;
 }
 
-.cart_sum {
+#cart_sum_title {
+	font-size: 18px;
+	font-weight: bold;
+	text-align: right;
+}
+
+#cart_sum {
 	font-weight: bold;
 	text-align: right;
 }

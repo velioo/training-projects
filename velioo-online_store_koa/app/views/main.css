@@ -24,7 +24,7 @@ html,body{
 }
 
 #navigation_top2 {
-	z-index: 1; 
+	z-index: 1;
 	 background-color: rgb(238,238,238);
 }
 
@@ -104,7 +104,7 @@ html,body{
   display: -webkit-flex;
   display: -ms-flexbox;
   display:  flex;
-   
+
 }
 .col-sm-3.product {
 	background-color: white;
@@ -165,7 +165,13 @@ html,body{
 	cursor:pointer;
 }
 
-.cart_sum {
+#cart_sum_title {
+	font-size: 18px;
+	font-weight: bold;
+	float: right;
+}
+
+#cart_sum {
 	font-weight: bold;
 	text-align: right;
 }
@@ -293,10 +299,6 @@ font-size: 12px;
 	font-weight: bold;
 }
 
-.cart_sum {
-	
-}
-
 .right_aligned_td {
 	text-align: right;
 }
@@ -306,7 +308,7 @@ font-size: 12px;
 }
 
 .purchase_button {
-	
+
 }
 
 .glyphicon.form-control-feedback {
@@ -377,7 +379,7 @@ font-size: 12px;
 }
 
 .order_details_div {
-	
+
 }
 
 .change_product_count {
@@ -394,7 +396,7 @@ font-size: 12px;
 
 .input_change_count {
 	width: 70px;
-}	
+}
 
 #message {
 	margin-top: 30px;
@@ -415,7 +417,7 @@ font-size: 12px;
 }
 
 .product_left {
-	width:50%; 
+	width:50%;
 	display:inline-block;
 }
 
@@ -449,7 +451,7 @@ font-size: 12px;
 	color:red;
 	font-weight: normal;
 	margin-left: 10px;
-	display: none;	
+	display: none;
 }
 
 .filtering_menu {
@@ -587,5 +589,5 @@ tr:nth-child(even)  {
 	#search_form {
 		width: 300px;
 	}
-	
+
 }

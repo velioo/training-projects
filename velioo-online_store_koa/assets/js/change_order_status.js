@@ -1,11 +1,11 @@
 $(document).ready(function () {
-  infoLog += '\nchange_order_status.js loaded';
+  logger.info('change_order_status.js loaded');
 
-  var changeStatusUrl = getChangeStatusUrl();
+  var changeStatusrUl = getChangeStatusUrl();
   var redirectUrl = getRedirectUrl();
 
   $('#orders_table').on('change', '.select_status', function () {
-    infoLog += '\nchange_order_status.js/#orders_table: Executing... \n';
+    logger.info('change_order_status.js/#orders_table: Executing...');
 
     var statusId = parseInt($(this).val(), 10);
     var orderId = parseInt($(this).parent().parent().children('td').eq(2).text(), 10);
@@ -13,25 +13,20 @@ $(document).ready(function () {
     if (statusId === parseInt(statusId, 10) && orderId === parseInt(orderId, 10)) {
       assert((statusId === parseInt(statusId, 10)) && (orderId === parseInt(orderId, 10)));
 
-      infoLog += 'change_order_status.js/#orders_table: Sending request to ' +
+      logger.info('change_order_status.js/#orders_table: Sending request to ' +
         changeStatusUrl + ' with params: orderId = ' + orderId + ', statusId = ' +
-        statusId + '\n';
+        statusId);
       $.post(changeStatusUrl, { orderId: orderId, statusId: statusId }, function (data, status) {
         assert(data === true);
 
-        infoLog += '\nchange_order_status.js/#orders_table: Request successfull\n';
+        logger.info('change_order_status.js/#orders_table: Request successfull');
 
         notification(orderId);
-
-        logger.info(infoLog);
-        infoLog = '';
       })
         .fail(failHandler);
     } else {
-      infoLog += 'change_order_status.js/#orders_table: statusId or/and orderId must be integers: statusId = ' +
-        statusId + ', orderId = ' + orderId + '\n';
-      logger.info(infoLog);
-      infoLog = '';
+      logger.info('change_order_status.js/#orders_table: statusId or/and orderId must be integers: statusId = ' +
+        statusId + ', orderId = ' + orderId);
     }
   });
 
@@ -45,13 +40,13 @@ $(document).ready(function () {
 
   function failHandler (xhr, status, errorThrown) {
     if (status === `timeout`) {
-      infoLog += `Request timed out\n`;
+      logger.info(`Request timed out`);
 
       window.alert(`Request timed out`);
     } else {
       if (xhr.readyState === 0) {
-        infoLog += `Internet connection is off or server is
-          not responding\n`;
+        logger.info(`Internet connection is off or server is
+          not responding`);
 
         window.alert(`Internet connection is off or server is not responding`);
       } else if (xhr.readyState === 1) {
@@ -59,27 +54,25 @@ $(document).ready(function () {
       } else if (xhr.readyState === 3) {
       } else {
         if (xhr.status === 200) {
-          infoLog += `Error parsing JSON data\n`;
+          logger.info(`Error parsing JSON data`);
         } else if (xhr.status === 404) {
-          infoLog += `The resource at the requested location
-            could not be found\n`;
+          logger.info(`The resource at the requested location
+            could not be found`);
         } else if (xhr.status === 403) {
           if (xhr.responseText === 'login') {
             return window.location.href = redirectUrl;
           }
-          infoLog += `You don\`t have permission to access this data\n`;
+          logger.info(`You don\`t have permission to access this data`);
         } else if (xhr.status === 500) {
-          infoLog += `Internal sever error\n`;
+          logger.info(`Internal sever error`);
         }
       }
       window.alert(`There was a problem while processing your request. Please try again later.`);
     }
 
-    infoLog += `Response Text: ` +
+    logger.info(`Response Text: ` +
       xhr.responseText + `\n Ready State: ` +
-      xhr.readyState + `\n Status Code: ` + xhr.status;
-    logger.info(infoLog);
-    infoLog = ``;
+      xhr.readyState + `\n Status Code: ` + xhr.status);
 
     $(`.spinner.cart`).hide();
   }

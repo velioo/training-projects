@@ -9,12 +9,13 @@ include ./header.pug
 <div id="body">
 
 <h2>Количка</h2>
+
   <div class="vertical-menu">
-  <a href="./cart" class="active">Количка</a>
-  <a href="./orders">Поръчки</a>
-  <a href="./account">Настройки</a>
-  <a href="./details">Детайли</a>
-</div>
+    <a href="./cart" class="active">Количка</a>
+    <a href="./orders">Поръчки</a>
+    <a href="./account">Настройки</a>
+    <a href="./details">Детайли</a>
+  </div>
 
   <div class="account-info">
     <hr>
@@ -50,19 +51,14 @@ if products.length > 0
 else
   <h3>Нямате продукти в кошницата</h3>
 <tr>
-<!-- colspan -->
-<td></td>
-<td></td>
-<td></td>
-<td><b style="font-size: 18px;">Общо</b></td>
-<td class="cart_sum"></td>
-<td></td>
+<td colspan="4" id="cart_sum_title">Общо</td>
+<td id="cart_sum"></td><td></td>
 </tr>
 </tbody>
 </table>
 </div>
- <!-- check products.length in backend -> export shouldHaveForm variable -->
-if products.length > 0 && paymentMethods.length > 0
+
+if shouldHaveForm
   <form action="./orders/confirm_order" method="post" class="form-horizontal">
   <h3>Изберете метод за плащане</h3>
 
@@ -70,7 +66,7 @@ if products.length > 0 && paymentMethods.length > 0
   each paymentMethod in paymentMethods
     <div class="radio">
     <img src="../imgs/#{paymentMethod.image}" class="payment_image">
-    <label><input type="radio" value="#{paymentMethod.id}" name="paymentMethod" required>#{paymentMethod.name}</label>
+    <label><input type="radio" value="#{paymentMethod.id}" name="paymentMethodId" required>#{paymentMethod.name}</label>
     </div>
   </div>
   <div class="cart_purchase_div">

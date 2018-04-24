@@ -1,5 +1,6 @@
 const {
   confirmOrder,
+  renderConfirmOrder,
   createOrder,
   renderUserOrders
 } = require('../controllers/usersController');
@@ -17,6 +18,7 @@ module.exports = () => {
     .get('/', renderUserOrders)
     .get('/:id([0-9]+)', getOrderById)
     .post('/confirm_order', new KoaBody(), confirmOrder)
+    .get('/confirm_order', renderConfirmOrder)
     .post('/create_order', new KoaBody(), createOrder);
 
   return router;

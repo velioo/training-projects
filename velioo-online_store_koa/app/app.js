@@ -8,7 +8,8 @@ const {
   MAX_ASSETS_AGE,
   MAX_UPLOADS_AGE,
   RECORDS_PER_PAGE,
-  MAX_RECORDS_PER_PAGE
+  MAX_RECORDS_PER_PAGE,
+  FRONTEND_LOGGER_INTERVAL
 } = require('./constants/constants');
 const logger = require('./helpers/logger');
 const globalErrHandler = require('./middlewares/errorHandler');
@@ -33,7 +34,8 @@ app.use(new StaticCache('./uploads', {
   maxAge: MAX_UPLOADS_AGE
 }, dirs));
 
-pug.locals.root = ROOT;
+pug.locals.ROOT = ROOT;
+pug.locals.FRONTEND_LOGGER_INTERVAL = FRONTEND_LOGGER_INTERVAL;
 pug.use(app);
 
 app.keys = ['Shh, its a secret!'];
