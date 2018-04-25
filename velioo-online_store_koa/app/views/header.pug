@@ -61,7 +61,7 @@ script.
     }
 
     function isUserLoggedIn() {
-      var isUserLoggedIn = #{isUserLoggedIn} || false;
+      var isUserLoggedIn = #{isUserLoggedIn || false} || false;
       return isUserLoggedIn;
     }
 

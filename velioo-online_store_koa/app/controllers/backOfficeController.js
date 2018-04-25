@@ -259,10 +259,65 @@ module.exports = {
   getOrderById: async (ctx, next) => {
     await next();
 
-    ctx.status = 200;
+    assert(_.isInteger(+ctx.params.id));
+
+    let orderId = ctx.params.id;
+
+    const userInfoRows = await mysql.pool.query(`
+
+      SELECT
+        u.name,
+        u.last_name,
+        u.country,
+        u.region,
+        u.street_address,
+        u.phone_unformatted,
+        u.email,
+        pm.name as paymentMethodName,
+        pm.image as paymentMethodImage,
+        pm.details as paymentMethodDetails,
+        o.id as orderId,
+        o.amount_leva as orderSum
+      FROM users u
+      JOIN orders o ON o.user_id = u.id
+      JOIN payment_methods pm ON pm.id = o.payment_method_id
+      WHERE
+        o.id = ?
+
+    `, [ orderId ]);
+
+    logger.info('UserInfoRows = %o', userInfoRows);
+
+    assert(userInfoRows.length === 1);
+
+    const orderDataRows = await mysql.pool.query(`
+
+      SELECT
+        p.id,
+        p.name,
+        p.image,
+        op.price_leva,
+        op.quantity
+      FROM products p
+      JOIN order_products op ON op.product_id = p.id
+      JOIN orders o ON o.id = op.order_id
+      WHERE
+        o.id = ?
+
+    `, [ orderId ]);
+
+    logger.info('orderDataRows = %o', orderDataRows);
+
+    assert(orderDataRows.length >= 0);
+
+    ctx.render('employee_order.pug', {
+      user: userInfoRows[0],
+      products: orderDataRows,
+      hasProducts: (orderDataRows.length > 0)
+    });
   },
   changeOrderStatus: async (ctx, next) => {
-    assert(_.isInteger(ctx.request.body.statusId) && _.isInteger(ctx.request.body.orderId));
+    assert(_.isInteger(+ctx.request.body.statusId) && _.isInteger(+ctx.request.body.orderId));
 
     await mysql.pool.query(`
 

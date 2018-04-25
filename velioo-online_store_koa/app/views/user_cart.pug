@@ -11,10 +11,10 @@ include ./header.pug
 <h2>Количка</h2>
 
   <div class="vertical-menu">
-    <a href="./cart" class="active">Количка</a>
-    <a href="./orders">Поръчки</a>
-    <a href="./account">Настройки</a>
-    <a href="./details">Детайли</a>
+    <a href="/users/cart" class="active">Количка</a>
+    <a href="/users/orders">Поръчки</a>
+    <a href="/users/account">Настройки</a>
+    <a href="/users/details">Детайли</a>
   </div>
 
   <div class="account-info">
@@ -36,14 +36,14 @@ if products.length > 0
   each product in products
     <tr data-id="#{product.id}">
       <td>
-        <a href="../products/#{product.id}"><img src="../imgs/#{product.image}" onerror="this.src='../imgs/no_image.png'" class="cart_product_image">
+        <a href="/products/#{product.id}"><img src="/imgs/#{product.image}" onerror="this.src='/imgs/no_image.png'" class="cart_product_image">
         </a>
       </td>
       <td class="cart_product_name_td">#{product.name}</td>
       <td class="cart_product_price_td">#{formatter.format(product.price_leva)}</td>
       <td>
         <input class="input_change_count" min="0" step="1" type="number" value="#{product.quantity}">
-        <img class="spinner change_cart" src="../imgs/spinner.gif">
+        <img class="spinner change_cart" src="/imgs/spinner.gif">
       </td>
       <td class="cart_product_sum_td">#{formatter.format(product.price_leva * product.quantity)}</td>
       <td><span class="remove_product">Премахни</span></td>
@@ -52,20 +52,20 @@ else
   <h3>Нямате продукти в кошницата</h3>
 <tr>
 <td colspan="4" id="cart_sum_title">Общо</td>
-<td id="cart_sum"></td><td></td>
+<td class="cart_sum"></td><td></td>
 </tr>
 </tbody>
 </table>
 </div>
 
 if shouldHaveForm
-  <form action="./orders/confirm_order" method="post" class="form-horizontal">
+  <form action="/users/orders/confirm_order" method="post" class="form-horizontal">
   <h3>Изберете метод за плащане</h3>
 
   <div class="cart_products order">
   each paymentMethod in paymentMethods
     <div class="radio">
-    <img src="../imgs/#{paymentMethod.image}" class="payment_image">
+    <img src="/imgs/#{paymentMethod.image}" class="payment_image">
     <label><input type="radio" value="#{paymentMethod.id}" name="paymentMethodId" required>#{paymentMethod.name}</label>
     </div>
   </div>

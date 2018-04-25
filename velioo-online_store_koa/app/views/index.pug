@@ -1,6 +1,6 @@
 include ./header.pug
 
-<script src="../js/filter_tags.js"></script>
+<script src="/js/filter_tags.js"></script>
 
 <div id="body">
 <div id="wrap"></br>
@@ -16,7 +16,7 @@ else
 
 if tags
     <div class="filtering_menu">
-    <form action="../search" method="get" id="filter_form">
+    <form action="/search" method="get" id="filter_form">
     <h4 class="filter_header">Цена:</h4>
     <span>От:</span><input type="number" min="0" step="1" name="price_from" value="#{price_from}">
     <span>До:</span><input type="number" min="0" step="1" name="price_to" value="#{price_to}"></br></br>
@@ -64,34 +64,34 @@ if tags
 <div class="row row-eq-height">
 
 -var index = 0
-if products.length
-    each val in products
+if hasProducts
+    each product in products
         if index % 4 == 0 && index != 0
             </div>
             <div class="row row-eq-height">
-        <div class="col-sm-3 product" data-id="#{val.id}">
+        <div class="col-sm-3 product" data-id="#{product.id}">
         <div class="image_product_wrapper">
-        <a href="../products/#{val.id}">
+        <a href="/products/#{product.id}">
 
-        if val.image
-            img.product_image(src="../imgs/" + val.image onerror="" + "this.src='../imgs/no_image.png'")
+        if product.image
+            img.product_image(src="/imgs/" + product.image onerror="" + "this.src='/imgs/no_image.png'")
         else
-            img.product_image(src="" onerror="" + "this.src='../imgs/no_image.png'")
+            img.product_image(src="" onerror="" + "this.src='/imgs/no_image.png'")
         </a></br></br>
         </div>
         <div class="product_wrapper">
-        <a href="../products/#{val.id}" class="product_name no_underline">Име: #{val.name}</a></br>
-        <a href="../search?category=#{val.category_id}" class="product_category no_underline">Категория: #{val.category_name}</a></br>
-        <div class="product_price"><p style="font-size: 18px;">Цена: #{val.price_leva} лв.</p></div>
-        if val.quantity >= 1
+        <a href="/products/#{product.id}" class="product_name no_underline">Име: #{product.name}</a></br>
+        <a href="/search?category=#{product.category_id}" class="product_category no_underline">Категория: #{product.category_name}</a></br>
+        <div class="product_price"><p style="font-size: 18px;">Цена: #{product.price_leva} лв.</p></div>
+        if product.quantity >= 1
             <p style='color:blue;'>В наличност</p>
         else
             <p style='color:red;'>Няма наличност</p>
         </div>
-        if val.quantity > 0
+        if product.quantity > 0
             <button type="button" class="btn btn-default buy_button">
             <span class="glyphicon glyphicon-shopping-cart"></span>Купи
-            </button><img class="spinner buy" src="../imgs/spinner.gif">
+            </button><img class="spinner buy" src="/imgs/spinner.gif">
         </div>
         -index++
 else

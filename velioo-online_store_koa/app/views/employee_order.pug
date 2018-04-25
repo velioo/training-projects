@@ -1,0 +1,68 @@
+include ./employee_header.pug
+
+-var formatter = new Intl.NumberFormat(`en-US`, {
+-style: `decimal`,
+-maximumFractionDigits: 2,
+-minimumFractionDigits: 2
+-});
+
+<div id="body">
+
+<div class="account-info employee" style="width: 100%;">
+  <div class="profile_tab_title">Поръчка ##{(user) ? user.orderId : ''}</div>
+  <hr>
+
+  <div class="vertical-menu employee top">
+      <a href="/employee/orders" class="active">Поръчки</a>
+      <a href="/employee/dashboard">Продукти</a>
+      <a href="/employee/tags">Тагове</a>
+      <img class="spinner client_orders" src="/imgs/spinner.gif">
+  </div>
+
+  <div class="account-info">
+    <div class="form-horizontal login_register_form">
+      <div class="cart_products order">Плащане чрез: <br>
+        <img src="/imgs/#{(user) ? user.paymentMethodImage : 'no_image.png'}" class="cart_product_image confirm" onerror="this.src='/imgs/no_image.png'">#{(user) ? user.paymentMethodName : ''}
+        <p class="payment_method_details">#{(user) ? user.paymentMethodDetails : ''}</p>
+        <div style="display:inline-block;">
+          <h4>Данни за доставката:</h4>
+          <p>Име на получател: #{(user) ? user.name : ''} #{(user) ? user.last_name : ''}</p>
+          <p>Адрес: #{(user) ? user.country : ''}, #{(user) ? user.region : ''}, #{(user) ? user.street_address : ''}</p>
+          <p>Телефон за връзка: #{(user) ? user.phone_unformatted : ''}</p>
+          <p>Имейл за връзка: #{(user) ? user.email : ''}</p>
+        </div>
+      </div>
+      <div class="cart_products items order">
+      <h3 class="user_order_products_title">Продукти: </h3>
+
+if hasProducts
+  each product in products
+    <div class="cart_product order">
+      <div class="cart_product_image_div order">
+        <a href="/products/#{product.id}">
+          <img src="/imgs/#{product.image || 'no_image.png'}" onerror="this.src='/imgs/no_image.png';" class="cart_product_image order" style="margin: 5px;">
+        </a>
+      </div>
+      <div class="cart_product_name_div order">
+        <p class="cart_product_name order">#{product.name || ''}</p>
+      </div>
+      <div class="cart_product_price order">
+        <p>Цена: #{product.quantity || 0} x #{formatter.format(product.price_leva || 0)} лв. = #{formatter.format(product.price_leva * product.quantity) || 0} лв.
+        </p>
+      </div>
+    </div>
+<div class="cart_purchase_div">
+<h3 class="inline_h3">Общo: #{(user) ? user.orderSum : 0}</h3>
+<img class="spinner order_sum" src="/imgs/spinner.gif">
+  <h3 class="cart_sum inline_h3"></h3>
+  <h3 class="inline_h3"> лв.</h3></br>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+include ./employee_footer

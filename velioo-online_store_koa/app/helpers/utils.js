@@ -101,7 +101,7 @@ const self = module.exports = {
     return sortExpr;
   },
   rowExists: async (params) => {
-    assert(_.isString(params.table) && _.isString(params.field) && _.isString(params.queryArg));
+    assert(_.isString(params.table) && _.isString(params.field));
 
     const results = await mysql.pool.query(`
       SELECT *

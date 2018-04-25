@@ -1,6 +1,6 @@
 include ./header.pug
 
-<script src="../js/phone_form.js"></script>
+<script src="/js/phone_form.js"></script>
 
 script.
     function getCountries() {
@@ -20,7 +20,7 @@ if errors
         each val, key in err
             <p style="color:red;">#{val}</p>
 <br>
-<form action="../sign_up" method="post" class="form-horizontal login_register_form">
+<form action="/sign_up" method="post" class="form-horizontal login_register_form">
         <div class="form-group">
           <label class="col-sm-1 control-label" for="name">Име*:</label>
           <div class="col-sm-8">

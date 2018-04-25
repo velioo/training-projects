@@ -1,17 +1,17 @@
 $(document).ready(function () {
   logger.info('change_order_status.js loaded');
 
-  var changeStatusrUl = getChangeStatusUrl();
+  var changeStatusUrl = getChangeStatusUrl();
   var redirectUrl = getRedirectUrl();
 
   $('#orders_table').on('change', '.select_status', function () {
     logger.info('change_order_status.js/#orders_table: Executing...');
 
-    var statusId = parseInt($(this).val(), 10);
+    var statusId = parseInt($(this).val());
     var orderId = parseInt($(this).parent().parent().children('td').eq(2).text(), 10);
 
     if (statusId === parseInt(statusId, 10) && orderId === parseInt(orderId, 10)) {
-      assert((statusId === parseInt(statusId, 10)) && (orderId === parseInt(orderId, 10)));
+      assert((statusId === parseInt(statusId, 10)) && (orderId === parseInt(orderId)));
 
       logger.info('change_order_status.js/#orders_table: Sending request to ' +
         changeStatusUrl + ' with params: orderId = ' + orderId + ', statusId = ' +

@@ -1,27 +1,27 @@
 include ./employee_header.pug
 
-<script src="../js/change_order_status.js"></script>
-<script src="../js/get_orders.js"></script>
-
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<link rel="stylesheet" href="../tablesorter/css/theme.blue.css"></script>
-<script src="../tablesorter/jquery.tablesorter.js"></script>
-<link rel="stylesheet" href="../tablesorter/addons/pager/jquery.tablesorter.pager.css">
-<script src="../tablesorter/addons/pager/jquery.tablesorter.pager.js"></script>
-<script src="../tablesorter/jquery.tablesorter.widgets.js"></script>
+<link rel="stylesheet" href="/tablesorter/css/theme.blue.css"></script>
+<script src="/tablesorter/jquery.tablesorter.js"></script>
+<link rel="stylesheet" href="/tablesorter/addons/pager/jquery.tablesorter.pager.css">
+<script src="/tablesorter/addons/pager/jquery.tablesorter.pager.js"></script>
+<script src="/tablesorter/jquery.tablesorter.widgets.js"></script>
 
 script.
     function getChangeStatusUrl() {
-      var url = "../employee/change_order_status";
+      var url = "/employee/change_order_status";
       return url;
     }
 
     function getOrdersUrl() {
-      var url = "../employee/get_orders";
+      var url = "/employee/get_orders";
       return url;
     }
+
+<script src="/js/change_order_status.js"></script>
+<script src="/js/get_orders.js"></script>
 
 <div id="body" style="width: 100%;">
 
@@ -31,10 +31,10 @@ script.
 </div>
 
 <div class="vertical-menu employee">
-      <a href="../employee/orders" class="active">Поръчки</a>
-      <a href="../employee/dashboard">Продукти</a>
-      <a href="../employee/tags">Тагове</a>
-      <img class="spinner client_orders" src="../imgs/spinner.gif">
+      <a href="/employee/orders" class="active">Поръчки</a>
+      <a href="/employee/dashboard">Продукти</a>
+      <a href="/employee/tags">Тагове</a>
+      <img class="spinner client_orders" src="/imgs/spinner.gif">
 </div>
 
 <div class="account-info employee">
@@ -66,11 +66,11 @@ script.
         <thead>
           <tr class="tablesorter-ignoreRow">
             <td class="pager" colspan="7" style="text-align:left;">
-                <img src="../tablesorter/addons/pager/icons/first.png" class="first"/>
-                <img src="../tablesorter/addons/pager/icons/prev.png" class="prev"/>
+                <img src="/tablesorter/addons/pager/icons/first.png" class="first"/>
+                <img src="/tablesorter/addons/pager/icons/prev.png" class="prev"/>
                 <span class="pagedisplay"></span>
-                <img src="../tablesorter/addons/pager/icons/next.png" class="next"/>
-                <img src="../tablesorter/addons/pager/icons/last.png" class="last"/>
+                <img src="/tablesorter/addons/pager/icons/next.png" class="next"/>
+                <img src="/tablesorter/addons/pager/icons/last.png" class="last"/>
                 <select class="pagesize">
                   <option value="30">30</option>
                   <option value="50">50</option>
@@ -102,11 +102,11 @@ script.
         </tr>
           <tr>
               <td class="pager" colspan="7" style="text-align:left;">
-                <img src="../tablesorter/addons/pager/icons/first.png" class="first"/>
-                <img src="../tablesorter/addons/pager/icons/prev.png" class="prev"/>
+                <img src="/tablesorter/addons/pager/icons/first.png" class="first"/>
+                <img src="/tablesorter/addons/pager/icons/prev.png" class="prev"/>
                 <span class="pagedisplay"></span>
-                <img src="../tablesorter/addons/pager/icons/next.png" class="next"/>
-                <img src="../tablesorter/addons/pager/icons/last.png" class="last"/>
+                <img src="/tablesorter/addons/pager/icons/next.png" class="next"/>
+                <img src="/tablesorter/addons/pager/icons/last.png" class="last"/>
                 <select class="pagesize">
                   <option value="30">30</option>
                   <option value="50">50</option>

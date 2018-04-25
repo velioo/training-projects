@@ -6,13 +6,13 @@
 
 <link rel="icon" href="http://downloadicons.net/sites/default/files/computer-icon-65917.png">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ajv/5.3.0/ajv.min.js"></script>
-<script src="../log4javascript/log4javascript.js"></script>
-<script src="../js/schemas.js"></script>
-<script src="../js/remove_notification.js"></script>
+<script src="/log4javascript/log4javascript.js"></script>
+<script src="/js/schemas.js"></script>
+<script src="/js/remove_notification.js"></script>
 </head>
 <body>
 
@@ -36,7 +36,7 @@ script.
 
 
     const logger = log4javascript.getLogger();
-    const ajaxAppender = new log4javascript.AjaxAppender('../frontend_logger');
+    const ajaxAppender = new log4javascript.AjaxAppender('/frontend_logger');
 
     ajaxAppender.setSendAllOnUnload();
     logger.addAppender(ajaxAppender);
@@ -65,7 +65,7 @@ script.
     }
 
     function getRedirectUrl() {
-      var url = '../employee_login';
+      var url = '/employee_login';
       return url;
     }
 
@@ -74,12 +74,12 @@ script.
 <nav class="navbar navbar-inverse navbar-fixed-top" id="navigation_top">
   <div class="container-fluid" style="width: 1150px;">
     <div class="navbar-header">
-      <a class="navbar-brand" href="../employee/dashboard">Dashboard</a>
+      <a class="navbar-brand" href="/employee/dashboard">Dashboard</a>
     </div>
     <ul class="nav navbar-nav navbar-right">
-        <li><a href="../products"><span class="glyphicon glyphicon-home"></span> Kъм Магазина</a></li>
+        <li><a href="/products"><span class="glyphicon glyphicon-home"></span> Kъм Магазина</a></li>
 if isEmployeeLoggedIn
-    <li><a href="../employee/log_out"><span class="glyphicon glyphicon-log-in"></span> Изход</a></li>
+    <li><a href="/employee/log_out"><span class="glyphicon glyphicon-log-in"></span> Изход</a></li>
 </ul>
   </div>
 </nav>

@@ -38,11 +38,12 @@ module.exports = {
 
     ctx.render('index.pug', {
       products: productsRows,
-      isUserLoggedIn: ctx.session.isUserLoggedIn
+      isUserLoggedIn: ctx.session.isUserLoggedIn,
+      hasProducts: (productsRows.length > 0)
     });
   },
   getProductById: async (ctx, next) => {
-    assert(!isNaN(ctx.params.id));
+    assert(_.isInteger(+ctx.params.id));
 
     const productRows = await mysql.pool.query(`
 
@@ -159,7 +160,8 @@ module.exports = {
       itemCount: productsCount,
       currentPage: ctx.query.page || 1,
       pages: getArrayPages(ctx)(10, pageCount, ctx.query.page),
-      isUserLoggedIn: (ctx.session.isUserLoggedIn)
+      isUserLoggedIn: (ctx.session.isUserLoggedIn),
+      hasProducts: (productsRows.length > 0)
     });
   },
   getMenuItems: async (ctx) => {
@@ -196,10 +198,12 @@ let processQueryStr = (queryStrObj) => {
   assert(_.isObject(queryStrObj));
   utils.assertObjStrLen([ queryStrObj ], MAX_SEARCH_INPUT_LEN);
 
-  assert(_.isNil(queryStrObj.search_input) || typeof queryStrObj.search_input === 'string');
+  assert(_.isNil(queryStrObj.search_input) ||
+    typeof queryStrObj.search_input === 'string');
   assert(_.isNil(queryStrObj.price_from) || !isNaN(queryStrObj.price_from));
   assert(_.isNil(queryStrObj.price_to) || !isNaN(queryStrObj.price_to));
-  assert(_.isNil(queryStrObj.category) || parseInt(queryStrObj.category) > 0);
+  assert(_.isNil(queryStrObj.category) || !queryStrObj.category ||
+    parseInt(queryStrObj.category) > 0);
   assert(parseInt(queryStrObj.limit) >= 0);
 
   const inputStr = utils.escapeSql(queryStrObj.search_input);

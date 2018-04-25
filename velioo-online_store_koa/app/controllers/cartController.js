@@ -127,10 +127,11 @@ module.exports = {
       ctx.body = productInfoRows[0];
     } catch (err) {
       logger.error(`Error while updating user cart: %o`, err);
+
+      await connection.rollback();
+
       ctx.throw(500, 'Error while updating user cart');
     }
-
-    await connection.rollback();
   },
   removeProductCart: async (ctx, next) => {
     await next();

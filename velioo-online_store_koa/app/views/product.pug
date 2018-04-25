@@ -8,9 +8,9 @@ include ./header.pug
 
             <div class="product_left">
 if product.image
-    img.product_image.details(src="../imgs/" + product.image onerror="this.src='../imgs/no_image.png'")
+    img.product_image.details(src="/imgs/" + product.image onerror="this.src='/imgs/no_image.png'")
 else
-    img.product_image.details(src="" onerror="this.src='../imgs/no_image.png';")
+    img.product_image.details(src="" onerror="this.src='/imgs/no_image.png';")
 </div>
 
 <div class="product_right details" data-id="#{product.id}">

@@ -3,6 +3,10 @@ const mysql = require('../db/mysql');
 const utils = require('../helpers/utils');
 const pug = require('../helpers/pug').baseRenderer;
 const {
+  ROOT,
+  SERVICE_EMAIL_PROVIDER,
+  SERVICE_EMAIL,
+  EMAIL_PASS,
   MAX_USER_EMAIL_LEN,
   MAX_USER_PASSWORD_LEN,
   MIN_USER_NAME_LEN,
@@ -15,10 +19,7 @@ const {
   MIN_STREET_ADDRESS_LEN,
   MAX_STREET_ADDRESS_LEN,
   MIN_USER_PASSWORD_LEN,
-  SERVICE_EMAIL_PROVIDER,
-  SERVICE_EMAIL,
-  EMAIL_PASS,
-  ROOT
+  ORDER_REQUEST_COMPLETE_MESSAGE
 } = require('../constants/constants');
 
 const assert = require('assert');
@@ -80,7 +81,7 @@ module.exports = {
   signUp: async (ctx, next) => {
     ctx.errors = [];
 
-    await validateFields(ctx);
+    await validateSignUpFields(ctx);
 
     const userData = getUserData(ctx);
 
@@ -120,7 +121,9 @@ module.exports = {
       await connection.commit();
     } catch (err) {
       ctx.userMessage = 'There was a problem creating your account.';
+
       await connection.rollback();
+
       return renderSignUpPage(ctx, userData);
     }
 
@@ -178,32 +181,46 @@ module.exports = {
       await connection.commit();
     } catch (err) {
       ctx.userMessage = 'There was a problem confirming your account.';
+
       await connection.rollback();
+
       return renderLoginPage(ctx);
     }
 
-    ctx.userMessage = 'You succecssfully validated your account.';
+    ctx.userMessage = 'You successfully validated your account.';
 
     renderLoginPage(ctx);
   },
   renderUserOrders: async (ctx, next) => {
-    ctx.status = 200;
-  },
-  renderConfirmOrder: async (ctx, next) => {
     await next();
 
-    renderConfirmOrder(ctx, {});
+    assert(_.isInteger(+ctx.session.userData.userId));
+
+    const userOrdersRows = await mysql.pool.query(`
+
+      SELECT o.*, s.name as status_name
+      FROM orders o
+      JOIN statuses s ON s.id = o.status_id
+      JOIN users u ON u.id = o.user_id
+      WHERE
+        u.id = ?
+
+    `, [ ctx.session.userData.userId ]);
+
+    logger.info('OrdersRows = %o', userOrdersRows);
+
+    assert(userOrdersRows.length >= 0);
+
+    ctx.render('user_orders.pug', {
+      orders: userOrdersRows,
+      isUserLoggedIn: ctx.session.isUserLoggedIn,
+      hasOrders: (userOrdersRows.length > 0)
+    });
   },
   confirmOrder: async (ctx, next) => {
     await next();
 
-    assert(_.isInteger(+ctx.request.body.paymentMethodId));
-    assert(_.isInteger(+ctx.session.userData.userId));
-    assert(utils.rowExists({
-      table: 'payment_methods',
-      field: 'id',
-      queryArg: ctx.request.body.paymentMethodId
-    }));
+    await validateUserOrderInfo(ctx);
 
     const userInfoRows = await mysql.pool.query(`
 
@@ -225,12 +242,14 @@ module.exports = {
 
     assert(userInfoRows.length === 1);
 
-    const userCartProductsRows = await mysql.pool.query(`
+    const cartDataRows = await mysql.pool.query(`
 
       SELECT
-        p.name as product_name,
-        p.price_leva as product_price,
-        c.quantity as product_cart_quantity
+        p.id,
+        p.name,
+        p.price_leva,
+        p.image,
+        c.quantity
       FROM products p
       JOIN cart c ON c.product_id = p.id
       WHERE
@@ -238,9 +257,9 @@ module.exports = {
 
     `, [ ctx.session.userData.userId ]);
 
-    logger.info('UserCartProductsRows = %o', userCartProductsRows);
+    logger.info('UserCartProductsRows = %o', cartDataRows);
 
-    assert(userCartProductsRows.length >= 0);
+    assert(cartDataRows.length >= 0);
 
     const paymentMethodRows = await mysql.pool.query(`
 
@@ -255,21 +274,96 @@ module.exports = {
 
     assert(paymentMethodRows.length === 1);
 
-    // ctx.render('user_order_confirm.pug', {
-    //   user: userInfoRows,
-    //   products: userCartProductsRows,
-    //   paymentMethod: paymentMethodRows,
-    //   isUserLoggedIn: ctx.session.isUserLoggedIn
-    // });
-    renderConfirmOrder(ctx, {
-      user: userInfoRows,
-      products: userCartProductsRows,
-      paymentMethod: paymentMethodRows,
-      isUserLoggedIn: ctx.session.isUserLoggedIn
+    ctx.session.userData.paymentMethodId = paymentMethodRows[0].id;
+
+    ctx.render('user_order_confirm.pug', {
+      user: userInfoRows[0],
+      products: cartDataRows,
+      paymentMethod: paymentMethodRows[0],
+      isUserLoggedIn: ctx.session.isUserLoggedIn,
+      hasProducts: (cartDataRows.length > 0)
     });
   },
   createOrder: async (ctx, next) => {
-    ctx.status = 200;
+    await next();
+
+    if (!ctx.session.userData.paymentMethodId) {
+      ctx.redirect('/users/cart');
+    }
+
+    await validateUserOrderInfo(ctx);
+
+    const connection = await mysql.pool.getConnection();
+    await connection.beginTransaction();
+
+    try {
+      const cartDataRows = await connection.query(`
+
+        SELECT
+          p.id,
+          p.price_leva,
+          c.quantity,
+          SUM(p.price_leva * c.quantity) as sum
+        FROM products p
+        JOIN cart c ON c.product_id = p.id
+        WHERE
+          c.user_id = ?
+        GROUP BY p.id
+
+      `, [ +ctx.session.userData.userId ]);
+
+      logger.info('UserCartProductsRows = %o', cartDataRows);
+
+      assert(cartDataRows.length > 0);
+
+      const orderSum = getSumOrder(cartDataRows);
+
+      logger.info('OrderSum = %o', orderSum);
+
+      const orderStatus = await connection.query(`
+
+        INSERT INTO orders(user_id, amount_leva, payment_method_id, report)
+        VALUES(?, ?, ?, ?)
+
+      `, [ +ctx.session.userData.userId, +orderSum, +ctx.session.userData.paymentMethodId, '' ]);
+
+      assert(orderStatus.insertId);
+
+      const orderId = orderStatus.insertId;
+
+      await Promise.all(cartDataRows.map(async (product) => {
+        await connection.query(`
+
+          INSERT INTO order_products(product_id, order_id, price_leva, quantity)
+          VALUES(?, ?, ?, ?)
+
+        `, [ +product.id, +orderId, +product.price_leva, +product.quantity ]);
+      }));
+
+      await connection.query(`
+
+        DELETE
+        FROM cart
+        WHERE
+          user_id = ?
+
+      `, [ +ctx.session.userData.userId ]);
+
+      await connection.commit();
+
+      ctx.userMessage = ORDER_REQUEST_COMPLETE_MESSAGE;
+      ctx.session.userData.paymentMethodId = null;
+    } catch (err) {
+      logger.info('Failed to create order.');
+      ctx.userMessage = 'There was a problem creating your account.';
+
+      await connection.rollback();
+    }
+
+    ctx.render('order_complete.pug', {
+      userMessage: ctx.userMessage,
+      isUserLoggedIn: ctx.session.isUserLoggedIn
+    });
   }
 };
 
@@ -282,10 +376,6 @@ let renderLoginPage = (ctx) => {
   });
 };
 
-let renderConfirmOrder = (ctx, obj) => {
-  return ctx.render('user_order_confirm.pug', obj);
-};
-
 let isLoginSuccessfull = (inputPassword, userData) => {
   return sha256(inputPassword + userData.salt) === userData.password;
 };
@@ -294,7 +384,17 @@ let isAccountConfirmed = (userData) => {
   return +userData.confirmed === 1;
 };
 
-let validateFields = async (ctx) => {
+let validateUserOrderInfo = async (ctx) => {
+  assert(_.isInteger(+ctx.request.body.paymentMethodId || +ctx.session.userData.paymentMethodId));
+  assert(_.isInteger(+ctx.session.userData.userId));
+  assert(await utils.rowExists({
+    table: 'payment_methods',
+    field: 'id',
+    queryArg: +ctx.request.body.paymentMethodId || +ctx.session.userData.paymentMethodId
+  }));
+};
+
+let validateSignUpFields = async (ctx) => {
   ctx.checkBody('name')
     .len(MIN_USER_NAME_LEN, MAX_USER_NAME_LEN,
       `Name is too long or too short: ${MIN_USER_NAME_LEN} to ${MAX_USER_NAME_LEN} symbols`);
@@ -394,4 +494,10 @@ let renderSignUpPage = async (ctx, userData = {}, countryRows = {}) => {
     isUserLoggedIn: ctx.session.isUserLoggedIn,
     userMessage: ctx.userMessage
   });
+};
+
+let getSumOrder = (arr, initialVal = 0) => {
+  return arr.reduce((acc, curr) => {
+    return acc + curr.sum;
+  }, initialVal);
 };

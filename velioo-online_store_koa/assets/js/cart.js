@@ -7,9 +7,9 @@ $(document).ready(() => {
   var removeFromCartUrl = getRemoveFromCartUrl();
   var cartCountPriceUrl = getCartCountPriceUrl();
   var redirectUrl = getRedirectUrl();
-  var isUserLogged = isUserLoggedIn();
+  var userLoggedIn = isUserLoggedIn();
 
-  if (isUserLogged === true) {
+  if (userLoggedIn === true) {
     updateCart();
   }
 
@@ -114,7 +114,7 @@ $(document).ready(() => {
     logger.info(`cart.js/updateCart(): Sending request to ` + cartCountPriceUrl);
 
     $(`.spinner.cart`).show();
-    if ($(`#cart_sum`).length > 0) {
+    if ($(`.cart_sum`).length > 0) {
       $(`.spinner.order_sum`).show();
     }
 
@@ -135,8 +135,8 @@ $(document).ready(() => {
         $(`#cart_count_price`).text(data.count + ` артикул(а) - ` +
           formatter.format(data.price_leva) + ` лв.`);
 
-        if ($(`#cart_sum`).length > 0) {
-          $(`#cart_sum`).text(formatter.format(data.price_leva));
+        if ($(`.cart_sum`).length > 0) {
+          $(`.cart_sum`).text(formatter.format(data.price_leva));
           $(`.spinner.order_sum`).hide();
         }
 
