@@ -1,0 +1,646 @@
+    DBI::db=HASH(0x1e20480) trace level set to 0x0/1 (DBI @ 0x0/0) in DBI 1.634-ithread (pid 3537)
+    <- prepare('SELECT
+  tb.constraint_type
+FROM
+  information_schema.key_column_usage kcu
+JOIN
+  information_schema.table_constraints tb
+    ON tb.constraint_name = kcu.constraint_name
+WHERE
+  (kcu.table_name, kcu.column_name) IN
+    (
+      SELECT
+        vcu.table_name,
+        vcu.column_name
+      FROM
+        information_schema.view_column_usage vcu
+      WHERE
+        vcu.view_name = ?
+        AND vcu.column_name = ?
+    );
+')= ( DBI::st=HASH(0x1e20b70) ) [1 items] at script.pl line 46
+    <- execute('foo_vw', 'id')= ( 1 ) [1 items] at script.pl line 47
+    <- fetchrow_array= ( "PRIMARY KEY" ) [1 items] row1 at script.pl line 49
+    <- DESTROY(DBI::st=HASH(0x1e20750))= ( undef ) [1 items] at script.pl line 53
+    <- DESTROY(DBI::db=HASH(0x1e20480))= ( undef ) [1 items] at script.pl line 53
+    DBI::db=HASH(0x1f503a8) trace level set to 0x0/1 (DBI @ 0x0/0) in DBI 1.634-ithread (pid 3563)
+    <- prepare('SELECT
+  tb.constraint_type
+FROM
+  information_schema.key_column_usage kcu
+JOIN
+  information_schema.table_constraints tb
+    ON tb.constraint_name = kcu.constraint_name
+WHERE
+  (kcu.table_name, kcu.column_name) IN
+    (
+      SELECT
+        vcu.table_name,
+        vcu.column_name
+      FROM
+        information_schema.view_column_usage vcu
+      WHERE
+        vcu.view_name = ?
+        AND vcu.column_name = ?
+    );
+')= ( DBI::st=HASH(0x1f50a98) ) [1 items] at script.pl line 46
+    <- execute('foo_vw', 'id')= ( 1 ) [1 items] at script.pl line 47
+    <- fetchrow_array= ( "PRIMARY KEY" ) [1 items] row1 at script.pl line 49
+    <- finish= ( 1 ) [1 items] at script.pl line 53
+    <- disconnect= ( 1 ) [1 items] at script.pl line 55
+    <- DESTROY(DBI::st=HASH(0x1f50678))= ( undef ) [1 items]
+    <- DESTROY(DBI::db=HASH(0x1f503a8))= ( undef ) [1 items]
+    DBI::db=HASH(0x1962450) trace level set to 0x0/1 (DBI @ 0x0/0) in DBI 1.634-ithread (pid 3576)
+    <- prepare('SELECT
+  tb.constraint_type
+FROM
+  information_schema.key_column_usage kcu
+JOIN
+  information_schema.table_constraints tb
+    ON tb.constraint_name = kcu.constraint_name
+WHERE
+  (kcu.table_name, kcu.column_name) IN
+    (
+      SELECT
+        vcu.table_name,
+        vcu.column_name
+      FROM
+        information_schema.view_column_usage vcu
+      WHERE
+        vcu.view_name = ?
+        AND vcu.column_name = ?
+    );
+')= ( DBI::st=HASH(0x1962b40) ) [1 items] at script.pl line 46
+    <- execute('foo_vw', 'id')= ( 1 ) [1 items] at script.pl line 47
+    <- fetchrow_array= ( "PRIMARY KEY" ) [1 items] row1 at script.pl line 49
+    <- finish= ( 1 ) [1 items] at script.pl line 53
+    <- disconnect= ( 1 ) [1 items] at script.pl line 55
+    <- DESTROY(DBI::st=HASH(0x1962720))= ( undef ) [1 items]
+    <- DESTROY(DBI::db=HASH(0x1962450))= ( undef ) [1 items]
+    DBI::db=HASH(0x1084430) trace level set to 0x0/1 (DBI @ 0x0/0) in DBI 1.634-ithread (pid 3578)
+    <- prepare('SELECT
+  tb.constraint_type
+FROM
+  information_schema.key_column_usage kcu
+JOIN
+  information_schema.table_constraints tb
+    ON tb.constraint_name = kcu.constraint_name
+WHERE
+  (kcu.table_name, kcu.column_name) IN
+    (
+      SELECT
+        vcu.table_name,
+        vcu.column_name
+      FROM
+        information_schema.view_column_usage vcu
+      WHERE
+        vcu.view_name = ?
+        AND vcu.column_name = ?
+    );
+')= ( DBI::st=HASH(0x1084b20) ) [1 items] at script.pl line 46
+    <- execute('foo_vw', 'id')= ( 1 ) [1 items] at script.pl line 47
+    <- fetchrow_array= ( "PRIMARY KEY" ) [1 items] row1 at script.pl line 49
+    <- finish= ( 1 ) [1 items] at script.pl line 53
+    <- disconnect= ( 1 ) [1 items] at script.pl line 55
+    <- DESTROY(DBI::st=HASH(0x1084700))= ( undef ) [1 items]
+    <- DESTROY(DBI::db=HASH(0x1084430))= ( undef ) [1 items]
+    DBI::db=HASH(0xcb7470) trace level set to 0x0/1 (DBI @ 0x0/0) in DBI 1.634-ithread (pid 3580)
+    <- prepare('SELECT
+  tb.constraint_type
+FROM
+  information_schema.key_column_usage kcu
+JOIN
+  information_schema.table_constraints tb
+    ON tb.constraint_name = kcu.constraint_name
+WHERE
+  (kcu.table_name, kcu.column_name) IN
+    (
+      SELECT
+        vcu.table_name,
+        vcu.column_name
+      FROM
+        information_schema.view_column_usage vcu
+      WHERE
+        vcu.view_name = ?
+        AND vcu.column_name = ?
+    );
+')= ( DBI::st=HASH(0xcb7b60) ) [1 items] at script.pl line 46
+    <- execute('foo_vw', 'name')= ( 1 ) [1 items] at script.pl line 47
+    <- fetchrow_array= ( "UNIQUE" ) [1 items] row1 at script.pl line 49
+    <- finish= ( 1 ) [1 items] at script.pl line 53
+    <- disconnect= ( 1 ) [1 items] at script.pl line 55
+    <- DESTROY(DBI::st=HASH(0xcb7740))= ( undef ) [1 items]
+    <- DESTROY(DBI::db=HASH(0xcb7470))= ( undef ) [1 items]
+    DBI::db=HASH(0x2a30470) trace level set to 0x0/1 (DBI @ 0x0/0) in DBI 1.634-ithread (pid 3666)
+    <- prepare('SELECT
+  tb.constraint_type
+FROM
+  information_schema.key_column_usage kcu
+JOIN
+  information_schema.table_constraints tb
+    ON tb.constraint_name = kcu.constraint_name
+WHERE
+  (kcu.table_name, kcu.column_name) IN
+    (
+      SELECT
+        vcu.table_name,
+        vcu.column_name
+      FROM
+        information_schema.view_column_usage vcu
+      WHERE
+        vcu.view_name = ?
+        AND vcu.column_name = ?
+    );
+')= ( DBI::st=HASH(0x2a30b60) ) [1 items] at script.pl line 46
+    <- execute('foo_vw', 'status')= ( '0E0' ) [1 items] at script.pl line 47
+    <- fetchrow_array= ( ) [0 items] at script.pl line 49
+    <- finish= ( 1 ) [1 items] at script.pl line 53
+    <- disconnect= ( 1 ) [1 items] at script.pl line 55
+    <- DESTROY(DBI::st=HASH(0x2a30740))= ( undef ) [1 items]
+    <- DESTROY(DBI::db=HASH(0x2a30470))= ( undef ) [1 items]
+    DBI::db=HASH(0x15c6440) trace level set to 0x0/1 (DBI @ 0x0/0) in DBI 1.634-ithread (pid 3790)
+    <- prepare('SELECT
+  tb.constraint_type
+FROM
+  information_schema.key_column_usage kcu
+JOIN
+  information_schema.table_constraints tb
+    ON tb.constraint_name = kcu.constraint_name
+WHERE
+  (kcu.table_name, kcu.column_name) IN
+    (
+      SELECT
+        vcu.table_name,
+        vcu.column_name
+      FROM
+        information_schema.view_column_usage vcu
+      WHERE
+        vcu.view_name = ?
+        AND vcu.column_name = ?
+    );
+')= ( DBI::st=HASH(0x15c6b30) ) [1 items] at script.pl line 46
+    <- execute('foo_vw', 'status')= ( '0E0' ) [1 items] at script.pl line 47
+    <- fetchrow_array= ( ) [0 items] at script.pl line 49
+    <- finish= ( 1 ) [1 items] at script.pl line 53
+    <- disconnect= ( 1 ) [1 items] at script.pl line 55
+    <- DESTROY(DBI::st=HASH(0x15c6710))= ( undef ) [1 items]
+    <- DESTROY(DBI::db=HASH(0x15c6440))= ( undef ) [1 items]
+    DBI::db=HASH(0xd17390) trace level set to 0x0/1 (DBI @ 0x0/0) in DBI 1.634-ithread (pid 3792)
+    <- prepare('SELECT
+  tb.constraint_type
+FROM
+  information_schema.key_column_usage kcu
+JOIN
+  information_schema.table_constraints tb
+    ON tb.constraint_name = kcu.constraint_name
+WHERE
+  (kcu.table_name, kcu.column_name) IN
+    (
+      SELECT
+        vcu.table_name,
+        vcu.column_name
+      FROM
+        information_schema.view_column_usage vcu
+      WHERE
+        vcu.view_name = ?
+        AND vcu.column_name = ?
+    );
+')= ( DBI::st=HASH(0xd17a80) ) [1 items] at script.pl line 46
+    <- execute('foo_vw', 'status')= ( '0E0' ) [1 items] at script.pl line 47
+    <- fetchrow_array= ( ) [0 items] at script.pl line 49
+    <- finish= ( 1 ) [1 items] at script.pl line 53
+    <- disconnect= ( 1 ) [1 items] at script.pl line 55
+    <- DESTROY(DBI::st=HASH(0xd17660))= ( undef ) [1 items]
+    <- DESTROY(DBI::db=HASH(0xd17390))= ( undef ) [1 items]
+    DBI::db=HASH(0x1c113f0) trace level set to 0x0/1 (DBI @ 0x0/0) in DBI 1.634-ithread (pid 4053)
+    <- prepare('SELECT
+  tb.constraint_type
+FROM
+  information_schema.key_column_usage kcu
+JOIN
+  information_schema.table_constraints tb
+    ON tb.constraint_name = kcu.constraint_name
+WHERE
+  (kcu.table_name, kcu.column_name) IN
+    (
+      SELECT
+        vcu.table_name,
+        vcu.column_name
+      FROM
+        information_schema.view_column_usage vcu
+      WHERE
+        vcu.view_name = ?
+        AND vcu.column_name = ?
+    );
+')= ( DBI::st=HASH(0x1c11ae0) ) [1 items] at script.pl line 46
+    <- execute('foo_vw', 'status')= ( '0E0' ) [1 items] at script.pl line 47
+    <- fetchrow_array= ( ) [0 items] at script.pl line 49
+    <- finish= ( 1 ) [1 items] at script.pl line 55
+    <- disconnect= ( 1 ) [1 items] at script.pl line 57
+    <- DESTROY(DBI::st=HASH(0x1c116c0))= ( undef ) [1 items]
+    <- DESTROY(DBI::db=HASH(0x1c113f0))= ( undef ) [1 items]
+    DBI::db=HASH(0xbaa410) trace level set to 0x0/1 (DBI @ 0x0/0) in DBI 1.634-ithread (pid 4059)
+    <- prepare('SELECT
+  tb.constraint_type
+FROM
+  information_schema.key_column_usage kcu
+JOIN
+  information_schema.table_constraints tb
+    ON tb.constraint_name = kcu.constraint_name
+WHERE
+  (kcu.table_name, kcu.column_name) IN
+    (
+      SELECT
+        vcu.table_name,
+        vcu.column_name
+      FROM
+        information_schema.view_column_usage vcu
+      WHERE
+        vcu.view_name = ?
+        AND vcu.column_name = ?
+    );
+')= ( DBI::st=HASH(0xbaab00) ) [1 items] at script.pl line 46
+    <- execute('foo_vw', 'name')= ( 1 ) [1 items] at script.pl line 47
+    <- fetchrow_array= ( "UNIQUE" ) [1 items] row1 at script.pl line 49
+    <- finish= ( 1 ) [1 items] at script.pl line 55
+    <- disconnect= ( 1 ) [1 items] at script.pl line 57
+    <- DESTROY(DBI::st=HASH(0xbaa6e0))= ( undef ) [1 items]
+    <- DESTROY(DBI::db=HASH(0xbaa410))= ( undef ) [1 items]
+    DBI::db=HASH(0x1272440) trace level set to 0x0/1 (DBI @ 0x0/0) in DBI 1.634-ithread (pid 4314)
+    <- prepare('SELECT
+  tb.constraint_type
+FROM
+  information_schema.key_column_usage kcu
+JOIN
+  information_schema.table_constraints tb
+    ON tb.constraint_name = kcu.constraint_name
+WHERE
+  (kcu.table_name, kcu.column_name) IN
+    (
+      SELECT
+        vcu.table_name,
+        vcu.column_name
+      FROM
+        information_schema.view_column_usage vcu
+      WHERE
+        vcu.view_name = ?
+        AND vcu.column_name = ?
+    );
+')= ( DBI::st=HASH(0x1272b30) ) [1 items] at script.pl line 46
+    <- execute('foo_vw', 'name')= ( 1 ) [1 items] at script.pl line 47
+    <- fetchrow_array= ( "UNIQUE" ) [1 items] row1 at script.pl line 49
+    <- finish= ( 1 ) [1 items] at script.pl line 55
+    <- disconnect= ( 1 ) [1 items] at script.pl line 57
+    <- DESTROY(DBI::st=HASH(0x1272710))= ( undef ) [1 items]
+    <- DESTROY(DBI::db=HASH(0x1272440))= ( undef ) [1 items]
+    DBI::db=HASH(0xead3f0) trace level set to 0x0/1 (DBI @ 0x0/0) in DBI 1.634-ithread (pid 4611)
+    <- prepare('SELECT
+  tb.constraint_type
+FROM
+  information_schema.key_column_usage kcu
+JOIN
+  information_schema.table_constraints tb
+    ON tb.constraint_name = kcu.constraint_name
+WHERE
+  (kcu.table_name, kcu.column_name) IN
+    (
+      SELECT
+        vcu.table_name,
+        vcu.column_name
+      FROM
+        information_schema.view_column_usage vcu
+      WHERE
+        vcu.view_name = ?
+        AND vcu.column_name = ?
+    );
+')= ( DBI::st=HASH(0xeadae0) ) [1 items] at script.pl line 46
+    <- execute('foo_vw', 'name')= ( 1 ) [1 items] at script.pl line 47
+    <- fetchrow_array= ( "UNIQUE" ) [1 items] row1 at script.pl line 49
+    <- finish= ( 1 ) [1 items] at script.pl line 55
+    <- disconnect= ( 1 ) [1 items] at script.pl line 57
+    <- DESTROY(DBI::st=HASH(0xead6c0))= ( undef ) [1 items]
+    <- DESTROY(DBI::db=HASH(0xead3f0))= ( undef ) [1 items]
+    DBI::db=HASH(0x28d81d8) trace level set to 0x0/1 (DBI @ 0x0/0) in DBI 1.634-ithread (pid 4633)
+    <- prepare('SELECT
+  tb.constraint_type
+FROM
+  information_schema.key_column_usage kcu
+JOIN
+  information_schema.table_constraints tb
+    ON tb.constraint_name = kcu.constraint_name
+WHERE
+  (kcu.table_name, kcu.column_name) IN
+    (
+      SELECT
+        vcu.table_name,
+        vcu.column_name
+      FROM
+        information_schema.view_column_usage vcu
+      WHERE
+        vcu.view_name = ?
+        AND vcu.column_name = ?
+    );
+')= ( DBI::st=HASH(0x28d88c8) ) [1 items] at script.pl line 46
+    <- execute('foo_vw', 'name')= ( 1 ) [1 items] at script.pl line 47
+    <- fetchrow_array= ( "UNIQUE" ) [1 items] row1 at script.pl line 49
+    <- finish= ( 1 ) [1 items] at script.pl line 55
+    <- disconnect= ( 1 ) [1 items] at script.pl line 57
+    <- DESTROY(DBI::st=HASH(0x28d84a8))= ( undef ) [1 items]
+    <- DESTROY(DBI::db=HASH(0x28d81d8))= ( undef ) [1 items]
+    DBI::db=HASH(0x107f258) trace level set to 0x0/1 (DBI @ 0x0/0) in DBI 1.634-ithread (pid 4645)
+    <- prepare('SELECT
+  tb.constraint_type
+FROM
+  information_schema.key_column_usage kcu
+JOIN
+  information_schema.table_constraints tb
+    ON tb.constraint_name = kcu.constraint_name
+WHERE
+  (kcu.table_name, kcu.column_name) IN
+    (
+      SELECT
+        vcu.table_name,
+        vcu.column_name
+      FROM
+        information_schema.view_column_usage vcu
+      WHERE
+        vcu.view_name = ?
+        AND vcu.column_name = ?
+    );
+')= ( DBI::st=HASH(0x107f948) ) [1 items] at script.pl line 46
+    <- execute('foo_vw', 'status')= ( '0E0' ) [1 items] at script.pl line 47
+    <- fetchrow_array= ( ) [0 items] at script.pl line 49
+    <- finish= ( 1 ) [1 items] at script.pl line 55
+    <- disconnect= ( 1 ) [1 items] at script.pl line 57
+    <- DESTROY(DBI::st=HASH(0x107f528))= ( undef ) [1 items]
+    <- DESTROY(DBI::db=HASH(0x107f258))= ( undef ) [1 items]
+    DBI::db=HASH(0x22e9258) trace level set to 0x0/1 (DBI @ 0x0/0) in DBI 1.634-ithread (pid 4654)
+    <- prepare('SELECT
+  tb.constraint_type
+FROM
+  information_schema.key_column_usage kcu
+JOIN
+  information_schema.table_constraints tb
+    ON tb.constraint_name = kcu.constraint_name
+WHERE
+  (kcu.table_name, kcu.column_name) IN
+    (
+      SELECT
+        vcu.table_name,
+        vcu.column_name
+      FROM
+        information_schema.view_column_usage vcu
+      WHERE
+        vcu.view_name = ?
+        AND vcu.column_name = ?
+    );
+')= ( DBI::st=HASH(0x22e9948) ) [1 items] at script.pl line 46
+    <- execute('foo_vw', 'status')= ( '0E0' ) [1 items] at script.pl line 47
+    <- fetchrow_array= ( ) [0 items] at script.pl line 49
+    <- finish= ( 1 ) [1 items] at script.pl line 55
+    <- disconnect= ( 1 ) [1 items] at script.pl line 57
+    <- DESTROY(DBI::st=HASH(0x22e9528))= ( undef ) [1 items]
+    <- DESTROY(DBI::db=HASH(0x22e9258))= ( undef ) [1 items]
+    DBI::db=HASH(0x1a01298) trace level set to 0x0/1 (DBI @ 0x0/0) in DBI 1.634-ithread (pid 4656)
+    <- prepare('SELECT
+  tb.constraint_type
+FROM
+  information_schema.key_column_usage kcu
+JOIN
+  information_schema.table_constraints tb
+    ON tb.constraint_name = kcu.constraint_name
+WHERE
+  (kcu.table_name, kcu.column_name) IN
+    (
+      SELECT
+        vcu.table_name,
+        vcu.column_name
+      FROM
+        information_schema.view_column_usage vcu
+      WHERE
+        vcu.view_name = ?
+        AND vcu.column_name = ?
+    );
+')= ( DBI::st=HASH(0x1a01988) ) [1 items] at script.pl line 46
+    <- execute('foo_vw', 'status')= ( '0E0' ) [1 items] at script.pl line 47
+    <- fetchrow_array= ( ) [0 items] at script.pl line 49
+    <- finish= ( 1 ) [1 items] at script.pl line 55
+    <- disconnect= ( 1 ) [1 items] at script.pl line 57
+    <- DESTROY(DBI::st=HASH(0x1a01568))= ( undef ) [1 items]
+    <- DESTROY(DBI::db=HASH(0x1a01298))= ( undef ) [1 items]
+    DBI::db=HASH(0x1eea208) trace level set to 0x0/1 (DBI @ 0x0/0) in DBI 1.634-ithread (pid 4689)
+    <- prepare('SELECT
+  tb.constraint_type
+FROM
+  information_schema.key_column_usage kcu
+JOIN
+  information_schema.table_constraints tb
+    ON tb.constraint_name = kcu.constraint_name
+WHERE
+  (kcu.table_name, kcu.column_name) IN
+    (
+      SELECT
+        vcu.table_name,
+        vcu.column_name
+      FROM
+        information_schema.view_column_usage vcu
+      WHERE
+        vcu.view_name = ?
+        AND vcu.column_name = ?
+    );
+')= ( DBI::st=HASH(0x1eea8f8) ) [1 items] at script.pl line 46
+    <- execute('foo_vw', 'status')= ( '0E0' ) [1 items] at script.pl line 47
+    <- fetchrow_array= ( ) [0 items] at script.pl line 49
+    <- finish= ( 1 ) [1 items] at script.pl line 55
+    <- disconnect= ( 1 ) [1 items] at script.pl line 57
+    <- DESTROY(DBI::st=HASH(0x1eea4d8))= ( undef ) [1 items]
+    <- DESTROY(DBI::db=HASH(0x1eea208))= ( undef ) [1 items]
+    DBI::db=HASH(0x10ec1e8) trace level set to 0x0/1 (DBI @ 0x0/0) in DBI 1.634-ithread (pid 4691)
+    <- prepare('SELECT
+  tb.constraint_type
+FROM
+  information_schema.key_column_usage kcu
+JOIN
+  information_schema.table_constraints tb
+    ON tb.constraint_name = kcu.constraint_name
+WHERE
+  (kcu.table_name, kcu.column_name) IN
+    (
+      SELECT
+        vcu.table_name,
+        vcu.column_name
+      FROM
+        information_schema.view_column_usage vcu
+      WHERE
+        vcu.view_name = ?
+        AND vcu.column_name = ?
+    );
+')= ( DBI::st=HASH(0x10ec8d8) ) [1 items] at script.pl line 46
+    <- execute('foo_vw', 'status')= ( '0E0' ) [1 items] at script.pl line 47
+    <- fetchrow_array= ( ) [0 items] at script.pl line 49
+    <- finish= ( 1 ) [1 items] at script.pl line 55
+    <- disconnect= ( 1 ) [1 items] at script.pl line 57
+    <- DESTROY(DBI::st=HASH(0x10ec4b8))= ( undef ) [1 items]
+    <- DESTROY(DBI::db=HASH(0x10ec1e8))= ( undef ) [1 items]
+    DBI::db=HASH(0x1503330) trace level set to 0x0/1 (DBI @ 0x0/0) in DBI 1.634-ithread (pid 4694)
+    <- prepare('SELECT
+  tb.constraint_type
+FROM
+  information_schema.key_column_usage kcu
+JOIN
+  information_schema.table_constraints tb
+    ON tb.constraint_name = kcu.constraint_name
+WHERE
+  (kcu.table_name, kcu.column_name) IN
+    (
+      SELECT
+        vcu.table_name,
+        vcu.column_name
+      FROM
+        information_schema.view_column_usage vcu
+      WHERE
+        vcu.view_name = ?
+        AND vcu.column_name = ?
+    );
+')= ( DBI::st=HASH(0x1503a20) ) [1 items] at script.pl line 46
+    <- execute('foo_v', undef)= ( '0E0' ) [1 items] at script.pl line 47
+    <- fetchrow_array= ( ) [0 items] at script.pl line 49
+    <- finish= ( 1 ) [1 items] at script.pl line 55
+    <- disconnect= ( 1 ) [1 items] at script.pl line 57
+    <- DESTROY(DBI::st=HASH(0x1503600))= ( undef ) [1 items]
+    <- DESTROY(DBI::db=HASH(0x1503330))= ( undef ) [1 items]
+    DBI::db=HASH(0x2593300) trace level set to 0x0/1 (DBI @ 0x0/0) in DBI 1.634-ithread (pid 4697)
+    <- prepare('SELECT
+  tb.constraint_type
+FROM
+  information_schema.key_column_usage kcu
+JOIN
+  information_schema.table_constraints tb
+    ON tb.constraint_name = kcu.constraint_name
+WHERE
+  (kcu.table_name, kcu.column_name) IN
+    (
+      SELECT
+        vcu.table_name,
+        vcu.column_name
+      FROM
+        information_schema.view_column_usage vcu
+      WHERE
+        vcu.view_name = ?
+        AND vcu.column_name = ?
+    );
+')= ( DBI::st=HASH(0x25939f0) ) [1 items] at script.pl line 46
+    <- execute('sada', undef)= ( '0E0' ) [1 items] at script.pl line 47
+    <- fetchrow_array= ( ) [0 items] at script.pl line 49
+    <- finish= ( 1 ) [1 items] at script.pl line 55
+    <- disconnect= ( 1 ) [1 items] at script.pl line 57
+    <- DESTROY(DBI::st=HASH(0x25935d0))= ( undef ) [1 items]
+    <- DESTROY(DBI::db=HASH(0x2593300))= ( undef ) [1 items]
+    DBI::db=HASH(0x16160b8) trace level set to 0x0/1 (DBI @ 0x0/0) in DBI 1.634-ithread (pid 4711)
+    <- prepare('SELECT
+  tb.constraint_type
+FROM
+  information_schema.key_column_usage kcu
+JOIN
+  information_schema.table_constraints tb
+    ON tb.constraint_name = kcu.constraint_name
+WHERE
+  (kcu.table_name, kcu.column_name) IN
+    (
+      SELECT
+        vcu.table_name,
+        vcu.column_name
+      FROM
+        information_schema.view_column_usage vcu
+      WHERE
+        vcu.view_name = ?
+        AND vcu.column_name = ?
+    );
+')= ( DBI::st=HASH(0x16167a8) ) [1 items] at script.pl line 46
+    <- execute(undef, undef)= ( '0E0' ) [1 items] at script.pl line 47
+    <- fetchrow_array= ( ) [0 items] at script.pl line 49
+    <- finish= ( 1 ) [1 items] at script.pl line 55
+    <- disconnect= ( 1 ) [1 items] at script.pl line 57
+    <- DESTROY(DBI::st=HASH(0x1616388))= ( undef ) [1 items]
+    <- DESTROY(DBI::db=HASH(0x16160b8))= ( undef ) [1 items]
+    DBI::db=HASH(0x19491c8) trace level set to 0x0/1 (DBI @ 0x0/0) in DBI 1.634-ithread (pid 4790)
+    <- prepare('SELECT
+  tb.constraint_type
+FROM
+  information_schema.key_column_usage kcu
+JOIN
+  information_schema.table_constraints tb
+    ON tb.constraint_name = kcu.constraint_name
+WHERE
+  (kcu.table_name, kcu.column_name) IN
+    (
+      SELECT
+        vcu.table_name,
+        vcu.column_name
+      FROM
+        information_schema.view_column_usage vcu
+      WHERE
+        vcu.view_name = ?
+        AND vcu.column_name = ?
+    );
+')= ( DBI::st=HASH(0x19498b8) ) [1 items] at script.pl line 46
+    <- execute('foo_vw', 'id')= ( 1 ) [1 items] at script.pl line 47
+    <- fetchrow_array= ( "PRIMARY KEY" ) [1 items] row1 at script.pl line 49
+    <- finish= ( 1 ) [1 items] at script.pl line 55
+    <- disconnect= ( 1 ) [1 items] at script.pl line 57
+    <- DESTROY(DBI::st=HASH(0x1949498))= ( undef ) [1 items]
+    <- DESTROY(DBI::db=HASH(0x19491c8))= ( undef ) [1 items]
+    DBI::db=HASH(0x19e21d8) trace level set to 0x0/1 (DBI @ 0x0/0) in DBI 1.634-ithread (pid 4847)
+    <- prepare('SELECT
+  tb.constraint_type
+FROM
+  information_schema.key_column_usage kcu
+JOIN
+  information_schema.table_constraints tb
+    ON tb.constraint_name = kcu.constraint_name
+WHERE
+  (kcu.table_name, kcu.column_name) IN
+    (
+      SELECT
+        vcu.table_name,
+        vcu.column_name
+      FROM
+        information_schema.view_column_usage vcu
+      WHERE
+        vcu.view_name = ?
+        AND vcu.column_name = ?
+    );
+')= ( DBI::st=HASH(0x19e28c8) ) [1 items] at script.pl line 46
+    <- execute('foo_vw', 'status')= ( '0E0' ) [1 items] at script.pl line 47
+    <- fetchrow_array= ( ) [0 items] at script.pl line 49
+    <- finish= ( 1 ) [1 items] at script.pl line 55
+    <- disconnect= ( 1 ) [1 items] at script.pl line 57
+    <- DESTROY(DBI::st=HASH(0x19e24a8))= ( undef ) [1 items]
+    <- DESTROY(DBI::db=HASH(0x19e21d8))= ( undef ) [1 items]
+    DBI::db=HASH(0x1b671d8) trace level set to 0x0/1 (DBI @ 0x0/0) in DBI 1.634-ithread (pid 4862)
+    <- prepare('SELECT
+  tb.constraint_type
+FROM
+  information_schema.key_column_usage kcu
+JOIN
+  information_schema.table_constraints tb
+    ON tb.constraint_name = kcu.constraint_name
+WHERE
+  (kcu.table_name, kcu.column_name) IN
+    (
+      SELECT
+        vcu.table_name,
+        vcu.column_name
+      FROM
+        information_schema.view_column_usage vcu
+      WHERE
+        vcu.view_name = ?
+        AND vcu.column_name = ?
+    );
+')= ( DBI::st=HASH(0x1b678c8) ) [1 items] at script.pl line 46
+    <- execute('foo_vw', 'name')= ( 1 ) [1 items] at script.pl line 47
+    <- fetchrow_array= ( "UNIQUE" ) [1 items] row1 at script.pl line 49
+    <- finish= ( 1 ) [1 items] at script.pl line 55
+    <- disconnect= ( 1 ) [1 items] at script.pl line 57
+    <- DESTROY(DBI::st=HASH(0x1b674a8))= ( undef ) [1 items]
+    <- DESTROY(DBI::db=HASH(0x1b671d8))= ( undef ) [1 items]
