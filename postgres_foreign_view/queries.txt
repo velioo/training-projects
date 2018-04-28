@@ -1,0 +1,44 @@
+Check if column from a given table is truly UNIQUE:
+
+`
+SELECT
+  pg_i.indexname,
+  pg_in.indisunique
+  FROM
+    pg_indexes pg_i
+JOIN pg_class pg_c ON
+  pg_c.relname = pg_i.tablename
+JOIN pg_class pg_c2 ON
+  pg_c2.relname = pg_i.indexname
+JOIN pg_attribute pg_a ON
+  pg_a.attrelid = pg_c2.oid
+JOIN pg_index pg_in ON
+  pg_in.indexrelid = pg_c2.oid
+WHERE
+  pg_i.tablename = 'case1' AND
+  pg_a.attname = 'id' AND
+  pg_in.indnatts = 1
+
+`;
+
+
+column_name & table_name -> index of column_name:
+
+SELECT pg_i.indexname FROM pg_indexes pg_i JOIN pg_class pg_c ON pg_c.relname = pg_i.tablename JOIN pg_class pg_c2 ON pg_c2.relname = pg_i.indexname JOIN pg_attribute pg_a ON pg_a.attrelid = pg_c2.oid JOIN pg_index pg_in ON pg_in.indexrelid = pg_c2.oid WHERE pg_i.tablename = 'case1' AND pg_a.attname = 'id';
+
+
+Relation column to table and index
+
+select c.relname, a.attname from pg_catalog.pg_attribute a JOIN pg_catalog.pg_class c ON a.attrelid = c.oid WHERE a.attname = 'id';
+
+All columns of a table
+
+select c.relname, a.attname from pg_catalog.pg_attribute a JOIN pg_catalog.pg_class c ON a.attrelid = c.oid WHERE c.relname = 'case1' AND a.attnum > 0;
+
+Relation column name and table name
+
+select c.relname, a.attname from pg_catalog.pg_attribute a JOIN pg_catalog.pg_class c ON a.attrelid = c.oid WHERE a.attname = 'id' AND c.relkind = 'r' AND c.relname = 'case1';
+
+Get indexes from table name.
+
+SELECT pg_i.indexname FROM pg_indexes pg_i JOIN pg_class pg_c ON pg_c.relname = pg_i.tablename JOIN pg_class pg_c2 ON pg_c2.relname = pg_i.indexname WHERE pg_i.tablename = 'case1';
