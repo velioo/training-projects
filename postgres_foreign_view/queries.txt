@@ -1,0 +1,95 @@
+Check if a column from a table is PRIMARY_KEY or UNIQUE [ regardless if it is only index or constraint ]:
+
+--------------------------------------
+SELECT
+  CASE
+    WHEN
+      pg_idx.indisprimary THEN 'PRIMARY_KEY'
+    WHEN
+      pg_idx.indisunique THEN 'UNIQUE'
+  END index_type
+  FROM
+    pg_index pg_idx
+JOIN pg_class pg_c ON
+  pg_c.oid = pg_idx.indrelid
+JOIN pg_class pg_c2 ON
+  pg_c2.oid = pg_idx.indexrelid
+JOIN pg_attribute pg_a ON
+  pg_a.attrelid = pg_c2.oid
+WHERE
+  pg_c.relname = 'case1' AND
+  pg_a.attname = 'id' AND
+  pg_idx.indnatts = 1;
+
+Method 2:
+
+SELECT
+  pg_idxs.indexname,
+  pg_idx.indisunique
+  FROM
+    pg_indexes pg_idxs
+JOIN pg_class pg_c ON
+  pg_c.relname = pg_idxs.tablename
+JOIN pg_class pg_c2 ON
+  pg_c2.relname = pg_idxs.indexname
+JOIN pg_attribute pg_a ON
+  pg_a.attrelid = pg_c2.oid
+JOIN pg_index pg_idx ON
+  pg_idx.indexrelid = pg_c2.oid
+WHERE
+  pg_idxs.tablename = 'case1' AND
+  pg_a.attname = 'id' AND
+  pg_idx.indnatts = 1;
+--------------------------------------
+
+
+--------------------------------------
+
+Check if a column from a materialized view is UNIQUE:
+
+SELECT
+  CASE
+    WHEN
+      pg_idx.indisunique THEN 'UNIQUE'
+  END index_type
+  FROM
+    pg_index pg_idx
+JOIN pg_class pg_c ON
+  pg_c.oid = pg_idx.indrelid
+JOIN pg_class pg_c2 ON
+  pg_c2.oid = pg_idx.indexrelid
+JOIN pg_attribute pg_a ON
+  pg_a.attrelid = pg_c2.oid
+WHERE
+  pg_c.relname = 'case1_matview' AND
+  pg_a.attname = 'u1' AND
+  pg_idx.indnatts = 1;
+
+--------------------------------------
+
+
+--------------------------------------
+
+Get CONSTRAINT (not index) type by column name(not aliases) from a view:
+
+SELECT
+  tb.constraint_type
+FROM
+  information_schema.key_column_usage kcu
+JOIN
+  information_schema.table_constraints tb
+    ON tb.constraint_name = kcu.constraint_name
+WHERE
+  (kcu.table_name, kcu.column_name) IN
+    (
+      SELECT
+        vcu.table_name,
+        vcu.column_name
+      FROM
+        information_schema.view_column_usage vcu
+      WHERE
+        vcu.view_name = 'case1_matview'
+        AND vcu.column_name = 'id'
+    );
+
+--------------------------------------

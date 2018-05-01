@@ -21,7 +21,7 @@ products_inserted = 0
 
 def main():
 	if base_url:
-		connection = pymysql.connect(host='localhost', user='root', password='12345678', db='online_store', charset='utf8mb4', 
+		connection = pymysql.connect(host='localhost', user='root', password='12345678', db='online_store', charset='utf8mb4',
 											cursorclass=pymysql.cursors.DictCursor)
 		global result
 		global base_name
@@ -30,7 +30,7 @@ def main():
 				sql = "SELECT `id`, `name` FROM `categories`"
 				cursor.execute(sql)
 				result = cursor.fetchall()
-			
+
 			if validators.url(base_url):
 				base_name = base_url.split('//')[-1]
 				visit_url(base_url, connection)
@@ -46,7 +46,7 @@ def main():
 		except pymysql.err.InterfaceError as ie:
 			print(ie)
 		except pymysql.err.Error as e:
-			print(e)	
+			print(e)
 		except AttributeError as ae:
 			print(ae)
 		except TypeError as te:
@@ -54,8 +54,8 @@ def main():
 		except Exception as e:
 			print('Unknown error occured',e)
 		finally:
-			connection.close()	
-			
+			connection.close()
+
 	else:
 		print ("No URL specified!")
 
@@ -68,9 +68,9 @@ def visit_url(url, connection):
 			response = urlopen(url, timeout = 10)
 			if response.info().get_content_type() != 'text/html':
 				print('Url', url , ' is not text/html, returning...')
-				return		
+				return
 			lines = response.read().decode('utf-8')
-			matched = re.findall(r'<input\s*type\s*=\s*"\s*hidden\s*"\s*class\s*=\s*"\s*soaring-cart-data\s*"\s*data-url\s*=\s*"\s*(.+)\s*"\s*data-img_url\s*=\s*"(.+)\s*"\s*data-name\s*=\s*"\s*(.+)\s*"\s*data-price\s*=\s*"\s*(\d+)\s*"', lines)	
+			matched = re.findall(r'<input\s*type\s*=\s*"\s*hidden\s*"\s*class\s*=\s*"\s*soaring-cart-data\s*"\s*data-url\s*=\s*"\s*(.+)\s*"\s*data-img_url\s*=\s*"(.+)\s*"\s*data-name\s*=\s*"\s*(.+)\s*"\s*data-price\s*=\s*"\s*(\d+)\s*"', lines)
 			for data in matched:
 				if len(data) == 4:
 					product_title = html_p.unescape(html_p.unescape(data[2]))
@@ -115,7 +115,7 @@ def visit_url(url, connection):
 		except pymysql.err.DataError as de:
 			print(de)
 		except pymysql.err.IntegrityError as ie:
-			print(ie)	
+			print(ie)
 		except pymysql.err.ProgrammingError as pe:
 			print(pe)
 		except pymysql.err.OperationalError as oe:
