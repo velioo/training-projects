@@ -217,6 +217,9 @@ module.exports = {
       hasOrders: (userOrdersRows.length > 0)
     });
   },
+  getOrderById: async(ctx, next) => {
+    ctx.status = 200;
+  },
   confirmOrder: async (ctx, next) => {
     await next();
 

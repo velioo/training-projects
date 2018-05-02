@@ -288,7 +288,11 @@ module.exports = {
 
     logger.info('UserInfoRows = %o', userInfoRows);
 
-    assert(userInfoRows.length === 1);
+    assert(userInfoRows.length <= 1);
+
+    if (userInfoRows.length === 0) {
+      ctx.redirect('/not_found')
+    }
 
     const orderDataRows = await mysql.pool.query(`
 

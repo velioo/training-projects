@@ -7,76 +7,67 @@ Script for monitoring devices in the local network.
 import argparse
 import sys
 import os
-import subprocess
+from subprocess import run, PIPE, DEVNULL, TimeoutExpired, CalledProcessError
 import re
+import json
 
-NETWORK_IP = '10.20.1.1';
-BITS = '24';
+NETWORK_ADDR = '10.20.1.1/24'
 AUTHORIZED_MAC_ADDR_FILE = 'auth_mac_addrs.txt'
-UNAUTHORIZED_MAC_ADDR_FILE = 'unauth_mac_addrs.txt'
+TIMEOUT = 5
 
 def scan_network():
-  network_addr = str(NETWORK_IP) + '/' + str(BITS);
+  try:
+    result = run(
+      [ 'arp-scan', '-g', NETWORK_ADDR ],
+      stdout = PIPE,
+      stderr = DEVNULL,
+      timeout = TIMEOUT,
+      check = True,
+      encoding = 'utf-8'
+    ).stdout
 
-  result = subprocess.run([ 'arp-scan', '-g', network_addr ],
-    stdout=subprocess.PIPE).stdout.decode('utf-8')
+  except CalledProcessError as err:
+    print('Child process returned a non-zero exit status: {}'
+      .format(err))
+  except TimeoutExpired as err:
+    print('arp-scan has timed out: {}'
+      .format(err))
 
-  rexp = re.compile(r'((?:[0-9A-Fa-f]{2}[:-]){5}(?:[0-9A-Fa-f]{2}))', re.I);
-  rexp_iter = rexp.finditer(result)
-
-  scanned_mac_addrs = []
-
-  for data in rexp_iter:
-    if len(data.groups()) != 1:
-      raise Exception('Failed to match arp-scan output')
-    scanned_mac_addrs.append(''.join(data.groups(1)))
+  scanned_mac_addrs = re.findall(r'((?:[0-9A-Fa-f]{2}[:-]){5}(?:[0-9A-Fa-f]{2}))',
+    result, re.I)
 
   return scanned_mac_addrs
-
-def get_unauth_mac_addrs():
-  addrs = []
-
-  try:
-    with open(UNAUTHORIZED_MAC_ADDR_FILE, 'r+') as f:
-      addrs = [line.rstrip('\n') for line in f]
-  except FileNotFoundError as err:
-    os.mknod(UNAUTHORIZED_MAC_ADDR_FILE)
-
-  return addrs
 
 def get_auth_mac_addrs():
   addrs = []
 
   try:
     with open(AUTHORIZED_MAC_ADDR_FILE, 'r+') as f:
-      addrs = [line.rstrip('\n') for line in f]
+      addrs = [ line.rstrip('\n') for line in f ]
   except FileNotFoundError as err:
-    os.mknod(AUTHORIZED_MAC_ADDR_FILE)
+    print("Couldn't open file {} for reading, file doesn't exist"
+      .format(AUTHORIZED_MAC_ADDR_FILE))
 
   return addrs
-
-def save_unauth_mac_addr(mac_addrs):
-  with open(UNAUTHORIZED_MAC_ADDR_FILE, 'a+') as f:
-    [f.write(mac_addr + '\n') for mac_addr in mac_addrs]
 
 def alarm(mac_addr):
   print('Alarm: Found an unknown MAC address: {}'.format(mac_addr))
 
 if __name__ == '__main__':
   try:
-    scanned_mac_addrs = scan_network()
-    unauth_mac_addrs = get_unauth_mac_addrs()
+    scanned_mac_addrs = sorted(scan_network())
     auth_mac_addrs = get_auth_mac_addrs()
-
-    new_mac_addrs = []
 
     for mac_addr in scanned_mac_addrs:
       if mac_addr not in auth_mac_addrs:
         alarm(mac_addr)
-        if mac_addr not in unauth_mac_addrs:
-          new_mac_addrs.append(mac_addr)
 
-    save_unauth_mac_addr(new_mac_addrs) if len(new_mac_addrs) > 0 else 0
+    print(json.dumps({
+      'count': len(scanned_mac_addrs),
+      'list': scanned_mac_addrs
+    },
+    sort_keys = True,
+    indent = 2))
 
   except Exception as err:
     print('Script error: {}'.format(err))
