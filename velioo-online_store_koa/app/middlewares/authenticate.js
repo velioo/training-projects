@@ -51,6 +51,8 @@ module.exports = async (ctx, next) => {
       ctx.throw(403, 'User not logged in.', { userNotLoggedIn: true });
     }
 
+    
+
     return;
   }
 

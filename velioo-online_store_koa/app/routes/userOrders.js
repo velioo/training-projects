@@ -1,11 +1,12 @@
 const {
   confirmOrder,
   createOrder,
-  renderUserOrders
-} = require('../controllers/usersController');
-const {
+  renderUserOrders,
   getOrderById
-} = require('../controllers/backOfficeController');
+} = require('../controllers/usersController');
+// const {
+//   getOrderById
+// } = require('../controllers/backOfficeController');
 
 const Router = require('koa-router');
 const KoaBody = require('koa-body');
