@@ -1,4 +1,0 @@
-Throw err: SysError FILE: monitoring.py, FUNCTION: get_devices, LINE: 38, MSG: scanned_mac_addrs must be a list
-Throw err: SysError FILE: monitoring.py, FUNCTION: get_devices, LINE: 39, MSG: scanned_mac_addrs must be list but is str
-Throw err: SysError FILE: monitoring.py, FUNCTION: get_devices, LINE: 39, MSG: scanned_mac_addrs must be list but is str
-Throw err: SysError FILE: monitoring.py, FUNCTION: get_devices, LINE: 41, MSG: Timestamp must be an integer but is list
